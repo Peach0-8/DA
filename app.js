@@ -263,7 +263,7 @@ function addDeletedComponentId(id) {
   ids.add(id);
   try {
     localStorage.setItem(DELETED_IDS_STORAGE_KEY, JSON.stringify([...ids]));
-  } catch (e) {}
+  } catch (e) { }
 }
 
 function getMyUploadIds() {
@@ -279,7 +279,7 @@ function saveMyUploadId(id) {
   ids.add(id);
   try {
     localStorage.setItem(MY_UPLOAD_IDS_KEY, JSON.stringify([...ids]));
-  } catch (e) {}
+  } catch (e) { }
 }
 
 function removeMyUploadId(id) {
@@ -287,7 +287,7 @@ function removeMyUploadId(id) {
   ids.delete(id);
   try {
     localStorage.setItem(MY_UPLOAD_IDS_KEY, JSON.stringify([...ids]));
-  } catch (e) {}
+  } catch (e) { }
 }
 
 function isUserComponentOwner(component) {
@@ -842,11 +842,11 @@ async function updateComponentDetails(id, { title, category, html, css }) {
   edits[id] = { html: component.html, css: component.css };
   try {
     localStorage.setItem(CODE_EDIT_STORAGE_KEY, JSON.stringify(edits));
-  } catch (e) {}
+  } catch (e) { }
 
   // Update in user uploads storage & Firebase Cloud
   saveUserUploadLocally(component);
-  saveComponentToCloud(component).catch(() => {});
+  saveComponentToCloud(component).catch(() => { });
 
   // Update in Firestore if firebase provider is active
   if (CONFIG.DB_PROVIDER === 'firebase') {
@@ -1040,7 +1040,7 @@ try {
     localStorage.removeItem('uiforge_component_likes');
     localStorage.setItem(TEST_LIKES_CLEANUP_KEY, 'true');
   }
-} catch (e) {}
+} catch (e) { }
 
 function getStoredUser() {
   try {
@@ -1049,7 +1049,7 @@ function getStoredUser() {
     }
     const raw = localStorage.getItem('uiforge_user');
     if (raw) return JSON.parse(raw);
-  } catch (e) {}
+  } catch (e) { }
   return {
     uid: 'local-user-phitsamay',
     displayName: 'Phitsamay',
@@ -1133,7 +1133,7 @@ async function copyToClipboard(text) {
       await navigator.clipboard.writeText(text);
       return true;
     }
-  } catch (e) {}
+  } catch (e) { }
 
   try {
     // Fallback for non-https or permission-blocked headless environments
@@ -1710,7 +1710,7 @@ function getComponentLikesCount(component) {
     map[id] = 1;
     try {
       localStorage.setItem(COMPONENT_LIKES_STORAGE_KEY, JSON.stringify(map));
-    } catch (e) {}
+    } catch (e) { }
   }
 
   return count;
@@ -1721,10 +1721,10 @@ function setComponentLikesCount(id, count, delta = 0) {
   map[id] = count;
   try {
     localStorage.setItem(COMPONENT_LIKES_STORAGE_KEY, JSON.stringify(map));
-  } catch (e) {}
+  } catch (e) { }
 
   // Sync to Cloud atomically
-  syncLikeToCloud(id, count, delta).catch(() => {});
+  syncLikeToCloud(id, count, delta).catch(() => { });
 }
 
 async function syncLikeToCloud(id, count, delta = 0) {
@@ -1739,7 +1739,7 @@ async function syncLikeToCloud(id, count, delta = 0) {
         await rtdb.ref('likes/' + id).set(count);
       }
       return;
-    } catch (e) {}
+    } catch (e) { }
   }
   const db = getFirestoreDB();
   if (db) {
@@ -1751,7 +1751,7 @@ async function syncLikeToCloud(id, count, delta = 0) {
       } else {
         await db.collection('likes').doc(id).set({ count: count }, { merge: true });
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 }
 
@@ -1778,7 +1778,7 @@ async function syncCloudLikes() {
           }
         });
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   // 2. Fallback to Firestore only if RTDB is unavailable or empty
@@ -1794,13 +1794,13 @@ async function syncCloudLikes() {
           }
         });
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   if (changed) {
     try {
       localStorage.setItem(COMPONENT_LIKES_STORAGE_KEY, JSON.stringify(local));
-    } catch (e) {}
+    } catch (e) { }
 
     // Refresh rendered like buttons in DOM immediately
     document.querySelectorAll('.like-btn').forEach((btn) => {
@@ -2097,7 +2097,7 @@ function attachCardListeners() {
         if (iframe && iframe.contentWindow) {
           try {
             iframe.contentWindow.postMessage({ type: 'TOGGLE_THEME', theme: nextTheme }, '*');
-          } catch (err) {}
+          } catch (err) { }
         }
         try {
           if (iframe && iframe.contentDocument && iframe.contentDocument.body) {
@@ -2108,7 +2108,7 @@ function attachCardListeners() {
             iframe.contentDocument.documentElement.style.setProperty('background-color', nextBg, 'important');
             iframe.contentDocument.body.style.setProperty('background-color', nextBg, 'important');
           }
-        } catch (err) {}
+        } catch (err) { }
       });
     }
 
@@ -2670,7 +2670,7 @@ function applySelectedCategory(catId, tech) {
   const hiddenCat = document.getElementById('upload-category');
   if (hiddenCat) hiddenCat.value = catId;
 
-  // Render tabs for selected tech
+  // Render tabs for selected tech 00
   renderUploadTabs();
 
   // Sync editor with active tab & background
@@ -2812,11 +2812,11 @@ function updateUploadBg(newBg) {
           doc.body.style.backgroundColor = newBg;
           directUpdated = true;
         }
-      } catch (e) {}
+      } catch (e) { }
     }
     try {
       iframe.contentWindow?.postMessage({ type: 'UPDATE_BG', bg: newBg, isLight }, '*');
-    } catch (e) {}
+    } catch (e) { }
 
     // If iframe has no srcdoc loaded yet, load it now
     if (!iframe.srcdoc) {
@@ -2889,7 +2889,7 @@ function openUploadModal(initialData = null) {
           }
         }
       }
-    } catch (_) {}
+    } catch (_) { }
 
     if (!restored) {
       // Fresh upload: Show "What are you making?" dialog!
@@ -4006,7 +4006,7 @@ ${css}
           isLight: !isDarkCanvas
         }, '*');
       }
-    } catch (_) {}
+    } catch (_) { }
 
     // Fallback direct DOM update inside iframe if same-origin
     if (modalIframe && modalIframe.contentDocument) {
@@ -4019,7 +4019,7 @@ ${css}
         if (doc.body) {
           doc.body.style.backgroundColor = color;
         }
-      } catch (err) {}
+      } catch (err) { }
     }
 
     if (shouldRefresh) {
@@ -4052,7 +4052,7 @@ ${css}
     comments.unshift(comment);
     try {
       localStorage.setItem('uiforge_comments_' + compId, JSON.stringify(comments));
-    } catch (e) {}
+    } catch (e) { }
     return comments;
   }
 
@@ -4829,7 +4829,7 @@ ${css}
       if (typeof bgPicker.showPicker === 'function') {
         try {
           bgPicker.showPicker();
-        } catch (err) {}
+        } catch (err) { }
       }
     });
   }
@@ -5188,7 +5188,7 @@ ${css}
             photoURL: user.photoURL
           }));
           localStorage.removeItem('uiforge_logged_out');
-        } catch (e) {}
+        } catch (e) { }
       } else if (localStorage.getItem('uiforge_logged_out') === 'true') {
         STATE.currentUser = null;
       } else {
@@ -5271,11 +5271,11 @@ ${css}
         try {
           localStorage.setItem('uiforge_logged_out', 'true');
           localStorage.removeItem('uiforge_user');
-        } catch (e) {}
+        } catch (e) { }
         STATE.currentUser = null;
         syncUserStateUI();
         if (typeof auth !== 'undefined' && auth.currentUser) {
-          auth.signOut().catch(() => {});
+          auth.signOut().catch(() => { });
         }
         showToast('Signed out successfully.', 'info');
       });
@@ -5312,7 +5312,7 @@ ${css}
     });
   }
 
-  
+
   /* ============================================================
      11. PROFILE, EDIT & DELETE CONTROLLER
      ============================================================ */
@@ -5345,7 +5345,7 @@ ${css}
     try {
       const saved = localStorage.getItem(SETTINGS_KEY);
       if (saved) return JSON.parse(saved);
-    } catch (e) {}
+    } catch (e) { }
     const user = STATE.currentUser;
     const defaultName = user ? (user.displayName || (user.email ? user.email.split('@')[0] : 'Phitsamay')) : 'Phitsamay';
     const defaultHandle = user ? (user.email ? user.email.split('@')[0] : 'phitsamay_9492') : 'phitsamay_9492';
@@ -5363,7 +5363,7 @@ ${css}
   function saveUserSettings(settings) {
     try {
       localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function updateProfileCompletion(settings) {
