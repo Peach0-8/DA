@@ -16,3 +16,7 @@ npm-debug.log*
 # IDE configs
 .vscode/
 .idea/
+
+# Temporary / testing
+.chrome_profile/
+scratch/

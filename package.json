@@ -1,4 +1,11 @@
 {
+  "name": "uiforge",
+  "version": "1.0.0",
+  "scripts": {
+    "sync": "node sync_uiverse.js",
+    "sync:watch": "node sync_uiverse.js --watch",
+    "scrape": "node scraper.js"
+  },
   "dependencies": {
     "puppeteer-core": "^25.10.0"
   }

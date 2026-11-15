@@ -1,0 +1,38 @@
+name: Sync Uiverse Elements
+
+on:
+  schedule:
+    # Runs daily at 00:00 UTC (07:00 ICT)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Uiverse Synchronizer
+        run: node sync_uiverse.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ sync_uiverse.js
+          if git diff --staged --quiet; then
+            echo "No new elements to commit."
+          else
+            git commit -m "chore(sync): automatically sync new UI elements from Uiverse.io [skip ci]"
+            git push
+          fi
+

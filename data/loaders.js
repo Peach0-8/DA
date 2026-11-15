@@ -1,7 +1,7 @@
 /**
- * UIverse.io Scraped Data - Loaders
- * Updated: 2026-09-11T01:18:04.642Z
- * Total: 902
+ * UIverse.io Scraped & Synced Data - Loaders
+ * Updated: 2026-11-14T15:48:41.461Z
+ * Total: 1093
  */
 
 window.UIVERSE_DATA = window.UIVERSE_DATA || {};
@@ -10829,5 +10829,3199 @@ window.UIVERSE_DATA['Loaders'] = [
     "createdAt": "2026-09-11T00:00:00Z",
     "html": "<div class=\"loader\">LOADING</div>",
     "css": ".loader {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n  font-weight: bold;\n  font-size: 12px;\n  color: #f2df95;\n  height: 150px;\n  width: 250px;\n  background-color: #907A24;\n  border-style: solid;\n  border-width: 50px 250px 50px 0px;\n  border-color: #C9B656 #AD9531 #87621B #AD9531;\n  animation: camera_effect 4s infinite linear;\n}\n\n@keyframes camera_effect {\n  0% {\n    border-width: 0px 250px 0px 0px;\n  }\n\n  10% {\n    border-width: 45px 250px 45px 0px;\n  }\n\n  20% {\n    border-width: 50px 160px 50px 0px;\n  }\n\n  30% {\n    border-width: 50px 80px 50px 80px;\n  }\n\n  45% {\n    border-width: 45px 75px 55px 85px;\n  }\n\n  55% {\n    border-width: 55px 70px 45px 90px;\n  }\n\n  65% {\n    border-width: 55px 85px 45px 75px;\n  }\n\n  70% {\n    border-width: 50px 80px 50px 80px;\n  }\n\n  80% {\n    border-width: 50px 0px 50px 160px;\n  }\n\n  90% {\n    border-width: 45px 0px 45px 250px;\n  }\n\n  100% {\n    border-width: 0px 0px 0px 250px;\n  }\n}"
+  },
+  {
+    "id": "uiv-952233",
+    "title": "Cold Ape 73",
+    "author": "AHMED-MIT",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.211Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by AHMED-MIT - Tags: loader */\n.spinner {\n  position: relative;\n  width: 35.2px;\n  height: 35.2px;\n}\n\n.spinner::before,\n.spinner::after {\n  content: '';\n  width: 100%;\n  height: 100%;\n  display: block;\n  animation: spinner-b4c8mmhg 0.5s backwards, spinner-49opz7hg 1.25s 0.5s infinite ease;\n  border: 8.8px solid #000000;\n  border-radius: 50%;\n  box-shadow: 0 -52.8px 0 -8.8px #000000;\n  position: absolute;\n}\n\n.spinner::after {\n  animation-delay: 0s, 1.25s;\n}\n\n@keyframes spinner-b4c8mmhg {\n  from {\n    box-shadow: 0 0 0 -8.8px #000000;\n  }\n}\n\n@keyframes spinner-49opz7hg {\n  to {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-612362",
+    "title": "Curly Rabbit 4",
+    "author": "AHMED-MIT",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.019Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by AHMED-MIT - Tags: loader */\n.spinner {\n  width: 56px;\n  height: 56px;\n  display: grid;\n  border: 4.5px solid #0000;\n  border-radius: 50%;\n  border-color: #dbdcef #0000;\n  animation: spinner-e04l1k 1s infinite linear;\n}\n\n.spinner::before,\n.spinner::after {\n  content: \"\";\n  grid-area: 1/1;\n  margin: 2.2px;\n  border: inherit;\n  border-radius: 50%;\n}\n\n.spinner::before {\n  border-color: #474bff #0000;\n  animation: inherit;\n  animation-duration: 0.5s;\n  animation-direction: reverse;\n}\n\n.spinner::after {\n  margin: 8.9px;\n}\n\n@keyframes spinner-e04l1k {\n  100% {\n    transform: rotate(1turn);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-919272",
+    "title": "Dry Wolverine 85",
+    "author": "AHMED-MIT",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.021Z",
+    "html": "<div class=\"spinner\">\n  <div></div>\n  <div></div>\n  <div></div>\n  <div></div>\n  <div></div>\n</div>",
+    "css": "/* From Uiverse.io by AHMED-MIT - Tags: loader, accept, account */\n.spinner {\n  position: relative;\n  width: 33.6px;\n  height: 33.6px;\n  perspective: 67.2px;\n}\n\n.spinner div {\n  width: 100%;\n  height: 100%;\n  background: #474bff;\n  position: absolute;\n  left: 50%;\n  transform-origin: left;\n  animation: spinner-16s03x 2s infinite;\n}\n\n.spinner div:nth-child(1) {\n  animation-delay: 0.15s;\n}\n\n.spinner div:nth-child(2) {\n  animation-delay: 0.3s;\n}\n\n.spinner div:nth-child(3) {\n  animation-delay: 0.45s;\n}\n\n.spinner div:nth-child(4) {\n  animation-delay: 0.6s;\n}\n\n.spinner div:nth-child(5) {\n  animation-delay: 0.75s;\n}\n\n@keyframes spinner-16s03x {\n  0% {\n    transform: rotateY(0deg);\n  }\n\n  50%, 80% {\n    transform: rotateY(-180deg);\n  }\n\n  90%, 100% {\n    opacity: 0;\n    transform: rotateY(-180deg);\n  }\n}",
+    "tags": [
+      "loader",
+      "accept",
+      "account"
+    ]
+  },
+  {
+    "id": "uiv-152925",
+    "title": "Quick Dragonfly 5",
+    "author": "AHMED-MIT",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.222Z",
+    "html": "<div class=\"spinner\">\n  <div></div>   \n  <div></div>    \n  <div></div>    \n  <div></div>    \n  <div></div>    \n  <div></div>    \n  <div></div>    \n  <div></div>    \n  <div></div>    \n  <div></div>    \n</div>",
+    "css": "/* From Uiverse.io by AHMED-MIT - Tags: about me, css, 2FA */\n.spinner {\n  position: absolute;\n  width: 9px;\n  height: 9px;\n}\n\n.spinner div {\n  position: absolute;\n  width: 50%;\n  height: 150%;\n  background: #474bff;\n  transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));\n  animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;\n}\n\n.spinner div:nth-child(1) {\n  --delay: 0.1;\n  --rotation: 36;\n  --translation: 150;\n}\n\n.spinner div:nth-child(2) {\n  --delay: 0.2;\n  --rotation: 72;\n  --translation: 150;\n}\n\n.spinner div:nth-child(3) {\n  --delay: 0.3;\n  --rotation: 108;\n  --translation: 150;\n}\n\n.spinner div:nth-child(4) {\n  --delay: 0.4;\n  --rotation: 144;\n  --translation: 150;\n}\n\n.spinner div:nth-child(5) {\n  --delay: 0.5;\n  --rotation: 180;\n  --translation: 150;\n}\n\n.spinner div:nth-child(6) {\n  --delay: 0.6;\n  --rotation: 216;\n  --translation: 150;\n}\n\n.spinner div:nth-child(7) {\n  --delay: 0.7;\n  --rotation: 252;\n  --translation: 150;\n}\n\n.spinner div:nth-child(8) {\n  --delay: 0.8;\n  --rotation: 288;\n  --translation: 150;\n}\n\n.spinner div:nth-child(9) {\n  --delay: 0.9;\n  --rotation: 324;\n  --translation: 150;\n}\n\n.spinner div:nth-child(10) {\n  --delay: 1;\n  --rotation: 360;\n  --translation: 150;\n}\n\n@keyframes spinner-fzua35 {\n  0%, 10%, 20%, 30%, 50%, 60%, 70%, 80%, 90%, 100% {\n    transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));\n  }\n\n  50% {\n    transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1.5%));\n  }\n}",
+    "tags": [
+      "about me",
+      "css",
+      "2fa"
+    ]
+  },
+  {
+    "id": "uiv-275651",
+    "title": "Serious Mule 65",
+    "author": "AHMED-MIT",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.038Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by AHMED-MIT - Tags: loader, about me, accept call */\n.spinner {\n  --d: 24.6px;\n  width: 4.5px;\n  height: 4.5px;\n  border-radius: 50%;\n  color: #474bff;\n  box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,\n          calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,\n          calc(0*var(--d))      calc(1*var(--d))     0 2.2px,\n          calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,\n          calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,\n          calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,\n          calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;\n  animation: spinner-a90wxe 1s infinite steps(8);\n}\n\n@keyframes spinner-a90wxe {\n  100% {\n    transform: rotate(1turn);\n  }\n}",
+    "tags": [
+      "loader",
+      "about me",
+      "accept call"
+    ]
+  },
+  {
+    "id": "uiv-832184",
+    "title": "Evil Bullfrog 30",
+    "author": "AbanoubMagdy1",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.052Z",
+    "html": "<div class=\"loader\">\n    <div class=\"circle\"></div>\n    <div class=\"circle\"></div>\n    <div class=\"circle\"></div>\n    <div class=\"circle\"></div>\n</div>",
+    "css": "/* From Uiverse.io by AbanoubMagdy1 - Tags: loader */\n.loader {\n  --dim: 3rem;\n  width: var(--dim);\n  height: var(--dim);\n  position: relative;\n  animation: spin988 2s linear infinite;\n}\n\n.loader .circle {\n  --color: #333;\n  --dim: 1.2rem;\n  width: var(--dim);\n  height: var(--dim);\n  background-color: var(--color);\n  border-radius: 50%;\n  position: absolute;\n}\n\n.loader .circle:nth-child(1) {\n  top: 0;\n  left: 0;\n}\n\n.loader .circle:nth-child(2) {\n  top: 0;\n  right: 0;\n}\n\n.loader .circle:nth-child(3) {\n  bottom: 0;\n  left: 0;\n}\n\n.loader .circle:nth-child(4) {\n  bottom: 0;\n  right: 0;\n}\n\n@keyframes spin988 {\n  0% {\n    transform: scale(1) rotate(0);\n  }\n\n  20%, 25% {\n    transform: scale(1.3) rotate(90deg);\n  }\n\n  45%, 50% {\n    transform: scale(1) rotate(180deg);\n  }\n\n  70%, 75% {\n    transform: scale(1.3) rotate(270deg);\n  }\n\n  95%, 100% {\n    transform: scale(1) rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-429853",
+    "title": "Horrible Hound 96",
+    "author": "Admin12121",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.017Z",
+    "html": "<div class=\"con\">\n  <div class=\"side left\"></div>\n  <div class=\"side right\"></div>\n  <div class=\"side rightAbove\"></div>\n  <div class=\"side bottom\"></div>\n</div>",
+    "css": "/* From Uiverse.io by Admin12121 - Tags: loader, animated, effect loader */\n.con {\n  width: 120px;\n  height: 120px;\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  margin: auto;\n  transform-origin: 60px 50px;\n  -webkit-animation: spin 3s infinite;\n  animation: spin 3s infinite;\n}\n\n.side {\n  width: 110px;\n  height: 30px;\n  background: white;\n  position: absolute;\n  overflow: hidden;\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n}\n\n.side:before, .side:after {\n  content: \"\";\n  display: block;\n  position: absolute;\n}\n\n.side:before {\n  width: 0;\n  height: 0;\n  border-left: 0px solid transparent;\n  border-right: 20px solid #fff;\n  border-top: 35px solid #111;\n  left: 0;\n}\n\n.side:after {\n  width: 0;\n  height: 0;\n  border-left: 0px solid transparent;\n  border-right: 20px solid #111;\n  border-bottom: 35px solid transparent;\n  right: 0;\n}\n\n.left {\n  left: 0px;\n  transform: rotate(120deg);\n  z-index: 2;\n}\n\n.right, .rightAbove {\n  transform: rotate(-120deg);\n  right: -30px;\n  top: 50px;\n}\n\n.rightAbove {\n  clip: rect(0px 90px 30px 0);\n  z-index: 4;\n}\n\n.under {\n  z-index: 1;\n}\n\n.bottom {\n  left: -24px;\n  bottom: 30px;\n  z-index: 3;\n}\n\n@-webkit-keyframes spin {\n  50% {\n    transform: rotate(720deg);\n  }\n\n  100% {\n    transform: rotate(720deg);\n  }\n}\n\n@keyframes spin {\n  50% {\n    transform: rotate(720deg);\n  }\n\n  100% {\n    transform: rotate(720deg);\n  }\n}",
+    "tags": [
+      "loader",
+      "animated",
+      "effect loader"
+    ]
+  },
+  {
+    "id": "uiv-675548",
+    "title": "Lucky Cobra 80",
+    "author": "Ankesh2002",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.064Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Ankesh2002 - Tags: loader */\n.loader {\n  position: relative;\n  width: 164px;\n  height: 164px;\n}\n\n.loader::before , .loader::after {\n  content: '';\n  position: absolute;\n  width: 40px;\n  height: 40px;\n  background-color: #00bd26;\n  left: 50%;\n  top: 50%;\n  animation: rotate 1s ease-in infinite;\n}\n\n.loader::after {\n  width: 20px;\n  height: 20px;\n  background-color: #00bd26;\n  animation: rotate 1s ease-in infinite, moveY 1s ease-in infinite;\n}\n\n@keyframes moveY {\n  0% , 100% {\n    top: 10%\n  }\n\n  45% , 55% {\n    top: 59%\n  }\n\n  60% {\n    top: 40%\n  }\n}\n\n@keyframes rotate {\n  0% {\n    transform: translate(-50%, -100%) rotate(0deg) scale(1 , 1)\n  }\n\n  25% {\n    transform: translate(-50%, 0%) rotate(180deg) scale(1 , 1)\n  }\n\n  45% , 55% {\n    transform: translate(-50%, 100%) rotate(180deg) scale(3 , 0.5)\n  }\n\n  60% {\n    transform: translate(-50%, 100%) rotate(180deg) scale(1, 1)\n  }\n\n  75% {\n    transform: translate(-50%, 0%) rotate(270deg) scale(1 , 1)\n  }\n\n  100% {\n    transform: translate(-50%, -100%) rotate(360deg) scale(1 , 1)\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-844383",
+    "title": "Clever Eel 67",
+    "author": "AqFox",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.013Z",
+    "html": "<div class=\"spinner\">\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n</div>",
+    "css": "/* From Uiverse.io by AqFox - Tags: loader */\n.spinner {\n position: relative;\n width: 56px;\n height: 56px;\n animation: spinner-3a5251 1.25s infinite linear;\n}\n\n.spinner div {\n position: absolute;\n top: 50%;\n left: 50%;\n width: 0;\n height: 0;\n border-left: 3.6px solid transparent;\n border-right: 3.6px solid transparent;\n border-bottom: 10.8px solid #004dff;\n transform-origin: center 10.8px;\n}\n\n.spinner div:before,\n.spinner div:after {\n content: '';\n position: absolute;\n width: 0;\n height: 0;\n display: block;\n border-left: 10.8px solid transparent;\n border-right: 10.8px solid transparent;\n border-bottom: 7.2px solid #004dff;\n}\n\n.spinner div:before {\n transform: translate(-10.8px, 7.2px) rotate(35deg);\n}\n\n.spinner div:after {\n transform: translate(-10.8px, 7.2px) rotate(-35deg);\n}\n\n.spinner div:nth-child(1) {\n transform: translate(-50%, -10.8px) rotate(51.42857deg) translate(0, 320%);\n}\n\n.spinner div:nth-child(2) {\n transform: translate(-50%, -10.8px) rotate(102.85714deg) translate(0, 320%);\n}\n\n.spinner div:nth-child(3) {\n transform: translate(-50%, -10.8px) rotate(154.28571deg) translate(0, 320%);\n}\n\n.spinner div:nth-child(4) {\n transform: translate(-50%, -10.8px) rotate(205.71429deg) translate(0, 320%);\n}\n\n.spinner div:nth-child(5) {\n transform: translate(-50%, -10.8px) rotate(257.14286deg) translate(0, 320%);\n}\n\n.spinner div:nth-child(6) {\n transform: translate(-50%, -10.8px) rotate(308.57143deg) translate(0, 320%);\n}\n\n.spinner div:nth-child(7) {\n transform: translate(-50%, -10.8px) rotate(360deg) translate(0, 320%);\n}\n\n@keyframes spinner-3a5251 {\n to {\n  transform: rotate(360deg);\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-380644",
+    "title": "Cuddly Turtle 6",
+    "author": "AqFox",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.019Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by AqFox - Tags: loader */\n.spinner {\n width: 56px;\n height: 56px;\n display: grid;\n color: #004dff;\n background: radial-gradient(farthest-side, currentColor calc(100% - 7px),#0000 calc(100% - 6px) 0);\n -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 15px),#000 calc(100% - 13px));\n border-radius: 50%;\n animation: spinner-sm4bhi 2s infinite linear;\n}\n\n.spinner::before,\n.spinner::after {\n content: \"\";\n grid-area: 1/1;\n background: linear-gradient(currentColor 0 0) center,\n          linear-gradient(currentColor 0 0) center;\n background-size: 100% 11px,11px 100%;\n background-repeat: no-repeat;\n}\n\n.spinner::after {\n transform: rotate(45deg);\n}\n\n@keyframes spinner-sm4bhi {\n 100% {\n  transform: rotate(1turn);\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-450503",
+    "title": "Curly Cheetah 74",
+    "author": "AqFox",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.034Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by AqFox - Tags: loader */\n.spinner {\n width: 56px;\n height: 56px;\n border-radius: 50%;\n padding: 7px;\n background: conic-gradient(from 135deg at top,#004dff 90deg, #0000 0) 0 calc(50% - 4px)/19px 9.5px,\n          radial-gradient(farthest-side at bottom left,#0000 calc(100% - 7px),#004dff calc(100% - 6px) 99%,#0000) top right/50%  50% content-box content-box,\n          radial-gradient(farthest-side at top,#0000 calc(100% - 7px),#004dff calc(100% - 6px) 99%,#0000) bottom   /100% 50% content-box content-box;\n background-repeat: no-repeat;\n animation: spinner-v8og74 1s infinite linear;\n}\n\n@keyframes spinner-v8og74 {\n 100% {\n  transform: rotate(1turn);\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-485664",
+    "title": "Silent Quail 21",
+    "author": "AqFox",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.076Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by AqFox - Tags: loader */\n.spinner {\n width: 6px;\n height: 6px;\n animation: spinner-xp626r 1.1s infinite;\n border-radius: 50%;\n box-shadow: 24px 0 0 6px #004dff, -24px 0 0 6px #004dff;\n}\n\n@keyframes spinner-xp626r {\n to {\n  transform: rotate(360deg);\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-897265",
+    "title": "Sour Robin 86",
+    "author": "AqFox",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.047Z",
+    "html": "<div class=\"spinner\">\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n</div>",
+    "css": "/* From Uiverse.io by AqFox - Tags: loader */\n.spinner {\n position: relative;\n width: 16px;\n height: 16px;\n}\n\n.spinner div {\n width: 100%;\n height: 100%;\n background-color: #004dff;\n border-radius: 50%;\n animation: spinner-4t3wzl 1.25s infinite backwards;\n}\n\n.spinner div:nth-child(1) {\n animation-delay: 0.15s;\n background-color: rgba(0,77,255,0.9);\n}\n\n.spinner div:nth-child(2) {\n animation-delay: 0.3s;\n background-color: rgba(0,77,255,0.8);\n}\n\n.spinner div:nth-child(3) {\n animation-delay: 0.45s;\n background-color: rgba(0,77,255,0.7);\n}\n\n.spinner div:nth-child(4) {\n animation-delay: 0.6s;\n background-color: rgba(0,77,255,0.6);\n}\n\n.spinner div:nth-child(5) {\n animation-delay: 0.75s;\n background-color: rgba(0,77,255,0.5);\n}\n\n@keyframes spinner-4t3wzl {\n 0% {\n  transform: rotate(0deg) translateY(-200%);\n }\n\n 60%, 100% {\n  transform: rotate(360deg) translateY(-200%);\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-629137",
+    "title": "Weak Turtle 32",
+    "author": "Avishek255874",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.052Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Avishek255874 - Tags: loader */\n.loader {\n}\n\n.loader {\n  width: 48px;\n  height: 48px;\n  position: relative;\n}\n\n.loader::before , .loader::after {\n  content: '';\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50% , -50%);\n  width: 48em;\n  height: 48em;\n  background-image: radial-gradient(circle 10px, #FFF 100%, transparent 0),\n    radial-gradient(circle 10px, #FFF 100%, transparent 0),\n    radial-gradient(circle 10px, #FFF 100%, transparent 0),\n    radial-gradient(circle 10px, #FFF 100%, transparent 0),\n    radial-gradient(circle 10px, #FFF 100%, transparent 0),\n    radial-gradient(circle 10px, #FFF 100%, transparent 0),\n    radial-gradient(circle 10px, #FFF 100%, transparent 0),\n    radial-gradient(circle 10px, #FFF 100%, transparent 0);\n  background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,\n                       13em -13em, -13em -13em, 13em 13em, -13em 13em;\n  background-repeat: no-repeat;\n  font-size: 0.5px;\n  border-radius: 50%;\n  animation: blast 1s ease-in infinite;\n}\n\n.loader::after {\n  font-size: 1px;\n  background: #fff;\n  animation: bounce 1s ease-in infinite;\n}\n\n@keyframes bounce {\n  0% , 100% {\n    font-size: 0.75px\n  }\n\n  50% {\n    font-size: 1.5px\n  }\n}\n\n@keyframes blast {\n  0% , 40% {\n    font-size: 0.5px;\n  }\n\n  70% {\n    opacity: 1;\n    font-size: 4px;\n  }\n\n  100% {\n    font-size: 6px;\n    opacity: 0;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-384233",
+    "title": "Witty Robin 88",
+    "author": "Bodyhc",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.058Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Bodyhc - Tags: loader, car loader, 3d loader, 3d cude loader */\n.loader {\n  width: calc(90px / 0.707);\n  height: 20px;\n  background: repeating-linear-gradient(135deg, #766DF4 0 15px,#0000 0 20px) left top,\n    repeating-linear-gradient( 45deg, #766DF4 0 15px,#0000 0 20px) left bottom;\n  background-size: 300% 50%;\n  background-repeat: no-repeat;\n  animation: i4 2s infinite linear;\n}\n\n@keyframes i4 {\n  100% {\n    background-position: top right,bottom right\n  }\n}",
+    "tags": [
+      "loader",
+      "car loader",
+      "3d loader",
+      "3d cude loader"
+    ]
+  },
+  {
+    "id": "uiv-159990",
+    "title": "Wonderful Panther 25",
+    "author": "Bodyhc",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.711Z",
+    "html": "<div class=\"custom-loader\"></div>",
+    "css": "/* From Uiverse.io by Bodyhc - Tags: loading, loader, circle loader */\n.custom-loader {\n  width: 50px;\n  height: 50px;\n  display: grid;\n  border-radius: 50%;\n  -webkit-mask: radial-gradient(farthest-side,#0000 40%,#000 41%);\n  background: linear-gradient(0deg ,#766DF480 50%,#766DF4FF 0) center/4px 100%,\n    linear-gradient(90deg,#766DF440 50%,#766DF4BF 0) center/100% 4px;\n  background-repeat: no-repeat;\n  animation: s3 1s infinite steps(12);\n}\n\n.custom-loader::before,\n.custom-loader::after {\n  content: \"\";\n  grid-area: 1/1;\n  border-radius: 50%;\n  background: inherit;\n  opacity: 0.915;\n  transform: rotate(30deg);\n}\n\n.custom-loader::after {\n  opacity: 0.83;\n  transform: rotate(60deg);\n}\n\n@keyframes s3 {\n  100% {\n    transform: rotate(1turn)\n  }\n}",
+    "tags": [
+      "loading",
+      "loader",
+      "circle loader"
+    ]
+  },
+  {
+    "id": "uiv-227470",
+    "title": "White Rat 90",
+    "author": "ChaudaryHammad",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.518Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by ChaudaryHammad - Tags: loading, loader, cool loader */\n.loader {\n  width: 50px;\n  aspect-ratio: 1.154;\n  position: relative;\n  background: conic-gradient(from 120deg at 50% 64%,#0000, #ff1919 1deg 120deg,#0000 121deg);\n  animation: l27-0 1.5s infinite cubic-bezier(0.3,1,0,1);\n}\n\n.loader:before,\n.loader:after {\n  content: '';\n  position: absolute;\n  inset: 0;\n  background: inherit;\n  transform-origin: 50% 66%;\n  animation: l27-1 1.5s infinite;\n}\n\n.loader:after {\n  --s: -1;\n}\n\n@keyframes l27-0 {\n  0%,30% {\n    transform: rotate(0)\n  }\n\n  70% {\n    transform: rotate(120deg)\n  }\n\n  70.01%,100% {\n    transform: rotate(360deg)\n  }\n}\n\n@keyframes l27-1 {\n  0% {\n    transform: rotate(calc(var(--s,1)*120deg)) translate(0)\n  }\n\n  30%,70% {\n    transform: rotate(calc(var(--s,1)*120deg)) translate(calc(var(--s,1)*-5px),10px)\n  }\n\n  100% {\n    transform: rotate(calc(var(--s,1)*120deg)) translate(0)\n  }\n}",
+    "tags": [
+      "loading",
+      "loader",
+      "cool loader"
+    ]
+  },
+  {
+    "id": "uiv-103266",
+    "title": "Lazy Goat 96",
+    "author": "CheneyLin",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.523Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by CheneyLin  - Tags: animation, progress bar, loader */\n.loader {\n  position: absolute;\n  border-radius: 10px;\n  height: 20px;\n  width: 320px;\n  background-color: #aaa;\n  animation: move-arrows 0.5s linear infinite;\n  -webkit-animation: move-arrows 0.5s linear infinite;\n  transform-origin: left;\n  background-image: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABDZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDkuMS1jMDAxIDc5LjE0NjI4OTk3NzcsIDIwMjMvMDYvMjUtMjM6NTc6MTQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo3Y2M3MzIzZC0xZjc3LTQ1MmYtOGFjZS1jY2JkZWIwNTMyZWIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTUzNjQwRkU3RDNBMTFFRTk5QTg4MkQ5REZCNTY1NzAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTUzNjQwRkQ3RDNBMTFFRTk5QTg4MkQ5REZCNTY1NzAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI1LjAgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDIzLTExLTE3VDE2OjU0OjA4KzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMy0xMS0yMFQwNTozNDoxNyswODowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMy0xMS0yMFQwNTozNDoxNyswODowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowRDBDQjlDMjdENEIxMUVFOTU2MkVDNUVBMTUxNTUyMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowRDBDQjlDMzdENEIxMUVFOTU2MkVDNUVBMTUxNTUyMyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pj38waoAAAFKSURBVHjanJbbSwJhEMV3pYTQIOgCPogEPQQZRBf6/18zbyiGRD0YRNEFMuwmuZ2BIwTZfuebAz92H2Y8rDtzvk2zLEuoA1BNwuqCURKhwq/7HhgLPftgzWvyDc7BVOg5BkWPiWkCOkLfCjgCqcfEdAeuhN4NsOs1MV2AZ6F/B1S8JjZyTfApGNlUlj0mpg/QomGelsAJr9EmpkcwFJ6mzCdymZguwb1QV+E7cpmY2uBNqLNp2/SaTLmos0Cd7c0h9yjaxPQC+kJdkUYuk0SYtLlGXpN1hmNI1+DGY1JiKIbqH8DA8+KXuWyh1J0wJbJYk/m0rArT1/jvmAiZ7IEtYRhsj149G18D28LfOQwlQiHnrKgLBreMneioVydpLJ6if37IJumU1zx9gTN+F0SZpDy3S4GeGXPs3fMhUV+UoAtk+fUUk0U/AgwAELo+LcAxjVoAAAAASUVORK5CYII=\");\n  background-size: auto 100%;\n}\n\n@keyframes move-arrows {\n  100% {\n    background-position: 20px 0;\n  }\n}\n@-webkit-keyframes move-arrows {\n  100% {\n    background-position: 20px 0;\n  }\n}",
+    "tags": [
+      "animation",
+      "progress bar",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-879272",
+    "title": "Witty Ladybug 78",
+    "author": "ClawHack1",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.725Z",
+    "html": "<div class=\"loader\">\n  <div class=\"loader-inner\">\n    <div class=\"loader-block\"></div>\n    <div class=\"loader-block\"></div>\n    <div class=\"loader-block\"></div>\n    <div class=\"loader-block\"></div>\n    <div class=\"loader-block\"></div>\n    <div class=\"loader-block\"></div>\n    <div class=\"loader-block\"></div>\n    <div class=\"loader-block\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by ClawHack1 - Tags: loader */\n.loader {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 80px;\n  height: 80px;\n  position: relative;\n}\n\n.loader:before {\n  content: \"\";\n  position: absolute;\n  top: -10px;\n  left: -10px;\n  right: -10px;\n  bottom: -10px;\n  border-radius: 50%;\n}\n\n.loader-inner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n}\n\n.loader-block {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  margin: 2px;\n  background-color: #fff;\n  box-shadow: 0 0 20px #fff;\n  animation: loader_562 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n}\n\n.loader-block:nth-child(1) {\n  animation-delay: 0.1s;\n}\n\n.loader-block:nth-child(2) {\n  animation-delay: 0.2s;\n}\n\n.loader-block:nth-child(3) {\n  animation-delay: 0.3s;\n}\n\n.loader-block:nth-child(4) {\n  animation-delay: 0.4s;\n}\n\n.loader-block:nth-child(5) {\n  animation-delay: 0.5s;\n}\n\n.loader-block:nth-child(6) {\n  animation-delay: 0.6s;\n}\n\n.loader-block:nth-child(7) {\n  animation-delay: 0.7s;\n}\n\n.loader-block:nth-child(8) {\n  animation-delay: 0.8s;\n}\n\n@keyframes loader_562 {\n  0% {\n    transform: scale(1);\n    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);\n  }\n\n  20% {\n    transform: scale(1, 2.5);\n    box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);\n  }\n\n  40% {\n    transform: scale(1);\n    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-904881",
+    "title": "Chilly Fish 82",
+    "author": "Cornerstone-04",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.525Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Cornerstone-04 - Tags: loader */\n.loader {\n  width: 50px;\n  height: 50px;\n  position: relative;\n  z-index: 1;\n  transform: translateX(-50%);\n}\n\n.loader::before, \n.loader::after {\n  content: '';\n  position: absolute;\n  width: inherit;\n  height: inherit;\n  border-radius: 50%;\n  mix-blend-mode: multiply;\n  animation: rotate92523 2s infinite cubic-bezier(0.77, 0, 0.175, 1);\n}\n\n.loader::before {\n  background-color: #75e2ff;\n}\n\n.loader::after {\n  background-color: #ff8496;\n  animation-delay: 1s;\n}\n\n@keyframes rotate92523 {\n  0%, 100% {\n    left: 35px;\n  }\n\n  25% {\n    transform: scale(.3);\n  }\n\n  50% {\n    left: 0%;\n  }\n\n  75% {\n    transform: scale(1);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-206524",
+    "title": "Neat Dragon 24",
+    "author": "Cornerstone-04",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.568Z",
+    "html": "<div class=\"loader\">\n    <div></div>\n</div>",
+    "css": "/* From Uiverse.io by Cornerstone-04 - Tags: loader */\n.loader {\n  width: 50px;\n  height: 50px;\n  border: 7px double;\n  border-color: #43cec7 transparent;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  animation: spin13213 2s linear infinite;\n}\n\n.loader div {\n  width: 50%;\n  height: 50%;\n  background-color: #43cec7;\n  border-radius: 50%;\n}\n\n@keyframes spin13213 {\n  to {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-966330",
+    "title": "Terrible Termite 49",
+    "author": "Cornerstone-04",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.520Z",
+    "html": "<div class=\"loader\">\n\n</div>",
+    "css": "/* From Uiverse.io by Cornerstone-04 - Tags: loader */\n.loader {\n  display: inline-block;\n  width: 190px;\n  height: 10px;\n  border-radius: 40px;\n  background-color: rgba(255, 255, 255, 1);\n  position: relative;\n  overflow: hidden;\n}\n\n.loader span {\n  font: 700 22px monospace;\n  text-transform: uppercase;\n  margin: auto;\n  color: #fff;\n  letter-spacing: 5px;\n}\n\n.loader::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: -50px;\n  width: 150%;\n  height: 100%;\n  background-image: linear-gradient(332deg, #6bff7f, #32ff3c);\n  border-radius: inherit;\n  transform: scaleX(0);\n  transform-origin: left;\n  animation: load5123 1s infinite;\n}\n\n@keyframes load5123 {\n  50% {\n    transform: scaleX(1);\n  }\n\n  100% {\n    transform: scaleX(0);\n    transform-origin: right;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-827540",
+    "title": "Ugly Rattlesnake 41",
+    "author": "Cornerstone-04",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.563Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Cornerstone-04 - Tags: loader */\n.loader {\n  width: 150px;\n  height: 150px;\n  border-left: 5px solid #38ff8e;\n  border-radius: 50%;\n  animation: right5231 0.9s linear infinite;\n}\n\n.loader::before,\n  .loader::after {\n  content: \"\";\n  width: 120px;\n  height: 120px;\n  display: block;\n  position: absolute;\n  top: calc(50% - 60px);\n  left: calc(50% - 60px);\n  border-right: 5px solid #ffbe0b;\n  border-radius: 50%;\n  animation: left036 0.9s linear infinite;\n}\n\n.loader::after {\n  width: 90px;\n  height: 90px;\n  top: calc(50% - 45px);\n  left: calc(50% - 45px);\n  border: 0;\n  border-top: 5px solid #ff086e;\n  animation: none;\n}\n\n@keyframes right5231 {\n  from {\n    transform: rotate(0deg);\n  }\n\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes left036 {\n  from {\n    transform: rotate(720deg);\n  }\n\n  to {\n    transform: rotate(0deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-995349",
+    "title": "Ugly Yak 77",
+    "author": "DSB2004",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.516Z",
+    "html": "<div id=\"Loading\">\n  <div id=\"loading_div\">\n    <div id=\"loading_bouncer\"></div>\n    <div id=\"shadow\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by DSB2004  - Tags: simple, gradient, loader */\n#Loading {\n  height: 100%;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n}\n#loading_div {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n}\n@keyframes bounce {\n  0% {\n    transform: translateY(0px);\n  }\n  50% {\n    transform: translateY(-50px);\n  }\n  100% {\n    transform: translateY(0px);\n  }\n}\n@keyframes shadow {\n  0% {\n    height: 50px;\n    width: 50px;\n  }\n  50% {\n    height: 10px;\n    width: 10px;\n  }\n  100% {\n    height: 50px;\n    width: 50px;\n  }\n}\n#loading_bouncer {\n  height: 50px;\n  width: 50px;\n  border-radius: 100%;\n  background: linear-gradient(\n    to bottom,\n    rgb(89, 0, 255),\n    rgb(0, 110, 255),\n    rgb(25, 0, 255)\n  );\n  animation: bounce 500ms ease-in-out infinite;\n}\n#shadow {\n  position: absolute;\n  height: 50px;\n  width: 50px;\n  border-radius: 100%;\n  background: black;\n  top: 30px;\n  transform: rotateX(80deg);\n  animation: shadow 500ms ease-in-out infinite;\n}",
+    "tags": [
+      "simple",
+      "gradient",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-906343",
+    "title": "Grumpy Squid 93",
+    "author": "Dennyhml",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.537Z",
+    "html": "<div class=\"container\">\n    <div class=\"bubble\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n    </div>\n    <div class=\"bubble\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n    </div>\n    <div class=\"bubble\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n    </div>\n    <div class=\"bubble\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n    </div>\n    <div class=\"bubble\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n    </div>\n </div>",
+    "css": "/* From Uiverse.io by Dennyhml - Tags: loader */\n.bubble {\n  position: absolute;\n  width: 200px;\n  height: 200px;\n  border-radius: 50%;\n  box-shadow: inset 0 0 25px rgba (255, 255, 255, 0.25);\n  animation: animate_4010 8s ease-in-out infinite;\n}\n\n.bubble:nth-child(2) {\n  position: relative;\n  zoom: 0.45;\n  left: -10px;\n  top: -100px;\n  animation-delay: -4s;\n}\n\n.bubble:nth-child(3) {\n  position: relative;\n  zoom: 0.45;\n  right: -80px;\n  top: -300px;\n  animation-delay: -6s;\n}\n\n.bubble:nth-child(4) {\n  position: relative;\n  zoom: 0.35;\n  left: -120px;\n  bottom: -200px;\n  animation-delay: -3s;\n}\n\n.bubble:nth-child(5) {\n  position: relative;\n  zoom: 0.5;\n  left: 0px;\n  top: 200px;\n  animation-delay: -5s;\n}\n\n@keyframes animate_4010 {\n  0%,100% {\n    transform: translateY(-20px);\n  }\n\n  50% {\n    transform: translateY(20px);\n  }\n}\n\n.bubble::before {\n  content: '';\n  position: absolute;\n  top: 50px;\n  left: 45px;\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  background: #fff;\n  z-index: 10;\n  filter: blur(2px);\n}\n\n.bubble::after {\n  content: '';\n  position: absolute;\n  top: 80px;\n  left: 80px;\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  background: #fff;\n  z-index: 10;\n  filter: blur(2px);\n}\n\n.bubble span {\n  position: absolute;\n  border-radius: 50%;\n}\n\n.bubble span:nth-child(1) {\n  inset: 10px;\n  border-left: 15px solid #0fb4ff;\n  filter: blur(8px);\n}\n\n.bubble span:nth-child(2) {\n  inset: 10px;\n  border-right: 15px solid #ff4484;\n  filter: blur(8px);\n}\n\n.bubble span:nth-child(3) {\n  inset: 10px;\n  border-top: 15px solid #ffeb3b;\n  filter: blur(8px);\n}\n\n.bubble span:nth-child(4) {\n  inset: 30px;\n  border-left: 15px solid #ff4484;\n  filter: blur(12px);\n}\n\n.bubble span:nth-child(5) {\n  inset: 10px;\n  border-bottom: 10px solid #fff;\n  filter: blur(8px);\n  transform: rotate(330deg);\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-371524",
+    "title": "Tall Robin 6",
+    "author": "Deri-Kurniawan",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.538Z",
+    "html": "<div class=\"loader\">\n    <div class=\"cube\">\n        <div class=\"face\"></div>\n        <div class=\"face\"></div>\n        <div class=\"face\"></div>\n        <div class=\"face\"></div>\n        <div class=\"face\"></div>\n        <div class=\"face\"></div>\n    </div>\n</div>",
+    "css": "/* From Uiverse.io by Deri-Kurniawan - Tags: animation, gradient, loading, loader, cube, rotate, box, loading animation */\n.loader {\n  perspective: 600px;\n  width: 100px;\n  height: 100px;\n}\n\n.cube {\n  width: 100%;\n  height: 100%;\n  transform-style: preserve-3d;\n  animation: rotate 4s linear infinite;\n}\n\n.face {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(45deg, #3498db, #e74c3c);\n  opacity: 0.8;\n  border: 0.5px solid #fff;\n}\n\n.face:nth-child(1) {\n  transform: rotateX(90deg) translateZ(50px);\n}\n\n.face:nth-child(2) {\n  transform: rotateX(-90deg) translateZ(50px);\n}\n\n.face:nth-child(3) {\n  transform: translateZ(50px);\n}\n\n.face:nth-child(4) {\n  transform: rotateY(90deg) translateZ(50px);\n}\n\n.face:nth-child(5) {\n  transform: rotateY(-90deg) translateZ(50px);\n}\n\n.face:nth-child(6) {\n  transform: rotateY(180deg) translateZ(50px);\n}\n\n@keyframes rotate {\n  0% {\n    transform: rotateX(0deg) rotateY(0deg);\n  }\n\n  100% {\n    transform: rotateX(360deg) rotateY(360deg);\n  }\n}",
+    "tags": [
+      "animation",
+      "gradient",
+      "loading",
+      "loader",
+      "cube",
+      "rotate",
+      "box",
+      "loading animation"
+    ]
+  },
+  {
+    "id": "uiv-332284",
+    "title": "Angry Dragonfly 63",
+    "author": "DevVaradPatil",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.575Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by DevVaradPatil  - Tags: black, gradient, loader, dark */\n.loader {\n  position: relative;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background: linear-gradient(45deg, transparent, transparent 40%, #e5f403);\n  animation: glow 2s linear infinite;\n}\n@keyframes glow {\n  0% {\n    transform: rotate(0deg);\n    filter: hue-rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n    filter: hue-rotate(360deg);\n  }\n}\n.loader::before {\n  content: \"\";\n  position: absolute;\n  top: 3px;\n  left: 3px;\n  right: 3px;\n  bottom: 3px;\n  background: #212121;\n  border-radius: 50%;\n  z-index: 1000;\n}\n.loader::after {\n  content: \"\";\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  bottom: 0px;\n  background: linear-gradient(45deg, transparent, transparent 40%, #e5f403);\n  border-radius: 50%;\n  z-index: 1000;\n  z-index: 1;\n  filter: blur(30px);\n}",
+    "tags": [
+      "black",
+      "gradient",
+      "loader",
+      "dark"
+    ]
+  },
+  {
+    "id": "uiv-235667",
+    "title": "Jolly Monkey 87",
+    "author": "EddyBel",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.537Z",
+    "html": "<div class=\"loader\">\n  <div class=\"loader__circle\"></div>\n  <div class=\"loader__circle\"></div>\n  <div class=\"loader__circle\"></div>\n  <div class=\"loader__circle\"></div>\n  <div class=\"loader__circle\"></div>\n</div>",
+    "css": "/* From Uiverse.io by EddyBel - Tags: loader */\n.loader {\n  position: relative;\n  display: flex;\n  gap: 0.3em;\n}\n\n.loader::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 2em;\n  filter: blur(45px);\n  background-color: #e299ff;\n  background-image: radial-gradient(at 52% 57%, hsla(11,83%,72%,1) 0px, transparent 50%),\n  radial-gradient(at 37% 57%, hsla(175,78%,66%,1) 0px, transparent 50%);\n}\n\n.loader__circle {\n  --size__loader: 0.6em;\n  width: var(--size__loader);\n  height: var(--size__loader);\n  border-radius: 50%;\n  animation: loader__circle__jumping 2s infinite;\n  background-color: #b499ff;\n}\n\n.loader__circle:nth-child(2n) {\n  animation-delay: 300ms;\n  background-color: #e499ff;\n}\n\n.loader__circle:nth-child(3n) {\n  animation-delay: 600ms;\n}\n\n@keyframes loader__circle__jumping {\n  0%, 100% {\n    transform: translateY(0px);\n  }\n\n  25% {\n    transform: translateY(-15px) scale(0.5);\n  }\n\n  50% {\n    transform: translateY(0px);\n  }\n\n  75% {\n    transform: translateY(5px) scale(0.9);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-376649",
+    "title": "Empty Fish 42",
+    "author": "FWDJc",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.580Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by FWDJc - Tags: simple, animation, loader, heart, bounce animation, css animation */\n.loader {\n  width: 7em;\n  height: 5em;\n  position: relative;\n  animation: beat 1s infinite;\n}\n\n.loader::before,\n.loader::after {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  width: 50px;\n  height: 80px;\n  border-radius: 5em 5em 0 0;\n  animation: coldblue 1s infinite;\n}\n\n.loader::before {\n  left: 50px;\n  transform: rotate(-45deg);\n  transform-origin: 0 100%;\n}\n\n.loader::after {\n  left: 0;\n  transform: rotate(45deg);\n  transform-origin: 100% 100%;\n}\n\n@keyframes beat {\n  0% {\n    transform: scale(1);\n  }\n\n  50% {\n    transform: scale(1.2);\n  }\n\n  100% {\n    transform: scale(1);\n  }\n}\n\n@keyframes coldblue {\n  0%, 100% {\n    background-color: rgb(255, 255, 255);\n  }\n\n  50% {\n    background-color: rgb(91, 91, 241);\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "loader",
+      "heart",
+      "bounce animation",
+      "css animation"
+    ]
+  },
+  {
+    "id": "uiv-210506",
+    "title": "Strong Mayfly 8",
+    "author": "FWDJc",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:35.568Z",
+    "html": "<div class=\"eye-lid\">\n    <div class=\"eye\">\n      <div class=\"cornea\">\n        <div class=\"white-pupil\"></div>\n      </div>\n    </div>\n  </div>",
+    "css": "/* From Uiverse.io by FWDJc - Tags: minimalist, loader, css, eye, loading animation, aesthetic, css animation */\n.eye-lid {\n  background-color: rgb(0, 0, 0);\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 9px 0 2px rgba(0, 0, 0, 0.2);\n  width: 150px;\n  height: 150px;\n}\n\n.eye {\n  background-color: #fffcf4;\n  border-radius: 50%;\n  transform: translate3d(0, 0, 0) rotate(90deg);\n  width: 120px;\n  height: 120px;\n  animation: eye 5s infinite;\n}\n\n@keyframes eye {\n  12%,\n  25% {\n    width: 100px;\n    height: 110px;\n  }\n\n  37%, \n  50% {\n    width: 60px;\n    height: 130px;\n  }\n\n  63%, \n  75% {\n    width: 100px;\n    height: 103px;\n  }\n\n  87% {\n    width: 100px;\n    height: 100px;\n  }\n}\n\n.cornea {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: rgb(0, 0, 0);\n  border-radius: 50%;\n  width: 50px;\n  height: 50px;\n  animation: eye-color 5s infinite;\n}\n\n@keyframes eye-color {\n  63%, 75% {\n    background-color: rgb(137, 1, 1);\n  }\n}\n\n.white-pupil {\n  position: absolute;\n  top: 70%;\n  left: 10%;\n  border-radius: 50%;\n  background-color: #fffcf4;\n  width: 20px;\n  height: 20px;\n}",
+    "tags": [
+      "minimalist",
+      "loader",
+      "css",
+      "eye",
+      "loading animation",
+      "aesthetic",
+      "css animation"
+    ]
+  },
+  {
+    "id": "uiv-537232",
+    "title": "Bad Firefox 25",
+    "author": "Fadhilmagass",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.206Z",
+    "html": "<div class=\"loader\">\n  <div class=\"dot dot-1\"></div>\n  <div class=\"dot dot-2\"></div>\n  <div class=\"dot dot-3\"></div>\n  <div class=\"dot dot-4\"></div>\n  <div class=\"dot dot-5\"></div>\n</div>",
+    "css": "/* From Uiverse.io by Fadhilmagass - Tags: simple, animation, loader */\n.loader {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  height: 100%;\n}\n\n.dot {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  margin-right: 6px;\n  border-radius: 50%;\n  -webkit-animation: dot-pulse2 1.5s ease-in-out infinite;\n  animation: dot-pulse2 1.5s ease-in-out infinite;\n}\n\n.dot-1 {\n  background-color: #4285f4;\n  -webkit-animation-delay: 0s;\n  animation-delay: 0s;\n}\n\n.dot-2 {\n  background-color: #34a853;\n  -webkit-animation-delay: 0.3s;\n  animation-delay: 0.3s;\n}\n\n.dot-3 {\n  background-color: #fbbc05;\n  -webkit-animation-delay: 0.6s;\n  animation-delay: 0.6s;\n}\n\n.dot-4 {\n  background-color: #ea4335;\n  -webkit-animation-delay: 0.9s;\n  animation-delay: 0.9s;\n}\n\n.dot-5 {\n  background-color: #4285f4;\n  -webkit-animation-delay: 1.2s;\n  animation-delay: 1.2s;\n}\n\n@keyframes dot-pulse2 {\n  0% {\n    -webkit-transform: scale(0.5);\n    transform: scale(0.5);\n    opacity: 0.5;\n  }\n\n  50% {\n    -webkit-transform: scale(1);\n    transform: scale(1);\n    opacity: 1;\n  }\n\n  100% {\n    -webkit-transform: scale(0.5);\n    transform: scale(0.5);\n    opacity: 0.5;\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-458251",
+    "title": "Lovely Kangaroo 88",
+    "author": "G4b413l",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.026Z",
+    "html": "<div class=\"jelly-triangle\">\n<div class=\"jelly-triangle__dot\"></div>\n<div class=\"jelly-triangle__traveler\"></div>\n</div>\n<svg width=\"0\" height=\"0\" class=\"jelly-maker\">\n  <defs>\n    <filter id=\"uib-jelly-triangle-ooze\">\n      <feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"7.3\" result=\"blur\"></feGaussianBlur>\n      <feColorMatrix in=\"blur\" mode=\"matrix\" values=\"1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7\" result=\"ooze\"></feColorMatrix>\n      <feBlend in=\"SourceGraphic\" in2=\"ooze\"></feBlend>\n    </filter>\n  </defs>\n</svg>",
+    "css": "/* From Uiverse.io by G4b413l - Tags: loader */\n.jelly-triangle {\n --uib-size: 42px;\n --uib-speed: 1.25s;\n --uib-color: #512727;\n position: relative;\n height: var(--uib-size);\n width: var(--uib-size);\n filter: url('#uib-jelly-triangle-ooze');\n}\n\n.jelly-triangle__dot,\n.jelly-triangle::before,\n.jelly-triangle::after {\n content: '';\n position: absolute;\n width: 33%;\n height: 33%;\n background: var(--uib-color);\n border-radius: 100%;\n}\n\n.jelly-triangle__dot {\n top: 6%;\n left: 30%;\n animation: grow0 var(--uib-speed) ease infinite;\n}\n\n.jelly-triangle::before {\n bottom: 6%;\n right: 0;\n animation: grow0 var(--uib-speed) ease calc(var(--uib-speed) * -0.666)\n    infinite;\n}\n\n.jelly-triangle::after {\n bottom: 6%;\n left: 0;\n animation: grow0 var(--uib-speed) ease calc(var(--uib-speed) * -0.333)\n    infinite;\n}\n\n.jelly-triangle__traveler {\n position: absolute;\n top: 6%;\n left: 30%;\n width: 33%;\n height: 33%;\n background: var(--uib-color);\n border-radius: 100%;\n animation: triangulate var(--uib-speed) ease infinite;\n}\n\n.jelly-maker {\n width: 0;\n height: 0;\n position: absolute;\n}\n\n@keyframes triangulate {\n 0%,\n  100% {\n  transform: none;\n }\n\n 33.333% {\n  transform: translate(120%, 175%);\n }\n\n 66.666% {\n  transform: translate(-95%, 175%);\n }\n}\n\n@keyframes grow0 {\n 0%,\n  100% {\n  transform: scale(1.5);\n }\n\n 20%,\n  70% {\n  transform: none;\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-948170",
+    "title": "Nasty Yak 65",
+    "author": "G4b413l",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.036Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by G4b413l - Tags: loader */\n.spinner {\n  position: relative;\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n}\n\n.spinner::before,\n.spinner::after {\n  content: \"\";\n  position: absolute;\n  border-radius: inherit;\n}\n\n.spinner::before {\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(0deg, #ff00cc 0%, #212121 50%);\n  animation: spin .5s infinite linear;\n}\n\n.spinner::after {\n  width: 85%;\n  height: 85%;\n  background-color: #212121;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n\n@keyframes spin {\n  to {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-912487",
+    "title": "Modern Moth 47",
+    "author": "Itskrish01",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.228Z",
+    "html": "<div class=\"loader\">\n  <div class=\"pattern-1\">\n    <div class=\"pattern-1-shade\"></div>\n  </div>\n  <div class=\"pattern-2\"></div>\n</div>",
+    "css": "/* From Uiverse.io by Itskrish01  - Tags: loader */\n.loader {\n  position: relative;\n  width: 200px;\n  height: 200px;\n}\n\n.loader .pattern-1 {\n  position: absolute;\n  background-color: #ff4c5a;\n  width: 200px;\n  height: 200px;\n  clip-path: polygon(0 10%, 70% 90%, 40% 90%, 0 45%);\n}\n\n.loader .pattern-2 {\n  position: absolute;\n  background-color: #ff4c5a;\n  width: 220px;\n  height: 190px;\n  clip-path: polygon(100% 10%, 100% 45%, 83% 65%, 55% 65%);\n}\n\n.loader .pattern-1 .pattern-1-shade {\n  position: absolute;\n  transform: translateX(-20px);\n  opacity: 0.7;\n  z-index: 10;\n  background-color: white;\n  width: 20px;\n  height: 200px;\n  animation: shiny 1s infinite;\n}\n\n@keyframes shiny {\n  0% {\n    transform: translateX(-20px);\n  }\n  100% {\n    transform: translateX(140px);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-160447",
+    "title": "Curly Monkey 15",
+    "author": "JaydipPrajapati1910",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.021Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by JaydipPrajapati1910 - Tags: animation, loader, infinite */\n.loader {\n  width: calc(160px / 0.707);\n  height: 28px;\n  background: repeating-linear-gradient(-45deg, #766DF4 0 30px,#0000 0 40px) left/200% 100%;\n  animation: i3 2s infinite linear;\n  border-radius: 10px;\n  border: 1px solid #766DF4;\n}\n\n@keyframes i3 {\n  100% {\n    background-position: right\n  }\n}",
+    "tags": [
+      "animation",
+      "loader",
+      "infinite"
+    ]
+  },
+  {
+    "id": "uiv-334553",
+    "title": "Good Starfish 60",
+    "author": "JaydipPrajapati1910",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.055Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by JaydipPrajapati1910 - Tags: red, loading, loader */\n.loader {\n  box-sizing: border-box;\n  display: inline-block;\n  width: 50px;\n  height: 80px;\n  border-top: 5px solid #fff;\n  border-bottom: 5px solid #fff;\n  position: relative;\n  background: linear-gradient(#FF3D00 30px, transparent 0) no-repeat;\n  background-size: 2px 40px;\n  background-position: 50% 0px;\n  animation: spinx 5s linear infinite;\n}\n\n.loader:before, .loader:after {\n  content: \"\";\n  width: 40px;\n  left: 50%;\n  height: 35px;\n  position: absolute;\n  top: 0;\n  transform: translatex(-50%);\n  background: rgba(255, 255, 255, 0.4);\n  border-radius: 0 0 20px 20px;\n  background-size: 100% auto;\n  background-repeat: no-repeat;\n  background-position: 0 0px;\n  animation: lqt 5s linear infinite;\n}\n\n.loader:after {\n  top: auto;\n  bottom: 0;\n  border-radius: 20px 20px 0 0;\n  animation: lqb 5s linear infinite;\n}\n\n@keyframes lqt {\n  0%, 100% {\n    background-image: linear-gradient(#FF3D00 40px, transparent 0);\n    background-position: 0% 0px;\n  }\n\n  50% {\n    background-image: linear-gradient(#FF3D00 40px, transparent 0);\n    background-position: 0% 40px;\n  }\n\n  50.1% {\n    background-image: linear-gradient(#FF3D00 40px, transparent 0);\n    background-position: 0% -40px;\n  }\n}\n\n@keyframes lqb {\n  0% {\n    background-image: linear-gradient(#FF3D00 40px, transparent 0);\n    background-position: 0 40px;\n  }\n\n  100% {\n    background-image: linear-gradient(#FF3D00 40px, transparent 0);\n    background-position: 0 -40px;\n  }\n}\n\n@keyframes spinx {\n  0%, 49% {\n    transform: rotate(0deg);\n    background-position: 50% 36px;\n  }\n\n  51%, 98% {\n    transform: rotate(180deg);\n    background-position: 50% 4px;\n  }\n\n  100% {\n    transform: rotate(360deg);\n    background-position: 50% 36px;\n  }\n}",
+    "tags": [
+      "red",
+      "loading",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-773385",
+    "title": "Chilly Vampirebat 53",
+    "author": "JesusRafaelNavaCruz",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.036Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by JesusRafaelNavaCruz - Source: Mr Frontend - https://instagram.com/mr__frontend?igshid=MzRlODBiNWFlZA== - Tags: loader, circle loader, loader circle */\n.loader {\n  width: 4rem;\n  height: 4rem;\n  border-radius: 50%;\n  box-sizing: border-box;\n  border-top: 8px solid #fff;\n  border-left: 8px solid #fff;\n  border-right: 8px solid #ff00;\n  animation: loader .7s infinite linear;\n}\n\n@keyframes loader {\n  to {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader",
+      "circle loader",
+      "loader circle"
+    ]
+  },
+  {
+    "id": "uiv-896911",
+    "title": "Dangerous Chipmunk 23",
+    "author": "JkHuger",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.070Z",
+    "html": "<div class=\"frame\">\n   <div class=\"center\">\n      <div class=\"dot-1\"></div>\n      <div class=\"dot-2\"></div>\n      <div class=\"dot-3\"></div>\n   </div>\n</div>",
+    "css": "/* From Uiverse.io by JkHuger - Tags: loader */\n.frame {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-top: -200px;\n  margin-left: -200px;\n}\n\n.center {\n  position: absolute;\n  width: 220px;\n  height: 220px;\n  top: 90px;\n  left: 90px;\n}\n\n.dot-1 {\n  position: absolute;\n  z-index: 3;\n  width: 30px;\n  height: 30px;\n  top: 95px;\n  left: 95px;\n  background: #fff;\n  border-radius: 50%;\n  -webkit-animation-fill-mode: both;\n  animation-fill-mode: both;\n  -webkit-animation: jump-jump-1 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;\n  animation: jump-jump-1 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;\n}\n\n.dot-2 {\n  position: absolute;\n  z-index: 2;\n  width: 60px;\n  height: 60px;\n  top: 80px;\n  left: 80px;\n  background: #fff;\n  border-radius: 50%;\n  -webkit-animation-fill-mode: both;\n  animation-fill-mode: both;\n  -webkit-animation: jump-jump-2 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;\n  animation: jump-jump-2 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;\n}\n\n.dot-3 {\n  position: absolute;\n  z-index: 1;\n  width: 90px;\n  height: 90px;\n  top: 65px;\n  left: 65px;\n  background: #fff;\n  border-radius: 50%;\n  -webkit-animation-fill-mode: both;\n  animation-fill-mode: both;\n  -webkit-animation: jump-jump-3 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;\n  animation: jump-jump-3 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;\n}\n\n@keyframes jump-jump-1 {\n  0%, 70% {\n    box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  }\n\n  100% {\n    box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);\n    -webkit-transform: scale(1);\n    transform: scale(1);\n  }\n}\n\n@keyframes jump-jump-2 {\n  0%, 40% {\n    box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  }\n\n  100% {\n    box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);\n    -webkit-transform: scale(1);\n    transform: scale(1);\n  }\n}\n\n@keyframes jump-jump-3 {\n  0%, 10% {\n    box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  }\n\n  100% {\n    box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);\n    -webkit-transform: scale(1);\n    transform: scale(1);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-792203",
+    "title": "Light Monkey 24",
+    "author": "JkHuger",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.026Z",
+    "html": "<div class=\"container\">\n  <div class=\"block\"></div>\n  <div class=\"block\"></div>\n  <div class=\"block\"></div>\n  <div class=\"block\"></div>\n</div>",
+    "css": "/* From Uiverse.io by JkHuger - Tags: loader */\n.container {\n  width: 80px;\n  margin: 100px auto;\n}\n\n.block {\n  position: relative;\n  box-sizing: border-box;\n  float: left;\n  margin: 0 10px 10px 0;\n  width: 12px;\n  height: 12px;\n  border-radius: 3px;\n  background: #FFF;\n}\n\n.block:nth-child(4n+1) {\n  animation: wave_23 2s ease .0s infinite;\n}\n\n.block:nth-child(4n+2) {\n  animation: wave_23 2s ease .2s infinite;\n}\n\n.block:nth-child(4n+3) {\n  animation: wave_23 2s ease .4s infinite;\n}\n\n.block:nth-child(4n+4) {\n  animation: wave_23 2s ease .6s infinite;\n  margin-right: 0;\n}\n\n@keyframes wave_23 {\n  0% {\n    top: 0;\n    opacity: 1;\n  }\n\n  50% {\n    top: 30px;\n    opacity: .2;\n  }\n\n  100% {\n    top: 0;\n    opacity: 1;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-228084",
+    "title": "New Deer 97",
+    "author": "JkHuger",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.036Z",
+    "html": "<div class=\"box-of-star1\">\n    <div class=\"star star-position1\"></div>\n    <div class=\"star star-position2\"></div>\n    <div class=\"star star-position3\"></div>\n    <div class=\"star star-position4\"></div>\n    <div class=\"star star-position5\"></div>\n    <div class=\"star star-position6\"></div>\n    <div class=\"star star-position7\"></div>\n  </div>\n  <div class=\"box-of-star2\">\n    <div class=\"star star-position1\"></div>\n    <div class=\"star star-position2\"></div>\n    <div class=\"star star-position3\"></div>\n    <div class=\"star star-position4\"></div>\n    <div class=\"star star-position5\"></div>\n    <div class=\"star star-position6\"></div>\n    <div class=\"star star-position7\"></div>\n  </div>\n  <div class=\"box-of-star3\">\n    <div class=\"star star-position1\"></div>\n    <div class=\"star star-position2\"></div>\n    <div class=\"star star-position3\"></div>\n    <div class=\"star star-position4\"></div>\n    <div class=\"star star-position5\"></div>\n    <div class=\"star star-position6\"></div>\n    <div class=\"star star-position7\"></div>\n  </div>\n  <div class=\"box-of-star4\">\n    <div class=\"star star-position1\"></div>\n    <div class=\"star star-position2\"></div>\n    <div class=\"star star-position3\"></div>\n    <div class=\"star star-position4\"></div>\n    <div class=\"star star-position5\"></div>\n    <div class=\"star star-position6\"></div>\n    <div class=\"star star-position7\"></div>\n  </div>\n  <div data-js=\"astro\" class=\"astronaut\">\n    <div class=\"head\"></div>\n    <div class=\"arm arm-left\"></div>\n    <div class=\"arm arm-right\"></div>\n    <div class=\"body\">\n      <div class=\"panel\"></div>\n    </div>\n    <div class=\"leg leg-left\"></div>\n    <div class=\"leg leg-right\"></div>\n    <div class=\"schoolbag\"></div>\n  </div>",
+    "css": "/* From Uiverse.io by JkHuger - Tags: loader, astronaut */\n@keyframes snow {\n  0% {\n    opacity: 0;\n    transform: translateY(0px);\n  }\n\n  20% {\n    opacity: 1;\n  }\n\n  100% {\n    opacity: 1;\n    transform: translateY(650px);\n  }\n}\n\n@keyframes astronaut {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n.box-of-star1,\n.box-of-star2,\n.box-of-star3,\n.box-of-star4 {\n  width: 100%;\n  position: absolute;\n  z-index: 10;\n  left: 0;\n  top: 0;\n  transform: translateY(0px);\n  height: 700px;\n}\n\n.box-of-star1 {\n  animation: snow 5s linear infinite;\n}\n\n.box-of-star2 {\n  animation: snow 5s -1.64s linear infinite;\n}\n\n.box-of-star3 {\n  animation: snow 5s -2.30s linear infinite;\n}\n\n.box-of-star4 {\n  animation: snow 5s -3.30s linear infinite;\n}\n\n.star {\n  width: 3px;\n  height: 3px;\n  border-radius: 50%;\n  background-color: #FFF;\n  position: absolute;\n  z-index: 10;\n  opacity: 0.7;\n}\n\n.star:before {\n  content: \"\";\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  background-color: #FFF;\n  position: absolute;\n  z-index: 10;\n  top: 80px;\n  left: 70px;\n  opacity: .7;\n}\n\n.star:after {\n  content: \"\";\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  background-color: #FFF;\n  position: absolute;\n  z-index: 10;\n  top: 8px;\n  left: 170px;\n  opacity: .9;\n}\n\n.star-position1 {\n  top: 30px;\n  left: 20px;\n}\n\n.star-position2 {\n  top: 110px;\n  left: 250px;\n}\n\n.star-position3 {\n  top: 60px;\n  left: 570px;\n}\n\n.star-position4 {\n  top: 120px;\n  left: 900px;\n}\n\n.star-position5 {\n  top: 20px;\n  left: 1120px;\n}\n\n.star-position6 {\n  top: 90px;\n  left: 1280px;\n}\n\n.star-position7 {\n  top: 30px;\n  left: 1480px;\n}\n\n.astronaut {\n  width: 250px;\n  height: 300px;\n  position: absolute;\n  z-index: 11;\n  top: calc(50% - 150px);\n  left: calc(50% - 125px);\n  animation: astronaut 5s linear infinite;\n}\n\n.schoolbag {\n  width: 100px;\n  height: 150px;\n  position: absolute;\n  z-index: 1;\n  top: calc(50% - 75px);\n  left: calc(50% - 50px);\n  background-color: #94b7ca;\n  border-radius: 50px 50px 0 0 / 30px 30px 0 0;\n}\n\n.head {\n  width: 97px;\n  height: 80px;\n  position: absolute;\n  z-index: 3;\n  background: -webkit-linear-gradient(left, #e3e8eb 0%, #e3e8eb 50%, #fbfdfa 50%, #fbfdfa 100%);\n  border-radius: 50%;\n  top: 34px;\n  left: calc(50% - 47.5px);\n}\n\n.head:after {\n  content: \"\";\n  width: 60px;\n  height: 50px;\n  position: absolute;\n  top: calc(50% - 25px);\n  left: calc(50% - 30px);\n  background: -webkit-linear-gradient(top, #15aece 0%, #15aece 50%, #0391bf 50%, #0391bf 100%);\n  border-radius: 15px;\n}\n\n.head:before {\n  content: \"\";\n  width: 12px;\n  height: 25px;\n  position: absolute;\n  top: calc(50% - 12.5px);\n  left: -4px;\n  background-color: #618095;\n  border-radius: 5px;\n  box-shadow: 92px 0px 0px #618095;\n}\n\n.body {\n  width: 85px;\n  height: 100px;\n  position: absolute;\n  z-index: 2;\n  background-color: #fffbff;\n  border-radius: 40px / 20px;\n  top: 105px;\n  left: calc(50% - 41px);\n  background: -webkit-linear-gradient(left, #e3e8eb 0%, #e3e8eb 50%, #fbfdfa 50%, #fbfdfa 100%);\n}\n\n.panel {\n  width: 60px;\n  height: 40px;\n  position: absolute;\n  top: 20px;\n  left: calc(50% - 30px);\n  background-color: #b7cceb;\n}\n\n.panel:before {\n  content: \"\";\n  width: 30px;\n  height: 5px;\n  position: absolute;\n  top: 9px;\n  left: 7px;\n  background-color: #fbfdfa;\n  box-shadow: 0px 9px 0px #fbfdfa, 0px 18px 0px #fbfdfa;\n}\n\n.panel:after {\n  content: \"\";\n  width: 8px;\n  height: 8px;\n  position: absolute;\n  top: 9px;\n  right: 7px;\n  background-color: #fbfdfa;\n  border-radius: 50%;\n  box-shadow: 0px 14px 0px 2px #fbfdfa;\n}\n\n.arm {\n  width: 80px;\n  height: 30px;\n  position: absolute;\n  top: 121px;\n  z-index: 2;\n}\n\n.arm-left {\n  left: 30px;\n  background-color: #e3e8eb;\n  border-radius: 0 0 0 39px;\n}\n\n.arm-right {\n  right: 30px;\n  background-color: #fbfdfa;\n  border-radius: 0 0 39px 0;\n}\n\n.arm-left:before,\n.arm-right:before {\n  content: \"\";\n  width: 30px;\n  height: 70px;\n  position: absolute;\n  top: -40px;\n}\n\n.arm-left:before {\n  border-radius: 50px 50px 0px 120px / 50px 50px 0 110px;\n  left: 0;\n  background-color: #e3e8eb;\n}\n\n.arm-right:before {\n  border-radius: 50px 50px 120px 0 / 50px 50px 110px 0;\n  right: 0;\n  background-color: #fbfdfa;\n}\n\n.arm-left:after,\n.arm-right:after {\n  content: \"\";\n  width: 30px;\n  height: 10px;\n  position: absolute;\n  top: -24px;\n}\n\n.arm-left:after {\n  background-color: #6e91a4;\n  left: 0;\n}\n\n.arm-right:after {\n  right: 0;\n  background-color: #b6d2e0;\n}\n\n.leg {\n  width: 30px;\n  height: 40px;\n  position: absolute;\n  z-index: 2;\n  bottom: 70px;\n}\n\n.leg-left {\n  left: 76px;\n  background-color: #e3e8eb;\n  transform: rotate(20deg);\n}\n\n.leg-right {\n  right: 73px;\n  background-color: #fbfdfa;\n  transform: rotate(-20deg);\n}\n\n.leg-left:before,\n.leg-right:before {\n  content: \"\";\n  width: 50px;\n  height: 25px;\n  position: absolute;\n  bottom: -26px;\n}\n\n.leg-left:before {\n  left: -20px;\n  background-color: #e3e8eb;\n  border-radius: 30px 0 0 0;\n  border-bottom: 10px solid #6d96ac;\n}\n\n.leg-right:before {\n  right: -20px;\n  background-color: #fbfdfa;\n  border-radius: 0 30px 0 0;\n  border-bottom: 10px solid #b0cfe4;\n}",
+    "tags": [
+      "loader",
+      "astronaut"
+    ]
+  },
+  {
+    "id": "uiv-334176",
+    "title": "Rotten Baboon 90",
+    "author": "JkHuger",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.036Z",
+    "html": "<div class=\"loader\">\n        <span></span>\n</div>",
+    "css": "/* From Uiverse.io by JkHuger - Tags: loader */\n.loader {\n  position: relative;\n  overflow: hidden;\n  box-shadow: -5px -5px -5px rgba(255, 255, 255, 0.1),\n                10px 10px 10px rgba(0, 0, 0, 0.4),\n                inset -5px -5px -5px rgba(255, 255, 255, 0.2),\n                inset 10px 10px 10px rgba(0, 0, 0, 0.4);\n  height: 100px;\n  width: 100px;\n  border-radius: 50%;\n}\n\n.loader:before {\n  position: absolute;\n  content: '';\n  z-index: 10;\n  opacity: 10;\n  top: 25px;\n  left: 25px;\n  right: 25px;\n  bottom: 25px;\n  background-color: #010113;\n  border-radius: 50%;\n  box-shadow: -5px -5px -5px rgba(255, 255, 255, 0.1),\n    10px 10px 10px rgba(0, 0, 0, 0.4),\n    inset -5px -5px -5px rgba(255, 255, 255, 0.2),\n    inset 10px 10px 10px rgba(0, 0, 0, 0.4);\n}\n\n.loader span {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  filter: blur(20px);\n  border-radius: 50%;\n  background: linear-gradient(#0e11d4, #0b8f84, #d81587);\n  animation: loader_41 0.6s linear infinite;\n}\n\n@keyframes loader_41 {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-936161",
+    "title": "Selfish Bulldog 36",
+    "author": "JkHuger",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.065Z",
+    "html": "<div class=\"section-center\">\n  <div class=\"section-path\">\n    <div class=\"globe\">\n      <div class=\"wrapper\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n      </div>\n    </div>\n  </div>\n </div>",
+    "css": "/* From Uiverse.io by JkHuger - Tags: loader */\n.section-center {\n  position: absolute;\n  top: 50%;\n  left: 0;\n  z-index: 10;\n  transform: translateY(-50%);\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  -webkit-transition: all 500ms linear;\n  transition: all 500ms linear;\n}\n\n.section-path {\n  position: relative;\n  width: 238px;\n  height: 76px;\n  border-radius: 35px;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #e6e6e6;\n  box-shadow: inset -2px 20px 10px 0 rgba(0,0,0,.06),\n\t\tinset -2px 30px 10px 0 rgba(0,0,0,.04);\n  border: 3px groove rgba(225,225,225,0.07);\n  overflow: hidden;\n  -webkit-transition: all 300ms linear;\n  transition: all 300ms linear;\n}\n\n.globe {\n  position: relative;\n  width: 66px;\n  height: 66px;\n  overflow: hidden;\n  margin-top: 2px;\n  margin-left: 2px;\n  border-radius: 50%;\n  box-shadow: 0 10px 40px rgba(0,0,0,0.65);\n  animation: rotateBall 4s ease infinite;\n  -webkit-transition: all 300ms linear;\n  transition: all 300ms linear;\n}\n\n@keyframes rotateBall {\n  0% {\n    transform: translateX(0);\n  }\n\n  50% {\n    transform: translateX(162px);\n  }\n\n  100% {\n    transform: translateX(0);\n  }\n}\n\n.globe:after {\n  position: absolute;\n  width: 5px;\n  height: 12px;\n  background-color: rgba(255, 255, 255, 0.1);\n  content: '';\n  left: 40px;\n  top: 15px;\n  border-radius: 50%;\n  z-index: 2;\n  box-shadow: 0 0 14px 7px rgba(255, 255, 255, 0.1);\n}\n\n.globe:before {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  content: '';\n  left: 0;\n  top: 0;\n  border-radius: 50%;\n  z-index: 1;\n  box-shadow: inset 0 0 15px #1a252f;\n  opacity: 0.4;\n  -webkit-transition: all 300ms linear;\n  transition: all 300ms linear;\n}\n\n.globe .wrapper {\n  position: absolute;\n  width: 528px;\n  height: 528px;\n  top: 0;\n  left: -462px;\n  animation: moveBall 4s ease infinite;\n}\n\n@keyframes moveBall {\n  0% {\n    left: -462px;\n  }\n\n  50% {\n    left: 0;\n  }\n\n  100% {\n    left: -462px;\n  }\n}\n\n.globe .wrapper span {\n  position: absolute;\n  width: 33px;\n  height: 528px;\n  top: 0;\n  left: 0;\n  background-color: #5c477d;\n  box-shadow: inset 0 0 25px #5c487c;\n}\n\n.globe .wrapper span:nth-child(2) {\n  left: 33px;\n  background-color: #503e6d;\n}\n\n.globe .wrapper span:nth-child(3) {\n  left: 66px;\n}\n\n.globe .wrapper span:nth-child(4) {\n  left: 99px;\n  background-color: #503e6d;\n}\n\n.globe .wrapper span:nth-child(5) {\n  left: 132px;\n}\n\n.globe .wrapper span:nth-child(6) {\n  left: 165px;\n  background-color: #503e6d;\n}\n\n.globe .wrapper span:nth-child(7) {\n  left: 198px;\n}\n\n.globe .wrapper span:nth-child(8) {\n  left: 231px;\n  background-color: #503e6d;\n}\n\n.globe .wrapper span:nth-child(9) {\n  left: 264px;\n}\n\n.globe .wrapper span:nth-child(10) {\n  left: 297px;\n  background-color: #503e6d;\n}\n\n.globe .wrapper span:nth-child(11) {\n  left: 330px;\n}\n\n.globe .wrapper span:nth-child(12) {\n  left: 363px;\n  background-color: #503e6d;\n}\n\n.globe .wrapper span:nth-child(13) {\n  left: 396px;\n}\n\n.globe .wrapper span:nth-child(14) {\n  left: 429px;\n  background-color: #503e6d;\n}\n\n.globe .wrapper span:nth-child(15) {\n  left: 462px;\n}\n\n.globe .wrapper span:nth-child(16) {\n  left: 495px;\n  background-color: #503e6d;\n}\n\n#switch,\n#circle {\n  cursor: pointer;\n  -webkit-transition: all 300ms linear;\n  transition: all 300ms linear;\n}\n\n#switch {\n  width: 70px;\n  height: 8px;\n  margin: 0 auto;\n  text-align: center;\n  border: 2px solid #8167a9;\n  border-radius: 27px;\n  background: #000;\n  position: relative;\n  display: inline-block;\n  margin-top: 40px;\n  margin-bottom: 20px;\n}\n\n#circle {\n  position: absolute;\n  top: -11px;\n  left: 5px;\n  width: 26px;\n  height: 26px;\n  border-radius: 50%;\n  box-shadow: 0 4px 4px rgba(0,0,0,0.25), 0 0 0 1px rgba(26,53,71,0.07);\n  background: #000;\n}\n\n.switched {\n  border-color: #000 !important;\n  background: #8167a9 !important;\n}\n\n.switched #circle {\n  left: 35px;\n  background: #fff;\n}\n\n.section-center p span {\n  position: relative;\n  padding: 4px 10px;\n  margin: 0 5px;\n}\n\n.section-center p span:before {\n  position: absolute;\n  content: '';\n  width: 100%;\n  height: 100%;\n  border-radius: 4px;\n  background-color: #8167a9;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.25);\n  left: 0;\n  top: 0;\n  z-index: -1;\n  -webkit-transition: all 300ms linear;\n  transition: all 300ms linear;\n}\n\n.section-center p span:after {\n  position: absolute;\n  content: '';\n  width: calc(100% - 10px);\n  height: 2px;\n  border-radius: 4px;\n  background-color: #fff;\n  left: 5px;\n  top: 50%;\n  z-index: 1;\n  -webkit-transition: all 300ms linear;\n  transition: all 300ms linear;\n}\n\n.section-center p span:nth-child(2):after {\n  opacity: 0;\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-532503",
+    "title": "Funny Frog 63",
+    "author": "Juanes200122",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.031Z",
+    "html": "<span class=\"loader\"></span>",
+    "css": "/* From Uiverse.io by Juanes200122  - Website: https://cssloaders.github.io/ - Name: css-loader - Tags: simple, animation, red, loading, loader */\n.loader {\n  width: 48px;\n  height: 48px;\n  border: 3px dotted #fff;\n  border-style: solid solid dotted dotted;\n  border-radius: 50%;\n  display: inline-block;\n  position: relative;\n  box-sizing: border-box;\n  animation: rotation 2s linear infinite;\n}\n.loader::after {\n  content: \"\";\n  box-sizing: border-box;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n  border: 3px dotted #ff3d00;\n  border-style: solid solid dotted;\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  animation: rotationBack 1s linear infinite;\n  transform-origin: center center;\n}\n\n@keyframes rotation {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes rotationBack {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(-360deg);\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "red",
+      "loading",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-364698",
+    "title": "Ugly Zebra 9",
+    "author": "Juanes200122",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.065Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Juanes200122 - Tags: simple, animation, loader, circle, html, css */\n.loader {\n  width: 15px;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  background: #000;\n  box-shadow: -20px 0px,20px 0px;\n  animation: l18 1s infinite;\n}\n\n@keyframes l18 {\n \n  25% {\n    box-shadow: -20px -20px, 20px 20px\n  }\n\n  50% {\n    box-shadow: 0px -20px,  0px 20px\n  }\n\n  75% {\n    box-shadow: 20px -20px,-20px 20px\n  }\n\n  100% {\n    box-shadow: 20px   0px,-20px  0px\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "loader",
+      "circle",
+      "html",
+      "css"
+    ]
+  },
+  {
+    "id": "uiv-596102",
+    "title": "Silly Grasshopper 43",
+    "author": "JulioCodesSM",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.074Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by JulioCodesSM - Tags: loader */\n/* From uiverse.io by @JulioCodesSM */\n.loader {\n width: 50px;\n height: 50px;\n position: relative;\n transform: translateX(-25px);\n /* Compensating for the left of 50px in the keyframe. */\n}\n\n.loader::before,\n.loader::after {\n content: '';\n position: absolute;\n width: inherit;\n height: inherit;\n border-radius: 50%;\n mix-blend-mode: multiply;\n animation: rotate9 1s infinite cubic-bezier(0.77, 0, 0.175, 1);\n}\n\n.loader::before {\n background-color: #fc3f9e;\n}\n\n.loader::after {\n background-color: #50e8f3;\n animation-delay: .5s;\n}\n\n@keyframes rotate9 {\n 0%,100% {\n  left: 50px;\n }\n\n 25% {\n  transform: scale(.3);\n }\n\n 50% {\n  left: 0;\n }\n\n 75% {\n  transform: scale(1);\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-163435",
+    "title": "Big Dolphin 10",
+    "author": "Kemboi-Dun",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.707Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Kemboi-Dun - Source: https://uiverse.io/Saiyed-Tanvir/old-mole-38 - Tags: simple, animation, blue, minimalist, loading, loader, cube, animated */\n.loader {\n  height: 5cm;\n  width: 5cm;\n  border-radius: 1rem;\n  /* border: 1px solid #0a7cbe; */\n  box-shadow: inset 0 0 0 #0a7cbe;\n  animation: load 4s ease infinite;\n}\n\n@keyframes load {\n  \n  0% {\n    box-shadow: inset -5cm -2.5cm 0 #0a7cbe;\n  }\n\n  25% {\n    box-shadow: inset 5cm -2.5cm 0 #0a7cbe;\n  }\n\n  25.01% {\n    box-shadow: inset 2.5cm -5cm 0 #0a7cbe;\n  }\n\n  50% {\n    box-shadow: inset 2.5cm 5cm 0 #0a7cbe;\n  }\n\n  50.01% {\n    box-shadow: inset 5cm 2.5cm 0 #0a7cbe;\n  }\n\n  75% {\n    box-shadow: inset -5cm 2.5cm 0 #0a7cbe;\n  }\n\n  75.01% {\n    box-shadow: inset -2.5cm 5cm 0 #0a7cbe;\n  }\n\n  100% {\n    box-shadow: inset -2.5cm -5cm 0 #0a7cbe;\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "blue",
+      "minimalist",
+      "loading",
+      "loader",
+      "cube",
+      "animated"
+    ]
+  },
+  {
+    "id": "uiv-144124",
+    "title": "Modern Rattlesnake 33",
+    "author": "KhaledMatalkah",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.519Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by KhaledMatalkah - Tags: animation, loader, circle loader, line loader */\n.loader {\n  width: 100px;\n  height: 100px;\n  border: 8px solid #ffcc00;\n  border-radius: 50%;\n  border-top-color: transparent;\n  position: relative;\n  animation: loaderAnimation 1.5s linear infinite;\n}\n\n.loader::before,\n.loader::after {\n  content: '';\n  position: absolute;\n  height: 20px;\n  width: 20px;\n  left: 50%;\n  top: 50%;\n  background-color: #ffcc00;\n  border-radius: 50%;\n  transform: translate(-50%, -50%);\n}\n\n.loader::before {\n  animation: loaderAnimationBefore 1s linear infinite;\n}\n\n.loader::after {\n  animation: loaderAnimationAfter 1s linear infinite;\n}\n\n@keyframes loaderAnimation {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes loaderAnimationBefore {\n  0% {\n    opacity: 1;\n    transform: translate(-50%, -50%) scale(1);\n  }\n\n  50% {\n    opacity: 0;\n    transform: translate(-50%, -50%) scale(0);\n  }\n\n  100% {\n    opacity: 1;\n    transform: translate(-50%, -50%) scale(1);\n  }\n}\n\n@keyframes loaderAnimationAfter {\n  0% {\n    opacity: 0;\n    transform: translate(-50%, -50%) scale(0);\n  }\n\n  50% {\n    opacity: 1;\n    transform: translate(-50%, -50%) scale(1);\n  }\n\n  100% {\n    opacity: 0;\n    transform: translate(-50%, -50%) scale(0);\n  }\n}",
+    "tags": [
+      "animation",
+      "loader",
+      "circle loader",
+      "line loader"
+    ]
+  },
+  {
+    "id": "uiv-899548",
+    "title": "Giant Lion 94",
+    "author": "Lmickk2",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.531Z",
+    "html": "<div class=\"loader\">\n  <div class=\"box-load1\"></div>\n  <div class=\"box-load2\"></div>\n  <div class=\"box-load3\"></div>\n</div>",
+    "css": "/* From Uiverse.io by Lmickk2 - Tags: loader, light, animated */\n.loader {\n  display: flex;\n  transition: all 0.4s;\n}\n\n.loader div {\n  margin-left: 0.8rem;\n  background-color: transparent;\n  box-shadow: 0px 2px 2px black;\n  border-radius: 3em;\n  height: 1rem;\n  width: 2rem;\n}\n\n.box-load1 {\n  animation: brighten 1.5s infinite;\n}\n\n.box-load2 {\n  animation: brighten 1.5s infinite;\n  animation-delay: .3s;\n}\n\n.box-load3 {\n  animation: brighten 1.5s infinite;\n  animation-delay: .6s;\n}\n\n@keyframes brighten {\n  100% {\n    background-color: black;\n    box-shadow: none;\n  }\n}",
+    "tags": [
+      "loader",
+      "light",
+      "animated"
+    ]
+  },
+  {
+    "id": "uiv-602109",
+    "title": "Green Insect 40",
+    "author": "MbaziiraRonald",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.735Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by MbaziiraRonald - Tags: loader */\n.loader {\n  height: 50px;\n  width: 50px;\n  background: transparent;\n  border: red 3px solid;\n  border-top: transparent;\n  border-radius: 50%;\n  animation: animate81323 0.8s linear infinite;\n}\n\n@keyframes animate81323 {\n  0% {\n    border: 3px solid rgb(255, 75, 75);\n    border-top: transparent;\n    border-left: transparent;\n    transform: rotate(0deg);\n  }\n\n  50% {\n    border: 3px dashed rgb(240, 41, 240);\n    border-top: transparent;\n    border-left: transparent;\n    transform: rotate(270deg);\n  }\n\n  100% {\n    border: 3px dotted rgb(28, 228, 28);\n    border-top: transparent;\n    border-left: transparent;\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-623179",
+    "title": "Lucky Chicken 20",
+    "author": "Mhyar-nsi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.519Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Mhyar-nsi - Tags: loader */\n.loader {\n  display: inline-block;\n  vertical-align: middle;\n  position: relative;\n  margin: 10px;\n}\n\n@keyframes loader-bubbles {\n  0% {\n    box-shadow: 0 -10px #3b82f6,\n                3px 0 #3b82f6,\n                5px 0 #3b82f6;\n  }\n\n  30% {\n    box-shadow: 3px -20px rgba(239,223,255,0),\n                5px -10px #3b82f6,\n                5px 0 #3b82f6;\n  }\n\n  60% {\n    box-shadow: 3px 0 rgba(239,223,255,0),\n                4px -20px rgba(239,223,255,0),\n                3px -10px #3b82f6;\n  }\n\n  61% {\n    box-shadow: 3px 0 #3b82f6,\n                4px -20px rgba(239,223,255,0),\n                3px -10px #3b82f6;\n  }\n\n  100% {\n    box-shadow: 0 -10px #3b82f6,\n                4px -20px rgba(239,223,255,0),\n                5px -20px rgba(239,223,255,0);\n  }\n}\n\n.loader {\n  width: 10px;\n  height: 20px;\n  margin-left: 20px;\n  margin-right: 20px;\n  background: #3b82f6;\n}\n\n.loader:before,\n.loader:after {\n  content: '';\n  position: absolute;\n}\n\n.loader:before {\n  top: -8px;\n  left: -13px;\n  width: 0;\n  height: 0;\n  border: 18px solid transparent;\n  border-bottom: 20px solid #3b82f6;\n  border-radius: 3px;\n}\n\n.loader:after {\n  top: 0;\n  left: 0;\n  width: 4px;\n  height: 4px;\n  background: #3b82f6;\n  border-radius: 50%;\n  animation: loader-bubbles 1s linear infinite forwards;\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-933928",
+    "title": "Cowardly Squid 50",
+    "author": "Nawsome",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.578Z",
+    "html": "<div class=\"svg-frame\">\n\t<svg style=\"--i:0;--j:0;\">\n\t\t<g id=\"out1\">\n\t\t\t<path d=\"M72 172C72 116.772 116.772 72 172 72C227.228 72 272 116.772 272 172C272 227.228 227.228 272 172 272C116.772 272 72 227.228 72 172ZM197.322 172C197.322 158.015 185.985 146.678 172 146.678C158.015 146.678 146.678 158.015 146.678 172C146.678 185.985 158.015 197.322 172 197.322C185.985 197.322 197.322 185.985 197.322 172Z\"></path>\n\t\t\t<path mask=\"url(#path-1-inside-1_111_3212)\" stroke-miterlimit=\"16\" stroke-width=\"2\" stroke=\"#00FFFF\" d=\"M72 172C72 116.772 116.772 72 172 72C227.228 72 272 116.772 272 172C272 227.228 227.228 272 172 272C116.772 272 72 227.228 72 172ZM197.322 172C197.322 158.015 185.985 146.678 172 146.678C158.015 146.678 146.678 158.015 146.678 172C146.678 185.985 158.015 197.322 172 197.322C185.985 197.322 197.322 185.985 197.322 172Z\"></path>\n\t\t</g>\n\t</svg>\n\n\t<svg style=\"--i:1;--j:1;\">\n\t\t<g id=\"out2\">\n\t\t\t<mask fill=\"white\" id=\"path-2-inside-2_111_3212\">\n\t\t\t\t<path d=\"M102.892 127.966C93.3733 142.905 88.9517 160.527 90.2897 178.19L94.3752 177.88C93.1041 161.1 97.3046 144.36 106.347 130.168L102.892 127.966Z\"></path>\n\t\t\t\t<path d=\"M93.3401 194.968C98.3049 211.971 108.646 226.908 122.814 237.541L125.273 234.264C111.814 224.163 101.99 209.973 97.2731 193.819L93.3401 194.968Z\"></path>\n\t\t\t\t<path d=\"M152.707 92.3592C140.33 95.3575 128.822 101.199 119.097 109.421L121.742 112.55C130.981 104.739 141.914 99.1897 153.672 96.3413L152.707 92.3592Z\"></path>\n\t\t\t\t<path d=\"M253.294 161.699C255.099 175.937 253.132 190.4 247.59 203.639L243.811 202.057C249.075 189.48 250.944 175.74 249.23 162.214L253.294 161.699Z\"></path>\n\t\t\t\t<path d=\"M172 90.0557C184.677 90.0557 197.18 92.9967 208.528 98.6474C219.875 104.298 229.757 112.505 237.396 122.621L234.126 125.09C226.869 115.479 217.481 107.683 206.701 102.315C195.921 96.9469 184.043 94.1529 172 94.1529V90.0557Z\"></path>\n\t\t\t\t<path d=\"M244.195 133.235C246.991 138.442 249.216 143.937 250.83 149.623L246.888 150.742C245.355 145.34 243.242 140.12 240.586 135.174L244.195 133.235Z\"></path>\n\t\t\t\t<path d=\"M234.238 225.304C223.932 237.338 210.358 246.126 195.159 250.604C179.961 255.082 163.79 255.058 148.606 250.534L149.775 246.607C164.201 250.905 179.563 250.928 194.001 246.674C208.44 242.42 221.335 234.071 231.126 222.639L234.238 225.304Z\"></path>\n\t\t\t</mask>\n\t\t\t<path mask=\"url(#path-2-inside-2_111_3212)\" fill=\"#00FFFF\" d=\"M102.892 127.966L105.579 123.75L101.362 121.063L98.6752 125.28L102.892 127.966ZM90.2897 178.19L85.304 178.567L85.6817 183.553L90.6674 183.175L90.2897 178.19ZM94.3752 177.88L94.7529 182.866L99.7386 182.488L99.3609 177.503L94.3752 177.88ZM106.347 130.168L110.564 132.855L113.251 128.638L109.034 125.951L106.347 130.168ZM93.3401 194.968L91.9387 190.168L87.1391 191.569L88.5405 196.369L93.3401 194.968ZM122.814 237.541L119.813 241.54L123.812 244.541L126.813 240.542L122.814 237.541ZM125.273 234.264L129.272 237.265L132.273 233.266L128.274 230.265L125.273 234.264ZM97.2731 193.819L102.073 192.418L100.671 187.618L95.8717 189.02L97.2731 193.819ZM152.707 92.3592L157.567 91.182L156.389 86.3226L151.53 87.4998L152.707 92.3592ZM119.097 109.421L115.869 105.603L112.05 108.831L115.278 112.649L119.097 109.421ZM121.742 112.55L117.924 115.778L121.152 119.596L124.97 116.368L121.742 112.55ZM153.672 96.3413L154.849 101.201L159.708 100.023L158.531 95.1641L153.672 96.3413ZM253.294 161.699L258.255 161.07L257.626 156.11L252.666 156.738L253.294 161.699ZM247.59 203.639L245.66 208.251L250.272 210.182L252.203 205.569L247.59 203.639ZM243.811 202.057L239.198 200.126L237.268 204.739L241.88 206.669L243.811 202.057ZM249.23 162.214L248.601 157.253L243.641 157.882L244.269 162.842L249.23 162.214ZM172 90.0557V85.0557H167V90.0557H172ZM208.528 98.6474L206.299 103.123L206.299 103.123L208.528 98.6474ZM237.396 122.621L240.409 126.611L244.399 123.598L241.386 119.608L237.396 122.621ZM234.126 125.09L230.136 128.103L233.149 132.093L237.139 129.08L234.126 125.09ZM206.701 102.315L204.473 106.791L204.473 106.791L206.701 102.315ZM172 94.1529H167V99.1529H172V94.1529ZM244.195 133.235L248.601 130.87L246.235 126.465L241.83 128.83L244.195 133.235ZM250.83 149.623L252.195 154.433L257.005 153.067L255.64 148.257L250.83 149.623ZM246.888 150.742L242.078 152.107L243.444 156.917L248.254 155.552L246.888 150.742ZM240.586 135.174L238.22 130.768L233.815 133.134L236.181 137.539L240.586 135.174ZM234.238 225.304L238.036 228.556L241.288 224.759L237.491 221.506L234.238 225.304ZM195.159 250.604L196.572 255.4L196.572 255.4L195.159 250.604ZM148.606 250.534L143.814 249.107L142.386 253.899L147.178 255.326L148.606 250.534ZM149.775 246.607L151.203 241.816L146.411 240.388L144.983 245.18L149.775 246.607ZM194.001 246.674L195.415 251.47L195.415 251.47L194.001 246.674ZM231.126 222.639L234.379 218.841L230.581 215.589L227.329 219.386L231.126 222.639ZM98.6752 125.28C88.5757 141.13 83.8844 159.826 85.304 178.567L95.2754 177.812C94.0191 161.227 98.1709 144.681 107.109 130.653L98.6752 125.28ZM90.6674 183.175L94.7529 182.866L93.9976 172.895L89.912 173.204L90.6674 183.175ZM99.3609 177.503C98.1715 161.8 102.102 146.135 110.564 132.855L102.131 127.481C92.5071 142.585 88.0368 160.4 89.3895 178.258L99.3609 177.503ZM109.034 125.951L105.579 123.75L100.205 132.183L103.661 134.385L109.034 125.951ZM88.5405 196.369C93.8083 214.41 104.78 230.259 119.813 241.54L125.815 233.542C112.512 223.558 102.802 209.532 98.1397 193.566L88.5405 196.369ZM126.813 240.542L129.272 237.265L121.274 231.263L118.815 234.54L126.813 240.542ZM128.274 230.265C115.679 220.813 106.486 207.534 102.073 192.418L92.4735 195.221C97.493 212.412 107.948 227.513 122.272 238.263L128.274 230.265ZM95.8717 189.02L91.9387 190.168L94.7415 199.767L98.6745 198.619L95.8717 189.02ZM151.53 87.4998C138.398 90.681 126.188 96.8793 115.869 105.603L122.325 113.239C131.457 105.519 142.262 100.034 153.884 97.2187L151.53 87.4998ZM115.278 112.649L117.924 115.778L125.56 109.322L122.915 106.193L115.278 112.649ZM124.97 116.368C133.616 109.059 143.846 103.866 154.849 101.201L152.495 91.4818C139.981 94.5132 128.347 100.419 118.514 108.732L124.97 116.368ZM158.531 95.1641L157.567 91.182L147.848 93.5364L148.812 97.5185L158.531 95.1641ZM248.334 162.327C250.028 175.697 248.181 189.277 242.978 201.708L252.203 205.569C258.082 191.522 260.169 176.177 258.255 161.07L248.334 162.327ZM249.521 199.027L245.741 197.445L241.88 206.669L245.66 208.251L249.521 199.027ZM248.423 203.987C254.025 190.602 256.014 175.98 254.19 161.585L244.269 162.842C245.873 175.5 244.125 188.357 239.198 200.126L248.423 203.987ZM249.858 167.174L253.923 166.659L252.666 156.738L248.601 157.253L249.858 167.174ZM172 95.0557C183.903 95.0557 195.644 97.8172 206.299 103.123L210.757 94.1717C198.717 88.1761 185.45 85.0557 172 85.0557V95.0557ZM206.299 103.123C216.954 108.429 226.233 116.135 233.406 125.634L241.386 119.608C233.281 108.874 222.796 100.167 210.757 94.1717L206.299 103.123ZM234.383 118.631L231.113 121.1L237.139 129.08L240.409 126.611L234.383 118.631ZM238.116 122.077C230.393 111.849 220.403 103.552 208.93 97.8393L204.473 106.791C214.56 111.814 223.345 119.11 230.136 128.103L238.116 122.077ZM208.93 97.8393C197.458 92.1263 184.816 89.1529 172 89.1529V99.1529C183.269 99.1529 194.385 101.767 204.473 106.791L208.93 97.8393ZM177 94.1529V90.0557H167V94.1529H177ZM239.79 135.601C242.416 140.49 244.504 145.649 246.02 150.988L255.64 148.257C253.927 142.225 251.567 136.395 248.601 130.87L239.79 135.601ZM249.464 144.813L245.523 145.932L248.254 155.552L252.195 154.433L249.464 144.813ZM251.698 149.376C250.067 143.628 247.818 138.073 244.991 132.808L236.181 137.539C238.666 142.168 240.644 147.052 242.078 152.107L251.698 149.376ZM242.951 139.579L246.561 137.64L241.83 128.83L238.22 130.768L242.951 139.579ZM230.441 222.051C220.763 233.351 208.017 241.603 193.746 245.808L196.572 255.4C212.698 250.649 227.101 241.325 238.036 228.556L230.441 222.051ZM193.746 245.808C179.475 250.012 164.291 249.99 150.033 245.742L147.178 255.326C163.289 260.125 180.447 260.151 196.572 255.4L193.746 245.808ZM153.397 251.962L154.567 248.035L144.983 245.18L143.814 249.107L153.397 251.962ZM148.348 251.399C163.7 255.973 180.049 255.997 195.415 251.47L192.588 241.877C179.077 245.858 164.702 245.837 151.203 241.816L148.348 251.399ZM195.415 251.47C210.78 246.942 224.504 238.058 234.924 225.891L227.329 219.386C218.167 230.084 206.099 237.897 192.588 241.877L195.415 251.47ZM227.874 226.436L230.986 229.101L237.491 221.506L234.379 218.841L227.874 226.436Z\"></path>\n\t\t</g>\n\t</svg>\n\n\t<svg style=\"--i:0;--j:2;\">\n\t\t<g id=\"inner3\">\n\t\t\t<path d=\"M195.136 135.689C188.115 131.215 179.948 128.873 171.624 128.946C163.299 129.019 155.174 131.503 148.232 136.099L148.42 136.382C155.307 131.823 163.368 129.358 171.627 129.286C179.886 129.213 187.988 131.537 194.954 135.975L195.136 135.689Z\"></path>\n\t\t\t<path d=\"M195.136 208.311C188.115 212.784 179.948 215.127 171.624 215.054C163.299 214.981 155.174 212.496 148.232 207.901L148.42 207.618C155.307 212.177 163.368 214.642 171.627 214.714C179.886 214.786 187.988 212.463 194.954 208.025L195.136 208.311Z\"></path>\n\t\t\t<path mask=\"url(#path-5-inside-3_111_3212)\" fill=\"#00FFFF\" d=\"M195.136 135.689L195.474 135.904L195.689 135.566L195.351 135.352L195.136 135.689ZM171.624 128.946L171.627 129.346L171.624 128.946ZM148.232 136.099L148.011 135.765L147.678 135.986L147.899 136.32L148.232 136.099ZM148.42 136.382L148.086 136.603L148.307 136.936L148.641 136.716L148.42 136.382ZM171.627 129.286L171.63 129.686L171.627 129.286ZM194.954 135.975L194.739 136.313L195.076 136.528L195.291 136.19L194.954 135.975ZM195.136 208.311L195.351 208.648L195.689 208.433L195.474 208.096L195.136 208.311ZM171.624 215.054L171.627 214.654L171.624 215.054ZM148.232 207.901L147.899 207.68L147.678 208.014L148.011 208.234L148.232 207.901ZM148.42 207.618L148.641 207.284L148.307 207.063L148.086 207.397L148.42 207.618ZM171.627 214.714L171.63 214.314L171.627 214.714ZM194.954 208.025L195.291 207.81L195.076 207.472L194.739 207.687L194.954 208.025ZM195.351 135.352C188.265 130.836 180.022 128.473 171.62 128.546L171.627 129.346C179.874 129.274 187.966 131.594 194.921 136.026L195.351 135.352ZM171.62 128.546C163.218 128.619 155.018 131.127 148.011 135.765L148.453 136.432C155.33 131.88 163.38 129.418 171.627 129.346L171.62 128.546ZM147.899 136.32L148.086 136.603L148.753 136.161L148.566 135.878L147.899 136.32ZM148.641 136.716C155.463 132.199 163.448 129.757 171.63 129.686L171.623 128.886C163.287 128.958 155.15 131.447 148.199 136.049L148.641 136.716ZM171.63 129.686C179.812 129.614 187.839 131.916 194.739 136.313L195.169 135.638C188.138 131.158 179.959 128.813 171.623 128.886L171.63 129.686ZM195.291 136.19L195.474 135.904L194.799 135.474L194.617 135.76L195.291 136.19ZM194.921 207.974C187.966 212.406 179.874 214.726 171.627 214.654L171.62 215.454C180.022 215.527 188.265 213.163 195.351 208.648L194.921 207.974ZM171.627 214.654C163.38 214.582 155.33 212.12 148.453 207.567L148.011 208.234C155.018 212.873 163.218 215.38 171.62 215.454L171.627 214.654ZM148.566 208.122L148.753 207.838L148.086 207.397L147.899 207.68L148.566 208.122ZM148.199 207.951C155.15 212.553 163.287 215.041 171.623 215.114L171.63 214.314C163.448 214.243 155.463 211.801 148.641 207.284L148.199 207.951ZM171.623 215.114C179.959 215.187 188.138 212.842 195.169 208.362L194.739 207.687C187.839 212.084 179.812 214.386 171.63 214.314L171.623 215.114ZM194.617 208.239L194.799 208.526L195.474 208.096L195.291 207.81L194.617 208.239Z\"></path>\n\t\t</g>\n\t\t<path stroke=\"#00FFFF\" d=\"M240.944 172C240.944 187.951 235.414 203.408 225.295 215.738C215.176 228.068 201.095 236.508 185.45 239.62C169.806 242.732 153.567 240.323 139.5 232.804C125.433 225.285 114.408 213.12 108.304 198.384C102.2 183.648 101.394 167.25 106.024 151.987C110.654 136.723 120.434 123.537 133.696 114.675C146.959 105.813 162.884 101.824 178.758 103.388C194.632 104.951 209.472 111.97 220.751 123.249\" id=\"out3\"></path>\n\t</svg>\n\n\t<svg style=\"--i:1;--j:3;\">\n\t\t<g id=\"inner1\">\n\t\t\t<path fill=\"#00FFFF\" d=\"M145.949 124.51L148.554 129.259C156.575 124.859 165.672 122.804 174.806 123.331C183.94 123.858 192.741 126.944 200.203 132.236C207.665 137.529 213.488 144.815 217.004 153.261C220.521 161.707 221.59 170.972 220.09 179.997L224.108 180.665L224.102 180.699L229.537 181.607C230.521 175.715 230.594 169.708 229.753 163.795L225.628 164.381C224.987 159.867 223.775 155.429 222.005 151.179C218.097 141.795 211.628 133.699 203.337 127.818C195.045 121.937 185.266 118.508 175.118 117.923C165.302 117.357 155.525 119.474 146.83 124.037C146.535 124.192 146.241 124.349 145.949 124.51ZM224.638 164.522C224.009 160.091 222.819 155.735 221.082 151.563C217.246 142.352 210.897 134.406 202.758 128.634C194.62 122.862 185.021 119.496 175.06 118.922C165.432 118.367 155.841 120.441 147.311 124.914L148.954 127.91C156.922 123.745 165.876 121.814 174.864 122.333C184.185 122.87 193.166 126.019 200.782 131.421C208.397 136.822 214.339 144.257 217.928 152.877C221.388 161.188 222.526 170.276 221.23 179.173L224.262 179.677C224.998 174.671 225.35 169.535 224.638 164.522Z\" clip-rule=\"evenodd\" fill-rule=\"evenodd\"></path>\n\t\t\t<path fill=\"#00FFFF\" d=\"M139.91 220.713C134.922 217.428 130.469 213.395 126.705 208.758L130.983 205.286L130.985 205.288L134.148 202.721C141.342 211.584 151.417 217.642 162.619 219.839C173.821 222.036 185.438 220.232 195.446 214.742L198.051 219.491C197.759 219.651 197.465 219.809 197.17 219.963C186.252 225.693 173.696 227.531 161.577 225.154C154.613 223.789 148.041 221.08 142.202 217.234L139.91 220.713ZM142.752 216.399C148.483 220.174 154.934 222.833 161.769 224.173C173.658 226.504 185.977 224.704 196.689 219.087L195.046 216.09C185.035 221.323 173.531 222.998 162.427 220.82C151.323 218.643 141.303 212.747 134.01 204.122L131.182 206.5C134.451 210.376 138.515 213.607 142.752 216.399Z\" clip-rule=\"evenodd\" fill-rule=\"evenodd\"></path>\n\t\t</g>\n\t</svg>\n\n\t<svg style=\"--i:2;--j:4;\">\n\t\t<path fill=\"#00FFFF\" d=\"M180.956 186.056C183.849 184.212 186.103 181.521 187.41 178.349C188.717 175.177 189.013 171.679 188.258 168.332C187.503 164.986 185.734 161.954 183.192 159.65C180.649 157.346 177.458 155.883 174.054 155.46C170.649 155.038 167.197 155.676 164.169 157.288C161.14 158.9 158.683 161.407 157.133 164.468C155.582 167.528 155.014 170.992 155.505 174.388C155.997 177.783 157.524 180.944 159.879 183.439L161.129 182.259C159.018 180.021 157.648 177.186 157.207 174.141C156.766 171.096 157.276 167.989 158.667 165.245C160.057 162.5 162.261 160.252 164.977 158.806C167.693 157.36 170.788 156.788 173.842 157.167C176.895 157.546 179.757 158.858 182.037 160.924C184.317 162.99 185.904 165.709 186.581 168.711C187.258 171.712 186.992 174.849 185.82 177.694C184.648 180.539 182.627 182.952 180.032 184.606L180.956 186.056Z\" id=\"center1\"></path>\n\t\t<path fill=\"#00FFFF\" d=\"M172 166.445C175.068 166.445 177.556 168.932 177.556 172C177.556 175.068 175.068 177.556 172 177.556C168.932 177.556 166.444 175.068 166.444 172C166.444 168.932 168.932 166.445 172 166.445ZM172 177.021C174.773 177.021 177.021 174.773 177.021 172C177.021 169.227 174.773 166.979 172 166.979C169.227 166.979 166.979 169.227 166.979 172C166.979 174.773 169.227 177.021 172 177.021Z\" id=\"center\"></path>\n\t</svg>\n\n</div>",
+    "css": "/* From Uiverse.io by Nawsome - Tags: loader */\n.svg-frame {\n  position: relative;\n  width: 300px;\n  height: 300px;\n  transform-style: preserve-3d;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.svg-frame svg {\n  position: absolute;\n  transition: .5s;\n  z-index: calc(1 - (0.2 * var(--j)));\n  transform-origin: center;\n  width: 344px;\n  height: 344px;\n  fill: none;\n}\n\n.svg-frame:hover svg {\n  transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i))) translateY(calc(-35px * var(--i)));\n}\n\n.svg-frame svg #center {\n  transition: .5s;\n  transform-origin: center;\n}\n\n.svg-frame:hover svg #center {\n  transform: rotate(-30deg) translateX(45px) translateY(-3px);\n}\n\n#out2 {\n  animation: rotate16 7s ease-in-out infinite alternate;\n  transform-origin: center;\n}\n\n#out3 {\n  animation: rotate16 3s ease-in-out infinite alternate;\n  transform-origin: center;\n  stroke: #ff0;\n}\n\n#inner3,\n#inner1 {\n  animation: rotate16 4s ease-in-out infinite alternate;\n  transform-origin: center;\n}\n\n#center1 {\n  fill: #ff0;\n  animation: rotate16 2s ease-in-out infinite alternate;\n  transform-origin: center;\n}\n\n@keyframes rotate16 {\n  to {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-197966",
+    "title": "Curly Goose 54",
+    "author": "Nawsome",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.530Z",
+    "html": "<div class=\"loader\">\n  <div>\n    <ul>\n      <li>\n        <svg fill=\"currentColor\" viewBox=\"0 0 90 120\">\n          <path d=\"M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z\"></path>\n        </svg>\n      </li>\n      <li>\n        <svg fill=\"currentColor\" viewBox=\"0 0 90 120\">\n          <path d=\"M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z\"></path>\n        </svg>\n      </li>\n      <li>\n        <svg fill=\"currentColor\" viewBox=\"0 0 90 120\">\n          <path d=\"M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z\"></path>\n        </svg>\n      </li>\n      <li>\n        <svg fill=\"currentColor\" viewBox=\"0 0 90 120\">\n          <path d=\"M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z\"></path>\n        </svg>\n      </li>\n      <li>\n        <svg fill=\"currentColor\" viewBox=\"0 0 90 120\">\n          <path d=\"M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z\"></path>\n        </svg>\n      </li>\n      <li>\n        <svg fill=\"currentColor\" viewBox=\"0 0 90 120\">\n          <path d=\"M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z\"></path>\n        </svg>\n      </li>\n    </ul>\n  </div><span>Loading</span></div>",
+    "css": "/* From Uiverse.io by Nawsome - Tags: blue, loader, book */\n.loader {\n  --background: linear-gradient(135deg, #23C4F8, #275EFE);\n  --shadow: rgba(39, 94, 254, 0.28);\n  --text: #6C7486;\n  --page: rgba(255, 255, 255, 0.36);\n  --page-fold: rgba(255, 255, 255, 0.52);\n  --duration: 3s;\n  width: 200px;\n  height: 140px;\n  position: relative;\n}\n\n.loader:before, .loader:after {\n  --r: -6deg;\n  content: \"\";\n  position: absolute;\n  bottom: 8px;\n  width: 120px;\n  top: 80%;\n  box-shadow: 0 16px 12px var(--shadow);\n  transform: rotate(var(--r));\n}\n\n.loader:before {\n  left: 4px;\n}\n\n.loader:after {\n  --r: 6deg;\n  right: 4px;\n}\n\n.loader div {\n  width: 100%;\n  height: 100%;\n  border-radius: 13px;\n  position: relative;\n  z-index: 1;\n  perspective: 600px;\n  box-shadow: 0 4px 6px var(--shadow);\n  background-image: var(--background);\n}\n\n.loader div ul {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  position: relative;\n}\n\n.loader div ul li {\n  --r: 180deg;\n  --o: 0;\n  --c: var(--page);\n  position: absolute;\n  top: 10px;\n  left: 10px;\n  transform-origin: 100% 50%;\n  color: var(--c);\n  opacity: var(--o);\n  transform: rotateY(var(--r));\n  -webkit-animation: var(--duration) ease infinite;\n  animation: var(--duration) ease infinite;\n}\n\n.loader div ul li:nth-child(2) {\n  --c: var(--page-fold);\n  -webkit-animation-name: page-2;\n  animation-name: page-2;\n}\n\n.loader div ul li:nth-child(3) {\n  --c: var(--page-fold);\n  -webkit-animation-name: page-3;\n  animation-name: page-3;\n}\n\n.loader div ul li:nth-child(4) {\n  --c: var(--page-fold);\n  -webkit-animation-name: page-4;\n  animation-name: page-4;\n}\n\n.loader div ul li:nth-child(5) {\n  --c: var(--page-fold);\n  -webkit-animation-name: page-5;\n  animation-name: page-5;\n}\n\n.loader div ul li svg {\n  width: 90px;\n  height: 120px;\n  display: block;\n}\n\n.loader div ul li:first-child {\n  --r: 0deg;\n  --o: 1;\n}\n\n.loader div ul li:last-child {\n  --o: 1;\n}\n\n.loader span {\n  display: block;\n  left: 0;\n  right: 0;\n  top: 100%;\n  margin-top: 20px;\n  text-align: center;\n  color: var(--text);\n}\n\n@keyframes page-2 {\n  0% {\n    transform: rotateY(180deg);\n    opacity: 0;\n  }\n\n  20% {\n    opacity: 1;\n  }\n\n  35%, 100% {\n    opacity: 0;\n  }\n\n  50%, 100% {\n    transform: rotateY(0deg);\n  }\n}\n\n@keyframes page-3 {\n  15% {\n    transform: rotateY(180deg);\n    opacity: 0;\n  }\n\n  35% {\n    opacity: 1;\n  }\n\n  50%, 100% {\n    opacity: 0;\n  }\n\n  65%, 100% {\n    transform: rotateY(0deg);\n  }\n}\n\n@keyframes page-4 {\n  30% {\n    transform: rotateY(180deg);\n    opacity: 0;\n  }\n\n  50% {\n    opacity: 1;\n  }\n\n  65%, 100% {\n    opacity: 0;\n  }\n\n  80%, 100% {\n    transform: rotateY(0deg);\n  }\n}\n\n@keyframes page-5 {\n  45% {\n    transform: rotateY(180deg);\n    opacity: 0;\n  }\n\n  65% {\n    opacity: 1;\n  }\n\n  80%, 100% {\n    opacity: 0;\n  }\n\n  95%, 100% {\n    transform: rotateY(0deg);\n  }\n}",
+    "tags": [
+      "blue",
+      "loader",
+      "book"
+    ]
+  },
+  {
+    "id": "uiv-875880",
+    "title": "Light Husky 91",
+    "author": "Nawsome",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.593Z",
+    "html": "<div class=\"loader\">\n  <div class=\"wrapper\">\n    <div class=\"circle\"></div>\n    <div class=\"line-1\"></div>\n    <div class=\"line-2\"></div>\n    <div class=\"line-3\"></div>\n    <div class=\"line-4\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Nawsome - Tags: loader, placeholder */\n.loader {\n  position: relative;\n  width: 240px;\n  height: 130px;\n  margin-bottom: 10px;\n  border: 1px solid #d3d3d3;\n  padding: 15px;\n  background-color: #e3e3e3;\n  overflow: hidden;\n}\n\n.loader:after {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  background: linear-gradient(110deg, rgba(227, 227, 227, 0) 0%, rgba(227, 227, 227, 0) 40%, rgba(227, 227, 227, 0.5) 50%, rgba(227, 227, 227, 0) 60%, rgba(227, 227, 227, 0) 100%);\n  animation: gradient-animation_2 1.2s linear infinite;\n}\n\n.loader .wrapper {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n\n.loader .wrapper > div {\n  background-color: #cacaca;\n}\n\n.loader .circle {\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n}\n\n.loader .button {\n  display: inline-block;\n  height: 32px;\n  width: 75px;\n}\n\n.loader .line-1 {\n  position: absolute;\n  top: 11px;\n  left: 58px;\n  height: 10px;\n  width: 100px;\n}\n\n.loader .line-2 {\n  position: absolute;\n  top: 34px;\n  left: 58px;\n  height: 10px;\n  width: 150px;\n}\n\n.loader .line-3 {\n  position: absolute;\n  top: 57px;\n  left: 0px;\n  height: 10px;\n  width: 100%;\n}\n\n.loader .line-4 {\n  position: absolute;\n  top: 80px;\n  left: 0px;\n  height: 10px;\n  width: 92%;\n}\n\n@keyframes gradient-animation_2 {\n  0% {\n    transform: translateX(-100%);\n  }\n\n  100% {\n    transform: translateX(100%);\n  }\n}",
+    "tags": [
+      "loader",
+      "placeholder"
+    ]
+  },
+  {
+    "id": "uiv-158894",
+    "title": "Tender Swan 29",
+    "author": "Nawsome",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.540Z",
+    "html": "<div class=\"socket\">\n\t\t\t<div class=\"gel center-gel\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c1 r1\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c2 r1\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c3 r1\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c4 r1\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c5 r1\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c6 r1\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class=\"gel c7 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class=\"gel c8 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c9 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c10 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c11 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c12 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c13 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c14 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c15 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c16 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c17 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c18 r2\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c19 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c20 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c21 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c22 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c23 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c24 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c25 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c26 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c28 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c29 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c30 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c31 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c32 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c33 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c34 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c35 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c36 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"gel c37 r3\">\n\t\t\t\t<div class=\"hex-brick h1\"></div>\n\t\t\t\t<div class=\"hex-brick h2\"></div>\n\t\t\t\t<div class=\"hex-brick h3\"></div>\n\t\t\t</div>\n\t\t\t\n\t\t</div>",
+    "css": "/* From Uiverse.io by Nawsome - Tags: loader */\n.socket {\n  width: 200px;\n  height: 200px;\n  position: absolute;\n  left: 50%;\n  margin-left: -100px;\n  top: 50%;\n  margin-top: -100px;\n}\n\n.hex-brick {\n  background: #000000;\n  width: 30px;\n  height: 17px;\n  position: absolute;\n  top: 5px;\n  animation-name: fade00;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n  -webkit-animation-name: fade00;\n  -webkit-animation-duration: 2s;\n  -webkit-animation-iteration-count: infinite;\n}\n\n.h2 {\n  transform: rotate(60deg);\n  -webkit-transform: rotate(60deg);\n}\n\n.h3 {\n  transform: rotate(-60deg);\n  -webkit-transform: rotate(-60deg);\n}\n\n.gel {\n  height: 30px;\n  width: 30px;\n  transition: all .3s;\n  -webkit-transition: all .3s;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n}\n\n.center-gel {\n  margin-left: -15px;\n  margin-top: -15px;\n  animation-name: pulse00;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n  -webkit-animation-name: pulse00;\n  -webkit-animation-duration: 2s;\n  -webkit-animation-iteration-count: infinite;\n}\n\n.c1 {\n  margin-left: -47px;\n  margin-top: -15px;\n}\n\n.c2 {\n  margin-left: -31px;\n  margin-top: -43px;\n}\n\n.c3 {\n  margin-left: 1px;\n  margin-top: -43px;\n}\n\n.c4 {\n  margin-left: 17px;\n  margin-top: -15px;\n}\n\n.c5 {\n  margin-left: -31px;\n  margin-top: 13px;\n}\n\n.c6 {\n  margin-left: 1px;\n  margin-top: 13px;\n}\n\n.c7 {\n  margin-left: -63px;\n  margin-top: -43px;\n}\n\n.c8 {\n  margin-left: 33px;\n  margin-top: -43px;\n}\n\n.c9 {\n  margin-left: -15px;\n  margin-top: 41px;\n}\n\n.c10 {\n  margin-left: -63px;\n  margin-top: 13px;\n}\n\n.c11 {\n  margin-left: 33px;\n  margin-top: 13px;\n}\n\n.c12 {\n  margin-left: -15px;\n  margin-top: -71px;\n}\n\n.c13 {\n  margin-left: -47px;\n  margin-top: -71px;\n}\n\n.c14 {\n  margin-left: 17px;\n  margin-top: -71px;\n}\n\n.c15 {\n  margin-left: -47px;\n  margin-top: 41px;\n}\n\n.c16 {\n  margin-left: 17px;\n  margin-top: 41px;\n}\n\n.c17 {\n  margin-left: -79px;\n  margin-top: -15px;\n}\n\n.c18 {\n  margin-left: 49px;\n  margin-top: -15px;\n}\n\n.c19 {\n  margin-left: -63px;\n  margin-top: -99px;\n}\n\n.c20 {\n  margin-left: 33px;\n  margin-top: -99px;\n}\n\n.c21 {\n  margin-left: 1px;\n  margin-top: -99px;\n}\n\n.c22 {\n  margin-left: -31px;\n  margin-top: -99px;\n}\n\n.c23 {\n  margin-left: -63px;\n  margin-top: 69px;\n}\n\n.c24 {\n  margin-left: 33px;\n  margin-top: 69px;\n}\n\n.c25 {\n  margin-left: 1px;\n  margin-top: 69px;\n}\n\n.c26 {\n  margin-left: -31px;\n  margin-top: 69px;\n}\n\n.c27 {\n  margin-left: -79px;\n  margin-top: -15px;\n}\n\n.c28 {\n  margin-left: -95px;\n  margin-top: -43px;\n}\n\n.c29 {\n  margin-left: -95px;\n  margin-top: 13px;\n}\n\n.c30 {\n  margin-left: 49px;\n  margin-top: 41px;\n}\n\n.c31 {\n  margin-left: -79px;\n  margin-top: -71px;\n}\n\n.c32 {\n  margin-left: -111px;\n  margin-top: -15px;\n}\n\n.c33 {\n  margin-left: 65px;\n  margin-top: -43px;\n}\n\n.c34 {\n  margin-left: 65px;\n  margin-top: 13px;\n}\n\n.c35 {\n  margin-left: -79px;\n  margin-top: 41px;\n}\n\n.c36 {\n  margin-left: 49px;\n  margin-top: -71px;\n}\n\n.c37 {\n  margin-left: 81px;\n  margin-top: -15px;\n}\n\n.r1 {\n  animation-name: pulse00;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n  animation-delay: .2s;\n  -webkit-animation-name: pulse00;\n  -webkit-animation-duration: 2s;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-delay: .2s;\n}\n\n.r2 {\n  animation-name: pulse00;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n  animation-delay: .4s;\n  -webkit-animation-name: pulse00;\n  -webkit-animation-duration: 2s;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-delay: .4s;\n}\n\n.r3 {\n  animation-name: pulse00;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n  animation-delay: .6s;\n  -webkit-animation-name: pulse00;\n  -webkit-animation-duration: 2s;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-delay: .6s;\n}\n\n.r1 > .hex-brick {\n  animation-name: fade00;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n  animation-delay: .2s;\n  -webkit-animation-name: fade00;\n  -webkit-animation-duration: 2s;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-delay: .2s;\n}\n\n.r2 > .hex-brick {\n  animation-name: fade00;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n  animation-delay: .4s;\n  -webkit-animation-name: fade00;\n  -webkit-animation-duration: 2s;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-delay: .4s;\n}\n\n.r3 > .hex-brick {\n  animation-name: fade00;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n  animation-delay: .6s;\n  -webkit-animation-name: fade00;\n  -webkit-animation-duration: 2s;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-delay: .6s;\n}\n\n@keyframes pulse00 {\n  0% {\n    -webkit-transform: scale(1);\n    transform: scale(1);\n  }\n\n  50% {\n    -webkit-transform: scale(0.01);\n    transform: scale(0.01);\n  }\n\n  100% {\n    -webkit-transform: scale(1);\n    transform: scale(1);\n  }\n}\n\n@keyframes fade00 {\n  0% {\n    background: #252525;\n  }\n\n  50% {\n    background: #000000;\n  }\n\n  100% {\n    background: #353535;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-221558",
+    "title": "Nice Sheep 25",
+    "author": "OMPRABHU8125",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.528Z",
+    "html": "<div class=\"loader\">\n  <div class=\"react-star\">\n    <div class=\"nucleus\"></div>\n    <div class=\"electron electron1\"></div>\n    <div class=\"electron electron2\"></div>\n    <div class=\"electron electron3\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by OMPRABHU8125  - Website: https://codepen.io/rahul-sahni/pen/YzOWmYy - Name: Rahul Sahni - Tags: animation, loader, cool, atom, sc-fi */\n.loader {\n  height: 20rem;\n  width: 20rem;\n  background-color: #212121;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.react-star {\n  position: relative;\n  width: 15rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 15rem;\n  animation: rotate 3s infinite;\n}\n\n.nucleus {\n  position: absolute;\n\n  transform: translate(-50%, -50%);\n  border-radius: 50%;\n  background: linear-gradient(#0738e8, cyan);\n  height: 2rem;\n  width: 2rem;\n  animation: rotate 1s linear infinite;\n}\n\n.electron {\n  position: absolute;\n  width: 15rem;\n  height: 6rem;\n  border-radius: 50%;\n  border: 0.3rem solid #00ffff;\n  animation: revolve 1s linear infinite;\n}\n\n.electron1::before,\n.electron2::before,\n.electron3::before {\n  content: \"\";\n  position: absolute;\n  top: 60%;\n  left: 100%;\n  transform: translate(-50%, -50%);\n  width: 1rem;\n  height: 1rem;\n  background-color: cyan;\n  border-radius: 50%;\n  animation: moveElectron 1s infinite;\n}\n.electron2 {\n  transform: rotate(60deg);\n  animation-delay: -0.66s;\n}\n.electron2::before {\n  animation-delay: -0.66s;\n}\n\n.electron3 {\n  transform: rotate(-60deg);\n}\n\n@keyframes rotate {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg) scale3d(1.1, 1.1, 0);\n  }\n}\n\n@keyframes revolve {\n  0% {\n    border-color: #00ffff9c;\n    border-right: transparent;\n  }\n  25% {\n    border-color: #00ffff9c;\n    border-bottom-color: transparent;\n  }\n  50% {\n    border-color: #00ffff9c;\n    border-left-color: transparent;\n  }\n  75% {\n    border-color: #00ffff9c;\n    border-top-color: transparent;\n  }\n  100% {\n    border-color: #00ffff9c;\n    border-right-color: transparent;\n  }\n}\n\n@keyframes moveElectron {\n  0% {\n    top: 60%;\n    left: 100%;\n  }\n  25% {\n    top: 100%;\n    left: 60%;\n  }\n  50% {\n    top: 60%;\n    left: 0%;\n  }\n  75% {\n    top: 0%;\n    left: 60%;\n  }\n  100% {\n    top: 60%;\n    left: 100%;\n  }\n}",
+    "tags": [
+      "animation",
+      "loader",
+      "cool",
+      "atom",
+      "sc-fi"
+    ]
+  },
+  {
+    "id": "uiv-816086",
+    "title": "Black Bear 45",
+    "author": "Praashoo7",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.540Z",
+    "html": "<div class=\"load\">\n  <div class=\"loader\">\n    <span class=\"l\">L</span>\n    <span class=\"l\">L</span>\n    <span class=\"l\">L</span>\n    <span class=\"l\">L</span>\n  </div>\n  <div class=\"loader\">\n    <span class=\"l\">O</span>\n    <span class=\"l\">O</span>\n    <span class=\"l\">O</span>\n    <span class=\"l\">O</span>\n  </div>\n  <div class=\"loader\">\n    <span class=\"l\">A</span>\n    <span class=\"l\">A</span>\n    <span class=\"l\">A</span>\n    <span class=\"l\">A</span>\n  </div>\n  <div class=\"loader\">\n    <span class=\"l\">D</span>\n    <span class=\"l\">D</span>\n    <span class=\"l\">D</span>\n    <span class=\"l\">D</span>\n  </div>\n  <div class=\"loader\">\n    <span class=\"l\">I</span>\n    <span class=\"l\">I</span>\n    <span class=\"l\">I</span>\n    <span class=\"l\">I</span>\n  </div>\n  <div class=\"loader\">\n    <span class=\"l\">N</span>\n    <span class=\"l\">N</span>\n    <span class=\"l\">N</span>\n    <span class=\"l\">N</span>\n  </div>\n  <div class=\"loader\">\n    <span class=\"l\">G</span>\n    <span class=\"l\">G</span>\n    <span class=\"l\">G</span>\n    <span class=\"l\">G</span>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Praashoo7  - Tags: blue, loading, loader, smooth, text animation, wave, loading animation */\n.load {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30em;\n  height: 12em;\n  margin-left: -1em;\n}\n\n.loader {\n  width: 2.25em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-family: Impact, Haettenschweiler, \"Arial Narrow Bold\", sans-serif;\n}\n\n.loader .l {\n  position: absolute;\n  margin-top: -2em;\n  font-size: 4em;\n  color: white;\n  text-shadow: 5px 0px 1px #000, 1px 1px 0 #000, 1px -1px 0 #000,\n    -1px -1px 0 #000;\n  animation: 2s float infinite ease-in-out;\n}\n\n.loader:nth-child(1) .l:nth-child(1) {\n  animation-delay: 0.4s;\n  margin-left: 0.3em;\n  color: #105ee8;\n}\n.loader:nth-child(1) .l:nth-child(2) {\n  animation-delay: 0.3s;\n  margin-left: 0.2em;\n  color: #579dff;\n}\n.loader:nth-child(1) .l:nth-child(3) {\n  animation-delay: 0.2s;\n  margin-left: 0.1em;\n  color: #acd9f1;\n}\n.loader:nth-child(1) .l:nth-child(4) {\n  animation-delay: 0.1s;\n}\n\n.loader:nth-child(2) .l:nth-child(1) {\n  animation-delay: 0.5s;\n  margin-left: 0.3em;\n  color: #105ee8;\n}\n.loader:nth-child(2) .l:nth-child(2) {\n  animation-delay: 0.4s;\n  margin-left: 0.2em;\n  color: #579dff;\n}\n.loader:nth-child(2) .l:nth-child(3) {\n  animation-delay: 0.3s;\n  margin-left: 0.1em;\n  color: #acd9f1;\n}\n.loader:nth-child(2) .l:nth-child(4) {\n  animation-delay: 0.2s;\n}\n\n.loader:nth-child(3) .l:nth-child(1) {\n  animation-delay: 0.6s;\n  margin-left: 0.3em;\n  color: #105ee8;\n}\n.loader:nth-child(3) .l:nth-child(2) {\n  animation-delay: 0.5s;\n  margin-left: 0.2em;\n  color: #579dff;\n}\n.loader:nth-child(3) .l:nth-child(3) {\n  animation-delay: 0.4s;\n  margin-left: 0.1em;\n  color: #acd9f1;\n}\n.loader:nth-child(3) .l:nth-child(4) {\n  animation-delay: 0.3s;\n}\n\n.loader:nth-child(4) .l:nth-child(1) {\n  animation-delay: 0.7s;\n  margin-left: 0.3em;\n  color: #105ee8;\n}\n.loader:nth-child(4) .l:nth-child(2) {\n  animation-delay: 0.6s;\n  margin-left: 0.2em;\n  color: #579dff;\n}\n.loader:nth-child(4) .l:nth-child(3) {\n  animation-delay: 0.5s;\n  margin-left: 0.1em;\n  color: #acd9f1;\n}\n.loader:nth-child(4) .l:nth-child(4) {\n  animation-delay: 0.4s;\n}\n\n.loader:nth-child(5) .l:nth-child(1) {\n  animation-delay: 0.8s;\n  margin-left: 0.3em;\n  color: #105ee8;\n}\n.loader:nth-child(5) .l:nth-child(2) {\n  animation-delay: 0.7s;\n  margin-left: 0.2em;\n  color: #579dff;\n}\n.loader:nth-child(5) .l:nth-child(3) {\n  animation-delay: 0.6s;\n  margin-left: 0.1em;\n  color: #acd9f1;\n}\n.loader:nth-child(5) .l:nth-child(4) {\n  animation-delay: 0.5s;\n}\n\n.loader:nth-child(6) .l:nth-child(1) {\n  animation-delay: 0.9s;\n  margin-left: 0.3em;\n  color: #105ee8;\n}\n.loader:nth-child(6) .l:nth-child(2) {\n  animation-delay: 0.8s;\n  margin-left: 0.2em;\n  color: #579dff;\n}\n.loader:nth-child(6) .l:nth-child(3) {\n  animation-delay: 0.7s;\n  margin-left: 0.1em;\n  color: #acd9f1;\n}\n.loader:nth-child(6) .l:nth-child(4) {\n  animation-delay: 0.6s;\n}\n\n.loader:nth-child(7) .l:nth-child(1) {\n  animation-delay: 1s;\n  margin-left: 0.3em;\n  color: #105ee8;\n}\n.loader:nth-child(7) .l:nth-child(2) {\n  animation-delay: 0.9s;\n  margin-left: 0.2em;\n  color: #579dff;\n}\n.loader:nth-child(7) .l:nth-child(3) {\n  animation-delay: 0.8s;\n  margin-left: 0.1em;\n  color: #acd9f1;\n}\n.loader:nth-child(7) .l:nth-child(4) {\n  animation-delay: 0.7s;\n}\n\n@keyframes float {\n  0% {\n    transform: translateY(0em);\n  }\n  50% {\n    transform: translateY(2em);\n  }\n  100% {\n    transform: translateY(0em);\n  }\n}",
+    "tags": [
+      "blue",
+      "loading",
+      "loader",
+      "smooth",
+      "text animation",
+      "wave",
+      "loading animation"
+    ]
+  },
+  {
+    "id": "uiv-721070",
+    "title": "Dangerous Horse 50",
+    "author": "Pradeepsaranbishnoi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.602Z",
+    "html": "<div class=\"loader\">\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n</div>\n\n<div class=\"loader loader--reflect\">\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n</div>",
+    "css": "/* From Uiverse.io by Pradeepsaranbishnoi - Tags: loader */\n/* The loader container */\n.loader {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 200px;\n  height: 100px;\n  margin-top: -100px;\n  margin-left: -100px;\n  perspective: 1000px;\n  transform-style: preserv3d;\n}\n\n.loader--reflect {\n  margin-top: 0;\n}\n\n.loader--reflect:after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: -25%;\n  width: 150%;\n  height: 110%;\n  background: linear-gradient(0deg, rgba(238, 238, 238, 1), rgba(238, 238, 238, 1) 20%, rgba(238, 238, 238, 0.3));\n}\n\n\n/* The bar */\n.bar {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 20px;\n  height: 100px;\n  background-color: #1e3f57;\n  transform: scaleY(0);\n  transform-style: preserve3d;\n  animation: bar 3s cubic-bezier(.81,.04,.4,.7) infinite;\n}\n\n.bar:nth-child(2) {\n  left: 20px;\n  background-color: #264a63;\n  animation-delay: 50ms;\n}\n\n.bar:nth-child(3) {\n  left: 40px;\n  background-color: #2d566f;\n  animation-delay: 100ms;\n}\n\n.bar:nth-child(4) {\n  left: 60px;\n  background-color: #35617a;\n  animation-delay: 150ms;\n}\n\n.bar:nth-child(5) {\n  left: 80px;\n  background-color: #3d6d86;\n  animation-delay: 200ms;\n}\n\n.bar:nth-child(6) {\n  left: 100px;\n  background-color: #447892;\n  animation-delay: 250ms;\n}\n\n.bar:nth-child(7) {\n  left: 120px;\n  background-color: #4c849e;\n  animation-delay: 300ms;\n}\n\n.bar:nth-child(8) {\n  left: 140px;\n  background-color: #548fa9;\n  animation-delay: 350ms;\n}\n\n.bar:nth-child(9) {\n  left: 160px;\n  background-color: #5c9bb5;\n  animation-delay: 400ms;\n}\n\n.bar:nth-child(10) {\n  left: 180px;\n  background-color: #63a6c1;\n  animation-delay: 450ms;\n}\n\n.loader--reflect .bar {\n  animation-name: bar-reflect;\n}\n\n@keyframes bar {\n  0% {\n    transform: rotateZ(-180deg) rotateX(-360deg);\n  }\n\n  75%,100% {\n    transform: rotateZ(0) rotateX(0);\n  }\n}\n\n@keyframes bar-reflect {\n  0% {\n    transform: rotateZ(180deg) rotateX(360deg);\n  }\n\n  75%,100% {\n    transform: rotateZ(0) rotateX(0);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-163969",
+    "title": "Fast Cobra 20",
+    "author": "Pradeepsaranbishnoi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.546Z",
+    "html": "<div class=\"loader\">\n  <div class=\"dot\"></div>\n  <div class=\"dot\"></div>\n  <div class=\"dot\"></div>\n</div>",
+    "css": "/* From Uiverse.io by Pradeepsaranbishnoi - Tags: loader */\n/* The loader container */\n.loader {\n  width: 200px;\n  height: 200px;\n  perspective: 200px;\n}\n\n\n/* The dot */\n.dot {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 120px;\n  height: 120px;\n  margin-top: -60px;\n  margin-left: -60px;\n  border-radius: 100px;\n  border: 40px outset #1e3f57;\n  transform-origin: 50% 50%;\n  transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);\n  background-color: transparent;\n  animation: dot1 1000ms cubic-bezier(.49,.06,.43,.85) infinite;\n}\n\n.dot:nth-child(2) {\n  width: 140px;\n  height: 140px;\n  margin-top: -70px;\n  margin-left: -70px;\n  border-width: 30px;\n  border-color: #447891;\n  animation-name: dot2;\n  animation-delay: 75ms;\n  box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);\n  transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);\n}\n\n.dot:nth-child(3) {\n  width: 160px;\n  height: 160px;\n  margin-top: -80px;\n  margin-left: -80px;\n  border-width: 20px;\n  border-color: #6bb2cd;\n  animation-name: dot3;\n  animation-delay: 150ms;\n  box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);\n  transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);\n}\n\n@keyframes dot1 {\n  0% {\n    border-color: #1e3f57;\n    transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);\n  }\n\n  50% {\n    border-color: #1e574f;\n    transform: rotateX(20deg) rotateY(20deg) rotateZ(50deg) translateZ(0px);\n  }\n\n  100% {\n    border-color: #1e3f57;\n    transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);\n  }\n}\n\n@keyframes dot2 {\n  0% {\n    border-color: #447891;\n    box-shadow: inset 0 0 15px 0 rgba(255, 255, 255, 0.2);\n    transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);\n  }\n\n  50% {\n    border-color: #449180;\n    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.8);\n    transform: rotateX(20deg) rotateY(20deg) rotateZ(50deg) translateZ(0px);\n  }\n\n  100% {\n    border-color: #447891;\n    box-shadow: inset 0 0 15px 0 rgba(255, 255, 255, 0.2);\n    transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);\n  }\n}\n\n@keyframes dot3 {\n  0% {\n    border-color: #6bb2cd;\n    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);\n    transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);\n  }\n\n  50% {\n    border-color: #6bcdb2;\n    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.8);\n    transform: rotateX(20deg) rotateY(20deg) rotateZ(50deg) translateZ(0px);\n  }\n\n  100% {\n    border-color: #6bb2cd;\n    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);\n    transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-788791",
+    "title": "Plastic Tiger 87",
+    "author": "Pradeepsaranbishnoi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.572Z",
+    "html": "<div class=\"loader\">\n  <div class=\"cubes\">\n    <div class=\"cube\">\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n    </div>\n    <div class=\"cube\">\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n    </div>\n    <div class=\"cube\">\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n    </div>\n    <div class=\"cube\">\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n      <div class=\"side\"></div>\n    </div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Pradeepsaranbishnoi - Tags: loader */\n/* The loader container */\n.loader {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 200px;\n  height: 200px;\n  margin-top: -100px;\n  margin-left: -100px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n}\n\n\n/* The cubes */\n.cubes {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  transform-style: preserve-3d;\n  transform: rotateY(45deg) rotateZ(45deg);\n}\n\n\n/* The cube */\n.cube {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 50%;\n  height: 50%;\n  transform-origin: 50% 50%;\n  transform-style: preserve-3d;\n  transform: translateZ(-50px);\n  animation: cube 2500ms cubic-bezier(.66,.14,.56,.75) infinite;\n}\n\n.cube:nth-child(2) {\n  top: 0;\n  left: 50%;\n  animation-delay: 50ms;\n}\n\n.cube:nth-child(3) {\n  top: 50%;\n  left: 0;\n  animation-delay: 100ms;\n}\n\n.cube:nth-child(4) {\n  top: 50%;\n  left: 50%;\n  animation-delay: 150ms;\n}\n\n@keyframes cube {\n  0%, 75%, 100% {\n    transform: translate3d(0px, 0px, 50px) rotateY(0deg) scale3d(0.9, 0.9, 0.1);\n  }\n\n  25%, 50% {\n    transform: translate3d(0px, 0px, -50px) rotateY(180deg) scale3d(0.9, 0.9, 0.1);\n  }\n}\n\n\n\n\n\n/* The side */\n.side {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  transform-style: preserve-3d;\n  backface-visibility: hidden;\n}\n\n/* back */\n.side:nth-child(1) {\n  transform: rotateX(-180deg) translateZ(50px);\n  background-color: #1e3f57;\n}\n\n/* left side */\n.side:nth-child(2) {\n  transform: rotateY(-90deg) translateZ(50px);\n  background-color: #6bb2cd;\n}\n\n/* right side */\n.side:nth-child(3) {\n  transform: rotateY(90deg) translateZ(50px);\n  background-color: #6bb2cd;\n}\n\n/* top side */\n.side:nth-child(4) {\n  transform: rotateX(90deg) translateZ(50px);\n  background-color: #3c617d;\n}\n\n/* bottom side */\n.side:nth-child(5) {\n  transform: rotateX(-90deg) translateZ(50px);\n  background-color: #3c617d;\n}\n\n/* top */\n.side:nth-child(6) {\n  transform: translateZ(50px);\n  background-color: #1e3f57;\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-699900",
+    "title": "Rude Vampirebat 100",
+    "author": "Pradeepsaranbishnoi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:36.567Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Pradeepsaranbishnoi - Tags: loader */\n.loader {\n  --s: 5px;\n /* control the size */\n  width: calc(10*var(--s));\n  display: grid;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  -webkit-mask: radial-gradient(50% 50%,#0000 calc(99% - 2*var(--s)),#000 calc(101% - 2*var(--s)));\n  animation: r 4s linear infinite;\n}\n\n.loader:before {\n  content: \"\";\n  /* adjust the colors below */\n  background: conic-gradient(from 25deg,#f8a201 25%,#fa2402 0 50%,#fdb3b0 0 75%,#02dde1 0);\n  -webkit-mask: repeating-conic-gradient(#0000 0 25deg,#000 23% 25%),\n    radial-gradient(var(--s) at var(--s) 50%,#000 97%,#0000) \n      left/calc(100% - 2*var(--s)) 100% repeat-x,\n    radial-gradient(var(--s) at 50% var(--s),#000 97%,#0000) \n      top /100% calc(100% - 2*var(--s)) repeat-y;\n}\n\n@keyframes r {\n  to {\n    transform: rotate(1turn)\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-271808",
+    "title": "Soft Turkey 91",
+    "author": "Pradeepsaranbishnoi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.219Z",
+    "html": "<div class=\"preloader\" style=\"opacity: 1;\">\n  <svg version=\"1.1\" id=\"sun\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"10px\" height=\"10px\" viewBox=\"0 0 10 10\" xml:space=\"preserve\" style=\"opacity: 1; margin-left: 0px; margin-top: 0px;\">\n    <g>\n      <path fill=\"none\" d=\"M6.942,3.876c-0.4-0.692-1.146-1.123-1.946-1.123c-0.392,0-0.779,0.104-1.121,0.301c-1.072,0.619-1.44,1.994-0.821,3.067C3.454,6.815,4.2,7.245,5,7.245c0.392,0,0.779-0.104,1.121-0.301C6.64,6.644,7.013,6.159,7.167,5.581C7.321,5,7.243,4.396,6.942,3.876z M6.88,5.505C6.745,6.007,6.423,6.427,5.973,6.688C5.676,6.858,5.34,6.948,5,6.948c-0.695,0-1.343-0.373-1.69-0.975C2.774,5.043,3.093,3.849,4.024,3.312C4.32,3.14,4.656,3.05,4.996,3.05c0.695,0,1.342,0.374,1.69,0.975C6.946,4.476,7.015,5,6.88,5.505z\"></path>\n      <path fill=\"none\" d=\"M8.759,2.828C8.718,2.757,8.626,2.732,8.556,2.774L7.345,3.473c-0.07,0.041-0.094,0.132-0.053,0.202C7.319,3.723,7.368,3.75,7.419,3.75c0.025,0,0.053-0.007,0.074-0.02l1.211-0.699C8.774,2.989,8.8,2.899,8.759,2.828z\"></path>\n      <path fill=\"none\" d=\"M1.238,7.171c0.027,0.047,0.077,0.074,0.128,0.074c0.025,0,0.051-0.008,0.074-0.02l1.211-0.699c0.071-0.041,0.095-0.133,0.054-0.203S2.574,6.228,2.503,6.269l-1.21,0.699C1.221,7.009,1.197,7.101,1.238,7.171z\"></path>\n      <path fill=\"none\" d=\"M6.396,2.726c0.052,0,0.102-0.026,0.13-0.075l0.349-0.605C6.915,1.976,6.89,1.885,6.819,1.844c-0.07-0.042-0.162-0.017-0.202,0.054L6.269,2.503C6.228,2.574,6.251,2.666,6.322,2.706C6.346,2.719,6.371,2.726,6.396,2.726z\"></path>\n\t\t  <path fill=\"none\" d=\"M3.472,7.347L3.123,7.952c-0.041,0.07-0.017,0.162,0.054,0.203C3.2,8.169,3.226,8.175,3.25,8.175c0.052,0,0.102-0.027,0.129-0.074l0.349-0.605c0.041-0.07,0.017-0.16-0.054-0.203C3.603,7.251,3.513,7.276,3.472,7.347z\"></path>\n\t\t  <path fill=\"none\" d=\"M3.601,2.726c0.025,0,0.051-0.007,0.074-0.02C3.746,2.666,3.77,2.574,3.729,2.503l-0.35-0.604C3.338,1.828,3.248,1.804,3.177,1.844C3.106,1.886,3.082,1.976,3.123,2.047l0.35,0.604C3.5,2.7,3.549,2.726,3.601,2.726z\"></path>\n\t\t  <path fill=\"none\" d=\"M6.321,7.292c-0.07,0.043-0.094,0.133-0.054,0.203l0.351,0.605c0.026,0.047,0.076,0.074,0.127,0.074c0.025,0,0.051-0.006,0.074-0.02c0.072-0.041,0.096-0.133,0.055-0.203l-0.35-0.605C6.483,7.276,6.393,7.253,6.321,7.292z\"></path>\n\t\t  <path fill=\"none\" d=\"M2.202,5.146c0.082,0,0.149-0.065,0.149-0.147S2.284,4.851,2.202,4.851H1.503c-0.082,0-0.148,0.066-0.148,0.148s0.066,0.147,0.148,0.147H2.202z\"></path>\n\t\t  <path fill=\"none\" d=\"M8.493,4.851H7.794c-0.082,0-0.148,0.066-0.148,0.148s0.066,0.147,0.148,0.147l0,0h0.699c0.082,0,0.148-0.065,0.148-0.147S8.575,4.851,8.493,4.851L8.493,4.851z\"></path>\n\t\t  <path fill=\"none\" d=\"M5.146,2.203V0.805c0-0.082-0.066-0.148-0.148-0.148c-0.082,0-0.148,0.066-0.148,0.148v1.398c0,0.082,0.066,0.149,0.148,0.149C5.08,2.352,5.146,2.285,5.146,2.203z\"></path>\n\t\t  <path fill=\"none\" d=\"M4.85,7.796v1.396c0,0.082,0.066,0.15,0.148,0.15c0.082,0,0.148-0.068,0.148-0.15V7.796c0-0.082-0.066-0.148-0.148-0.148C4.917,7.647,4.85,7.714,4.85,7.796z\"></path>\n\t\t  <path fill=\"none\" d=\"M2.651,3.473L1.44,2.774C1.369,2.732,1.279,2.757,1.238,2.828C1.197,2.899,1.221,2.989,1.292,3.031l1.21,0.699c0.023,0.013,0.049,0.02,0.074,0.02c0.051,0,0.101-0.026,0.129-0.075C2.747,3.604,2.722,3.514,2.651,3.473z\"></path>\n\t\t  <path fill=\"none\" d=\"M8.704,6.968L7.493,6.269c-0.07-0.041-0.162-0.016-0.201,0.055c-0.041,0.07-0.018,0.162,0.053,0.203l1.211,0.699c0.023,0.012,0.049,0.02,0.074,0.02c0.051,0,0.102-0.027,0.129-0.074C8.8,7.101,8.776,7.009,8.704,6.968z\"></path>\n\t  </g>\n  </svg>\n\n  <svg version=\"1.1\" id=\"cloud\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"10px\" height=\"10px\" viewBox=\"0 0 10 10\" xml:space=\"preserve\">\n    <path fill=\"none\" d=\"M8.528,5.624H8.247c-0.085,0-0.156-0.068-0.156-0.154c0-0.694-0.563-1.257-1.257-1.257c-0.098,0-0.197,0.013-0.3,0.038C6.493,4.259,6.45,4.252,6.415,4.229C6.38,4.208,6.356,4.172,6.348,4.131C6.117,3.032,5.135,2.235,4.01,2.235c-1.252,0-2.297,0.979-2.379,2.23c-0.004,0.056-0.039,0.108-0.093,0.13C1.076,4.793,0.776,5.249,0.776,5.752c0,0.693,0.564,1.257,1.257,1.257h6.495c0.383,0,0.695-0.31,0.695-0.692S8.911,5.624,8.528,5.624z\"></path>\n  </svg>\n\n  <div class=\"rain\">\n    <span class=\"drop\"></span>\n    <span class=\"drop\"></span>\n    <span class=\"drop\"></span>\n    <span class=\"drop\"></span>\n    <span class=\"drop\"></span>\n    <span class=\"drop\"></span>\n    <span class=\"drop\"></span>\n    <span class=\"drop\"></span>\n    <span class=\"drop\"></span>\n    <span class=\"drop\"></span>\n  </div>\n  \n  <div class=\"text\">\n    LOADING...\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Pradeepsaranbishnoi - Tags: loader */\n.preloader {\n  position: absolute;\n  margin-left: -55px;\n  margin-top: -100px;\n  height: 110px;\n  width: 110px;\n  left: 50%;\n  top: 50%;\n}\n\nsvg {\n  width: 110px;\n  height: 110px;\n}\n\npath {\n  stroke: #9ea1a4;\n  stroke-width: 0.25;\n  fill: #241E20;\n}\n\n#cloud {\n  position: relative;\n  z-index: 2;\n}\n\n#cloud path {\n  fill: #efefef;\n}\n\n#sun {\n  margin-left: -10px;\n  margin-top: 6px;\n  opacity: 0;\n  width: 60px;\n  height: 60px;\n  position: absolute;\n  left: 45px;\n  top: 15px;\n  z-index: 1;\n  animation-name: rotate;\n  animation-duration: 16000ms;\n  animation-iteration-count: infinite;\n  animation-timing-function: linear;\n}\n\n#sun path {\n  stroke-width: 0.18;\n  fill: #9ea1a4;\n}\n\n@keyframes rotate {\n  0% {\n    transform: rotateZ(0deg);\n  }\n\n  100% {\n    transform: rotateZ(360deg);\n  }\n}\n\n/* Rain */\n.rain {\n  position: absolute;\n  width: 70px;\n  height: 70px;\n  margin-top: -32px;\n  margin-left: 19px;\n}\n\n.drop {\n  opacity: 1;\n  background: #9ea1a4;\n  display: block;\n  float: left;\n  width: 3px;\n  height: 10px;\n  margin-left: 4px;\n  border-radius: 0px 0px 6px 6px;\n  animation-name: drop;\n  animation-duration: 350ms;\n  animation-iteration-count: infinite;\n}\n\n.drop:nth-child(1) {\n  animation-delay: -130ms;\n}\n\n.drop:nth-child(2) {\n  animation-delay: -240ms;\n}\n\n.drop:nth-child(3) {\n  animation-delay: -390ms;\n}\n\n.drop:nth-child(4) {\n  animation-delay: -525ms;\n}\n\n.drop:nth-child(5) {\n  animation-delay: -640ms;\n}\n\n.drop:nth-child(6) {\n  animation-delay: -790ms;\n}\n\n.drop:nth-child(7) {\n  animation-delay: -900ms;\n}\n\n.drop:nth-child(8) {\n  animation-delay: -1050ms;\n}\n\n.drop:nth-child(9) {\n  animation-delay: -1130ms;\n}\n\n.drop:nth-child(10) {\n  animation-delay: -1300ms;\n}\n\n@keyframes drop {\n  50% {\n    height: 45px;\n    opacity: 0;\n  }\n\n  51% {\n    opacity: 0;\n  }\n\n  100% {\n    height: 1px;\n    opacity: 0;\n  }\n}\n\n.text {\n  font-family: Helvetica, 'Helvetica Neue', sans-serif;\n  letter-spacing: 1px;\n  text-align: center;\n  margin-left: -43px;\n  font-weight: bold;\n  margin-top: 20px;\n  font-size: 11px;\n  color: #a0a0a0;\n  width: 200px;\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-557954",
+    "title": "Popular Cobra 49",
+    "author": "PriyanshuGupta28",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.029Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by PriyanshuGupta28 - Tags: loader, 3d loader */\n.spinner {\n  width: 56px;\n  height: 56px;\n  display: grid;\n  border-radius: 50%;\n  -webkit-mask: radial-gradient(farthest-side,#0000 40%,#6121d1 41%);\n  background: linear-gradient(0deg ,rgba(97,33,209,0.5) 50%,rgba(97,33,209,1) 0) center/4.5px 100%,\n        linear-gradient(90deg,rgba(97,33,209,0.25) 50%,rgba(97,33,209,0.75) 0) center/100% 4.5px;\n  background-repeat: no-repeat;\n  animation: spinner-d3o0rx 1s infinite steps(12);\n}\n\n.spinner::before,\n.spinner::after {\n  content: \"\";\n  grid-area: 1/1;\n  border-radius: 50%;\n  background: inherit;\n  opacity: 0.915;\n  transform: rotate(30deg);\n}\n\n.spinner::after {\n  opacity: 0.83;\n  transform: rotate(60deg);\n}\n\n@keyframes spinner-d3o0rx {\n  100% {\n    transform: rotate(1turn);\n  }\n}",
+    "tags": [
+      "loader",
+      "3d loader"
+    ]
+  },
+  {
+    "id": "uiv-352350",
+    "title": "Strong Monkey 50",
+    "author": "PriyanshuGupta28",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.038Z",
+    "html": "<div class=\"loader\">\n    <div class=\"circle\"></div>\n    <div class=\"circle\"></div>\n    <div class=\"circle\"></div>\n    <div class=\"circle\"></div>\n    <div class=\"circle\"></div>\n  </div>",
+    "css": "/* From Uiverse.io by PriyanshuGupta28 - Tags: loader, circle loader, cool loader, 3d loader */\n.loader {\n  flex-direction: row;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.circle {\n  width: 20px;\n  height: 20px;\n  background-color: #8BC6EC;\n  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);\n  border-radius: 50%;\n  margin-right: 1rem;\n  animation: pulse 1.2s ease-in-out infinite;\n}\n\n.circle:nth-child(2) {\n  animation-delay: 0.2s;\n  background-color: #4158D0;\n  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);\n}\n\n.circle:nth-child(3) {\n  animation-delay: 0.4s;\n  background-color: #0093E9;\n  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);\n}\n\n.circle:nth-child(4) {\n  animation-delay: 0.6s;\n  background-color: #8EC5FC;\n  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);\n}\n\n.circle:nth-child(5) {\n  animation-delay: 0.8s;\n  background-color: #00DBDE;\n  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);\n}\n\n@keyframes pulse {\n  0% {\n    transform: scale(0.8);\n    opacity: 0.7;\n  }\n\n  50% {\n    transform: scale(1);\n    opacity: 1;\n  }\n\n  100% {\n    transform: scale(0.8);\n    opacity: 0.7;\n  }\n}",
+    "tags": [
+      "loader",
+      "circle loader",
+      "cool loader",
+      "3d loader"
+    ]
+  },
+  {
+    "id": "uiv-940399",
+    "title": "Helpless Newt 19",
+    "author": "Rajan1092",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.239Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by Rajan1092 - Tags: 3d loader, dotted loader */\n.spinner {\n  width: 56px;\n  height: 56px;\n  display: grid;\n}\n\n.spinner::before,\n.spinner::after {\n  content: \"\";\n  grid-area: 1/1;\n  background: var(--c) 50%  0, \n        var(--c) 50%  100%, \n        var(--c) 100% 50%, \n        var(--c) 0    50%;\n  background-size: 13.4px 13.4px;\n  background-repeat: no-repeat;\n  animation: spinner-3hs4a3 1s infinite;\n}\n\n.spinner::before {\n  --c: radial-gradient(farthest-side,#2b55a0 92%,#0000);\n  margin: 4.5px;\n  background-size: 9px 9px;\n  animation-timing-function: linear;\n}\n\n.spinner::after {\n  --c: radial-gradient(farthest-side,#2b55a0 92%,#0000);\n}\n\n@keyframes spinner-3hs4a3 {\n  100% {\n    transform: rotate(.5turn);\n  }\n}",
+    "tags": [
+      "3d loader",
+      "dotted loader"
+    ]
+  },
+  {
+    "id": "uiv-335992",
+    "title": "Evil Goat 39",
+    "author": "Rodrypaladin",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.031Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Rodrypaladin - Tags: animation, red, loading, loader, modern, creative, multicolor, bounce animation */\n.loader {\n  width: 100px;\n  height: 100px;\n  background-color: orange;\n  border-radius: 50%;\n  box-shadow: -15px -15px 15px #ff6600, 15px -15px 15px #ff9100, 15px 15px 15px #ff5500, -15px 15px 15px #ffa600, -15px 0 15px #ff6600, 15px 0 15px #ffcc00;\n  animation: rotate 1s infinite;\n  transform: rotate(0) scale(0.8);\n}\n\n@keyframes rotate {\n  0% {\n    transform: rotate(360deg) scale(0.8);\n  }\n\n  50% {\n    transform: rotate(0) scale(1.2);\n  }\n}",
+    "tags": [
+      "animation",
+      "red",
+      "loading",
+      "loader",
+      "modern",
+      "creative",
+      "multicolor",
+      "bounce animation"
+    ]
+  },
+  {
+    "id": "uiv-620897",
+    "title": "Honest Dodo 28",
+    "author": "SHABANA7422",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.074Z",
+    "html": "<div class=\"container\">\n  <div class=\"half\"></div>\n  <div class=\"half\"></div>\n</div>",
+    "css": "/* From Uiverse.io by SHABANA7422  - Tags: loader */\n.container {\n  --uib-size: 45px;\n  --uib-color: black;\n  --uib-speed: 1.75s;\n  --uib-bg-opacity: 0.1;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  height: var(--uib-size);\n  width: var(--uib-size);\n  transform: rotate(45deg);\n  animation: rotate calc(var(--uib-speed) * 2) ease-in-out infinite;\n}\n\n.half {\n  --uib-half-size: calc(var(--uib-size) * 0.435);\n  position: absolute;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: var(--uib-half-size);\n  height: var(--uib-half-size);\n  overflow: hidden;\n  isolation: isolate;\n\n  &:first-child {\n    top: 8.25%;\n    left: 8.25%;\n    border-radius: 50% 50% calc(var(--uib-size) / 15);\n  }\n\n  &:last-child {\n    bottom: 8.25%;\n    right: 8.25%;\n    transform: rotate(180deg);\n    align-self: flex-end;\n    border-radius: 50% 50% calc(var(--uib-size) / 15);\n\n    &::after {\n      animation-delay: calc(var(--uib-speed) * -1);\n    }\n  }\n\n  &::before {\n    content: \"\";\n    height: 100%;\n    width: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n    background-color: var(--uib-color);\n    opacity: var(--uib-bg-opacity);\n    transition: background-color 0.3s ease;\n  }\n\n  &::after {\n    content: \"\";\n    position: relative;\n    z-index: 1;\n    display: block;\n    background-color: var(--uib-color);\n    height: 100%;\n    transform: rotate(45deg) translate(-3%, 50%) scaleX(1.2);\n    width: 100%;\n    transform-origin: bottom right;\n    border-radius: 0 0 calc(var(--uib-size) / 20) 0;\n    animation: flow calc(var(--uib-speed) * 2) linear infinite both;\n    transition: background-color 0.3s ease;\n  }\n}\n\n@keyframes flow {\n  0% {\n    transform: rotate(45deg) translate(-3%, 50%) scaleX(1.2);\n  }\n  30% {\n    transform: rotate(45deg) translate(115%, 50%) scaleX(1.2);\n  }\n\n  30.001%,\n  50% {\n    transform: rotate(0deg) translate(-85%, -85%) scaleX(1);\n  }\n\n  80%,\n  100% {\n    transform: rotate(0deg) translate(0%, 0%) scaleX(1);\n  }\n}\n\n@keyframes rotate {\n  0%,\n  30% {\n    transform: rotate(45deg);\n  }\n\n  50%,\n  80% {\n    transform: rotate(225deg);\n  }\n\n  100% {\n    transform: rotate(405deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-300296",
+    "title": "Blue Tiger 12",
+    "author": "Saiyed-Tanvir",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.030Z",
+    "html": "<div class=\"box\"></div>",
+    "css": "/* From Uiverse.io by Saiyed-Tanvir - Tags: loader, box, blocky, box-shadow */\n.box {\n  height: 5cm;\n  width: 5cm;\n  border: 5px solid #ffa600;\n  box-shadow: inset 0 0 0 #ffa600;\n  animation: load 2s ease-in-out infinite;\n}\n\n@keyframes load {\n  0% {\n    box-shadow: inset -2.5cm -2.5cm 0 #ffa600;\n  }\n\n  25% {\n    box-shadow: inset 2.5cm -2.5cm 0 #ffa600;\n  }\n\n  50% {\n    box-shadow: inset 2.5cm 2.5cm 0 #ffa600;\n  }\n\n  75% {\n    box-shadow: inset -2.5cm 2.5cm 0 #ffa600;\n  }\n\n  100% {\n    box-shadow: inset -2.5cm -2.5cm 0 #ffa600;\n  }\n}",
+    "tags": [
+      "loader",
+      "box",
+      "blocky",
+      "box-shadow"
+    ]
+  },
+  {
+    "id": "uiv-989332",
+    "title": "Fluffy Cat 65",
+    "author": "Salem795",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.075Z",
+    "html": "<div class=\"loader\">\n  <div class=\"truckWrapper\">\n    <div class=\"truckBody\">\n      <svg\n        class=\"trucksvg\"\n        viewBox=\"0 0 198 93\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <path\n          d=\"M135 22.5H177.264C178.295 22.5 179.22 23.133 179.594 24.0939L192.33 56.8443C192.442 57.1332 192.5 57.4404 192.5 57.7504V89C192.5 90.3807 191.381 91.5 190 91.5H135C133.619 91.5 132.5 90.3807 132.5 89V25C132.5 23.6193 133.619 22.5 135 22.5Z\"\n          fill=\"#F83D3D\"\n          stroke=\"#282828\"\n          stroke-width=\"3\"\n        ></path>\n        <path\n          d=\"M146 33.5H181.741C182.779 33.5 183.709 34.1415 184.078 35.112L190.538 52.112C191.16 53.748 189.951 55.5 188.201 55.5H146C144.619 55.5 143.5 54.3807 143.5 53V36C143.5 34.6193 144.619 33.5 146 33.5Z\"\n          fill=\"#7D7C7C\"\n          stroke=\"#282828\"\n          stroke-width=\"3\"\n        ></path>\n        <path\n          d=\"M150 65C150 65.39 149.763 65.8656 149.127 66.2893C148.499 66.7083 147.573 67 146.5 67C145.427 67 144.501 66.7083 143.873 66.2893C143.237 65.8656 143 65.39 143 65C143 64.61 143.237 64.1344 143.873 63.7107C144.501 63.2917 145.427 63 146.5 63C147.573 63 148.499 63.2917 149.127 63.7107C149.763 64.1344 150 64.61 150 65Z\"\n          fill=\"#282828\"\n          stroke=\"#282828\"\n          stroke-width=\"2\"\n        ></path>\n        <rect\n          x=\"187\"\n          y=\"63\"\n          width=\"5\"\n          height=\"7\"\n          rx=\"1\"\n          fill=\"#FFFCAB\"\n          stroke=\"#282828\"\n          stroke-width=\"2\"\n        ></rect>\n        <rect\n          x=\"193\"\n          y=\"81\"\n          width=\"4\"\n          height=\"11\"\n          rx=\"1\"\n          fill=\"#282828\"\n          stroke=\"#282828\"\n          stroke-width=\"2\"\n        ></rect>\n        <rect\n          x=\"6.5\"\n          y=\"1.5\"\n          width=\"121\"\n          height=\"90\"\n          rx=\"2.5\"\n          fill=\"#DFDFDF\"\n          stroke=\"#282828\"\n          stroke-width=\"3\"\n        ></rect>\n        <rect\n          x=\"1\"\n          y=\"84\"\n          width=\"6\"\n          height=\"4\"\n          rx=\"2\"\n          fill=\"#DFDFDF\"\n          stroke=\"#282828\"\n          stroke-width=\"2\"\n        ></rect>\n      </svg>\n    </div>\n    <div class=\"truckTires\">\n      <svg\n        class=\"tiresvg\"\n        viewBox=\"0 0 30 30\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <circle\n          cx=\"15\"\n          cy=\"15\"\n          r=\"13.5\"\n          fill=\"#282828\"\n          stroke=\"#282828\"\n          stroke-width=\"3\"\n        ></circle>\n        <circle cx=\"15\" cy=\"15\" r=\"7\" fill=\"#DFDFDF\"></circle>\n      </svg>\n      <svg\n        class=\"tiresvg\"\n        viewBox=\"0 0 30 30\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <circle\n          cx=\"15\"\n          cy=\"15\"\n          r=\"13.5\"\n          fill=\"#282828\"\n          stroke=\"#282828\"\n          stroke-width=\"3\"\n        ></circle>\n        <circle cx=\"15\" cy=\"15\" r=\"7\" fill=\"#DFDFDF\"></circle>\n      </svg>\n    </div>\n    <div class=\"road\"></div>\n\n    <svg\n      class=\"lampPost\"\n      fill=\"#000000\"\n      version=\"1.1\"\n      id=\"Capa_1\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n      viewBox=\"0 0 453.459 453.459\"\n      xml:space=\"preserve\"\n    >\n      <path\n        d=\"M252.882,0c-37.781,0-68.686,29.953-70.245,67.358h-6.917v8.954c-26.109,2.163-45.463,10.011-45.463,19.366h9.993\nc-1.65,5.146-2.507,10.54-2.507,16.017c0,28.956,23.558,52.514,52.514,52.514c28.956,0,52.514-23.558,52.514-52.514\nc0-5.478-0.856-10.872-2.506-16.017h9.992c0-9.354-19.352-17.204-45.463-19.366v-8.954h-6.149C200.189,38.779,223.924,16,252.882,16\nc29.952,0,54.32,24.368,54.32,54.32c0,28.774-11.078,37.009-25.105,47.437c-17.444,12.968-37.216,27.667-37.216,78.884v113.914\nh-0.797c-5.068,0-9.174,4.108-9.174,9.177c0,2.844,1.293,5.383,3.321,7.066c-3.432,27.933-26.851,95.744-8.226,115.459v11.202h45.75\nv-11.202c18.625-19.715-4.794-87.527-8.227-115.459c2.029-1.683,3.322-4.223,3.322-7.066c0-5.068-4.107-9.177-9.176-9.177h-0.795\nV196.641c0-43.174,14.942-54.283,30.762-66.043c14.793-10.997,31.559-23.461,31.559-60.277C323.202,31.545,291.656,0,252.882,0z\nM232.77,111.694c0,23.442-19.071,42.514-42.514,42.514c-23.442,0-42.514-19.072-42.514-42.514c0-5.531,1.078-10.957,3.141-16.017\nh78.747C231.693,100.736,232.77,106.162,232.77,111.694z\"\n      ></path>\n    </svg>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Salem795  - Tags: 3d, loader, modern */\n.loader {\n  width: fit-content;\n  height: fit-content;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.truckWrapper {\n  width: 200px;\n  height: 100px;\n  display: flex;\n  flex-direction: column;\n  position: relative;\n  align-items: center;\n  justify-content: flex-end;\n  overflow-x: hidden;\n}\n/* truck upper body */\n.truckBody {\n  width: 130px;\n  height: fit-content;\n  margin-bottom: 6px;\n  animation: motion 1s linear infinite;\n}\n/* truck suspension animation*/\n@keyframes motion {\n  0% {\n    transform: translateY(0px);\n  }\n  50% {\n    transform: translateY(3px);\n  }\n  100% {\n    transform: translateY(0px);\n  }\n}\n/* truck's tires */\n.truckTires {\n  width: 130px;\n  height: fit-content;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0px 10px 0px 15px;\n  position: absolute;\n  bottom: 0;\n}\n.truckTires svg {\n  width: 24px;\n}\n\n.road {\n  width: 100%;\n  height: 1.5px;\n  background-color: #282828;\n  position: relative;\n  bottom: 0;\n  align-self: flex-end;\n  border-radius: 3px;\n}\n.road::before {\n  content: \"\";\n  position: absolute;\n  width: 20px;\n  height: 100%;\n  background-color: #282828;\n  right: -50%;\n  border-radius: 3px;\n  animation: roadAnimation 1.4s linear infinite;\n  border-left: 10px solid white;\n}\n.road::after {\n  content: \"\";\n  position: absolute;\n  width: 10px;\n  height: 100%;\n  background-color: #282828;\n  right: -65%;\n  border-radius: 3px;\n  animation: roadAnimation 1.4s linear infinite;\n  border-left: 4px solid white;\n}\n\n.lampPost {\n  position: absolute;\n  bottom: 0;\n  right: -90%;\n  height: 90px;\n  animation: roadAnimation 1.4s linear infinite;\n}\n\n@keyframes roadAnimation {\n  0% {\n    transform: translateX(0px);\n  }\n  100% {\n    transform: translateX(-350px);\n  }\n}",
+    "tags": [
+      "3d",
+      "loader",
+      "modern"
+    ]
+  },
+  {
+    "id": "uiv-663990",
+    "title": "Slippery Eel 89",
+    "author": "SanthoshSJ-Dev",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.031Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by SanthoshSJ-Dev - Tags: loader, big, battery, mobile, charger */\n.loader {\n  position: relative;\n  width: 92px;\n  height: 180px;\n  border-radius: 8px;\n  transform: translateY(-30px);\n  background-color: #000;\n  background-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 4%,rgba(81,81,81,1) 14%,rgba(44,44,44,1) 26%,rgba(2,2,2,1) 53%,rgba(2,2,2,1) 65%,rgba(2,2,2,0) 66%),\n    linear-gradient(#111, #111);\n  background-repeat: no-repeat;\n  background-size: 10px 10px , 84px 162px;\n  background-position: center 2px, 4px 8px;\n  animation: lightUp 6s linear infinite alternate;\n}\n\n.loader:before {\n  content: '';\n  position: absolute;\n  left: 50%;\n  top: 190px;\n  transform: translateX(-50%);\n  width: 32px;\n  height: 75px;\n  background-image: linear-gradient(#fff, #fff),\n  linear-gradient(#bbb, #bbb),\n  linear-gradient(#fff, #fff);\n  background-repeat: no-repeat;\n  background-position: center 4px , center top, center 5px;\n  background-size: 11px 11px , 7px 4px ,  2px 100%;\n  animation: plugin 6s linear infinite alternate;\n}\n\n.loader:after {\n  content: '';\n  width: 30px;\n  height: 60px;\n  background-image: linear-gradient(#888, #888),\n  linear-gradient(to right, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.5) 40%,rgba(255,255,255,0.3) 50%,rgba(255,255,255,0.1) 100%),\n  linear-gradient(#15ff00, #15ff00),\n  linear-gradient(#888, #888);\n  background-size: 12px 4px, 30px 52px , 30px 0px , 30px 56px;\n  background-position: center 0 , center 6px , center bottom , center 4px;\n  background-repeat: no-repeat;\n  top: 50%;\n  left: 50%;\n  position: absolute;\n  transform: translate(-50% , -50%);\n  animation: charging 6s linear infinite alternate;\n}\n\n@keyframes charging {\n  0%  , 25% {\n    opacity: 0;\n    background-size: 12px 4px, 30px 52px , 30px 0px , 30px 56px;\n  }\n\n  26% ,  75% {\n    opacity: 1;\n    background-size: 12px 4px, 30px 52px , 30px 0px , 30px 56px;\n  }\n\n  50% , 100% {\n    opacity: 1;\n    background-size: 12px 4px, 30px 52px , 30px 56px , 30px 56px\n  }\n}\n\n@keyframes lightUp {\n  0%  , 25% {\n    background-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 4%,rgba(81,81,81,1) 14%,rgba(44,44,44,1) 26%,rgba(2,2,2,1) 53%,rgba(2,2,2,1) 65%,rgba(2,2,2,0) 66%),\n      linear-gradient(#111, #111);\n  }\n\n  26% , 100% {\n    background-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 4%,rgba(81,81,81,1) 14%,rgba(44,44,44,1) 26%,rgba(2,2,2,1) 53%,rgba(2,2,2,1) 65%,rgba(2,2,2,0) 66%),\n      linear-gradient(#DDD, #DDD);\n  }\n}\n\n@keyframes plugin {\n  0% , 25% {\n    top: 190px;\n    background-position: center 4px , center top, center 5px;\n  }\n\n  26%  , 100% {\n    background-position: center 0 , center top, center 5px;\n    top: 180px;\n  }\n}",
+    "tags": [
+      "loader",
+      "big",
+      "battery",
+      "mobile",
+      "charger"
+    ]
+  },
+  {
+    "id": "uiv-654546",
+    "title": "Black Yak 68",
+    "author": "SelfMadeSystem",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.034Z",
+    "html": "<div style=\"--size: 64px; --dot-size: 6px; --dot-count: 6; --color: #fff; --speed: 1s; --spread: 60deg;\" class=\"dots\">\n  <div style=\"--i: 0;\" class=\"dot\"></div>\n  <div style=\"--i: 1;\" class=\"dot\"></div>\n  <div style=\"--i: 2;\" class=\"dot\"></div>\n  <div style=\"--i: 3;\" class=\"dot\"></div>\n  <div style=\"--i: 4;\" class=\"dot\"></div>\n  <div style=\"--i: 5;\" class=\"dot\"></div>\n</div>",
+    "css": "/* From Uiverse.io by SelfMadeSystem - Tags: loader, windows */\n.dots {\n  width: var(--size);\n  height: var(--size);\n  position: relative;\n}\n\n.dot {\n  width: var(--size);\n  height: var(--size);\n  animation: dwl-dot-spin calc(var(--speed) * 5) infinite linear both;\n  animation-delay: calc(var(--i) * var(--speed) / (var(--dot-count) + 2) * -1);\n  rotate: calc(var(--i) * var(--spread) / (var(--dot-count) - 1));\n  position: absolute;\n}\n\n.dot::before {\n  content: \"\";\n  display: block;\n  width: var(--dot-size);\n  height: var(--dot-size);\n  background-color: var(--color);\n  border-radius: 50%;\n  position: absolute;\n  transform: translate(-50%, -50%);\n  bottom: 0;\n  left: 50%;\n}\n\n@keyframes dwl-dot-spin {\n  0% {\n    transform: rotate(0deg);\n    animation-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000);\n    opacity: 1;\n  }\n\n  2% {\n    transform: rotate(20deg);\n    animation-timing-function: linear;\n    opacity: 1;\n  }\n\n  30% {\n    transform: rotate(180deg);\n    animation-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950);\n    opacity: 1;\n  }\n\n  41% {\n    transform: rotate(380deg);\n    animation-timing-function: linear;\n    opacity: 1;\n  }\n\n  69% {\n    transform: rotate(520deg);\n    animation-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950);\n    opacity: 1;\n  }\n\n  76% {\n    opacity: 1;\n  }\n\n  76.1% {\n    opacity: 0;\n  }\n\n  80% {\n    transform: rotate(720deg);\n  }\n\n  100% {\n    opacity: 0;\n  }\n}",
+    "tags": [
+      "loader",
+      "windows"
+    ]
+  },
+  {
+    "id": "uiv-838557",
+    "title": "Jolly Pig 52",
+    "author": "SelfMadeSystem",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.055Z",
+    "html": "<svg class=\"loader\" viewBox=\"0 0 384 384\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle\n    class=\"active\"\n    pathLength=\"360\"\n    fill=\"transparent\"\n    stroke-width=\"32\"\n    cx=\"192\"\n    cy=\"192\"\n    r=\"176\"\n  ></circle>\n  <circle\n    class=\"track\"\n    pathLength=\"360\"\n    fill=\"transparent\"\n    stroke-width=\"32\"\n    cx=\"192\"\n    cy=\"192\"\n    r=\"176\"\n  ></circle>\n</svg>",
+    "css": "/* From Uiverse.io by SelfMadeSystem  - Tags: material design, loader, spinner, smooth, spin */\n/* Inspired by: m3.material.io/components/progress-indicators/overview */\n\n.loader {\n  width: 48px;\n  /* Subpixels get cut off */\n  overflow: visible;\n  transform: rotate(-90deg);\n  transform-origin: center;\n\n  --active: #7627a3;\n  --track: #f2d4fe;\n\n  --duration: 8s;\n\n  animation: spin 2s linear infinite;\n}\n\n@keyframes spin {\n  0% {\n    rotate: 0deg;\n  }\n\n  100% {\n    rotate: 360deg;\n  }\n}\n\n.active {\n  stroke: var(--active);\n  stroke-linecap: round;\n  stroke-dashoffset: 360;\n  animation: active-animation var(--duration) ease-in-out infinite;\n}\n\n@keyframes active-animation {\n  0% {\n    stroke-dasharray: 0 0 0 360 0 360;\n  }\n  12.5% {\n    stroke-dasharray: 0 0 270 90 270 90;\n  }\n  25% {\n    stroke-dasharray: 0 270 0 360 0 360;\n  }\n  37.5% {\n    stroke-dasharray: 0 270 270 90 270 90;\n  }\n  50% {\n    stroke-dasharray: 0 540 0 360 0 360;\n  }\n  50.001% {\n    stroke-dasharray: 0 180 0 360 0 360;\n  }\n  62.5% {\n    stroke-dasharray: 0 180 270 90 270 90;\n  }\n  75% {\n    stroke-dasharray: 0 450 0 360 0 360;\n  }\n  87.5% {\n    stroke-dasharray: 0 450 270 90 270 90;\n  }\n  87.501% {\n    stroke-dasharray: 0 90 270 90 270 90;\n  }\n  100% {\n    stroke-dasharray: 0 360 1 360 0 360;\n  }\n}\n\n.track {\n  stroke: var(--track);\n  stroke-linecap: round;\n  stroke-dashoffset: 360;\n  animation: track-animation var(--duration) ease-in-out infinite;\n}\n\n@keyframes track-animation {\n  0% {\n    stroke-dasharray: 0 20 320 40 320 40;\n  }\n  12.5% {\n    stroke-dasharray: 0 290 50 310 50 310;\n  }\n  25% {\n    stroke-dasharray: 0 290 320 40 320 40;\n  }\n  37.5% {\n    stroke-dasharray: 0 560 50 310 50 310;\n  }\n  37.501% {\n    stroke-dasharray: 0 200 50 310 50 310;\n  }\n  50% {\n    stroke-dasharray: 0 200 320 40 320 40;\n  }\n  62.5% {\n    stroke-dasharray: 0 470 50 310 50 310;\n  }\n  62.501% {\n    stroke-dasharray: 0 110 50 310 50 310;\n  }\n  75% {\n    stroke-dasharray: 0 110 320 40 320 40;\n  }\n  87.5% {\n    stroke-dasharray: 0 380 50 310 50 310;\n  }\n  100% {\n    stroke-dasharray: 0 380 320 40 320 40;\n  }\n}",
+    "tags": [
+      "material design",
+      "loader",
+      "spinner",
+      "smooth",
+      "spin"
+    ]
+  },
+  {
+    "id": "uiv-209945",
+    "title": "Mean Dragonfly 42",
+    "author": "SelfMadeSystem",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.094Z",
+    "html": "<svg xmlns=\"://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" height=\"24\" width=\"24\">\n  <g id=\"a\">\n    <g style=\"--c1: 120; --c2: 0; --delay: -0.5s\">\n      <path id=\"b\">\n      </path>\n      <path id=\"c\">\n      </path>\n    </g>\n    <g style=\"--c1: 210; --c2: 60\" transform=\"rotate(180 12 12)\">\n      <path id=\"b\">\n      </path>\n      <path id=\"c\">\n      </path>\n    </g>\n  </g>\n</svg>",
+    "css": "/* From Uiverse.io by SelfMadeSystem - Tags: animation, loader, animated, google */\n/* Google flip animation thing */\n\n#a {\n  transform-origin: center;\n  animation: a 2s step-end infinite;\n}\n\n@keyframes a {\n  0% {\n    transform: rotate(90deg);\n  }\n\n  25% {\n    transform: rotate(180deg);\n  }\n\n  50% {\n    transform: rotate(270deg);\n  }\n\n  75% {\n    transform: rotate(360deg);\n  }\n}\n\n#b {\n  animation: b1 1s linear infinite, b2 2s step-end infinite;\n  animation-delay: var(--delay, 0s);\n}\n\n@keyframes b1 {\n  0%,\n    100% {\n    d: path(\"M 0 12 a 12 12 0 0 1 24 0 a 12 12 0 0 0 -24 0\");\n  }\n\n  25%,\n    75% {\n    d: path(\"M 0 12 a 12 12 0 0 1 24 0 a 12 0 0 0 0 -24 0\");\n  }\n}\n\n@keyframes b2 {\n  0% {\n    fill: hsl(var(--c1), 100%, 43%);\n  }\n\n  50% {\n    fill: hsl(var(--c2), 100%, 43%);\n  }\n}\n\n#c {\n  animation: c1 1s linear infinite, c2 2s linear infinite;\n  animation-delay: var(--delay, 0s);\n}\n\n@keyframes c1 {\n  0%,\n    25%,\n    75%,\n    100% {\n    d: path(\"M 0 12 h 24 a 12 0  0 0 1 -24 0\");\n  }\n\n  50% {\n    d: path(\"M 0 12 h 24 a 12 12 0 0 1 -24 0\");\n  }\n}\n\n@keyframes c2 {\n  0%,\n    25% {\n    fill: hsl(var(--c1), 100%, 43%);\n  }\n\n  12.5%,\n    37.5% {\n    fill: hsl(var(--c1), 100%, 25%);\n  }\n\n  50%,\n    75% {\n    fill: hsl(var(--c2), 100%, 43%);\n  }\n\n  62.5%,\n    87.5% {\n    fill: hsl(var(--c2), 100%, 25%);\n  }\n}",
+    "tags": [
+      "animation",
+      "loader",
+      "animated",
+      "google"
+    ]
+  },
+  {
+    "id": "uiv-638489",
+    "title": "Pretty Treefrog 77",
+    "author": "SelfMadeSystem",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.029Z",
+    "html": "<div class=\"loader\">\n  <svg height=\"0\" width=\"0\" viewBox=\"0 0 64 64\" class=\"absolute\">\n    <defs class=\"s-xJBuHA073rTt\" xmlns=\"http://www.w3.org/2000/svg\">\n      <linearGradient class=\"s-xJBuHA073rTt\" gradientUnits=\"userSpaceOnUse\" y2=\"2\" x2=\"0\" y1=\"62\" x1=\"0\" id=\"b\">\n        <stop class=\"s-xJBuHA073rTt\" stop-color=\"#973BED\"></stop>\n        <stop class=\"s-xJBuHA073rTt\" stop-color=\"#007CFF\" offset=\"1\"></stop>\n      </linearGradient>\n      <linearGradient class=\"s-xJBuHA073rTt\" gradientUnits=\"userSpaceOnUse\" y2=\"0\" x2=\"0\" y1=\"64\" x1=\"0\" id=\"c\">\n        <stop class=\"s-xJBuHA073rTt\" stop-color=\"#FFC800\"></stop>\n        <stop class=\"s-xJBuHA073rTt\" stop-color=\"#F0F\" offset=\"1\"></stop>\n        <animateTransform repeatCount=\"indefinite\" keySplines=\".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1\" keyTimes=\"0; 0.125; 0.25; 0.375; 0.5; 0.625; 0.75; 0.875; 1\" dur=\"8s\" values=\"0 32 32;-270 32 32;-270 32 32;-540 32 32;-540 32 32;-810 32 32;-810 32 32;-1080 32 32;-1080 32 32\" type=\"rotate\" attributeName=\"gradientTransform\"></animateTransform>\n      </linearGradient>\n      <linearGradient class=\"s-xJBuHA073rTt\" gradientUnits=\"userSpaceOnUse\" y2=\"2\" x2=\"0\" y1=\"62\" x1=\"0\" id=\"d\">\n        <stop class=\"s-xJBuHA073rTt\" stop-color=\"#00E0ED\"></stop>\n        <stop class=\"s-xJBuHA073rTt\" stop-color=\"#00DA72\" offset=\"1\"></stop>\n      </linearGradient>\n    </defs>\n  </svg>\n  <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 64 64\" height=\"64\" width=\"64\" class=\"inline-block\">\n    <path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"8\" stroke=\"url(#b)\" d=\"M 54.722656,3.9726563 A 2.0002,2.0002 0 0 0 54.941406,4 h 5.007813 C 58.955121,17.046124 49.099667,27.677057 36.121094,29.580078 a 2.0002,2.0002 0 0 0 -1.708985,1.978516 V 60 H 29.587891 V 31.558594 A 2.0002,2.0002 0 0 0 27.878906,29.580078 C 14.900333,27.677057 5.0448787,17.046124 4.0507812,4 H 9.28125 c 1.231666,11.63657 10.984383,20.554048 22.6875,20.734375 a 2.0002,2.0002 0 0 0 0.02344,0 c 11.806958,0.04283 21.70649,-9.003371 22.730469,-20.7617187 z\" class=\"dash\" id=\"y\" pathLength=\"360\"></path>\n  </svg>\n  <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" style=\"--rotation-duration:0ms; --rotation-direction:normal;\" viewBox=\"0 0 64 64\" height=\"64\" width=\"64\" class=\"inline-block\">\n    <path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"10\" stroke=\"url(#c)\" d=\"M 32 32\n        m 0 -27\n        a 27 27 0 1 1 0 54\n        a 27 27 0 1 1 0 -54\" class=\"spin\" id=\"o\" pathLength=\"360\"></path>\n  </svg>\n  <div class=\"w-2\"></div>\n  <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" style=\"--rotation-duration:0ms; --rotation-direction:normal;\" viewBox=\"0 0 64 64\" height=\"64\" width=\"64\" class=\"inline-block\">\n    <path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"8\" stroke=\"url(#d)\" d=\"M 4,4 h 4.6230469 v 25.919922 c -0.00276,11.916203 9.8364941,21.550422 21.7500001,21.296875 11.616666,-0.240651 21.014356,-9.63894 21.253906,-21.25586 a 2.0002,2.0002 0 0 0 0,-0.04102 V 4 H 56.25 v 25.919922 c 0,14.33873 -11.581192,25.919922 -25.919922,25.919922 a 2.0002,2.0002 0 0 0 -0.0293,0 C 15.812309,56.052941 3.998433,44.409961 4,29.919922 Z\" class=\"dash\" id=\"u\" pathLength=\"360\"></path>\n  </svg>\n</div>",
+    "css": "/* From Uiverse.io by SelfMadeSystem - Tags: animation, gradient, loader, spinner, text animation, animated, gradients, svg */\n.absolute {\n  position: absolute;\n}\n\n.inline-block {\n  display: inline-block;\n}\n\n.loader {\n  display: flex;\n  margin: 0.25em 0;\n}\n\n.w-2 {\n  width: 0.5em;\n}\n\n.dash {\n  animation: dashArray 2s ease-in-out infinite,\n    dashOffset 2s linear infinite;\n}\n\n.spin {\n  animation: spinDashArray 2s ease-in-out infinite,\n    spin 8s ease-in-out infinite,\n    dashOffset 2s linear infinite;\n  transform-origin: center;\n}\n\n@keyframes dashArray {\n  0% {\n    stroke-dasharray: 0 1 359 0;\n  }\n\n  50% {\n    stroke-dasharray: 0 359 1 0;\n  }\n\n  100% {\n    stroke-dasharray: 359 1 0 0;\n  }\n}\n\n@keyframes spinDashArray {\n  0% {\n    stroke-dasharray: 270 90;\n  }\n\n  50% {\n    stroke-dasharray: 0 360;\n  }\n\n  100% {\n    stroke-dasharray: 270 90;\n  }\n}\n\n@keyframes dashOffset {\n  0% {\n    stroke-dashoffset: 365;\n  }\n\n  100% {\n    stroke-dashoffset: 5;\n  }\n}\n\n@keyframes spin {\n  0% {\n    rotate: 0deg;\n  }\n\n  12.5%,\n  25% {\n    rotate: 270deg;\n  }\n\n  37.5%,\n  50% {\n    rotate: 540deg;\n  }\n\n  62.5%,\n  75% {\n    rotate: 810deg;\n  }\n\n  87.5%,\n  100% {\n    rotate: 1080deg;\n  }\n}",
+    "tags": [
+      "animation",
+      "gradient",
+      "loader",
+      "spinner",
+      "text animation",
+      "animated",
+      "gradients",
+      "svg"
+    ]
+  },
+  {
+    "id": "uiv-804608",
+    "title": "Young Moose 57",
+    "author": "ShYnGySYes",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.071Z",
+    "html": "<div class=\"spinner\">\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n</div>",
+    "css": "/* From Uiverse.io by ShYnGySYes - Tags: loader */\n.spinner {\n  width: 44px;\n  height: 44px;\n  animation: spinner-y0fdc1 2s infinite ease;\n  transform-style: preserve-3d;\n}\n\n.spinner > div {\n  background-color: rgb(255, 254, 254);\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  border: 2px solid #ff0000;\n}\n\n.spinner div:nth-of-type(1) {\n  transform: translateZ(-22px) rotateY(180deg);\n}\n\n.spinner div:nth-of-type(2) {\n  transform: rotateY(-270deg) translateX(50%);\n  transform-origin: top right;\n}\n\n.spinner div:nth-of-type(3) {\n  transform: rotateY(270deg) translateX(-50%);\n  transform-origin: center left;\n}\n\n.spinner div:nth-of-type(4) {\n  transform: rotateX(90deg) translateY(-50%);\n  transform-origin: top center;\n}\n\n.spinner div:nth-of-type(5) {\n  transform: rotateX(-90deg) translateY(50%);\n  transform-origin: bottom center;\n}\n\n.spinner div:nth-of-type(6) {\n  transform: translateZ(22px);\n}\n\n@keyframes spinner-y0fdc1 {\n  0% {\n    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);\n  }\n\n  50% {\n    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);\n  }\n\n  100% {\n    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-186810",
+    "title": "Ancient Lionfish 38",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.068Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  transform: translateZ(1px);\n}\n\n.loader:after {\n  content: '$';\n  display: inline-block;\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  text-align: center;\n  line-height: 40px;\n  font-size: 32px;\n  font-weight: bold;\n  background: #FFD700;\n  color: #DAA520;\n  border: 4px double;\n  box-sizing: border-box;\n  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);\n  animation: coin-flip 4s cubic-bezier(0, 0.2, 0.8, 1) infinite;\n}\n\n@keyframes coin-flip {\n  0%, 100% {\n    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);\n  }\n\n  0% {\n    transform: rotateY(0deg);\n  }\n\n  50% {\n    transform: rotateY(1800deg);\n    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);\n  }\n\n  100% {\n    transform: rotateY(3600deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-711083",
+    "title": "Bad Earwig 19",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.724Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 48px;\n  height: 48px;\n  display: inline-block;\n  position: relative;\n  background: #FFF;\n  box-sizing: border-box;\n  animation: zeroRotation 1s ease infinite alternate-reverse;\n}\n\n@keyframes zeroRotation {\n  0% {\n    transform: scale(1) rotate(0deg);\n  }\n\n  100% {\n    transform: scale(0.3) rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-982172",
+    "title": "Bad Lionfish 99",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.544Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  position: relative;\n  box-shadow: 0 0 30px 4px rgba(0, 0, 0, 0.5) inset,\n      0 5px 12px rgba(0, 0, 0, 0.15);\n  overflow: hidden;\n}\n\n.loader:before,\n  .loader:after {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 45%;\n  top: -40%;\n  background-color: #2e2e2e;\n  animation: wave 5s linear infinite;\n}\n\n.loader:before {\n  border-radius: 30%;\n  background: rgba(122, 122, 122, 0.4);\n  animation: wave 5s linear infinite;\n}\n\n@keyframes wave {\n  0% {\n    transform: rotate(0);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-114666",
+    "title": "Bitter Moth 36",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.538Z",
+    "html": "<span class=\"loader\"></span>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 48px;\n  height: 48px;\n  display: block;\n  margin: 15px auto;\n  position: relative;\n  color: #FFF;\n  box-sizing: border-box;\n  animation: rotation_19 1s linear infinite;\n}\n\n.loader::after,\n.loader::before {\n  content: '';\n  box-sizing: border-box;\n  position: absolute;\n  width: 24px;\n  height: 24px;\n  top: 0;\n  background-color: #FFF;\n  border-radius: 50%;\n  animation: scale50 1s infinite ease-in-out;\n}\n\n.loader::before {\n  top: auto;\n  bottom: 0;\n  background-color: #FF3D00;\n  animation-delay: 0.5s;\n}\n\n@keyframes rotation_19 {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes scale50 {\n  0%, 100% {\n    transform: scale(0);\n  }\n\n  50% {\n    transform: scale(1);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-139356",
+    "title": "Calm Fish 83",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.729Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 48px;\n  height: 48px;\n  display: block;\n  margin: 20px auto;\n  box-sizing: border-box;\n  position: relative;\n}\n\n.loader::after {\n  content: '';\n  width: 48px;\n  height: 48px;\n  left: 0;\n  bottom: 0;\n  position: absolute;\n  border-radius: 50% 50% 0;\n  border: 15px solid red;\n  transform: rotate(45deg) translate(0, 0);\n  box-sizing: border-box;\n  animation: animMarker 0.4s ease-in-out infinite alternate;\n}\n\n.loader::before {\n  content: '';\n  box-sizing: border-box;\n  position: absolute;\n  left: 0;\n  right: 0;\n  margin: auto;\n  top: 150%;\n  width: 24px;\n  height: 4px;\n  border-radius: 50%;\n  background: rgba(0, 0, 0, 0.2);\n  animation: animShadow 0.4s ease-in-out infinite alternate;\n}\n\n@keyframes animMarker {\n  0% {\n    transform: rotate(45deg) translate(5px, 5px);\n  }\n\n  100% {\n    transform: rotate(45deg) translate(-5px, -5px);\n  }\n}\n\n@keyframes animShadow {\n  0% {\n    transform: scale(0.5);\n  }\n\n  100% {\n    transform: scale(1);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-416127",
+    "title": "Clever Goose 73",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.527Z",
+    "html": "<span class=\"loader\"></span>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  max-width: 6rem;\n  margin-top: 3rem;\n  margin-bottom: 3rem;\n}\n\n.loader:before,\n  .loader:after {\n  content: \"\";\n  position: absolute;\n  border-radius: 50%;\n  animation: pulsOut 1.8s ease-in-out infinite;\n  filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.75));\n}\n\n.loader:before {\n  width: 100%;\n  padding-bottom: 100%;\n  box-shadow: inset 0 0 0 1rem #fff;\n  animation-name: pulsIn;\n}\n\n.loader:after {\n  width: calc(100% - 2rem);\n  padding-bottom: calc(100% - 2rem);\n  box-shadow: 0 0 0 0 #fff;\n}\n\n@keyframes pulsIn {\n  0% {\n    box-shadow: inset 0 0 0 1rem #fff;\n    opacity: 1;\n  }\n\n  50%, 100% {\n    box-shadow: inset 0 0 0 0 #fff;\n    opacity: 0;\n  }\n}\n\n@keyframes pulsOut {\n  0%, 50% {\n    box-shadow: 0 0 0 0 #fff;\n    opacity: 0;\n  }\n\n  100% {\n    box-shadow: 0 0 0 1rem #fff;\n    opacity: 1;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-469684",
+    "title": "Dangerous Sheep 53",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.589Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  display: block;\n  position: relative;\n  height: 32px;\n  width: 140px;\n  border: 3px solid #fff;\n  border-radius: 20px;\n  box-sizing: border-box;\n  animation: balancing 2s linear infinite alternate;\n  transform-origin: center center;\n}\n\n.loader:before {\n  content: '';\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 52px;\n  height: 26px;\n  border-radius: 20px;\n  background: gold;\n  animation: ballbns 2s linear infinite alternate;\n}\n\n@keyframes ballbns {\n  0% {\n    left: 0;\n    transform: translateX(0%);\n  }\n\n  100% {\n    left: 100%;\n    transform: translateX(-100%);\n  }\n}\n\n@keyframes balancing {\n  0% {\n    transform: rotate(-25deg);\n  }\n\n  50% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(25deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-723587",
+    "title": "Dull Cheetah 34",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.536Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 48px;\n  height: 48px;\n  display: flex;\n  transform-origin: 50% 125%;\n  animation: mov-y 1s infinite linear;\n}\n\n.loader:before,\n      .loader:after {\n  content: \"\";\n  flex: 1;\n  background: #fff;\n  transform-origin: 0% 100%;\n  animation: rtr-x 1s infinite linear;\n}\n\n.loader:before {\n  transform-origin: 100% 100%;\n  animation-name: rtr-rx;\n}\n\n@keyframes mov-y {\n  0%,25% {\n    transform: translateY(0)     scaleY(1)\n  }\n\n  49% {\n    transform: translateY(-75%)  scaleY(1)\n  }\n\n  50% {\n    transform: translateY(-75%)  scaleY(-1)\n  }\n\n  75%,100% {\n    transform: translateY(-150%) scaleY(-1)\n  }\n}\n\n@keyframes rtr-x {\n  25%,75% {\n    transform: rotate(0deg)\n  }\n\n  50% {\n    transform: rotate(90deg)\n  }\n}\n\n@keyframes rtr-rx {\n  25%,75% {\n    transform: rotate(0deg)\n  }\n\n  50% {\n    transform: rotate(-90deg)\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-473114",
+    "title": "Fuzzy Tiger 54",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.585Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader, pong */\n.loader {\n  position: relative;\n  height: 40px;\n  width: 6px;\n  color: #FFF;\n  animation: paddles 0.75s ease-out infinite;\n}\n\n.loader:before {\n  content: \"\";\n  position: absolute;\n  margin: 0 auto;\n  left: 0;\n  right: 0;\n  top: 15px;\n  width: 12px;\n  height: 12px;\n  background-color: greenyellow;\n  border-radius: 50%;\n  animation: ballbounce 0.6s ease-out infinite;\n}\n\n@keyframes paddles {\n  0% {\n    box-shadow: -25px -10px, 25px 10px\n  }\n\n  50% {\n    box-shadow: -25px 8px, 25px -10px\n  }\n\n  100% {\n    box-shadow: -25px -10px, 25px 10px\n  }\n}\n\n@keyframes ballbounce {\n  0% {\n    transform: translateX(-20px) scale(1, 1.2)\n  }\n\n  25% {\n    transform: scale(1.2, 1)\n  }\n\n  50% {\n    transform: translateX(15px) scale(1, 1.2)\n  }\n\n  75% {\n    transform: scale(1.2, 1)\n  }\n\n  100% {\n    transform: translateX(-20px)\n  }\n}",
+    "tags": [
+      "loader",
+      "pong"
+    ]
+  },
+  {
+    "id": "uiv-725284",
+    "title": "Great Pug 66",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.536Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 16px;\n  height: 16px;\n  box-shadow: 0 30px, 0 -30px;\n  border-radius: 4px;\n  background: currentColor;\n  display: block;\n  position: relative;\n  transform: translate(-150%, -20px);\n  color: #FFF;\n  box-sizing: border-box;\n  animation: animloader 2s ease infinite;\n}\n\n.loader::after,\n.loader::before {\n  content: '';\n  box-sizing: border-box;\n  width: 16px;\n  height: 16px;\n  box-shadow: 0 30px, 0 -30px;\n  border-radius: 4px;\n  background: currentColor;\n  color: #FFF;\n  position: absolute;\n  left: 30px;\n  top: 0;\n  animation: animloader 2s 0.2s ease infinite;\n}\n\n.loader::before {\n  animation-delay: 0.4s;\n  left: 60px;\n}\n\n@keyframes animloader {\n  0% {\n    top: 0;\n    color: white;\n  }\n\n  50% {\n    top: 30px;\n    color: rgba(255, 255, 255, 0.2);\n  }\n\n  100% {\n    top: 0;\n    color: white;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-721347",
+    "title": "Hot Dragonfly 11",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.534Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  position: relative;\n  width: 78px;\n  height: 78px;\n  border-radius: 50%;\n  background: #fff;\n  border: 8px solid #131a1d;\n  overflow: hidden;\n  box-sizing: border-box;\n}\n\n.loader::after {\n  content: '';\n  position: absolute;\n  left: 0;\n  top: -50%;\n  width: 100%;\n  height: 100%;\n  background: #263238;\n  z-index: 5;\n  border-bottom: 8px solid #131a1d;\n  box-sizing: border-box;\n  animation: eyeShade 3s infinite;\n}\n\n.loader::before {\n  content: '';\n  position: absolute;\n  left: 20px;\n  bottom: 15px;\n  width: 32px;\n  z-index: 2;\n  height: 32px;\n  background: #111;\n  border-radius: 50%;\n  animation: eyeMove 3s infinite;\n}\n\n@keyframes eyeShade {\n  0% {\n    transform: translateY(0)\n  }\n\n  20% {\n    transform: translateY(5px)\n  }\n\n  40% , 50% {\n    transform: translateY(-5px)\n  }\n\n  60% {\n    transform: translateY( -8px)\n  }\n\n  75% {\n    transform: translateY( 5px)\n  }\n\n  100% {\n    transform: translateY(10px)\n  }\n}\n\n@keyframes eyeMove {\n  0% {\n    transform: translate(0 , 0)\n  }\n\n  20% {\n    transform: translate(0px , 5px)\n  }\n\n  40% , 50% {\n    transform: translate(0px , -5px)\n  }\n\n  60% {\n    transform: translate(-10px , -5px)\n  }\n\n  75% {\n    transform: translate(-20px , 5px)\n  }\n\n  100% {\n    transform: translate(0 , 10px)\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-654268",
+    "title": "Hot Skunk 36",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.559Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  display: inline-block;\n  position: relative;\n  border: 10px solid;\n  box-sizing: border-box;\n  animation: animloader 1s linear infinite alternate;\n}\n\n@keyframes animloader {\n  0% {\n    border-color: white rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);\n  }\n\n  33% {\n    border-color: white white rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);\n  }\n\n  66% {\n    border-color: white white white rgba(255, 255, 255, 0);\n  }\n\n  100% {\n    border-color: white white white white;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-151754",
+    "title": "Kind Baboon 47",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.590Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  position: relative;\n  border: 24px solid;\n  border-color: red  transparent red transparent;\n  animation: rotate_000 2s linear infinite;\n}\n\n.loader:before,\n      .loader:after {\n  content: \"\";\n  display: block;\n  border: 24px solid transparent;\n  border-left-color: red;\n  position: absolute;\n  left: -24px;\n  top: -24px;\n  animation: prix 1s infinite ease-in;\n  transform-origin: 0% 100%;\n}\n\n.loader:before {\n  border-color: transparent red transparent transparent;\n  transform-origin: 100% 0%;\n  animation-delay: 0.5s;\n}\n\n@keyframes rotate_000 {\n  100% {\n    transform: rotate(360deg)\n  }\n}\n\n@keyframes prix {\n  20% , 80% {\n    transform: rotate(0)\n  }\n\n  50% {\n    transform: rotate(-90deg)\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-733884",
+    "title": "Lucky Emu 65",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.534Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader, bear */\n.loader {\n  width: 160px;\n  height: 185px;\n  position: relative;\n  background: #fff;\n  border-radius: 100px 100px 0 0;\n}\n\n.loader:after {\n  content: \"\";\n  position: absolute;\n  width: 100px;\n  height: 125px;\n  left: 50%;\n  top: 25px;\n  transform: translateX(-50%);\n  background-image: radial-gradient(circle, #000 48%, transparent 55%),\n    radial-gradient(circle, #000 48%, transparent 55%),\n    radial-gradient(circle, #fff 30%, transparent 45%),\n    radial-gradient(circle, #000 48%, transparent 51%),\n    linear-gradient(#000 20px, transparent 0),\n    linear-gradient(#cfecf9 60px, transparent 0),\n    radial-gradient(circle, #cfecf9 50%, transparent 51%),\n    radial-gradient(circle, #cfecf9 50%, transparent 51%);\n  background-repeat: no-repeat;\n  background-size: 16px 16px, 16px 16px, 10px 10px, 42px 42px, 12px 3px,\n    50px 25px, 70px 70px, 70px 70px;\n  background-position: 25px 10px, 55px 10px, 36px 44px, 50% 30px, 50% 85px,\n    50% 50px, 50% 22px, 50% 45px;\n  animation: faceLift 3s linear infinite alternate;\n}\n\n.loader:before {\n  content: \"\";\n  position: absolute;\n  width: 140%;\n  height: 125px;\n  left: -20%;\n  top: 0;\n  background-image: radial-gradient(circle, #fff 48%, transparent 50%),\n    radial-gradient(circle, #fff 48%, transparent 50%);\n  background-repeat: no-repeat;\n  background-size: 65px 65px;\n  background-position: 0px 12px, 145px 12px;\n  animation: earLift 3s linear infinite alternate;\n}\n\n@keyframes faceLift {\n  0% {\n    transform: translateX(-60%);\n  }\n\n  100% {\n    transform: translateX(-30%);\n  }\n}\n\n@keyframes earLift {\n  0% {\n    transform: translateX(10px);\n  }\n\n  100% {\n    transform: translateX(0px);\n  }\n}",
+    "tags": [
+      "loader",
+      "bear"
+    ]
+  },
+  {
+    "id": "uiv-462013",
+    "title": "Lucky Quail 40",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.578Z",
+    "html": "<span class=\"loader\"></span>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 48px;\n  height: 48px;\n  border: 2px solid #FFF;\n  border-radius: 50%;\n  display: inline-block;\n  position: relative;\n  box-sizing: border-box;\n  animation: rotation_35 1s linear infinite;\n}\n\n.loader::after,\n.loader::before {\n  content: '';\n  box-sizing: border-box;\n  position: absolute;\n  left: 0;\n  top: 0;\n  background: greenyellow;\n  width: 6px;\n  height: 6px;\n  transform: translate(150%, 150%);\n  border-radius: 50%;\n}\n\n.loader::before {\n  left: auto;\n  top: auto;\n  right: 0;\n  bottom: 0;\n  transform: translate(-150%, -150%);\n}\n\n@keyframes rotation_35 {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-170351",
+    "title": "New Lion 60",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:37.589Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 84px;\n  height: 84px;\n  position: relative;\n  overflow: hidden;\n}\n\n.loader:before , .loader:after {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  bottom: 0;\n  width: 64px;\n  height: 64px;\n  border-radius: 50%;\n  background: yellow;\n  transform: translate(-50% , 100%)  scale(0);\n  animation: push_4051 2s infinite ease-in;\n}\n\n.loader:after {\n  animation-delay: 1s;\n}\n\n@keyframes push_4051 {\n  0% {\n    transform: translate(-50% , 100%)  scale(1);\n  }\n\n  15% , 25% {\n    transform: translate(-50% , 50%)  scale(1);\n  }\n\n  50% , 75% {\n    transform: translate(-50%, -30%) scale(0.5);\n  }\n\n  80%,  100% {\n    transform: translate(-50%, -50%) scale(0);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-374725",
+    "title": "Orange Mouse 40",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.216Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 96px;\n  height: 48px;\n  display: inline-block;\n  position: relative;\n  background: #5e5e5e;\n  border-radius: 48px 48px 0 0;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n\n.loader::after {\n  content: '';\n  box-sizing: border-box;\n  position: absolute;\n  width: 24px;\n  height: 12px;\n  border-radius: 24px 24px 0 0;\n  background: yellow;\n  left: 50%;\n  transform: translateX(-50%);\n  bottom: 0;\n}\n\n.loader::before {\n  content: '';\n  position: absolute;\n  width: 4px;\n  height: 32px;\n  left: 0;\n  right: 0;\n  margin: auto;\n  bottom: 0;\n  background: yellow;\n  transform-origin: 50% 100%;\n  box-sizing: border-box;\n  animation: animloader 2s linear infinite alternate;\n}\n\n@keyframes animloader {\n  0% {\n    transform: rotate(-70deg);\n  }\n\n  10% {\n    transform: rotate(-40deg);\n  }\n\n  20%, 45%, 35% {\n    transform: rotate(-10deg);\n  }\n\n  40%, 30% {\n    transform: rotate(-30deg);\n  }\n\n  50%, 60% {\n    transform: rotate(20deg);\n  }\n\n  55%, 65%, 75% {\n    transform: rotate(40deg);\n  }\n\n  70% {\n    transform: rotate(45deg);\n  }\n\n  85%, 90% {\n    transform: rotate(50deg);\n  }\n\n  95% {\n    transform: rotate(75deg);\n  }\n\n  100%, 93% {\n    transform: rotate(70deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-647136",
+    "title": "Perfect Bird 26",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.016Z",
+    "html": "<span class=\"loader\"></span>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  position: relative;\n  width: 120px;\n  height: 140px;\n  background-image: radial-gradient(circle 30px, #fff 100%, transparent 0),\n    radial-gradient(circle 5px, #fff 100%, transparent 0),\n    radial-gradient(circle 5px, #fff 100%, transparent 0),\n    linear-gradient(#FFF 20px, transparent 0);\n  background-position: center 127px , 94px 102px , 16px 18px, center 114px;\n  background-size: 60px 60px, 10px 10px , 10px 10px , 4px 14px;\n  background-repeat: no-repeat;\n  z-index: 10;\n  perspective: 500px;\n}\n\n.loader::before {\n  content: '';\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n  border: 3px solid #fff;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -55%) rotate(-45deg);\n  border-right-color: transparent;\n  box-sizing: border-box;\n}\n\n.loader::after {\n  content: '';\n  position: absolute;\n  height: 80px;\n  width: 80px;\n  transform: translate(-50%, -55%) rotate(-45deg) rotateY(0deg);\n  left: 50%;\n  top: 50%;\n  box-sizing: border-box;\n  border: 7px solid #FF3D00;\n  border-radius: 50%;\n  animation: rotate_4191 0.5s linear infinite;\n}\n\n@keyframes rotate_4191 {\n  to {\n    transform: translate(-50%, -55%) rotate(-45deg) rotateY(360deg)\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-426434",
+    "title": "Perfect Monkey 20",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.019Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  position: relative;\n  border-style: solid;\n  box-sizing: border-box;\n  border-width: 40px 60px 30px 60px;\n  border-color: #3760C9 #96DDFC #96DDFC #36BBF7;\n  animation: envFloating 1s ease-in infinite alternate;\n}\n\n.loader:after {\n  content: \"\";\n  position: absolute;\n  right: 62px;\n  top: -40px;\n  height: 70px;\n  width: 50px;\n  background-image: linear-gradient(#fff 45px, transparent 0),\n            linear-gradient(#fff 45px, transparent 0),\n            linear-gradient(#fff 45px, transparent 0);\n  background-repeat: no-repeat;\n  background-size: 30px 4px;\n  background-position: 0px 11px , 8px 35px, 0px 60px;\n  animation: envDropping 0.75s linear infinite;\n}\n\n@keyframes envFloating {\n  0% {\n    transform: translate(-2px, -5px)\n  }\n\n  100% {\n    transform: translate(0, 5px)\n  }\n}\n\n@keyframes envDropping {\n  0% {\n    background-position: 100px 11px , 115px 35px, 105px 60px;\n    opacity: 1;\n  }\n\n  50% {\n    background-position: 0px 11px , 20px 35px, 5px 60px;\n  }\n\n  60% {\n    background-position: -30px 11px , 0px 35px, -10px 60px;\n  }\n\n  75%, 100% {\n    background-position: -30px 11px , -30px 35px, -30px 60px;\n    opacity: 0;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-325083",
+    "title": "Quick Fox 3",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.243Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 8px;\n  height: 8px;\n  position: relative;\n  border-radius: 50%;\n  background: #fff;\n  animation: wave_14 1s ease-in infinite;\n}\n\n@keyframes wave_14 {\n  0% {\n    box-shadow: 0 0 0 0px rgba(255, 255,255, 1),\n  0 0 0 20px rgba(255, 255,255, 0.2),\n  0 0 0 40px rgba(255, 255,255, 0.6),\n  0 0 0 60px rgba(255, 255,255, 0.4),\n  0 0 0 80px rgba(255, 255,255, 0.2)\n  }\n\n  100% {\n    box-shadow: 0 0 0 80px rgba(255, 255,255, 0),\n    0 0 0 60px rgba(255, 255,255, 0.2),\n    0 0 0 40px rgba(255, 255,255, 0.4),\n    0 0 0 20px rgba(255, 255,255, 0.6),\n    0 0 0 0px rgba(255, 255,255, 1)\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-136644",
+    "title": "Shaggy Tiger 17",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.028Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  margin: auto;\n  width: 100px;\n  height: 30px;\n  overflow: hidden;\n  position: relative;\n  background: rgba(0, 0, 0, 0.3);\n  border-radius: 5px;\n  box-shadow: 0px 35px 0 -5px #aaa, 0 -5px 0 0px #ddd, 0 -25px 0 -5px #fff,\n    -25px -30px 0 0px #ddd, -25px 30px 0 0px #ddd, 25px -30px 0 0px #ddd,\n    25px 30px 0 0px #ddd, 20px 10px 0 5px #ddd, 20px -10px 0 5px #ddd,\n    -20px -10px 0 5px #ddd, -20px 10px 0 5px #ddd;\n}\n\n.loader:after,\n.loader:before {\n  content: \"\";\n  border-radius: 100%;\n  width: 35px;\n  height: 35px;\n  display: block;\n  position: absolute;\n  border: 4px dashed #fff;\n  bottom: -4px;\n  transform: rotate(0deg);\n  box-sizing: border-box;\n  animation: tape 4s linear infinite;\n}\n\n.loader:before {\n  right: 0;\n  box-shadow: 0 0 0 4px #fff, 0 0 0 34px #000;\n}\n\n.loader:after {\n  left: 0;\n  box-shadow: 0 0 0 4px #fff, 0 0 0 65px #000;\n}\n\n@keyframes tape {\n  0% {\n    transform: rotate(0deg) scale(0.4);\n  }\n\n  100% {\n    transform: rotate(-360deg) scale(0.4);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-341658",
+    "title": "Stale Panda 35",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.074Z",
+    "html": "<span class=\"loader\"></span>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 106px;\n  height: 56px;\n  display: block;\n  margin: 30px auto;\n  background-image: linear-gradient(#e1e1e1 50px, transparent 0), linear-gradient(#e1e1e1 50px, transparent 0), linear-gradient(#e1e1e1 50px, transparent 0), linear-gradient(#e1e1e1 50px, transparent 0), radial-gradient(circle 14px, #e1e1e1 100%, transparent 0);\n  background-size: 48px 15px , 15px 35px, 15px 35px, 25px 15px, 28px 28px;\n  background-position: 25px 5px, 58px 20px, 25px 17px, 2px 37px, 76px 0px;\n  background-repeat: no-repeat;\n  position: relative;\n  transform: rotate(-45deg);\n  box-sizing: border-box;\n}\n\n.loader::after,\n.loader::before {\n  content: '';\n  position: absolute;\n  width: 56px;\n  height: 56px;\n  border: 6px solid #e1e1e1;\n  border-radius: 50%;\n  left: -45px;\n  top: -10px;\n  background-repeat: no-repeat;\n  background-image: linear-gradient(#e1e1e1 64px, transparent 0), linear-gradient(#e1e1e1 66px, transparent 0), radial-gradient(circle 4px, #e1e1e1 100%, transparent 0);\n  background-size: 40px 1px , 1px 40px, 8px 8px;\n  background-position: center center;\n  box-sizing: border-box;\n  animation: bike 0.3s linear infinite;\n}\n\n.loader::before {\n  left: 25px;\n  top: 60px;\n}\n\n@keyframes bike {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-416865",
+    "title": "Strange Crab 54",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.024Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  position: relative;\n  width: 92px;\n  height: 180px;\n  border-radius: 8px;\n  transform: translateY(-30px);\n  background-color: #000;\n  background-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 4%,rgba(81,81,81,1) 14%,rgba(44,44,44,1) 26%,rgba(2,2,2,1) 53%,rgba(2,2,2,1) 65%,rgba(2,2,2,0) 66%),\n    linear-gradient(#111, #111);\n  background-repeat: no-repeat;\n  background-size: 10px 10px , 84px 162px;\n  background-position: center 2px, 4px 8px;\n  animation: lightUp 6s linear infinite alternate;\n}\n\n.loader:before {\n  content: '';\n  position: absolute;\n  left: 50%;\n  top: 190px;\n  transform: translateX(-50%);\n  width: 32px;\n  height: 75px;\n  background-image: linear-gradient(#fff, #fff),\n  linear-gradient(#bbb, #bbb),\n  linear-gradient(#fff, #fff);\n  background-repeat: no-repeat;\n  background-position: center 4px , center top, center 5px;\n  background-size: 11px 11px , 7px 4px ,  2px 100%;\n  animation: plugin 6s linear infinite alternate;\n}\n\n.loader:after {\n  content: '';\n  width: 30px;\n  height: 60px;\n  background-image: linear-gradient(#888, #888),\n  linear-gradient(to right, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.5) 40%,rgba(255,255,255,0.3) 50%,rgba(255,255,255,0.1) 100%),\n  linear-gradient(#15ff00, #15ff00),\n  linear-gradient(#888, #888);\n  background-size: 12px 4px, 30px 52px , 30px 0px , 30px 56px;\n  background-position: center 0 , center 6px , center bottom , center 4px;\n  background-repeat: no-repeat;\n  top: 50%;\n  left: 50%;\n  position: absolute;\n  transform: translate(-50% , -50%);\n  animation: charging 6s linear infinite alternate;\n}\n\n@keyframes charging {\n  0%  , 25% {\n    opacity: 0;\n    background-size: 12px 4px, 30px 52px , 30px 0px , 30px 56px;\n  }\n\n  26% ,  75% {\n    opacity: 1;\n    background-size: 12px 4px, 30px 52px , 30px 0px , 30px 56px;\n  }\n\n  50% , 100% {\n    opacity: 1;\n    background-size: 12px 4px, 30px 52px , 30px 56px , 30px 56px\n  }\n}\n\n@keyframes lightUp {\n  0%  , 25% {\n    background-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 4%,rgba(81,81,81,1) 14%,rgba(44,44,44,1) 26%,rgba(2,2,2,1) 53%,rgba(2,2,2,1) 65%,rgba(2,2,2,0) 66%),\n      linear-gradient(#111, #111);\n  }\n\n  26% , 100% {\n    background-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 4%,rgba(81,81,81,1) 14%,rgba(44,44,44,1) 26%,rgba(2,2,2,1) 53%,rgba(2,2,2,1) 65%,rgba(2,2,2,0) 66%),\n      linear-gradient(#DDD, #DDD);\n  }\n}\n\n@keyframes plugin {\n  0% , 25% {\n    top: 190px;\n    background-position: center 4px , center top, center 5px;\n  }\n\n  26%  , 100% {\n    background-position: center 0 , center top, center 5px;\n    top: 180px;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-330115",
+    "title": "Terrible Fireant 25",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.070Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 100px;\n  height: 46px;\n  position: relative;\n  border-bottom: 5px solid #FFF;\n  border-top: 5px solid #FFF;\n  box-sizing: border-box;\n}\n\n.loader:before , .loader:after {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  top: -20px;\n  width: 32px;\n  height: 32px;\n  border-radius: 50%;\n  background: orange;\n  border: 5px solid #FFF;\n  box-sizing: border-box;\n  animation: slide_391 1s infinite ease-in-out alternate;\n}\n\n.loader:after {\n  top: 20px;\n  animation-direction: alternate-reverse;\n}\n\n@keyframes slide_391 {\n  0% , 20% {\n    transform: translateX(70px)\n  }\n\n  80% , 100% {\n    transform: translateX(-1px)\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-149541",
+    "title": "Thin Turkey 8",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.022Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 70px;\n  height: 35px;\n  position: relative;\n  overflow: hidden;\n}\n\n.loader:before {\n  content: \"\";\n  width: 70px;\n  height: 70px;\n  position: absolute;\n  left: 0;\n  top: 0;\n  border: 5px solid #0000;\n  border-color: #fff #fff #0000 #0000;\n  border-radius: 50%;\n  box-sizing: border-box;\n  animation: rotate_5131 3s ease-in-out infinite;\n  transform: rotate(-200deg);\n}\n\n@keyframes rotate_5131 {\n  0% {\n    border-width: 10px;\n  }\n\n  25% {\n    border-width: 3px;\n  }\n\n  50% {\n    transform: rotate(115deg);\n    border-width: 10px;\n  }\n\n  75% {\n    border-width: 3px;\n  }\n\n  100% {\n    border-width: 10px;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-991596",
+    "title": "Weak Chipmunk 86",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.020Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  height: 150px;\n  width: 100px;\n  border-radius: 55px 55px 10px 10px;\n  position: relative;\n  background: #FF3D00;\n  background-image: linear-gradient(0deg,\n    #f63a99 25%,\n    #30dcf6 25%,\n    #30dcf6 25%,\n    #30dcf6 50%,\n    #f2d200 50%,\n    #f2d200 50%,\n    #f2d200 75%,\n    #70ca5c 75%);\n  background-position: 0px 0px;\n  background-size: auto 175px;\n  background-repeat: repeat-y;\n  animation: colorShift 6s linear infinite;\n}\n\n.loader:before {\n  content: '';\n  position: absolute;\n  left: 10px;\n  bottom: 15px;\n  width: 15px;\n  height: 100px;\n  border-radius: 50px;\n  background: rgba(255, 255, 255, 0.5);\n}\n\n.loader:after {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 100%;\n  transform: translate(-50% , 0);\n  box-shadow: 0 15px 2px rgba(0, 0, 0, 0.25) inset;\n  width: 32px;\n  height: 45px;\n  background: #E09C5F;\n  border-radius: 0 0 12px 12px;\n}\n\n@keyframes colorShift {\n  to {\n    background-position: 0 175px\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-750608",
+    "title": "White Kangaroo 0",
+    "author": "Shoh2008",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.059Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: loader */\n.loader {\n  width: 175px;\n  height: 80px;\n  display: block;\n  margin: auto;\n  background-image: radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, #FFF 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), linear-gradient(#FFF 50px, transparent 0);\n  background-size: 50px 50px, 100px 76px, 50px 50px, 120px 40px;\n  background-position: 0px 30px, 37px 0px, 122px 30px, 25px 40px;\n  background-repeat: no-repeat;\n  position: relative;\n  box-sizing: border-box;\n}\n\n.loader::before {\n  content: '';\n  left: 60px;\n  bottom: 18px;\n  position: absolute;\n  width: 36px;\n  height: 36px;\n  border-radius: 50%;\n  background-color: #FF3D00;\n  background-image: radial-gradient(circle 8px at 18px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 18px 0px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 0px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 36px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 18px 36px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 30px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 5px 30px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 5px 5px, #FFF 100%, transparent 0);\n  background-repeat: no-repeat;\n  box-sizing: border-box;\n  animation: rotationBack 3s linear infinite;\n}\n\n.loader::after {\n  content: '';\n  left: 94px;\n  bottom: 15px;\n  position: absolute;\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  background-color: #FF3D00;\n  background-image: radial-gradient(circle 5px at 12px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 12px 0px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 0px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 24px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 12px 24px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 20px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 3px 20px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 3px 3px, #FFF 100%, transparent 0);\n  background-repeat: no-repeat;\n  box-sizing: border-box;\n  animation: rotationBack 4s linear infinite reverse;\n}\n\n@keyframes rotationBack {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(-360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-970821",
+    "title": "Nice Duck 87",
+    "author": "Smit-Prajapati",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.096Z",
+    "html": "<div class=\"loader\">\n    <div class=\"dots-container\">\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n        <div class=\"dot-row\">\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n            <div class=\"dot\"></div>\n        </div>\n    </div>\n    <div class=\"center-div\">\n        <svg class=\"svg\" viewBox=\"0 0 94 94\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z\">\n            </path>\n            <path d=\"M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z\">\n            </path>\n            <path d=\"M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z\">\n            </path>\n        </svg>\n    </div>\n    <div class=\"glass\"></div>\n</div>",
+    "css": "/* From Uiverse.io by Smit-Prajapati - Tags: loader, circle loader, cool loader, dotted loader */\n.loader {\n  width: 120px;\n  aspect-ratio: 1;\n  background: #bcbcbc;\n  border-radius: 50%;\n  position: relative;\n  padding: 4px;\n  box-shadow: 2px 2px 5px 0px rgb(255, 255, 255), -2px -2px 5px -2px rgb(0, 0, 0);\n}\n\n.loader .dots-container {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n\n.loader .dots-container .dot-row {\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%) rotate(0deg);\n  transform-origin: right center;\n  width: 50%;\n  height: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.loader .dots-container .dot-row > * {\n  animation: blink 5s linear infinite;\n}\n\n.loader .dots-container .dot-row .dot {\n  width: 4%;\n  aspect-ratio: 1;\n  background: #8b8b8b;\n  border-radius: 50%;\n}\n\n.loader .dots-container .dot-row:nth-child(1) {\n  transform: translateY(-50%) rotate(0deg);\n}\n\n.loader .dots-container .dot-row:nth-child(1) .dot {\n  animation-delay: 0s;\n}\n\n.loader .dots-container .dot-row:nth-child(2) {\n  transform: translateY(-50%) rotate(8deg);\n}\n\n.loader .dots-container .dot-row:nth-child(2) .dot {\n  animation-delay: 0.1111111111s;\n}\n\n.loader .dots-container .dot-row:nth-child(3) {\n  transform: translateY(-50%) rotate(16deg);\n}\n\n.loader .dots-container .dot-row:nth-child(3) .dot {\n  animation-delay: 0.2222222222s;\n}\n\n.loader .dots-container .dot-row:nth-child(4) {\n  transform: translateY(-50%) rotate(24deg);\n}\n\n.loader .dots-container .dot-row:nth-child(4) .dot {\n  animation-delay: 0.3333333333s;\n}\n\n.loader .dots-container .dot-row:nth-child(5) {\n  transform: translateY(-50%) rotate(32deg);\n}\n\n.loader .dots-container .dot-row:nth-child(5) .dot {\n  animation-delay: 0.4444444444s;\n}\n\n.loader .dots-container .dot-row:nth-child(6) {\n  transform: translateY(-50%) rotate(40deg);\n}\n\n.loader .dots-container .dot-row:nth-child(6) .dot {\n  animation-delay: 0.5555555556s;\n}\n\n.loader .dots-container .dot-row:nth-child(7) {\n  transform: translateY(-50%) rotate(48deg);\n}\n\n.loader .dots-container .dot-row:nth-child(7) .dot {\n  animation-delay: 0.6666666667s;\n}\n\n.loader .dots-container .dot-row:nth-child(8) {\n  transform: translateY(-50%) rotate(56deg);\n}\n\n.loader .dots-container .dot-row:nth-child(8) .dot {\n  animation-delay: 0.7777777778s;\n}\n\n.loader .dots-container .dot-row:nth-child(9) {\n  transform: translateY(-50%) rotate(64deg);\n}\n\n.loader .dots-container .dot-row:nth-child(9) .dot {\n  animation-delay: 0.8888888889s;\n}\n\n.loader .dots-container .dot-row:nth-child(10) {\n  transform: translateY(-50%) rotate(72deg);\n}\n\n.loader .dots-container .dot-row:nth-child(10) .dot {\n  animation-delay: 1s;\n}\n\n.loader .dots-container .dot-row:nth-child(11) {\n  transform: translateY(-50%) rotate(80deg);\n}\n\n.loader .dots-container .dot-row:nth-child(11) .dot {\n  animation-delay: 1.1111111111s;\n}\n\n.loader .dots-container .dot-row:nth-child(12) {\n  transform: translateY(-50%) rotate(88deg);\n}\n\n.loader .dots-container .dot-row:nth-child(12) .dot {\n  animation-delay: 1.2222222222s;\n}\n\n.loader .dots-container .dot-row:nth-child(13) {\n  transform: translateY(-50%) rotate(96deg);\n}\n\n.loader .dots-container .dot-row:nth-child(13) .dot {\n  animation-delay: 1.3333333333s;\n}\n\n.loader .dots-container .dot-row:nth-child(14) {\n  transform: translateY(-50%) rotate(104deg);\n}\n\n.loader .dots-container .dot-row:nth-child(14) .dot {\n  animation-delay: 1.4444444444s;\n}\n\n.loader .dots-container .dot-row:nth-child(15) {\n  transform: translateY(-50%) rotate(112deg);\n}\n\n.loader .dots-container .dot-row:nth-child(15) .dot {\n  animation-delay: 1.5555555556s;\n}\n\n.loader .dots-container .dot-row:nth-child(16) {\n  transform: translateY(-50%) rotate(120deg);\n}\n\n.loader .dots-container .dot-row:nth-child(16) .dot {\n  animation-delay: 1.6666666667s;\n}\n\n.loader .dots-container .dot-row:nth-child(17) {\n  transform: translateY(-50%) rotate(128deg);\n}\n\n.loader .dots-container .dot-row:nth-child(17) .dot {\n  animation-delay: 1.7777777778s;\n}\n\n.loader .dots-container .dot-row:nth-child(18) {\n  transform: translateY(-50%) rotate(136deg);\n}\n\n.loader .dots-container .dot-row:nth-child(18) .dot {\n  animation-delay: 1.8888888889s;\n}\n\n.loader .dots-container .dot-row:nth-child(19) {\n  transform: translateY(-50%) rotate(144deg);\n}\n\n.loader .dots-container .dot-row:nth-child(19) .dot {\n  animation-delay: 2s;\n}\n\n.loader .dots-container .dot-row:nth-child(20) {\n  transform: translateY(-50%) rotate(152deg);\n}\n\n.loader .dots-container .dot-row:nth-child(20) .dot {\n  animation-delay: 2.1111111111s;\n}\n\n.loader .dots-container .dot-row:nth-child(21) {\n  transform: translateY(-50%) rotate(160deg);\n}\n\n.loader .dots-container .dot-row:nth-child(21) .dot {\n  animation-delay: 2.2222222222s;\n}\n\n.loader .dots-container .dot-row:nth-child(22) {\n  transform: translateY(-50%) rotate(168deg);\n}\n\n.loader .dots-container .dot-row:nth-child(22) .dot {\n  animation-delay: 2.3333333333s;\n}\n\n.loader .dots-container .dot-row:nth-child(23) {\n  transform: translateY(-50%) rotate(176deg);\n}\n\n.loader .dots-container .dot-row:nth-child(23) .dot {\n  animation-delay: 2.4444444444s;\n}\n\n.loader .dots-container .dot-row:nth-child(24) {\n  transform: translateY(-50%) rotate(184deg);\n}\n\n.loader .dots-container .dot-row:nth-child(24) .dot {\n  animation-delay: 2.5555555556s;\n}\n\n.loader .dots-container .dot-row:nth-child(25) {\n  transform: translateY(-50%) rotate(192deg);\n}\n\n.loader .dots-container .dot-row:nth-child(25) .dot {\n  animation-delay: 2.6666666667s;\n}\n\n.loader .dots-container .dot-row:nth-child(26) {\n  transform: translateY(-50%) rotate(200deg);\n}\n\n.loader .dots-container .dot-row:nth-child(26) .dot {\n  animation-delay: 2.7777777778s;\n}\n\n.loader .dots-container .dot-row:nth-child(27) {\n  transform: translateY(-50%) rotate(208deg);\n}\n\n.loader .dots-container .dot-row:nth-child(27) .dot {\n  animation-delay: 2.8888888889s;\n}\n\n.loader .dots-container .dot-row:nth-child(28) {\n  transform: translateY(-50%) rotate(216deg);\n}\n\n.loader .dots-container .dot-row:nth-child(28) .dot {\n  animation-delay: 3s;\n}\n\n.loader .dots-container .dot-row:nth-child(29) {\n  transform: translateY(-50%) rotate(224deg);\n}\n\n.loader .dots-container .dot-row:nth-child(29) .dot {\n  animation-delay: 3.1111111111s;\n}\n\n.loader .dots-container .dot-row:nth-child(30) {\n  transform: translateY(-50%) rotate(232deg);\n}\n\n.loader .dots-container .dot-row:nth-child(30) .dot {\n  animation-delay: 3.2222222222s;\n}\n\n.loader .dots-container .dot-row:nth-child(31) {\n  transform: translateY(-50%) rotate(240deg);\n}\n\n.loader .dots-container .dot-row:nth-child(31) .dot {\n  animation-delay: 3.3333333333s;\n}\n\n.loader .dots-container .dot-row:nth-child(32) {\n  transform: translateY(-50%) rotate(248deg);\n}\n\n.loader .dots-container .dot-row:nth-child(32) .dot {\n  animation-delay: 3.4444444444s;\n}\n\n.loader .dots-container .dot-row:nth-child(33) {\n  transform: translateY(-50%) rotate(256deg);\n}\n\n.loader .dots-container .dot-row:nth-child(33) .dot {\n  animation-delay: 3.5555555556s;\n}\n\n.loader .dots-container .dot-row:nth-child(34) {\n  transform: translateY(-50%) rotate(264deg);\n}\n\n.loader .dots-container .dot-row:nth-child(34) .dot {\n  animation-delay: 3.6666666667s;\n}\n\n.loader .dots-container .dot-row:nth-child(35) {\n  transform: translateY(-50%) rotate(272deg);\n}\n\n.loader .dots-container .dot-row:nth-child(35) .dot {\n  animation-delay: 3.7777777778s;\n}\n\n.loader .dots-container .dot-row:nth-child(36) {\n  transform: translateY(-50%) rotate(280deg);\n}\n\n.loader .dots-container .dot-row:nth-child(36) .dot {\n  animation-delay: 3.8888888889s;\n}\n\n.loader .dots-container .dot-row:nth-child(37) {\n  transform: translateY(-50%) rotate(288deg);\n}\n\n.loader .dots-container .dot-row:nth-child(37) .dot {\n  animation-delay: 4s;\n}\n\n.loader .dots-container .dot-row:nth-child(38) {\n  transform: translateY(-50%) rotate(296deg);\n}\n\n.loader .dots-container .dot-row:nth-child(38) .dot {\n  animation-delay: 4.1111111111s;\n}\n\n.loader .dots-container .dot-row:nth-child(39) {\n  transform: translateY(-50%) rotate(304deg);\n}\n\n.loader .dots-container .dot-row:nth-child(39) .dot {\n  animation-delay: 4.2222222222s;\n}\n\n.loader .dots-container .dot-row:nth-child(40) {\n  transform: translateY(-50%) rotate(312deg);\n}\n\n.loader .dots-container .dot-row:nth-child(40) .dot {\n  animation-delay: 4.3333333333s;\n}\n\n.loader .dots-container .dot-row:nth-child(41) {\n  transform: translateY(-50%) rotate(320deg);\n}\n\n.loader .dots-container .dot-row:nth-child(41) .dot {\n  animation-delay: 4.4444444444s;\n}\n\n.loader .dots-container .dot-row:nth-child(42) {\n  transform: translateY(-50%) rotate(328deg);\n}\n\n.loader .dots-container .dot-row:nth-child(42) .dot {\n  animation-delay: 4.5555555556s;\n}\n\n.loader .dots-container .dot-row:nth-child(43) {\n  transform: translateY(-50%) rotate(336deg);\n}\n\n.loader .dots-container .dot-row:nth-child(43) .dot {\n  animation-delay: 4.6666666667s;\n}\n\n.loader .dots-container .dot-row:nth-child(44) {\n  transform: translateY(-50%) rotate(344deg);\n}\n\n.loader .dots-container .dot-row:nth-child(44) .dot {\n  animation-delay: 4.7777777778s;\n}\n\n.loader .dots-container .dot-row:nth-child(45) {\n  transform: translateY(-50%) rotate(352deg);\n}\n\n.loader .dots-container .dot-row:nth-child(45) .dot {\n  animation-delay: 4.8888888889s;\n}\n\n.loader .center-div {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 36%;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  display: grid;\n  place-content: center;\n  background: linear-gradient(135deg, rgb(130, 130, 130) 0%, rgb(73, 73, 73) 100%);\n  box-shadow: rgba(39, 39, 39, 0.3) 8px 8px 5px -5px, rgba(39, 39, 39, 0.5) 8px 8px 10px 0px;\n  border-right: 1px solid rgb(63, 63, 63);\n  border-bottom: 1px solid rgb(63, 63, 63);\n}\n\n.loader .center-div .svg {\n  width: 15px;\n  aspect-ratio: 1;\n  fill: rgba(0, 0, 0, 0.293);\n}\n\n.loader .glass {\n  position: absolute;\n  height: 50%;\n  width: 80%;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%) rotate(-45deg);\n  transform-origin: bottom center;\n  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.879) 100%);\n  border-radius: inherit;\n  border-radius: 51% 49% 51% 49%/59% 60% 40% 41%;\n}\n\n@keyframes blink {\n  0% {\n    background: white;\n    box-shadow: 0px 0px 2px rgb(255, 255, 255);\n  }\n\n  10% {\n    background: white;\n    box-shadow: 0px 0px 2px rgb(255, 255, 255);\n  }\n\n  20% {\n    background: white;\n    box-shadow: 0px 0px 2px rgb(255, 255, 255);\n  }\n\n  21% {\n    background: grey;\n  }\n}",
+    "tags": [
+      "loader",
+      "circle loader",
+      "cool loader",
+      "dotted loader"
+    ]
+  },
+  {
+    "id": "uiv-216303",
+    "title": "Tidy Parrot 17",
+    "author": "Srivatsajbhat",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.028Z",
+    "html": "<div id=\"loader\">\n    <div class=\"ls-particles ls-part-1\"></div>\n    <div class=\"ls-particles ls-part-2\"></div>\n    <div class=\"ls-particles ls-part-3\"></div>\n    <div class=\"ls-particles ls-part-4\"></div>\n    <div class=\"ls-particles ls-part-5\"></div>\n    <div class=\"lightsaber ls-left ls-green\"></div>\n    <div class=\"lightsaber ls-right ls-red\"></div>\n  </div>",
+    "css": "/* From Uiverse.io by Srivatsajbhat - Tags: loader, animated, star wars, lightsaber */\n#loader {\n  width: 80px;\n  height: 40px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin: -20px -40px;\n  z-index: 1000;\n}\n\n.lightsaber {\n  position: absolute;\n  width: 4px;\n  height: 12px;\n  background-color: #666;\n  border-radius: 1px;\n  bottom: 0;\n}\n\n.lightsaber.ls-left {\n  left: 0;\n}\n\n.lightsaber.ls-right {\n  right: 0;\n}\n\n.lightsaber:before {\n  position: absolute;\n  content: ' ';\n  display: block;\n  width: 2px;\n  height: 25px;\n  max-height: 1px;\n  left: 1px;\n  top: 1px;\n  background-color: #fff;\n  border-radius: 1px;\n  -webkit-transform: rotateZ(180deg);\n  transform: rotateZ(180deg);\n  -webkit-transform-origin: center top;\n  -ms-transform-origin: center top;\n  transform-origin: center top;\n}\n\n.lightsaber:after {\n  position: absolute;\n  content: ' ';\n  display: block;\n  width: 2px;\n  height: 2px;\n  left: 1px;\n  top: 4px;\n  background-color: #fff;\n  border-radius: 50%;\n}\n\n.ls-particles {\n  position: absolute;\n  left: 42px;\n  top: 10px;\n  width: 1px;\n  height: 5px;\n  background-color: rgb(51, 51, 51, 0);\n  -webkit-transform: rotateZ(0deg);\n  transform: rotateZ(0deg);\n}\n\n.lightsaber.ls-green:before {\n  -webkit-animation: showlightgreen 2s ease-in-out infinite 1s;\n  animation: showlightgreen 2s ease-in-out infinite 1s;\n}\n\n.lightsaber.ls-red:before {\n  -webkit-animation: showlightred 2s ease-in-out infinite 1s;\n  animation: showlightred 2s ease-in-out infinite 1s;\n}\n\n.lightsaber.ls-left {\n  -webkit-animation: fightleft 2s ease-in-out infinite 1s;\n  animation: fightleft 2s ease-in-out infinite 1s;\n}\n\n.lightsaber.ls-right {\n  -webkit-animation: fightright 2s ease-in-out infinite 1s;\n  animation: fightright 2s ease-in-out infinite 1s;\n}\n\n.ls-particles.ls-part-1 {\n  -webkit-animation: particles1 2s ease-out infinite 1s;\n  animation: particles1 2s ease-out infinite 1s;\n}\n\n.ls-particles.ls-part-2 {\n  -webkit-animation: particles2 2s ease-out infinite 1s;\n  animation: particles2 2s ease-out infinite 1s;\n}\n\n.ls-particles.ls-part-3 {\n  -webkit-animation: particles3 2s ease-out infinite 1s;\n  animation: particles3 2s ease-out infinite 1s;\n}\n\n.ls-particles.ls-part-4 {\n  -webkit-animation: particles4 2s ease-out infinite 1s;\n  animation: particles4 2s ease-out infinite 1s;\n}\n\n.ls-particles.ls-part-5 {\n  -webkit-animation: particles5 2s ease-out infinite 1s;\n  animation: particles5 2s ease-out infinite 1s;\n}\n\n@-webkit-keyframes showlightgreen {\n  0% {\n    max-height: 0;\n    box-shadow: 0 0 0 0 #87c054;\n  }\n\n  5% {\n    box-shadow: 0 0 4px 2px #87c054;\n  }\n\n  10% {\n    max-height: 22px;\n  }\n\n  80% {\n    max-height: 22px;\n  }\n\n  85% {\n    box-shadow: 0 0 4px 2px #87c054;\n  }\n\n  100% {\n    max-height: 0;\n    box-shadow: 0 0 0 0 #87c054;\n  }\n}\n\n@-webkit-keyframes showlightred {\n  0% {\n    max-height: 0;\n    box-shadow: 0 0 0 0 #f06363;\n  }\n\n  20% {\n    box-shadow: 0 0 4px 2px #f06363;\n  }\n\n  25% {\n    max-height: 22px;\n  }\n\n  80% {\n    max-height: 22px;\n  }\n\n  85% {\n    box-shadow: 0 0 4px 2px #f06363;\n  }\n\n  100% {\n    max-height: 0;\n    box-shadow: 0 0 0 0 #f06363;\n  }\n}\n\n@-webkit-keyframes fightleft {\n  0% {\n    -webkit-transform: rotateZ(0deg);\n    transform: rotateZ(0deg);\n    left: 0;\n    bottom: 0;\n  }\n\n  30% {\n    -webkit-transform: rotateZ(0deg);\n    transform: rotateZ(0deg);\n    bottom: 0;\n  }\n\n  40% {\n    -webkit-transform: rotateZ(45deg);\n    transform: rotateZ(45deg);\n    left: 0;\n    bottom: 2px;\n  }\n\n  45% {\n    -webkit-transform: rotateZ(65deg);\n    transform: rotateZ(65deg);\n    left: 0;\n  }\n\n  65% {\n    -webkit-transform: rotateZ(410deg);\n    transform: rotateZ(410deg);\n    left: 30px;\n    bottom: 10px;\n  }\n\n  95% {\n    -webkit-transform: rotateZ(410deg);\n    transform: rotateZ(410deg);\n    left: 0;\n    bottom: 0;\n  }\n\n  100% {\n    -webkit-transform: rotateZ(360deg);\n    transform: rotateZ(360deg);\n    left: 0;\n    bottom: 0;\n  }\n}\n\n@-webkit-keyframes fightright {\n  0% {\n    -webkit-transform: rotateZ(0deg);\n    transform: rotateZ(0deg);\n    right: 0;\n    bottom: 0;\n  }\n\n  30% {\n    -webkit-transform: rotateZ(0deg);\n    transform: rotateZ(0deg);\n    bottom: 0;\n  }\n\n  45% {\n    -webkit-transform: rotateZ(-45deg);\n    transform: rotateZ(-45deg);\n    right: 0;\n    bottom: 2px;\n  }\n\n  50% {\n    -webkit-transform: rotateZ(-65deg);\n    transform: rotateZ(-65deg);\n    right: 0;\n  }\n\n  68% {\n    -webkit-transform: rotateZ(-410deg);\n    transform: rotateZ(-410deg);\n    right: 27px;\n    bottom: 13px;\n  }\n\n  95% {\n    -webkit-transform: rotateZ(-410deg);\n    transform: rotateZ(-410deg);\n    right: 0;\n    bottom: 0;\n  }\n\n  100% {\n    -webkit-transform: rotateZ(-360deg);\n    transform: rotateZ(-360deg);\n    right: 0;\n    bottom: 0;\n  }\n}\n\n@-webkit-keyframes particles1 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(35deg) translateY(0px);\n    transform: rotateZ(35deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(35deg) translateY(0px);\n    transform: rotateZ(35deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(35deg) translateY(0px);\n    transform: rotateZ(35deg) translateY(0px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(35deg) translateY(-30px);\n    transform: rotateZ(35deg) translateY(-30px);\n  }\n}\n\n@-webkit-keyframes particles2 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-65deg) translateY(0px);\n    transform: rotateZ(-65deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-65deg) translateY(0px);\n    transform: rotateZ(-65deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(-65deg) translateY(0px);\n    transform: rotateZ(-65deg) translateY(0px);\n  }\n\n  95% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-65deg) translateY(-40px);\n    transform: rotateZ(-65deg) translateY(-40px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-65deg) translateY(-40px);\n    transform: rotateZ(-65deg) translateY(-40px);\n  }\n}\n\n@-webkit-keyframes particles3 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-75deg) translateY(0px);\n    transform: rotateZ(-75deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-75deg) translateY(0px);\n    transform: rotateZ(-75deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(-75deg) translateY(0px);\n    transform: rotateZ(-75deg) translateY(0px);\n  }\n\n  97% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-75deg) translateY(-35px);\n    transform: rotateZ(-75deg) translateY(-35px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-75deg) translateY(-35px);\n    transform: rotateZ(-75deg) translateY(-35px);\n  }\n}\n\n@-webkit-keyframes particles4 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-25deg) translateY(0px);\n    transform: rotateZ(-25deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-25deg) translateY(0px);\n    transform: rotateZ(-25deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(-25deg) translateY(0px);\n    transform: rotateZ(-25deg) translateY(0px);\n  }\n\n  97% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-25deg) translateY(-30px);\n    transform: rotateZ(-25deg) translateY(-30px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-25deg) translateY(-30px);\n    transform: rotateZ(-25deg) translateY(-30px);\n  }\n}\n\n@-webkit-keyframes particles5 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(65deg) translateY(0px);\n    transform: rotateZ(65deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(65deg) translateY(0px);\n    transform: rotateZ(65deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(65deg) translateY(0px);\n    transform: rotateZ(65deg) translateY(0px);\n  }\n\n  97% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(65deg) translateY(-35px);\n    transform: rotateZ(65deg) translateY(-35px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(65deg) translateY(-35px);\n    transform: rotateZ(65deg) translateY(-35px);\n  }\n}\n\n@keyframes showlightgreen {\n  0% {\n    max-height: 0;\n    box-shadow: 0 0 0 0 #87c054;\n  }\n\n  5% {\n    box-shadow: 0 0 4px 2px #87c054;\n  }\n\n  10% {\n    max-height: 22px;\n  }\n\n  80% {\n    max-height: 22px;\n  }\n\n  85% {\n    box-shadow: 0 0 4px 2px #87c054;\n  }\n\n  100% {\n    max-height: 0;\n    box-shadow: 0 0 0 0 #87c054;\n  }\n}\n\n@keyframes showlightred {\n  0% {\n    max-height: 0;\n    box-shadow: 0 0 0 0 #f06363;\n  }\n\n  20% {\n    box-shadow: 0 0 4px 2px #f06363;\n  }\n\n  25% {\n    max-height: 22px;\n  }\n\n  80% {\n    max-height: 22px;\n  }\n\n  85% {\n    box-shadow: 0 0 4px 2px #f06363;\n  }\n\n  100% {\n    max-height: 0;\n    box-shadow: 0 0 0 0 #f06363;\n  }\n}\n\n@keyframes fightleft {\n  0% {\n    -webkit-transform: rotateZ(0deg);\n    transform: rotateZ(0deg);\n    left: 0;\n    bottom: 0;\n  }\n\n  30% {\n    -webkit-transform: rotateZ(0deg);\n    transform: rotateZ(0deg);\n    bottom: 0;\n  }\n\n  40% {\n    -webkit-transform: rotateZ(45deg);\n    transform: rotateZ(45deg);\n    left: 0;\n    bottom: 2px;\n  }\n\n  45% {\n    -webkit-transform: rotateZ(65deg);\n    transform: rotateZ(65deg);\n    left: 0;\n  }\n\n  65% {\n    -webkit-transform: rotateZ(410deg);\n    transform: rotateZ(410deg);\n    left: 30px;\n    bottom: 10px;\n  }\n\n  95% {\n    -webkit-transform: rotateZ(410deg);\n    transform: rotateZ(410deg);\n    left: 0;\n    bottom: 0;\n  }\n\n  100% {\n    -webkit-transform: rotateZ(360deg);\n    transform: rotateZ(360deg);\n    left: 0;\n    bottom: 0;\n  }\n}\n\n@keyframes fightright {\n  0% {\n    -webkit-transform: rotateZ(0deg);\n    transform: rotateZ(0deg);\n    right: 0;\n    bottom: 0;\n  }\n\n  30% {\n    -webkit-transform: rotateZ(0deg);\n    transform: rotateZ(0deg);\n    bottom: 0;\n  }\n\n  45% {\n    -webkit-transform: rotateZ(-45deg);\n    transform: rotateZ(-45deg);\n    right: 0;\n    bottom: 2px;\n  }\n\n  50% {\n    -webkit-transform: rotateZ(-65deg);\n    transform: rotateZ(-65deg);\n    right: 0;\n  }\n\n  68% {\n    -webkit-transform: rotateZ(-410deg);\n    transform: rotateZ(-410deg);\n    right: 27px;\n    bottom: 13px;\n  }\n\n  95% {\n    -webkit-transform: rotateZ(-410deg);\n    transform: rotateZ(-410deg);\n    right: 0;\n    bottom: 0;\n  }\n\n  100% {\n    -webkit-transform: rotateZ(-360deg);\n    transform: rotateZ(-360deg);\n    right: 0;\n    bottom: 0;\n  }\n}\n\n@keyframes particles1 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(35deg) translateY(0px);\n    transform: rotateZ(35deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(35deg) translateY(0px);\n    transform: rotateZ(35deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(35deg) translateY(0px);\n    transform: rotateZ(35deg) translateY(0px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(35deg) translateY(-30px);\n    transform: rotateZ(35deg) translateY(-30px);\n  }\n}\n\n@keyframes particles2 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-65deg) translateY(0px);\n    transform: rotateZ(-65deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-65deg) translateY(0px);\n    transform: rotateZ(-65deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(-65deg) translateY(0px);\n    transform: rotateZ(-65deg) translateY(0px);\n  }\n\n  95% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-65deg) translateY(-40px);\n    transform: rotateZ(-65deg) translateY(-40px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-65deg) translateY(-40px);\n    transform: rotateZ(-65deg) translateY(-40px);\n  }\n}\n\n@keyframes particles3 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-75deg) translateY(0px);\n    transform: rotateZ(-75deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-75deg) translateY(0px);\n    transform: rotateZ(-75deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(-75deg) translateY(0px);\n    transform: rotateZ(-75deg) translateY(0px);\n  }\n\n  97% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-75deg) translateY(-35px);\n    transform: rotateZ(-75deg) translateY(-35px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-75deg) translateY(-35px);\n    transform: rotateZ(-75deg) translateY(-35px);\n  }\n}\n\n@keyframes particles4 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-25deg) translateY(0px);\n    transform: rotateZ(-25deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-25deg) translateY(0px);\n    transform: rotateZ(-25deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(-25deg) translateY(0px);\n    transform: rotateZ(-25deg) translateY(0px);\n  }\n\n  97% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-25deg) translateY(-30px);\n    transform: rotateZ(-25deg) translateY(-30px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(-25deg) translateY(-30px);\n    transform: rotateZ(-25deg) translateY(-30px);\n  }\n}\n\n@keyframes particles5 {\n  0% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(65deg) translateY(0px);\n    transform: rotateZ(65deg) translateY(0px);\n  }\n\n  63% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(65deg) translateY(0px);\n    transform: rotateZ(65deg) translateY(0px);\n  }\n\n  64% {\n    background-color: rgba(51, 51, 51,1);\n    -webkit-transform: rotateZ(65deg) translateY(0px);\n    transform: rotateZ(65deg) translateY(0px);\n  }\n\n  97% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(65deg) translateY(-35px);\n    transform: rotateZ(65deg) translateY(-35px);\n  }\n\n  100% {\n    background-color: rgba(51, 51, 51,0);\n    -webkit-transform: rotateZ(65deg) translateY(-35px);\n    transform: rotateZ(65deg) translateY(-35px);\n  }\n}",
+    "tags": [
+      "loader",
+      "animated",
+      "star wars",
+      "lightsaber"
+    ]
+  },
+  {
+    "id": "uiv-204073",
+    "title": "Itchy Husky 37",
+    "author": "Subaashbala",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.059Z",
+    "html": "<div class=\"loader\">\n  <div class=\"shape\">\n    <div class=\"numRowContainer\">\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n      <div class=\"numRow\">0 1 0 1 1 0 0 1</div>\n    </div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Subaashbala  - Tags: animation, minimalist, loader, rotate, loading animation */\n.shape {\n  --BG-COLOR: #59d5e0;\n  --OUTLINE-COLOR: #068b97;\n  --OUTLINE-SIZE: 15px;\n  width: 7rem;\n  aspect-ratio: 1;\n  position: relative;\n  border-radius: 50%;\n  overflow: hidden;\n  display: flex;\n  justify-content: center;\n  outline: var(--OUTLINE-SIZE) solid var(--OUTLINE-COLOR);\n  background: var(--BG-COLOR);\n  box-shadow: 0px 0px calc(var(--OUTLINE-SIZE) + 25px) rgba(0, 0, 0, 0.438);\n  animation: morph 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;\n}\n.numRowContainer {\n  height: fit-content;\n  animation: infiniteScroll 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;\n}\n@keyframes infiniteScroll {\n  from {\n    transform: translate(0, 0);\n  }\n  to {\n    transform: translate(0, -50%);\n  }\n}\n@keyframes morph {\n  50% {\n    --BG-COLOR: PINK;\n    --OUTLINE-COLOR: #ff407d;\n    transform: rotate(150deg);\n    border-radius: 20%;\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "animation",
+      "minimalist",
+      "loader",
+      "rotate",
+      "loading animation"
+    ]
+  },
+  {
+    "id": "uiv-976622",
+    "title": "Massive Moth 6",
+    "author": "Subaashbala",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.066Z",
+    "html": "<div class=\"loaderContainer\">\n  <div class=\"particleContainer\">\n    <div></div>\n    <div></div>\n    <div></div>\n  </div>\n  <div class=\"particleContainer\">\n    <div></div>\n    <div></div>\n    <div></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Subaashbala  - Tags: loader, animated, loading animation */\n.loaderContainer {\n  display: flex;\n  width: 9em;\n  overflow: hidden;\n  gap: 0.5em;\n}\n.particleContainer {\n  display: flex;\n  gap: 0.5em;\n  animation: slide 2000ms linear infinite;\n}\n.particleContainer div {\n  width: 2.5em;\n  aspect-ratio: 1;\n  border-radius: 5px;\n  background: whitesmoke;\n  transform-origin: left bottom;\n  animation: squeeze 750ms ease-in-out infinite;\n}\n.particleContainer div:nth-child(2) {\n  animation-delay: 50ms;\n}\n.particleContainer div:last-child {\n  animation-delay: 100ms;\n}\n@keyframes squeeze {\n  0% {\n    transform: scale(1) translateY(0);\n  }\n  50% {\n    transform: scale(0.75);\n  }\n  75% {\n    transform: scale(1.05);\n  }\n  100% {\n    transform: sclae(1);\n  }\n}\n@keyframes slide {\n  from {\n    transform: translateX(0%);\n  }\n  to {\n    transform: translateX(calc(-50% + 1.25em));\n  }\n}",
+    "tags": [
+      "loader",
+      "animated",
+      "loading animation"
+    ]
+  },
+  {
+    "id": "uiv-860628",
+    "title": "Ugly Lizard 47",
+    "author": "Subaashbala",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.734Z",
+    "html": "<div class=\"loader\">\n  <div class=\"clockLoader\">\n    <div class=\"clockHand minuteHand\"></div>\n    <div class=\"clockHand hourHand\"></div>\n  </div>\n  <div class=\"decorativeElementContainer\">\n    <div class=\"decorativeElement decorativeElement1\"></div>\n    <div class=\"decorativeElement decorativeElement2\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Subaashbala  - Tags: glassmorphism, animation, loader, circle loader, box-shadow, loading animation */\n.loader {\n  position: relative;\n  --duration: 1500ms; /* minute hand's rotation time duration */\n}\n.clockLoader {\n  width: 15em;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  border: 0.25em solid black;\n  background: rgba(255, 255, 255, 0.5);\n  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.171);\n  backdrop-filter: blur(10px);\n  z-index: 100;\n  animation: floatEffect 15s linear infinite alternate;\n}\n.clockLoader::after {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -65%);\n  width: 0.5em;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  background-color: black;\n}\n.clockHand {\n  position: absolute;\n  background-color: black;\n  border-radius: 5em;\n  width: 0.25em;\n  transform-origin: bottom;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -100%);\n}\n.hourHand {\n  height: 20%;\n  animation: rotateHand calc(12 * var(--duration)) linear infinite;\n}\n.minuteHand {\n  height: 30%;\n  animation: rotateHand var(--duration) linear infinite;\n}\n.decorativeElementContainer {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform-origin: center center;\n  animation: rotate calc(50 * var(--duration)) linear infinite;\n  z-index: -1;\n  transform: translate(-50%, -50%);\n}\n.decorativeElement {\n  position: relative;\n  width: 7em;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  z-index: -1;\n}\n.decorativeElement1 {\n  left: 50% !important;\n  background: orangered;\n  animation: floatEffect 16ss linear infinite;\n}\n.decorativeElement2 {\n  right: 55%;\n  background: hotpink;\n}\n@keyframes rotateHand {\n  to {\n    transform: translate(-50%, -100%) rotate(360deg);\n  }\n}\n@keyframes rotate {\n  to {\n    transform: translate(-50%, -50%) rotateZ(360deg);\n  }\n}\n@keyframes floatEffect {\n  0% {\n    transform: translate(0);\n  }\n  100% {\n    transform: translate(0, 2em);\n  }\n}",
+    "tags": [
+      "glassmorphism",
+      "animation",
+      "loader",
+      "circle loader",
+      "box-shadow",
+      "loading animation"
+    ]
+  },
+  {
+    "id": "uiv-695613",
+    "title": "Little Duck 0",
+    "author": "TemRevil",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.544Z",
+    "html": "<div class=\"loading\">\n  <div class=\"loading-wide\">\n    <div class=\"l1 color\"></div>\n    <div class=\"l2 color\"></div>\n    <div class=\"e1 color animation-effect-light\"></div>\n    <div class=\"e2 color animation-effect-light-d\"></div>\n    <div class=\"e3 animation-effect-rot\">X</div>\n    <div class=\"e4 color animation-effect-light\"></div>\n    <div class=\"e5 color animation-effect-light-d\"></div>\n    <div class=\"e6 animation-effect-scale\">*</div>\n    <div class=\"e7 color\"></div>\n    <div class=\"e8 color\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by TemRevil  - Tags: simple, animation, blue, loading, loader, spinner, smooth, space */\n.loading {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.loading-wide {\n  width: 150px;\n  height: 150px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n}\n.color {\n  background-color: #3395ff;\n}\n\n.l1 {\n  width: 15px;\n  height: 65px;\n  position: absolute;\n  animation: move-h 1.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);\n}\n\n.l2 {\n  width: 15px;\n  height: 60px;\n  position: absolute;\n  transform: rotate(90deg);\n  animation: move-v 1.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);\n}\n\n@keyframes move-h {\n  0% {\n    top: 0;\n    opacity: 0;\n  }\n  25% {\n    opacity: 1;\n  }\n  50% {\n    top: 30%;\n    opacity: 1;\n  }\n  75% {\n    opacity: 1;\n  }\n  100% {\n    top: 100%;\n    opacity: 0;\n  }\n}\n@keyframes move-v {\n  0% {\n    left: 0;\n    opacity: 0;\n  }\n  25% {\n    opacity: 1;\n  }\n  50% {\n    left: 45%;\n    opacity: 1;\n  }\n  75% {\n    opacity: 1;\n  }\n  100% {\n    left: 100%;\n    opacity: 0;\n  }\n}\n\n.animation-effect-light {\n  animation: effect 0.2s 0.1s infinite linear;\n}\n.animation-effect-light-d {\n  animation: effect 0.3s 0.2s infinite linear;\n}\n.animation-effect-rot {\n  animation: rot 0.8s infinite cubic-bezier(0.65, 0.05, 0.36, 1);\n}\n.animation-effect-scale {\n  animation: scale 0.8s infinite cubic-bezier(0.65, 0.05, 0.36, 1);\n}\n\n@keyframes effect {\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n@keyframes rot {\n  0% {\n    transform: rotate(0deg);\n  }\n  50% {\n    transform: rotate(180deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes scale {\n  0% {\n    scale: 1;\n  }\n  50% {\n    scale: 1.9;\n  }\n  100% {\n    scale: 1;\n  }\n}\n.e1 {\n  width: 1px;\n  height: 40px;\n  opacity: 0.3;\n  position: absolute;\n  top: 0;\n  left: 8%;\n}\n.e2 {\n  width: 60px;\n  height: 1px;\n  opacity: 0.8;\n  position: absolute;\n  top: 8%;\n  left: 0;\n}\n.e3 {\n  position: absolute;\n  top: 10%;\n  left: 12%;\n  font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;\n  font-weight: 900;\n  font-size: 18px;\n  color: #3395ff;\n}\n.e4 {\n  width: 1px;\n  height: 40px;\n  opacity: 0.3;\n  position: absolute;\n  top: 90%;\n  right: 10%;\n}\n.e5 {\n  width: 40px;\n  height: 1px;\n  opacity: 0.3;\n  position: absolute;\n  top: 100%;\n  right: 0;\n}\n.e6 {\n  position: absolute;\n  top: 100%;\n  right: 0;\n  font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;\n  font-size: 32px;\n  color: #3395ff;\n}\n.e7 {\n  width: 1px;\n  height: 20px;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  transform: rotate(45deg);\n  animation: height 1s infinite cubic-bezier(0.65, 0.05, 0.36, 1);\n}\n@keyframes height {\n  0% {\n    bottom: 0%;\n    left: 0%;\n    height: 0px;\n  }\n  25% {\n    height: 90px;\n  }\n  50% {\n    bottom: 100%;\n    left: 100%;\n    height: 90px;\n  }\n  75% {\n    height: 0px;\n  }\n  100% {\n    bottom: 0%;\n    left: 0%;\n    height: 0px;\n  }\n}\n.e8 {\n  width: 20px;\n  height: 1px;\n  position: absolute;\n  bottom: 50%;\n  left: 0;\n  animation: width 1.5s infinite cubic-bezier(0.65, 0.05, 0.36, 1);\n}\n@keyframes width {\n  0% {\n    left: 0%;\n    width: 0px;\n  }\n  50% {\n    left: 100%;\n    width: 90px;\n  }\n  100% {\n    left: 0%;\n    width: 0px;\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "blue",
+      "loading",
+      "loader",
+      "spinner",
+      "smooth",
+      "space"
+    ]
+  },
+  {
+    "id": "uiv-757850",
+    "title": "Rude Moth 53",
+    "author": "TemRevil",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.544Z",
+    "html": "<div class=\"loading-box\">\n  <div class=\"WH animation color\"></div>\n  <div class=\"WH animation color\"></div>\n  <div class=\"WH animation color\"></div>\n</div>",
+    "css": "/* From Uiverse.io by TemRevil  - Tags: simple, action, loading, loader, smooth, code, neon, game */\n.loading-box {\n  width: 150px;\n  height: 150px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 10px;\n}\n\n.WH {\n  width: 20px;\n  height: 70px;\n}\n.color {\n  background-color: #ff5100;\n}\n.animation {\n  animation: Loading 1s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);\n}\n\n@keyframes Loading {\n  0% {\n    height: 0;\n  }\n  25% {\n    height: 70px;\n  }\n  50% {\n    height: 70px;\n    transform: rotate(10deg);\n  }\n  75% {\n    height: 70px;\n    transform: rotate(0deg);\n  }\n  100% {\n    height: 0;\n  }\n}",
+    "tags": [
+      "simple",
+      "action",
+      "loading",
+      "loader",
+      "smooth",
+      "code",
+      "neon",
+      "game"
+    ]
+  },
+  {
+    "id": "uiv-501859",
+    "title": "Neat Mole 44",
+    "author": "YarikZhukovDesigner",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.736Z",
+    "html": "<div class=\"container\">\n  <span></span>\n  <span></span>\n  <span></span>\n  <span></span>\n</div>",
+    "css": "/* From Uiverse.io by YarikZhukovDesigner - Tags: loader */\n.container {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  border-radius: 50%;\n  height: 96px;\n  width: 96px;\n  animation: rotate_3922 1.2s linear infinite;\n  background-color: #CB0000;\n  background-image: linear-gradient(#CB0000, #FFC700, #c79c00);\n}\n\n.container span {\n  position: absolute;\n  border-radius: 50%;\n  height: 100%;\n  width: 100%;\n  background-color: #cb0000;\n  background-image: linear-gradient(#ff0000, #ffc800, #ffc800);\n}\n\n.container span:nth-of-type(1) {\n  filter: blur(5px);\n}\n\n.container span:nth-of-type(2) {\n  filter: blur(10px);\n}\n\n.container span:nth-of-type(3) {\n  filter: blur(25px);\n}\n\n.container span:nth-of-type(4) {\n  filter: blur(50px);\n}\n\n.container::after {\n  content: \"\";\n  position: absolute;\n  top: 10px;\n  left: 10px;\n  right: 10px;\n  bottom: 10px;\n  background-color: #fff;\n  border: solid 5px #ffffff;\n  border-radius: 50%;\n}\n\n@keyframes rotate_3922 {\n  from {\n    transform: translate(-50%, -50%) rotate(0deg);\n  }\n\n  to {\n    transform: translate(-50%, -50%) rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-438288",
+    "title": "Giant Shrimp 51",
+    "author": "Yaya12085",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.531Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Yaya12085 - Tags: loader, pulse */\n.loader {\n  height: 20px;\n  width: 20px;\n  border-radius: 50%;\n  background-color: #69ffa8;\n  animation: 1.5s pulse infinite ease-in-out;\n}\n\n@keyframes pulse {\n  0% {\n    box-shadow: 0 0 0 0 #69ffa8;\n  }\n\n  100% {\n    box-shadow: 0 0 0 14px #69ffa800;\n  }\n}",
+    "tags": [
+      "loader",
+      "pulse"
+    ]
+  },
+  {
+    "id": "uiv-788503",
+    "title": "Short Swan 83",
+    "author": "Yaya12085",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.586Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by Yaya12085 - Tags: loading, progress bar, loader, colorful */\n.loader {\n  box-sizing: border-box;\n  position: relative;\n  display: block;\n  width: 60px;\n  height: 22px;\n  border: 2px solid;\n  border-radius: 3px;\n  margin-left: -3px\n}\n\n.loader::after,\n.loader::before {\n  content: \"\";\n  display: block;\n  box-sizing: border-box;\n  position: absolute;\n  height: 12px;\n  background: currentColor;\n  top: 3px\n}\n\n.loader::before {\n  right: -4px;\n  border-radius: 3px;\n  width: 4px\n}\n\n.loader::after {\n  width: 1px;\n  left: 3px;\n  animation: full 2s ease-in-out infinite;\n}\n\n@keyframes full {\n  20% {\n    background-color: red\n  }\n\n  45% {\n    background-color: yellow;\n  }\n\n  to {\n    width: 50px;\n    background-color: greenyellow;\n  }\n}",
+    "tags": [
+      "loading",
+      "progress bar",
+      "loader",
+      "colorful"
+    ]
+  },
+  {
+    "id": "uiv-406257",
+    "title": "Average Lizard 53",
+    "author": "Z4drus",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.544Z",
+    "html": "<div class=\"container\">\n  <div class=\"loader\">\n    <div class=\"crystal\"></div>\n    <div class=\"crystal\"></div>\n    <div class=\"crystal\"></div>\n    <div class=\"crystal\"></div>\n    <div class=\"crystal\"></div>\n    <div class=\"crystal\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Z4drus  - Tags: simple, animation, blue, loading, loader, dark, animated, gradients */\n.container {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.loader {\n  position: relative;\n  width: 200px;\n  height: 200px;\n  perspective: 800px;\n}\n\n.crystal {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 60px;\n  height: 60px;\n  opacity: 0;\n  transform-origin: bottom center;\n  transform: translate(-50%, -50%) rotateX(45deg) rotateZ(0deg);\n  animation: spin 4s linear infinite, emerge 2s ease-in-out infinite alternate,\n    fadeIn 0.3s ease-out forwards;\n  border-radius: 10px;\n  visibility: hidden;\n}\n\n@keyframes spin {\n  from {\n    transform: translate(-50%, -50%) rotateX(45deg) rotateZ(0deg);\n  }\n  to {\n    transform: translate(-50%, -50%) rotateX(45deg) rotateZ(360deg);\n  }\n}\n\n@keyframes emerge {\n  0%,\n  100% {\n    transform: translate(-50%, -50%) scale(0.5);\n    opacity: 0;\n  }\n  50% {\n    transform: translate(-50%, -50%) scale(1);\n    opacity: 1;\n  }\n}\n\n@keyframes fadeIn {\n  to {\n    visibility: visible;\n    opacity: 0.8;\n  }\n}\n\n.crystal:nth-child(1) {\n  background: linear-gradient(45deg, #003366, #336699);\n  animation-delay: 0s;\n}\n\n.crystal:nth-child(2) {\n  background: linear-gradient(45deg, #003399, #3366cc);\n  animation-delay: 0.3s;\n}\n\n.crystal:nth-child(3) {\n  background: linear-gradient(45deg, #0066cc, #3399ff);\n  animation-delay: 0.6s;\n}\n\n.crystal:nth-child(4) {\n  background: linear-gradient(45deg, #0099ff, #66ccff);\n  animation-delay: 0.9s;\n}\n\n.crystal:nth-child(5) {\n  background: linear-gradient(45deg, #33ccff, #99ccff);\n  animation-delay: 1.2s;\n}\n\n.crystal:nth-child(6) {\n  background: linear-gradient(45deg, #66ffff, #ccffff);\n  animation-delay: 1.5s;\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "blue",
+      "loading",
+      "loader",
+      "dark",
+      "animated",
+      "gradients"
+    ]
+  },
+  {
+    "id": "uiv-430873",
+    "title": "Serious Turkey 52",
+    "author": "abrahamcalsin",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.612Z",
+    "html": "<div class=\"dot-spinner\">\n    <div class=\"dot-spinner__dot\"></div>\n    <div class=\"dot-spinner__dot\"></div>\n    <div class=\"dot-spinner__dot\"></div>\n    <div class=\"dot-spinner__dot\"></div>\n    <div class=\"dot-spinner__dot\"></div>\n    <div class=\"dot-spinner__dot\"></div>\n    <div class=\"dot-spinner__dot\"></div>\n    <div class=\"dot-spinner__dot\"></div>\n</div>",
+    "css": "/* From Uiverse.io by abrahamcalsin - Tags: loader, spinner, dots */\n.dot-spinner {\n  --uib-size: 2.8rem;\n  --uib-speed: .9s;\n  --uib-color: #183153;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  height: var(--uib-size);\n  width: var(--uib-size);\n}\n\n.dot-spinner__dot {\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  height: 100%;\n  width: 100%;\n}\n\n.dot-spinner__dot::before {\n  content: '';\n  height: 20%;\n  width: 20%;\n  border-radius: 50%;\n  background-color: var(--uib-color);\n  transform: scale(0);\n  opacity: 0.5;\n  animation: pulse0112 calc(var(--uib-speed) * 1.111) ease-in-out infinite;\n  box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);\n}\n\n.dot-spinner__dot:nth-child(2) {\n  transform: rotate(45deg);\n}\n\n.dot-spinner__dot:nth-child(2)::before {\n  animation-delay: calc(var(--uib-speed) * -0.875);\n}\n\n.dot-spinner__dot:nth-child(3) {\n  transform: rotate(90deg);\n}\n\n.dot-spinner__dot:nth-child(3)::before {\n  animation-delay: calc(var(--uib-speed) * -0.75);\n}\n\n.dot-spinner__dot:nth-child(4) {\n  transform: rotate(135deg);\n}\n\n.dot-spinner__dot:nth-child(4)::before {\n  animation-delay: calc(var(--uib-speed) * -0.625);\n}\n\n.dot-spinner__dot:nth-child(5) {\n  transform: rotate(180deg);\n}\n\n.dot-spinner__dot:nth-child(5)::before {\n  animation-delay: calc(var(--uib-speed) * -0.5);\n}\n\n.dot-spinner__dot:nth-child(6) {\n  transform: rotate(225deg);\n}\n\n.dot-spinner__dot:nth-child(6)::before {\n  animation-delay: calc(var(--uib-speed) * -0.375);\n}\n\n.dot-spinner__dot:nth-child(7) {\n  transform: rotate(270deg);\n}\n\n.dot-spinner__dot:nth-child(7)::before {\n  animation-delay: calc(var(--uib-speed) * -0.25);\n}\n\n.dot-spinner__dot:nth-child(8) {\n  transform: rotate(315deg);\n}\n\n.dot-spinner__dot:nth-child(8)::before {\n  animation-delay: calc(var(--uib-speed) * -0.125);\n}\n\n@keyframes pulse0112 {\n  0%,\n  100% {\n    transform: scale(0);\n    opacity: 0.5;\n  }\n\n  50% {\n    transform: scale(1);\n    opacity: 1;\n  }\n}",
+    "tags": [
+      "loader",
+      "spinner",
+      "dots"
+    ]
+  },
+  {
+    "id": "uiv-612473",
+    "title": "Fast Tiger 58",
+    "author": "alexruix",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.544Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by alexruix - Tags: loader */\n.loader {\n  --ballcolor: #f2f2f2;\n  --shadow: 0px 0 #ffffff00;\n  --shadowcolor: #ffffff00;\n  width: 10px;\n  height: 10px;\n  left: -120px;\n  border-radius: 50%;\n  position: relative;\n  color: var(--ballcolor);\n  animation: shadowRolling 2s linear infinite;\n}\n\n@keyframes shadowRolling {\n  \n  0% {\n    box-shadow: var(--shadow),\n        var(--shadow),\n        var(--shadow),\n        var(--shadow);\n  }\n\n  12% {\n    box-shadow: 100px 0 var(--ballcolor),\n        var(--shadow),\n        var(--shadow), \n        var(--shadow);\n  }\n\n  25% {\n    box-shadow: 110px 0 var(--ballcolor),\n        100px 0 var(--ballcolor),\n        var(--shadow), \n        var(--shadow);\n  }\n\n  36% {\n    box-shadow: 120px 0 var(--ballcolor), \n        110px 0 var(--ballcolor), \n        100px 0 var(--ballcolor), \n         var(--shadow);\n  }\n\n  50% {\n    box-shadow: 130px 0 var(--ballcolor),\n        120px 0 var(--ballcolor),\n        110px 0 var(--ballcolor),\n        100px 0 var(--ballcolor);\n  }\n\n  62% {\n    box-shadow: 200px 0 var(--shadowcolor),\n         130px 0 var(--ballcolor), \n         120px 0 var(--ballcolor), \n         110px 0 var(--ballcolor);\n  }\n\n  75% {\n    box-shadow: 200px 0 var(--shadowcolor),\n        200px 0 var(--shadowcolor),\n        130px 0 var(--ballcolor), \n        120px 0 var(--ballcolor);\n  }\n\n  87% {\n    box-shadow: 200px 0 var(--shadowcolor), \n        200px 0 var(--shadowcolor), \n        200px 0 var(--shadowcolor), \n        130px 0 var(--ballcolor);\n  }\n\n  100% {\n    box-shadow: 200px 0 var(--shadowcolor), \n        200px 0 var(--shadowcolor),\n        200px 0 var(--shadowcolor),\n        200px 0 var(--shadowcolor);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-313264",
+    "title": "Fuzzy Yak 91",
+    "author": "alexruix",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.541Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by alexruix - Tags: loader, circle */\n.loader {\n  position: relative;\n  margin: auto;\n  box-sizing: border-box;\n  background-clip: padding-box;\n  width: 200px;\n  height: 200px;\n  border-radius: 50%;\n  border: 4px solid rgba(255, 255, 255, 0.1);\n  -webkit-mask: linear-gradient(rgba(24, 24, 24, 0.2), rgba(24, 24, 24,0.9) 90%);\n  transform-origin: 50% 60%;\n  transform: perspective(200px) rotateX(66deg);\n}\n\n.loader:before, .loader:after {\n  content: \"\";\n  position: absolute;\n  margin: -4px;\n  box-sizing: inherit;\n  width: inherit;\n  height: inherit;\n  border-radius: inherit;\n  opacity: 0.05;\n  border: inherit;\n  border-color: transparent;\n  animation: spinner-spin 1.2s cubic-bezier(0.6, 0.2, 0, 0.8) infinite, spinner-fade 1.2s linear infinite;\n}\n\n.loader:before {\n  border-top-color: #66e6ff;\n}\n\n.loader:after {\n  border-top-color: #f0db75;\n  animation-delay: 0.3s;\n}\n\n@keyframes spinner-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes spinner-fade {\n  20% {\n    opacity: 0.1;\n  }\n\n  40% {\n    opacity: 1;\n  }\n\n  60% {\n    opacity: 0.1;\n  }\n}",
+    "tags": [
+      "loader",
+      "circle"
+    ]
+  },
+  {
+    "id": "uiv-124427",
+    "title": "Neat Tiger 82",
+    "author": "alexruix",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.558Z",
+    "html": "<div class=\"loader\">\n  <div class=\"box1\"></div>\n  <div class=\"box2\"></div>\n  <div class=\"box3\"></div>\n</div>",
+    "css": "/* From Uiverse.io by alexruix - Tags: loader */\n.loader {\n  width: 112px;\n  height: 112px;\n}\n\n.box1,\n.box2,\n.box3 {\n  border: 16px solid #f5f5f5;\n  box-sizing: border-box;\n  position: absolute;\n  display: block;\n}\n\n.box1 {\n  width: 112px;\n  height: 48px;\n  margin-top: 64px;\n  margin-left: 0px;\n  animation: abox1 4s 1s forwards ease-in-out infinite;\n}\n\n.box2 {\n  width: 48px;\n  height: 48px;\n  margin-top: 0px;\n  margin-left: 0px;\n  animation: abox2 4s 1s forwards ease-in-out infinite;\n}\n\n.box3 {\n  width: 48px;\n  height: 48px;\n  margin-top: 0px;\n  margin-left: 64px;\n  animation: abox3 4s 1s forwards ease-in-out infinite;\n}\n\n@keyframes abox1 {\n  0% {\n    width: 112px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 0px;\n  }\n\n  12.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 0px;\n  }\n\n  25% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 0px;\n  }\n\n  37.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 0px;\n  }\n\n  50% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 0px;\n  }\n\n  62.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 0px;\n  }\n\n  75% {\n    width: 48px;\n    height: 112px;\n    margin-top: 0px;\n    margin-left: 0px;\n  }\n\n  87.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 0px;\n  }\n\n  100% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 0px;\n  }\n}\n\n@keyframes abox2 {\n  0% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 0px;\n  }\n\n  12.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 0px;\n  }\n\n  25% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 0px;\n  }\n\n  37.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 0px;\n  }\n\n  50% {\n    width: 112px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 0px;\n  }\n\n  62.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 64px;\n  }\n\n  75% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 64px;\n  }\n\n  87.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 64px;\n  }\n\n  100% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 64px;\n  }\n}\n\n@keyframes abox3 {\n  0% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 64px;\n  }\n\n  12.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 0px;\n    margin-left: 64px;\n  }\n\n  25% {\n    width: 48px;\n    height: 112px;\n    margin-top: 0px;\n    margin-left: 64px;\n  }\n\n  37.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 64px;\n  }\n\n  50% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 64px;\n  }\n\n  62.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 64px;\n  }\n\n  75% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 64px;\n  }\n\n  87.5% {\n    width: 48px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 64px;\n  }\n\n  100% {\n    width: 112px;\n    height: 48px;\n    margin-top: 64px;\n    margin-left: 0px;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-490510",
+    "title": "Nervous Sheep 18",
+    "author": "alexruix",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.613Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by alexruix - Tags: loader, bars */\n.loader {\n  width: 8px;\n  height: 40px;\n  border-radius: 4px;\n  display: block;\n  background-color: currentColor;\n  margin: 20px auto;\n  position: relative;\n  color: #f2f2f2;\n  animation: animloader 0.3s 0.3s linear infinite alternate;\n}\n\n.loader::after,\n.loader::before {\n  content: '';\n  width: 8px;\n  height: 40px;\n  border-radius: 4px;\n  background: currentColor;\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n  left: 20px;\n  animation: animloader 0.3s 0.45s linear infinite alternate;\n}\n\n.loader::before {\n  left: -20px;\n  animation-delay: 0s;\n}\n\n@keyframes animloader {\n  0% {\n    height: 48px;\n  }\n\n  100% {\n    height: 4px;\n  }\n}",
+    "tags": [
+      "loader",
+      "bars"
+    ]
+  },
+  {
+    "id": "uiv-839662",
+    "title": "Neat Owl 38",
+    "author": "angelo2004-mateus",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.549Z",
+    "html": "<div class=\"loader\">\n  <span></span>\n</div>",
+    "css": "/* From Uiverse.io by angelo2004-mateus - Tags: material design, neumorphism, animation, loader, animated, gradients */\n.loader {\n  width: 10rem;\n  height: 10rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  border-radius: 50%;\n  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94, 104, 121, 0.137);\n}\n\n.loader:before {\n  height: 4rem;\n  width: 4rem;\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  z-index: 10;\n  background: #ececec;\n  border-radius: 50%;\n  border: 2px solid #e2e1e1;\n  box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);\n}\n\n.loader span {\n  width: 80%;\n  height: 80%;\n  border-radius: 50%;\n  background: linear-gradient(to bottom, rgb(89, 92, 252), rgb(226, 57, 241));\n  animation: rotate 1s infinite linear;\n}\n\n@keyframes rotate {\n\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "material design",
+      "neumorphism",
+      "animation",
+      "loader",
+      "animated",
+      "gradients"
+    ]
+  },
+  {
+    "id": "uiv-896912",
+    "title": "Uz_time_old Dodo 74",
+    "author": "bek",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.586Z",
+    "html": "<div class=\"loader\">\n  <span></span>\n</div>",
+    "css": "/* From Uiverse.io by bek_uz_time  - Tags: red, loader, css */\n.loader {\n  position: relative;\n  width: 150px;\n  height: 150px;\n  background: transparent;\n  border-radius: 30%;\n  box-shadow: 25px 25px 75px rgba(0, 0, 0, 1.55);\n  border: 1px solid #ecc904;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n}\n\n.loader::before {\n  content: \"\";\n  position: absolute;\n  inset: 20px;\n  background: transparent;\n  border: 1px dashed #b0a1a1;\n  border-radius: 30%;\n  box-shadow: inset -5px -5px 25px rgba(0, 10, 10, 15),\n    inset 5px 5px 35px rgba(10, 0, 10, 2);\n}\n\n.loader::after {\n  content: \"\";\n  position: absolute;\n  width: 50px;\n  height: 50px;\n  border-radius: 30%;\n  border: 1px dashed #d6d3d3;\n  box-shadow: inset -5px -5px 25px rgba(10, 10, 10, 2.25),\n    inset 5px 5px 35px rgba(10, 10, 10, 10.45);\n}\n\n.loader span {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 50%;\n  height: 100%;\n  background: transparent;\n  transform-origin: top left;\n  animation: radar81 1s linear infinite;\n  border-top: 1px dashed #c1bdbd;\n}\n\n.loader span::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f20303;\n  /* pink */\n  transform-origin: top left;\n  transform: rotate(-55deg);\n  filter: blur(30px) drop-shadow(20px 20px 20px #ff0241);\n  /* pink */\n}\n\n@keyframes radar81 {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "red",
+      "loader",
+      "css"
+    ]
+  },
+  {
+    "id": "uiv-997748",
+    "title": "Breezy Bullfrog 65",
+    "author": "bernethe",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:38.607Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by bernethe - Tags: loader */\n.loader {\n  border-radius: 50%;\n  border-top: 16px rgba(0,0,0,0.75) solid;\n  border-left: 16px rgba(0,0,0,0.25) solid;\n  border-bottom: 16px rgba(0,0,0,0.25) solid;\n  border-right: 16px rgba(0,0,0,0.25) solid;\n  animation: spSlices 1s infinite linear;\n}\n\n@keyframes spSlices {\n  0% {\n    border-top: 16px rgba(0,0,0,0.75) solid;\n    border-right: 16px rgba(0,0,0,0.25) solid;\n    border-bottom: 16px rgba(0,0,0,0.25) solid;\n    border-left: 16px rgba(0,0,0,0.25) solid;\n  }\n\n  25% {\n    border-top: 16px rgba(0,0,0,0.25) solid;\n    border-right: 16px rgba(0,0,0,0.75) solid;\n    border-bottom: 16px rgba(0,0,0,0.25) solid;\n    border-left: 16px rgba(0,0,0,0.25) solid;\n  }\n\n  50% {\n    border-top: 16px rgba(0,0,0,0.25) solid;\n    border-right: 16px rgba(0,0,0,0.25) solid;\n    border-bottom: 16px rgba(0,0,0,0.75) solid;\n    border-left: 16px rgba(0,0,0,0.25) solid;\n  }\n\n  75% {\n    border-top: 16px rgba(0,0,0,0.25) solid;\n    border-right: 16px rgba(0,0,0,0.25) solid;\n    border-bottom: 16px rgba(0,0,0,0.25) solid;\n    border-left: 16px rgba(0,0,0,0.75) solid;\n  }\n\n  100% {\n    border-top: 16px rgba(0,0,0,0.75) solid;\n    border-right: 16px rgba(0,0,0,0.25) solid;\n    border-bottom: 16px rgba(0,0,0,0.25) solid;\n    border-left: 16px rgba(0,0,0,0.25) solid;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-786846",
+    "title": "Fat Impala 67",
+    "author": "bernethe",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.228Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by bernethe - Tags: loader */\n.loader {\n  clear: both;\n  width: 2rem;\n  height: 2rem;\n  margin: 1rem auto;\n  border: 0.0625rem #000 solid;\n  border-radius: 0.25rem;\n  position: relative;\n  background: linear-gradient(45deg, transparent 49%, #000 50%, #000 50%, transparent 51%, transparent),\n\t\t\t\tlinear-gradient(-45deg, transparent 49%, #000 50%, #000 50%, transparent 51%, transparent);\n  background-size: 1rem 1rem;\n  background-position: 0% 0%;\n  -webkit-animation: spTexture 1s infinite linear;\n  animation: spTexture 1s infinite linear;\n}\n\n@keyframes spTexture {\n  from {\n    background-position: 0 0;\n  }\n\n  to {\n    background-position: -1rem 0;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-995630",
+    "title": "Modern Dolphin 97",
+    "author": "bernethe",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.027Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by bernethe - Tags: loader */\n.loader {\n  width: 2rem;\n  height: 2rem;\n  clear: both;\n  margin: 1rem auto;\n  border-radius: 50%;\n  border-left: 0 #000 solid;\n  border-right: 0 #000 solid;\n  animation: spSphere 1s infinite linear;\n}\n\n@keyframes spSphere {\n  0% {\n    border-left: 0 #000 solid;\n    border-right: 0 #000 solid;\n  }\n\n  33% {\n    border-left: 2rem #000 solid;\n    border-right: 0 #000 solid;\n  }\n\n  34% {\n    border-left: 0 #000 solid;\n    border-right: 2rem #000 solid;\n  }\n\n  66% {\n    border-left: 0 #000 solid;\n    border-right: 0 #000 solid;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-174765",
+    "title": "Foolish Sloth 24",
+    "author": "bociKond",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.037Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by bociKond - Tags: minimalist, loading, loader, animated, color, minimal */\n.loader {\n  /* color of choise */\n  --clr: #05A8AA;\n  /* loading time of choice */\n  --load-time: 2s;\n  outline: 5px solid var(--clr);\n  outline-offset: 5px;\n  position: relative;\n  overflow: hidden;\n  border-radius: 5rem;\n  /* width: 10rem; */\n  /* height: 2rem; */\n  padding: 1rem 5rem;\n  /* use either padding or width + height*/\n  /* I prefer the padding one */\n  /* rotate: -90deg; */\n  /* rotate if you want/need vertical loader */\n}\n\n.loader::after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: var(--clr);\n  z-index: 2;\n  animation: loading var(--load-time) ease-in-out infinite;\n}\n\n@keyframes loading {\n  0% {\n    width: 0%;\n  }\n\n  100% {\n    width: 100%;\n  }\n}",
+    "tags": [
+      "minimalist",
+      "loading",
+      "loader",
+      "animated",
+      "color",
+      "minimal"
+    ]
+  },
+  {
+    "id": "uiv-530531",
+    "title": "Wise Bat 13",
+    "author": "bociKond",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.231Z",
+    "html": "<div class=\"spinner\">\n  <div></div>\n  <div></div>\n  <div></div>\n  <div></div>\n  <div></div>\n  <div></div>\n</div>",
+    "css": "/* From Uiverse.io by bociKond - Source: https://10015.io - Tags: animation, loader, spinner, rotate, custom, opacity, color, spin, click animation */\n.spinner {\n  width: 70.4px;\n  height: 70.4px;\n  --clr: rgb(247, 197, 159);\n  --clr-alpha: rgb(247, 197, 159,.1);\n  animation: spinner 1.6s infinite ease;\n  transform-style: preserve-3d;\n}\n\n.spinner > div {\n  background-color: var(--clr-alpha);\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  border: 3.5px solid var(--clr);\n}\n\n.spinner div:nth-of-type(1) {\n  transform: translateZ(-35.2px) rotateY(180deg);\n}\n\n.spinner div:nth-of-type(2) {\n  transform: rotateY(-270deg) translateX(50%);\n  transform-origin: top right;\n}\n\n.spinner div:nth-of-type(3) {\n  transform: rotateY(270deg) translateX(-50%);\n  transform-origin: center left;\n}\n\n.spinner div:nth-of-type(4) {\n  transform: rotateX(90deg) translateY(-50%);\n  transform-origin: top center;\n}\n\n.spinner div:nth-of-type(5) {\n  transform: rotateX(-90deg) translateY(50%);\n  transform-origin: bottom center;\n}\n\n.spinner div:nth-of-type(6) {\n  transform: translateZ(35.2px);\n}\n\n@keyframes spinner {\n  0% {\n    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);\n  }\n\n  50% {\n    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);\n  }\n\n  100% {\n    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);\n  }\n}",
+    "tags": [
+      "animation",
+      "loader",
+      "spinner",
+      "rotate",
+      "custom",
+      "opacity",
+      "color",
+      "spin",
+      "click animation"
+    ]
+  },
+  {
+    "id": "uiv-370680",
+    "title": "Fast Eagle 21",
+    "author": "boryanakrasteva",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.026Z",
+    "html": "<div class=\"loader\">\n  <div class=\"circle\"></div>\n  <div class=\"circle\"></div>\n  <div class=\"circle\"></div>\n  <div class=\"circle\"></div>\n</div>",
+    "css": "/* From Uiverse.io by boryanakrasteva - Tags: loader */\n.loader {\n  position: relative;\n}\n\n.circle {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 0px;\n  height: 0px;\n  border-radius: 100%;\n  opacity: 0;\n  animation: pulse_4923 4s infinite linear;\n  border: 0.5px solid #f3f3f3;\n  box-shadow: 0px 0px 5px #eef0e5;\n}\n\n.circle:nth-child(1) {\n  animation-delay: .2s;\n}\n\n.circle:nth-child(2) {\n  animation-delay: .4s;\n}\n\n.circle:nth-child(3) {\n  animation-delay: .8s;\n}\n\n.circle:nth-child(4) {\n  animation-delay: 1s;\n}\n\n@keyframes pulse_4923 {\n  0% {\n    opacity: 0.0;\n    width: 0px;\n    height: 0px;\n    transform: translate(-50%, -50%) scale(1);\n  }\n\n  10% {\n    opacity: 0.5;\n    transform: translate(-50%, -50%) scale(2);\n  }\n\n  100% {\n    opacity: 0.0;\n    width: 100px;\n    height: 100px;\n    transform: translate(-50%, -50%) scale(1);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-286757",
+    "title": "Strong Bat 45",
+    "author": "catraco",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.073Z",
+    "html": "<div class=\"loader\">\n  <span></span>\n</div>",
+    "css": "/* From Uiverse.io by catraco - Tags: loader, circle, animated */\n.loader {\n  --eye: #212121;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.loader::before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  transform: translate(-50%, -50%);\n  border: 5px solid var(--eye);\n  border-radius: 100%;\n  animation: translate-keyframes 2s infinite linear;\n}\n\n.loader span {\n  position: absolute;\n  width: 40px;\n  height: 40px;\n  border-radius: 100%;\n  border-top: 12px solid var(--eye);\n  border-bottom: 5px solid var(--eye);\n  outline: 2px solid var(--eye);\n}\n\n.loader span {\n  animation: rotate-keyframes 2s infinite linear;\n}\n\n@keyframes translate-keyframes {\n  0% {\n    transform: translate(-100%, -50%);\n  }\n\n  95% {\n    transform: translate(50%, -50%);\n  }\n\n  96% {\n    transform: translate(-50%, -50%);\n  }\n\n  100% {\n    transform: translate(-100%, -50%);\n  }\n}\n\n@keyframes rotate-keyframes {\n  90% {\n    height: 40px;\n  }\n\n  95% {\n    height: 0px;\n  }\n\n  100% {\n    height: 40px;\n  }\n}",
+    "tags": [
+      "loader",
+      "circle",
+      "animated"
+    ]
+  },
+  {
+    "id": "uiv-561691",
+    "title": "Yellow Grasshopper 30",
+    "author": "choudhary-usman",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.054Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by choudhary-usman  - Tags: simple, material design, icon, animation, loader, animated */\n.loader {\n  width: 40px;\n\n  aspect-ratio: 1;\n  --c: linear-gradient(#000 0 0);\n  --m: radial-gradient(farthest-side, #000 90%, #0000);\n  background: var(--c), var(--m), var(--c);\n  background-size: 16px 8px, 10px 10px;\n  background-repeat: no-repeat;\n  animation: l20-1 1s infinite linear, l20-2 4s infinite linear -0.4s;\n}\n@keyframes l20-1 {\n  0%,\n  10% {\n    background-position: calc(50% - 8px) 50%, 50% -15px, calc(50% + 8px) 50%;\n  }\n  33% {\n    background-position: -20px 50%, 50% 50%, calc(100% + 20px) 50%;\n  }\n  66% {\n    background-position: -20px 50%, 50% calc(100% + 15px), calc(100% + 20px) 50%;\n  }\n  80%,\n  100% {\n    background-position: calc(50% - 8px) 50%, 50% calc(100% + 15px),\n      calc(50% + 8px) 50%;\n  }\n}\n@keyframes l20-2 {\n  0%,\n  24.99% {\n    transform: rotate(0);\n  }\n  25%,\n  49.99% {\n    transform: rotate(90deg);\n  }\n  50%,\n  74.99% {\n    transform: rotate(180deg);\n  }\n  75%,\n  100% {\n    transform: rotate(270deg);\n  }\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "icon",
+      "animation",
+      "loader",
+      "animated"
+    ]
+  },
+  {
+    "id": "uiv-858103",
+    "title": "Ordinary Kangaroo 82",
+    "author": "cohencoo",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.084Z",
+    "html": "<div class=\"custom-loader\"></div>",
+    "css": "/* From Uiverse.io by cohencoo - Tags: loading, loader, download, downloading */\n.custom-loader {\n  width: 120px;\n  height: 22px;\n  border-radius: 20px;\n  color: #F4BF00;\n  border: 2px solid;\n  position: relative;\n}\n\n.custom-loader::before {\n  content: \"\";\n  position: absolute;\n  margin: 2px;\n  inset: 0 100% 0 0;\n  border-radius: inherit;\n  background: #F4BF00;\n  animation: p6 2s infinite;\n}\n\n@keyframes p6 {\n  100% {\n    inset: 0\n  }\n}",
+    "tags": [
+      "loading",
+      "loader",
+      "download",
+      "downloading"
+    ]
+  },
+  {
+    "id": "uiv-746474",
+    "title": "Helpless Tiger 5",
+    "author": "csemszepp",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.032Z",
+    "html": "<div class=\"loader\">\n  <div class=\"inner\">\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://codepen.io/dfitzy/pen/XdaoWg - Tags: loader, revolver */\n.loader {\n  animation: spin 1.5s linear alternate infinite;\n  background: #B73F41;\n  border-radius: 50%;\n  height: 120px;\n  width: 120px;\n}\n\n.loader:before {\n  background: #B73F41;\n  border-radius: 50%;\n  content: '';\n  display: block;\n  height: 0.5em;\n  width: 0.5em;\n  z-index: 2;\n}\n\n.loader:after {\n  background: #262E2A;\n  border-radius: 50%;\n  box-shadow: 0em -2.60em #262E2A,\n    2.25em -4.02em #e5e7eb,\n    2.25em -1.25em #262E2A,\n    4.60em 0em #e5e7eb,\n    2.25em 1.25em #262E2A,\n    2.25em 4.02em #e5e7eb,\n    0em 2.60em #262E2A,\n    -2.25em 4.02em #e5e7eb,\n    -2.25em 1.25em #262E2A,\n    -4.60em 0em #e5e7eb,\n    -2.25em -1.25em #262E2A,\n    -2.25em -4.02em #e5e7eb;\n  content: '';\n  display: block;\n  height: 2em;\n  width: 2em;\n}\n\n.inner {\n  animation: load 1.5s linear alternate infinite;\n  border: solid 1px #B73F41;\n  border-radius: 50%;\n  height: 1.75em;\n  width: 1.75em;\n  z-index: 1;\n}\n\n.loader, .loader:before, .loader:after, .inner {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0;\n}\n\n@keyframes load {\n  0% {\n    box-shadow: 0em -2.60em #262E2A,\n      2.25em -1.25em #262E2A,\n      2.25em 1.25em #262E2A,\n      0em 2.60em #262E2A,\n      -2.25em 1.25em #262E2A,\n      -2.25em -1.25em #262E2A;\n  }\n\n  15% {\n    box-shadow: 0em -2.60em #262E2A,\n      2.25em -1.25em #262E2A,\n      2.25em 1.25em #262E2A,\n      0em 2.60em #262E2A,\n      -2.25em 1.25em #262E2A,\n      -2.25em -1.25em #B73F41;\n  }\n\n  30% {\n    box-shadow: 0em -2.60em #262E2A,\n      2.25em -1.25em #262E2A,\n      2.25em 1.25em #262E2A,\n      0em 2.60em #262E2A,\n      -2.25em 1.25em #B73F41,\n      -2.25em -1.25em #B73F41;\n  }\n\n  45% {\n    box-shadow: 0em -2.60em #262E2A,\n      2.25em -1.25em #262E2A,\n      2.25em 1.25em #262E2A,\n      0em 2.60em #B73F41,\n      -2.25em 1.25em #B73F41,\n      -2.25em -1.25em #B73F41;\n  }\n\n  60% {\n    box-shadow: 0em -2.60em #262E2A,\n      2.25em -1.25em #262E2A,\n      2.25em 1.25em #B73F41,\n      0em 2.60em #B73F41,\n      -2.25em 1.25em #B73F41,\n      -2.25em -1.25em #B73F41;\n  }\n\n  75% {\n    box-shadow: 0em -2.60em #262E2A,\n      2.25em -1.25em #B73F41,\n      2.25em 1.25em #B73F41,\n      0em 2.60em #B73F41,\n      -2.25em 1.25em #B73F41,\n      -2.25em -1.25em #B73F41;\n  }\n\n  90% {\n    box-shadow: 0em -2.60em #B73F41,\n      2.25em -1.25em #B73F41,\n      2.25em 1.25em #B73F41,\n      0em 2.60em #B73F41,\n      -2.25em 1.25em #B73F41,\n      -2.25em -1.25em #B73F41;\n  }\n\n  100% {\n    box-shadow: 0em -2.60em #B73F41,\n      2.25em -1.25em #B73F41,\n      2.25em 1.25em #B73F41,\n      0em 2.60em #B73F41,\n      -2.25em 1.25em #B73F41,\n      -2.25em -1.25em #B73F41;\n  }\n}\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  15% {\n    transform: rotate(60deg);\n  }\n\n  30% {\n    transform: rotate(120deg);\n  }\n\n  45% {\n    transform: rotate(180deg);\n  }\n\n  60% {\n    transform: rotate(240deg);\n  }\n\n  75% {\n    transform: rotate(300deg);\n  }\n\n  90% {\n    transform: rotate(360deg);\n  }\n\n  100% {\n    transform: rotate(0deg);\n  }\n}",
+    "tags": [
+      "loader",
+      "revolver"
+    ]
+  },
+  {
+    "id": "uiv-406859",
+    "title": "Nice Octopus 57",
+    "author": "csemszepp",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.031Z",
+    "html": "<div class=\"loader\">\n      <span>L</span>\n      <span>O</span>\n      <span>A</span>\n      <span>D</span>\n      <span>I</span>\n      <span>N</span>\n      <span>G</span>\n    </div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://codepen.io/SandipDust/pen/LYPOGLQ - Tags:  */\n.loader {\n  -webkit-perspective: 700px;\n  perspective: 700px;\n  background: red;\n  padding: 10px 20px;\n}\n\n.loader>span {\n  font-size: 60px;\n  font-family: \"franklin gothic medium\",sans-serif;\n  display: inline-block;\n  animation: flip 2.6s infinite linear;\n  transform-origin: 0 70%;\n  transform-style: preserve-3d;\n  -webkit-transform-style: preserve-3d;\n}\n\n@keyframes flip {\n  35% {\n    transform: rotatex(360deg);\n  }\n\n  100% {\n    transform: rotatex(360deg);\n  }\n}\n\n.loader>span:nth-child(even) {\n  color: white;\n}\n\n.loader>span:nth-child(2) {\n  animation-delay: 0.3s;\n}\n\n.loader>span:nth-child(3) {\n  animation-delay: 0.6s;\n}\n\n.loader>span:nth-child(4) {\n  animation-delay: 0.9s;\n}\n\n.loader>span:nth-child(5) {\n  animation-delay: 1.2s;\n}\n\n.loader>span:nth-child(6) {\n  animation-delay: 1.5s\n}\n\n.loader>span:nth-child(7) {\n  animation-delay: 1.8s\n}",
+    "tags": [
+      ""
+    ]
+  },
+  {
+    "id": "uiv-166055",
+    "title": "Weak Bulldog 22",
+    "author": "csozidev",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.057Z",
+    "html": "<div class=\"loader\">\n  <div class=\"box box-1\">\n    <div class=\"side-left\"></div>\n    <div class=\"side-right\"></div>\n    <div class=\"side-top\"></div>\n  </div>\n  <div class=\"box box-2\">\n    <div class=\"side-left\"></div>\n    <div class=\"side-right\"></div>\n    <div class=\"side-top\"></div>\n  </div>\n  <div class=\"box box-3\">\n    <div class=\"side-left\"></div>\n    <div class=\"side-right\"></div>\n    <div class=\"side-top\"></div>\n  </div>\n  <div class=\"box box-4\">\n    <div class=\"side-left\"></div>\n    <div class=\"side-right\"></div>\n    <div class=\"side-top\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by csozidev - Tags: simple, 3d, loader */\n/* 3D tower loader made by: csozi | Website: www.csozi.hu*/\n\n.loader {\n  scale: 3;\n  height: 50px;\n  width: 40px;\n}\n\n.box {\n  position: relative;\n  opacity: 0;\n  left: 10px;\n}\n\n.side-left {\n  position: absolute;\n  background-color: #286cb5;\n  width: 19px;\n  height: 5px;\n  transform: skew(0deg, -25deg);\n  top: 14px;\n  left: 10px;\n}\n\n.side-right {\n  position: absolute;\n  background-color: #2f85e0;\n  width: 19px;\n  height: 5px;\n  transform: skew(0deg, 25deg);\n  top: 14px;\n  left: -9px;\n}\n\n.side-top {\n  position: absolute;\n  background-color: #5fa8f5;\n  width: 20px;\n  height: 20px;\n  rotate: 45deg;\n  transform: skew(-20deg, -20deg);\n}\n\n.box-1 {\n  animation: from-left 4s infinite;\n}\n\n.box-2 {\n  animation: from-right 4s infinite;\n  animation-delay: 1s;\n}\n\n.box-3 {\n  animation: from-left 4s infinite;\n  animation-delay: 2s;\n}\n\n.box-4 {\n  animation: from-right 4s infinite;\n  animation-delay: 3s;\n}\n\n@keyframes from-left {\n  0% {\n    z-index: 20;\n    opacity: 0;\n    translate: -20px -6px;\n  }\n\n  20% {\n    z-index: 10;\n    opacity: 1;\n    translate: 0px 0px;\n  }\n\n  40% {\n    z-index: 9;\n    translate: 0px 4px;\n  }\n\n  60% {\n    z-index: 8;\n    translate: 0px 8px;\n  }\n\n  80% {\n    z-index: 7;\n    opacity: 1;\n    translate: 0px 12px;\n  }\n\n  100% {\n    z-index: 5;\n    translate: 0px 30px;\n    opacity: 0;\n  }\n}\n\n@keyframes from-right {\n  0% {\n    z-index: 20;\n    opacity: 0;\n    translate: 20px -6px;\n  }\n\n  20% {\n    z-index: 10;\n    opacity: 1;\n    translate: 0px 0px;\n  }\n\n  40% {\n    z-index: 9;\n    translate: 0px 4px;\n  }\n\n  60% {\n    z-index: 8;\n    translate: 0px 8px;\n  }\n\n  80% {\n    z-index: 7;\n    opacity: 1;\n    translate: 0px 12px;\n  }\n\n  100% {\n    z-index: 5;\n    translate: 0px 30px;\n    opacity: 0;\n  }\n}",
+    "tags": [
+      "simple",
+      "3d",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-874181",
+    "title": "Bitter Seahorse 2",
+    "author": "d4niz",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.093Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by d4niz - Tags: loader */\n.loader {\n  width: 56px;\n  height: 56px;\n  display: grid;\n  border: 4.6px solid #0000;\n  border-radius: 100%;\n  border-color: #008cff #0000;\n  animation: spinner-e04l1k 1.5s infinite linear;\n}\n\n.loader::before, .loader::after {\n  content: \"\";\n  grid-area: 1/1;\n  margin: 8px;\n  border: inherit;\n  border-radius: 50%;\n}\n\n.loader::before {\n  border-color: #048be6 #0000;\n  animation: inherit;\n  animation-duration: 0.1s;\n}\n\n.loader::after {\n  margin: 2.9px;\n}\n\n@keyframes spinner-e04l1k {\n  100% {\n    transform: rotate(1turn);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-782960",
+    "title": "Stupid Starfish 42",
+    "author": "dhruv465",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.031Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by dhruv465 - Tags: loader, animated, circle loader */\n.loader {\n  border: 16px solid #f3f3f3;\n  border-top: 16px solid #3498db;\n  border-radius: 50%;\n  width: 120px;\n  height: 120px;\n  animation: spin 2s linear infinite;\n}\n\n/* Add some glow effect */\n.loader::after {\n  content: \"\";\n  position: absolute;\n  top: -5px;\n  left: -5px;\n  right: -5px;\n  bottom: -5px;\n  border-radius: 50%;\n  box-shadow: inset 0px 0px 20px #3498db;\n}\n\n/* Rotate the circle */\n@keyframes spin {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader",
+      "animated",
+      "circle loader"
+    ]
+  },
+  {
+    "id": "uiv-666780",
+    "title": "Kind Eel 48",
+    "author": "dimasptrautmaa",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.095Z",
+    "html": "<div id=\"page\">\n        <div id=\"container\">\n            <div id=\"ring\"></div>\n            <div id=\"ring\"></div>\n            <div id=\"ring\"></div>\n            <div id=\"ring\"></div>\n            <div id=\"h3\">loading</div>\n        </div>\n</div>",
+    "css": "/* From Uiverse.io by dimasptrautmaa - Tags: 3d, loader, colorful */\n#page {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n#container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n}\n\n#h3 {\n  color: white;\n}\n\n#ring {\n  width: 190px;\n  height: 190px;\n  border: 1px solid transparent;\n  border-radius: 50%;\n  position: absolute;\n}\n\n#ring:nth-child(1) {\n  border-bottom: 8px solid rgb(255, 141, 249);\n  animation: rotate1 2s linear infinite;\n}\n\n@keyframes rotate1 {\n  from {\n    transform: rotateX(50deg) rotateZ(110deg);\n  }\n\n  to {\n    transform: rotateX(50deg) rotateZ(470deg);\n  }\n}\n\n#ring:nth-child(2) {\n  border-bottom: 8px solid rgb(255,65,106);\n  animation: rotate2 2s linear infinite;\n}\n\n@keyframes rotate2 {\n  from {\n    transform: rotateX(20deg) rotateY(50deg) rotateZ(20deg);\n  }\n\n  to {\n    transform: rotateX(20deg) rotateY(50deg) rotateZ(380deg);\n  }\n}\n\n#ring:nth-child(3) {\n  border-bottom: 8px solid rgb(0,255,255);\n  animation: rotate3 2s linear infinite;\n}\n\n@keyframes rotate3 {\n  from {\n    transform: rotateX(40deg) rotateY(130deg) rotateZ(450deg);\n  }\n\n  to {\n    transform: rotateX(40deg) rotateY(130deg) rotateZ(90deg);\n  }\n}\n\n#ring:nth-child(4) {\n  border-bottom: 8px solid rgb(252, 183, 55);\n  animation: rotate4 2s linear infinite;\n}\n\n@keyframes rotate4 {\n  from {\n    transform: rotateX(70deg) rotateZ(270deg);\n  }\n\n  to {\n    transform: rotateX(70deg) rotateZ(630deg);\n  }\n}",
+    "tags": [
+      "3d",
+      "loader",
+      "colorful"
+    ]
+  },
+  {
+    "id": "uiv-638468",
+    "title": "Big Bear 52",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.076Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: simple, material design, neumorphism, loader */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  display: inline-flex;\n  border: 2px solid #000;\n  --c: no-repeat linear-gradient(#000 0 0) 50%;\n  background: var(--c) calc(50% - 5px)/5px 5px,\n    var(--c) calc(50% + 5px)/5px 5px;\n}\n\n.loader::before,\n.loader::after {\n  content: \"12 00 23 40 31 45 60 17 45 32 29 42 50 08 14 07 46 11 03 55\";\n  font-size: 30px;\n  font-family: monospace;\n  font-weight: bold;\n  line-height: 1em;\n  height: 1em;\n  width: 2ch;\n  color: #0000;\n  text-shadow: 0 0 0 #000;\n  overflow: hidden;\n  margin: 5px 10px;\n  animation: l3 1s steps(20) infinite;\n}\n\n.loader::before {\n  animation-duration: 1.5s;\n}\n\n@keyframes l3 {\n  100% {\n    text-shadow: 0 -20em 0 #000\n  }\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "neumorphism",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-672798",
+    "title": "Calm Yak 25",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.714Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: simple, material design, loader */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  width: 50px;\n  aspect-ratio: 1;\n  --g: #0000 calc(100% - 5px),#000 calc(100% - 3px) 93%,#0000;\n  background: radial-gradient(farthest-side at bottom,var(--g)) top                  /100% 50%,\n    radial-gradient(farthest-side at top   ,var(--g)) bottom 18% right  0  /80%  40%,\n    radial-gradient(farthest-side at bottom,var(--g)) left   50% top    30%/60%  30%,\n    radial-gradient(farthest-side at top   ,var(--g)) right  34% bottom 37%/40%  20%,\n    radial-gradient(farthest-side at bottom,var(--g)) left   52% top    43%/24%  12%;\n  background-repeat: no-repeat;\n  animation: l20 1s infinite linear;\n}\n\n@keyframes l20 {\n  100% {\n    transform: rotate(1turn)\n  }\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-594619",
+    "title": "Clever Wombat 14",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.521Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: simple, neumorphism, flashy, loader */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  width: 100px;\n  height: 45px;\n  position: relative;\n}\n\n.loader:before,\n.loader:after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  background: #000;\n  box-shadow: 0 0 0 50px;\n  clip-path: polygon(-50px -20px,10% -12px,20% 0,calc(50% - 15px) 0,calc(50% - 10px) -20px,calc(50% - 8px) -15px,calc(50% + 8px) -15px,calc(50% + 10px) -20px,calc(50% + 15px) 0,80% 0,90% -12px,calc(100% + 50px) -20px,100% 80%,calc(100% + 10px) calc(100% + 10px),60% 100%,50% calc(100% + 15px),40% 100%,-10px calc(100% + 10px),0 80%);\n}\n\n.loader:after {\n  animation: l9 1s infinite;\n  transform: perspective(300px) translateZ(0px)\n}\n\n@keyframes l9 {\n  to {\n    transform: perspective(300px) translateZ(100px);\n    opacity: 0\n  }\n}",
+    "tags": [
+      "simple",
+      "neumorphism",
+      "flashy",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-494543",
+    "title": "Hard Rattlesnake 83",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.536Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: material design, neumorphism, loader */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  height: 80px;\n  width: 20px;\n  color: #514b82;\n  background: radial-gradient(farthest-side,currentColor 94%,#0000 ) top/8px 8px,\n    linear-gradient(currentColor 0 0) top/4px 70%,\n    conic-gradient(from -30deg at bottom,#0000,currentColor 2deg 58deg,#0000 60deg) bottom            /100% 20px,\n    conic-gradient(from 150deg at top   ,#0000,currentColor 2deg 58deg,#0000 60deg) bottom 20px left 0/100% 20px;\n  background-repeat: no-repeat;\n  transform-origin: 50% 4px;\n  animation: l15 2s infinite cubic-bezier(0.5,300,0.5,-300);\n}\n\n@keyframes l15 {\n \n  100% {\n    transform: rotate(0.5deg)\n  }\n}",
+    "tags": [
+      "material design",
+      "neumorphism",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-622166",
+    "title": "Jolly Fireant 35",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.727Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: simple, neumorphism, success, loader */\n.loader {\n  display: inline-flex;\n  gap: 10px;\n}\n\n.loader:before,\n.loader:after {\n  content: \"\";\n  height: 20px;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  background: radial-gradient(farthest-side,#000 95%,#0000) 35% 35%/6px 6px no-repeat\n    #fff;\n  transform: scaleX(var(--s,1)) rotate(0deg);\n  animation: l6 1s infinite linear;\n}\n\n.loader:after {\n  --s: -1;\n  animation-delay: -0.1s;\n}\n\n@keyframes l6 {\n  100% {\n    transform: scaleX(var(--s,1)) rotate(360deg);\n  }\n}",
+    "tags": [
+      "simple",
+      "neumorphism",
+      "success",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-574289",
+    "title": "Rare Falcon 68",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.531Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: simple, material design, loader */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  --c1: #673b14;\n  --c2: #f8b13b;\n  width: 40px;\n  height: 80px;\n  border-top: 4px solid var(--c1);\n  border-bottom: 4px solid var(--c1);\n  background: linear-gradient(90deg, var(--c1) 2px, var(--c2) 0 5px,var(--c1) 0) 50%/7px 8px no-repeat;\n  display: grid;\n  overflow: hidden;\n  animation: l5-0 2s infinite linear;\n}\n\n.loader::before,\n.loader::after {\n  content: \"\";\n  grid-area: 1/1;\n  width: 75%;\n  height: calc(50% - 4px);\n  margin: 0 auto;\n  border: 2px solid var(--c1);\n  border-top: 0;\n  box-sizing: content-box;\n  border-radius: 0 0 40% 40%;\n  -webkit-mask: linear-gradient(#000 0 0) bottom/4px 2px no-repeat,\n    linear-gradient(#000 0 0);\n  -webkit-mask-composite: destination-out;\n  mask-composite: exclude;\n  background: linear-gradient(var(--d,0deg),var(--c2) 50%,#0000 0) bottom /100% 205%,\n    linear-gradient(var(--c2) 0 0) center/0 100%;\n  background-repeat: no-repeat;\n  animation: inherit;\n  animation-name: l5-1;\n}\n\n.loader::after {\n  transform-origin: 50% calc(100% + 2px);\n  transform: scaleY(-1);\n  --s: 3px;\n  --d: 180deg;\n}\n\n@keyframes l5-0 {\n  80% {\n    transform: rotate(0)\n  }\n\n  100% {\n    transform: rotate(0.5turn)\n  }\n}\n\n@keyframes l5-1 {\n  10%,70% {\n    background-size: 100% 205%,var(--s,0) 100%\n  }\n\n  70%,100% {\n    background-position: top,center\n  }\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-399935",
+    "title": "Rare Newt 29",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.581Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: simple, material design, neumorphism, loader */\n.loader {\n  width: fit-content;\n  font-size: 17px;\n  font-family: monospace;\n  line-height: 1.4;\n  font-weight: bold;\n  background: linear-gradient(#000 0 0) left ,\n    linear-gradient(#000 0 0) right;\n  background-repeat: no-repeat;\n  border-right: 5px solid #0000;\n  border-left: 5px solid #0000;\n  background-origin: border-box;\n  position: relative;\n  animation: l9-0 2s infinite;\n}\n\n.loader::before {\n  content: \"Loading\";\n}\n\n.loader::after {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 0;\n  width: 22px;\n  height: 60px;\n  background: linear-gradient(90deg,#000 4px,#0000 0 calc(100% - 4px),#000 0) bottom            /22px 20px,\n   linear-gradient(90deg,red  4px,#0000 0 calc(100% - 4px),red  0) bottom 10px left 0/22px 6px,\n   linear-gradient(#000 0 0) bottom 3px left 0  /22px 8px,\n   linear-gradient(#000 0 0) bottom 0   left 50%/8px  16px;\n  background-repeat: no-repeat;\n  animation: l9-1 2s infinite;\n}\n\n@keyframes l9-0 {\n  0%,25% {\n    background-size: 50% 100%\n  }\n\n  25.1%,75% {\n    background-size: 0 0,50% 100%\n  }\n\n  75.1%,100% {\n    background-size: 0 0,0 0\n  }\n}\n\n@keyframes l9-1 {\n  25% {\n    background-position: bottom, bottom 54px left 0,bottom 3px left 0,bottom 0 left 50%;\n    left: 0\n  }\n\n  25.1% {\n    background-position: bottom, bottom 10px left 0,bottom 3px left 0,bottom 0 left 50%;\n    left: 0\n  }\n\n  50% {\n    background-position: bottom, bottom 10px left 0,bottom 3px left 0,bottom 0 left 50%;\n    left: calc(100% - 22px)\n  }\n\n  75% {\n    background-position: bottom, bottom 54px left 0,bottom 3px left 0,bottom 0 left 50%;\n    left: calc(100% - 22px)\n  }\n\n  75.1% {\n    background-position: bottom, bottom 10px left 0,bottom 3px left 0,bottom 0 left 50%;\n    left: calc(100% - 22px)\n  }\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "neumorphism",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-885924",
+    "title": "Sharp Sheep 24",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.535Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: simple, material design, loader */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  width: 60px;\n  height: 30px;\n  display: grid;\n  --c: #0000 calc(100% - 5px),#000 calc(100% - 4px) 96%,#0000;\n  background: radial-gradient(farthest-side at bottom,var(--c)) 0 0,\n    radial-gradient(farthest-side at top   ,var(--c)) 100% 100%;\n  background-size: calc(50% + 2px) 50%;\n  background-repeat: no-repeat;\n  animation: l14 1.5s infinite linear;\n}\n\n.loader:before,\n.loader:after {\n  content: \"\";\n  grid-area: 1/1;\n  background: inherit;\n  animation: inherit;\n  animation-duration: 2s;\n}\n\n.loader:after {\n  --s: -1;\n}\n\n@keyframes l14 {\n  100% {\n    transform: rotate(calc(var(--s,1)*1turn))\n  }\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-385123",
+    "title": "Silent Skunk 22",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.579Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: neumorphism, 3d, action, loader, image, flip, jelly, realistic */\n.loader {\n  width: 50px;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  background: radial-gradient(farthest-side,#000 98%,#0000) 55% 20%/8px 8px no-repeat,  \n    #ffcc00;\n  box-shadow: 2px -6px 12px 0px inset rgba(0, 0, 0, 0.7);\n  animation: l4 .5s infinite steps(5) alternate;\n}\n\n@keyframes l4 {\n \n  0% {\n    clip-path: polygon(50% 50%,100%   0,100% 0,0 0,0 100%,100% 100%,100% 100%)\n  }\n\n  100% {\n    clip-path: polygon(50% 50%,100% 65%,100% 0,0 0,0 100%,100% 100%,100%  35%)\n  }\n}",
+    "tags": [
+      "neumorphism",
+      "3d",
+      "action",
+      "loader",
+      "image",
+      "flip",
+      "jelly",
+      "realistic"
+    ]
+  },
+  {
+    "id": "uiv-385160",
+    "title": "Sweet Gecko 35",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.525Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: neumorphism, skeuomorphism, loader */\n.loader {\n  width: fit-content;\n  font-weight: bold;\n  font-family: monospace;\n  white-space: pre;\n  font-size: 30px;\n  line-height: 1.2em;\n  height: 1.2em;\n  overflow: hidden;\n}\n\n.loader:before {\n  content: \"Loading...\\A⌰oading...\\A⌰⍜ading...\\A⌰⍜⏃ding...\\A⌰⍜⏃⎅ing...\\A⌰⍜⏃⎅⟟ng...\\A⌰⍜⏃⎅⟟⋏g...\\A⌰⍜⏃⎅⟟⋏☌...\\A⌰⍜⏃⎅⟟⋏☌⟒..\\A⌰⍜⏃⎅⟟⋏☌⟒⏁.\\A⌰⍜⏃⎅⟟⋏☌⟒⏁⋔\";\n  white-space: pre;\n  display: inline-block;\n  animation: l39 1s infinite steps(11) alternate;\n}\n\n@keyframes l39 {\n  100% {\n    transform: translateY(-100%)\n  }\n}",
+    "tags": [
+      "neumorphism",
+      "skeuomorphism",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-163197",
+    "title": "Wet Parrot 70",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.562Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: simple, material design, loader */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  width: 80px;\n  height: 70px;\n  border: 5px solid #000;\n  padding: 0 8px;\n  box-sizing: border-box;\n  background: linear-gradient(#fff 0 0) 0    0/8px 20px,\n    linear-gradient(#fff 0 0) 100% 0/8px 20px,\n    radial-gradient(farthest-side,#fff 90%,#0000) 0 5px/8px 8px content-box,\n    #000;\n  background-repeat: no-repeat;\n  animation: l3 2s infinite linear;\n}\n\n@keyframes l3 {\n  25% {\n    background-position: 0 0   ,100% 100%,100% calc(100% - 5px)\n  }\n\n  50% {\n    background-position: 0 100%,100% 100%,0    calc(100% - 5px)\n  }\n\n  75% {\n    background-position: 0 100%,100%    0,100% 5px\n  }\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-479546",
+    "title": "Yellow Deer 12",
+    "author": "doniaskima",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.550Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by doniaskima - Tags: simple, material design, loader */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  width: 120px;\n  height: 20px;\n  background: linear-gradient(#000 50%,#0000 0),\n    linear-gradient(#0000 50%,#000 0),\n    linear-gradient(#000 50%,#0000 0),\n    linear-gradient(#0000 50%,#000 0),\n    linear-gradient(#000 50%,#0000 0),\n    linear-gradient(#0000 50%,#000 0)\n    #ddd;\n  background-size: calc(100%/6 + 1px) 200%;\n  background-repeat: no-repeat;\n  animation: l12 2s infinite;\n}\n\n@keyframes l12 {\n  0% {\n    background-position: calc(0*100%/5) 100%,calc(1*100%/5)   0%,calc(2*100%/5) 100%,calc(3*100%/5)   0%,calc(4*100%/5) 100%,calc(5*100%/5)   0%\n  }\n\n  16.67% {\n    background-position: calc(0*100%/5)   0%,calc(1*100%/5)   0%,calc(2*100%/5) 100%,calc(3*100%/5)   0%,calc(4*100%/5) 100%,calc(5*100%/5)   0%\n  }\n\n  33.33% {\n    background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5) 100%,calc(3*100%/5)   0%,calc(4*100%/5) 100%,calc(5*100%/5)   0%\n  }\n\n  50% {\n    background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5)   0%,calc(3*100%/5)   0%,calc(4*100%/5) 100%,calc(5*100%/5)   0%\n  }\n\n  66.67% {\n    background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5)   0%,calc(3*100%/5) 100%,calc(4*100%/5) 100%,calc(5*100%/5)   0%\n  }\n\n  83.33% {\n    background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5)   0%,calc(3*100%/5) 100%,calc(4*100%/5)   0%,calc(5*100%/5)   0%\n  }\n\n  100% {\n    background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5)   0%,calc(3*100%/5) 100%,calc(4*100%/5)   0%,calc(5*100%/5) 100%\n  }\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-421091",
+    "title": "Chatty Rattlesnake 90",
+    "author": "elijahgummer",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.590Z",
+    "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" class=\"loader\">\n  <g\n    stroke-linejoin=\"round\"\n    stroke-linecap=\"round\"\n    fill-rule=\"evenodd\"\n    fill=\"none\"\n    stroke-width=\"1\"\n    stroke=\"none\"\n  >\n    <line y2=\"6\" x2=\"24\" y1=\"2\" x1=\"24\"></line>\n    <line\n      transform=\"translate(34, 6.679) rotate(30) translate(-34, -6.679)\"\n      y2=\"8.679\"\n      x2=\"34\"\n      y1=\"4.679\"\n      x1=\"34\"\n    ></line>\n    <line\n      transform=\"translate(41.321, 14) rotate(60) translate(-41.321, -14)\"\n      y2=\"16\"\n      x2=\"41.321\"\n      y1=\"12\"\n      x1=\"41.321\"\n    ></line>\n    <line\n      transform=\"translate(44, 24) rotate(90) translate(-44, -24)\"\n      y2=\"26\"\n      x2=\"44\"\n      y1=\"22\"\n      x1=\"44\"\n    ></line>\n    <line\n      transform=\"translate(41.321, 34) rotate(120) translate(-41.321, -34)\"\n      y2=\"36\"\n      x2=\"41.321\"\n      y1=\"32\"\n      x1=\"41.321\"\n    ></line>\n    <line\n      transform=\"translate(34, 41.321) rotate(150) translate(-34, -41.321)\"\n      y2=\"43.321\"\n      x2=\"34\"\n      y1=\"39.321\"\n      x1=\"34\"\n    ></line>\n    <line\n      transform=\"translate(24, 44) rotate(180) translate(-24, -44)\"\n      y2=\"46\"\n      x2=\"24\"\n      y1=\"42\"\n      x1=\"24\"\n    ></line>\n    <line\n      transform=\"translate(14, 41.321) rotate(210) translate(-14, -41.321)\"\n      y2=\"43.321\"\n      x2=\"14\"\n      y1=\"39.321\"\n      x1=\"14\"\n    ></line>\n    <line\n      transform=\"translate(6.679, 34) rotate(240) translate(-6.679, -34)\"\n      y2=\"36\"\n      x2=\"6.679\"\n      y1=\"32\"\n      x1=\"6.679\"\n    ></line>\n    <line\n      transform=\"translate(4, 24) rotate(270) translate(-4, -24)\"\n      y2=\"26\"\n      x2=\"4\"\n      y1=\"22\"\n      x1=\"4\"\n    ></line>\n    <line\n      transform=\"translate(6.679, 14) rotate(300) translate(-6.679, -14)\"\n      y2=\"16\"\n      x2=\"6.679\"\n      y1=\"12\"\n      x1=\"6.679\"\n    ></line>\n    <line\n      transform=\"translate(14, 6.679) rotate(330) translate(-14, -6.679)\"\n      y2=\"8.679\"\n      x2=\"14\"\n      y1=\"4.679\"\n      x1=\"14\"\n    ></line>\n  </g>\n</svg>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, white, loader, dots, circle, svg, minimal, dashofset */\n.loader {\n  width: 48px;\n  height: 48px;\n  transform: rotate(0deg);\n  animation: spin 2.4s linear infinite;\n}\n\n.loader line {\n  stroke: #ffffff; /* White color for better visibility */\n  stroke-width: 4;\n  stroke-linecap: round;\n  opacity: 0.8;\n  stroke-dasharray: 10;\n  stroke-dashoffset: 10;\n  animation: dash 2.4s ease-in-out infinite;\n}\n\n@keyframes dash {\n  0% {\n    stroke-dashoffset: 10;\n    opacity: 0.8;\n  }\n  50% {\n    stroke-dashoffset: 0;\n    opacity: 0.4;\n  }\n  100% {\n    stroke-dashoffset: 10;\n    opacity: 0.8;\n  }\n}\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "simple",
+      "white",
+      "loader",
+      "dots",
+      "circle",
+      "svg",
+      "minimal",
+      "dashofset"
+    ]
+  },
+  {
+    "id": "uiv-209832",
+    "title": "Hungry Moth 59",
+    "author": "elijahgummer",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.567Z",
+    "html": "<div class=\"main\">\n  <div class=\"dog\">\n    <div class=\"dog__paws\">\n      <div class=\"dog__bl-leg leg\">\n        <div class=\"dog__bl-paw paw\"></div>\n        <div class=\"dog__bl-top top\"></div>\n      </div>\n      <div class=\"dog__fl-leg leg\">\n        <div class=\"dog__fl-paw paw\"></div>\n        <div class=\"dog__fl-top top\"></div>\n      </div>\n      <div class=\"dog__fr-leg leg\">\n        <div class=\"dog__fr-paw paw\"></div>\n        <div class=\"dog__fr-top top\"></div>\n      </div>\n    </div>\n\n    <div class=\"dog__body\">\n      <div class=\"dog__tail\"></div>\n    </div>\n\n    <div class=\"dog__head\">\n      <div class=\"dog__snout\">\n        <div class=\"dog__nose\"></div>\n        <div class=\"dog__eyes\">\n          <div class=\"dog__eye-l\"></div>\n          <div class=\"dog__eye-r\"></div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"dog__head-c\">\n      <div class=\"dog__ear-l\"></div>\n      <div class=\"dog__ear-r\"></div>\n    </div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Website: https://codepen.io/ruijadom/pen/jObpqNb - Name: ruijadom - Tags: loading, loader, animated, svg, dog */\n.main {\n  position: relative;\n  width: 23.5vmax;\n  height: 23.5vmax;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.leg {\n  position: absolute;\n  bottom: 0;\n  width: 2vmax;\n  height: 2.125vmax;\n}\n\n.paw {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 1.95vmax;\n  height: 1.875vmax;\n  overflow: hidden;\n}\n\n.paw::before {\n  content: \"\";\n  position: absolute;\n  width: 3.75vmax;\n  height: 3.75vmax;\n  border-radius: 50%;\n}\n\n.top {\n  position: absolute;\n  bottom: 0;\n  left: 0.75vmax;\n  height: 4.5vmax;\n  width: 2.625vmax;\n  border-top-left-radius: 1.425vmax;\n  border-top-right-radius: 1.425vmax;\n  transform-origin: bottom right;\n  transform: rotateZ(90deg) translateX(-0.1vmax) translateY(1.5vmax);\n  z-index: -1;\n  background-image: linear-gradient(70deg, transparent 20%, #ff8b56 20%);\n}\n\n.dog {\n  position: relative;\n  width: 22.5vmax;\n  height: 8.25vmax;\n}\n\n.dog::before {\n  content: \"\";\n  position: absolute;\n  bottom: -0.75vmax;\n  right: -0.15vmax;\n  width: 100%;\n  height: 1.5vmax;\n  background-color: rgba(28, 49, 48, 0.1);\n  border-radius: 50%;\n  z-index: -1000;\n  animation: shadow 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;\n}\n\n.dog__head {\n  position: absolute;\n  left: 4.5vmax;\n  bottom: 0;\n  width: 9.75vmax;\n  height: 8.25vmax;\n  border-top-left-radius: 4.05vmax;\n  border-top-right-radius: 4.05vmax;\n  border-bottom-right-radius: 3.3vmax;\n  border-bottom-left-radius: 3.3vmax;\n  background-color: #ff8147;\n  animation: head 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;\n}\n\n.dog__head-c {\n  position: absolute;\n  left: 1.5vmax;\n  bottom: 0;\n  width: 9.75vmax;\n  height: 8.25vmax;\n  animation: head 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;\n  z-index: -1;\n}\n\n.dog__snout {\n  position: absolute;\n  left: -1.5vmax;\n  bottom: 0;\n  width: 7.5vmax;\n  height: 3.75vmax;\n  border-top-right-radius: 3vmax;\n  border-bottom-right-radius: 3vmax;\n  border-bottom-left-radius: 4.5vmax;\n  background-color: #d7dbd2;\n  animation: snout 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;\n}\n\n.dog__snout::before {\n  content: \"\";\n  position: absolute;\n  left: -0.1125vmax;\n  top: -0.15vmax;\n  width: 1.875vmax;\n  height: 1.125vmax;\n  border-top-right-radius: 3vmax;\n  border-bottom-right-radius: 3vmax;\n  border-bottom-left-radius: 4.5vmax;\n  background-color: #1c3130;\n  animation: snout-b 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;\n}\n\n.dog__nose {\n  position: absolute;\n  top: -1.95vmax;\n  left: 40%;\n  width: 0.75vmax;\n  height: 2.4vmax;\n  border-radius: 0.525vmax;\n  transform-origin: bottom;\n  transform: rotateZ(10deg);\n  background-color: #d7dbd2;\n}\n\n.dog__eye-l,\n.dog__eye-r {\n  position: absolute;\n  top: -0.9vmax;\n  width: 0.675vmax;\n  height: 0.375vmax;\n  border-radius: 50%;\n  background-color: #1c3130;\n  animation: eye 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;\n}\n\n.dog__eye-l {\n  left: 27%;\n}\n\n.dog__eye-r {\n  left: 65%;\n}\n\n.dog__ear-l,\n.dog__ear-r {\n  position: absolute;\n  width: 10.5vmax;\n  height: 3.375vmax;\n  border-top-left-radius: 0vmax;\n  border-top-right-radius: 0vmax;\n  border-bottom-right-radius: 3.3vmax;\n  border-bottom-left-radius: 3.3vmax;\n  background-color: #e26538;\n}\n\n.dog__ear-l {\n  top: 1.5vmax;\n  left: 6vmax;\n  transform-origin: bottom left;\n  transform: rotateZ(-50deg);\n  z-index: -1;\n  animation: ear-l 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;\n}\n\n.dog__ear-r {\n  top: 1.5vmax;\n  right: 3vmax;\n  transform-origin: bottom right;\n  transform: rotateZ(20deg);\n  z-index: -2;\n  animation: ear-r 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;\n}\n\n.dog__body {\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  position: absolute;\n  bottom: 0.3vmax;\n  left: 3.75vmax;\n  width: 18.75vmax;\n  height: 7.2vmax;\n  border-top-left-radius: 3vmax;\n  border-top-right-radius: 6vmax;\n  border-bottom-right-radius: 1.5vmax;\n  border-bottom-left-radius: 6vmax;\n  background-color: #ff702e;\n  z-index: -2;\n  animation: body 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;\n}\n\n.dog__tail {\n  position: absolute;\n  right: -3vmax;\n  height: 1.5vmax;\n  width: 4.5vmax;\n  background-color: #e96839;\n  border-radius: 1.5vmax;\n}\n\n.dog__paws {\n  position: absolute;\n  bottom: 0;\n  left: 7.5vmax;\n  width: 12vmax;\n  height: 3vmax;\n}\n\n.dog__bl-leg {\n  left: -3vmax;\n  z-index: -10;\n}\n\n.dog__bl-paw::before {\n  background-color: #bec4b6;\n}\n\n.dog__bl-top {\n  background-image: linear-gradient(80deg, transparent 20%, #e96839 20%);\n}\n\n.dog__fl-leg {\n  z-index: 10;\n  left: 0;\n}\n\n.dog__fl-paw::before {\n  background-color: #d7dbd2;\n}\n\n.dog__fr-leg {\n  right: 0;\n}\n\n.dog__fr-paw::before {\n  background-color: #d7dbd2;\n}\n\n/*==============================*/\n\n@keyframes head {\n  0%,\n  10%,\n  20%,\n  26%,\n  28%,\n  90%,\n  100% {\n    height: 8.25vmax;\n    bottom: 0;\n    transform-origin: bottom right;\n    transform: rotateZ(0);\n  }\n  5%,\n  15%,\n  22%,\n  24%,\n  30% {\n    height: 8.1vmax;\n  }\n  32%,\n  50% {\n    height: 8.25vmax;\n  }\n  55%,\n  60% {\n    bottom: 0.75vmax;\n    transform-origin: bottom right;\n    transform: rotateZ(0);\n  }\n  70%,\n  80% {\n    bottom: 0.75vmax;\n    transform-origin: bottom right;\n    transform: rotateZ(10deg);\n  }\n}\n\n@keyframes body {\n  0%,\n  10%,\n  20%,\n  26%,\n  28%,\n  32%,\n  100% {\n    height: 7.2vmax;\n  }\n  5%,\n  15%,\n  22%,\n  24%,\n  30% {\n    height: 7.05vmax;\n  }\n}\n\n@keyframes ear-l {\n  0%,\n  10%,\n  20%,\n  26%,\n  28%,\n  82%,\n  100% {\n    transform: rotateZ(-50deg);\n  }\n  5%,\n  15%,\n  22%,\n  24% {\n    transform: rotateZ(-48deg);\n  }\n  30%,\n  31% {\n    transform: rotateZ(-30deg);\n  }\n  32%,\n  80% {\n    transform: rotateZ(-60deg);\n  }\n}\n\n@keyframes ear-r {\n  0%,\n  10%,\n  20%,\n  26%,\n  28% {\n    transform: rotateZ(20deg);\n  }\n  5%,\n  15%,\n  22%,\n  24% {\n    transform: rotateZ(18deg);\n  }\n  30%,\n  31% {\n    transform: rotateZ(10deg);\n  }\n  32% {\n    transform: rotateZ(25deg);\n  }\n}\n\n@keyframes snout {\n  0%,\n  10%,\n  20%,\n  26%,\n  28%,\n  82%,\n  100% {\n    height: 3.75vmax;\n  }\n  5%,\n  15%,\n  22%,\n  24% {\n    height: 3.45vmax;\n  }\n}\n\n@keyframes snout-b {\n  0%,\n  10%,\n  20%,\n  26%,\n  28%,\n  98%,\n  100% {\n    width: 1.875vmax;\n  }\n  5%,\n  15%,\n  22%,\n  24% {\n    width: 1.8vmax;\n  }\n  34%,\n  98% {\n    width: 1.275vmax;\n  }\n}\n\n@keyframes shadow {\n  0%,\n  10%,\n  20%,\n  26%,\n  28%,\n  30%,\n  84%,\n  100% {\n    width: 99%;\n  }\n  5%,\n  15%,\n  22%,\n  24% {\n    width: 101%;\n  }\n  34%,\n  81% {\n    width: 96%;\n  }\n}\n\n@keyframes eye {\n  0%,\n  30% {\n    width: 0.675vmax;\n    height: 0.3vmax;\n  }\n  32%,\n  59%,\n  90%,\n  100% {\n    width: 0.525vmax;\n    height: 0.525vmax;\n    transform: translateY(0);\n  }\n  60%,\n  75% {\n    transform: translateY(-0.3vmax);\n  }\n  80%,\n  85% {\n    transform: translateY(0.15vmax);\n  }\n}",
+    "tags": [
+      "loading",
+      "loader",
+      "animated",
+      "svg",
+      "dog"
+    ]
+  },
+  {
+    "id": "uiv-232832",
+    "title": "New Fly 30",
+    "author": "elijahgummer",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.590Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: loader */\n.loader {\n  width: 35px;\n  height: 80px;\n  position: relative;\n}\n.loader:after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  padding: 3px 5px;\n  border-top: 1px solid #bbb6aa;\n  border-bottom: 4px solid #bbb6aa;\n  background:\n    linear-gradient(#77d4d4 0 0) bottom no-repeat content-box,\n    #e4e0d7;\n  mix-blend-mode: darken;\n  animation: drink 1.5s infinite linear;\n}\n.loader:before {\n  content: \"\";\n  position: absolute;\n  inset: -18px calc(50% - 2px) 8px;\n  background: #eb6b3e;\n  transform-origin: bottom;\n  transform: rotate(8deg);\n}\n@keyframes drink {\n  0% {\n    background-size: 100% 100%;\n  }\n  100% {\n    background-size: 100% 5%;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-770080",
+    "title": "Sharp Squid 77",
+    "author": "elijahgummer",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:39.579Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: loading, loader, star, circle, waiting, point */\n.loader {\n  display: inline-grid;\n  width: 80px;\n  aspect-ratio: 1;\n  animation: l12-0 3s linear infinite;\n}\n.loader:before,\n.loader:after {\n  content: \"\";\n  grid-area: 1/1;\n}\n.loader:before {\n  clip-path: polygon(\n    100% 50%,\n    83.81% 59.06%,\n    93.3% 75%,\n    74.75% 74.75%,\n    75% 93.3%,\n    59.06% 83.81%,\n    50% 100%,\n    40.94% 83.81%,\n    25% 93.3%,\n    25.25% 74.75%,\n    6.7% 75%,\n    16.19% 59.06%,\n    0% 50%,\n    16.19% 40.94%,\n    6.7% 25%,\n    25.25% 25.25%,\n    25% 6.7%,\n    40.94% 16.19%,\n    50% 0%,\n    59.06% 16.19%,\n    75% 6.7%,\n    74.75% 25.25%,\n    93.3% 25%,\n    83.81% 40.94%\n  );\n  background: #1c1d1e;\n  transform: rotate(0turn) translate(-12.5%) rotate(0turn);\n  animation:\n    l12-1 2s linear infinite,\n    l12-2 4s linear infinite alternate;\n}\n.loader:after {\n  margin: 12.5%;\n  clip-path: polygon(\n    100% 50%,\n    78.19% 60.26%,\n    88.3% 82.14%,\n    65% 75.98%,\n    58.68% 99.24%,\n    44.79% 79.54%,\n    25% 93.3%,\n    27.02% 69.28%,\n    3.02% 67.1%,\n    20% 50%,\n    3.02% 32.9%,\n    27.02% 30.72%,\n    25% 6.7%,\n    44.79% 20.46%,\n    58.68% 0.76%,\n    65% 24.02%,\n    88.3% 17.86%,\n    78.19% 39.74%\n  );\n  background: #edf0f2;\n  animation: l12-3 4s linear infinite alternate;\n}\n@keyframes l12-0 {\n  to {\n    rotate: 1turn;\n  }\n}\n@keyframes l12-1 {\n  to {\n    transform: rotate(-1turn) translate(-12.5%) rotate(0.75turn);\n  }\n}\n@keyframes l12-2 {\n  90%,\n  to {\n    clip-path: polygon(\n      100% 50%,\n      98.3% 62.94%,\n      93.3% 75%,\n      85.36% 85.36%,\n      75% 93.3%,\n      62.94% 98.3%,\n      50% 100%,\n      37.06% 98.3%,\n      25% 93.3%,\n      14.64% 85.36%,\n      6.7% 75%,\n      1.7% 62.94%,\n      0% 50%,\n      1.7% 37.06%,\n      6.7% 25%,\n      14.64% 14.64%,\n      25% 6.7%,\n      37.06% 1.7%,\n      50% 0%,\n      62.94% 1.7%,\n      75% 6.7%,\n      85.36% 14.64%,\n      93.3% 25%,\n      98.3% 37.06%\n    );\n  }\n}\n@keyframes l12-3 {\n  90%,\n  to {\n    clip-path: polygon(\n      100% 50%,\n      96.98% 67.1%,\n      88.3% 82.14%,\n      75% 93.3%,\n      58.68% 99.24%,\n      41.32% 99.24%,\n      25% 93.3%,\n      11.7% 82.14%,\n      3.02% 67.1%,\n      0% 50%,\n      3.02% 32.9%,\n      11.7% 17.86%,\n      25% 6.7%,\n      41.32% 0.76%,\n      58.68% 0.76%,\n      75% 6.7%,\n      88.3% 17.86%,\n      96.98% 32.9%\n    );\n  }\n}",
+    "tags": [
+      "loading",
+      "loader",
+      "star",
+      "circle",
+      "waiting",
+      "point"
+    ]
+  },
+  {
+    "id": "uiv-319925",
+    "title": "Slippery Puma 80",
+    "author": "elijahgummer",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.209Z",
+    "html": "<div class=\"analyze\">\n  <svg\n    xmlns=\"http://www.w3.org/2000/svg\"\n    fill=\"none\"\n    viewBox=\"0 0 24 24\"\n    height=\"54\"\n    width=\"54\"\n  >\n    <rect height=\"24\" width=\"24\"></rect>\n    <path\n      stroke-linecap=\"round\"\n      stroke-width=\"1.5\"\n      stroke=\"white\"\n      d=\"M19.25 9.25V5.25C19.25 4.42157 18.5784 3.75 17.75 3.75H6.25C5.42157 3.75 4.75 4.42157 4.75 5.25V18.75C4.75 19.5784 5.42157 20.25 6.25 20.25H12.25\"\n      class=\"board\"\n    ></path>\n    <path\n      d=\"M9.18748 11.5066C9.12305 11.3324 8.87677 11.3324 8.81234 11.5066L8.49165 12.3732C8.47139 12.428 8.42823 12.4711 8.37348 12.4914L7.50681 12.8121C7.33269 12.8765 7.33269 13.1228 7.50681 13.1872L8.37348 13.5079C8.42823 13.5282 8.47139 13.5714 8.49165 13.6261L8.81234 14.4928C8.87677 14.6669 9.12305 14.6669 9.18748 14.4928L9.50818 13.6261C9.52844 13.5714 9.5716 13.5282 9.62634 13.5079L10.493 13.1872C10.6671 13.1228 10.6671 12.8765 10.493 12.8121L9.62634 12.4914C9.5716 12.4711 9.52844 12.428 9.50818 12.3732L9.18748 11.5066Z\"\n      class=\"star-2\"\n    ></path>\n    <path\n      d=\"M11.7345 6.63394C11.654 6.41629 11.3461 6.41629 11.2656 6.63394L10.8647 7.71728C10.8394 7.78571 10.7855 7.83966 10.717 7.86498L9.6337 8.26585C9.41605 8.34639 9.41605 8.65424 9.6337 8.73478L10.717 9.13565C10.7855 9.16097 10.8394 9.21493 10.8647 9.28335L11.2656 10.3667C11.3461 10.5843 11.654 10.5843 11.7345 10.3667L12.1354 9.28335C12.1607 9.21493 12.2147 9.16097 12.2831 9.13565L13.3664 8.73478C13.5841 8.65424 13.5841 8.34639 13.3664 8.26585L12.2831 7.86498C12.2147 7.83966 12.1607 7.78571 12.1354 7.71728L11.7345 6.63394Z\"\n      class=\"star-1\"\n    ></path>\n    <path\n      class=\"stick\"\n      stroke-linejoin=\"round\"\n      stroke-width=\"1.5\"\n      stroke=\"white\"\n      d=\"M17 14L21.2929 18.2929C21.6834 18.6834 21.6834 19.3166 21.2929 19.7071L20.7071 20.2929C20.3166 20.6834 19.6834 20.6834 19.2929 20.2929L15 16M17 14L15.7071 12.7071C15.3166 12.3166 14.6834 12.3166 14.2929 12.7071L13.7071 13.2929C13.3166 13.6834 13.3166 14.3166 13.7071 14.7071L15 16M17 14L15 16\"\n    ></path>\n  </svg>\n</div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: loading, loader, star, svg, magic, wand, analyser */\n.analyze svg path.stick {\n  transform: translate(0);\n  animation: stick 2s ease infinite;\n  /* Change wand color */\n}\n\n.analyze svg path.star-1 {\n  fill: #ff4500; /* OrangeRed color */\n  animation: sparkles 2s ease infinite, scaleStars 2s ease infinite,\n    colorChange 2s ease infinite;\n  animation-delay: 150ms;\n}\n\n.analyze svg path.star-2 {\n  fill: #00ff00; /* Lime color */\n  animation: sparkles 2s ease infinite, scaleStars 2s ease infinite,\n    colorChange 2s ease infinite;\n}\n\n.board {\n  animation: bounce 2s ease infinite;\n}\n\n@keyframes sparkles {\n  0% {\n    opacity: 1;\n  }\n  35% {\n    opacity: 1;\n  }\n  55% {\n    opacity: 0;\n  }\n  75% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n\n@keyframes stick {\n  0% {\n    transform: translate3d(0, 0, 0) rotate(0);\n  }\n  25% {\n    transform: translate3d(0, 0, 0) rotate(0);\n  }\n  50% {\n    transform: translate3d(3px, -2px, 0) rotate(8deg);\n  }\n  75% {\n    transform: translate3d(0, 0, 0) rotate(0);\n  }\n  100% {\n    transform: translate3d(0, 0, 0) rotate(0);\n  }\n}\n\n@keyframes scaleStars {\n  0% {\n    transform: scale(1);\n  }\n  50% {\n    transform: scale(0.9);\n  }\n  100% {\n    transform: scale(1);\n  }\n}\n\n@keyframes bounce {\n  0% {\n    transform: translateY(0);\n  }\n  25% {\n    transform: translateY(0);\n  }\n  50% {\n    transform: translateY(0);\n  }\n  75% {\n    transform: translateY(-1px);\n  }\n  100% {\n    transform: translateY(0);\n  }\n}\n\n@keyframes colorChange {\n  0% {\n    fill: #ff4500; /* OrangeRed */\n  }\n  25% {\n    fill: #ffd700; /* Gold */\n  }\n  50% {\n    fill: #00ff00; /* Lime */\n  }\n  75% {\n    fill: #1e90ff; /* DodgerBlue */\n  }\n  100% {\n    fill: #ff4500; /* OrangeRed */\n  }\n}",
+    "tags": [
+      "loading",
+      "loader",
+      "star",
+      "svg",
+      "magic",
+      "wand",
+      "analyser"
+    ]
+  },
+  {
+    "id": "uiv-118816",
+    "title": "Sour Earwig 21",
+    "author": "elijahgummer",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.020Z",
+    "html": "<svg class=\"container\"><rect class=\"boxes\"></rect></svg>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, animation, green, loader, smooth, modern, animated, css */\n.container {\n  width: 50px;\n  height: 50px;\n}\n\n.container .boxes {\n  width: 50px;\n  height: 50px;\n  fill: none;\n  stroke-width: 50px;\n  stroke: #43cb85;\n  stroke-dasharray: 50;\n  stroke-dashoffset: 50%;\n  animation: animate 2s linear infinite;\n}\n\n@keyframes animate {\n  to {\n    stroke-dashoffset: 250%;\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "green",
+      "loader",
+      "smooth",
+      "modern",
+      "animated",
+      "css"
+    ]
+  },
+  {
+    "id": "uiv-510585",
+    "title": "Stale Panda 59",
+    "author": "elijahgummer",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.020Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, red, loader, diamond, fade, mitsubishi, appear */\n.loader {\n  width: 50px;\n  height: calc(50px * 0.866);\n  background: #fd135a;\n  clip-path: polygon(50% 0, 100% 100%, 0 100%);\n  --c: at 50% 66%, #000 60deg, #0000 0;\n  -webkit-mask:\n    conic-gradient(from 30deg var(--c)) right,\n    conic-gradient(from 150deg var(--c)) bottom,\n    conic-gradient(from -90deg var(--c)) left,\n    linear-gradient(#000 0 0);\n  -webkit-mask-composite: xor;\n  mask-composite: exclude;\n  -webkit-mask-repeat: no-repeat;\n  animation: appear 1.5s infinite;\n}\n@keyframes appear {\n  0% {\n    -webkit-mask-size:\n      0 0,\n      0 0,\n      0 0,\n      auto;\n  }\n  13.33% {\n    -webkit-mask-size:\n      100% 100%,\n      0 0,\n      0 0,\n      auto;\n  }\n  26.67% {\n    -webkit-mask-size:\n      100% 100%,\n      100% 100%,\n      0 0,\n      auto;\n  }\n  40%,\n  60% {\n    -webkit-mask-size:\n      100% 100%,\n      100% 100%,\n      100% 100%,\n      auto;\n  }\n  73.33% {\n    -webkit-mask-size:\n      0 0,\n      100% 100%,\n      100% 100%,\n      auto;\n  }\n  86.67% {\n    -webkit-mask-size:\n      0 0,\n      0 0,\n      100% 100%,\n      auto;\n  }\n  100% {\n    -webkit-mask-size:\n      0 0,\n      0 0,\n      0 0,\n      auto;\n  }\n}",
+    "tags": [
+      "simple",
+      "red",
+      "loader",
+      "diamond",
+      "fade",
+      "mitsubishi",
+      "appear"
+    ]
+  },
+  {
+    "id": "uiv-717451",
+    "title": "Fast Bear 97",
+    "author": "escannord",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.216Z",
+    "html": "<div class=\"loader\">\n  <span style=\"--delay:1\" class=\"ball\"></span>\n  <span style=\"--delay:2\" class=\"ball\"></span>\n  <span style=\"--delay:3\" class=\"ball\"></span>\n  <span style=\"--delay:4\" class=\"ball\"></span>\n  <span style=\"--delay:5\" class=\"ball\"></span>\n  <span style=\"--delay:6\" class=\"ball\"></span>\n  <span style=\"--delay:7\" class=\"ball\"></span>\n  <span style=\"--delay:8\" class=\"ball\"></span>\n</div>",
+    "css": "/* From Uiverse.io by escannord  - Tags: 3d, black, loading, loader, realistic */\n.loader {\n  width: 220px;\n  height: 220px;\n  border-radius: 50%;\n  position: relative;\n  border: solid 5px transparent;\n  box-shadow: 5px 5px 5px rgb(88, 87, 87), inset 5px 5px 5px rgb(85, 80, 80),\n    inset -1px -1px 10px rgba(0, 0, 0, 0.432),\n    -1px -1px 10px rgba(0, 0, 0, 0.281);\n}\n\n.loader::before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  width: 180px;\n  height: 180px;\n  border-radius: 50%;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  box-shadow: 5px 5px 20px black, -2px -2px 40px black;\n  background: repeating-conic-gradient(\n    rgb(61, 59, 59) 0%,\n    rgb(248, 248, 246) 15%,\n    rgb(54, 52, 52) 33.33%\n  );\n}\n\n.ball {\n  width: 15px;\n  height: 15px;\n  display: inline-block;\n  background: radial-gradient(\n    circle at 8px 5px,\n    white 5%,\n    rgba(54, 53, 53, 0.685)\n  );\n  border-radius: 50%;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) translateX(97.5px);\n  animation: rotate 5s calc(var(--delay) * 0.2s) infinite linear;\n}\n\n@keyframes rotate {\n  0% {\n    transform: translate(-50%, -50%) rotate(0deg) translateX(97.5px);\n  }\n\n  100% {\n    transform: translate(-50%, -50%) rotate(360deg) translateX(97.5px);\n  }\n}",
+    "tags": [
+      "3d",
+      "black",
+      "loading",
+      "loader",
+      "realistic"
+    ]
+  },
+  {
+    "id": "uiv-205575",
+    "title": "Pretty Eel 31",
+    "author": "exyreams",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.020Z",
+    "html": "<div class=\"spinner\">\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n<div></div>\n</div>",
+    "css": "/* From Uiverse.io by exyreams - Tags: loading, loader, loading animation */\n.spinner {\n  position: relative;\n  width: 80px;\n /* Adjust the width accordingly */\n  height: 16px;\n /* Keep the height the same */\n}\n\n.spinner div {\n  position: absolute;\n  width: 16px;\n  height: 16px;\n  background-color: #004dff;\n  border-radius: 50%;\n  animation: spinner-4t3wzl 2s infinite linear;\n}\n\n.spinner div:nth-child(1) {\n  left: 0;\n  animation-delay: 0.15s;\n  background-color: rgba(0, 77, 255, 0.9);\n}\n\n.spinner div:nth-child(2) {\n  left: 25%;\n  animation-delay: 0.3s;\n  background-color: rgba(0, 77, 255, 0.8);\n}\n\n.spinner div:nth-child(3) {\n  left: 50%;\n  animation-delay: 0.45s;\n  background-color: rgba(0, 77, 255, 0.7);\n}\n\n.spinner div:nth-child(4) {\n  left: 75%;\n  animation-delay: 0.6s;\n  background-color: rgba(0, 77, 255, 0.6);\n}\n\n.spinner div:nth-child(5) {\n  left: 100%;\n  animation-delay: 0.75s;\n  background-color: rgba(0, 77, 255, 0.5);\n}\n\n@keyframes spinner-4t3wzl {\n  0% {\n    transform: rotate(0deg) translateX(-100%);\n  }\n\n  100% {\n    transform: rotate(360deg) translateX(-100%);\n  }\n}",
+    "tags": [
+      "loading",
+      "loader",
+      "loading animation"
+    ]
+  },
+  {
+    "id": "uiv-732697",
+    "title": "Brave Chipmunk 25",
+    "author": "gagan-gv",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.067Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by gagan-gv - Tags: loader */\n.loader {\n  width: 60px;\n  height: 60px;\n  background: #4285f4;\n  border-radius: 10%;\n  animation: dice3 7s ease-in-out infinite;\n  filter: drop-shadow(2px 3px 40px #444);\n}\n\n@keyframes dice3 {\n  from, to {\n    transform: translateX(-50px) rotateX(0deg);\n  }\n\n  25% {\n    background: #db4437;\n  }\n\n  50% {\n    background: #f4b400;\n    transform: translateX(50px) rotate(360deg);\n  }\n\n  75% {\n    background: #0f9d58;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-803511",
+    "title": "Stupid Walrus 23",
+    "author": "gagan-gv",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.026Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by gagan-gv - Tags: loader */\n.loader {\n border: 0 solid transparent;\n border-radius: 50%;\n width: 100px;\n height: 100px;\n}\n\n.loader::before,\n.loader::after {\n content: '';\n border: 7px solid #ccc;\n border-radius: 50%;\n width: inherit;\n height: inherit;\n position: absolute;\n animation: loader 2s linear infinite;\n opacity: 0;\n}\n\n.loader::before {\n animation-delay: 1s;\n}\n\n@keyframes loader {\n 0% {\n  transform: scale(1);\n  opacity: 0;\n }\n\n 50% {\n  opacity: 1;\n }\n\n 100% {\n  transform: scale(0);\n  opacity: 0;\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-889940",
+    "title": "Slimy Donkey 39",
+    "author": "gharsh11032000",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.067Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by gharsh11032000 - Tags: gradient, loader, circle loader */\n.loader {\n  width: 5em;\n  height: 5em;\n  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );\n  animation: spin 3s infinite;\n}\n\n.loader::before {\n  content: \"\";\n  z-index: -1;\n  position: absolute;\n  inset: 0;\n  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );\n  transform: translate3d(0, 0, 0) scale(0.95);\n  filter: blur(20px);\n}\n\n@keyframes spin {\n  0% {\n    transform: rotate(-45deg);\n  }\n\n  50% {\n    transform: rotate(-360deg);\n    border-radius: 50%;\n  }\n\n  100% {\n    transform: rotate(-45deg);\n  }\n}",
+    "tags": [
+      "gradient",
+      "loader",
+      "circle loader"
+    ]
+  },
+  {
+    "id": "uiv-632050",
+    "title": "Tall Impala 21",
+    "author": "gharsh11032000",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.038Z",
+    "html": "<label class=\"loader\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by gharsh11032000 - Tags: animation, loader, rolling */\n.loader {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 8em;\n  height: 2em;\n}\n\n.slider {\n  position: absolute;\n  inset: 0;\n  background: #0974f1;\n  box-shadow: 0 0px 20px rgba(9, 117, 241, 0.4);\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: white;\n  animation: move 1.5s cubic-bezier(0.23, 1, 0.320, 1) infinite alternate;\n}\n\n@keyframes move {\n  0% {\n    transform: translateX(0em) rotate(0deg);\n  }\n\n  100% {\n    transform: translateX(6em) rotate(270deg);\n  }\n}",
+    "tags": [
+      "animation",
+      "loader",
+      "rolling"
+    ]
+  },
+  {
+    "id": "uiv-716588",
+    "title": "Purple Falcon 85",
+    "author": "harman-kanda",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.015Z",
+    "html": "<svg class=\"pl\" width=\"128px\" height=\"128px\" viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle class=\"pl__ring1\" cx=\"64\" cy=\"64\" r=\"60\" fill=\"none\" stroke=\"hsl(3,90%,55%)\" stroke-width=\"8\" transform=\"rotate(-90,64,64)\" stroke-linecap=\"round\" stroke-dasharray=\"377 377\" stroke-dashoffset=\"-376.4\"></circle>\n  <circle class=\"pl__ring2\" cx=\"64\" cy=\"64\" r=\"52.5\" fill=\"none\" stroke=\"hsl(13,90%,55%)\" stroke-width=\"7\" transform=\"rotate(-90,64,64)\" stroke-linecap=\"round\" stroke-dasharray=\"329.9 329.9\" stroke-dashoffset=\"-329.3\"></circle>\n  <circle class=\"pl__ring3\" cx=\"64\" cy=\"64\" r=\"46\" fill=\"none\" stroke=\"hsl(23,90%,55%)\" stroke-width=\"6\" transform=\"rotate(-90,64,64)\" stroke-linecap=\"round\" stroke-dasharray=\"289 289\" stroke-dashoffset=\"-288.6\"></circle>\n  <circle class=\"pl__ring4\" cx=\"64\" cy=\"64\" r=\"40.5\" fill=\"none\" stroke=\"hsl(33,90%,55%)\" stroke-width=\"5\" transform=\"rotate(-90,64,64)\" stroke-linecap=\"round\" stroke-dasharray=\"254.5 254.5\" stroke-dashoffset=\"-254\"></circle>\n  <circle class=\"pl__ring5\" cx=\"64\" cy=\"64\" r=\"36\" fill=\"none\" stroke=\"hsl(43,90%,55%)\" stroke-width=\"4\" transform=\"rotate(-90,64,64)\" stroke-linecap=\"round\" stroke-dasharray=\"226.2 226.2\" stroke-dashoffset=\"-225.8\"></circle>\n  <circle class=\"pl__ring6\" cx=\"64\" cy=\"64\" r=\"32.5\" fill=\"none\" stroke=\"hsl(53,90%,55%)\" stroke-width=\"3\" transform=\"rotate(-90,64,64)\" stroke-linecap=\"round\" stroke-dasharray=\"204.2 204.2\" stroke-dashoffset=\"-203.9\"></circle>\n</svg>",
+    "css": "/* From Uiverse.io by harman-kanda - Tags: loader */\n/* From cssbuttons.io by @harmankanda.github.io/New */\n\n.pl {\n width: 5em;\n height: 5em;\n}\n\n.pl circle {\n transform-box: fill-box;\n transform-origin: 50% 50%;\n}\n\n.pl__ring1 {\n animation: ring1 4s 0s ease-in-out infinite;\n}\n\n.pl__ring2 {\n animation: ring2 4s 0.04s ease-in-out infinite;\n}\n\n.pl__ring3 {\n animation: ring3 4s 0.08s ease-in-out infinite;\n}\n\n.pl__ring4 {\n animation: ring4 4s 0.12s ease-in-out infinite;\n}\n\n.pl__ring5 {\n animation: ring5 4s 0.16s ease-in-out infinite;\n}\n\n.pl__ring6 {\n animation: ring6 4s 0.2s ease-in-out infinite;\n}\n\n/* Animations */\n@keyframes ring1 {\n from {\n  stroke-dashoffset: -376.237129776;\n  transform: rotate(-0.25turn);\n  animation-timing-function: ease-in;\n }\n\n 23% {\n  stroke-dashoffset: -94.247778;\n  transform: rotate(1turn);\n  animation-timing-function: ease-out;\n }\n\n 46%, 50% {\n  stroke-dashoffset: -376.237129776;\n  transform: rotate(2.25turn);\n  animation-timing-function: ease-in;\n }\n\n 73% {\n  stroke-dashoffset: -94.247778;\n  transform: rotate(3.5turn);\n  animation-timing-function: ease-out;\n }\n\n 96%, to {\n  stroke-dashoffset: -376.237129776;\n  transform: rotate(4.75turn);\n }\n}\n\n@keyframes ring2 {\n from {\n  stroke-dashoffset: -329.207488554;\n  transform: rotate(-0.25turn);\n  animation-timing-function: ease-in;\n }\n\n 23% {\n  stroke-dashoffset: -82.46680575;\n  transform: rotate(1turn);\n  animation-timing-function: ease-out;\n }\n\n 46%, 50% {\n  stroke-dashoffset: -329.207488554;\n  transform: rotate(2.25turn);\n  animation-timing-function: ease-in;\n }\n\n 73% {\n  stroke-dashoffset: -82.46680575;\n  transform: rotate(3.5turn);\n  animation-timing-function: ease-out;\n }\n\n 96%, to {\n  stroke-dashoffset: -329.207488554;\n  transform: rotate(4.75turn);\n }\n}\n\n@keyframes ring3 {\n from {\n  stroke-dashoffset: -288.4484661616;\n  transform: rotate(-0.25turn);\n  animation-timing-function: ease-in;\n }\n\n 23% {\n  stroke-dashoffset: -72.2566298;\n  transform: rotate(1turn);\n  animation-timing-function: ease-out;\n }\n\n 46%, 50% {\n  stroke-dashoffset: -288.4484661616;\n  transform: rotate(2.25turn);\n  animation-timing-function: ease-in;\n }\n\n 73% {\n  stroke-dashoffset: -72.2566298;\n  transform: rotate(3.5turn);\n  animation-timing-function: ease-out;\n }\n\n 96%, to {\n  stroke-dashoffset: -288.4484661616;\n  transform: rotate(4.75turn);\n }\n}\n\n@keyframes ring4 {\n from {\n  stroke-dashoffset: -253.9600625988;\n  transform: rotate(-0.25turn);\n  animation-timing-function: ease-in;\n }\n\n 23% {\n  stroke-dashoffset: -63.61725015;\n  transform: rotate(1turn);\n  animation-timing-function: ease-out;\n }\n\n 46%, 50% {\n  stroke-dashoffset: -253.9600625988;\n  transform: rotate(2.25turn);\n  animation-timing-function: ease-in;\n }\n\n 73% {\n  stroke-dashoffset: -63.61725015;\n  transform: rotate(3.5turn);\n  animation-timing-function: ease-out;\n }\n\n 96%, to {\n  stroke-dashoffset: -253.9600625988;\n  transform: rotate(4.75turn);\n }\n}\n\n@keyframes ring5 {\n from {\n  stroke-dashoffset: -225.7422778656;\n  transform: rotate(-0.25turn);\n  animation-timing-function: ease-in;\n }\n\n 23% {\n  stroke-dashoffset: -56.5486668;\n  transform: rotate(1turn);\n  animation-timing-function: ease-out;\n }\n\n 46%, 50% {\n  stroke-dashoffset: -225.7422778656;\n  transform: rotate(2.25turn);\n  animation-timing-function: ease-in;\n }\n\n 73% {\n  stroke-dashoffset: -56.5486668;\n  transform: rotate(3.5turn);\n  animation-timing-function: ease-out;\n }\n\n 96%, to {\n  stroke-dashoffset: -225.7422778656;\n  transform: rotate(4.75turn);\n }\n}\n\n@keyframes ring6 {\n from {\n  stroke-dashoffset: -203.795111962;\n  transform: rotate(-0.25turn);\n  animation-timing-function: ease-in;\n }\n\n 23% {\n  stroke-dashoffset: -51.05087975;\n  transform: rotate(1turn);\n  animation-timing-function: ease-out;\n }\n\n 46%, 50% {\n  stroke-dashoffset: -203.795111962;\n  transform: rotate(2.25turn);\n  animation-timing-function: ease-in;\n }\n\n 73% {\n  stroke-dashoffset: -51.05087975;\n  transform: rotate(3.5turn);\n  animation-timing-function: ease-out;\n }\n\n 96%, to {\n  stroke-dashoffset: -203.795111962;\n  transform: rotate(4.75turn);\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-891413",
+    "title": "Quiet Hound 73",
+    "author": "iamrippon",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.034Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by iamrippon  - Tags: loader */\n.loader {\n  position: relative;\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: radial-gradient(circle, #03dac6, #6200ea);\n  border: 8px solid transparent;\n  border-top-color: #03dac6;\n  border-bottom-color: #6200ea;\n  animation: spin 2s linear infinite;\n}\n\n.loader::before {\n  content: \"1\";\n  position: absolute;\n  font-size: 24px;\n  font-weight: bold;\n  color: white;\n  animation: count 10s linear infinite;\n}\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes count {\n  0% {\n    content: \"1\";\n  }\n  1% {\n    content: \"2\";\n  }\n  2% {\n    content: \"3\";\n  }\n  3% {\n    content: \"4\";\n  }\n  4% {\n    content: \"5\";\n  }\n  5% {\n    content: \"6\";\n  }\n  6% {\n    content: \"7\";\n  }\n  7% {\n    content: \"8\";\n  }\n  8% {\n    content: \"9\";\n  }\n  9% {\n    content: \"10\";\n  }\n  10% {\n    content: \"11\";\n  }\n  11% {\n    content: \"12\";\n  }\n  12% {\n    content: \"13\";\n  }\n  13% {\n    content: \"14\";\n  }\n  14% {\n    content: \"15\";\n  }\n  15% {\n    content: \"16\";\n  }\n  16% {\n    content: \"17\";\n  }\n  17% {\n    content: \"18\";\n  }\n  18% {\n    content: \"19\";\n  }\n  19% {\n    content: \"20\";\n  }\n  20% {\n    content: \"21\";\n  }\n  21% {\n    content: \"22\";\n  }\n  22% {\n    content: \"23\";\n  }\n  23% {\n    content: \"24\";\n  }\n  24% {\n    content: \"25\";\n  }\n  25% {\n    content: \"26\";\n  }\n  26% {\n    content: \"27\";\n  }\n  27% {\n    content: \"28\";\n  }\n  28% {\n    content: \"29\";\n  }\n  29% {\n    content: \"30\";\n  }\n  30% {\n    content: \"31\";\n  }\n  31% {\n    content: \"32\";\n  }\n  32% {\n    content: \"33\";\n  }\n  33% {\n    content: \"34\";\n  }\n  34% {\n    content: \"35\";\n  }\n  35% {\n    content: \"36\";\n  }\n  36% {\n    content: \"37\";\n  }\n  37% {\n    content: \"38\";\n  }\n  38% {\n    content: \"39\";\n  }\n  39% {\n    content: \"40\";\n  }\n  40% {\n    content: \"41\";\n  }\n  41% {\n    content: \"42\";\n  }\n  42% {\n    content: \"43\";\n  }\n  43% {\n    content: \"44\";\n  }\n  44% {\n    content: \"45\";\n  }\n  45% {\n    content: \"46\";\n  }\n  46% {\n    content: \"47\";\n  }\n  47% {\n    content: \"48\";\n  }\n  48% {\n    content: \"49\";\n  }\n  49% {\n    content: \"50\";\n  }\n  50% {\n    content: \"51\";\n  }\n  51% {\n    content: \"52\";\n  }\n  52% {\n    content: \"53\";\n  }\n  53% {\n    content: \"54\";\n  }\n  54% {\n    content: \"55\";\n  }\n  55% {\n    content: \"56\";\n  }\n  56% {\n    content: \"57\";\n  }\n  57% {\n    content: \"58\";\n  }\n  58% {\n    content: \"59\";\n  }\n  59% {\n    content: \"60\";\n  }\n  60% {\n    content: \"61\";\n  }\n  61% {\n    content: \"62\";\n  }\n  62% {\n    content: \"63\";\n  }\n  63% {\n    content: \"64\";\n  }\n  64% {\n    content: \"65\";\n  }\n  65% {\n    content: \"66\";\n  }\n  66% {\n    content: \"67\";\n  }\n  67% {\n    content: \"68\";\n  }\n  68% {\n    content: \"69\";\n  }\n  69% {\n    content: \"70\";\n  }\n  70% {\n    content: \"71\";\n  }\n  71% {\n    content: \"72\";\n  }\n  72% {\n    content: \"73\";\n  }\n  73% {\n    content: \"74\";\n  }\n  74% {\n    content: \"75\";\n  }\n  75% {\n    content: \"76\";\n  }\n  76% {\n    content: \"77\";\n  }\n  77% {\n    content: \"78\";\n  }\n  78% {\n    content: \"79\";\n  }\n  79% {\n    content: \"80\";\n  }\n  80% {\n    content: \"81\";\n  }\n  81% {\n    content: \"82\";\n  }\n  82% {\n    content: \"83\";\n  }\n  83% {\n    content: \"84\";\n  }\n  84% {\n    content: \"85\";\n  }\n  85% {\n    content: \"86\";\n  }\n  86% {\n    content: \"87\";\n  }\n  87% {\n    content: \"88\";\n  }\n  88% {\n    content: \"89\";\n  }\n  89% {\n    content: \"90\";\n  }\n  90% {\n    content: \"91\";\n  }\n  91% {\n    content: \"92\";\n  }\n  92% {\n    content: \"93\";\n  }\n  93% {\n    content: \"94\";\n  }\n  94% {\n    content: \"95\";\n  }\n  95% {\n    content: \"96\";\n  }\n  96% {\n    content: \"97\";\n  }\n  97% {\n    content: \"98\";\n  }\n  98% {\n    content: \"99\";\n  }\n  99% {\n    content: \"100\";\n  }\n  100% {\n    content: \"1\";\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-498762",
+    "title": "Modern Quail 99",
+    "author": "jack0237",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.103Z",
+    "html": "<div class=\"loader\">\n  <div class=\"dot\"></div>\n  <div class=\"dot\"></div>\n  <div class=\"dot\"></div>\n  <div class=\"dot\"></div>\n  <div class=\"dot\"></div>\n</div>",
+    "css": "/* From Uiverse.io by jack0237  - Tags:  */\n.loader {\n  display: flex;\n}\n\n.loader .dot {\n  height: 20px;\n  width: 20px;\n  border-radius: 50%;\n  border: 2px solid #e8e8e8;\n  background: #16b0c1;\n  animation: jump 0.8s ease-in-out infinite alternate;\n}\n\n@keyframes jump {\n  100% {\n    background: #661e92;\n    transform: translateY(-3rem) scale(1.9);\n  }\n}\n\n.loader .dot:nth-child(1) {\n  animation-delay: 0.1s;\n}\n\n.loader .dot:nth-child(2) {\n  animation-delay: 0.2s;\n}\n\n.loader .dot:nth-child(3) {\n  animation-delay: 0.3s;\n}\n\n.loader .dot:nth-child(4) {\n  animation-delay: 0.4s;\n}\n\n.loader .dot:nth-child(5) {\n  animation-delay: 0.5s;\n}",
+    "tags": [
+      ""
+    ]
+  },
+  {
+    "id": "uiv-748876",
+    "title": "Ancient Lizard 27",
+    "author": "kerolos23",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.026Z",
+    "html": "<div class=\"loader\">\n  <div></div>\n  <div></div>\n  <div></div>\n  <div></div>\n</div>",
+    "css": "/* From Uiverse.io by kerolos23 - Tags: loader */\n.loader {\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n\n.loader div {\n  position: absolute;\n  top: 33px;\n  width: 13px;\n  height: 13px;\n  border-radius: 50%;\n  background: #c517f0;\n  animation-timing-function: cubic-bezier(0, 1, 1, 0);\n}\n\n.loader div:nth-child(1) {\n  left: 8px;\n  animation: flip1 0.6s infinite;\n}\n\n.loader div:nth-child(2) {\n  left: 8px;\n  animation: flip2 0.6s infinite;\n}\n\n.loader div:nth-child(3) {\n  left: 32px;\n  animation: flip2 0.6s infinite;\n}\n\n.loader div:nth-child(4) {\n  left: 56px;\n  animation: flip3 0.6s infinite;\n}\n\n@keyframes flip1 {\n  0% {\n    transform: scale(0);\n  }\n\n  100% {\n    transform: scale(1);\n  }\n}\n\n@keyframes flip3 {\n  0% {\n    transform: scale(1);\n  }\n\n  100% {\n    transform: scale(0);\n  }\n}\n\n@keyframes flip2 {\n  0% {\n    transform: translate(0, 0);\n  }\n\n  100% {\n    transform: translate(24px, 0);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-331433",
+    "title": "Smooth Wombat 54",
+    "author": "kerolos23",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.073Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by kerolos23 - Tags: loader, animated, circle loader */\n.loader {\n  transform: rotateZ(45deg);\n  perspective: 1000px;\n  border-radius: 50%;\n  width: 48px;\n  height: 48px;\n  color: #91ff00;\n}\n\n.loader:before,\n.loader:after {\n  content: '';\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: inherit;\n  height: inherit;\n  border-radius: 50%;\n  transform: rotateX(70deg);\n  animation: 1s spin linear infinite;\n}\n\n.loader:after {\n  color: #FF3D00;\n  transform: rotateY(70deg);\n  animation-delay: .4s;\n}\n\n@keyframes rotate {\n  0% {\n    transform: translate(-50%, -50%) rotateZ(0deg);\n  }\n\n  100% {\n    transform: translate(-50%, -50%) rotateZ(360deg);\n  }\n}\n\n@keyframes rotateccw {\n  0% {\n    transform: translate(-50%, -50%) rotate(0deg);\n  }\n\n  100% {\n    transform: translate(-50%, -50%) rotate(-360deg);\n  }\n}\n\n@keyframes spin {\n  0%,\n  100% {\n    box-shadow: .2em 0px 0 0px currentcolor;\n  }\n\n  12% {\n    box-shadow: .2em .2em 0 0 currentcolor;\n  }\n\n  25% {\n    box-shadow: 0 .2em 0 0px currentcolor;\n  }\n\n  37% {\n    box-shadow: -.2em .2em 0 0 currentcolor;\n  }\n\n  50% {\n    box-shadow: -.2em 0 0 0 currentcolor;\n  }\n\n  62% {\n    box-shadow: -.2em -.2em 0 0 currentcolor;\n  }\n\n  75% {\n    box-shadow: 0px -.2em 0 0 currentcolor;\n  }\n\n  87% {\n    box-shadow: .2em -.2em 0 0 currentcolor;\n  }\n}",
+    "tags": [
+      "loader",
+      "animated",
+      "circle loader"
+    ]
+  },
+  {
+    "id": "uiv-674852",
+    "title": "Chilly Swan 51",
+    "author": "milley69",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.077Z",
+    "html": "<div class=\"loading\">\n  <svg width=\"64px\" height=\"48px\">\n      <polyline points=\"0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24\" id=\"back\"></polyline>\n    <polyline points=\"0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24\" id=\"front\"></polyline>\n  </svg>\n</div>",
+    "css": "/* From Uiverse.io by milley69 - Tags: loader */\n.loading svg polyline {\n  fill: none;\n  stroke-width: 3;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n}\n\n.loading svg polyline#back {\n  fill: none;\n  stroke: #ff4d5033;\n}\n\n.loading svg polyline#front {\n  fill: none;\n  stroke: #ff4d4f;\n  stroke-dasharray: 48, 144;\n  stroke-dashoffset: 192;\n  animation: dash_682 1.4s linear infinite;\n}\n\n@keyframes dash_682 {\n  72.5% {\n    opacity: 0;\n  }\n\n  to {\n    stroke-dashoffset: 0;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-289757",
+    "title": "Happy Duck 88",
+    "author": "mobineshaghi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.725Z",
+    "html": "<div class=\"loader\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n    </div>",
+    "css": "/* From Uiverse.io by mobineshaghi - Tags: loading, loader, mobile */\n.loader {\n  position: relative;\n  width: 300px;\n  height: 300px;\n  transform-style: preserve-3d;\n  transform: perspective(500px) rotateX(60deg);\n}\n\n.loader span {\n  position: absolute;\n  display: block;\n  border: 5px solid #fff;\n  box-shadow: 0 5px 0 #ccc;\n  inset: 0 5px 0 #ccc;\n  box-sizing: border-box;\n  border-radius: 50%;\n  animation: animate 3s ease-in-out infinite;\n}\n\n@keyframes animate {\n  0%,100% {\n    transform: translateZ(-100px);\n  }\n\n  50% {\n    transform: translateZ(100px);\n  }\n}\n\n.loader span:nth-child(1) {\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  animation-delay: 1.4s;\n}\n\n.loader span:nth-child(2) {\n  top: 10px;\n  left: 10px;\n  bottom: 10px;\n  right: 10px;\n  animation-delay: 1.3s;\n}\n\n.loader span:nth-child(3) {\n  top: 20px;\n  left: 20px;\n  bottom: 20px;\n  right: 20px;\n  animation-delay: 1.2s;\n}\n\n.loader span:nth-child(4) {\n  top: 30px;\n  left: 30px;\n  bottom: 30px;\n  right: 30px;\n  animation-delay: 1.1s;\n}\n\n.loader span:nth-child(5) {\n  top: 40px;\n  left: 40px;\n  bottom: 40px;\n  right: 40px;\n  animation-delay: 1s;\n}\n\n.loader span:nth-child(6) {\n  top: 50px;\n  left: 50px;\n  bottom: 50px;\n  right: 50px;\n  animation-delay: 0.9s;\n}\n\n.loader span:nth-child(7) {\n  top: 60px;\n  left: 60px;\n  bottom: 60px;\n  right: 60px;\n  animation-delay: 0.8s;\n}\n\n.loader span:nth-child(8) {\n  top: 70px;\n  left: 70px;\n  bottom: 70px;\n  right: 70px;\n  animation-delay: 0.7s;\n}\n\n.loader span:nth-child(9) {\n  top: 80px;\n  left: 80px;\n  bottom: 80px;\n  right: 80px;\n  animation-delay: 0.6s;\n}\n\n.loader span:nth-child(10) {\n  top: 90px;\n  left: 90px;\n  bottom: 90px;\n  right: 90px;\n  animation-delay: 0.5s;\n}\n\n.loader span:nth-child(11) {\n  top: 100px;\n  left: 100px;\n  bottom: 100px;\n  right: 100px;\n  animation-delay: 0.4s;\n}\n\n.loader span:nth-child(12) {\n  top: 110px;\n  left: 110px;\n  bottom: 110px;\n  right: 110px;\n  animation-delay: 0.3s;\n}\n\n.loader span:nth-child(13) {\n  top: 120px;\n  left: 120px;\n  bottom: 120px;\n  right: 120px;\n  animation-delay: 0.2s;\n}\n\n.loader span:nth-child(14) {\n  top: 130px;\n  left: 130px;\n  bottom: 130px;\n  right: 130px;\n  animation-delay: 0.1s;\n}\n\n.loader span:nth-child(15) {\n  top: 140px;\n  left: 140px;\n  bottom: 140px;\n  right: 140px;\n  animation-delay: 0s;\n}",
+    "tags": [
+      "loading",
+      "loader",
+      "mobile"
+    ]
+  },
+  {
+    "id": "uiv-630787",
+    "title": "Dry Insect 94",
+    "author": "mobinkakei",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.507Z",
+    "html": "<span class=\"loader\"></span>",
+    "css": "/* From Uiverse.io by mobinkakei  - Tags: loading, loader, space */\n.loader {\n  position: relative;\n  width: 60px;\n  height: 60px;\n  background: #a19dad;\n  transform: rotateX(65deg) rotate(45deg);\n  // remove bellows command for perspective change\n  //transform: perspective(200px) rotateX(65deg) rotate(45deg);\n  color: #fff;\n  animation: layers1 1s linear infinite alternate;\n}\n.loader:after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  background: rgba(255, 255, 255, 0.7);\n  animation: layerTr 1s linear infinite alternate;\n}\n\n@keyframes layers1 {\n  0% {\n    box-shadow: 0px 0px 0 0px;\n  }\n  90%,\n  100% {\n    box-shadow: 20px 20px 0 -4px;\n  }\n}\n@keyframes layerTr {\n  0% {\n    transform: translate(0, 0) scale(1);\n  }\n  100% {\n    transform: translate(-25px, -25px) scale(1);\n  }\n}",
+    "tags": [
+      "loading",
+      "loader",
+      "space"
+    ]
+  },
+  {
+    "id": "uiv-815139",
+    "title": "Fuzzy Fish 86",
+    "author": "mobinkakei",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.547Z",
+    "html": "<div class=\"loader\">\n  <div class=\"loader_cube loader_cube--color\"></div>\n   <div class=\"loader_cube loader_cube--glowing\"></div>\n</div>",
+    "css": "/* From Uiverse.io by mobinkakei - Tags: gradient, loader, blur filter */\n.loader {\n  width: 150px;\n  height: 150px;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.loader_cube {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 30px;\n}\n\n.loader_cube--glowing {\n  z-index: 2;\n  background-color: rgba(255, 255, 255, 0.2);\n  border: 2px solid rgba(255, 255, 255, 0.3);\n}\n\n.loader_cube--color {\n  z-index: 1;\n  filter: blur(2px);\n  background: linear-gradient(135deg, #1afbf0, #da00ff);\n  animation: loadtwo 2.5s ease-in-out infinite;\n}\n\n@keyframes loadtwo {\n  50% {\n    transform: rotate(-80deg);\n  }\n}",
+    "tags": [
+      "gradient",
+      "loader",
+      "blur filter"
+    ]
+  },
+  {
+    "id": "uiv-334844",
+    "title": "Grumpy Turtle 41",
+    "author": "mobinkakei",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.723Z",
+    "html": "<div class=\"wrapper\">\n    <div class=\"circle\"></div>\n    <div class=\"circle\"></div>\n    <div class=\"circle\"></div>\n    <div class=\"shadow\"></div>\n    <div class=\"shadow\"></div>\n    <div class=\"shadow\"></div>\n</div>",
+    "css": "/* From Uiverse.io by mobinkakei - Tags: loader, bounce */\n.wrapper {\n  width: 200px;\n  height: 60px;\n  position: relative;\n  z-index: 1;\n}\n\n.circle {\n  width: 20px;\n  height: 20px;\n  position: absolute;\n  border-radius: 50%;\n  background-color: #fff;\n  left: 15%;\n  transform-origin: 50%;\n  animation: circle7124 .5s alternate infinite ease;\n}\n\n@keyframes circle7124 {\n  0% {\n    top: 60px;\n    height: 5px;\n    border-radius: 50px 50px 25px 25px;\n    transform: scaleX(1.7);\n  }\n\n  40% {\n    height: 20px;\n    border-radius: 50%;\n    transform: scaleX(1);\n  }\n\n  100% {\n    top: 0%;\n  }\n}\n\n.circle:nth-child(2) {\n  left: 45%;\n  animation-delay: .2s;\n}\n\n.circle:nth-child(3) {\n  left: auto;\n  right: 15%;\n  animation-delay: .3s;\n}\n\n.shadow {\n  width: 20px;\n  height: 4px;\n  border-radius: 50%;\n  background-color: rgba(0,0,0,0.9);\n  position: absolute;\n  top: 62px;\n  transform-origin: 50%;\n  z-index: -1;\n  left: 15%;\n  filter: blur(1px);\n  animation: shadow046 .5s alternate infinite ease;\n}\n\n@keyframes shadow046 {\n  0% {\n    transform: scaleX(1.5);\n  }\n\n  40% {\n    transform: scaleX(1);\n    opacity: .7;\n  }\n\n  100% {\n    transform: scaleX(.2);\n    opacity: .4;\n  }\n}\n\n.shadow:nth-child(4) {\n  left: 45%;\n  animation-delay: .2s\n}\n\n.shadow:nth-child(5) {\n  left: auto;\n  right: 15%;\n  animation-delay: .3s;\n}",
+    "tags": [
+      "loader",
+      "bounce"
+    ]
+  },
+  {
+    "id": "uiv-272783",
+    "title": "Pink Deer 76",
+    "author": "mobinkakei",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.582Z",
+    "html": "<div id=\"wifi-loader\">\n    <svg class=\"circle-outer\" viewBox=\"0 0 86 86\">\n        <circle class=\"back\" cx=\"43\" cy=\"43\" r=\"40\"></circle>\n        <circle class=\"front\" cx=\"43\" cy=\"43\" r=\"40\"></circle>\n        <circle class=\"new\" cx=\"43\" cy=\"43\" r=\"40\"></circle>\n    </svg>\n    <svg class=\"circle-middle\" viewBox=\"0 0 60 60\">\n        <circle class=\"back\" cx=\"30\" cy=\"30\" r=\"27\"></circle>\n        <circle class=\"front\" cx=\"30\" cy=\"30\" r=\"27\"></circle>\n    </svg>\n    <svg class=\"circle-inner\" viewBox=\"0 0 34 34\">\n        <circle class=\"back\" cx=\"17\" cy=\"17\" r=\"14\"></circle>\n        <circle class=\"front\" cx=\"17\" cy=\"17\" r=\"14\"></circle>\n    </svg>\n    <div class=\"text\" data-text=\"Searching\"></div>\n</div>",
+    "css": "/* From Uiverse.io by mobinkakei - Tags: loader, wifi */\n#wifi-loader {\n  --background: #62abff;\n  --front-color: #4f29f0;\n  --back-color: #c3c8de;\n  --text-color: #414856;\n  width: 64px;\n  height: 64px;\n  border-radius: 50px;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n#wifi-loader svg {\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n#wifi-loader svg circle {\n  position: absolute;\n  fill: none;\n  stroke-width: 6px;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  transform: rotate(-100deg);\n  transform-origin: center;\n}\n\n#wifi-loader svg circle.back {\n  stroke: var(--back-color);\n}\n\n#wifi-loader svg circle.front {\n  stroke: var(--front-color);\n}\n\n#wifi-loader svg.circle-outer {\n  height: 86px;\n  width: 86px;\n}\n\n#wifi-loader svg.circle-outer circle {\n  stroke-dasharray: 62.75 188.25;\n}\n\n#wifi-loader svg.circle-outer circle.back {\n  animation: circle-outer135 1.8s ease infinite 0.3s;\n}\n\n#wifi-loader svg.circle-outer circle.front {\n  animation: circle-outer135 1.8s ease infinite 0.15s;\n}\n\n#wifi-loader svg.circle-middle {\n  height: 60px;\n  width: 60px;\n}\n\n#wifi-loader svg.circle-middle circle {\n  stroke-dasharray: 42.5 127.5;\n}\n\n#wifi-loader svg.circle-middle circle.back {\n  animation: circle-middle6123 1.8s ease infinite 0.25s;\n}\n\n#wifi-loader svg.circle-middle circle.front {\n  animation: circle-middle6123 1.8s ease infinite 0.1s;\n}\n\n#wifi-loader svg.circle-inner {\n  height: 34px;\n  width: 34px;\n}\n\n#wifi-loader svg.circle-inner circle {\n  stroke-dasharray: 22 66;\n}\n\n#wifi-loader svg.circle-inner circle.back {\n  animation: circle-inner162 1.8s ease infinite 0.2s;\n}\n\n#wifi-loader svg.circle-inner circle.front {\n  animation: circle-inner162 1.8s ease infinite 0.05s;\n}\n\n#wifi-loader .text {\n  position: absolute;\n  bottom: -40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-transform: lowercase;\n  font-weight: 500;\n  font-size: 14px;\n  letter-spacing: 0.2px;\n}\n\n#wifi-loader .text::before, #wifi-loader .text::after {\n  content: attr(data-text);\n}\n\n#wifi-loader .text::before {\n  color: var(--text-color);\n}\n\n#wifi-loader .text::after {\n  color: var(--front-color);\n  animation: text-animation76 3.6s ease infinite;\n  position: absolute;\n  left: 0;\n}\n\n@keyframes circle-outer135 {\n  0% {\n    stroke-dashoffset: 25;\n  }\n\n  25% {\n    stroke-dashoffset: 0;\n  }\n\n  65% {\n    stroke-dashoffset: 301;\n  }\n\n  80% {\n    stroke-dashoffset: 276;\n  }\n\n  100% {\n    stroke-dashoffset: 276;\n  }\n}\n\n@keyframes circle-middle6123 {\n  0% {\n    stroke-dashoffset: 17;\n  }\n\n  25% {\n    stroke-dashoffset: 0;\n  }\n\n  65% {\n    stroke-dashoffset: 204;\n  }\n\n  80% {\n    stroke-dashoffset: 187;\n  }\n\n  100% {\n    stroke-dashoffset: 187;\n  }\n}\n\n@keyframes circle-inner162 {\n  0% {\n    stroke-dashoffset: 9;\n  }\n\n  25% {\n    stroke-dashoffset: 0;\n  }\n\n  65% {\n    stroke-dashoffset: 106;\n  }\n\n  80% {\n    stroke-dashoffset: 97;\n  }\n\n  100% {\n    stroke-dashoffset: 97;\n  }\n}\n\n@keyframes text-animation76 {\n  0% {\n    clip-path: inset(0 100% 0 0);\n  }\n\n  50% {\n    clip-path: inset(0);\n  }\n\n  100% {\n    clip-path: inset(0 0 0 100%);\n  }\n}",
+    "tags": [
+      "loader",
+      "wifi"
+    ]
+  },
+  {
+    "id": "uiv-351604",
+    "title": "Average Dodo 53",
+    "author": "mrhyddenn",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.596Z",
+    "html": "<div class=\"loader\">\n    <div class=\"circle\"></div>\n</div>",
+    "css": "/* From Uiverse.io by mrhyddenn - Tags: loader */\n.loader {\n  background: transparent;\n  width: 80px;\n  height: 80px;\n  border-radius: 50%;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.circle {\n  width: 80px;\n  height: 80px;\n  border: 2px solid #ccc;\n  position: absolute;\n  border-radius: 50%;\n  animation: circle14512 2s linear infinite;\n}\n\n.circle::before {\n  content: '';\n  position: absolute;\n  top: -10px;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  background: #9ae932;\n  box-shadow: 0 0 20px #9ae932, 0 0 60px #9ae932;\n}\n\n@keyframes circle14512 {\n  0% {\n    transform: rotate(0deg);\n  }\n\n  100% {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-802329",
+    "title": "Cowardly Ladybug 61",
+    "author": "mrhyddenn",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.516Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by mrhyddenn - Tags: loader */\n.loader {\n  width: 50px;\n  height: 50px;\n  border: 5px solid rgb(0,0,0,0.11);\n  border-radius: 50%;\n  border-top-color: rgb(235, 169, 47);\n  border-left-color: rgb(43, 145, 87);\n  border-right-color: rgb(20, 102, 226);\n  border-bottom-color: rgb(224, 71, 71);\n  animation: loader1776 2s linear infinite;\n}\n\n@keyframes loader1776 {\n  to {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-339724",
+    "title": "Massive Newt 28",
+    "author": "mrhyddenn",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.582Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by mrhyddenn - Tags: loader, spinner */\n.loader {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  border: 3px solid rgb(255,255,255,.2);\n  border-top-color: transparent;\n  animation: rot1 1.2s linear infinite;\n}\n\n@keyframes rot1 {\n  to {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader",
+      "spinner"
+    ]
+  },
+  {
+    "id": "uiv-933154",
+    "title": "Plastic Panther 51",
+    "author": "mrhyddenn",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.573Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by mrhyddenn - Tags: gradient, loader, spinner */\n.loader {\n  position: relative;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n}\n\n.loader::before,\n.loader::after {\n  content: \"\";\n  position: absolute;\n  border-radius: inherit;\n}\n\n.loader::before {\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(0deg, #ff00cc 0%, #333399 100%);\n  animation: load012323 .5s infinite linear;\n}\n\n.loader::after {\n  width: 85%;\n  height: 85%;\n  background-color: #222;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n\n@keyframes load012323 {\n  to {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "gradient",
+      "loader",
+      "spinner"
+    ]
+  },
+  {
+    "id": "uiv-810686",
+    "title": "Tasty Crab 98",
+    "author": "mrhyddenn",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.545Z",
+    "html": "<div class=\"progress-loader\">\n    <div class=\"progress\"></div>\n</div>",
+    "css": "/* From Uiverse.io by mrhyddenn - Tags: progress, progress bar, loader */\n.progress-loader {\n  top: 50%;\n  left: 50%;\n  position: absolute;\n  transform: translate(-50%, -50%);\n}\n\n.progress-loader {\n  width: 150px;\n  background: rgba(236, 236, 238, 0.253);\n  height: 3px;\n  border-radius: 7px;\n}\n\n.progress {\n  content: '';\n  width: 1px;\n  height: 3px;\n  border-radius: 7px;\n  background: rgb(255, 255, 255);\n  transition: 0.5s;\n  animation: loading1274 2s ease infinite;\n}\n\n@keyframes loading1274 {\n  0% {\n    width: 0%;\n  }\n\n  10% {\n    width: 10%;\n  }\n\n  50% {\n    width: 40%;\n  }\n\n  60% {\n    width: 60%;\n  }\n\n  100% {\n    width: 100%;\n  }\n}",
+    "tags": [
+      "progress",
+      "progress bar",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-164085",
+    "title": "Black Panda 47",
+    "author": "omriluz",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.561Z",
+    "html": "<div class=\"container\">\n  <div class=\"road\">\n    <div class=\"police\">\n      <div class=\"light_beam\"></div>\n      <p>Police</p>\n      <article>Police</article>\n      <div class=\"side_mirror\"></div>\n      <span>\n        <b></b>\n        <i></i>\n      </span>\n    </div>\n    <div class=\"police\">\n      <div class=\"light_beam\"></div>\n      <p>Police</p>\n      <article>Police</article>\n      <div class=\"side_mirror\"></div>\n      <span>\n        <b></b>\n        <i></i>\n      </span>\n    </div>\n    <div class=\"taxi\">\n      <div class=\"light_beam\"></div>\n      <div class=\"side_mirror\"></div>\n      <span>\n        <b></b>\n        <i></i>\n      </span>\n    </div>\n  </div>\n  <span class=\"loading\">Loading..</span>\n</div>",
+    "css": "/* From Uiverse.io by omriluz  - Website: https://www.youtube.com/watch?v=3sQupmAMUhs&ab_channel=OnlineTutorials - Name: online tutorials - Tags: flashy, animation, red, blue, loader */\n.container {\n  background-color: #355463;\n  height: 100%;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.road {\n  position: relative;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform-style: preserve-3d;\n  transform: rotate(-15deg);\n}\n\n.road::before {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 4px;\n  background: linear-gradient(\n    90deg,\n    #fff,\n    #fff 50%,\n    transparent 50%,\n    transparent 100%\n  );\n  background-size: 50px;\n  animation: animate_road 0.07s linear infinite;\n}\n\n@keyframes animate_road {\n  0% {\n    background-position: 50px 0;\n  }\n  100% {\n    background-position: 0px 0;\n  }\n}\n\n.police {\n  position: absolute;\n  left: -100px;\n  width: 200px;\n  height: 80px;\n  background-color: #3f4c54;\n  border-radius: 10px;\n  box-shadow: -10px 10px rgba(0, 0, 0, 0.05);\n  transform-style: preserve-3d;\n  perspective: 800px;\n  z-index: 10;\n  animation: animate_police_car 5s linear infinite;\n}\n\n.police:nth-child(2) {\n  left: 200px;\n  animation-delay: -2.5s;\n}\n\n@keyframes animate_police_car {\n  0% {\n    transform: translateX(20px) translateY(-50px);\n  }\n  25% {\n    transform: translateX(-10px) translateY(0);\n  }\n  50% {\n    transform: translateX(20px) translateY(50px);\n  }\n  75% {\n    transform: translateX(-10px) translateY(0px);\n  }\n  100% {\n    transform: translateX(20px) translateY(-50px);\n  }\n}\n\n.police::before {\n  content: \"\";\n  position: absolute;\n  top: 12px;\n  left: 3px;\n  width: 5px;\n  height: 15px;\n  border-radius: 2px;\n  box-shadow: 0 42px #fc3c25;\n  background-color: #fc3c25;\n}\n\n.police::after {\n  content: \"\";\n  position: absolute;\n  top: 12px;\n  right: 2px;\n  width: 6px;\n  height: 16px;\n  border-radius: 2px;\n  box-shadow: 0 44px #fff;\n  background-color: #fff;\n}\n\n.police span {\n  position: absolute;\n  inset: 5px 10px;\n  background-color: #475b66;\n  border-radius: 10px;\n  overflow: hidden;\n}\n\n.police span::before {\n  content: \"911\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) rotate(90deg);\n  color: #333;\n  font-size: 1.15em;\n  font-weight: 1000;\n  letter-spacing: 0.1em;\n  z-index: 10;\n}\n\n.police span::after {\n  content: \"\";\n  position: absolute;\n  top: 35%;\n  left: 60%;\n  transform: translate(-50%, 50%);\n  z-index: 100;\n  width: 6px;\n  height: 10px;\n  background: #29282b;\n  box-shadow: 0 -10px #1f5fff, 0 10px #df1b25;\n}\n\n.police span b {\n  position: absolute;\n  inset: 0 30px;\n  background-color: #344650;\n  border-radius: 10px;\n}\n\n.police span b::before {\n  content: \"\";\n  position: absolute;\n  inset: 6px 25px;\n  background: #ebebeb;\n  border-radius: 5px;\n}\n\n.police span b::after {\n  content: \"\";\n  position: absolute;\n  inset: 0 58px;\n  background: #ebebeb;\n}\n\n.police span i {\n  position: absolute;\n  inset: 0;\n}\n\n.police span i::before {\n  content: \"\";\n  position: absolute;\n  top: 7px;\n  left: 20px;\n  width: 40px;\n  height: 5px;\n  background-color: #ebebeb;\n  transform-origin: right;\n  transform: rotate(15deg);\n  box-shadow: 100px 34px #ebebeb;\n}\n\n.police span i::after {\n  content: \"\";\n  position: absolute;\n  bottom: 7px;\n  left: 20px;\n  width: 40px;\n  height: 5px;\n  background-color: #ebebeb;\n  transform-origin: right;\n  transform: rotate(-15deg);\n  box-shadow: 100px -34px #ebebeb;\n}\n\n.light_beam {\n  position: absolute;\n  top: 5px;\n  right: -2px;\n  width: 10px;\n  height: 70px;\n  background-color: #0002;\n  border-radius: 15px;\n  transform-style: preserve-3d;\n}\n\n.light_beam::before {\n  content: \"\";\n  position: absolute;\n  top: 5px;\n  left: 0;\n  width: 150px;\n  height: 16px;\n  background: linear-gradient(90deg, #fff6, transparent);\n  transform-origin: left;\n  transform: perspective(500px) rotateY(-50degkk);\n}\n\n.light_beam::after {\n  content: \"\";\n  position: absolute;\n  bottom: 5px;\n  left: 0;\n  width: 150px;\n  height: 16px;\n  background: linear-gradient(90deg, #fff6, transparent);\n  transform-origin: left;\n  transform: perspective(500px) rotateY(-50deg);\n}\n\n.police p {\n  position: absolute;\n  top: 50%;\n  left: -5px;\n  color: #fff;\n  text-transform: uppercase;\n  z-index: 10;\n  transform: translateY(-50%) rotate(90deg) scale(0.75);\n}\n\n.police article {\n  position: absolute;\n  top: 50%;\n  right: -5%;\n  color: #fff;\n  text-transform: uppercase;\n  z-index: 10;\n  transform: translateY(-50%) rotate(270deg) scale(0.75);\n}\n\n.police .side_mirror {\n  position: absolute;\n  inset: 0;\n}\n\n.police .side_mirror::before {\n  content: \"\";\n  position: absolute;\n  top: -8px;\n  right: 40px;\n  width: 5px;\n  height: 10px;\n  background-color: #ebebeb;\n  border-top-right-radius: 10px;\n}\n\n.police .side_mirror::after {\n  content: \"\";\n  position: absolute;\n  bottom: -8px;\n  right: 40px;\n  width: 5px;\n  height: 10px;\n  background-color: #ebebeb;\n  border-bottom-right-radius: 10px;\n}\n\n.taxi {\n  position: absolute;\n  right: 200px;\n  width: 200px;\n  height: 80px;\n  background-color: #f4b503;\n  border-radius: 10px;\n  box-shadow: -10px 10px rgba(0, 0, 0, 0.1);\n  transform-style: preserve-3d;\n  perspective: 800px;\n  z-index: 10;\n  animation: animate_taxi 5s linear infinite;\n  animation-delay: -5s;\n}\n\n@keyframes animate_taxi {\n  0% {\n    transform: translateX(20px) translateY(20px);\n  }\n  25% {\n    transform: translateX(-50px) translateY(0px);\n  }\n  50% {\n    transform: translateX(20px) translateY(-20px);\n  }\n  75% {\n    transform: translateX(50px) translateY(0px);\n  }\n  100% {\n    transform: translateX(20px) translateY(20px);\n  }\n}\n\n.taxi::before {\n  content: \"\";\n  position: absolute;\n  top: 12px;\n  left: 3px;\n  width: 5px;\n  height: 15px;\n  border-radius: 2px;\n  box-shadow: 0 42px #fc3c25;\n  background-color: #fc3c25;\n}\n\n.taxi::after {\n  content: \"\";\n  position: absolute;\n  top: 12px;\n  right: 2px;\n  width: 6px;\n  height: 16px;\n  border-radius: 2px;\n  box-shadow: 0 44px #fff;\n  background-color: #fff;\n}\n.taxi span {\n  position: absolute;\n  inset: 5px 10px;\n  background-color: #fdd206;\n  border-radius: 10px;\n  overflow: hidden;\n}\n\n.taxi span::before {\n  content: \"Taxi\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) rotate(90deg);\n  background-color: #fff;\n  padding: 2px;\n  font: 0.75em;\n  font-weight: 1000;\n  letter-spacing: 0.1em;\n  text-transform: uppercase;\n  border-radius: 2px;\n  box-shadow: 0 0 0 1px #0005;\n  z-index: 1000;\n}\n\n.taxi span b {\n  position: absolute;\n  inset: 0 30px;\n  background-color: #111;\n  border-radius: 10px;\n}\n\n.taxi span b::before {\n  content: \"\";\n  position: absolute;\n  inset: 6px 25px;\n  background: #fdd206;\n  border-radius: 5px;\n}\n\n.taxi span b::after {\n  content: \"\";\n  position: absolute;\n  inset: 0 58px;\n  background: #fdd206;\n}\n\n.taxi span i {\n  position: absolute;\n  inset: 0;\n}\n\n.taxi span i::before {\n  content: \"\";\n  position: absolute;\n  top: 7px;\n  left: 20px;\n  width: 40px;\n  height: 5px;\n  background-color: #fdd206;\n  transform-origin: right;\n  transform: rotate(15deg);\n  box-shadow: 100px 34px #fdd206;\n}\n\n.taxi span i::after {\n  content: \"\";\n  position: absolute;\n  bottom: 7px;\n  left: 20px;\n  width: 40px;\n  height: 5px;\n  background-color: #fdd206;\n  transform-origin: right;\n  transform: rotate(-15deg);\n  box-shadow: 100px -34px #fdd206;\n}\n\n.loading {\n  position: absolute;\n  left: 50%;\n  bottom: 30%;\n  background-color: black;\n  padding: 10px;\n  font-size: 1.25rem;\n  color: #fff;\n  font-weight: 1000;\n  border-radius: 10px;\n  animation: animate_loading 5s infinite linear;\n}\n\n@keyframes animate_loading {\n  0% {\n    transform: translateX(-20px) translateY(-20px);\n  }\n  25% {\n    transform: translateX(50px) translateY(10px);\n  }\n  50% {\n    transform: translateX(-20px) translateY(20px);\n  }\n  75% {\n    transform: translateX(70px) translateY(-30px);\n  }\n  100% {\n    transform: translateX(-20px) translateY(-20px);\n  }\n}",
+    "tags": [
+      "flashy",
+      "animation",
+      "red",
+      "blue",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-564847",
+    "title": "Afraid Horse 51",
+    "author": "satyamchaudharydev",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.582Z",
+    "html": "<div class=\"spinner\"></div>",
+    "css": "/* From Uiverse.io by satyamchaudharydev - Tags: loader */\n.spinner {\n --size: 30px;\n --first-block-clr: #005bba;\n --second-block-clr: #fed500;\n --clr: #111;\n width: 100px;\n height: 100px;\n position: relative;\n}\n\n.spinner::after,.spinner::before {\n box-sizing: border-box;\n position: absolute;\n content: \"\";\n width: var(--size);\n height: var(--size);\n top: 50%;\n animation: up 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;\n left: 50%;\n background: var(--first-block-clr);\n}\n\n.spinner::after {\n background: var(--second-block-clr);\n top: calc(50% - var(--size));\n left: calc(50% - var(--size));\n animation: down 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;\n}\n\n@keyframes down {\n 0%, 100% {\n  transform: none;\n }\n\n 25% {\n  transform: translateX(100%);\n }\n\n 50% {\n  transform: translateX(100%) translateY(100%);\n }\n\n 75% {\n  transform: translateY(100%);\n }\n}\n\n@keyframes up {\n 0%, 100% {\n  transform: none;\n }\n\n 25% {\n  transform: translateX(-100%);\n }\n\n 50% {\n  transform: translateX(-100%) translateY(-100%);\n }\n\n 75% {\n  transform: translateY(-100%);\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-260484",
+    "title": "Horrible Snake 35",
+    "author": "satyamchaudharydev",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.573Z",
+    "html": "<div class=\"loader\">\n  <span></span>\n  <span></span>\n  <span></span>\n  <span></span>\n</div>",
+    "css": "/* From Uiverse.io by satyamchaudharydev - Tags: loader */\n.loader {\n --loader: rgb(49, 180, 255);\n --loader-size: 30px;\n position: relative;\n width: 100px;\n height: 40px;\n overflow: hidden;\n transition: .5s;\n letter-spacing: 2px\n}\n\n.loader span {\n position: absolute;\n}\n\n.loader span:nth-child(1) {\n top: 0;\n left: -100%;\n width: 100%;\n height: var(--loader-size);\n background: linear-gradient(90deg, transparent, var(--loader));\n animation: loader-anim1 1s linear infinite;\n}\n\n@keyframes loader-anim1 {\n 0% {\n  left: -100%;\n }\n\n 50%,100% {\n  left: 100%;\n }\n}\n\n.loader  span:nth-child(2) {\n top: -100%;\n right: 0;\n width: var(--loader-size);\n height: 100%;\n background: linear-gradient(180deg, transparent, var(--loader));\n animation: loader-anim2 1s linear infinite;\n animation-delay: .25s\n}\n\n@keyframes loader-anim2 {\n 0% {\n  top: -100%;\n }\n\n 50%,100% {\n  top: 100%;\n }\n}\n\n.loader span:nth-child(3) {\n bottom: 0;\n right: -100%;\n width: 100%;\n height: var(--loader-size);\n background: linear-gradient(270deg, transparent, var(--loader));\n animation: loader-anim3 1s linear infinite;\n animation-delay: .5s\n}\n\n@keyframes loader-anim3 {\n 0% {\n  right: -100%;\n }\n\n 50%,100% {\n  right: 100%;\n }\n}\n\n.loader span:nth-child(4) {\n bottom: -100%;\n left: 0;\n width: var(--loader-size);\n height: 100%;\n background: linear-gradient(360deg, transparent, var(--loader));\n animation: loader-anim4 1s linear infinite;\n animation-delay: .75s\n}\n\n@keyframes loader-anim4 {\n 0% {\n  bottom: -100%;\n }\n\n 50%,100% {\n  bottom: 100%;\n }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-618773",
+    "title": "Red Cow 21",
+    "author": "satyamchaudharydev",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.582Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by satyamchaudharydev - Tags: loader */\n.loader {\n  display: block;\n  --height-of-loader: 4px;\n  --loader-color: #0071e2;\n  width: 130px;\n  height: var(--height-of-loader);\n  border-radius: 30px;\n  background-color: rgba(0,0,0,0.2);\n  position: relative;\n}\n\n.loader::before {\n  content: \"\";\n  position: absolute;\n  background: var(--loader-color);\n  top: 0;\n  left: 0;\n  width: 0%;\n  height: 100%;\n  border-radius: 30px;\n  animation: moving 1s ease-in-out infinite;\n  ;\n}\n\n@keyframes moving {\n  50% {\n    width: 100%;\n  }\n\n  100% {\n    width: 0;\n    right: 0;\n    left: unset;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-784114",
+    "title": "Silly Octopus 9",
+    "author": "shadowfax29",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:40.554Z",
+    "html": "<div class=\"container\">\n<div class=\"loader\"></div>\n<div class=\"loader\"></div>\n<div class=\"loader\"></div>\n<div class=\"loader\"></div>\n<div class=\"loader\"></div>\n</div>",
+    "css": "/* From Uiverse.io by shadowfax29 - Source: @satyamchaudharydev - Tags: simple, loader, falldown */\n.container {\n  position: relative;\n  width: 200px;\n  height: 200px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n}\n\n.loader {\n  width: 10px;\n  height: 30px;\n  left: var(--left);\n  border-radius: 10px 50px;\n  box-shadow: 0px 0px 5px black;\n  animation: dominos 1s ease infinite;\n}\n\n.loader:nth-child(1) {\n  --left: 80px;\n  animation-delay: 0.325s;\n  background-color: red;\n}\n\n.loader:nth-child(3) {\n  left: 60px;\n  animation-delay: 0.625s;\n  background-color: blue;\n}\n\n.loader:nth-child(5) {\n  animation-delay: 0.865s;\n  left: 40px;\n  background-color: green;\n}\n\n.loader:nth-child(2) {\n  --left: 70px;\n  animation-delay: 0.5s;\n  background-color: yellow;\n}\n\n.loader:nth-child(4) {\n  animation-delay: 0.74s;\n  left: 50px;\n  background-color: orange;\n}\n\n@keyframes dominos {\n  50% {\n    opacity: 0.7;\n  }\n\n  75% {\n    -webkit-transform: rotate(90deg);\n    transform: rotate(90deg);\n  }\n\n  80% {\n    opacity: 1;\n  }\n}",
+    "tags": [
+      "simple",
+      "loader",
+      "falldown"
+    ]
+  },
+  {
+    "id": "uiv-166405",
+    "title": "Hungry Cougar 91",
+    "author": "sonex-ICB",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.450Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by sonex-ICB  - Tags: simple, animation, loader, rotate, animated, creative, spin, loading animation */\n.loader {\n  border: 10px inset tomato;\n  padding: 12px;\n  transform: rotate(45deg);\n  animation: loader1 1s ease-in-out infinite;\n}\n@keyframes loader1 {\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 1;\n    transform: scale(1.5);\n  }\n  100% {\n    opacity: 0;\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "loader",
+      "rotate",
+      "animated",
+      "creative",
+      "spin",
+      "loading animation"
+    ]
+  },
+  {
+    "id": "uiv-681276",
+    "title": "Dangerous Fireant 25",
+    "author": "vikramsinghnegi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.003Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by vikramsinghnegi  - Tags: loader, LOADING, LOADER */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  width: fit-content;\n  font-size: 17px;\n  font-family: monospace;\n  line-height: 1.4;\n  font-weight: bold;\n  padding: 30px 2px 50px;\n  background: linear-gradient(#000 0 0) 0 0/100% 100% content-box padding-box\n    no-repeat;\n  position: relative;\n  overflow: hidden;\n  animation: l10-0 2s infinite cubic-bezier(1, 175, 0.5, 175);\n}\n.loader::before {\n  content: \"Loading\";\n  display: inline-block;\n  animation: l10-2 2s infinite;\n}\n.loader::after {\n  content: \"\";\n  position: absolute;\n  width: 34px;\n  height: 28px;\n  top: 110%;\n  left: calc(50% - 16px);\n  background: linear-gradient(\n        90deg,\n        #0000 12px,\n        #f92033 0 22px,\n        #0000 0 26px,\n        #fdc98d 0 32px,\n        #0000\n      )\n      bottom 26px left 50%,\n    linear-gradient(90deg, #0000 10px, #f92033 0 28px, #fdc98d 0 32px, #0000 0)\n      bottom 24px left 50%,\n    linear-gradient(\n        90deg,\n        #0000 10px,\n        #643700 0 16px,\n        #fdc98d 0 20px,\n        #000 0 22px,\n        #fdc98d 0 24px,\n        #000 0 26px,\n        #f92033 0 32px,\n        #0000 0\n      )\n      bottom 22px left 50%,\n    linear-gradient(\n        90deg,\n        #0000 8px,\n        #643700 0 10px,\n        #fdc98d 0 12px,\n        #643700 0 14px,\n        #fdc98d 0 20px,\n        #000 0 22px,\n        #fdc98d 0 28px,\n        #f92033 0 32px,\n        #0000 0\n      )\n      bottom 20px left 50%,\n    linear-gradient(\n        90deg,\n        #0000 8px,\n        #643700 0 10px,\n        #fdc98d 0 12px,\n        #643700 0 16px,\n        #fdc98d 0 22px,\n        #000 0 24px,\n        #fdc98d 0 30px,\n        #f92033 0 32px,\n        #0000 0\n      )\n      bottom 18px left 50%,\n    linear-gradient(\n        90deg,\n        #0000 8px,\n        #643700 0 12px,\n        #fdc98d 0 20px,\n        #000 0 28px,\n        #f92033 0 30px,\n        #0000 0\n      )\n      bottom 16px left 50%,\n    linear-gradient(90deg, #0000 12px, #fdc98d 0 26px, #f92033 0 30px, #0000 0)\n      bottom 14px left 50%,\n    linear-gradient(\n        90deg,\n        #fdc98d 6px,\n        #f92033 0 14px,\n        #222a87 0 16px,\n        #f92033 0 22px,\n        #222a87 0 24px,\n        #f92033 0 28px,\n        #0000 0 32px,\n        #643700 0\n      )\n      bottom 12px left 50%,\n    linear-gradient(\n        90deg,\n        #fdc98d 6px,\n        #f92033 0 16px,\n        #222a87 0 18px,\n        #f92033 0 24px,\n        #f92033 0 26px,\n        #0000 0 30px,\n        #643700 0\n      )\n      bottom 10px left 50%,\n    linear-gradient(\n        90deg,\n        #0000 10px,\n        #f92033 0 16px,\n        #222a87 0 24px,\n        #feee49 0 26px,\n        #222a87 0 30px,\n        #643700 0\n      )\n      bottom 8px left 50%,\n    linear-gradient(\n        90deg,\n        #0000 12px,\n        #222a87 0 18px,\n        #feee49 0 20px,\n        #222a87 0 30px,\n        #643700 0\n      )\n      bottom 6px left 50%,\n    linear-gradient(90deg, #0000 8px, #643700 0 12px, #222a87 0 30px, #643700 0)\n      bottom 4px left 50%,\n    linear-gradient(90deg, #0000 6px, #643700 0 14px, #222a87 0 26px, #0000 0)\n      bottom 2px left 50%,\n    linear-gradient(90deg, #0000 6px, #643700 0 10px, #0000 0) bottom 0px left\n      50%;\n  background-size: 34px 2px;\n  background-repeat: no-repeat;\n  animation: inherit;\n  animation-name: l10-1;\n}\n@keyframes l10-0 {\n  0%,\n  30% {\n    background-position: 0 0px;\n  }\n  50%,\n  100% {\n    background-position: 0 -0.1px;\n  }\n}\n@keyframes l10-1 {\n  50%,\n  100% {\n    top: 109.5%;\n  }\n}\n@keyframes l10-2 {\n  0%,\n  30% {\n    transform: translateY(0);\n  }\n  80%,\n  100% {\n    transform: translateY(-260%);\n  }\n}",
+    "tags": [
+      "loader",
+      "loading",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-315652",
+    "title": "Fast Parrot 71",
+    "author": "vikramsinghnegi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.037Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by vikramsinghnegi  - Tags: loader, svg, ice cream */\n.loader {\n  height: 150px;\n  width: 100px;\n  border-radius: 55px 55px 10px 10px;\n  position: relative;\n  background: #f0744f;\n\n  background-image: linear-gradient(\n    0deg,\n    #f63a99 25%,\n    #30dcf6 20%,\n    #30dcf6 20%,\n    #668c92 50%,\n    #85782a 40%,\n    #f2d200 50%,\n    #f2d200 75%,\n    #70ca5c 75%\n  );\n  background-position: 0px 0px;\n  background-size: auto 175px;\n  background-repeat: repeat-y;\n  animation: colorShift 2s linear infinite;\n}\n.loader:before {\n  content: \"\";\n  position: absolute;\n  left: 10px;\n  bottom: 15px;\n  width: 15px;\n  height: 100px;\n  border-radius: 50px;\n  background: rgba(255, 255, 255, 0.5);\n}\n\n.loader:after {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 100%;\n  transform: translate(-50%, 0);\n  box-shadow: 0 15px 2px rgba(0, 0, 0, 0.25) inset;\n  width: 32px;\n  height: 45px;\n  background: #534b44;\n  border-radius: 0 0 12px 12px;\n}\n\n@keyframes colorShift {\n  to {\n    background-position: 0 175px;\n  }\n}",
+    "tags": [
+      "loader",
+      "svg",
+      "ice cream"
+    ]
+  },
+  {
+    "id": "uiv-106982",
+    "title": "Little Sheep 43",
+    "author": "vikramsinghnegi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.461Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by vikramsinghnegi  - Tags: loader, LOADER, TIME */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  display: inline-flex;\n  border: 10px solid #000;\n  border-radius: 5px;\n}\n.loader::before,\n.loader::after {\n  content: \"0 1 2 3 4 5 6 7 8 9 0\";\n  font-size: 30px;\n  font-family: monospace;\n  font-weight: bold;\n  line-height: 1em;\n  height: 1em;\n  width: 1.2ch;\n  text-align: center;\n  outline: 1px solid #000;\n  color: #0000;\n  text-shadow: 0 0 0 #000;\n  overflow: hidden;\n  animation: l4 2s infinite linear;\n}\n.loader::before {\n  animation-duration: 4s;\n}\n@keyframes l4 {\n  100% {\n    text-shadow: 0 var(--t, -10em) 0 #000;\n  }\n}",
+    "tags": [
+      "loader",
+      "loader",
+      "time"
+    ]
+  },
+  {
+    "id": "uiv-522928",
+    "title": "Moody Mole 33",
+    "author": "vikramsinghnegi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.046Z",
+    "html": "<span class=\"loader\"></span>",
+    "css": "/* From Uiverse.io by vikramsinghnegi  - Tags: loader, heart, smooth */\n.loader {\n  position: relative;\n  width: 40px;\n  height: 60px;\n  animation: heartBeat 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);\n}\n\n.loader:before,\n.loader:after {\n  content: \"\";\n  background: red;\n  width: 40px;\n  height: 60px;\n  border-radius: 50px 50px 0 0;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  transform: rotate(45deg);\n  transform-origin: 50% 68%;\n  box-shadow: 5px 4px 5px #0004 inset;\n}\n.loader:after {\n  transform: rotate(-45deg);\n}\n@keyframes heartBeat {\n  0% {\n    transform: scale(0.95);\n  }\n  5% {\n    transform: scale(1.1);\n  }\n  39% {\n    transform: scale(0.85);\n  }\n  45% {\n    transform: scale(1);\n  }\n  60% {\n    transform: scale(0.95);\n  }\n  100% {\n    transform: scale(0.9);\n  }\n}",
+    "tags": [
+      "loader",
+      "heart",
+      "smooth"
+    ]
+  },
+  {
+    "id": "uiv-374316",
+    "title": "Smooth Lionfish 6",
+    "author": "vikramsinghnegi",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.068Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by vikramsinghnegi  - Tags: animation, loader, factory */\n/* HTML: <div class=\"loader\"></div> */\n.loader {\n  width: 90px;\n  height: 14px;\n  box-shadow: 0 3px 0 #c74d4d;\n  position: relative;\n  clip-path: inset(-40px 0 -5px);\n}\n.loader:before {\n  content: \"\";\n  position: absolute;\n  inset: auto calc(50% - 17px) 0;\n  height: 50px;\n  --g: no-repeat linear-gradient(#d2d3e0 0 0);\n  background: var(--g), var(--g), var(--g), var(--g);\n  background-size: 16px 14px;\n  animation: l7-1 2s infinite linear, l7-2 2s infinite linear;\n}\n@keyframes l7-1 {\n  0%,\n  100% {\n    background-position: 0 -50px, 100% -50px;\n  }\n  17.5% {\n    background-position: 0 100%, 100% -50px, 0 -50px, 100% -50px;\n  }\n  35% {\n    background-position: 0 100%, 100% 100%, 0 -50px, 100% -50px;\n  }\n  52.5% {\n    background-position: 0 100%, 100% 100%, 0 calc(100% - 16px), 100% -50px;\n  }\n  70%,\n  98% {\n    background-position: 0 100%, 100% 100%, 0 calc(100% - 16px),\n      100% calc(100% - 16px);\n  }\n}\n@keyframes l7-2 {\n  0%,\n  70% {\n    transform: translate(0);\n  }\n  100% {\n    transform: translate(200%);\n  }\n}",
+    "tags": [
+      "animation",
+      "loader",
+      "factory"
+    ]
+  },
+  {
+    "id": "uiv-972085",
+    "title": "Grumpy Dolphin 30",
+    "author": "vk-uiux",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.030Z",
+    "html": "<div class=\"loader\">\n  <div></div>\n  <div></div>\n  <div></div>\n  <div></div>\n  <div></div>\n</div>",
+    "css": "/* From Uiverse.io by vk-uiux - Source: vk-uiux - Tags: animation, loader, spinner, book, animated, css, css effect */\n.loader {\n  position: relative;\n  width: 33px;\n  height: 33px;\n  perspective: 67px;\n}\n\n.loader div {\n  width: 100%;\n  height: 100%;\n  background: #fff;\n  position: absolute;\n  left: 50%;\n  transform-origin: left;\n  animation: loader 2s infinite;\n}\n\n.loader div:nth-child(1) {\n  animation-delay: 0.15s;\n}\n\n.loader div:nth-child(2) {\n  animation-delay: 0.3s;\n}\n\n.loader div:nth-child(3) {\n  animation-delay: 0.45s;\n}\n\n.loader div:nth-child(4) {\n  animation-delay: 0.6s;\n}\n\n.loader div:nth-child(5) {\n  animation-delay: 0.75s;\n}\n\n@keyframes loader {\n  0% {\n    transform: rotateY(0deg);\n  }\n\n  50%, 80% {\n    transform: rotateY(-180deg);\n  }\n\n  90%, 100% {\n    opacity: 0;\n    transform: rotateY(-180deg);\n  }\n}",
+    "tags": [
+      "animation",
+      "loader",
+      "spinner",
+      "book",
+      "animated",
+      "css",
+      "css effect"
+    ]
+  },
+  {
+    "id": "uiv-367416",
+    "title": "Lucky Falcon 75",
+    "author": "xXJollyHAKERXx",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.081Z",
+    "html": "<div class=\"spinner\">\n    <div class=\"spinner1\"></div>\n</div>",
+    "css": "/* From Uiverse.io by xXJollyHAKERXx - Tags: loader */\n.spinner {\n  background-image: linear-gradient(rgb(186, 66, 255) 35%,rgb(0, 225, 255));\n  width: 100px;\n  height: 100px;\n  animation: spinning82341 1.7s linear infinite;\n  text-align: center;\n  border-radius: 50px;\n  filter: blur(1px);\n  box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);\n}\n\n.spinner1 {\n  background-color: rgb(36, 36, 36);\n  width: 100px;\n  height: 100px;\n  border-radius: 50px;\n  filter: blur(10px);\n}\n\n@keyframes spinning82341 {\n  to {\n    transform: rotate(360deg);\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-557319",
+    "title": "Tough Moth 23",
+    "author": "youranonone10",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.042Z",
+    "html": "<div class=\"holder\">\n        <div class=\"candle\">\n          <div class=\"blinking-glow\"></div>\n          <div class=\"thread\"></div>\n          <div class=\"glow\"></div>\n          <div class=\"flame\"></div>\n        </div>\n    </div>",
+    "css": "/* From Uiverse.io by youranonone10 - Tags: loader */\n.holder {\n  margin: 12rem auto 0;\n  width: 150px;\n  height: 400px;\n  position: relative;\n}\n\n.holder *, .holder *:before, .holder *:after {\n  position: absolute;\n  content: \"\";\n}\n\n.candle {\n  bottom: 0;\n  width: 150px;\n  height: 300px;\n  border-radius: 150px / 40px;\n  -webkit-box-shadow: inset 20px -30px 50px 0 rgba(0, 0, 0, 0.4), inset -20px 0 50px 0 rgba(0, 0, 0, 0.4);\n  box-shadow: inset 20px -30px 50px 0 rgba(0, 0, 0, 0.4), inset -20px 0 50px 0 rgba(0, 0, 0, 0.4);\n  background: #190f02;\n  background: -webkit-gradient(linear, left top, left bottom, from(#e48825), color-stop(#e78e0e), color-stop(#833c03), color-stop(50%, #4c1a03), to(#1c0900));\n  background: linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);\n}\n\n.candle:before {\n  width: 100%;\n  height: 40px;\n  border-radius: 50%;\n  border: 2px solid #d47401;\n  background: #b86409;\n  background: radial-gradient(#ffef80, #b86409 60%);\n  background: radial-gradient(#eaa121, #8e4901 45%, #b86409 80%);\n}\n\n.candle:after {\n  width: 34px;\n  height: 10px;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n  -ms-transform: translateX(-50%);\n  transform: translateX(-50%);\n  border-radius: 50%;\n  top: 14px;\n  -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);\n  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);\n  background: radial-gradient(rgba(0, 0, 0, 0.6), transparent 45%);\n}\n\n.thread {\n  width: 6px;\n  height: 36px;\n  top: -17px;\n  left: 50%;\n  z-index: 1;\n  border-radius: 40% 40% 0 0;\n  -webkit-transform: translateX(-50%);\n  -ms-transform: translateX(-50%);\n  transform: translateX(-50%);\n  background: #121212;\n  background: -webkit-gradient(linear, left top, left bottom, from(#d6994a), color-stop(#4b232c), color-stop(#121212), color-stop(black), color-stop(90%, #e8bb31));\n  background: linear-gradient(#d6994a, #4b232c, #121212, black, #e8bb31 90%);\n}\n\n.flame {\n  width: 24px;\n  height: 120px;\n  left: 50%;\n  -webkit-transform-origin: 50% 100%;\n  -ms-transform-origin: 50% 100%;\n  transform-origin: 50% 100%;\n  -webkit-transform: translateX(-50%);\n  -ms-transform: translateX(-50%);\n  transform: translateX(-50%);\n  bottom: 100%;\n  border-radius: 50% 50% 20% 20%;\n  background: rgba(255, 255, 255, 1);\n  background: -webkit-gradient(linear, left top, left bottom, color-stop(80%, white), to(transparent));\n  background: linear-gradient(white 80%, transparent);\n  -webkit-animation: moveFlame 6s linear infinite, enlargeFlame 5s linear infinite;\n  animation: moveFlame 6s linear infinite, enlargeFlame 5s linear infinite;\n}\n\n.flame:before {\n  width: 100%;\n  height: 100%;\n  border-radius: 50% 50% 20% 20%;\n  -webkit-box-shadow: 0 0 15px 0 rgba(247, 93, 0, .4), 0 -6px 4px 0 rgba(247, 128, 0, .7);\n  box-shadow: 0 0 15px 0 rgba(247, 93, 0, .4), 0 -6px 4px 0 rgba(247, 128, 0, .7);\n}\n\n@-webkit-keyframes moveFlame {\n  0%, 100% {\n    -webkit-transform: translateX(-50%) rotate(-2deg);\n    transform: translateX(-50%) rotate(-2deg);\n  }\n\n  50% {\n    -webkit-transform: translateX(-50%) rotate(2deg);\n    transform: translateX(-50%) rotate(2deg);\n  }\n}\n\n@keyframes moveFlame {\n  0%, 100% {\n    -webkit-transform: translateX(-50%) rotate(-2deg);\n    transform: translateX(-50%) rotate(-2deg);\n  }\n\n  50% {\n    -webkit-transform: translateX(-50%) rotate(2deg);\n    transform: translateX(-50%) rotate(2deg);\n  }\n}\n\n@-webkit-keyframes enlargeFlame {\n  0%, 100% {\n    height: 120px;\n  }\n\n  50% {\n    height: 140px;\n  }\n}\n\n@keyframes enlargeFlame {\n  0%, 100% {\n    height: 120px;\n  }\n\n  50% {\n    height: 140px;\n  }\n}\n\n.glow {\n  width: 26px;\n  height: 60px;\n  border-radius: 50% 50% 35% 35%;\n  left: 50%;\n  top: -48px;\n  -webkit-transform: translateX(-50%);\n  -ms-transform: translateX(-50%);\n  transform: translateX(-50%);\n  background: rgba(0, 133, 255, .7);\n  -webkit-box-shadow: 0 -40px 30px 0 #dc8a0c, 0 40px 50px 0 #dc8a0c, inset 3px 0 2px 0 rgba(0, 133, 255, .6), inset -3px 0 2px 0 rgba(0, 133, 255, .6);\n  box-shadow: 0 -40px 30px 0 #dc8a0c, 0 40px 50px 0 #dc8a0c, inset 3px 0 2px 0 rgba(0, 133, 255, .6), inset -3px 0 2px 0 rgba(0, 133, 255, .6);\n}\n\n.glow:before {\n  width: 70%;\n  height: 60%;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n  -ms-transform: translateX(-50%);\n  transform: translateX(-50%);\n  bottom: 0;\n  border-radius: 50%;\n  background: rgba(0, 0, 0, 0.35);\n}\n\n.blinking-glow {\n  width: 100px;\n  height: 180px;\n  left: 50%;\n  top: -55%;\n  -webkit-transform: translateX(-50%);\n  -ms-transform: translateX(-50%);\n  transform: translateX(-50%);\n  border-radius: 50%;\n  background: #ff6000;\n  -webkit-filter: blur(50px);\n  -moz-filter: blur(60px);\n  -o-filter: blur(60px);\n  -ms-filter: blur(60px);\n  filter: blur(60px);\n  -webkit-animation: blinkIt .1s infinite;\n  animation: blinkIt .1s infinite;\n}\n\n@-webkit-keyframes blinkIt {\n  50% {\n    opacity: .8;\n  }\n}\n\n@keyframes blinkIt {\n  50% {\n    opacity: .8;\n  }\n}",
+    "tags": [
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-496235",
+    "title": "Young Otter 44",
+    "author": "youranonone10",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.037Z",
+    "html": "<div class=\"wrapper\">\n  <div class=\"cloud\">\n    <div class=\"cloud_left\"></div>\n    <div class=\"cloud_right\"></div>\n  </div>\n  <div class=\"rain\">\n    <div class=\"drop\"></div>\n    <div class=\"drop\"></div>\n    <div class=\"drop\"></div>\n    <div class=\"drop\"></div>\n    <div class=\"drop\"></div>\n  </div>\n  <div class=\"surface\">\n    <div class=\"hit\"></div>\n    <div class=\"hit\"></div>\n    <div class=\"hit\"></div>\n    <div class=\"hit\"></div>\n    <div class=\"hit\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by youranonone10  - Tags: animation, minimalist, loader */\n.wrapper {\n  height: 200px;\n}\n\n.cloud {\n  overflow: hidden;\n  padding: 5px;\n  height: 50px;\n}\n\n.cloud_left {\n  position: relative;\n  float: left;\n  background-color: #234;\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.75);\n}\n\n.cloud_right {\n  position: relative;\n  float: left;\n  background-color: #203040;\n  width: 70px;\n  height: 70px;\n  border-radius: 50%;\n  top: 15px;\n  left: -30px;\n  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.75);\n}\n\n.rain {\n  width: 180px;\n  height: 140px;\n}\n\n.drop {\n  position: relative;\n  float: left;\n  width: 2px;\n  margin: 10px;\n  left: 20px;\n  background: #789;\n  box-shadow: 1px 0.5px 1px 0.5px rgba(0, 0, 0, 0.75);\n  animation: rain_401 0.8s infinite ease-out;\n}\n\n.drop:nth-child(1) {\n  height: 15px;\n  top: 5px;\n  animation-delay: -1.0s;\n}\n\n.drop:nth-child(2) {\n  height: 20px;\n  animation-delay: -1.4s;\n}\n\n.drop:nth-child(3) {\n  height: 15px;\n  top: 5px;\n  animation-delay: -1.6s;\n}\n\n.drop:nth-child(4) {\n  height: 10px;\n  top: 10px;\n  animation-delay: -1.2s;\n}\n\n.drop:nth-child(5) {\n  height: 5px;\n  top: 15px;\n  animation-delay: -1.6s;\n}\n\n@keyframes rain_401 {\n  0% {\n    opacity: 1;\n    transform: translate(0, 0);\n  }\n\n  100% {\n    opacity: 0.2;\n    transform: translate(0, 100px);\n  }\n}\n\n.surface {\n  position: relative;\n  width: 180px;\n  height: 140px;\n  top: -140px;\n}\n\n.hit {\n  position: absolute;\n  width: 3px;\n  height: 1px;\n  margin: 10px;\n  bottom: -5px;\n  border: 1px solid #456;\n  border-radius: 50%;\n  animation: hit_401 0.8s infinite ease;\n}\n\n.hit:nth-child(1) {\n  left: 19px;\n  animation-delay: -0.3s;\n}\n\n.hit:nth-child(2) {\n  left: 41px;\n  animation-delay: -0.7s;\n}\n\n.hit:nth-child(3) {\n  left: 63px;\n  animation-delay: -0.9s;\n}\n\n.hit:nth-child(4) {\n  left: 85px;\n  animation-delay: -0.5s;\n}\n\n.hit:nth-child(5) {\n  left: 107px;\n  animation-delay: -0.9s;\n}\n\n@keyframes hit_401 {\n  0% {\n    opacity: 0.75;\n    transform: scale(1);\n  }\n\n  100% {\n    opacity: 0;\n    transform: scale(2.5);\n  }\n}",
+    "tags": [
+      "animation",
+      "minimalist",
+      "loader"
+    ]
+  },
+  {
+    "id": "uiv-171211",
+    "title": "Quiet Rat 63",
+    "author": "zebra76966",
+    "category": "Loaders",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:41.046Z",
+    "html": "<div class=\"loader\"></div>",
+    "css": "/* From Uiverse.io by zebra76966 - Tags: loader, multicolor */\n.loader {\n  border-top: 8px solid hotpink;\n  border-bottom: 8px solid #f55951;\n  border-left: 8px solid #3a9efd;\n  border-right: 8px solid #1fff7c;\n  border-radius: 100%;\n  height: 100px;\n  width: 100px;\n  animation: looper 5s infinite ease-in-out;\n}\n\n@keyframes looper {\n  0% {\n    border-radius: 100% 100% 100% 100%;\n    border-color: hotpink #3a9efd #1fff7c #f55951;\n  }\n\n  10% {\n    border-radius: 0% 100% 0% 0%;\n    border-color: #f55951;\n    transform: rotate(150deg);\n  }\n\n  20% {\n    border-radius: 0% 0% 0% 0%;\n    border-color: #3a9efd;\n  }\n\n  30% {\n    border-radius: 0% 0% 0% 0%;\n    border-color: #1fff7c;\n  }\n\n  40% {\n    border-radius: 0% 0% 0% 0%;\n    border-color: #3a9efd;\n  }\n\n  50% {\n    border-radius: 100%;\n    border-color: #f55951;\n  }\n\n  90% {\n    border-radius: 100%;\n    transform: rotate(360deg);\n    border-style: dashed;\n  }\n\n  100% {\n    transform: rotate(0deg);\n    border-radius: 100% 100% 100% 100%;\n    border-color: hotpink #3a9efd #1fff7c #f55951;\n  }\n}",
+    "tags": [
+      "loader",
+      "multicolor"
+    ]
   }
 ];

@@ -1,7 +1,7 @@
 /**
- * UIverse.io Scraped Data - Patterns
- * Updated: 2026-09-11T01:30:28.737Z
- * Total: 45
+ * UIverse.io Scraped & Synced Data - Patterns
+ * Updated: 2026-11-14T15:48:28.845Z
+ * Total: 147
  */
 
 window.UIVERSE_DATA = window.UIVERSE_DATA || {};
@@ -545,5 +545,1822 @@ window.UIVERSE_DATA['Patterns'] = [
     "createdAt": "2026-09-11T00:00:00Z",
     "html": "<div class=\"encrypted-neon-pattern\">\n  <span class=\"data-stream-overlay\"></span>\n  <svg class=\"texture-filter\">\n    <filter id=\"neon-texture\">\n      <feTurbulence\n        result=\"noise\"\n        numOctaves=\"2\"\n        baseFrequency=\"0.6\"\n        type=\"fractalNoise\"\n      ></feTurbulence>\n      <feSpecularLighting\n        result=\"specular\"\n        lighting-color=\"#00f0ff\"\n        specularExponent=\"25\"\n        specularConstant=\"0.9\"\n        surfaceScale=\"2\"\n        in=\"noise\"\n      >\n        <fePointLight z=\"90\" y=\"100\" x=\"100\"></fePointLight>\n      </feSpecularLighting>\n      <feComposite\n        result=\"litNoise\"\n        operator=\"over\"\n        in2=\"SourceGraphic\"\n        in=\"specular\"\n      ></feComposite>\n      <feBlend mode=\"screen\" in2=\"litNoise\" in=\"SourceGraphic\"></feBlend>\n    </filter>\n  </svg>\n</div>\n",
     "css": ".encrypted-neon-pattern {\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(135deg, #0d0d1a, #1a1a2f 50%, #2a1a4f);\n  filter: url(#neon-texture);\n  position: relative;\n}\n\n.data-stream-overlay {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(\n      circle at 30% 40%,\n      rgba(0, 240, 255, 0.2) 0%,\n      transparent 20%\n    ),\n    radial-gradient(\n      circle at 70% 60%,\n      rgba(100, 50, 255, 0.15) 0%,\n      transparent 15%\n    );\n  animation: pulse-stream 3s ease-in-out infinite;\n}\n\n@keyframes pulse-stream {\n  0%,\n  100% {\n    opacity: 0.5;\n  }\n  50% {\n    opacity: 0.9;\n  }\n}\n"
+  },
+  {
+    "id": "uiv-832270",
+    "title": "Curly Robin 90",
+    "author": "16alves02",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.879Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by 16alves02 - Tags: simple, green, blue, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-linear-gradient(45deg, #3498db, #3498db 30px, #2ecc71 30px, #2ecc71 60px),\n    repeating-linear-gradient(135deg, #e74c3c, #e74c3c 30px, #f1c40f 30px, #f1c40f 60px);\n}",
+    "tags": [
+      "simple",
+      "green",
+      "blue",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-374967",
+    "title": "Tender Cougar 31",
+    "author": "16alves02",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.694Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by 16alves02  - Tags: red, green, css, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(\n    to right,\n    #289a6a 0%,\n    #289a6a 30%,\n    #ffcd00 30%,\n    #ffcd00 70%,\n    #ef3340 70%,\n    #ef3340 100%\n  );\n  background-size: 120px 100%;\n  background-repeat: repeat;\n}",
+    "tags": [
+      "red",
+      "green",
+      "css",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-590232",
+    "title": "Rotten Catfish 64",
+    "author": "AmruthGowda91200",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.683Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by AmruthGowda91200  - Tags: simple, blue, minimalist, html, css, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-linear-gradient(\n      -45deg,\n      #ff7e5f,\n      #ff7e5f 10px,\n      #3f51b5 10px,\n      #3f51b5 20px\n    ),\n    repeating-linear-gradient(\n      45deg,\n      #3f51b5,\n      #3f51b5 10px,\n      #ff7e5f 10px,\n      #ff7e5f 20px\n    ),\n    repeating-linear-gradient(\n      -30deg,\n      #3f51b5,\n      #3f51b5 10px,\n      #ff7e5f 10px,\n      #ff7e5f 20px\n    ),\n    repeating-linear-gradient(\n      30deg,\n      #ff7e5f,\n      #ff7e5f 10px,\n      #3f51b5 10px,\n      #3f51b5 20px\n    );\n}",
+    "tags": [
+      "simple",
+      "blue",
+      "minimalist",
+      "html",
+      "css",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-613002",
+    "title": "Selfish Moose 79",
+    "author": "ArnavK-09",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.885Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by ArnavK-09  - Tags: simple, white, black, css, pattern, notebook, lines */\n.container {\n  width: 100%;\n  height: 100%;\n  background-image: repeating-linear-gradient(\n    0deg,\n    black,\n    1px,\n    white 1px,\n    white\n  );\n  background-size: 100% 30px;\n  background-color: white;\n}",
+    "tags": [
+      "simple",
+      "white",
+      "black",
+      "css",
+      "pattern",
+      "notebook",
+      "lines"
+    ]
+  },
+  {
+    "id": "uiv-654970",
+    "title": "Slippery Sheep 50",
+    "author": "AspenBranch",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.732Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by AspenBranch - Tags: simple, light, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-linear-gradient(45deg, #92c9b1, #92c9b1 20px, #b3e0d2 20px, #b3e0d2 40px);\n}",
+    "tags": [
+      "simple",
+      "light",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-476065",
+    "title": "Thin Bulldog 22",
+    "author": "AspenBranch",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.716Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by AspenBranch  - Tags: simple, white, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background-color: white;\n  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),\n    linear-gradient(-45deg, #ccc 25%, transparent 25%),\n    linear-gradient(45deg, transparent 75%, #ccc 75%),\n    linear-gradient(-45deg, transparent 75%, #ccc 75%);\n  background-size: 20px 20px;\n  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;\n}",
+    "tags": [
+      "simple",
+      "white",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-227331",
+    "title": "Bad Baboon 47",
+    "author": "BadlyWrittenStylesheet",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.680Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by BadlyWrittenStylesheet  - Tags: gradient, dark, colorful, rainbow, multicolor, pattern, background */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  /* background-color: lightblue; */\n  background-image: radial-gradient(black 55%, #0000),\n    /* radial-gradient(black 55%, #0000), */\n      linear-gradient(\n        135deg,\n        red,\n        orange,\n        yellow,\n        lime,\n        cyan,\n        blue,\n        indigo,\n        deeppink\n      );\n  background-size: 100% 0.5%, contain;\n  /* background-blend-mode: hard-light; */\n  /* background-position: 0 0, 1em 1em, 0 0; */\n}",
+    "tags": [
+      "gradient",
+      "dark",
+      "colorful",
+      "rainbow",
+      "multicolor",
+      "pattern",
+      "background"
+    ]
+  },
+  {
+    "id": "uiv-961600",
+    "title": "Fluffy Bear 71",
+    "author": "BadlyWrittenStylesheet",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.721Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by BadlyWrittenStylesheet  - Tags: simple, gradient, modern, light&dark, clean, pattern */\n.container {\n  --bg: radial-gradient(#000 5%, #0000 6%);\n  --size: 3rem;\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  /* background-color: lightblue; */\n  background-image: radial-gradient(#000 5%, #0000 6%),\n    radial-gradient(#000 5%, #0000 6%);\n  background-position: 0 0, calc(var(--size) / 2) calc(var(--size) / 2);\n  background-size: var(--size) var(--size);\n}",
+    "tags": [
+      "simple",
+      "gradient",
+      "modern",
+      "light&dark",
+      "clean",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-616180",
+    "title": "Smooth Parrot 55",
+    "author": "Cybercom682",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.675Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Cybercom682  - Tags: simple, green, retro, pattern, analog */\n.container {\n  width: 100%;\n  height: 100%;\n  --color: rgba(0, 115, 19, 0.3);\n  background-color: #191a1a;\n  background-image: linear-gradient(\n      180deg,\n      transparent 24%,\n      var(--color) 25%,\n      var(--color) 26%,\n      transparent 27%,\n      transparent 74%,\n      var(--color) 75%,\n      var(--color) 76%,\n      transparent 77%,\n      transparent\n    ),\n    linear-gradient(\n      45deg,\n      transparent 24%,\n      var(--color) 35%,\n      var(--color) 26%,\n      transparent 17%,\n      transparent 74%,\n      var(--color) 75%,\n      var(--color) 76%,\n      transparent 77%,\n      transparent\n    );\n  background-size: 55px 55px;\n}",
+    "tags": [
+      "simple",
+      "green",
+      "retro",
+      "pattern",
+      "analog"
+    ]
+  },
+  {
+    "id": "uiv-224583",
+    "title": "Spicy Ladybug 25",
+    "author": "Deri-Kurniawan",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.685Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Deri-Kurniawan  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(circle at 10% 10%, #3e73f0 5%, transparent 5%),\n    radial-gradient(circle at 90% 10%, #3e73f0 5%, transparent 5%),\n    radial-gradient(circle at 90% 90%, #3e73f0 5%, transparent 5%),\n    radial-gradient(circle at 10% 90%, #3e73f0 5%, transparent 5%);\n  background-size: 20px 20px;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-319247",
+    "title": "Modern Skunk 55",
+    "author": "Efrain2112",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.696Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Efrain2112  - Tags: simple, white, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --size: 150px; /* control the size */\n  --color: #d1bdbd;\n\n  background: radial-gradient(\n      circle at 15% 30%,\n      transparent 40%,\n      var(--color) 41%\n    ),\n    radial-gradient(circle at 85% 30%, transparent 40%, var(--color) 41%),\n    radial-gradient(circle at 50% 70%, transparent 40%, var(--color) 41%),\n    radial-gradient(circle at 15% 70%, transparent 40%, var(--color) 41%),\n    radial-gradient(circle at 85% 70%, transparent 40%, var(--color) 41%),\n    linear-gradient(\n      45deg,\n      var(--color) 25%,\n      rgba(0, 0, 0, 0.067) 0,\n      rgba(0, 0, 0, 0.067) 50%,\n      var(--color) 0,\n      var(--color) 75%,\n      #1111 0,\n      #1111 100%,\n      var(--color) 0\n    );\n  background-size: var(--size) var(--size);\n}",
+    "tags": [
+      "simple",
+      "white",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-529154",
+    "title": "Nice Mole 58",
+    "author": "Efrain2112",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.742Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Efrain2112  - Tags: simple, blue, white, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --size: 80px; /* control the size */\n  --color: #add8e6;\n\n  background: linear-gradient(\n      to bottom,\n      transparent 0%,\n      transparent 40%,\n      #add8e6 41%,\n      #add8e6 60%,\n      transparent 61%,\n      transparent 100%\n    ),\n    linear-gradient(\n      45deg,\n      #add8e6 25%,\n      transparent 25%,\n      transparent 50%,\n      #add8e6 50%,\n      #add8e6 75%,\n      transparent 75%,\n      transparent\n    );\n  background-size: var(--size) var(--size);\n}",
+    "tags": [
+      "simple",
+      "blue",
+      "white",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-374964",
+    "title": "Purple Mole 50",
+    "author": "Efrain2112",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.675Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Efrain2112  - Tags: circle, css, multicolor, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --size: 80px; /* control the size */\n  --color1: #f29c9c;\n  --color2: #ffd700;\n  --color3: #7ec8e3;\n  --cone: #8b4513;\n\n  background: radial-gradient(\n      circle at 50% 30%,\n      transparent 30%,\n      var(--color1) 31%\n    ),\n    radial-gradient(circle at 30% 70%, transparent 30%, var(--color2) 31%),\n    radial-gradient(circle at 70% 70%, transparent 30%, var(--color3) 31%),\n    linear-gradient(to bottom, var(--cone) 50%, transparent 50%);\n  background-size: var(--size) var(--size);\n}",
+    "tags": [
+      "circle",
+      "css",
+      "multicolor",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-663101",
+    "title": "Ugly Squid 22",
+    "author": "HarryHeywood04",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.716Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by HarryHeywood04  - Tags: simple, dark, pattern, tile */\n.container {\n  width: 100%;\n  height: 100%;\n  background-color: #111111;\n  background-image: linear-gradient(\n    32deg,\n    rgba(8, 8, 8, 0.74) 30px,\n    transparent\n  );\n  background-size: 60px 60px;\n  background-position: -5px -5px;\n}",
+    "tags": [
+      "simple",
+      "dark",
+      "pattern",
+      "tile"
+    ]
+  },
+  {
+    "id": "uiv-935533",
+    "title": "Cowardly Rat 28",
+    "author": "Javierrocadev",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:25.721Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Javierrocadev - Tags: black, gradient, dark, pattern, radial, radial-gradient */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background-image: repeating-radial-gradient(  #0c0a0a 80%,#2f312f 90%,#3f4549 90%);\n  background-size: 65px 65px;\n}",
+    "tags": [
+      "black",
+      "gradient",
+      "dark",
+      "pattern",
+      "radial",
+      "radial-gradient"
+    ]
+  },
+  {
+    "id": "uiv-251427",
+    "title": "Polite Fox 37",
+    "author": "Javierrocadev",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.376Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Javierrocadev - Tags: blue, gradient, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background-image: repeating-radial-gradient(  #f8f1f1ee 87%,#3fa7b4 90%);\n  background-size: 50px 50px;\n}",
+    "tags": [
+      "blue",
+      "gradient",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-225430",
+    "title": "Thin Moth 33",
+    "author": "Javierrocadev",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.210Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Javierrocadev - Tags: orange, gradient, gradients, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background-image: repeating-radial-gradient(  #e2d1d1 50%, #e7d2d2ee 70%,#f5c7a1 95%);\n  background-size: 50px 50px;\n}",
+    "tags": [
+      "orange",
+      "gradient",
+      "gradients",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-959832",
+    "title": "Wicked Bullfrog 50",
+    "author": "Javierrocadev",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.180Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Javierrocadev - Tags: blue, gradient, diamond, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background-image: radial-gradient( #173d49 85%, #36a6f1 90%,#0d1725 20%);\n  background-size: 50px 50px;\n}",
+    "tags": [
+      "blue",
+      "gradient",
+      "diamond",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-589015",
+    "title": "Foolish Swan 57",
+    "author": "Juanes200122",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.383Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Juanes200122  - Tags: simple, html, css, pattern */\n.container {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  perspective: 1000px;\n  background: linear-gradient(45deg, #000000 25%, transparent 25%),\n    linear-gradient(\n      -135deg,\n      #000000 25%,\n      transparent 25%,\n      transparent 75%,\n      #000000 75%,\n      #000000\n    );\n  background-size: 50px 50px;\n}",
+    "tags": [
+      "simple",
+      "html",
+      "css",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-304654",
+    "title": "Tame Wasp 3",
+    "author": "Juanes200122",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.194Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Juanes200122  - Tags: simple, blue, pattern */\n.container {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  perspective: 1000px;\n  background: linear-gradient(45deg, #3498db 25%, transparent 25%),\n    linear-gradient(\n      -45deg,\n      #3498db 25%,\n      transparent 25%,\n      transparent 75%,\n      #3498db 75%,\n      #3498db\n    );\n  background-size: 50px 50px;\n}",
+    "tags": [
+      "simple",
+      "blue",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-971982",
+    "title": "Fuzzy Duck 40",
+    "author": "MikeAndrewDesigner",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.265Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by MikeAndrewDesigner  - Tags: wave, css, css effect, pattern, bg */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 60px;\n  --c1: #180a22;\n  --c2: #5b42f3;\n  --_g: radial-gradient(\n    25% 25% at 25% 25%,\n    var(--c1) 99%,\n    rgba(0, 0, 0, 0) 101%\n  );\n  background: var(--_g) var(--s) var(--s) / calc(2 * var(--s))\n      calc(2 * var(--s)),\n    var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),\n    radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s)\n      var(--s),\n    repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%)\n      calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);\n}",
+    "tags": [
+      "wave",
+      "css",
+      "css effect",
+      "pattern",
+      "bg"
+    ]
+  },
+  {
+    "id": "uiv-778414",
+    "title": "Rare Cow 19",
+    "author": "PriyanshuGupta28",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.171Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by PriyanshuGupta28  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-linear-gradient(\n      45deg,\n      #e74c3c,\n      #e74c3c 10px,\n      transparent 10px,\n      transparent 20px\n    ),\n    repeating-linear-gradient(\n      -45deg,\n      #f39c12,\n      #f39c12 10px,\n      transparent 10px,\n      transparent 20px\n    );\n  background-size: 100% 100%, 100% 100%, 10px 10px, 10px 10px;\n  background-position: center center, center center, center center,\n    center center;\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-863696",
+    "title": "Cuddly Shrimp 75",
+    "author": "Ratinax",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.255Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Ratinax - Tags: simple, circle, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-radial-gradient(circle at 50%, black, grey 1em, white 1em, white 2em);\n}",
+    "tags": [
+      "simple",
+      "circle",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-734529",
+    "title": "Moody Eel 40",
+    "author": "Ratinax",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.193Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Ratinax - Tags: red, circle, pattern */\n.container {\n  width: 200%;\n  height: 200%;\n  /* Add your background pattern here */\n  background: #ff7e86;\n  background-image: linear-gradient(45deg, #fc5762, transparent 90%),\n    radial-gradient(#ff1122 68%, transparent 5%);\n  background-size: 4em 4em;\n}",
+    "tags": [
+      "red",
+      "circle",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-426666",
+    "title": "Nervous Mouse 8",
+    "author": "Ratinax",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.186Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Ratinax - Tags: simple, square, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: linear-gradient(45deg,black, white);\n  background-size: 1em 1em;\n}",
+    "tags": [
+      "simple",
+      "square",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-523528",
+    "title": "New Fish 98",
+    "author": "Ratinax",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.244Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Ratinax - Tags: circle, multicolor, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background-image: radial-gradient(black 75%, transparent 90%),\n  linear-gradient(45deg, red, green, yellow);\n  background-size: 3em 3em;\n  /* background: lightblue; */\n}",
+    "tags": [
+      "circle",
+      "multicolor",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-301366",
+    "title": "Weak Yak 80",
+    "author": "Ratinax",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.238Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Ratinax - Tags: simple, green, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(220deg, lime 1%, transparent),\n                    linear-gradient(220deg, yellow 50%, transparent);\n  background-size: 4em 4em;\n}",
+    "tags": [
+      "simple",
+      "green",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-229886",
+    "title": "Wicked Dodo 27",
+    "author": "Ratinax",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.194Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Ratinax - Tags: simple, red, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-radial-gradient(red 55%, white 56%);\n  animation: rotate 2s linear infinite;\n}",
+    "tags": [
+      "simple",
+      "red",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-810491",
+    "title": "Dry Frog 14",
+    "author": "SmookyDev",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.244Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by SmookyDev  - Tags: cube, creative, css, premium, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: linear-gradient(\n      45deg,\n      #0000 calc(25% / 3),\n      #ffffff 0 calc(50% / 3),\n      #0000 0 calc(250% / 3),\n      #ffffff 0 calc(275% / 3),\n      #0000 0\n    ),\n    linear-gradient(\n      45deg,\n      #ffffff calc(25% / 3),\n      #0000 0 calc(50% / 3),\n      #ffffff 0 25%,\n      #0000 0 75%,\n      #ffffff 0 calc(250% / 3),\n      #0000 0 calc(275% / 3),\n      #ffffff 0\n    ),\n    linear-gradient(\n      -45deg,\n      #0000 calc(25% / 3),\n      #ffffff 0 calc(50% / 3),\n      #0000 0 calc(250% / 3),\n      #ffffff 0 calc(275% / 3),\n      #0000 0\n    ),\n    linear-gradient(\n        -45deg,\n        #ffffff calc(25% / 3),\n        #0000 0 calc(50% / 3),\n        #ffffff 0 25%,\n        #0000 0 75%,\n        #ffffff 0 calc(250% / 3),\n        #0000 0 calc(275% / 3),\n        #ffffff 0\n      )\n      #c77979;\n  background-size: 106px 106px;\n  background-position: 0 0, 53px 53px;\n}",
+    "tags": [
+      "cube",
+      "creative",
+      "css",
+      "premium",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-560860",
+    "title": "Fresh Cow 100",
+    "author": "SmookyDev",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.235Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by SmookyDev  - Tags: glassmorphism, animation, transition, css, css effect, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(\n      45deg,\n      white 12%,\n      transparent 0,\n      transparent 88%,\n      wheat 0\n    ),\n    linear-gradient(135deg, transparent 37%, #753 0, #753 63%, transparent 0),\n    linear-gradient(45deg, transparent 37%, white 0, white 63%, transparent 0)\n      wheat;\n  background-size: 80px 80px;\n  animation: ani 10s linear infinite;\n  position: relative;\n  z-index: 10;\n  overflow: hidden;\n}",
+    "tags": [
+      "glassmorphism",
+      "animation",
+      "transition",
+      "css",
+      "css effect",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-569044",
+    "title": "Dangerous Walrus 7",
+    "author": "SouravBandyopadhyay",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.869Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by SouravBandyopadhyay  - Tags: alert, minimalist, theme-switch, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(\n      45deg,\n      transparent 33.33%,\n      rgba(57, 144, 179, 0.1) 33.33%,\n      rgba(0, 0, 0, 0.1) 66.66%,\n      transparent 66.66%\n    ),\n    lightblue;\n  background-size: 20px 20px;\n}",
+    "tags": [
+      "alert",
+      "minimalist",
+      "theme-switch",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-580612",
+    "title": "Foolish Mole 21",
+    "author": "SouravBandyopadhyay",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.688Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by SouravBandyopadhyay - Tags: simple, material design, blue, smooth, share, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: linear-gradient(45deg, #bcdbef 25%, transparent 25%, transparent 50%, #bcdbef 50%, #8ea2ae 75%, transparent 75%, transparent);\n  background-size: 20px 20px;\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "blue",
+      "smooth",
+      "share",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-167722",
+    "title": "Kind Snake 27",
+    "author": "Yaya12085",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.685Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Yaya12085 - Tags: line, pattern, papper */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background-image: linear-gradient(#ffffff 1.1rem, #ccc 1.2rem);\n  background-size: 100% 1.2rem;\n}",
+    "tags": [
+      "line",
+      "pattern",
+      "papper"
+    ]
+  },
+  {
+    "id": "uiv-831318",
+    "title": "Perfect Skunk 19",
+    "author": "Yaya12085",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.869Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by Yaya12085 - Tags: black, pattern, hexagonal */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: repeating-radial-gradient(circle, #000, #000 5px, transparent 6px);\n  background-size: 30px 30px;\n}",
+    "tags": [
+      "black",
+      "pattern",
+      "hexagonal"
+    ]
+  },
+  {
+    "id": "uiv-382580",
+    "title": "Fluffy Dolphin 60",
+    "author": "aadium",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.682Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by aadium - Tags: gradients, pattern, six, hexagons */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-linear-gradient(60deg, transparent 30px, rgba(255, 0, 0, 0.2) 10px,rgba(255, 238, 0, 0.2) 90px),\n    repeating-linear-gradient(120deg, transparent 30px, rgba(255, 0, 0, 0.2) 10px,rgba(255, 238, 0, 0.2)90px),\n    repeating-linear-gradient(180deg, transparent 30px, rgba(255, 0, 0, 0.2) 10px, rgba(255, 238, 0, 0.2) 90px);\n}",
+    "tags": [
+      "gradients",
+      "pattern",
+      "six",
+      "hexagons"
+    ]
+  },
+  {
+    "id": "uiv-458237",
+    "title": "Hard Swan 77",
+    "author": "aadium",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.704Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by aadium - Tags: blue, pattern, duotone */\n.container {\n  --color1: rgb(179, 255, 226);\n  --color2: rgb(39, 0, 148);\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(45deg, var(--color1) 25%, transparent 25%, transparent 75%, var(--color1) 75%, var(--color1)),\n                    linear-gradient(45deg, var(--color2) 25%, var(--color1) 25%, var(--color1) 75%, var(--color2) 75%, var(--color2));\n  background-size: 95px 15px;\n  background-position: 0 0, 135px 135px;\n}",
+    "tags": [
+      "blue",
+      "pattern",
+      "duotone"
+    ]
+  },
+  {
+    "id": "uiv-251706",
+    "title": "Mighty Rattlesnake 30",
+    "author": "aadium",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.694Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by aadium - Tags: soft, gradients, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  background: repeating-linear-gradient(to bottom, rgb(255, 145, 0, 0.5), rgb(255, 0, 0, 0.5), rgb(255, 0, 140, 0.5), rgb(255, 0, 0, 0.5), rgb(255, 145, 0, 0.5) 50px),\n              repeating-linear-gradient(to left, rgb(255, 145, 0, 0.5), rgb(255, 0, 0, 0.5), rgb(255, 0, 140, 0.5), rgb(255, 0, 0, 0.5), rgb(255, 145, 0, 0.5) 50px),\n              rgba(193, 193, 193, 0.673);\n}",
+    "tags": [
+      "soft",
+      "gradients",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-527945",
+    "title": "Soft Panda 93",
+    "author": "aadium",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.734Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by aadium - Tags: dual-tone, pattern, mosaic */\n.container {\n  --color1: rgb(0, 3, 49);\n  --color2: rgb(248, 255, 182);\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(45deg, var(--color2) 25%, transparent 25%, transparent 75%, var(--color2) 75%, var(--color2)), \n                    linear-gradient(135deg, var(--color2) 25%, var(--color1) 25%, var(--color1) 75%, var(--color2) 75%, var(--color2));\n  background-size: 90px 90px;\n  background-position: 0 0, 135px 135px;\n}",
+    "tags": [
+      "dual-tone",
+      "pattern",
+      "mosaic"
+    ]
+  },
+  {
+    "id": "uiv-327411",
+    "title": "Curvy Earwig 79",
+    "author": "adamgiebl",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.688Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by adamgiebl - Tags: grid, pattern, checkered, chess */\n.container {\n  width: 100%;\n  height: 100%;\n  --color: rgba(114, 114, 114, 0.3);\n  background-color: #191a1a;\n  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),\n      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);\n  background-size: 50px 50px;\n}",
+    "tags": [
+      "grid",
+      "pattern",
+      "checkered",
+      "chess"
+    ]
+  },
+  {
+    "id": "uiv-916144",
+    "title": "Sweet Termite 95",
+    "author": "adilsarfraz02",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.696Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by adilsarfraz02  - Tags: simple, realistic, modern, premium, pattern */\n.container {\n  background-color: transparent;\n  background-image: radial-gradient(#000000 1px, #e5e5f7 1px);\n  background-size: 30px 30px;\n  width: 100%;\n  height: 100vh;\n}",
+    "tags": [
+      "simple",
+      "realistic",
+      "modern",
+      "premium",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-554053",
+    "title": "Blue Kangaroo 55",
+    "author": "alexruix",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.694Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by alexruix  - Tags: simple, green, arrow, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  --size: 80px; /* control the size */\n  --color: #fefae0;\n\n  --l: var(--color) 20%, #0000 0;\n  --bg: 35%, #606c38 0 45%, var(--color) 0;\n  background: linear-gradient(45deg, var(--l) 45%, var(--color) 0 70%, #0000 0),\n    linear-gradient(-45deg, var(--l) var(--bg) 70%, #0000 0),\n    linear-gradient(45deg, var(--color) var(--bg));\n  background-size: var(--size) var(--size);\n}",
+    "tags": [
+      "simple",
+      "green",
+      "arrow",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-509293",
+    "title": "Splendid Quail 83",
+    "author": "artvelog",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.758Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by artvelog  - Tags: paper, light, modern, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: #f1f1f1;\n  background-image: linear-gradient(\n      90deg,\n      transparent 50px,\n      #ffb4b8 50px,\n      #ffb4b8 52px,\n      transparent 52px\n    ),\n    linear-gradient(#e1e1e1 0.1em, transparent 0.1em);\n  background-size: 100% 30px;\n}",
+    "tags": [
+      "paper",
+      "light",
+      "modern",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-413910",
+    "title": "Wicked Tiger 22",
+    "author": "ayman-ashine",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.685Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by ayman-ashine  - Tags: 3d, creative, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  --color: rgb(255, 50, 50, 0.8);\n  background-color: rgb(0, 0, 0);\n  background-size: 40px 40px;\n  background-image: linear-gradient(45deg, var(--color), transparent 40%),\n    linear-gradient(-90deg, var(--color), transparent 20%);\n}",
+    "tags": [
+      "3d",
+      "creative",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-408591",
+    "title": "Strong Mayfly 90",
+    "author": "bociKond",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.734Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by bociKond  - Website: https://10015.io/tools/css-background-pattern-generator - Tags: simple, pink, white, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(\n      50% 50% at 100% 0,\n      #ca3f3f 0% 5%,\n      #ffffff 6% 15%,\n      #ca3f3f 16% 25%,\n      #ffffff 26% 35%,\n      #ca3f3f 36% 45%,\n      #ffffff 46% 55%,\n      #ca3f3f 56% 65%,\n      #ffffff 66% 75%,\n      #ca3f3f 76% 85%,\n      #ffffff 86% 95%,\n      #0000 96%\n    ),\n    radial-gradient(\n      50% 50% at 0 100%,\n      #ca3f3f 0% 5%,\n      #ffffff 6% 15%,\n      #ca3f3f 16% 25%,\n      #ffffff 26% 35%,\n      #ca3f3f 36% 45%,\n      #ffffff 46% 55%,\n      #ca3f3f 56% 65%,\n      #ffffff 66% 75%,\n      #ca3f3f 76% 85%,\n      #ffffff 86% 95%,\n      #0000 96%\n    ),\n    radial-gradient(\n      50% 50%,\n      #ca3f3f 0% 5%,\n      #ffffff 6% 15%,\n      #ca3f3f 16% 25%,\n      #ffffff 26% 35%,\n      #ca3f3f 36% 45%,\n      #ffffff 46% 55%,\n      #ca3f3f 56% 65%,\n      #ffffff 66% 75%,\n      #ca3f3f 76% 85%,\n      #ffffff 86% 95%,\n      #0000 96%\n    ),\n    radial-gradient(\n        50% 50%,\n        #ca3f3f 0% 5%,\n        #ffffff 6% 15%,\n        #ca3f3f 16% 25%,\n        #ffffff 26% 35%,\n        #ca3f3f 36% 45%,\n        #ffffff 46% 55%,\n        #ca3f3f 56% 65%,\n        #ffffff 66% 75%,\n        #ca3f3f 76% 85%,\n        #ffffff 86% 95%,\n        #0000 96%\n      )\n      38px 38px;\n  background-size: 76px 76px;\n  background-color: #ca3f3f;\n}",
+    "tags": [
+      "simple",
+      "pink",
+      "white",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-945624",
+    "title": "Strange Firefox 86",
+    "author": "catraco",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:26.718Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by catraco  - Tags: simple, orange, smooth, pattern, background */\n.container {\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(\n    5deg,\n    orange 50%,\n    orangered 60%,\n    orange 50%\n  );\n  background-color: orange;\n  background-size: 1em 1em;\n  background-repeat: space;\n}",
+    "tags": [
+      "simple",
+      "orange",
+      "smooth",
+      "pattern",
+      "background"
+    ]
+  },
+  {
+    "id": "uiv-391775",
+    "title": "Average Rat 98",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.368Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 150px; /* control the size */\n  --c1: #ff847c;\n  --c2: #e84a5f;\n  --c3: #fecea8;\n  --c4: #99b898;\n\n  background: conic-gradient(\n      from 45deg at 75% 75%,\n      var(--c3) 90deg,\n      var(--c1) 0 180deg,\n      #0000 0\n    ),\n    conic-gradient(from -45deg at 25% 25%, var(--c3) 90deg, #0000 0),\n    conic-gradient(from -45deg at 50% 100%, #0000 180deg, var(--c3) 0),\n    conic-gradient(\n      from -45deg,\n      var(--c1) 90deg,\n      var(--c2) 0 225deg,\n      var(--c4) 0\n    );\n  background-size: var(--s) var(--s);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-280270",
+    "title": "Brown Bulldog 93",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.160Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 20px; /* size of the lines */\n  --g: 15px; /* gap between lines */\n\n  --c1: #c02942;\n  --c2: #53777a;\n\n  background: conic-gradient(\n        at var(--s) calc(100% - var(--s)),\n        #0000 270deg,\n        var(--c1) 0\n      )\n      calc(var(--s) + var(--g)) 0,\n    linear-gradient(var(--c2) var(--s), #0000 0) 0 var(--g),\n    conic-gradient(\n      at var(--s) calc(100% - var(--s)),\n      #0000 90deg,\n      var(--c2) 0 180deg,\n      var(--c1) 0\n    ),\n    #ecd078;\n  background-size: calc(2 * (var(--s) + var(--g)))\n    calc(2 * (var(--s) + var(--g)));\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-666987",
+    "title": "Evil Catfish 13",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.166Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 125px; /* control the size */\n  --c1: #f8ca00;\n  --c2: #bd1550;\n\n  --_g: var(--c1) 90deg, var(--c2) 0 135deg, #0000 0;\n  background: conic-gradient(\n      from -45deg at calc(100% / 3) calc(100% / 3),\n      var(--c1) 90deg,\n      #0000 0\n    ),\n    conic-gradient(from -135deg at calc(100% / 3) calc(2 * 100% / 3), var(--_g)),\n    conic-gradient(\n      from 135deg at calc(2 * 100% / 3) calc(2 * 100% / 3),\n      var(--_g)\n    ),\n    conic-gradient(\n      from 45deg at calc(2 * 100% / 3) calc(100% / 3),\n      var(--_g),\n      var(--c1) 0 225deg,\n      var(--c2) 0\n    );\n  background-size: var(--s) var(--s);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-287715",
+    "title": "Fat Panther 54",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.364Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp  - Tags: simple, minimalist, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 37px; /* control the size */\n\n  --c: #0000, #2fb8ac 0.5deg 119.5deg, #0000 120deg;\n  --g1: conic-gradient(from 60deg at 56.25% calc(425% / 6), var(--c));\n  --g2: conic-gradient(from 180deg at 43.75% calc(425% / 6), var(--c));\n  --g3: conic-gradient(from -60deg at 50% calc(175% / 12), var(--c));\n  background: var(--g1), var(--g1) var(--s) calc(1.73 * var(--s)), var(--g2),\n    var(--g2) var(--s) calc(1.73 * var(--s)), var(--g3) var(--s) 0,\n    var(--g3) 0 calc(1.73 * var(--s)) #ecbe13;\n  background-size: calc(2 * var(--s)) calc(3.46 * var(--s));\n}",
+    "tags": [
+      "simple",
+      "minimalist",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-808474",
+    "title": "Fresh Bobcat 35",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.203Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13   - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 82px;\n  --c1: #b2b2b2;\n  --c2: #ffffff;\n  --c3: #d9d9d9;\n\n  --_g: var(--c3) 0 120deg, #0000 0;\n  background: conic-gradient(from -60deg at 50% calc(100% / 3), var(--_g)),\n    conic-gradient(from 120deg at 50% calc(200% / 3), var(--_g)),\n    conic-gradient(\n      from 60deg at calc(200% / 3),\n      var(--c3) 60deg,\n      var(--c2) 0 120deg,\n      #0000 0\n    ),\n    conic-gradient(from 180deg at calc(100% / 3), var(--c1) 60deg, var(--_g)),\n    linear-gradient(\n      90deg,\n      var(--c1) calc(100% / 6),\n      var(--c2) 0 50%,\n      var(--c1) 0 calc(500% / 6),\n      var(--c2) 0\n    );\n  background-size: calc(1.732 * var(--s)) var(--s);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-254114",
+    "title": "Fuzzy Eel 41",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.218Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 140px; /* control the size */\n  --c1: #ab3e5b;\n  --c2: #ffbe40;\n\n  --_g: #0000 25%, #0008 47%, var(--c1) 53% 147%, var(--c2) 153% 247%,\n    var(--c1) 253% 347%, var(--c2) 353% 447%, var(--c1) 453% 547%, #0008 553%,\n    #0000 575%;\n  --_s: calc(25% / 3) calc(25% / 4) at 50%;\n  background: radial-gradient(var(--_s) 100%, var(--_g)),\n    radial-gradient(var(--_s) 100%, var(--_g)) calc(var(--s) / 2)\n      calc(3 * var(--s) / 4),\n    radial-gradient(var(--_s) 0, var(--_g)) calc(var(--s) / 2) 0,\n    radial-gradient(var(--_s) 0, var(--_g)) 0 calc(3 * var(--s) / 4),\n    repeating-linear-gradient(\n      90deg,\n      #accec0 calc(25% / -6) calc(25% / 6),\n      #61a6ab 0 calc(25% / 2)\n    );\n  background-size: var(--s) calc(3 * var(--s) / 2);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-913146",
+    "title": "Happy Rattlesnake 25",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.173Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 65px; /* control the size */\n  --c1: #dadee1;\n  --c2: #4a99b4;\n  --c3: #9cceb5;\n\n  --_c: 75%, var(--c3) 52.72deg, #0000 0;\n  --_g1: conic-gradient(from -116.36deg at 25% var(--_c));\n  --_g2: conic-gradient(from 63.43deg at 75% var(--_c));\n  background: var(--_g1), var(--_g1) calc(3 * var(--s)) calc(var(--s) / 2),\n    var(--_g2), var(--_g2) calc(3 * var(--s)) calc(var(--s) / 2),\n    conic-gradient(\n      var(--c2) 63.43deg,\n      var(--c1) 0 116.36deg,\n      var(--c2) 0 180deg,\n      var(--c1) 0 243.43deg,\n      var(--c2) 0 296.15deg,\n      var(--c1) 0\n    );\n  background-size: calc(2 * var(--s)) var(--s);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-344197",
+    "title": "Kind Frog 70",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.221Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 84px;\n  --c1: #f2f2f2;\n  --c2: #cdcbcc;\n  --c3: #999999;\n\n  --_g: 0 120deg, #0000 0;\n  background: conic-gradient(\n      from 0deg at calc(500% / 6) calc(100% / 3),\n      var(--c3) var(--_g)\n    ),\n    conic-gradient(\n      from -120deg at calc(100% / 6) calc(100% / 3),\n      var(--c2) var(--_g)\n    ),\n    conic-gradient(\n      from 120deg at calc(100% / 3) calc(500% / 6),\n      var(--c1) var(--_g)\n    ),\n    conic-gradient(\n      from 120deg at calc(200% / 3) calc(500% / 6),\n      var(--c1) var(--_g)\n    ),\n    conic-gradient(\n      from -180deg at calc(100% / 3) 50%,\n      var(--c2) 60deg,\n      var(--c1) var(--_g)\n    ),\n    conic-gradient(\n      from 60deg at calc(200% / 3) 50%,\n      var(--c1) 60deg,\n      var(--c3) var(--_g)\n    ),\n    conic-gradient(\n      from -60deg at 50% calc(100% / 3),\n      var(--c1) 120deg,\n      var(--c2) 0 240deg,\n      var(--c3) 0\n    );\n  background-size: calc(var(--s) * 1.732) var(--s);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-438147",
+    "title": "Lovely Monkey 46",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.165Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: http://twitter.com/okke29 - Website: https://twitter.com/okke29 - Name: okke29  - Tags: simple, animation, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(\n        rgba(255, 255, 255, 0) 0,\n        rgba(255, 255, 255, 0.15) 30%,\n        rgba(255, 255, 255, 0.3) 32%,\n        rgba(255, 255, 255, 0) 33%\n      )\n      0 0,\n    radial-gradient(\n        rgba(255, 255, 255, 0) 0,\n        rgba(255, 255, 255, 0.1) 11%,\n        rgba(255, 255, 255, 0.3) 13%,\n        rgba(255, 255, 255, 0) 14%\n      )\n      0 0,\n    radial-gradient(\n        rgba(255, 255, 255, 0) 0,\n        rgba(255, 255, 255, 0.2) 17%,\n        rgba(255, 255, 255, 0.43) 19%,\n        rgba(255, 255, 255, 0) 20%\n      )\n      0 110px,\n    radial-gradient(\n        rgba(255, 255, 255, 0) 0,\n        rgba(255, 255, 255, 0.2) 11%,\n        rgba(255, 255, 255, 0.4) 13%,\n        rgba(255, 255, 255, 0) 14%\n      ) -130px -170px,\n    radial-gradient(\n        rgba(255, 255, 255, 0) 0,\n        rgba(255, 255, 255, 0.2) 11%,\n        rgba(255, 255, 255, 0.4) 13%,\n        rgba(255, 255, 255, 0) 14%\n      )\n      130px 370px,\n    radial-gradient(\n        rgba(255, 255, 255, 0) 0,\n        rgba(255, 255, 255, 0.1) 11%,\n        rgba(255, 255, 255, 0.2) 13%,\n        rgba(255, 255, 255, 0) 14%\n      )\n      0 0,\n    linear-gradient(\n      45deg,\n      #343702 0%,\n      #184500 20%,\n      #187546 30%,\n      #006782 40%,\n      #0b1284 50%,\n      #760ea1 60%,\n      #83096e 70%,\n      #840b2a 80%,\n      #b13e12 90%,\n      #e27412 100%\n    );\n  background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px,\n    530px 530px, 730px 730px, 100% 100%;\n  background-color: #840b2a;\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-133963",
+    "title": "Modern Zebra 66",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.165Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 200px; /* control the size */\n  --c1: #1d1d1d;\n  --c2: #4e4f51;\n  --c3: #3c3c3c;\n\n  background: repeating-conic-gradient(\n        from 30deg,\n        #0000 0 120deg,\n        var(--c3) 0 180deg\n      )\n      calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),\n    repeating-conic-gradient(\n      from 30deg,\n      var(--c1) 0 60deg,\n      var(--c2) 0 120deg,\n      var(--c3) 0 180deg\n    );\n  background-size: var(--s) calc(var(--s) * 0.577);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-563401",
+    "title": "Nasty Snake 68",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.177Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp  - Tags: simple, pattern, Christmas */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 75px; /* control the size */\n\n  --_c: #0000, #fff 1deg 79deg, #0000 81deg;\n  --g0: conic-gradient(from 140deg at 50% 87.5%, var(--_c));\n  --g1: conic-gradient(from 140deg at 50% 81.25%, var(--_c));\n  --g2: conic-gradient(from 140deg at 50% 75%, var(--_c));\n  --g3: conic-gradient(at 10% 20%, #0000 75%, #fff 0);\n  background: var(--g0) 0 calc(var(--s) / -4),\n    var(--g0) var(--s) calc(3 * var(--s) / 4), var(--g1),\n    var(--g1) var(--s) var(--s), var(--g2) 0 calc(var(--s) / 4),\n    var(--g2) var(--s) calc(5 * var(--s) / 4),\n    var(--g3) calc(var(--s) / -10) var(--s),\n    var(--g3) calc(9 * var(--s) / 10) calc(2 * var(--s)),\n    repeating-conic-gradient(from 45deg, #a31e39 0 25%, #31570e 0 50%);\n  background-size: calc(2 * var(--s)) calc(2 * var(--s));\n}",
+    "tags": [
+      "simple",
+      "pattern",
+      "christmas"
+    ]
+  },
+  {
+    "id": "uiv-176489",
+    "title": "Neat Parrot 45",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.223Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://css-pattern.com/ - Name: Temani Afif - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 100px; /* control the size */\n  --c1: #f8b195;\n  --c2: #355c7d;\n\n  --_g: var(--c2) 6% 14%, var(--c1) 16% 24%, var(--c2) 26% 34%,\n    var(--c1) 36% 44%, var(--c2) 46% 54%, var(--c1) 56% 64%, var(--c2) 66% 74%,\n    var(--c1) 76% 84%, var(--c2) 86% 94%;\n  background: radial-gradient(\n      100% 100% at 100% 0,\n      var(--c1) 4%,\n      var(--_g),\n      #0008 96%,\n      #0000\n    ),\n    radial-gradient(\n        100% 100% at 0 100%,\n        #0000,\n        #0008 4%,\n        var(--_g),\n        var(--c1) 96%\n      )\n      var(--c1);\n  background-size: var(--s) var(--s);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-504244",
+    "title": "Old Hound 37",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.157Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp  - Tags: simple, minimalist, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 200px; /* control the size */\n\n  --_g: #dc9d37 25%, #fed450 0 50%, #0000 0;\n  --_l1: #fff 0 1px, #0000 0 calc(25% - 1px), #fff 0 25%;\n  --_l2: #fff 0 1px, #0000 0 calc(50% - 1px), #fff 0 50%;\n  background: repeating-linear-gradient(45deg, var(--_l1)),\n    repeating-linear-gradient(-45deg, var(--_l1)),\n    repeating-linear-gradient(0deg, var(--_l2)),\n    repeating-linear-gradient(90deg, var(--_l2)),\n    conic-gradient(from 135deg at 25% 75%, var(--_g)),\n    conic-gradient(from 225deg at 25% 25%, var(--_g)),\n    conic-gradient(from 45deg at 75% 75%, var(--_g)),\n    conic-gradient(from -45deg at 75% 25%, var(--_g)),\n    repeating-conic-gradient(#125c65 0 45deg, #bc4a33 0 90deg);\n  background-size: var(--s) var(--s);\n}",
+    "tags": [
+      "simple",
+      "minimalist",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-707559",
+    "title": "Orange Bird 11",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.206Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp  - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 50px; /* control the size */\n  --t: 6px; /* control the thickness */\n  --c1: #084c7f;\n  --c2: #fef5e9;\n\n  --_c: #0000 calc(98% - var(--t)), var(--c1) calc(100% - var(--t)) 98%, #0000;\n  --_s: calc(2 * var(--s)) calc(5 * var(--s) / 2);\n  --_r0: /var(--_s) radial-gradient(calc(var(--s) / 2) at 0 20%, var(--_c));\n  --_r1: /var(--_s) radial-gradient(calc(var(--s) / 2) at 100% 20%, var(--_c));\n  background: 0 0 var(--_r0),\n    calc(-1 * var(--s)) calc(5 * var(--s) / 4) var(--_r0), var(--s) 0 var(--_r1),\n    0 calc(5 * var(--s) / 4) var(--_r1),\n    conic-gradient(at var(--t) calc(20% + 2 * var(--t)), #0000 75%, var(--c1) 0)\n      calc(var(--t) / -2) calc(var(--s) - var(--t)) / var(--s)\n      calc(5 * var(--s) / 4),\n    repeating-conic-gradient(var(--c2) 0 25%, #0000 0 50%) var(--s)\n      calc(var(--s) / -8) / var(--_s),\n    conic-gradient(from 90deg at var(--t) var(--t), var(--c2) 25%, var(--c1) 0)\n      calc((var(--s) - var(--t)) / 2) calc((var(--s) - var(--t)) / 2) / var(--s)\n      calc(5 * var(--s) / 4);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-243560",
+    "title": "Pink Puma 38",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.213Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 105px; /* control the size */\n  --c1: #b9b9b9;\n  --c2: #dcdcdc;\n  --c3: #fafafa;\n\n  background: conic-gradient(\n        from 75deg,\n        var(--c1) 15deg,\n        var(--c2) 0 30deg,\n        #0000 0 180deg,\n        var(--c2) 0 195deg,\n        var(--c1) 0 210deg,\n        #0000 0\n      )\n      calc(0.5 * var(--s)) calc(0.5 * var(--s) / 0.577),\n    conic-gradient(\n      var(--c1) 30deg,\n      var(--c3) 0 75deg,\n      var(--c1) 0 90deg,\n      var(--c2) 0 105deg,\n      var(--c3) 0 150deg,\n      var(--c2) 0 180deg,\n      var(--c3) 0 210deg,\n      var(--c1) 0 256deg,\n      var(--c2) 0 270deg,\n      var(--c1) 0 286deg,\n      var(--c2) 0 331deg,\n      var(--c3) 0\n    );\n  background-size: var(--s) calc(var(--s) / 0.577);\n  /* 0.577=tan(30deg)*/\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-394907",
+    "title": "Serious Cobra 89",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.848Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp  - Tags: simple, minimalist, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 100px; /* control the size */\n\n  --_g: #0000 90deg, #366 0;\n  background: conic-gradient(from 90deg at 2px 2px, var(--_g)),\n    conic-gradient(from 90deg at 1px 1px, var(--_g));\n  background-size: var(--s) var(--s), calc(var(--s) / 5) calc(var(--s) / 5);\n}",
+    "tags": [
+      "simple",
+      "minimalist",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-911567",
+    "title": "Silent Cow 55",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.667Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 194px; /* control the size */\n  --c1: #f6edb3;\n  --c2: #acc4a3;\n\n  --_l: #0000 calc(25% / 3), var(--c1) 0 25%, #0000 0;\n  --_g: conic-gradient(from 120deg at 50% 87.5%, var(--c1) 120deg, #0000 0);\n\n  background: var(--_g), var(--_g) 0 calc(var(--s) / 2),\n    conic-gradient(from 180deg at 75%, var(--c2) 60deg, #0000 0),\n    conic-gradient(from 60deg at 75% 75%, var(--c1) 0 60deg, #0000 0),\n    linear-gradient(150deg, var(--_l)) 0 calc(var(--s) / 2),\n    conic-gradient(\n      at 25% 25%,\n      #0000 50%,\n      var(--c2) 0 240deg,\n      var(--c1) 0 300deg,\n      var(--c2) 0\n    ),\n    linear-gradient(-150deg, var(--_l)) #55897c /* third color here */;\n  background-size: calc(0.866 * var(--s)) var(--s);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-498061",
+    "title": "Slimy Dragonfly 4",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.667Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 140px; /* control the size */\n\n  --_g: #0000 52%, #170409 /* first color */ 54% 57%, #0000 59%;\n  background: radial-gradient(farthest-side at -33.33% 50%, var(--_g)) 0\n      calc(var(--s) / 2),\n    radial-gradient(farthest-side at 50% 133.33%, var(--_g)) calc(var(--s) / 2)\n      0,\n    radial-gradient(farthest-side at 133.33% 50%, var(--_g)),\n    radial-gradient(farthest-side at 50% -33.33%, var(--_g)), #67917a; /* second color */\n  background-size: calc(var(--s) / 4.667) var(--s),\n    var(--s) calc(var(--s) / 4.667);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-199692",
+    "title": "Smart Ladybug 43",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.868Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp  - Tags: simple, material design, pattern, honeycomb */\n.container {\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(\n        circle farthest-side at 0% 50%,\n        #fb1 23.5%,\n        rgba(240, 166, 17, 0) 0\n      )\n      21px 30px,\n    radial-gradient(\n        circle farthest-side at 0% 50%,\n        #b71 24%,\n        rgba(240, 166, 17, 0) 0\n      )\n      19px 30px,\n    linear-gradient(\n        #fb1 14%,\n        rgba(240, 166, 17, 0) 0,\n        rgba(240, 166, 17, 0) 85%,\n        #fb1 0\n      )\n      0 0,\n    linear-gradient(\n        150deg,\n        #fb1 24%,\n        #b71 0,\n        #b71 26%,\n        rgba(240, 166, 17, 0) 0,\n        rgba(240, 166, 17, 0) 74%,\n        #b71 0,\n        #b71 76%,\n        #fb1 0\n      )\n      0 0,\n    linear-gradient(\n        30deg,\n        #fb1 24%,\n        #b71 0,\n        #b71 26%,\n        rgba(240, 166, 17, 0) 0,\n        rgba(240, 166, 17, 0) 74%,\n        #b71 0,\n        #b71 76%,\n        #fb1 0\n      )\n      0 0,\n    linear-gradient(90deg, #b71 2%, #fb1 0, #fb1 98%, #b71 0%) 0 0 #fb1;\n  background-size: 40px 60px;\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern",
+      "honeycomb"
+    ]
+  },
+  {
+    "id": "uiv-351753",
+    "title": "Sour Crab 65",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.663Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 222px;\n  --c1: #7f727b;\n  --c2: #d6b4c2;\n  --c3: #baa0ab;\n\n  --_g: var(--c1) 10%, var(--c2) 10.5% 19%, #0000 19.5% 80.5%,\n    var(--c2) 81% 89.5%, var(--c3) 90%;\n  --_c: from -90deg at 37.5% 50%, #0000 75%;\n  --_l1: linear-gradient(145deg, var(--_g));\n  --_l2: linear-gradient(35deg, var(--_g));\n  background: var(--_l1), var(--_l1) calc(var(--s) / 2) var(--s), var(--_l2),\n    var(--_l2) calc(var(--s) / 2) var(--s),\n    conic-gradient(var(--_c), var(--c1) 0) calc(var(--s) / 8) 0,\n    conic-gradient(var(--_c), var(--c3) 0) calc(var(--s) / 2) 0,\n    linear-gradient(\n      90deg,\n      var(--c3) 38%,\n      var(--c1) 0 50%,\n      var(--c3) 0 62%,\n      var(--c1) 0\n    );\n  background-size: var(--s) calc(2 * var(--s) / 3);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-746389",
+    "title": "Stupid Insect 76",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.691Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Source: https://github.com/Afif13 - Website: https://github.com/Afif13  - Name: Afif13  - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 150px; /* control the size */\n  --c1: #f7d2a1;\n  --c2: #05057e;\n\n  --_g: var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%,\n    var(--c1) 36% 45%, var(--c2) 46% 55%, var(--c1) 56% 65%, var(--c2) 66% 75%,\n    var(--c1) 76% 85%, var(--c2) 86% 95%, #0000 96%;\n  background: radial-gradient(50% 50% at 100% 0, var(--_g)),\n    radial-gradient(50% 50% at 0 100%, var(--_g)),\n    radial-gradient(50% 50%, var(--_g)),\n    radial-gradient(50% 50%, var(--_g)) calc(var(--s) / 2) calc(var(--s) / 2)\n      var(--c1);\n  background-size: var(--s) var(--s);\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-436117",
+    "title": "Ugly Bear 28",
+    "author": "csemszepp",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.671Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by csemszepp - Tags: simple, material design, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  background: #fff;\n  filter: contrast(7);\n  --mask: linear-gradient(red, rgba(0, 0, 0, 0.45));\n}\n\n.container::before {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: radial-gradient(#000, transparent) 0 0/1em 1em space;\n  -webkit-mask: var(--mask);\n  mask: var(--mask);\n  content: \"\";\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-853003",
+    "title": "Brown Cheetah 84",
+    "author": "elijahgummer",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.710Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, blue, modern, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  background: #f0f0f0;\n}\n\n.container::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(\n      45deg,\n      #3498db 25%,\n      transparent 25%,\n      transparent 50%,\n      #3498db 50%,\n      #3498db 75%,\n      transparent 75%,\n      transparent\n    ),\n    linear-gradient(\n      -45deg,\n      #3498db 25%,\n      transparent 25%,\n      transparent 50%,\n      #3498db 50%,\n      #3498db 75%,\n      transparent 75%,\n      transparent\n    );\n  background-size: 20px 20px;\n  opacity: 0.8;\n}",
+    "tags": [
+      "simple",
+      "blue",
+      "modern",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-749390",
+    "title": "Hungry Bullfrog 10",
+    "author": "elijahgummer",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.699Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, material design, green, blue, minimalist, gradient, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(\n    45deg,\n    #3498db,\n    #2ecc71\n  ); /* Gradient background */\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */\n  border-radius: 10px; /* Rounded corners */\n  position: relative;\n  overflow: hidden;\n}\n\n.container::before {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(\n      90deg,\n      rgba(255, 255, 255, 0.1) 1px,\n      transparent 1px\n    ),\n    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);\n  background-size: 20px 20px;\n  pointer-events: none; /* Allow clicking through the pattern layer */\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "green",
+      "blue",
+      "minimalist",
+      "gradient",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-661427",
+    "title": "Mean Emu 70",
+    "author": "elijahgummer",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.667Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, animation, blue, gradient, circle, transition, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: lightblue;\n  position: relative;\n  overflow: hidden;\n}\n\n.container::before {\n  content: \"\";\n  position: absolute;\n  top: -50%;\n  left: -50%;\n  width: 200%;\n  height: 200%;\n  background: radial-gradient(circle, #3498db 10%, transparent 20%),\n    radial-gradient(circle, transparent 10%, #3498db 20%);\n  background-size: 30px 30px; /* Adjust the size of the pattern */\n  animation: moveBackground 8s linear infinite; /* Adjust the animation duration and timing function */\n}\n\n@keyframes moveBackground {\n  0% {\n    transform: translate(0, 0);\n  }\n  100% {\n    transform: translate(20%, 20%);\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "blue",
+      "gradient",
+      "circle",
+      "transition",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-769689",
+    "title": "Big Shrimp 86",
+    "author": "escannord",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.680Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by escannord  - Tags: simple, white, pattern, notebook */\n.container {\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(#3f87a6 10%, #ebf8e1a2 10%),\n    linear-gradient(to right, #ebf8e100 10%, #c73030 10% 10.2%, #ebf8e100 10.5%);\n  background-size: 100% 25px, 100% 100%;\n  background-repeat: repeat, no-repeat;\n  /* Add your background pattern here */\n}",
+    "tags": [
+      "simple",
+      "white",
+      "pattern",
+      "notebook"
+    ]
+  },
+  {
+    "id": "uiv-224299",
+    "title": "Hard Rabbit 4",
+    "author": "escannord",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.717Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by escannord  - Tags: simple, black, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: rgba(29, 31, 32, 0.904)\n    radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);\n\n  background-size: 11px 11px;\n}",
+    "tags": [
+      "simple",
+      "black",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-559950",
+    "title": "Heavy Fish 82",
+    "author": "escannord",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.672Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by escannord  - Tags: simple, gradients, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: repeating-conic-gradient(\n      rgba(195, 195, 197, 0.1) 0%,\n      rgb(7, 7, 7) 10%,\n      rgba(195, 195, 197, 0.3) 20%\n    ),\n    radial-gradient(rgba(7, 112, 94, 0.3), rgba(61, 26, 189, 0.3)),\n    linear-gradient(rgba(155, 0, 0, 0.3), rgba(13, 13, 117, 0.2)),\n    radial-gradient(\n      circle,\n      rgb(255, 252, 252),\n      rgb(10, 10, 10) 30%,\n      rgba(84, 84, 88, 0.562) 0%\n    );\n  background-size: 10px 10px;\n}",
+    "tags": [
+      "simple",
+      "gradients",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-407374",
+    "title": "Little Parrot 76",
+    "author": "escannord",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.701Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by escannord  - Tags: 3d, black, pattern, sphere */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: lightblue;\n  background: radial-gradient(\n      circle,\n      rgb(170, 162, 162),\n      #333 30%,\n      rgba(88, 84, 84, 0.226) 0%\n    ),\n    radial-gradient(\n      circle at 40px 40px,\n      rgb(233, 228, 228),\n      #333 30%,\n      rgba(88, 84, 84, 0) 0%\n    ),\n    radial-gradient(\n      circle at 600px 200px,\n      rgb(233, 228, 228),\n      #333 10%,\n      rgba(88, 84, 84, 0) 0%\n    ),\n    radial-gradient(\n      circle at 800px 100px,\n      rgb(233, 228, 228),\n      #333 10%,\n      rgba(88, 84, 84, 0) 0%\n    ),\n    radial-gradient(\n      circle at 700px 500px,\n      rgb(233, 228, 228),\n      #333 2%,\n      rgba(88, 84, 84, 0.123) 0%\n    ),\n    radial-gradient(\n      circle at 200px 400px,\n      rgb(233, 228, 228),\n      #333 1%,\n      rgba(88, 84, 84, 0) 0%\n    ),\n    radial-gradient(\n      circle at 300px 700px,\n      rgb(233, 228, 228),\n      #333 15%,\n      rgba(88, 84, 84, 0) 0%\n    ),\n    radial-gradient(\n      circle at 900px 500px,\n      rgb(233, 228, 228),\n      #333 20%,\n      rgba(88, 84, 84, 0) 0%\n    ),\n    radial-gradient(\n      circle at 650px 400px,\n      rgb(233, 228, 228),\n      #333 10%,\n      rgba(88, 84, 84, 0) 0%\n    ),\n    radial-gradient(\n      circle at 600px 600px,\n      rgb(233, 228, 228),\n      #333 1%,\n      rgba(88, 84, 84, 0.959) 0%\n    );\n}",
+    "tags": [
+      "3d",
+      "black",
+      "pattern",
+      "sphere"
+    ]
+  },
+  {
+    "id": "uiv-731648",
+    "title": "Pretty Eagle 45",
+    "author": "escannord",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:27.724Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by escannord  - Tags: 3d, white, black, gradient, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --bg: linear-gradient(\n      45deg,\n      rgb(0, 0, 0) 25%,\n      transparent 25%,\n      transparent 75%,\n      rgb(0, 0, 0) 75%,\n      rgb(0, 0, 0)\n    ),\n    linear-gradient(\n      45deg,\n      rgb(0, 0, 0) 25%,\n      white 25%,\n      white 75%,\n      rgb(0, 0, 0) 75%,\n      rgb(0, 0, 0)\n    );\n  --bgsize: 60px 60px;\n  --bgposition: 0 0, 30px 30px;\n  background-color: white;\n  background-image: var(--bg);\n  background-size: var(--bgsize);\n  background-position: var(--bgposition);\n  position: relative;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  overflow: hidden;\n  box-shadow: inset 0px 0px 500px rgb(15, 15, 15);\n}\n\n.container::before {\n  content: \"\";\n  width: 100%;\n  height: 150%;\n  box-shadow: 0px -100px 500px black, inset 0px 100px 500px rgb(15, 15, 15);\n  position: absolute;\n  top: 55%;\n  background-image: var(--bg);\n  background-size: var(--bgsize);\n  background-position: var(--bgposition);\n  transform-origin: top;\n  transform: rotateX(80deg);\n}",
+    "tags": [
+      "3d",
+      "white",
+      "black",
+      "gradient",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-339539",
+    "title": "Tricky Moth 87",
+    "author": "escannord",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.365Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by escannord  - Tags: simple, blue, plus, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: rgb(57, 59, 59);\n  background: radial-gradient(\n    circle at 50%,\n    rgb(41, 39, 39),\n    #333 50%,\n    transparent 51%,\n    #eee 10%,\n    rgb(0, 0, 0) 55% 72%,\n    rgb(15, 96, 189) 50%\n  );\n  background-size: 10px 10px;\n}",
+    "tags": [
+      "simple",
+      "blue",
+      "plus",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-158977",
+    "title": "Ancient Bulldog 55",
+    "author": "iSweat-exe",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.166Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by iSweat-exe  - Tags: material design, glassmorphism, success, pattern, background, 3D */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0),\n    conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0) 60px 60px,\n    conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0) calc(2 * 60px)\n      calc(2 * 60px),\n    conic-gradient(at 50% 25%, #0000 75%, #47d3ff 0) calc(3 * 60px)\n      calc(3 * 60px),\n    repeating-linear-gradient(135deg, #adafff 0 12.5%, #474bff 0 25%);\n  background-size: calc(4 * 60px) calc(4 * 60px);\n}",
+    "tags": [
+      "material design",
+      "glassmorphism",
+      "success",
+      "pattern",
+      "background",
+      "3d"
+    ]
+  },
+  {
+    "id": "uiv-450179",
+    "title": "Afraid Sheep 52",
+    "author": "jeremyssocial",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.186Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by jeremyssocial  - Tags: dark, animated, pattern */\n.container {\n  /* Basic dimensions and centering */\n  width: 100%;\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  /* Dark mode colors and gradient */\n  background: #121212; /* Fallback for browsers that don't support gradients */\n  background: linear-gradient(\n    135deg,\n    #121212 25%,\n    #1a1a1a 25%,\n    #1a1a1a 50%,\n    #121212 50%,\n    #121212 75%,\n    #1a1a1a 75%,\n    #1a1a1a\n  );\n  background-size: 40px 40px;\n\n  /* Animation */\n  animation: move 4s linear infinite;\n}\n\n@keyframes move {\n  0% {\n    background-position: 0 0;\n  }\n  100% {\n    background-position: 40px 40px;\n  }\n}",
+    "tags": [
+      "dark",
+      "animated",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-524304",
+    "title": "Short Warthog 33",
+    "author": "kennyotsu",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.365Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by kennyotsu - Tags: pattern, figma, dot */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background-color: #313131;\n  background-image: radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0);\n  background-size: 30px 30px;\n  background-position: -5px -5px\n}",
+    "tags": [
+      "pattern",
+      "figma",
+      "dot"
+    ]
+  },
+  {
+    "id": "uiv-347187",
+    "title": "Terrible Sloth 75",
+    "author": "kennyotsu",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.188Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by kennyotsu  - Tags: simple, pink, pattern, dog bone */\n.container {\n  --color: #c09bd8;\n  background-color: #9f84bd;\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n.container::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  opacity: 0.8;\n  background: radial-gradient(circle, var(--color) 15%, transparent 15%),\n    radial-gradient(circle, var(--color) 15%, transparent 15%) 6px -6px,\n    radial-gradient(circle, var(--color) 15%, transparent 15%) 6px -1px,\n    radial-gradient(circle, var(--color) 15%, transparent 15%) 10px 2px,\n    radial-gradient(circle, var(--color) 15%, transparent 15%) 14px 5px,\n    radial-gradient(circle, var(--color) 15%, transparent 15%) 18px 8px,\n    radial-gradient(circle, var(--color) 15%, transparent 15%) 18px 12px,\n    radial-gradient(circle, var(--color) 15%, transparent 15%) 23px 6px;\n  background-size: 50px 50px;\n}",
+    "tags": [
+      "simple",
+      "pink",
+      "pattern",
+      "dog bone"
+    ]
+  },
+  {
+    "id": "uiv-412087",
+    "title": "Spotty Shrimp 35",
+    "author": "lautyYT",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.230Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by lautyYT - Tags: simple, blue, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-linear-gradient(45deg, #0050fc,#0050fc 20px, #0684fade 20px,#0684fade 40px);\n}",
+    "tags": [
+      "simple",
+      "blue",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-371180",
+    "title": "Rude Cobra 0",
+    "author": "liuyingmei",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.177Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by liuyingmei  - Tags: simple, green, blue, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-linear-gradient(\n    -135deg,\n    yellow,\n    pink 10px,\n    green 10px,\n    skyblue 20px\n  );\n}",
+    "tags": [
+      "simple",
+      "green",
+      "blue",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-820989",
+    "title": "Grumpy Lizard 36",
+    "author": "mRcOol7",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.210Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by mRcOol7  - Tags: pink, black, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --s: 150px;\n  --c1: #282c34;\n  --c2: #3e4149;\n  --c3: #525762;\n  --c4: #ff6384;\n  --c5: #36a2eb;\n  --c6: #4bc0c0;\n  --c7: #ffcc29;\n  --c8: #8e8f91;\n  --c9: #626262;\n\n  background: repeating-conic-gradient(\n        from 30deg,\n        #0000 0 120deg,\n        var(--c3) 0 180deg\n      )\n      calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),\n    repeating-conic-gradient(\n      from 30deg,\n      var(--c1) 0 45deg,\n      var(--c2) 0 90deg,\n      var(--c3) 0 135deg,\n      var(--c4) 0 180deg,\n      var(--c5) 0 225deg,\n      var(--c6) 0 270deg,\n      var(--c7) 0 315deg,\n      var(--c8) 0 360deg,\n      var(--c9) 0 405deg\n    );\n  background-size: var(--s) calc(var(--s) * 0.577);\n}",
+    "tags": [
+      "pink",
+      "black",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-194349",
+    "title": "Perfect Fox 0",
+    "author": "milegelu",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.176Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by milegelu  - Tags: simple, black, clean */\n.container {\n  width: 100%;\n  height: 100%;\n\n  background: #000000;\n  --gap: 5em;\n  --line: 1px;\n  --color: rgba(255, 255, 255, 0.2);\n\n  background-image: linear-gradient(\n      -90deg,\n      transparent calc(var(--gap) - var(--line)),\n      var(--color) calc(var(--gap) - var(--line) + 1px),\n      var(--color) var(--gap)\n    ),\n    linear-gradient(\n      0deg,\n      transparent calc(var(--gap) - var(--line)),\n      var(--color) calc(var(--gap) - var(--line) + 1px),\n      var(--color) var(--gap)\n    );\n  background-size: var(--gap) var(--gap);\n}",
+    "tags": [
+      "simple",
+      "black",
+      "clean"
+    ]
+  },
+  {
+    "id": "uiv-696055",
+    "title": "Grumpy Baboon 32",
+    "author": "mobinkakei",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.177Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by mobinkakei  - Tags: simple, blue, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  --s: 25px; /* control the size */\n  --c1: #1eaaee;\n  --c2: #171717;\n\n  --c: #0000 71%, var(--c1) 0 79%, #0000 0;\n  --_s: calc(var(--s) / 2) / calc(2 * var(--s)) calc(2 * var(--s));\n  background: linear-gradient(45deg, var(--c)) calc(var(--s) / -2) var(--_s),\n    linear-gradient(135deg, var(--c)) calc(var(--s) / 2) var(--_s),\n    radial-gradient(var(--c1) 35%, var(--c2) 37%) 0 0 / var(--s) var(--s);\n}",
+    "tags": [
+      "simple",
+      "blue",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-157949",
+    "title": "Loud Parrot 63",
+    "author": "mobinkakei",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.177Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by mobinkakei  - Tags: simple, white, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* control ize */\n  --u: 5px;\n  --c1: #ededee;\n  --c2: #000000;\n  --c3: #1e1e1e;\n  --gp: 50% / calc(var(--u) * 16.9) calc(var(--u) * 12.8);\n  background: conic-gradient(\n        from 122deg at 50% 85.15%,\n        var(--c2) 0 58deg,\n        var(--c3) 0 116deg,\n        #fff0 0 100%\n      )\n      var(--gp),\n    conic-gradient(from 122deg at 50% 72.5%, var(--c1) 0 116deg, #fff0 0 100%)\n      var(--gp),\n    conic-gradient(from 58deg at 82.85% 50%, var(--c3) 0 64deg, #fff0 0 100%)\n      var(--gp),\n    conic-gradient(\n        from 58deg at 66.87% 50%,\n        var(--c1) 0 64deg,\n        var(--c2) 0 130deg,\n        #fff0 0 100%\n      )\n      var(--gp),\n    conic-gradient(from 238deg at 17.15% 50%, var(--c2) 0 64deg, #fff0 0 100%)\n      var(--gp),\n    conic-gradient(\n        from 172deg at 33.13% 50%,\n        var(--c3) 0 66deg,\n        var(--c1) 0 130deg,\n        #fff0 0 100%\n      )\n      var(--gp),\n    linear-gradient(98deg, var(--c3) 0 15%, #fff0 calc(15% + 1px) 100%)\n      var(--gp),\n    linear-gradient(-98deg, var(--c2) 0 15%, #fff0 calc(15% + 1px) 100%)\n      var(--gp),\n    conic-gradient(\n        from -58deg at 50.25% 14.85%,\n        var(--c3) 0 58deg,\n        var(--c2) 0 116deg,\n        #fff0 0 100%\n      )\n      var(--gp),\n    conic-gradient(from -58deg at 50% 28.125%, var(--c1) 0 116deg, #fff0 0 100%)\n      var(--gp),\n    linear-gradient(90deg, var(--c2) 0 50%, var(--c3) 0 100%) var(--gp);\n}",
+    "tags": [
+      "simple",
+      "white",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-105855",
+    "title": "Tidy Cheetah 71",
+    "author": "mobinkakei",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.217Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by mobinkakei  - Tags: simple, blue, black, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --sz: 4px; /*** size ***/\n  --sp: 5s; /*** speed ***/\n  --b1: #211e1e; /*** color ***/\n  --b2: #1c1b18; /*** color ***/\n  --b3: #0c0b0a; /*** color ***/\n  --b4: #0c0b0ae0; /*** color ***/\n  --c1: #ffffff; /*** color ***/\n  --ts: 50% / calc(var(--sz) * 17.5) calc(var(--sz) * 29.5);\n  background:\n\t\t/* black shadows */ radial-gradient(\n        circle at 50% 50%,\n        var(--b4) calc(var(--sz) * 1),\n        #fff0 calc(var(--sz) * 8)\n      )\n      var(--ts),\n    radial-gradient(\n        circle at 0% 0%,\n        var(--b4) calc(var(--sz) * 1),\n        #fff0 calc(var(--sz) * 8)\n      )\n      var(--ts),\n    radial-gradient(\n        circle at 0% 100%,\n        var(--b4) calc(var(--sz) * 1),\n        #fff0 calc(var(--sz) * 8)\n      )\n      var(--ts),\n    radial-gradient(\n        circle at 100% 0%,\n        var(--b4) calc(var(--sz) * 1),\n        #fff0 calc(var(--sz) * 8)\n      )\n      var(--ts),\n    radial-gradient(\n        circle at 100% 100%,\n        var(--b4) calc(var(--sz) * 1),\n        #fff0 calc(var(--sz) * 8)\n      )\n      var(--ts),\n    /* border bottom */\n      conic-gradient(\n        from 90deg at 97.5% 67%,\n        var(--c1) 0 87.5deg,\n        #fff0 88deg 100%\n      )\n      var(--ts),\n    /*repeated*/\n      conic-gradient(\n        from 90deg at 97.5% 67%,\n        var(--c1) 0 87.5deg,\n        #fff0 88deg 100%\n      )\n      var(--ts),\n    conic-gradient(\n        from 182.5deg at 2.5% 67%,\n        #fff0 0 0deg,\n        var(--c1) 0.5deg 90deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    /*repeated*/\n      conic-gradient(\n        from 182.5deg at 2.5% 67%,\n        #fff0 0 0deg,\n        var(--c1) 0.5deg 90deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    /* border top */\n      conic-gradient(\n        from 270deg at 2.5% 33%,\n        var(--c1) 0 87.5deg,\n        #fff0 88deg 100%\n      )\n      var(--ts),\n    /*repeated*/\n      conic-gradient(\n        from 270deg at 2.5% 33%,\n        var(--c1) 0 87.5deg,\n        #fff0 88deg 100%\n      )\n      var(--ts),\n    conic-gradient(\n        from 2.5deg at 97.5% 33%,\n        #fff0 0 0deg,\n        var(--c1) 0.5deg 90deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    /*repeated*/\n      conic-gradient(\n        from 2.5deg at 97.5% 33%,\n        #fff0 0 0deg,\n        var(--c1) 0.5deg 90deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    /* bottom */\n      conic-gradient(\n        from 116.5deg at 50% 85.5%,\n        var(--b1) 0 127deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    /*repeated*/\n      conic-gradient(\n        from 116.5deg at 50% 85.5%,\n        var(--b1) 0 127deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    /*repeated*/\n      conic-gradient(\n        from 116.5deg at 50% 85.5%,\n        var(--b1) 0 127deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    conic-gradient(from 120deg at 50% 83%, var(--c1) 0 120deg, #fff0 0 100%)\n      var(--ts),\n    /* top */\n      conic-gradient(\n        from -63.5deg at 50% 14.5%,\n        var(--b1) 0 127deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    /*repeated*/\n      conic-gradient(\n        from -63.5deg at 50% 14.5%,\n        var(--b1) 0 127deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    /*repeated*/\n      conic-gradient(\n        from -63.5deg at 50% 14.5%,\n        var(--b1) 0 127deg,\n        #fff0 0 100%\n      )\n      var(--ts),\n    conic-gradient(from -60deg at 50% 17%, var(--c1) 0 120deg, #fff0 0 100%)\n      var(--ts),\n    /* central gradient */\n      conic-gradient(\n        from 0deg at 50% 50%,\n        #fff0 0 2deg,\n        var(--b2) 2.5deg 57.5deg,\n        #fff0 58deg 62.5deg,\n        var(--b1) 63deg 117.5deg,\n        #fff0 118deg 122.5deg,\n        var(--b3) 123deg 177.5deg,\n        #fff0 178deg 182deg,\n        var(--b2) 182.5deg 237.5deg,\n        #fff0 0 242.5deg,\n        var(--b1) 243deg 297.5deg,\n        #fff0 298deg 302.5deg,\n        var(--b3) 303deg 357.5deg,\n        #fff0 358deg 360deg\n      )\n      var(--ts),\n    /* bg */ var(--c1);\n  animation: colors var(--sp) linear 0s infinite;\n}\n\n@keyframes colors {\n  100% {\n    filter: hue-rotate(360deg);\n  }\n}",
+    "tags": [
+      "simple",
+      "blue",
+      "black",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-704843",
+    "title": "Black Emu 83",
+    "author": "themrsami",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.176Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by themrsami - Tags: material design, red, pink, themrsami, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(circle at 50% 50%, transparent 20%, darkred 21% 28%, transparent 29%);\n  background-color: lightred;\n  background-size: 60px 60px;\n}",
+    "tags": [
+      "material design",
+      "red",
+      "pink",
+      "themrsami",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-972889",
+    "title": "Curly Robin 70",
+    "author": "themrsami",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.215Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by themrsami - Tags: green, pattern, thmrsami */\n.container {\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(45deg, green 25%, transparent 25%, transparent 75%, green 75%, green),\n    linear-gradient(45deg, yellow, yellow);\n  background-size: 100px 100px;\n  background-position: 0, 50px 50px;\n}",
+    "tags": [
+      "green",
+      "pattern",
+      "thmrsami"
+    ]
+  },
+  {
+    "id": "uiv-454376",
+    "title": "Dull Moose 46",
+    "author": "themrsami",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.201Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by themrsami - Tags: material design, green, themrsami, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(circle at 0% 50%, transparent 20%, darkgreen 21% 28%, transparent 29%),\n    radial-gradient(circle at 50% 50%, transparent 20%, darkgreen 21% 28%, transparent 29%),\n    radial-gradient(circle at 100% 50%, transparent 20%, darkgreen 21% 28%, transparent 29%);\n  background-color: lightgreen;\n  background-size: 60px 70px;\n}",
+    "tags": [
+      "material design",
+      "green",
+      "themrsami",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-446442",
+    "title": "Honest Chicken 11",
+    "author": "themrsami",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.840Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by themrsami - Tags: red, blue, pattern, thmrsami */\n.container {\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(45deg, #3cb371 25%, transparent 25%),\n    linear-gradient(-45deg, #3cb371 25%, transparent 25%),\n    linear-gradient(45deg, transparent 75%, #7cfc00 75%),\n    linear-gradient(-45deg, transparent 75%, #7cfc00 75%);\n  background-size: 100px 100px;\n  background-position: 0 0, 50px 0, 50px -50px, 0px 50px;\n}",
+    "tags": [
+      "red",
+      "blue",
+      "pattern",
+      "thmrsami"
+    ]
+  },
+  {
+    "id": "uiv-817034",
+    "title": "Hot Fly 3",
+    "author": "themrsami",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.654Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by themrsami - Tags: material design, black, themrsami, pattern */\n.container::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle, black 10%, transparent 10%);\n  background-size: 30px 30px;\n}",
+    "tags": [
+      "material design",
+      "black",
+      "themrsami",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-615414",
+    "title": "Odd Liger 51",
+    "author": "themrsami",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.659Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by themrsami - Tags: simple, themrsami, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background: repeating-linear-gradient(\n    45deg,\n    #008080,\n    #008080 10px,\n    #20b2aa 10px,\n    #20b2aa 20px\n  );\n}",
+    "tags": [
+      "simple",
+      "themrsami",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-865127",
+    "title": "Old Snail 13",
+    "author": "themrsami",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.845Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by themrsami - Tags: simple, purple, creative, themrsami, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  background-color: purple;\n  background-image: linear-gradient(45deg, transparent 33.3%, orange 33.3%, orange 66.6%, transparent 66.6%),\n    linear-gradient(-45deg, transparent 33.3%, orange 33.3%, orange 66.6%, transparent 66.6%);\n  background-size: 60px 60px;\n}",
+    "tags": [
+      "simple",
+      "purple",
+      "creative",
+      "themrsami",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-356967",
+    "title": "Yellow Grasshopper 97",
+    "author": "themrsami",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.660Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by themrsami - Tags: simple, material design, purple, themrsami, pattern, cream */\n.container {\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(circle at 50% 58.8%, transparent 20%, darkblue 21% 28%, transparent 29%),\n    radial-gradient(circle at 50% 0%, transparent 20%, darkblue 21% 28%, transparent 29%),\n    radial-gradient(circle at 50% 41.2%, transparent 10%, darkblue 11% 18%, transparent 19%),\n    radial-gradient(circle at 50% 100%, transparent 10%, darkblue 11% 18%, transparent 19%),\n    radial-gradient(circle at 50% 70.7%, transparent 10%, darkblue 11% 18%, transparent 19%),\n    radial-gradient(circle at 50% -20.7%, transparent 10%, darkblue 11% 18%, transparent 19%);\n  background-color: lightyellow;\n  background-size: 100px 100px;\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "purple",
+      "themrsami",
+      "pattern",
+      "cream"
+    ]
+  },
+  {
+    "id": "uiv-958073",
+    "title": "Jolly Parrot 30",
+    "author": "uiverse-astronaut",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.704Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by uiverse-astronaut - Tags: purple, diamond, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  --color: #a748f5;\n  background: linear-gradient(95deg, var(--color) 25%, transparent 25%) -50px 0,\n        linear-gradient(-15deg, var(--color) 25%, transparent 25%) -50px 0,\n        linear-gradient(25deg, transparent 75%, var(--color) 75%) -50px 0,\n        linear-gradient(-45deg, transparent 75%, var(--color) 75%) -50px 0,\n        linear-gradient(-15deg, transparent 75%, var(--color) 75%) -50px 0;\n  background-color: #b669fd;\n  background-size: 40px 40px;\n}",
+    "tags": [
+      "purple",
+      "diamond",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-756462",
+    "title": "Mean Eel 73",
+    "author": "uiverse-astronaut",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.660Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by uiverse-astronaut - Tags: pattern, stripes, diagonal */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  background: repeating-linear-gradient(\n    45deg,\n    #e5e5f7,\n    #e5e5f7 10px,\n    #444cf7 10px,\n    #444cf7 20px\n    );\n}",
+    "tags": [
+      "pattern",
+      "stripes",
+      "diagonal"
+    ]
+  },
+  {
+    "id": "uiv-121616",
+    "title": "Splendid Goat 87",
+    "author": "uiverse-astronaut",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.697Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by uiverse-astronaut - Tags: gray, pattern, chess, checked, squares */\n.container {\n  width: 100%;\n  height: 100%;\n  background-color: white;\n  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc), \n                    linear-gradient(45deg, #ccc 25%, white 25%, white 75%, #ccc 75%, #ccc);\n  background-size: 30px 30px;\n  background-position: 0 0, 15px 15px;\n}",
+    "tags": [
+      "gray",
+      "pattern",
+      "chess",
+      "checked",
+      "squares"
+    ]
+  },
+  {
+    "id": "uiv-959462",
+    "title": "Stale Chicken 35",
+    "author": "uiverse-astronaut",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.663Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by uiverse-astronaut - Tags: pink, pattern, stripes */\n.container {\n  width: 100%;\n  height: 100%;\n  --color: #faa7d8;\n  background: linear-gradient(45deg, var(--color) 25%, transparent 25%) -50px 0,\n        linear-gradient(-45deg, var(--color) 25%, transparent 25%) -50px 0,\n        linear-gradient(45deg, transparent 75%, var(--color) 75%) -50px 0,\n        linear-gradient(-45deg, transparent 75%, var(--color) 75%) -50px 0;\n  background-color: #e5e5f7;\n  background-size: 10px 40px;\n}",
+    "tags": [
+      "pink",
+      "pattern",
+      "stripes"
+    ]
+  },
+  {
+    "id": "uiv-268312",
+    "title": "Tall Vampirebat 56",
+    "author": "uiverse-astronaut",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.659Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by uiverse-astronaut - Tags: colorful, grid, pattern, checkered, boxes */\n.container {\n  width: 100%;\n  height: 100%;\n  --color1: rgb(108, 231, 221);\n  --color2: rgb(250, 255, 178);\n  background-color: var(--color1);\n  background-image: linear-gradient(45deg, var(--color2) 25%, transparent 25%, transparent 75%, var(--color2) 75%, var(--color2)), \n                    linear-gradient(45deg, var(--color2) 25%, var(--color1) 25%, var(--color1) 75%, var(--color2) 75%, var(--color2));\n  background-size: 60px 60px;\n  background-position: 0 0, 30px 30px;\n}",
+    "tags": [
+      "colorful",
+      "grid",
+      "pattern",
+      "checkered",
+      "boxes"
+    ]
+  },
+  {
+    "id": "uiv-265445",
+    "title": "Grumpy Owl 55",
+    "author": "vikas7754",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.705Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by vikas7754  - Tags: simple, clean, pattern */\n.container {\n  width: 100%;\n  height: 100%;\n  /* Add your background pattern here */\n  --sz: 15px;\n  --c0: #000;\n  --c1: #c71175;\n  --ts: 50% / calc(var(--sz) * 8) calc(var(--sz) * 16);\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n  --dot: var(--c1) 0 calc(var(--sz) * 0.78),\n    #fff0 calc(calc(var(--sz) * 0.78) + 1px) 100%;\n  --dot2: radial-gradient(circle at 90% 0%, var(--dot)) var(--ts),\n    radial-gradient(circle at 65% 0%, var(--dot)) var(--ts),\n    radial-gradient(circle at 40% 0%, var(--dot)) var(--ts),\n    radial-gradient(circle at 15% 0%, var(--dot)) var(--ts);\n  --cg1: conic-gradient(from -90deg at 5% 51%, var(--c0) 0 90deg, #fff0 0 100%)\n    var(--ts);\n  --cg2: conic-gradient(from -90deg at 25% 50%, var(--c1) 0 90deg, #fff0 0 100%)\n    var(--ts);\n  --cg3: conic-gradient(\n      from -90deg at 30% 38.5%,\n      var(--c0) 0 90deg,\n      #fff0 0 100%\n    )\n    var(--ts);\n  --cg4: conic-gradient(\n      from -90deg at 50% 37.5%,\n      var(--c1) 0 90deg,\n      #fff0 0 100%\n    )\n    var(--ts);\n  --cg5: conic-gradient(from -90deg at 55% 26%, var(--c0) 0 90deg, #fff0 0 100%)\n    var(--ts);\n  --cg6: conic-gradient(from -90deg at 75% 25%, var(--c1) 0 90deg, #fff0 0 100%)\n    var(--ts);\n  --cg7: conic-gradient(\n      from -90deg at 80% 13.5%,\n      var(--c0) 0 90deg,\n      #fff0 0 100%\n    )\n    var(--ts);\n  --cg8: conic-gradient(\n      from -90deg at 100% 12.5%,\n      var(--c1) 0 90deg,\n      #fff0 0 100%\n    )\n    var(--ts);\n\n  background: var(--dot2), var(--dot2),\n    radial-gradient(circle at 90% 100%, var(--dot)) var(--ts),\n    radial-gradient(circle at 65% 100%, var(--dot)) var(--ts),\n    radial-gradient(circle at 40% 100%, var(--dot)) var(--ts),\n    radial-gradient(circle at 15% 100%, var(--dot)) var(--ts),\n    radial-gradient(circle at 90% 12.5%, var(--dot)) var(--ts),\n    radial-gradient(circle at 65% 25%, var(--dot)) var(--ts),\n    radial-gradient(circle at 40% 37.5%, var(--dot)) var(--ts),\n    radial-gradient(circle at 15% 50%, var(--dot)) var(--ts), var(--cg1),\n    var(--cg1), var(--cg2), var(--cg2), var(--cg3), var(--cg3), var(--cg4),\n    var(--cg4), var(--cg5), var(--cg5), var(--cg6), var(--cg6), var(--cg7),\n    var(--cg7), var(--cg8), var(--cg8),\n    linear-gradient(-45deg, #fff0 0 32.25%, #0002 50%, #000 77.5%) var(--ts),\n    linear-gradient(-45deg, #fff0 0 32.25%, #000 60%) var(--ts),\n    repeating-linear-gradient(90deg, var(--c0) 0 5%, var(--c1) 0 25%) var(--ts);\n}",
+    "tags": [
+      "simple",
+      "clean",
+      "pattern"
+    ]
+  },
+  {
+    "id": "uiv-880995",
+    "title": "Tough Dog 52",
+    "author": "vnuny",
+    "category": "Patterns",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:28.725Z",
+    "html": "<div class=\"container\"></div>",
+    "css": "/* From Uiverse.io by vnuny - Tags: simple, pink, circle, pattern */\n.container {\n  background-color: #e5e5f7;\n  opacity: 1;\n  width: 100%;\n  height: 100%;\n  background-image: repeating-radial-gradient(\n      circle at 0 0,\n      transparent 0,\n      #e5e5f7 30px\n    ),\n    repeating-linear-gradient(#ffb5b58a, #ffb8b8);\n}",
+    "tags": [
+      "simple",
+      "pink",
+      "circle",
+      "pattern"
+    ]
   }
 ];

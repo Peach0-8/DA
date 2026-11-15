@@ -1,7 +1,7 @@
 /**
- * UIverse.io Scraped Data - Checkboxes
- * Updated: 2026-09-11T01:20:09.953Z
- * Total: 309
+ * UIverse.io Scraped & Synced Data - Checkboxes
+ * Updated: 2026-11-14T15:48:20.913Z
+ * Total: 343
  */
 
 window.UIVERSE_DATA = window.UIVERSE_DATA || {};
@@ -3713,5 +3713,569 @@ window.UIVERSE_DATA['Checkboxes'] = [
     "createdAt": "2026-09-11T00:00:00Z",
     "html": "<div class=\"checkbox-wrapper-4\">\n  <input class=\"inp-cbx\" id=\"morning\" type=\"checkbox\">\n  <label class=\"cbx\" for=\"morning\"><span>\n  <svg width=\"12px\" height=\"10px\">\n    \n  </svg></span><span>Morning</span></label>\n  <svg class=\"inline-svg\">\n    <symbol id=\"check-4\" viewBox=\"0 0 12 10\">\n      <polyline points=\"1.5 6 4.5 9 10.5 1\"></polyline>\n    </symbol>\n  </svg>\n</div>",
     "css": ".checkbox-wrapper-4 * {\n  box-sizing: border-box;\n  color: white;\n}\n\n.checkbox-wrapper-4 .cbx {\n  -webkit-user-select: none;\n  user-select: none;\n  cursor: pointer;\n  padding: 6px 8px;\n  border-radius: 6px;\n  overflow: hidden;\n  transition: all 0.2s ease;\n  display: inline-block;\n}\n\n.checkbox-wrapper-4 .cbx:not(:last-child) {\n  margin-right: 6px;\n}\n\n.checkbox-wrapper-4 .cbx:hover {\n  background: rgba(0,119,255,0.06);\n}\n\n.checkbox-wrapper-4 .cbx span {\n  float: left;\n  vertical-align: middle;\n  transform: translate3d(0, 0, 0);\n}\n\n.checkbox-wrapper-4 .cbx span:first-child {\n  position: relative;\n  width: 18px;\n  height: 18px;\n  border-radius: 4px;\n  transform: scale(1);\n  border: 1px solid #cccfdb;\n  transition: all 0.2s ease;\n  box-shadow: 0 1px 1px rgba(0,16,75,0.05);\n}\n\n.checkbox-wrapper-4 .cbx span:first-child svg {\n  position: absolute;\n  top: 3px;\n  left: 2px;\n  fill: none;\n  stroke: #fff;\n  stroke-width: 2;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke-dasharray: 16px;\n  stroke-dashoffset: 16px;\n  transition: all 0.3s ease;\n  transition-delay: 0.1s;\n  transform: translate3d(0, 0, 0);\n}\n\n.checkbox-wrapper-4 .cbx span:last-child {\n  padding-left: 8px;\n  line-height: 18px;\n}\n\n.checkbox-wrapper-4 .cbx:hover span:first-child {\n  border-color: #07f;\n}\n\n.checkbox-wrapper-4 .inp-cbx {\n  position: absolute;\n  visibility: hidden;\n}\n\n.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child {\n  background: #07f;\n  border-color: #07f;\n  animation: wave-4 0.4s ease;\n}\n\n.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child svg {\n  stroke-dashoffset: 0;\n}\n\n.checkbox-wrapper-4 .inline-svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  pointer-events: none;\n  user-select: none;\n}\n\n@media screen and (max-width: 640px) {\n  .checkbox-wrapper-4 .cbx {\n    width: 100%;\n    display: inline-block;\n  }\n}\n\n@-moz-keyframes wave-4 {\n  50% {\n    transform: scale(0.9);\n  }\n}\n\n@-webkit-keyframes wave-4 {\n  50% {\n    transform: scale(0.9);\n  }\n}\n\n@-o-keyframes wave-4 {\n  50% {\n    transform: scale(0.9);\n  }\n}\n\n@keyframes wave-4 {\n  50% {\n    transform: scale(0.9);\n  }\n}"
+  },
+  {
+    "id": "uiv-260606",
+    "title": "Hungry Robin 21",
+    "author": "AIVIIID",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.889Z",
+    "html": "<label class=\"container\">\n\t\t<input type=\"checkbox\" checked=\"checked\">\n\t\t<div class=\"checkmark\"></div>\n\t</label>",
+    "css": "/* From Uiverse.io by AIVIIID - Tags: checkbox */\n/* Hide the default checkbox */\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n.container {\n  display: block;\n  position: relative;\n  cursor: pointer;\n  font-size: 25px;\n  user-select: none;\n}\n\n/* Create a custom checkbox */\n.checkmark {\n  position: relative;\n  top: 0;\n  left: 0;\n  height: 1.3em;\n  width: 1.3em;\n  background: black;\n  border-radius: 50px;\n  transition: all 0.7s;\n  --spread: 20px;\n}\n\n/* When the checkbox is checked, add a blue background */\n.container input:checked ~ .checkmark {\n  background: black;\n  box-shadow: -10px -10px var(--spread) 0px #FFD700, 0 -10px var(--spread) 0px #FFD700, 10px -10px var(--spread) 0px #FFD700, 10px 0 var(--spread) 0px #FFD700, 10px 10px var(--spread) 0px #FFD700, 0 10px var(--spread) 0px #FFD700, -10px 10px var(--spread) 0px #FFD700;\n}\n\n/* Create the checkmark/indicator (hidden when not checked) */\n.checkmark:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\n\n/* Show the checkmark when checked */\n.container input:checked ~ .checkmark:after {\n  display: block;\n  animation: checkmark 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;\n}\n\n/* Style the checkmark/indicator */\n.container .checkmark:after {\n  left: 0.45em;\n  top: 0.25em;\n  width: 0.25em;\n  height: 0.5em;\n  border: solid #FFD700;\n  border-width: 0 0.15em 0.15em 0;\n  transform: rotate(45deg);\n}\n\n/* Add animation for checkmark */\n@keyframes checkmark {\n  from {\n    transform: rotate(-45deg) scale(0);\n  }\n\n  to {\n    transform: rotate(45deg) scale(1);\n  }\n}\n\n/* Style the label text */\n.container span {\n  margin-left: 2em;\n  color: black;\n  font-weight: bold;\n}",
+    "tags": [
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-893509",
+    "title": "Ugly Dog 26",
+    "author": "AbanoubMagdy1",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.700Z",
+    "html": "<label class=\"container\">\n  <input type=\"checkbox\" checked=\"checked\">\n  <div class=\"line\"></div>\n  <div class=\"line line-indicator\"></div>\n</label>",
+    "css": "/* From Uiverse.io by AbanoubMagdy1 - Tags: checkbox */\n/* Hide the default checkbox */\n.container input {\n  opacity: 0;\n  cursor: pointer;\n  width: 0;\n  height: 0;\n}\n\n.container {\n  display: block;\n  position: relative;\n  cursor: pointer;\n  font-size: 20px;\n  user-select: none;\n  width: 30px;\n  height: 30px;\n  border-radius: 3px;\n  background: rgba(216, 216, 216, 0.603);\n}\n\n.container:hover {\n  background: rgba(197, 197, 197, 0.527);\n}\n\n.line {\n  width: calc(100% - 8px);\n  height: 3px;\n  left: 4px;\n  background: rgb(58, 58, 58);\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n  transition: .7s transform cubic-bezier(0,1,.33,1.2), background .4s;\n}\n\n.line-indicator {\n  transform: translateY(-50%) rotate(90deg);\n}\n\n.container input:checked ~ .line-indicator {\n  transform: translateY(-50%);\n}",
+    "tags": [
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-911764",
+    "title": "Nasty Zebra 57",
+    "author": "AnthonyPreite",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.707Z",
+    "html": "<div><input type=\"checkbox\" id=\"ni\">\n<label for=\"ni\" class=\"ni\"></label></div>",
+    "css": "/* From Uiverse.io by AnthonyPreite - Tags: red, green, minimalist, checkbox */\n/* ni means name input*/\n\n.ni {\n  font-size: 16px;\n  font-weight: 600;\n  text-decoration: none;\n  transition: all 0.3s ease;\n  padding: 8px 20px;\n  border-radius: .8rem;\n  min-width: 124px;\n  text-align: center;\n  background: rgba(78, 190, 150, 0.1);\n  border: 0.5px solid rgba(22, 179, 124, 0.2);\n  cursor: pointer;\n}\n\n.ni:before {\n  content: \"Check\";\n  color: #4EBE96;\n}\n\n.ni:active {\n  transform: scale(0.94);\n}\n\n#ni {\n  position: fixed;\n  opacity: 0;\n  visibility: hidden;\n}\n\n#ni:checked + .ni {\n  background: rgba(216, 79, 104, 0.1);\n  border-color: rgba(216, 79, 104, 0.2);\n}\n\n#ni:checked + .ni:before {\n  content: \"Uncheck\";\n  color: #D84F68;\n}",
+    "tags": [
+      "red",
+      "green",
+      "minimalist",
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-274511",
+    "title": "Good Wolverine 51",
+    "author": "Cevorob",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.912Z",
+    "html": "<label class=\"burger\" for=\"burger\">\n  <input type=\"checkbox\" id=\"burger\">\n  <span></span>\n  <span></span>\n  <span></span>\n</label>",
+    "css": "/* From Uiverse.io by Cevorob - Tags: hamburger */\n.burger {\n  position: relative;\n  width: 40px;\n  height: 30px;\n  background: transparent;\n  cursor: pointer;\n  display: block;\n}\n\n.burger input {\n  display: none;\n}\n\n.burger span {\n  display: block;\n  position: absolute;\n  height: 4px;\n  width: 100%;\n  background: black;\n  border-radius: 9px;\n  opacity: 1;\n  left: 0;\n  transform: rotate(0deg);\n  transition: .25s ease-in-out;\n}\n\n.burger span:nth-of-type(1) {\n  top: 0px;\n  transform-origin: left center;\n}\n\n.burger span:nth-of-type(2) {\n  top: 50%;\n  transform: translateY(-50%);\n  transform-origin: left center;\n}\n\n.burger span:nth-of-type(3) {\n  top: 100%;\n  transform-origin: left center;\n  transform: translateY(-100%);\n}\n\n.burger input:checked ~ span:nth-of-type(1) {\n  transform: rotate(45deg);\n  top: 0px;\n  left: 5px;\n}\n\n.burger input:checked ~ span:nth-of-type(2) {\n  width: 0%;\n  opacity: 0;\n}\n\n.burger input:checked ~ span:nth-of-type(3) {\n  transform: rotate(-45deg);\n  top: 28px;\n  left: 5px;\n}",
+    "tags": [
+      "hamburger"
+    ]
+  },
+  {
+    "id": "uiv-449956",
+    "title": "Massive Rabbit 40",
+    "author": "Gautammsharma",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.720Z",
+    "html": "<label class=\"material-checkbox\">\n        <input type=\"checkbox\">\n        <span class=\"checkmark\"></span>\n        Checkbox Label\n      </label>",
+    "css": "/* From Uiverse.io by Gautammsharma - Tags: simple, material design, minimalist, checkbox, google, clean */\n.material-checkbox {\n  display: flex;\n  align-items: center;\n  font-size: 16px;\n  color: #777777;\n  cursor: pointer;\n}\n\n.material-checkbox input[type=\"checkbox\"] {\n  position: absolute;\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n.checkmark {\n  position: relative;\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  margin-right: 12px;\n  border: 2px solid #454B00;\n  border-radius: 4px;\n  transition: all 0.3s;\n}\n\n.material-checkbox input[type=\"checkbox\"]:checked ~ .checkmark {\n  background-color: #2F3300;\n  border-color: #454B00;\n}\n\n.material-checkbox input[type=\"checkbox\"]:checked ~ .checkmark:after {\n  content: \"\";\n  position: absolute;\n  top: 2px;\n  left: 6px;\n  width: 4px;\n  height: 10px;\n  border: solid white;\n  border-width: 0 2px 2px 0;\n  transform: rotate(45deg);\n}\n\n.material-checkbox input[type=\"checkbox\"]:focus ~ .checkmark {\n  box-shadow: 0 0 0 2px #dfec5065;\n}\n\n.material-checkbox:hover input[type=\"checkbox\"] ~ .checkmark {\n  border-color: #C3CF34;\n}\n\n.material-checkbox input[type=\"checkbox\"]:disabled ~ .checkmark {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.material-checkbox input[type=\"checkbox\"]:disabled ~ .checkmark:hover {\n  border-color: #4d4d4d;\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "minimalist",
+      "checkbox",
+      "google",
+      "clean"
+    ]
+  },
+  {
+    "id": "uiv-883611",
+    "title": "Itchy Shrimp 52",
+    "author": "Javierrocadev",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.742Z",
+    "html": "<!-- From Uiverse.io by Javierrocadev - Tags: green, gradient, checkbox, rounded, blur filter, tailwind -->\n<label class=\"cursor-pointer duration-300 relative overflow-hidden w-12 h-12 flex justify-center items-center border rounded-lg bg-gray-50 before:absolute before:w-8 before:h-8 before:content[''] before:right-0 before:bg-violet-500 before:rounded-full before:blur-sm  after:absolute after:z-10 after:w-4 after:h-4 after:content['']  after:bg-rose-300 after:left-1 after:bottom-1 after:rounded-full after:blur-sm\">\n  <input class=\"peer  hidden\" type=\"checkbox\">\n  <div class=\"w-8 h-8  rounded-md opacity-0 peer-checked:opacity-100 bg-gradient-to-tr from-emerald-800 via-emerald-700 to-emerald-500 scale-0 transition-all z-20 duration-300  peer-checked:transition-all rounded-md top-2 left-2 peer-checked:scale-100 peer-checked:duration-300 peer-checked:bg-gradient-to-tr from-emerald-800 via-emerald-700 to-emerald-500\"></div>\n</label>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-483824",
+    "title": "Tall Swan 6",
+    "author": "JulanDeAlb",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.722Z",
+    "html": "<label class=\"hamburger\">\n  <input type=\"checkbox\">\n  <svg viewBox=\"0 0 32 32\">\n    <path class=\"line line-top-bottom\" d=\"M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22\"></path>\n    <path class=\"line\" d=\"M7 16 27 16\"></path>\n  </svg>\n</label>",
+    "css": "/* From Uiverse.io by JulanDeAlb - Tags: checkbox, hamburger, toggle, menu, animated */\n.hamburger {\n  cursor: pointer;\n}\n\n.hamburger input {\n  display: none;\n}\n\n.hamburger svg {\n  /* The size of the SVG defines the overall size */\n  height: 3em;\n  /* Define the transition for transforming the SVG */\n  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.line {\n  fill: none;\n  stroke: white;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke-width: 3;\n  /* Define the transition for transforming the Stroke */\n  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),\n              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.line-top-bottom {\n  stroke-dasharray: 12 63;\n}\n\n.hamburger input:checked + svg {\n  transform: rotate(-45deg);\n}\n\n.hamburger input:checked + svg .line-top-bottom {\n  stroke-dasharray: 20 300;\n  stroke-dashoffset: -32.42;\n}",
+    "tags": [
+      "checkbox",
+      "hamburger",
+      "toggle",
+      "menu",
+      "animated"
+    ]
+  },
+  {
+    "id": "uiv-732175",
+    "title": "Silent Rabbit 98",
+    "author": "PriyanshuGupta28",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.769Z",
+    "html": "<label>\n    <input type=\"checkbox\" class=\"input\">\n    <span class=\"custom-checkbox\"></span>\n  </label>",
+    "css": "/* From Uiverse.io by PriyanshuGupta28 - Tags: checkbox, cool checkbox, checkmark */\n.input[type=\"checkbox\"] {\n  display: none;\n}\n\n\n  /* Style for the custom checkbox */\n.custom-checkbox {\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  border: 2px solid #333;\n  border-radius: 4px;\n  position: relative;\n  cursor: pointer;\n}\n\n  /* Style for the custom checkmark */\n.custom-checkbox::after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 10px;\n  height: 10px;\n  background-color: #333;\n  border-radius: 2px;\n  opacity: 0;\n}\n\n  /* Show the checkmark when checkbox is checked */\n.input[type=\"checkbox\"]:checked + .custom-checkbox::after {\n  opacity: 1;\n}",
+    "tags": [
+      "checkbox",
+      "cool checkbox",
+      "checkmark"
+    ]
+  },
+  {
+    "id": "uiv-845977",
+    "title": "Spicy Starfish 71",
+    "author": "PriyanshuGupta28",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.707Z",
+    "html": "<div class=\"checkbox-wrapper\">\n  <input id=\"_checkbox-26\" type=\"checkbox\">\n  <label for=\"_checkbox-26\">\n    <div class=\"tick_mark\"></div>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by PriyanshuGupta28 - Tags: checkbox, toggle switch, cool switch, tick mark swicth */\n.checkbox-wrapper * {\n  -webkit-tap-highlight-color: transparent;\n  outline: none;\n}\n\n.checkbox-wrapper input[type=\"checkbox\"] {\n  display: none;\n}\n\n.checkbox-wrapper label {\n  --size: 50px;\n  --shadow: calc(var(--size) * .07) calc(var(--size) * .1);\n  position: relative;\n  display: block;\n  width: var(--size);\n  height: var(--size);\n  margin: 0 auto;\n  background-color: #4158D0;\n  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);\n  border-radius: 50%;\n  box-shadow: 0 var(--shadow) #ffbeb8;\n  cursor: pointer;\n  transition: 0.2s ease transform, 0.2s ease background-color,\n      0.2s ease box-shadow;\n  overflow: hidden;\n  z-index: 1;\n}\n\n.checkbox-wrapper label:before {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  right: 0;\n  left: 0;\n  width: calc(var(--size) * .7);\n  height: calc(var(--size) * .7);\n  margin: 0 auto;\n  background-color: #fff;\n  transform: translateY(-50%);\n  border-radius: 50%;\n  box-shadow: inset 0 var(--shadow) #ffbeb8;\n  transition: 0.2s ease width, 0.2s ease height;\n}\n\n.checkbox-wrapper label:hover:before {\n  width: calc(var(--size) * .55);\n  height: calc(var(--size) * .55);\n  box-shadow: inset 0 var(--shadow) #ff9d96;\n}\n\n.checkbox-wrapper label:active {\n  transform: scale(0.9);\n}\n\n.checkbox-wrapper .tick_mark {\n  position: absolute;\n  top: -1px;\n  right: 0;\n  left: calc(var(--size) * -.05);\n  width: calc(var(--size) * .6);\n  height: calc(var(--size) * .6);\n  margin: 0 auto;\n  margin-left: calc(var(--size) * .14);\n  transform: rotateZ(-40deg);\n}\n\n.checkbox-wrapper .tick_mark:before,\n  .checkbox-wrapper .tick_mark:after {\n  content: \"\";\n  position: absolute;\n  background-color: #fff;\n  border-radius: 2px;\n  opacity: 0;\n  transition: 0.2s ease transform, 0.2s ease opacity;\n}\n\n.checkbox-wrapper .tick_mark:before {\n  left: 0;\n  bottom: 0;\n  width: calc(var(--size) * .1);\n  height: calc(var(--size) * .3);\n  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.23);\n  transform: translateY(calc(var(--size) * -.68));\n}\n\n.checkbox-wrapper .tick_mark:after {\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: calc(var(--size) * .1);\n  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.23);\n  transform: translateX(calc(var(--size) * .78));\n}\n\n.checkbox-wrapper input[type=\"checkbox\"]:checked + label {\n  background-color: #4158D0;\n  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n\n.checkbox-wrapper input[type=\"checkbox\"]:checked + label:before {\n  width: 0;\n  height: 0;\n}\n\n.checkbox-wrapper input[type=\"checkbox\"]:checked + label .tick_mark:before,\n  .checkbox-wrapper input[type=\"checkbox\"]:checked + label .tick_mark:after {\n  transform: translate(0);\n  opacity: 1;\n}",
+    "tags": [
+      "checkbox",
+      "toggle switch",
+      "cool switch",
+      "tick mark swicth"
+    ]
+  },
+  {
+    "id": "uiv-541416",
+    "title": "Tough Puma 94",
+    "author": "PriyanshuGupta28",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.703Z",
+    "html": "<div class=\"checkbox-wrapper\">\n  <input id=\"terms-checkbox-37\" name=\"checkbox\" type=\"checkbox\">\n  <label class=\"terms-label\" for=\"terms-checkbox-37\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 200 200\" class=\"checkbox-svg\">\n      <mask fill=\"white\" id=\"path-1-inside-1_476_5-37\">\n        <rect height=\"200\" width=\"200\"></rect>\n      </mask>\n      <rect mask=\"url(#path-1-inside-1_476_5-37)\" stroke-width=\"40\" class=\"checkbox-box\" height=\"200\" width=\"200\"></rect>\n      <path stroke-width=\"15\" d=\"M52 111.018L76.9867 136L149 64\" class=\"checkbox-tick\"></path>\n    </svg>\n    <span class=\"label-text\">Checkbox</span>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by PriyanshuGupta28 - Tags: checkbox, docs checkbox, checkmark */\n.checkbox-wrapper input[type=\"checkbox\"] {\n  display: none;\n}\n\n.checkbox-wrapper .terms-label {\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n}\n\n.checkbox-wrapper .terms-label .label-text {\n  margin-left: 10px;\n}\n\n.checkbox-wrapper .checkbox-svg {\n  width: 30px;\n  height: 30px;\n}\n\n.checkbox-wrapper .checkbox-box {\n  fill: rgba(207, 205, 205, 0.425);\n  stroke: #8c00ff;\n  stroke-dasharray: 800;\n  stroke-dashoffset: 800;\n  transition: stroke-dashoffset 0.6s ease-in;\n}\n\n.checkbox-wrapper .checkbox-tick {\n  stroke: #8c00ff;\n  stroke-dasharray: 172;\n  stroke-dashoffset: 172;\n  transition: stroke-dashoffset 0.6s ease-in;\n}\n\n.checkbox-wrapper input[type=\"checkbox\"]:checked + .terms-label .checkbox-box,\n  .checkbox-wrapper input[type=\"checkbox\"]:checked + .terms-label .checkbox-tick {\n  stroke-dashoffset: 0;\n}",
+    "tags": [
+      "checkbox",
+      "docs checkbox",
+      "checkmark"
+    ]
+  },
+  {
+    "id": "uiv-569896",
+    "title": "Hot Rattlesnake 30",
+    "author": "SalladShooter",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.730Z",
+    "html": "<div class=\"like-wrapper\">\n  <input class=\"check\" type=\"checkbox\" id=\"like-toggle\" />\n  <label class=\"container\" for=\"like-toggle\">\n    <svg\n      viewBox=\"0 0 512 512\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      class=\"icon inactive\"\n    >\n      <path\n        d=\"M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z\"\n      ></path>\n    </svg>\n    <svg\n      viewBox=\"0 0 512 512\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      class=\"icon active\"\n    >\n      <path\n        d=\"M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z\"\n      ></path>\n    </svg>\n    <div class=\"checkmark\"></div>\n    <span class=\"like-text\">Like</span>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by SalladShooter  - Tags: icon, button, active, checkbox, like, heart, dark */\n.like-wrapper {\n  --gap: 0.5em;\n  --radius: 0.35em;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: center;\n  --dot-bg: #212121;\n  --dot-color: #313131;\n  --dot-size: 1px;\n  --dot-space: 22px;\n  background: linear-gradient(\n        90deg,\n        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),\n        transparent 1%\n      )\n      center / var(--dot-space) var(--dot-space),\n    linear-gradient(\n        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),\n        transparent 1%\n      )\n      center / var(--dot-space) var(--dot-space),\n    var(--dot-color);\n  border: 0.1em solid #313131;\n  padding: 0.5em;\n  border-radius: var(--radius);\n  box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.1);\n  cursor: pointer;\n}\n\n.check[type=\"checkbox\"] {\n  display: none;\n}\n\n.container {\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n  margin-top: -0.25em;\n  margin-bottom: -0.25em;\n}\n\n.icon {\n  width: 1.5em;\n  height: 1.5em;\n  margin-left: 0.5em;\n  fill: white;\n  transition: opacity 0.3s ease-in-out;\n}\n\n.icon.active {\n  display: none;\n  fill: #f52121;\n}\n\n.check[type=\"checkbox\"]:checked + .container .icon.active {\n  display: inline-block;\n  animation: wiggle 0.5s ease-in-out;\n}\n\n.check[type=\"checkbox\"]:checked + .container .icon.inactive {\n  display: none;\n}\n\n.like-text {\n  margin-left: 0.5em;\n  padding: 0.5em;\n  color: white;\n  font-family: Arial, sans-serif;\n  font-weight: bolder;\n}\n\n@keyframes wiggle {\n  0%,\n  100% {\n    transform: rotate(0deg);\n  }\n  25% {\n    transform: rotate(-10deg);\n  }\n  50% {\n    transform: rotate(10deg);\n  }\n  75% {\n    transform: rotate(-10deg);\n  }\n}",
+    "tags": [
+      "icon",
+      "button",
+      "active",
+      "checkbox",
+      "like",
+      "heart",
+      "dark"
+    ]
+  },
+  {
+    "id": "uiv-128746",
+    "title": "Green Bobcat 29",
+    "author": "SelfMadeSystem",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.762Z",
+    "html": "<label class=\"container\">\n  <input type=\"checkbox\">\n  <svg viewBox=\"0 0 64 64\" height=\"2em\" width=\"2em\">\n    <path d=\"M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16\" pathLength=\"575.0541381835938\" class=\"path\"></path>\n  </svg>\n</label>",
+    "css": "/* From Uiverse.io by SelfMadeSystem - Tags: checkbox */\n.container {\n  cursor: pointer;\n}\n\n.container input {\n  display: none;\n}\n\n.container svg {\n  overflow: visible;\n}\n\n.path {\n  fill: none;\n  stroke: white;\n  stroke-width: 6;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;\n  stroke-dasharray: 241 9999999;\n  stroke-dashoffset: 0;\n}\n\n.container input:checked ~ svg .path {\n  stroke-dasharray: 70.5096664428711 9999999;\n  stroke-dashoffset: -262.2723388671875;\n}",
+    "tags": [
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-187974",
+    "title": "Popular Bulldog 40",
+    "author": "Timbar09",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.705Z",
+    "html": "<label class=\"checkbox__label\" for=\"checkbox\">\n  <span class=\"checkbox__container\">\n    <input class=\"checkbox\" id=\"checkbox\" type=\"checkbox\" />\n\n    <span class=\"checkbox__label--text\"> Check box. </span>\n  </span>\n</label>",
+    "css": "/* From Uiverse.io by Timbar09  - Tags: checkbox */\n.checkbox__container {\n  --primary-clr-1: #2bbee7;\n  --primary-clr-2: #0e728e;\n  --text-clr-1: #8f8f8f;\n\n  --checkbox-bg-clr: #33333367;\n  --checkbox-border-clr: #55555575;\n\n  color: var(--text-clr-1);\n  display: flex;\n  align-items: center;\n  gap: 0.5em;\n}\n\n.checkbox {\n  --dimension: 1.5em;\n  --tick-dimension: 0.15em;\n\n  appearance: none;\n  margin: 0;\n  position: relative;\n  width: var(--dimension);\n  height: var(--dimension);\n  border: 1px solid transparent;\n  border-radius: 50%;\n  cursor: pointer;\n  rotate: 45deg;\n}\n\n.checkbox:checked {\n  animation: shrink 0.5s ease forwards;\n}\n\n.checkbox:not(:checked) {\n  animation: grow 0.5s 0.75s ease forwards;\n}\n\n@keyframes shrink {\n  0% {\n    scale: 1;\n    background-color: var(--checkbox-bg-clr);\n    border: solid 1px var(--checkbox-border-clr);\n  }\n  50% {\n    scale: 0;\n    background-color: var(--checkbox-bg-clr);\n    border: solid 1px var(--checkbox-border-clr);\n  }\n  51% {\n    scale: 0;\n    background-color: transparent;\n    border: solid 1px transparent;\n  }\n  100% {\n    scale: 1;\n    background-color: transparent;\n    border: solid 1px transparent;\n  }\n}\n\n@keyframes grow {\n  0% {\n    scale: 0;\n    background-color: transparent;\n    border: solid 1px transparent;\n  }\n\n  100% {\n    scale: 1;\n    background-color: var(--checkbox-bg-clr);\n    border: solid 1px var(--checkbox-border-clr);\n  }\n}\n\n.checkbox:before,\n.checkbox:after {\n  content: \"\";\n  position: absolute;\n  top: calc(50% - var(--tick-dimension) / 2);\n  left: calc(50% - var(--tick-dimension) / 2);\n  width: var(--tick-dimension);\n  height: var(--tick-dimension);\n  border-radius: 10rem;\n}\n\n.checkbox::before {\n  background-color: transparent;\n  top: calc(var(--dimension) * 0.65);\n  left: 0;\n  width: var(--tick-dimension);\n}\n\n.checkbox:not(:checked)::before {\n  transition: background-color 0.3s 0.5s ease-in-out, width 0.5s ease-in-out;\n}\n\n.checkbox:checked::before {\n  background-color: var(--primary-clr-1);\n  top: calc(var(--dimension) * 0.65);\n  left: 0;\n  width: calc(var(--dimension) / 2);\n  transition: background-color 0.3s 0.3s ease-in-out,\n    width 0.5s 0.75s ease-in-out;\n}\n\n.checkbox::after {\n  background-color: transparent;\n  top: 0;\n  left: calc((var(--dimension) * 0.5) - var(--tick-dimension));\n  height: var(--tick-dimension);\n}\n\n.checkbox:not(:checked)::after {\n  transition: background-color 0.3s 0.5s ease-in-out, height 0.5s ease-in-out;\n}\n\n.checkbox:checked::after {\n  background-color: var(--primary-clr-2);\n  top: 0;\n  left: calc((var(--dimension) * 0.5) - var(--tick-dimension));\n  height: calc(var(--dimension) * 0.75);\n  transition: background-color 0.3s 0.3s ease-in-out, height 0.5s 1s ease-in-out;\n}\n\n.checkbox__label {\n  --hover: #cdcdcd;\n  --checked: #8f8f8f49;\n  --stroke-dimension: 0.05em;\n\n  cursor: pointer;\n  user-select: none;\n  scale: 1.5;\n  transition: color 0.3s;\n}\n\n.checkbox__label:hover {\n  color: var(--hover);\n}\n\n.checkbox:checked + .checkbox__label--text {\n  color: var(--checked);\n}\n\n.checkbox__label--text {\n  position: relative;\n}\n\n.checkbox__label--text::before {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: calc(-1 * var(--stroke-dimension));\n  width: var(--stroke-dimension);\n  height: var(--stroke-dimension);\n  margin-right: 0.5em;\n  border-radius: 1em;\n}\n\n.checkbox__label--text::before {\n  background-color: var(--primary-clr-1);\n  width: 0;\n  transition: width 0.5s, background-color 0.3s 0.5s;\n}\n\n.checkbox:checked + .checkbox__label--text::before {\n  background-color: var(--checked);\n  width: calc(100% + var(--stroke-dimension));\n  transition: width 1.25s 0.75s, background-color 0.5s 2s;\n}",
+    "tags": [
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-395108",
+    "title": "Afraid Turtle 19",
+    "author": "Uncannypotato69",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.746Z",
+    "html": "<!-- From Uiverse.io by Uncannypotato69  - Tags: simple, skeuomorphism, checkbox, rounded, click, svg, clean, tailwindcss -->\n<label\n  for=\"checkbox\"\n  class=\"relative h-[3em] w-[3em] rounded-[1.2em] bg-[#b3fffa] shadow-[inset_-1px_1px_4px_0px_#f0fffe,inset_1px_-1px_4px_0px_#00bdb0,-1px_2px_4px_0px_#00bdb0]\"\n>\n  <input\n    type=\"checkbox\"\n    name=\"checkbox\"\n    id=\"checkbox\"\n    class=\"peer appearance-none\"\n  />\n  <span\n    class=\"absolute left-1/2 top-1/2 h-[2em] w-[2em] -translate-x-1/2 -translate-y-1/2 rounded-[0.8em] bg-[#ccfffc] shadow-[inset_-1px_1px_4px_0px_#f0fffe,inset_1px_-1px_4px_0px_#00bdb0,-1px_1px_2px_0px_#00bdb0] duration-[200ms] peer-checked:shadow-[inset_1px_-1px_4px_0px_#f0fffe,inset_-1px_1px_4px_0px_#00bdb0]\"\n  >\n  </span>\n  <svg\n    fill=\"#00756d\"\n    viewBox=\"-3.2 -3.2 38.40 38.40\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n    class=\"absolute left-1/2 top-1/2 h-[2em] w-[2em] -translate-x-1/2 -translate-y-1/2 peer-checked:opacity-0\"\n  >\n    <g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g>\n    <g\n      id=\"SVGRepo_tracerCarrier\"\n      stroke-linecap=\"round\"\n      stroke-linejoin=\"round\"\n    ></g>\n    <g id=\"SVGRepo_iconCarrier\">\n      <path\n        d=\"M5 16.577l2.194-2.195 5.486 5.484L24.804 7.743 27 9.937l-14.32 14.32z\"\n      ></path>\n    </g>\n  </svg>\n  <svg\n    fill=\"#00756d\"\n    viewBox=\"0 0 1024 1024\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n    class=\"absolute left-1/2 top-1/2 h-[2em] w-[2em] -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100\"\n  >\n    <g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g>\n    <g\n      id=\"SVGRepo_tracerCarrier\"\n      stroke-linecap=\"round\"\n      stroke-linejoin=\"round\"\n    ></g>\n    <g id=\"SVGRepo_iconCarrier\">\n      <path\n        d=\"M697.4 759.2l61.8-61.8L573.8 512l185.4-185.4-61.8-61.8L512 450.2 326.6 264.8l-61.8 61.8L450.2 512 264.8 697.4l61.8 61.8L512 573.8z\"\n      ></path>\n    </g>\n  </svg>\n</label>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-625094",
+    "title": "Mean Vampirebat 54",
+    "author": "aboalsim114",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:19.742Z",
+    "html": "<label class=\"container\">\n  <input checked=\"checked\" type=\"checkbox\">\n  <div class=\"checkmark\"></div>\n</label>",
+    "css": "/* From Uiverse.io by aboalsim114 - Tags: red, checkbox */\n/* Hide the default checkbox */\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n.container {\n  display: flex;\n  gap: 10px;\n}\n\n\n/* Create a custom checkbox */\n.checkmark {\n  position: relative;\n  box-shadow: rgb(255, 84, 0) 0px 0px 0px 2px;\n  background-color: rgba(16, 16, 16, 0.5);\n  height: 20px;\n  width: 20px;\n  margin-right: 10px;\n  flex-shrink: 0;\n  margin-top: -1px;\n  transition: all 0.2s ease 0s;\n  cursor: pointer;\n  transform-origin: 0px 10px;\n  border-radius: 4px;\n  margin: -1px 10px 0px 0px;\n  padding: 0px;\n  box-sizing: border-box;\n}\n\n.container input:checked ~ .checkmark {\n  box-shadow: rgb(255, 84, 0) 0px 0px 0px 2px;\n  background-color: rgba(245, 24, 24, 0.5);\n  height: 20px;\n  width: 20px;\n  margin-right: 10px;\n  flex-shrink: 0;\n  margin-top: -1px;\n  transition: all 0.2s ease 0s;\n  cursor: pointer;\n  transform-origin: 0px 10px;\n  border-radius: 4px;\n  margin: -1px 10px 0px 0px;\n  padding: 0px;\n  box-sizing: border-box;\n}\n\n.checkmark:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\n\n.container input:checked ~ .checkmark:after {\n  display: block;\n}\n\n/* Style the checkmark/indicator */\n.container .checkmark:after {\n  left: 0.45em;\n  top: 0.25em;\n  width: 0.25em;\n  height: 0.5em;\n  border: solid white;\n  border-width: 0 0.15em 0.15em 0;\n  transform: rotate(45deg);\n  transition: all 500ms ease-in-out;\n}",
+    "tags": [
+      "red",
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-374518",
+    "title": "New Dingo 22",
+    "author": "adamgiebl",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.387Z",
+    "html": "<label class=\"checkbox\" for=\"checkbox1\">\n  <span class=\"label\">Checkbox</span>\n  <input checked=\"\" id=\"checkbox1\" type=\"checkbox\">\n  <span class=\"checkmark\"></span>\n</label>",
+    "css": "/* From Uiverse.io by adamgiebl - Tags: neumorphism, skeuomorphism, checkbox */\n.checkbox {\n  display: flex;\n  align-items: center;\n  margin: 10px;\n  font-family: Arial, sans-serif;\n  color: black;\n}\n\n.checkbox input {\n  display: none;\n}\n\n.checkbox .checkmark {\n  width: 28px;\n  height: 28px;\n  border-radius: 10px;\n  background-color: #ffffff2b;\n  box-shadow: rgba(0, 0, 0, 0.62) 0px 0px 5px inset, rgba(0, 0, 0, 0.21) 0px 0px 0px 24px inset,\n        #22cc3f 0px 0px 0px 0px inset, rgba(224, 224, 224, 0.45) 0px 1px 0px 0px;\n  cursor: pointer;\n  position: relative;\n}\n\n.checkbox .checkmark::after {\n  content: \"\";\n  width: 18px;\n  height: 18px;\n  border-radius: 5px;\n  background-color: #e3e3e3;\n  box-shadow: transparent 0px 0px 0px 2px, rgba(0, 0, 0, 0.3) 0px 6px 6px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  transition: background-color 0.3s ease-in-out;\n}\n\n.checkbox input:checked + .checkmark {\n  background-color: #22cc3f;\n  box-shadow: rgba(0, 0, 0, 0.62) 0px 0px 5px inset, #22cc3f 0px 0px 0px 2px inset, #22cc3f 0px 0px 0px 24px inset,\n        rgba(224, 224, 224, 0.45) 0px 1px 0px 0px;\n}\n\n.checkbox input:checked + .checkmark::after {\n  background-color: white;\n}\n\n.checkbox .label {\n  margin-right: 10px;\n  user-select: none;\n  font-weight: 700;\n  cursor: pointer;\n}",
+    "tags": [
+      "neumorphism",
+      "skeuomorphism",
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-660959",
+    "title": "Light Lionfish 40",
+    "author": "andrew-demchenk0",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.203Z",
+    "html": "<label class=\"container\">\n  <input type=\"checkbox\">\n  <svg height=\"24px\" id=\"Layer_1\" version=\"1.2\" viewBox=\"0 0 24 24\" width=\"24px\" xml:space=\"preserve\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g><g><path d=\"M9.362,9.158c0,0-3.16,0.35-5.268,0.584c-0.19,0.023-0.358,0.15-0.421,0.343s0,0.394,0.14,0.521    c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z\"></path></g></g></svg>\n</label>",
+    "css": "/* From Uiverse.io by andrew-demchenk0 - Tags: yellow, checkbox, star */\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n.container {\n  display: block;\n  position: relative;\n  cursor: pointer;\n  user-select: none;\n}\n\n.container svg {\n  position: relative;\n  top: 0;\n  left: 0;\n  height: 50px;\n  width: 50px;\n  transition: all 0.3s;\n  fill: #666;\n}\n\n.container svg:hover {\n  transform: scale(1.1);\n}\n\n.container input:checked ~ svg {\n  fill: #ffeb49;\n}",
+    "tags": [
+      "yellow",
+      "checkbox",
+      "star"
+    ]
+  },
+  {
+    "id": "uiv-515869",
+    "title": "Spotty Elephant 13",
+    "author": "bociKond",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.195Z",
+    "html": "<label class=\"container\">\n  <input checked=\"checked\" type=\"checkbox\">\n  <div class=\"checkmark\"></div>\n</label>",
+    "css": "/* From Uiverse.io by bociKond - Tags: checkbox, pulse, color */\n/* Hide the default checkbox */\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n.container {\n  display: block;\n  position: relative;\n  cursor: pointer;\n  font-size: 1.5rem;\n  user-select: none;\n}\n\n/* Create a custom checkbox */\n.checkmark {\n  --clr: #0B6E4F;\n  position: relative;\n  top: 0;\n  left: 0;\n  height: 1.3em;\n  width: 1.3em;\n  background-color: #ccc;\n  border-radius: 50%;\n  transition: 300ms;\n}\n\n/* When the checkbox is checked, add a blue background */\n.container input:checked ~ .checkmark {\n  background-color: var(--clr);\n  border-radius: .5rem;\n  animation: pulse 500ms ease-in-out;\n}\n\n/* Create the checkmark/indicator (hidden when not checked) */\n.checkmark:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\n\n/* Show the checkmark when checked */\n.container input:checked ~ .checkmark:after {\n  display: block;\n}\n\n/* Style the checkmark/indicator */\n.container .checkmark:after {\n  left: 0.45em;\n  top: 0.25em;\n  width: 0.25em;\n  height: 0.5em;\n  border: solid #E0E0E2;\n  border-width: 0 0.15em 0.15em 0;\n  transform: rotate(45deg);\n}\n\n@keyframes pulse {\n  0% {\n    box-shadow: 0 0 0 #0B6E4F90;\n    rotate: 20deg;\n  }\n\n  50% {\n    rotate: -20deg;\n  }\n\n  75% {\n    box-shadow: 0 0 0 10px #0B6E4F60;\n  }\n\n  100% {\n    box-shadow: 0 0 0 13px #0B6E4F30;\n    rotate: 0;\n  }\n}",
+    "tags": [
+      "checkbox",
+      "pulse",
+      "color"
+    ]
+  },
+  {
+    "id": "uiv-100900",
+    "title": "Calm Lionfish 10",
+    "author": "boryanakrasteva",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.410Z",
+    "html": "<label class=\"checkbox-btn\">\n    <label for=\"checkbox\"></label>\n    <input id=\"checkbox\" type=\"checkbox\">\n    <span class=\"checkmark\"></span>\n</label>",
+    "css": "/* From Uiverse.io by boryanakrasteva - Tags: checkbox */\n/* Customize the label (the checkbox-btn) */\n.checkbox-btn {\n  display: block;\n  position: relative;\n  padding-left: 30px;\n  margin-bottom: 10px;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n\n/* Hide the browser's default checkbox */\n.checkbox-btn input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n.checkbox-btn label {\n  cursor: pointer;\n  font-size: 14px;\n}\n/* Create a custom checkbox */\n.checkmark {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 25px;\n  width: 25px;\n  border: 2.5px solid #ffffff;\n  transition: .2s linear;\n}\n.checkbox-btn input:checked ~ .checkmark {\n  background-color: transparent;\n}\n\n/* Create the checkmark/indicator (hidden when not checked) */\n.checkmark:after {\n  content: \"\";\n  position: absolute;\n  visibility: hidden;\n  opacity: 0;\n  left: 50%;\n  top: 40%;\n  width: 10px;\n  height: 14px;\n  border: 2px solid #0ea021;\n  filter: drop-shadow(0px 0px 10px #0ea021);\n  border-width: 0 2.5px 2.5px 0;\n  transition: .2s linear;\n  transform: translate(-50%, -50%) rotate(-90deg) scale(0.2);\n}\n\n/* Show the checkmark when checked */\n.checkbox-btn input:checked ~ .checkmark:after {\n  visibility: visible;\n  opacity: 1;\n  transform: translate(-50%, -50%) rotate(0deg) scale(1);\n  animation: pulse 1s ease-in;\n}\n\n.checkbox-btn input:checked ~ .checkmark {\n  transform: rotate(45deg);\n  border: none;\n}\n\n@keyframes pulse {\n  0%,\n  100% {\n    transform: translate(-50%, -50%) rotate(0deg) scale(1);\n  }\n  50% {\n    transform: translate(-50%, -50%) rotate(0deg) scale(1.6);\n  }\n}",
+    "tags": [
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-981028",
+    "title": "Plastic Moth 91",
+    "author": "catraco",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.226Z",
+    "html": "<div class=\"heart-container\" title=\"Like\">\n            <input type=\"checkbox\" class=\"checkbox\" id=\"Give-It-An-Id\">\n            <div class=\"svg-container\">\n                <svg viewBox=\"0 0 24 24\" class=\"svg-outline\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z\">\n                    </path>\n                </svg>\n                <svg viewBox=\"0 0 24 24\" class=\"svg-filled\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z\">\n                    </path>\n                </svg>\n                <svg class=\"svg-celebrate\" width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <polygon points=\"10,10 20,20\"></polygon>\n                    <polygon points=\"10,50 20,50\"></polygon>\n                    <polygon points=\"20,80 30,70\"></polygon>\n                    <polygon points=\"90,10 80,20\"></polygon>\n                    <polygon points=\"90,50 80,50\"></polygon>\n                    <polygon points=\"80,80 70,70\"></polygon>\n                </svg>\n            </div>\n        </div>",
+    "css": "/* From Uiverse.io by catraco - Tags: checkbox, like, heart, hover effect */\n.heart-container {\n  --heart-color: rgb(255, 91, 137);\n  position: relative;\n  width: 50px;\n  height: 50px;\n  transition: .3s;\n}\n\n.heart-container .checkbox {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n  z-index: 20;\n  cursor: pointer;\n}\n\n.heart-container .svg-container {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.heart-container .svg-outline,\n        .heart-container .svg-filled {\n  fill: var(--heart-color);\n  position: absolute;\n}\n\n.heart-container .svg-filled {\n  animation: keyframes-svg-filled 1s;\n  display: none;\n}\n\n.heart-container .svg-celebrate {\n  position: absolute;\n  animation: keyframes-svg-celebrate .5s;\n  animation-fill-mode: forwards;\n  display: none;\n  stroke: var(--heart-color);\n  fill: var(--heart-color);\n  stroke-width: 2px;\n}\n\n.heart-container .checkbox:checked~.svg-container .svg-filled {\n  display: block\n}\n\n.heart-container .checkbox:checked~.svg-container .svg-celebrate {\n  display: block\n}\n\n@keyframes keyframes-svg-filled {\n  0% {\n    transform: scale(0);\n  }\n\n  25% {\n    transform: scale(1.2);\n  }\n\n  50% {\n    transform: scale(1);\n    filter: brightness(1.5);\n  }\n}\n\n@keyframes keyframes-svg-celebrate {\n  0% {\n    transform: scale(0);\n  }\n\n  50% {\n    opacity: 1;\n    filter: brightness(1.5);\n  }\n\n  100% {\n    transform: scale(1.4);\n    opacity: 0;\n    display: none;\n  }\n}",
+    "tags": [
+      "checkbox",
+      "like",
+      "heart",
+      "hover effect"
+    ]
+  },
+  {
+    "id": "uiv-365022",
+    "title": "Calm Wasp 75",
+    "author": "cbolson",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.247Z",
+    "html": "<form class=\"my-form\">\n  <div>\n    <input id=\"check-1\" type=\"checkbox\" />\n    <label for=\"check-1\">Checkbox 1</label>\n  </div>\n  <div>\n    <input checked=\"\" id=\"check-2\" type=\"checkbox\" />\n    <label for=\"check-2\">Checkbox 2</label>\n  </div>\n  <div>\n    <input id=\"check-3\" type=\"checkbox\" />\n    <label for=\"check-3\">Checkbox 3</label>\n  </div>\n  <div>\n    <input id=\"check-4\" type=\"checkbox\" />\n    <label for=\"check-4\">Checkbox 4</label>\n  </div>\n</form>",
+    "css": "/* From Uiverse.io by cbolson  - Tags: checkbox */\n.my-form {\n  --_clr-primary: #666;\n  --_clr-hover: #f33195;\n  --_clr-checked: #127acf;\n}\n.my-form > div {\n  --_clr-current: var(--_clr-primary);\n\n  display: flex;\n  align-items: center;\n  gap: 0.5rem;\n}\n.my-form > div + div {\n  margin-block-start: 0.5rem;\n}\n.my-form label {\n  cursor: pointer;\n  color: var(--_clr-current);\n  transition: color 150ms ease-in-out;\n}\n\n/* styled checkbox */\n.my-form input[type=\"checkbox\"] {\n  appearance: none;\n  outline: none;\n  width: 1.5rem;\n  height: 1.5rem;\n  aspect-ratio: 1;\n  padding: 0.25rem;\n  background: transparent;\n  border: 1px solid var(--_clr-current);\n  border-radius: 2px;\n  display: grid;\n  place-content: center;\n  cursor: pointer;\n}\n.my-form input[type=\"checkbox\"]::after {\n  content: \"\\2714\";\n  opacity: 0;\n  transition: opacity 150ms ease-in-out;\n  color: var(--_clr-checked);\n  font-size: inherit;\n  font-family: inherit;\n}\n\n.my-form label:hover,\n.my-form input[type=\"checkbox\"]:focus-visible,\n.my-form input[type=\"checkbox\"]:focus-visible + label,\n.my-form input[type=\"checkbox\"]:hover,\n.my-form input[type=\"checkbox\"]:hover + label {\n  --_clr-current: var(--_clr-hover);\n}\n.my-form input[type=\"checkbox\"]:focus-visible::after,\n.my-form input[type=\"checkbox\"]:hover::after {\n  opacity: 0.5;\n  color: var(--_clr-hover);\n}\n\n.my-form input[type=\"checkbox\"]:checked + label:not(:hover),\n.my-form input[type=\"checkbox\"]:checked:not(:hover) {\n  --_clr-current: var(--_clr-checked);\n}\n.my-form input[type=\"checkbox\"]:checked::after {\n  opacity: 1;\n}",
+    "tags": [
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-406140",
+    "title": "Short Shrimp 54",
+    "author": "cssbuttons-io",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.221Z",
+    "html": "<div class=\"cntr\">\n  <input checked=\"\" type=\"checkbox\" id=\"cbx\" class=\"hidden-xs-up\">\n  <label for=\"cbx\" class=\"cbx\"></label>\n</div>",
+    "css": "/* From Uiverse.io by cssbuttons-io - Tags: checkbox, squishy */\n.cbx {\n position: relative;\n top: 1px;\n width: 27px;\n height: 27px;\n border: 1px solid #c8ccd4;\n border-radius: 3px;\n vertical-align: middle;\n transition: background 0.1s ease;\n cursor: pointer;\n display: block;\n}\n\n.cbx:after {\n content: '';\n position: absolute;\n top: 2px;\n left: 8px;\n width: 7px;\n height: 14px;\n opacity: 0;\n transform: rotate(45deg) scale(0);\n border-right: 2px solid #fff;\n border-bottom: 2px solid #fff;\n transition: all 0.3s ease;\n transition-delay: 0.15s;\n}\n\n.lbl {\n margin-left: 5px;\n vertical-align: middle;\n cursor: pointer;\n}\n\n#cbx:checked ~ .cbx {\n border-color: transparent;\n background: #6871f1;\n animation: jelly 0.6s ease;\n}\n\n#cbx:checked ~ .cbx:after {\n opacity: 1;\n transform: rotate(45deg) scale(1);\n}\n\n.cntr {\n position: relative;\n}\n\n@keyframes jelly {\n from {\n  transform: scale(1, 1);\n }\n\n 30% {\n  transform: scale(1.25, 0.75);\n }\n\n 40% {\n  transform: scale(0.75, 1.25);\n }\n\n 50% {\n  transform: scale(1.15, 0.85);\n }\n\n 65% {\n  transform: scale(0.95, 1.05);\n }\n\n 75% {\n  transform: scale(1.05, 0.95);\n }\n\n to {\n  transform: scale(1, 1);\n }\n}\n\n.hidden-xs-up {\n display: none!important;\n}",
+    "tags": [
+      "checkbox",
+      "squishy"
+    ]
+  },
+  {
+    "id": "uiv-633912",
+    "title": "Afraid Walrus 18",
+    "author": "elijahgummer",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.253Z",
+    "html": "<input class=\"toggle-checkbox\" id=\"toggle\" type=\"checkbox\" />\n<label class=\"hamburger\" for=\"toggle\">\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n  <div class=\"bar\"></div>\n</label>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: animation, black, checkbox, hamburger, arrow */\n.toggle-checkbox {\n  display: none;\n}\n\n.hamburger {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  width: 35px;\n  height: 24px;\n  cursor: pointer;\n}\n\n.hamburger .bar {\n  width: 100%;\n  height: 4px;\n  background-color: #333;\n  border-radius: 10px;\n  transition:\n    transform 0.3s ease,\n    opacity 0.3s ease;\n  position: relative;\n}\n\n.toggle-checkbox:checked + .hamburger .bar:nth-child(2) {\n  transform: translate(0px, 10px);\n  opacity: 0;\n  transition-delay: 0.3s;\n}\n\n.toggle-checkbox:checked + .hamburger .bar:nth-child(3) {\n  transform: translate(0px, -10px);\n  transition-delay: 0s;\n}\n\n.toggle-checkbox:checked + .hamburger .bar:nth-child(1) {\n  transform: rotate(-45deg) scale(0.7);\n  transition-delay: 0.6s;\n}\n.toggle-checkbox:checked + .hamburger .bar:nth-child(3) {\n  transform: rotate(45deg) scale(0.7);\n  transition-delay: 0.6s;\n}",
+    "tags": [
+      "animation",
+      "black",
+      "checkbox",
+      "hamburger",
+      "arrow"
+    ]
+  },
+  {
+    "id": "uiv-324224",
+    "title": "Hard Liger 45",
+    "author": "elijahgummer",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.193Z",
+    "html": "<input id=\"bookmark\" type=\"checkbox\" />\n<label class=\"bookmark\" for=\"bookmark\">\n  <svg\n    id=\"Bookmark\"\n    viewBox=\"0 0 10 22\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n    height=\"24px\"\n    width=\"24px\"\n    class=\"bookmark-icon\"\n  >\n    <g fill-rule=\"evenodd\" fill=\"none\">\n      <g\n        class=\"color000000 svgShape\"\n        transform=\"translate(-265 -2679)\"\n        fill=\"#242424\"\n      >\n        <g\n          class=\"color000000 svgShape\"\n          fill=\"#242424\"\n          transform=\"translate(56 160)\"\n        >\n          <path\n            class=\"color000000 svgShape\"\n            fill=\"#242424\"\n            d=\"M219 2521v16.998c0 .891-1.077 1.337-1.707.707l-2.586-2.586a1 1 0 0 0-1.414 0l-2.586 2.586c-.63.63-1.707.184-1.707-.707V2521a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2\"\n          ></path>\n        </g>\n      </g>\n    </g>\n  </svg>\n  <div class=\"shimmer\"></div>\n</label>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, animation, hover, checkbox, modern, click, bookmark, shimmer */\n#bookmark[type=\"checkbox\"] {\n  position: absolute;\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n.bookmark {\n  overflow: hidden;\n  position: absolute;\n  left: calc(50% - 24px);\n  top: calc(50% - 24px);\n  width: 48px;\n  height: 48px;\n  display: block;\n  border-radius: 50%;\n  cursor: pointer;\n  -webkit-tap-highlight-color: transparent;\n}\n.bookmark:before {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.06);\n  border-radius: 50%;\n  transform: scale(0.5);\n  opacity: 0;\n  transition: all 0.2s ease;\n}\n.bookmark:hover:before {\n  transform: scale(1);\n  opacity: 1;\n}\n.bookmark:active:before {\n  transform: scale(0.8);\n  transition: all 0.3s ease;\n}\n.bookmark .bookmark-icon {\n  margin: 12px;\n}\n.bookmark .bookmark-icon path {\n  stroke: black;\n  fill: rgba(0, 0, 0, 0);\n}\n\n#bookmark:checked + .bookmark .bookmark-icon {\n  animation: booking 0.3s linear forwards;\n}\n#bookmark:checked + .bookmark .bookmark-icon path {\n  fill: black;\n  transition: all 0.3s ease;\n  transition-delay: 0.1s;\n}\n\n.bookmark .shimmer {\n  position: absolute;\n  inset: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform: skew(-13deg) translateX(-110%);\n  background: rgba(255, 255, 255, 0.3);\n  z-index: 0;\n  transition: transform 1s ease;\n}\n.bookmark:hover .shimmer {\n  transform: skew(-13deg) translateX(110%);\n}\n\n@keyframes booking {\n  0% {\n    transform: rotateY(0) translateY(0) scale(1);\n  }\n  50% {\n    transform: rotateY(90deg) translateY(-16px) scale(1.1);\n  }\n  100% {\n    transform: rotateY(180deg) translateY(0) scale(1.2);\n  }\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "hover",
+      "checkbox",
+      "modern",
+      "click",
+      "bookmark",
+      "shimmer"
+    ]
+  },
+  {
+    "id": "uiv-842856",
+    "title": "Splendid Fish 36",
+    "author": "hoshikawamaki",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.205Z",
+    "html": "<!-- From Uiverse.io by hoshikawamaki  - Tags: simple, button, checkbox, label, tailwindcss, rightbottom, peer -->\n<label for=\"tool_button\" class=\"relative w-8 h-20 py-2\">\n  <input type=\"checkbox\" id=\"tool_button\" class=\"hidden peer\" />\n  <div\n    class=\"flex items-center h-full bg-purple-400 rounded-lg w-72 -right-64 peer-checked:right-3 p-0.5 shadow-[0_2px_10px_rgba(0,0,0,0.24)] absolute transition-all duration-300 cursor-pointer\"\n  >\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"28\"\n      height=\"28\"\n      viewBox=\"0 0 24 24\"\n      fill=\"#fff\"\n      stroke=\"#fff\"\n      stroke-width=\"2\"\n      stroke-linecap=\"round\"\n      stroke-linejoin=\"round\"\n      class=\"ml-0.5 feather feather-more-vertical\"\n    >\n      <circle cx=\"12\" cy=\"12\" r=\"1\"></circle>\n      <circle cx=\"12\" cy=\"5\" r=\"1\"></circle>\n      <circle cx=\"12\" cy=\"19\" r=\"1\"></circle>\n    </svg>\n    <div\n      class=\"flex flex-row items-center justify-center w-full h-full bg-purple-300 border border-purple-400 rounded-lg\"\n    >\n      <div class=\"flex flex-col items-center justify-center flex-grow\">\n        <svg\n          xmlns=\"http://www.w3.org/2000/svg\"\n          width=\"24\"\n          height=\"24\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          stroke=\"#9370DB\"\n          stroke-width=\"2\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n          class=\"feather feather-twitter\"\n        >\n          <path\n            d=\"M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z\"\n          ></path>\n        </svg>\n        <p class=\"text-sm font-bold text-purple-800 uppercase text-nowrap\">\n          Twitter\n        </p>\n      </div>\n      <div class=\"flex flex-col items-center justify-center flex-grow\">\n        <svg\n          xmlns=\"http://www.w3.org/2000/svg\"\n          width=\"24\"\n          height=\"24\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          stroke=\"#9370DB\"\n          stroke-width=\"2\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n          class=\"feather feather-twitch\"\n        >\n          <path d=\"M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7\"></path>\n        </svg>\n        <p class=\"text-sm font-bold text-purple-800 uppercase text-nowrap\">\n          Twitch\n        </p>\n      </div>\n      <div class=\"flex flex-col items-center justify-center flex-grow\">\n        <svg\n          xmlns=\"http://www.w3.org/2000/svg\"\n          width=\"24\"\n          height=\"24\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          stroke=\"#9370DB\"\n          stroke-width=\"2\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n          class=\"feather feather-triangle\"\n        >\n          <path\n            d=\"M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z\"\n          ></path>\n        </svg>\n        <p class=\"text-sm font-bold text-purple-800 uppercase text-nowrap\">\n          Go top\n        </p>\n      </div>\n    </div>\n  </div>\n</label>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-111954",
+    "title": "Polite Moose 58",
+    "author": "iArsene69",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.235Z",
+    "html": "<label class=\"check-container\" for=\"check-box\">\n  <input class=\"check\" id=\"check-box\" name=\"check-box\" type=\"checkbox\" />\n  <span class=\"check-toggle\"></span>\n  <svg\n    xmlns=\"http://www.w3.org/2000/svg\"\n    fill=\"none\"\n    viewBox=\"0 0 180 161\"\n    height=\"93\"\n    width=\"72\"\n    class=\"check-svg\"\n  >\n    <defs>\n      <linearGradient y2=\"0%\" x2=\"100%\" y1=\"0%\" x1=\"0%\" id=\"neonLife\">\n        <stop style=\"stop-color:#b3ffab;stop-opacity:1\" offset=\"0%\"></stop>\n        <stop style=\"stop-color:#12fff7;stop-opacity:1\" offset=\"100%\"></stop>\n      </linearGradient>\n    </defs>\n    <path\n      stroke-linecap=\"round\"\n      stroke-width=\"5\"\n      pathLength=\"98\"\n      stroke=\"url(#neonLife)\"\n      d=\"M19.6498 44.725C22.7611 42.2105 21.2592 43.4425 25.498 39.887C27.4399 38.2582 29.3733 36.6193 31.3196 34.9958C33.2189 33.4116 35.0659 31.7608 37.0349 30.2641C37.9157 29.5946 38.7699 28.2817 39.8526 28.5097C40.296 28.603 32.2367 40.9382 31.8778 41.482C30.9129 42.9444 27.9937 46.8262 29.6449 46.2403C30.7482 45.8488 32.3434 44.4327 32.7816 46.0542C33.0806 47.1605 34.1022 46.2969 33.3133 48.0479C30.661 53.9347 26.0122 58.94 22.3613 64.1835C19.7684 67.9075 19.91 67.9632 23.6372 64.8215C26.2338 62.6328 28.7219 60.3185 31.2664 58.0695C34.2157 55.4628 37.116 52.7995 40.1184 50.2542C41.8317 48.8018 43.3453 46.9687 45.4084 46.0808C46.2059 45.7375 44.8192 47.7373 44.3185 48.4466C42.5755 50.9158 40.5345 53.1615 38.7096 55.5708C37.3792 57.3271 35.319 58.7865 34.8551 60.9404C34.5988 62.1304 37.0288 59.8042 37.9653 59.0265C38.3166 58.7348 53.2326 45.0539 54.7655 44.22C55.6812 43.7218 54.3415 46.3273 53.7287 47.1706C50.262 51.9422 46.3789 56.3978 42.6172 60.9404C38.0137 66.4998 33.2603 71.9337 28.6348 77.4748C24.8372 82.0241 16.614 91.3398 26.455 81.8344C31.2185 77.2333 35.8426 72.4901 40.5172 67.7987C45.7314 62.5659 50.9629 57.3498 56.1212 52.0618C58.7167 49.4011 61.8069 47.1062 63.777 43.9542C65.0596 41.902 60.0322 47.0245 58.2478 48.6593C51.2849 55.0385 28.5853 76.5513 22.2018 82.6318C5.56698 98.477 24.9566 80.3276 27.7841 77.6875C37.017 69.0664 46.233 60.4271 55.4566 51.796C65.2661 42.6167 75.023 33.3809 84.8835 24.2564C89.9806 19.5398 94.786 14.4588 100.328 10.274C102.433 8.68444 97.0891 14.446 95.3039 16.388C9.20893 110.046 144.837 -39.1865 43.3615 71.9456C35.559 80.4907 27.846 89.118 20.2081 97.8105C15.2893 103.408 0.666743 120.208 6.25221 115.275C18.5611 104.404 29.4632 92.0374 41.0223 80.3723C48.8415 72.4813 56.5722 64.5005 64.5213 56.7404C73.6647 47.8144 81.7534 39.8164 69.7315 55.2518C63.3997 63.3813 56.7431 71.2526 50.2198 79.2293C43.3809 87.592 36.3227 95.778 29.6449 104.27C26.9248 107.729 17.9266 113.505 22.0423 115.063C26.6629 116.811 29.8884 109.043 33.5791 105.759C38.9869 100.947 84.5509 58.4535 89.2963 54.0821C93.572 50.1433 112.817 31.8389 97.8559 47.7023C77.2695 69.5308 56.1052 90.7981 35.7855 112.883C33.3929 115.483 30.5553 117.772 28.7411 120.804C27.5307 122.828 32.2376 117.64 33.9247 115.993C39.6282 110.426 45.2396 104.766 50.911 99.1662C59.222 90.9605 67.5107 82.7318 75.872 74.5773C83.5273 67.1114 105.797 44.2482 99.5306 52.9125C90.9873 64.724 80.2965 74.8229 70.6087 85.7154C60.9287 96.5992 40.3613 118.723 72.9214 86.9382C82.6822 77.4098 92.3915 67.8286 102.056 58.2024C110.291 50.0002 118.588 41.8564 126.618 33.454C128.546 31.4371 134.341 25.6029 131.908 26.9679C127.376 29.5103 123.947 33.6517 120.079 37.1224C111.485 44.8341 97.2611 58.2607 88.2861 66.6291C82.1931 72.3103 83.6511 70.8222 91.0507 63.8645C95.2527 59.9135 99.4658 55.974 103.704 52.0618C106.838 49.1688 109.856 46.1379 113.167 43.4491C113.858 42.888 112.223 44.9695 111.626 45.6289C97.941 60.7254 83.2521 74.9501 69.891 90.3408C68.6147 91.811 64.6657 95.6467 66.5416 95.1257C70.1086 94.1348 72.6636 90.9571 75.6328 88.7458C81.8983 84.0797 88.0086 79.2083 94.2406 74.4976C101.206 69.2323 120.746 52.6852 116.118 60.0898C112.813 65.3778 108.027 69.5841 103.81 74.1786C96.9018 81.7069 63.5887 116.656 56.4402 124.579C53.7935 127.513 45.2693 135.112 48.997 133.803C54.8283 131.756 58.7066 126.149 63.4048 122.134C73.9496 113.121 84.2788 103.86 94.7191 94.7269C104.801 85.9078 114.803 76.9969 124.97 68.2772C142.784 53.0002 136.487 59.2455 123.641 71.9988C105.178 90.3284 86.3897 108.327 67.8707 126.599C64.3651 130.058 53.2122 139.581 57.4503 137.073C62.5337 134.064 66.161 129.092 70.4758 125.058C81.0209 115.198 91.5079 105.276 102.029 95.3915C112.597 85.4635 123.095 75.4608 133.742 65.619C144.071 56.0716 156.245 44.5276 140.654 61.6316C133.276 69.7254 125.688 77.6252 118.192 85.6091C107.833 96.6406 76.0274 129.003 87.0899 118.678C100.279 106.368 112.127 92.6949 124.678 79.7343C133.692 70.4252 142.732 61.1404 151.765 51.8492C159.589 43.8022 171.732 31.5395 159.527 43.6617C153.371 49.7771 147.232 55.9114 141.079 62.0303C134.544 68.5292 127.963 74.9832 121.461 81.5154C118.358 84.633 114.727 87.3346 112.264 90.9788C110.63 93.3945 116.745 87.2446 118.909 85.2901C121.736 82.7374 157.859 49.4491 160.059 47.4896C169.45 39.125 174.452 34.7311 163.993 47.0112C149.09 64.5099 132.208 80.6959 118.378 99.0865C113.417 105.683 131.391 88.9273 137.73 83.642C138.174 83.2713 154.991 68.0332 146.077 81.1432C142.713 86.0902 133.678 97.636 130.366 101.931C128.781 103.987 113.605 121.696 128.639 106.663C132.192 103.109 135.673 99.4836 139.272 95.9763C141.965 93.3509 144.481 90.494 147.512 88.2673C148.08 87.8501 147.389 89.7398 146.98 90.3142C137.833 103.171 127.037 115.185 116.623 127.025C104.71 140.569 162.679 71.5329 151.951 86.0344C144.657 95.8957 136.109 105.168 127.894 114.265C127.08 115.167 124.717 117.89 125.289 116.817C128.219 111.323 133.148 107.151 137.304 102.516C139.774 99.7614 142.251 97.0098 144.854 94.3813C145.889 93.3365 146.741 91.6605 148.203 91.5104C149.181 91.4101 147.456 93.3399 146.927 94.1687C145.323 96.6854 140.974 102.516 138.953 104.961C135.133 109.581 138.291 104.708 138.926 104.137C141.332 101.977 140.352 106.218 140.707 106.928\"\n    ></path>\n  </svg>\n  <p class=\"check-label\">Do you love me?</p>\n</label>",
+    "css": "/* From Uiverse.io by iArsene69  - Website: https://uiverse.io/Uncannypotato69/honest-starfish-32 - Name: Uncannypotato69 - Tags: checkbox, neon, line */\n.check-container {\n  position: relative;\n  display: flex;\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n  gap: 2rem;\n  background: linear-gradient(90deg, #b3ffab 0%, #12fff7 100%);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n}\n\n.check {\n  position: absolute;\n  appearance: none;\n}\n\n.check-toggle {\n  position: absolute;\n  left: 0;\n  top: 50%;\n  height: 1.5rem;\n  width: 1.5rem;\n  transform: translateX(-150%) translateY(-50%);\n  border-radius: 0.25em;\n  border: 2px solid #b3ffab;\n}\n\n.check-toggle + .check-svg {\n  position: absolute;\n  left: 0;\n  top: 50%;\n  height: 2rem;\n  width: 2rem;\n  transform: translateX(-120%) translateY(-50%);\n  transition: stroke-dashoffset 0.5s ease-out;\n  stroke-dasharray: 100;\n  stroke-dashoffset: 100;\n}\n\n.check:checked + .check-toggle + .check-svg {\n  stroke-dashoffset: 0;\n}\n\n.check-label {\n  font-size: 1rem;\n  user-select: none;\n  font-weight: semi-bold;\n}",
+    "tags": [
+      "checkbox",
+      "neon",
+      "line"
+    ]
+  },
+  {
+    "id": "uiv-863460",
+    "title": "Light Pig 3",
+    "author": "javierBarroso",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.272Z",
+    "html": "<label class=\"container\">\n  <input type=\"checkbox\" checked=\"checked\" id=\"checkbox\" />\n  <div class=\"checkmark\">\n    <span class=\"off\"></span>\n    <span class=\"on\"></span>\n  </div>\n</label>\n<label class=\"label\" for=\"checkbox\">CheckBox</label>",
+    "css": "/* From Uiverse.io by javierBarroso  - Tags: checkbox, neon */\n/* Hide the default checkbox */\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n.label {\n  color: #888;\n  font-size: 1.3rem;\n  margin-left: 10px;\n  cursor: pointer;\n}\n\n.container {\n  display: flex;\n  position: relative;\n  cursor: pointer;\n  user-select: none;\n  justify-content: center;\n  align-items: center;\n  gap: 10px;\n  color: #888;\n}\n\n/* Create a custom checkbox */\n.checkmark {\n  position: relative;\n  top: 0;\n  left: 0;\n  height: 25px;\n  width: 25px;\n  background-color: #555;\n  border-radius: 50px;\n  transition-duration: 0.5s;\n  overflow: hidden;\n}\n\n/* When the checkbox is checked, add a blue background */\n.container input:checked ~ .checkmark {\n  background-color: #49be5c;\n  box-shadow: 0 0px 10px #49be5cdc;\n}\n\n.container .off {\n  position: absolute;\n  width: 25px;\n  height: 25px;\n  transition-duration: 0.5s;\n}\n\n.container .on {\n  position: absolute;\n  width: 25px;\n  height: 25px;\n  transform: translateY(25px);\n  transition-duration: 0.5s;\n}\n\n.container .on::before {\n  content: \"\";\n  height: 16px;\n  width: 16px;\n  border-radius: 50px;\n  background-color: transparent;\n  border: #fff solid 2px;\n  transition-duration: 0.2s;\n  position: absolute;\n  transform: translate(2.5px, 2.5px);\n}\n\n.container .off::before {\n  content: \"\";\n  height: 15px;\n  width: 3px;\n  background-color: #fff;\n  transition-duration: 0.2s;\n  position: absolute;\n  transform: translate(-1.5px, -7.5px);\n  left: 50%;\n  top: 50%;\n}\n\n.container input:checked ~ .checkmark .on {\n  transform: translateX(0%);\n}\n\n.container input:checked ~ .checkmark .off {\n  transform: translateY(-100%);\n}",
+    "tags": [
+      "checkbox",
+      "neon"
+    ]
+  },
+  {
+    "id": "uiv-602115",
+    "title": "Dangerous Puma 90",
+    "author": "ke1221",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.215Z",
+    "html": "<input checked=\"\" class=\"check\" type=\"checkbox\">",
+    "css": "/* From Uiverse.io by ke1221 - Tags: checkbox */\n.check {\n position: relative;\n width: 20px;\n height: 20px;\n border-radius: 2px;\n appearance: none;\n background-color: #bbb;\n transition: all .3s;\n}\n\n.check::before {\n content: '';\n position: absolute;\n border: solid #fff;\n display: block;\n width: .3em;\n height: .6em;\n border-width: 0 .2em .2em 0;\n z-index: 1;\n opacity: 0;\n right: calc(50% - .3em);\n top: calc(50% - .6em);\n transform: rotate(0deg);\n transition: all .3s;\n transform-origin: center center;\n}\n\n.check:checked {\n animation: a .3s ease-in forwards;\n background-color: rgb(120, 190, 120);\n}\n\n.check:checked::before {\n opacity: 1;\n transform: rotate(405deg);\n}\n\n@keyframes a {\n 0% {\n  opacity: 1;\n  transform: scale(1) rotateY(0deg);\n }\n\n 50% {\n  opacity: 0;\n  transform: scale(.8) rotateY(180deg);\n }\n\n 100% {\n  opacity: 1;\n  transform: scale(1) rotateY(360deg);\n }\n}",
+    "tags": [
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-734969",
+    "title": "Dull Bobcat 80",
+    "author": "krlozCJ",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.260Z",
+    "html": "<label class=\"container\">\n    <input type=\"checkbox\" checked=\"checked\">\n    <div class=\"checkmark\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\">\n            <title>Checkmark</title>\n            <path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\" d=\"M416 128L192 384l-96-96\"></path>\n        </svg>\n    </div>\n</label>",
+    "css": "/* From Uiverse.io by krlozCJ - Tags: checkbox */\n/* Hide the default checkbox */\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n  display: none;\n  color: white;\n}\n\n.container {\n  --size: 50px;\n  width: var(--size);\n  display: block;\n  height: var(--size);\n  background-color: #191A1E;\n  border-radius: 100%;\n  cursor: pointer;\n  padding: 5px;\n  color: white;\n  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;\n}\n\n.container .checkmark {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;\n  transition: all ease 0.3s;\n  padding: 8px;\n}\n\n.container .checkmark svg {\n  opacity: 0;\n  transition: all ease 0.3s;\n}\n\n.container input:checked + .checkmark {\n  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;\n}\n\n.container input:checked + .checkmark svg {\n  opacity: 1;\n}",
+    "tags": [
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-450518",
+    "title": "Black Dragon 46",
+    "author": "lenin55",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.262Z",
+    "html": "<label class=\"cl-checkbox\">\n  <input checked=\"\" type=\"checkbox\">\n  <span></span>\n</label>",
+    "css": "/* From Uiverse.io by lenin55 - Tags: material design, checkbox */\n.cl-checkbox {\n position: relative;\n display: inline-block;\n}\n\n/* Input */\n.cl-checkbox > input {\n appearance: none;\n -moz-appearance: none;\n -webkit-appearance: none;\n z-index: -1;\n position: absolute;\n left: -10px;\n top: -8px;\n display: block;\n margin: 0;\n border-radius: 50%;\n width: 40px;\n height: 40px;\n background-color: rgba(0, 0, 0, 0.6);\n box-shadow: none;\n outline: none;\n opacity: 0;\n transform: scale(1);\n pointer-events: none;\n transition: opacity 0.3s, transform 0.2s;\n}\n\n/* Span */\n.cl-checkbox > span {\n display: inline-block;\n width: 100%;\n cursor: pointer;\n}\n\n/* Box */\n.cl-checkbox > span::before {\n content: \"\";\n display: inline-block;\n box-sizing: border-box;\n margin: 3px 11px 3px 1px;\n border: solid 2px;\n /* Safari */\n border-color: rgba(0, 0, 0, 0.6);\n border-radius: 2px;\n width: 18px;\n height: 18px;\n vertical-align: top;\n transition: border-color 0.2s, background-color 0.2s;\n}\n\n/* Checkmark */\n.cl-checkbox > span::after {\n content: \"\";\n display: block;\n position: absolute;\n top: 3px;\n left: 1px;\n width: 10px;\n height: 5px;\n border: solid 2px transparent;\n border-right: none;\n border-top: none;\n transform: translate(3px, 4px) rotate(-45deg);\n}\n\n/* Checked, Indeterminate */\n.cl-checkbox > input:checked,\n.cl-checkbox > input:indeterminate {\n background-color: #018786;\n}\n\n.cl-checkbox > input:checked + span::before,\n.cl-checkbox > input:indeterminate + span::before {\n border-color: #018786;\n background-color: #018786;\n}\n\n.cl-checkbox > input:checked + span::after,\n.cl-checkbox > input:indeterminate + span::after {\n border-color: #fff;\n}\n\n.cl-checkbox > input:indeterminate + span::after {\n border-left: none;\n transform: translate(4px, 3px);\n}\n\n/* Hover, Focus */\n.cl-checkbox:hover > input {\n opacity: 0.04;\n}\n\n.cl-checkbox > input:focus {\n opacity: 0.12;\n}\n\n.cl-checkbox:hover > input:focus {\n opacity: 0.16;\n}\n\n/* Active */\n.cl-checkbox > input:active {\n opacity: 1;\n transform: scale(0);\n transition: transform 0s, opacity 0s;\n}\n\n.cl-checkbox > input:active + span::before {\n border-color: #85b8b7;\n}\n\n.cl-checkbox > input:checked:active + span::before {\n border-color: transparent;\n background-color: rgba(0, 0, 0, 0.6);\n}\n\n/* Disabled */\n.cl-checkbox > input:disabled {\n opacity: 0;\n}\n\n.cl-checkbox > input:disabled + span {\n color: rgba(0, 0, 0, 0.38);\n cursor: initial;\n}\n\n.cl-checkbox > input:disabled + span::before {\n border-color: currentColor;\n}\n\n.cl-checkbox > input:checked:disabled + span::before,\n.cl-checkbox > input:indeterminate:disabled + span::before {\n border-color: transparent;\n background-color: currentColor;\n}",
+    "tags": [
+      "material design",
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-649077",
+    "title": "Grumpy Wombat 18",
+    "author": "milegelu",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.904Z",
+    "html": "<label class=\"container\">\n  <input type=\"checkbox\" />\n  <div class=\"checkmark\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon No\" viewBox=\"0 0 16 16\">\n      <path\n        fill-rule=\"evenodd\"\n        d=\"M8 0C3.584 0 0 3.584 0 8s3.584 8 8 8c4.408 0 8-3.584 8-8s-3.592-8-8-8zm5.284 3.688a6.802 6.802 0 0 1 1.545 4.251c-.226-.043-2.482-.503-4.755-.217-.052-.112-.096-.234-.148-.355-.139-.33-.295-.668-.451-.99 2.516-1.023 3.662-2.498 3.81-2.69zM8 1.18c1.735 0 3.323.65 4.53 1.718-.122.174-1.155 1.553-3.584 2.464-1.12-2.056-2.36-3.74-2.551-4A6.95 6.95 0 0 1 8 1.18zm-2.907.642A43.123 43.123 0 0 1 7.627 5.77c-3.193.85-6.013.833-6.317.833a6.865 6.865 0 0 1 3.783-4.78zM1.163 8.01V7.8c.295.01 3.61.053 7.02-.971.199.381.381.772.555 1.162l-.27.078c-3.522 1.137-5.396 4.243-5.553 4.504a6.817 6.817 0 0 1-1.752-4.564zM8 14.837a6.785 6.785 0 0 1-4.19-1.44c.12-.252 1.509-2.924 5.361-4.269.018-.009.026-.009.044-.017a28.246 28.246 0 0 1 1.457 5.18A6.722 6.722 0 0 1 8 14.837zm3.81-1.171c-.07-.417-.435-2.412-1.328-4.868 2.143-.338 4.017.217 4.251.295a6.774 6.774 0 0 1-2.924 4.573z\"\n      ></path>\n    </svg>\n    <p class=\"No name\">ball</p>\n    <svg\n      viewBox=\"0 0 16 16\"\n      class=\"icon Yes\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n    >\n      <path\n        d=\"M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1v-1z\"\n      ></path>\n      <path\n        d=\"M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.373.297.408.408.78 1.05 1.095 1.772.32.733.599 1.591.805 2.466.206.875.34 1.78.364 2.606.024.816-.059 1.602-.328 2.21a1.42 1.42 0 0 1-1.445.83c-.636-.067-1.115-.394-1.513-.773-.245-.232-.496-.526-.739-.808-.126-.148-.25-.292-.368-.423-.728-.804-1.597-1.527-3.224-1.527-1.627 0-2.496.723-3.224 1.527-.119.131-.242.275-.368.423-.243.282-.494.575-.739.808-.398.38-.877.706-1.513.773a1.42 1.42 0 0 1-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772a2.34 2.34 0 0 1 .433-.335.504.504 0 0 1-.028-.079zm2.036.412c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a13.748 13.748 0 0 0-.748 2.295 12.351 12.351 0 0 0-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 0 0 .426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.504C4.861 9.969 5.978 9.027 8 9.027s3.139.942 3.965 1.855c.164.181.307.348.44.504.214.251.403.472.615.674.318.303.601.468.929.503a.42.42 0 0 0 .426-.241c.18-.408.265-1.02.243-1.776a12.354 12.354 0 0 0-.339-2.406 13.753 13.753 0 0 0-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27-1.036 0-2.063.091-2.913.27z\"\n      ></path>\n    </svg>\n    <p class=\"Yes name\">Game</p>\n  </div>\n</label>",
+    "css": "/* From Uiverse.io by milegelu  - Tags: blue, black, button, active, checkbox, modern, click animation */\n.container {\n  --UnChacked-color: hsl(0, 0%, 10%);\n  --chacked-color: hsl(216, 100%, 60%);\n  --font-color: white;\n  --chacked-font-color: var(--font-color);\n  --icon-size: 1.5em;\n  --anim-time: 0.2s;\n  --anim-scale: 0.1;\n  --base-radius: 0.8em;\n}\n\n.container {\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n  font-size: 20px;\n  user-select: none;\n  fill: var(--font-color);\n  color: var(--font-color);\n}\n\n/* Hide the default checkbox */\n.container input {\n  display: none;\n}\n\n/* Base custom checkbox */\n.checkmark {\n  background: var(--UnChacked-color);\n  border-radius: var(--base-radius);\n\n  display: flex;\n  padding: 0.5em;\n}\n.icon {\n  width: var(--icon-size);\n  height: auto;\n  filter: drop-shadow(0px 2px var(--base-radius) rgba(0, 0, 0, 0.25));\n}\n.name {\n  margin: 0 0.25em;\n}\n.Yes {\n  width: 0;\n}\n.name.Yes {\n  display: none;\n}\n\n/* action custom checkbox */\n.container:hover .checkmark,\n.container:hover .icon,\n.container:hover .name {\n  transform: scale(calc(1 + var(--anim-scale)));\n}\n\n.container:active .checkmark,\n.container:active .icon,\n.container:active .name {\n  transform: scale(calc(1 - var(--anim-scale) / 2));\n  border-radius: calc(var(--base-radius) * 2);\n}\n.checkmark::before {\n  content: \"\";\n  opacity: 0.5;\n  transform: scale(1);\n  border-radius: var(--base-radius);\n  position: absolute;\n  box-sizing: border-box;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 100%;\n}\n.checkmark:hover:before {\n  background-color: hsla(0, 0%, 50%, 0.2);\n}\n.container input:checked + .checkmark:before {\n  animation: boon calc(var(--anim-time)) ease;\n  animation-delay: calc(var(--anim-time) / 2);\n}\n\n/* When the checkbox is checked*/\n.container input:checked + .checkmark {\n  --UnChacked-color: var(--chacked-color);\n  fill: var(--chacked-font-color);\n  color: var(--chacked-font-color);\n}\n\n.container input:checked ~ .checkmark .No {\n  width: 0;\n}\n.container input:checked ~ .checkmark .name.No {\n  display: none;\n}\n\n.container input:checked ~ .checkmark .Yes {\n  width: var(--icon-size);\n}\n.container input:checked ~ .checkmark .name.Yes {\n  width: auto;\n  display: unset;\n}\n\n/*Animation*/\n.container,\n.checkmark,\n.checkmark:after,\n.icon,\n.checkmark .name {\n  transition: all var(--anim-time);\n}\n\n/*Unuse*/\n@keyframes icon-rot {\n  50% {\n    transform: rotateZ(180deg) scale(calc(1 - var(--anim-scale)));\n    border-radius: 1em;\n  }\n  to {\n    transform: rotate(360deg);\n    border-radius: var(--base-radius);\n  }\n}\n/*Unuse*/\n@keyframes boo {\n  80% {\n    transform: scale(1.4);\n  }\n  99% {\n    transform: scale(1.7);\n    border: 2px solid var(--UnChacked-color);\n  }\n  to {\n    transform: scale(0);\n  }\n}",
+    "tags": [
+      "blue",
+      "black",
+      "button",
+      "active",
+      "checkbox",
+      "modern",
+      "click animation"
+    ]
+  },
+  {
+    "id": "uiv-656136",
+    "title": "Tender Badger 3",
+    "author": "mobinkakei",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.705Z",
+    "html": "<div class=\"container\">\n  <label>\n    <input class=\"play-btn\" type=\"checkbox\" />\n    <div class=\"play-icon\"></div>\n    <div class=\"pause-icon\"></div>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by mobinkakei  - Tags: switch, checkbox, input, off */\n.container {\n  width: 80px;\n  height: 80px;\n  position: relative;\n  border-radius: 50%;\n}\n\n.play-btn {\n  position: absolute;\n  appearance: none;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  background: conic-gradient(#ff6347, #ff6347);\n  cursor: pointer;\n  outline: none;\n}\n\n.play-btn::before {\n  content: \"\";\n  position: absolute;\n  width: 93%;\n  height: 93%;\n  background-color: #000;\n  border-radius: 50%;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n}\n\n.play-btn:checked {\n  animation: borderAnimate 700ms ease-in-out 1;\n  animation-fill-mode: forwards;\n}\n\n@keyframes borderAnimate {\n  0% {\n    transform: rotate(0);\n    background: conic-gradient(#ff6347, transparent 20%);\n  }\n\n  80% {\n    background: conic-gradient(#ff6347, transparent 90%);\n  }\n\n  100% {\n    transform: rotate(360deg);\n    background: conic-gradient(#ff6347, #ff6347);\n  }\n}\n\n.play-icon {\n  position: absolute;\n  width: 30px;\n  height: 30px;\n  left: 60%;\n  top: 50%;\n  background-color: #ff6347;\n  transform: translate(-60%, -50%) rotate(90deg);\n  clip-path: polygon(50% 15%, 0% 100%, 100% 100%);\n  transition: all 400ms ease-in-out;\n  cursor: pointer;\n}\n\n.play-btn:checked + .play-icon {\n  clip-path: polygon(0 100%, 0% 100%, 100% 100%);\n}\n\n.pause-icon {\n  position: absolute;\n  width: 30px;\n  height: 30px;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  cursor: pointer;\n}\n\n.pause-icon::before {\n  content: \"\";\n  position: absolute;\n  width: 0%;\n  height: 100%;\n  background-color: #ff6347;\n  left: 0;\n}\n\n.pause-icon::after {\n  content: \"\";\n  position: absolute;\n  width: 0;\n  height: 100%;\n  background-color: #ff6347;\n  right: 0;\n}\n\n.play-btn:checked ~ .pause-icon::before {\n  animation: reveal 300ms ease-in-out 350ms 1;\n  animation-fill-mode: forwards;\n}\n\n.play-btn:checked ~ .pause-icon::after {\n  animation: reveal 300ms ease-in-out 600ms 1;\n  animation-fill-mode: forwards;\n}\n\n@keyframes reveal {\n  0% {\n    width: 0;\n  }\n\n  100% {\n    width: 35%;\n  }\n}",
+    "tags": [
+      "switch",
+      "checkbox",
+      "input",
+      "off"
+    ]
+  },
+  {
+    "id": "uiv-109307",
+    "title": "Slippery Bear 64",
+    "author": "mrhyddenn",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.722Z",
+    "html": "<div class=\"container\">\n    <input type=\"checkbox\" id=\"cbx\" style=\"display: none;\">\n    <label for=\"cbx\" class=\"check\">\n        <svg width=\"18px\" height=\"18px\" viewBox=\"0 0 18 18\">\n            <path d=\"M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z\"></path>\n            <polyline points=\"1 9 7 14 15 4\"></polyline>\n        </svg>\n    </label>\n</div>",
+    "css": "/* From Uiverse.io by mrhyddenn - Tags: checkbox */\n.check {\n  cursor: pointer;\n  position: relative;\n  margin: auto;\n  width: 18px;\n  height: 18px;\n  -webkit-tap-highlight-color: transparent;\n  transform: translate3d(0, 0, 0);\n}\n\n.check:before {\n  content: \"\";\n  position: absolute;\n  top: -15px;\n  left: -15px;\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  background: rgba(34,50,84,0.03);\n  opacity: 0;\n  transition: opacity 0.2s ease;\n}\n\n.check svg {\n  position: relative;\n  z-index: 1;\n  fill: none;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke: #c8ccd4;\n  stroke-width: 1.5;\n  transform: translate3d(0, 0, 0);\n  transition: all 0.2s ease;\n}\n\n.check svg path {\n  stroke-dasharray: 60;\n  stroke-dashoffset: 0;\n}\n\n.check svg polyline {\n  stroke-dasharray: 22;\n  stroke-dashoffset: 66;\n}\n\n.check:hover:before {\n  opacity: 1;\n}\n\n.check:hover svg {\n  stroke: #4285f4;\n}\n\n#cbx:checked + .check svg {\n  stroke: #4285f4;\n}\n\n#cbx:checked + .check svg path {\n  stroke-dashoffset: 60;\n  transition: all 0.3s linear;\n}\n\n#cbx:checked + .check svg polyline {\n  stroke-dashoffset: 42;\n  transition: all 0.2s linear;\n  transition-delay: 0.15s;\n}",
+    "tags": [
+      "checkbox"
+    ]
+  },
+  {
+    "id": "uiv-798748",
+    "title": "Blue Frog 13",
+    "author": "myshy13",
+    "category": "Checkboxes",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:20.913Z",
+    "html": "<label class=\"container\">\n  <input type=\"checkbox\" checked=\"checked\" />\n  <div class=\"checkmark\"></div>\n</label>",
+    "css": "/* From Uiverse.io by myshy13  - Tags: checkbox */\n.container input {\n  opacity: 0;\n  cursor: pointer;\n  display: none;\n}\n\n.container {\n  display: block;\n  position: relative;\n  cursor: pointer;\n  font-size: 20px;\n  user-select: none;\n}\n\n.checkmark {\n  transition: 0.5s ease;\n  border-radius: 0.2em;\n}\n\n.checkmark {\n  position: relative;\n  top: 0;\n  left: 0;\n  height: 1.3em;\n  width: 1.3em;\n  background-color: #ccc;\n}\n.container input:checked ~ .checkmark {\n  background-color: #b30000;\n  box-shadow: #ff2929 0px 0px 1em;\n  outline: rgb(139, 0, 0) 3px solid;\n}\n\n.checkmark:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\n\n.container input:checked ~ .checkmark::after {\n  display: block;\n}\n\n.container .checkmark::after {\n  left: 0.45em;\n  top: 0.25em;\n  width: 0.25em;\n  height: 0.5em;\n  border: solid white;\n  border-width: 0 0.15em 0.15em 0;\n  transform: rotate(45deg);\n}",
+    "tags": [
+      "checkbox"
+    ]
   }
 ];

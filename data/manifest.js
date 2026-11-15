@@ -1,50 +1,55 @@
 /**
  * UIverse Components Manifest Metadata
- * Updated: 2026-09-11T01:42:50.083Z
+ * Updated: 2026-11-14T16:19:52.233Z
+ * Total Components: 6.002
  */
 window.UIVERSE_MANIFEST = {
-  "total": 4900,
-  "updatedAt": "2026-09-11T01:42:49.964Z",
+  "total": 6002,
+  "updatedAt": "2026-11-14T16:19:52.233Z",
   "categories": {
-    "Loaders": {
-      "count": 902,
-      "file": "loaders.js"
-    },
     "Buttons": {
-      "count": 1593,
+      "count": 1937,
       "file": "buttons.js"
     },
     "Cards": {
-      "count": 995,
+      "count": 1179,
       "file": "cards.js"
     },
-    "Inputs": {
-      "count": 283,
-      "file": "inputs.js"
-    },
     "Checkboxes": {
-      "count": 309,
+      "count": 343,
       "file": "checkboxes.js"
     },
-    "Toggles": {
-      "count": 390,
-      "file": "toggles.js"
-    },
     "Forms": {
-      "count": 200,
+      "count": 240,
       "file": "forms.js"
     },
+    "Inputs": {
+      "count": 337,
+      "file": "inputs.js"
+    },
+    "Notifications": {
+      "count": 23,
+      "file": "notifications.js"
+    },
     "Patterns": {
-      "count": 45,
+      "count": 147,
       "file": "patterns.js"
     },
+    "Radio Buttons": {
+      "count": 169,
+      "file": "radio_buttons.js"
+    },
+    "Toggles": {
+      "count": 436,
+      "file": "toggles.js"
+    },
     "Tooltips": {
-      "count": 57,
+      "count": 98,
       "file": "tooltips.js"
     },
-    "Radio Buttons": {
-      "count": 126,
-      "file": "radio_buttons.js"
+    "Loaders": {
+      "count": 1093,
+      "file": "loaders.js"
     }
   }
 };

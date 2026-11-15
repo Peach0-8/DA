@@ -36,12 +36,13 @@ const CONFIG = {
 
   /** Firebase credentials — replace with yours */
   FIREBASE: {
-    apiKey: 'YOUR_API_KEY',
-    authDomain: 'YOUR_PROJECT.firebaseapp.com',
-    projectId: 'YOUR_PROJECT_ID',
-    storageBucket: 'YOUR_PROJECT.appspot.com',
-    messagingSenderId: 'YOUR_SENDER_ID',
-    appId: 'YOUR_APP_ID',
+    apiKey: "AIzaSyAq5F5yX27FPNlsE9yDNTxbRxCWfVPENtM",
+    authDomain: "haaaa-c869e.firebaseapp.com",
+    databaseURL: "https://haaaa-c869e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "haaaa-c869e",
+    storageBucket: "haaaa-c869e.firebasestorage.app",
+    messagingSenderId: "704016186149",
+    appId: "1:704016186149:web:02760a62fe1b1748e778cc"
   },
 
   /** Pagination */
@@ -82,19 +83,354 @@ function getSupabaseClient() {
 let _firestoreDB = null;
 function getFirestoreDB() {
   if (_firestoreDB) return _firestoreDB;
-  // Uncomment when firebase is available:
-  // const app = firebase.initializeApp(CONFIG.FIREBASE);
-  // _firestoreDB = firebase.firestore(app);
-  console.warn('[UIForge] Firebase SDK not loaded. Using local mode.');
+  if (typeof firebase !== 'undefined' && typeof firebase.firestore === 'function') {
+    try {
+      if (!firebase.apps.length) {
+        firebase.initializeApp(CONFIG.FIREBASE);
+      }
+      _firestoreDB = firebase.firestore();
+      return _firestoreDB;
+    } catch (e) {
+      console.warn('[UIForge] Firestore init error:', e);
+    }
+  }
   return null;
+}
+
+let _realtimeDB = null;
+function getRealtimeDB() {
+  if (_realtimeDB) return _realtimeDB;
+  if (typeof firebase !== 'undefined' && typeof firebase.database === 'function') {
+    try {
+      if (!firebase.apps.length) {
+        firebase.initializeApp(CONFIG.FIREBASE);
+      }
+      _realtimeDB = firebase.database();
+      return _realtimeDB;
+    } catch (e) {
+      console.warn('[UIForge] Realtime Database init error:', e);
+    }
+  }
+  return null;
+}
+
+/** Save component to Firebase so EVERYONE in the community can see it */
+async function saveComponentToCloud(component) {
+  const payload = {
+    id: component.id,
+    title: component.title || 'Untitled',
+    html: component.html || '',
+    css: component.css || '',
+    author: component.author || 'Anonymous',
+    authorEmail: component.authorEmail || '',
+    userId: component.userId || '',
+    category: component.category || 'Other',
+    likes: component.likes || 0,
+    views: component.views || 0,
+    createdAt: component.createdAt || new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+
+  // 1. Try Firestore
+  const db = getFirestoreDB();
+  if (db) {
+    try {
+      await db.collection('components').doc(component.id).set(payload);
+      console.log('[UIForge] Uploaded to Firestore:', component.id);
+    } catch (e) {
+      console.warn('[UIForge] Firestore write failed:', e);
+    }
+  }
+
+  // 2. Try Realtime Database (as fallback or mirror)
+  const rtdb = getRealtimeDB();
+  if (rtdb) {
+    try {
+      await rtdb.ref('components/' + component.id).set(payload);
+      console.log('[UIForge] Uploaded to Realtime Database:', component.id);
+    } catch (e) {
+      console.warn('[UIForge] Realtime DB write failed:', e);
+    }
+  }
+}
+
+/** Delete component from cloud */
+async function deleteComponentFromCloud(id) {
+  const db = getFirestoreDB();
+  if (db) {
+    try {
+      await db.collection('components').doc(id).delete();
+      console.log('[UIForge] Deleted from Firestore:', id);
+    } catch (e) {
+      console.warn('[UIForge] Firestore delete failed:', e);
+    }
+  }
+  const rtdb = getRealtimeDB();
+  if (rtdb) {
+    try {
+      await rtdb.ref('components/' + id).remove();
+      console.log('[UIForge] Deleted from Realtime DB:', id);
+    } catch (e) {
+      console.warn('[UIForge] Realtime DB delete failed:', e);
+    }
+  }
+}
+
+/** Sync all community uploads from Firebase on load */
+async function syncCommunityUploads() {
+  const cloudComps = [];
+  const db = getFirestoreDB();
+
+  if (db) {
+    try {
+      const snap = await db.collection('components').get();
+      if (snap && !snap.empty) {
+        snap.forEach((doc) => {
+          cloudComps.push({ id: doc.id, ...doc.data() });
+        });
+      }
+    } catch (e) {
+      console.warn('[UIForge] Could not fetch from Firestore:', e);
+    }
+  }
+
+  if (!cloudComps.length) {
+    const rtdb = getRealtimeDB();
+    if (rtdb) {
+      try {
+        const snap = await rtdb.ref('components').once('value');
+        if (snap && snap.exists()) {
+          const val = snap.val();
+          Object.keys(val).forEach((k) => {
+            cloudComps.push({ id: k, ...val[k] });
+          });
+        }
+      } catch (e) {
+        console.warn('[UIForge] Could not fetch from Realtime DB:', e);
+      }
+    }
+  }
+
+  if (cloudComps.length > 0) {
+    const deletedIds = getDeletedComponentIds();
+    const filteredCloudComps = cloudComps.filter((c) => !deletedIds.has(c.id));
+    console.log('[UIForge] Successfully fetched ' + filteredCloudComps.length + ' community components from Firebase!');
+    filteredCloudComps.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+
+    // Cache community uploads separately from user's personal uploads
+    saveStoredCommunityUploads(filteredCloudComps);
+
+    // Rebuild local component list combining user uploads, community uploads, and seeds
+    rebuildLocalComponents();
+
+    // Re-render feed cleanly without duplicating cards
+    if (typeof loadComponents === 'function' && STATE.page === 1) {
+      loadComponents(true);
+    }
+    if (typeof updateProfileStats === 'function') {
+      updateProfileStats();
+    }
+  }
 }
 
 /* ---- Helper: fake async delay ---- */
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/* ---- Local in-memory "database" (populated from DUMMY_DATA) ---- */
+/* ---- Local in-memory "database" & persistent storage keys ---- */
 let _localComponents = [];
 const CODE_EDIT_STORAGE_KEY = 'uiforge_component_code_edits';
+const USER_UPLOADS_STORAGE_KEY = 'uiforge_user_uploads';
+const COMMUNITY_UPLOADS_STORAGE_KEY = 'uiforge_community_uploads';
+const MY_UPLOAD_IDS_KEY = 'uiforge_my_upload_ids';
+const DELETED_IDS_STORAGE_KEY = 'uiforge_deleted_ids';
+
+function getDeletedComponentIds() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(DELETED_IDS_STORAGE_KEY) || '[]'));
+  } catch (e) {
+    return new Set();
+  }
+}
+
+function addDeletedComponentId(id) {
+  if (!id) return;
+  const ids = getDeletedComponentIds();
+  ids.add(id);
+  try {
+    localStorage.setItem(DELETED_IDS_STORAGE_KEY, JSON.stringify([...ids]));
+  } catch (e) {}
+}
+
+function getMyUploadIds() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(MY_UPLOAD_IDS_KEY) || '[]'));
+  } catch (e) {
+    return new Set();
+  }
+}
+
+function saveMyUploadId(id) {
+  const ids = getMyUploadIds();
+  ids.add(id);
+  try {
+    localStorage.setItem(MY_UPLOAD_IDS_KEY, JSON.stringify([...ids]));
+  } catch (e) {}
+}
+
+function removeMyUploadId(id) {
+  const ids = getMyUploadIds();
+  ids.delete(id);
+  try {
+    localStorage.setItem(MY_UPLOAD_IDS_KEY, JSON.stringify([...ids]));
+  } catch (e) {}
+}
+
+function isUserComponentOwner(component) {
+  if (!component) return false;
+  // UIverse seed components can never be modified or deleted by users
+  if (String(component.id).startsWith('uiv-')) return false;
+
+  const currentUserId = STATE.currentUser?.uid;
+  if (currentUserId && component.userId && component.userId === currentUserId) {
+    return true;
+  }
+  const myIds = getMyUploadIds();
+  if (myIds.has(component.id)) {
+    return true;
+  }
+  const currentAuthor = STATE.currentUser?.displayName || (STATE.currentUser?.email ? STATE.currentUser.email.split('@')[0] : null);
+  if (currentAuthor && component.author && component.author.toLowerCase() === currentAuthor.toLowerCase()) {
+    return true;
+  }
+  const settingsName = typeof getUserSettings === 'function' ? getUserSettings().name : null;
+  if (settingsName && component.author && component.author.toLowerCase() === settingsName.toLowerCase()) {
+    return true;
+  }
+  if (component.isUserUpload) {
+    return true;
+  }
+  return false;
+}
+
+function getStoredCommunityUploads() {
+  try {
+    const list = JSON.parse(localStorage.getItem(COMMUNITY_UPLOADS_STORAGE_KEY) || '[]');
+    const deletedIds = getDeletedComponentIds();
+    return Array.isArray(list) ? list.filter((c) => !deletedIds.has(c.id)) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveStoredCommunityUploads(uploads) {
+  try {
+    const deletedIds = getDeletedComponentIds();
+    const cleanList = Array.isArray(uploads) ? uploads.filter((c) => !deletedIds.has(c.id)) : [];
+    localStorage.setItem(COMMUNITY_UPLOADS_STORAGE_KEY, JSON.stringify(cleanList));
+  } catch (e) {
+    console.warn('[UIForge] Could not save community uploads cache:', e);
+  }
+}
+
+function getStoredUserUploads() {
+  try {
+    const list = JSON.parse(localStorage.getItem(USER_UPLOADS_STORAGE_KEY) || '[]');
+    const deletedIds = getDeletedComponentIds();
+    return Array.isArray(list) ? list.filter((c) => !deletedIds.has(c.id)) : [];
+  } catch (error) {
+    console.warn('[UIForge] Could not read user uploads:', error);
+    return [];
+  }
+}
+
+function saveStoredUserUploads(uploads) {
+  try {
+    const deletedIds = getDeletedComponentIds();
+    const cleanList = Array.isArray(uploads) ? uploads.filter((c) => !deletedIds.has(c.id)) : [];
+    localStorage.setItem(USER_UPLOADS_STORAGE_KEY, JSON.stringify(cleanList));
+  } catch (error) {
+    console.warn('[UIForge] Could not save user uploads:', error);
+  }
+}
+
+function saveUserUploadLocally(component) {
+  const uploads = getStoredUserUploads();
+  const existingIdx = uploads.findIndex((c) => c.id === component.id);
+  if (existingIdx >= 0) {
+    uploads[existingIdx] = { ...uploads[existingIdx], ...component };
+  } else {
+    uploads.unshift(component);
+  }
+  saveStoredUserUploads(uploads);
+  saveMyUploadId(component.id);
+
+  // Also update in community uploads cache if present
+  const community = getStoredCommunityUploads();
+  const commIdx = community.findIndex((c) => c.id === component.id);
+  if (commIdx >= 0) {
+    community[commIdx] = { ...community[commIdx], ...component };
+    saveStoredCommunityUploads(community);
+  }
+}
+
+function removeUserUploadLocally(id) {
+  if (!id) return;
+  // 1. Mark in deleted IDs blacklist so nothing can revive it
+  addDeletedComponentId(id);
+
+  // 2. Remove from user uploads
+  let uploads = getStoredUserUploads();
+  uploads = uploads.filter((c) => c.id !== id);
+  saveStoredUserUploads(uploads);
+
+  // 3. Remove from community uploads cache
+  let community = getStoredCommunityUploads();
+  community = community.filter((c) => c.id !== id);
+  saveStoredCommunityUploads(community);
+
+  // 4. Remove from my uploads tracking
+  removeMyUploadId(id);
+}
+
+function rebuildLocalComponents() {
+  const deletedIds = getDeletedComponentIds();
+  const myUploads = getStoredUserUploads().filter((c) => !deletedIds.has(c.id));
+  const communityUploads = getStoredCommunityUploads().filter((c) => !deletedIds.has(c.id));
+  const initialComps = (window.INITIAL_COMPONENTS || []).filter((c) => !deletedIds.has(c.id));
+
+  const map = new Map();
+  // 1. My uploads first
+  myUploads.forEach((c) => {
+    map.set(c.id, {
+      ...c,
+      isUserUpload: true,
+      liked: STATE.likedIds ? STATE.likedIds.has(c.id) : false,
+    });
+  });
+  // 2. Community uploads
+  communityUploads.forEach((c) => {
+    if (!map.has(c.id)) {
+      map.set(c.id, {
+        ...c,
+        isUserUpload: true,
+        liked: STATE.likedIds ? STATE.likedIds.has(c.id) : false,
+      });
+    }
+  });
+  // 3. Initial seed components
+  initialComps.forEach((c) => {
+    if (!map.has(c.id)) {
+      map.set(c.id, {
+        ...c,
+        isUserUpload: false,
+        liked: STATE.likedIds ? STATE.likedIds.has(c.id) : false,
+      });
+    }
+  });
+
+  _localComponents = Array.from(map.values());
+  applyStoredCodeEdits(_localComponents);
+}
 
 function getStoredCodeEdits() {
   try {
@@ -185,6 +521,7 @@ async function loadAllCategories() {
  */
 async function fetchComponents({
   category = 'All',
+  framework = STATE.framework || 'all',
   search = '',
   sort = 'newest',
   page = 1,
@@ -297,21 +634,55 @@ async function fetchComponents({
   }
 
   if (search) {
+    if (category === 'All' && !_allCategoriesLoaded) {
+      await loadAllCategories();
+      let pool = [..._localComponents];
+      if (window.UIVERSE_DATA) {
+        const existingIds = new Set(pool.map((c) => c.id));
+        Object.values(window.UIVERSE_DATA).forEach((catItems) => {
+          catItems.forEach((c) => {
+            if (!existingIds.has(c.id)) {
+              existingIds.add(c.id);
+              pool.push(c);
+            }
+          });
+        });
+      }
+      items = pool;
+    }
     const q = search.toLowerCase();
     items = items.filter(
       (c) =>
-        c.title.toLowerCase().includes(q) ||
-        c.author.toLowerCase().includes(q) ||
-        c.category.toLowerCase().includes(q)
+        (c.title && c.title.toLowerCase().includes(q)) ||
+        (c.author && c.author.toLowerCase().includes(q)) ||
+        (c.category && c.category.toLowerCase().includes(q))
     );
   }
+  // Filter by Framework (All / Tailwind / Pure CSS - Uiverse Parity)
+  const currentFw = framework || STATE.framework || 'all';
+  if (currentFw !== 'all') {
+    items = items.filter((c) => {
+      const isTailwind = !c.css || !c.css.trim() || /\b(flex|grid|bg-|text-|p-|m-|rounded-|border-)\b/.test(c.html || '');
+      if (currentFw === 'tailwind') return isTailwind;
+      if (currentFw === 'css') return !isTailwind || (c.css && c.css.trim().length > 15);
+      return true;
+    });
+  }
+
+  // Ensure each component has accurate likes count and liked status
+  items.forEach((c) => {
+    c.likes = getComponentLikesCount(c);
+    c.liked = STATE.likedIds.has(c.id);
+  });
+
   if (sort === 'popular') items.sort((a, b) => b.likes - a.likes);
-  else if (sort === 'trending') items.sort((a, b) => b.views - a.views);
-  else items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  else if (sort === 'trending') items.sort((a, b) => (b.views || 0) - (a.views || 0));
+  else if (sort === 'random') items.sort(() => 0.5 - Math.random());
+  else items.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
 
   let total = items.length;
   if (category === 'All' && !search && window.UIVERSE_MANIFEST) {
-    total = window.UIVERSE_MANIFEST.total + _localComponents.length;
+    total = window.UIVERSE_MANIFEST.total + (typeof getUserUploads === 'function' ? getUserUploads().length : 0);
   }
 
   applyStoredCodeEdits(items);
@@ -364,13 +735,22 @@ async function fetchComponentById(id) {
  * @returns {Promise<Component>} The created component record
  */
 async function uploadComponent({ title, html, css, author = 'Anonymous', category = 'Other' }) {
+  const currentUser = STATE.currentUser || (typeof firebase !== 'undefined' && firebase.auth ? firebase.auth().currentUser : null);
+  const defaultName = (currentUser && currentUser.email) ? currentUser.email.split('@')[0] : (author.trim() || 'Anonymous');
+  const authorName = (currentUser && currentUser.displayName) ? currentUser.displayName : defaultName;
+  const authorEmail = (currentUser && currentUser.email) ? currentUser.email : '';
+  const userId = currentUser ? currentUser.uid : ('guest-' + Date.now());
+
   const newComponent = {
-    id: `local-${Date.now()}`,
+    id: `upload-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
     title: title.trim(),
     html: html.trim(),
     css: css.trim(),
-    author: author.trim() || 'Anonymous',
-    category,
+    author: authorName,
+    authorEmail: authorEmail,
+    userId: userId,
+    isUserUpload: true,
+    category: category || 'Other',
     likes: 0,
     views: 0,
     liked: false,
@@ -382,6 +762,7 @@ async function uploadComponent({ title, html, css, author = 'Anonymous', categor
     if (sb) {
       const { data, error } = await sb.from('components').insert([newComponent]).select().single();
       if (error) throw error;
+      saveUserUploadLocally(data);
       return data;
     }
   }
@@ -393,13 +774,18 @@ async function uploadComponent({ title, html, css, author = 'Anonymous', categor
         ...newComponent,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       });
-      return { ...newComponent, id: ref.id };
+      const created = { ...newComponent, id: ref.id };
+      saveUserUploadLocally(created);
+      return created;
     }
   }
 
-  // LOCAL FALLBACK
-  await delay(600);
+  // Save to Firebase Cloud Database (so EVERYONE in community sees it) & LocalStorage
+  saveUserUploadLocally(newComponent);
   _localComponents.unshift(newComponent);
+  saveComponentToCloud(newComponent).catch((err) => {
+    console.warn('[UIForge] Cloud upload failed, saved locally:', err);
+  });
   return newComponent;
 }
 
@@ -425,6 +811,135 @@ async function updateComponentCode(id, { html, css }) {
   const edits = getStoredCodeEdits();
   edits[id] = { html, css };
   localStorage.setItem(CODE_EDIT_STORAGE_KEY, JSON.stringify(edits));
+}
+
+/**
+ * updateComponentDetails(id, payload)
+ * Modifies title, category, html, css of an existing component.
+ */
+async function updateComponentDetails(id, { title, category, html, css }) {
+  const component = findComponentAnywhere(id);
+  if (!component) throw new Error('Component not found');
+
+  if (!isUserComponentOwner(component)) {
+    showToast('You do not have permission to edit this component.', 'error');
+    throw new Error('Unauthorized');
+  }
+
+  component.title = title.trim();
+  component.category = category;
+  component.html = html.trim();
+  component.css = css.trim();
+  component.updatedAt = new Date().toISOString();
+
+  // Save to stored code edits
+  const edits = getStoredCodeEdits();
+  edits[id] = { html: component.html, css: component.css };
+  try {
+    localStorage.setItem(CODE_EDIT_STORAGE_KEY, JSON.stringify(edits));
+  } catch (e) {}
+
+  // Update in user uploads storage & Firebase Cloud
+  saveUserUploadLocally(component);
+  saveComponentToCloud(component).catch(() => {});
+
+  // Update in Firestore if firebase provider is active
+  if (CONFIG.DB_PROVIDER === 'firebase') {
+    const db = getFirestoreDB();
+    if (db) {
+      try {
+        await db.collection('components').doc(id).update({
+          title: component.title,
+          category: component.category,
+          html: component.html,
+          css: component.css,
+        });
+      } catch (err) {
+        console.warn('[UIForge] Could not update Firestore:', err);
+      }
+    }
+  }
+
+  // Update detail modal if open
+  if (STATE.currentModal === id) {
+    const modalTitle = document.getElementById('modal-title');
+    const modalCategory = document.getElementById('modal-category');
+    if (modalTitle) modalTitle.textContent = component.title;
+    if (modalCategory) modalCategory.textContent = component.category;
+  }
+
+  // Refresh main page cards
+  renderGrid(STATE.components);
+
+  // Refresh profile modal if open
+  if (typeof window._renderProfileUploads === 'function') window._renderProfileUploads();
+  if (typeof window._renderProfileFavorites === 'function') window._renderProfileFavorites();
+  if (typeof window._updateProfileStats === 'function') window._updateProfileStats();
+
+  return component;
+}
+
+/**
+ * deleteComponent(id)
+ * Deletes a component from memory, local storage, and remote DB.
+ */
+async function deleteComponent(id) {
+  if (!id) return;
+  const component = findComponentAnywhere(id);
+  if (component && !isUserComponentOwner(component)) {
+    showToast('You do not have permission to delete this component.', 'error');
+    throw new Error('Unauthorized');
+  }
+
+  // 1. Remove from stored user uploads, community uploads, tracking & add to deleted IDs
+  removeUserUploadLocally(id);
+
+  // 2. Remove from in-memory arrays immediately
+  _localComponents = _localComponents.filter((c) => c.id !== id);
+  STATE.components = STATE.components.filter((c) => c.id !== id);
+  if (Array.isArray(STATE.allComponents)) {
+    STATE.allComponents = STATE.allComponents.filter((c) => c.id !== id);
+  }
+  if (STATE.total > 0) STATE.total--;
+
+  // 3. Rebuild local components pool to ensure clean state
+  rebuildLocalComponents();
+
+  // 4. Delete from Firebase Cloud (Realtime DB & Firestore)
+  deleteComponentFromCloud(id).catch((err) => {
+    console.warn('[UIForge] Cloud delete failed:', err);
+  });
+
+  // 5. Remove from likes
+  if (STATE.likedIds && STATE.likedIds.has(id)) {
+    STATE.likedIds.delete(id);
+    persistLikes();
+  }
+
+  // 6. Delete from Firestore if firebase provider is active
+  if (CONFIG.DB_PROVIDER === 'firebase') {
+    const db = getFirestoreDB();
+    if (db) {
+      try {
+        await db.collection('components').doc(id).delete();
+      } catch (err) {
+        console.warn('[UIForge] Could not delete from Firestore:', err);
+      }
+    }
+  }
+
+  // 7. Close detail modal if open for this item
+  if (STATE.currentModal === id && typeof closeModal === 'function') {
+    closeModal();
+  }
+
+  // 8. Refresh main list and profile
+  renderGrid(STATE.components);
+  if (typeof updateHeroStats === 'function') updateHeroStats();
+  if (typeof updateProfileUserInfo === 'function') updateProfileUserInfo();
+  if (typeof window._renderProfileUploads === 'function') window._renderProfileUploads();
+  if (typeof window._renderProfileFavorites === 'function') window._renderProfileFavorites();
+  if (typeof window._updateProfileStats === 'function') window._updateProfileStats();
 }
 
 /**
@@ -512,6 +1027,32 @@ const DUMMY_DATA = window.INITIAL_COMPONENTS || [];
    4. APPLICATION STATE
    ============================================================ */
 
+// One-time cleanup for test likes artifact from automated tests
+const TEST_LIKES_CLEANUP_KEY = 'uiforge_test_likes_cleaned_v3';
+try {
+  if (!localStorage.getItem(TEST_LIKES_CLEANUP_KEY)) {
+    localStorage.removeItem('uiforge_liked');
+    localStorage.removeItem('uiforge_component_likes');
+    localStorage.setItem(TEST_LIKES_CLEANUP_KEY, 'true');
+  }
+} catch (e) {}
+
+function getStoredUser() {
+  try {
+    if (localStorage.getItem('uiforge_logged_out') === 'true') {
+      return null;
+    }
+    const raw = localStorage.getItem('uiforge_user');
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return {
+    uid: 'local-user-phitsamay',
+    displayName: 'Phitsamay',
+    email: 'phitsamay@example.com',
+    photoURL: ''
+  };
+}
+
 const STATE = {
   components: [],          // Currently displayed components
   allComponents: [],          // All loaded components (for client-side filtering)
@@ -519,10 +1060,15 @@ const STATE = {
   page: 1,
   pageSize: CONFIG.PAGE_SIZE,
   activeCategory: 'All',
+  framework: 'all',          // 'all' | 'tailwind' | 'css' (Uiverse Framework Filter)
   searchQuery: '',
   sort: 'newest',
   currentModal: null,        // ID of the open component (detail modal)
   isGridView: true,
+  currentUser: getStoredUser(),
+  activeProfileTab: 'uploads',
+  canvasZoom: 1,             // Zoom scale in modal preview
+  currentViewport: 'desktop',// 'desktop' | 'tablet' | 'mobile'
   likedIds: new Set(JSON.parse(localStorage.getItem('uiforge_liked') || '[]')),
   isLoading: false,
 };
@@ -574,17 +1120,21 @@ async function copyToClipboard(text) {
   try {
     if (navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(text);
-    } else {
-      // Fallback for non-https environments
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;';
-      document.body.appendChild(ta);
-      ta.focus(); ta.select();
-      document.execCommand('copy');
-      ta.remove();
+      return true;
     }
-    return true;
+  } catch (e) {}
+
+  try {
+    // Fallback for non-https or permission-blocked headless environments
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    const ok = document.execCommand('copy');
+    ta.remove();
+    return !!ok;
   } catch {
     return false;
   }
@@ -634,7 +1184,22 @@ function debounce(fn, ms = 300) {
  * Builds a full HTML document for use in an <iframe> srcdoc attribute.
  */
 function buildPreviewSrcDoc(html, css, category = '', isModal = false, bgColor = '#212121') {
-  const isTailwind = !css || !css.trim();
+  let isLight = false;
+  if (bgColor && bgColor !== 'transparent') {
+    const hex = bgColor.replace('#', '');
+    if (hex.length === 6) {
+      const r = parseInt(hex.substring(0, 2), 16);
+      const g = parseInt(hex.substring(2, 4), 16);
+      const b = parseInt(hex.substring(4, 6), 16);
+      const lum = (0.299 * r + 0.587 * g + 0.114 * b);
+      if (lum > 140) isLight = true;
+    }
+  }
+  const rootClass = isLight ? 'light' : 'dark';
+  const initialBg = isModal ? bgColor : (isLight ? '#ffffff' : '#212121');
+  const initialColor = isLight ? '#0f172a' : '#f4f4f5';
+
+  const isTailwind = !css || !css.trim() || /\b(flex|grid|bg-|text-|p-|m-|rounded-|border-)\b/.test(html);
   const tailwindHead = isTailwind ? `
 <script>
   (() => {
@@ -653,7 +1218,7 @@ function buildPreviewSrcDoc(html, css, category = '', isModal = false, bgColor =
 </script>` : '';
 
   return `<!DOCTYPE html>
-<html class="dark">
+<html class="${rootClass}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -673,11 +1238,20 @@ ${tailwindHead}
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: ${bgColor} !important;
-    color: #f4f4f5;
+    background-color: ${initialBg} !important;
+    color: ${initialColor};
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.2s ease, color 0.15s ease;
+  }
+  html.light, html.light body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+  html.dark, html.dark body {
+    background-color: #212121 !important;
+    color: #f4f4f5 !important;
   }
   body::-webkit-scrollbar { display: none; }
 
@@ -696,7 +1270,7 @@ ${tailwindHead}
   ${css}
 </style>
 </head>
-<body class="dark">
+<body class="${rootClass}">
 <div id="uiverse-stage">
 ${html}
 </div>
@@ -705,6 +1279,18 @@ ${html}
     if (e.target.closest('a')) e.preventDefault();
   });
   document.addEventListener('submit', e => e.preventDefault());
+
+  window.addEventListener('message', e => {
+    if (!e.data || e.data.type !== 'TOGGLE_THEME') return;
+    const isLight = e.data.theme === 'light';
+    document.documentElement.classList.toggle('light', isLight);
+    document.documentElement.classList.toggle('dark', !isLight);
+    document.body.classList.toggle('light', isLight);
+    document.body.classList.toggle('dark', !isLight);
+    const bg = isLight ? '#ffffff' : '#212121';
+    document.documentElement.style.setProperty('background-color', bg, 'important');
+    document.body.style.setProperty('background-color', bg, 'important');
+  });
 
   function autoFit() {
     const stage = document.getElementById('uiverse-stage');
@@ -759,6 +1345,10 @@ ${html}
  * Animates a number from 0 to target.
  */
 function animateCounter(el, target) {
+  if (!target || target <= 0 || isNaN(target)) {
+    el.textContent = '0';
+    return;
+  }
   const duration = 1800;
   const start = performance.now();
   const step = (now) => {
@@ -767,8 +1357,161 @@ function animateCounter(el, target) {
     const current = Math.floor(ease * target);
     el.textContent = current >= 1000 ? current.toLocaleString() : current;
     if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target >= 1000 ? target.toLocaleString() : target;
   };
   requestAnimationFrame(step);
+}
+
+/**
+ * updateHeroStats()
+ * Synchronizes hero section with 100% REAL platform metrics
+ */
+function updateHeroStats() {
+  const compCounter = document.getElementById('hero-stat-components');
+  const catCounter = document.getElementById('hero-stat-categories');
+  const likeCounter = document.getElementById('hero-stat-likes');
+  const devCounter = document.getElementById('hero-stat-developers');
+
+  // Real component count
+  const myUploadCount = typeof getUserUploads === 'function' ? getUserUploads().length : 0;
+  const totalComps = (window.UIVERSE_MANIFEST ? window.UIVERSE_MANIFEST.total : 6002) + myUploadCount;
+  if (compCounter) {
+    compCounter.dataset.target = totalComps;
+    compCounter.textContent = totalComps.toLocaleString();
+  }
+
+  // Real category count
+  const totalCats = window.UIVERSE_MANIFEST && window.UIVERSE_MANIFEST.categories
+    ? Object.keys(window.UIVERSE_MANIFEST.categories).length
+    : 11;
+  if (catCounter) {
+    catCounter.dataset.target = totalCats;
+    catCounter.textContent = totalCats.toLocaleString();
+  }
+
+  // Real user likes given on UIForge
+  const likesMap = typeof getStoredLikesMap === 'function' ? getStoredLikesMap() : {};
+  const totalLikes = Object.values(likesMap).reduce((sum, v) => sum + (Number(v) || 0), 0);
+  const realLikes = Math.max(STATE.likedIds ? STATE.likedIds.size : 0, totalLikes);
+  if (likeCounter) {
+    likeCounter.dataset.target = realLikes;
+    likeCounter.textContent = realLikes.toLocaleString();
+  }
+
+  // Real registered users
+  const realUsers = STATE.currentUser ? 1 : 0;
+  if (devCounter) {
+    devCounter.dataset.target = realUsers;
+    devCounter.textContent = realUsers.toLocaleString();
+  }
+}
+
+let _catScrollInitialized = false;
+
+/**
+ * setupHorizontalCategoryScroll()
+ * Powers smooth horizontal scrolling via buttons, wheel, and drag
+ */
+function setupHorizontalCategoryScroll() {
+  const container = document.getElementById('horizontal-categories');
+  const leftBtn = document.getElementById('cat-scroll-left-btn');
+  const rightBtn = document.getElementById('cat-scroll-right-btn');
+  if (!container) return;
+
+  function updateArrowVisibility() {
+    const scrollLeft = container.scrollLeft;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    if (leftBtn) {
+      const canScrollLeft = scrollLeft > 10;
+      leftBtn.classList.toggle('opacity-0', !canScrollLeft);
+      leftBtn.classList.toggle('pointer-events-none', !canScrollLeft);
+      leftBtn.classList.toggle('opacity-100', canScrollLeft);
+    }
+    if (rightBtn) {
+      const canScrollRight = scrollLeft < maxScroll - 10;
+      rightBtn.classList.toggle('opacity-0', !canScrollRight);
+      rightBtn.classList.toggle('pointer-events-none', !canScrollRight);
+      rightBtn.classList.toggle('opacity-90', canScrollRight);
+    }
+  }
+
+  if (!_catScrollInitialized) {
+    _catScrollInitialized = true;
+
+    // 1. Arrow buttons click scrolling
+    if (leftBtn) {
+      leftBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        container.scrollBy({ left: -280, behavior: 'smooth' });
+      });
+    }
+    if (rightBtn) {
+      rightBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        container.scrollBy({ left: 280, behavior: 'smooth' });
+      });
+    }
+
+    // 2. Mouse Wheel horizontal scrolling
+    container.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        container.scrollLeft += e.deltaY * 1.4;
+        updateArrowVisibility();
+      }
+    }, { passive: false });
+
+    // 3. Mouse Drag to Scroll (Grab and Drag)
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let hasMoved = false;
+
+    container.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
+      isDown = true;
+      hasMoved = false;
+      startX = e.pageX - container.offsetLeft;
+      scrollStart = container.scrollLeft;
+      container.classList.add('cursor-grabbing');
+      container.classList.remove('scroll-smooth');
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDown) {
+        isDown = false;
+        container.classList.remove('cursor-grabbing');
+        container.classList.add('scroll-smooth');
+        updateArrowVisibility();
+      }
+    });
+
+    container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      if (Math.abs(walk) > 4) hasMoved = true;
+      container.scrollLeft = scrollStart - walk;
+      updateArrowVisibility();
+    });
+
+    // Suppress chip click if dragged
+    container.addEventListener('click', (e) => {
+      if (hasMoved) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        hasMoved = false;
+      }
+    }, true);
+
+    container.addEventListener('scroll', updateArrowVisibility, { passive: true });
+    window.addEventListener('resize', updateArrowVisibility);
+  }
+
+  requestAnimationFrame(() => {
+    updateArrowVisibility();
+  });
 }
 
 
@@ -780,7 +1523,7 @@ function animateCounter(el, target) {
 function renderCategoryFilters() {
   const categories = [
     'All', 'Buttons', 'Checkboxes', 'Inputs', 'Radio Buttons',
-    'Cards', 'Toggles', 'Loaders', 'Tooltips', 'Forms', 'Patterns',
+    'Cards', 'Toggles', 'Loaders', 'Tooltips', 'Forms', 'Patterns', 'Notifications',
   ];
   const container = document.getElementById('sidebar-categories');
   if (!container) return;
@@ -797,18 +1540,19 @@ function renderCategoryFilters() {
     Tooltips: 'fa-comment-dots',
     Forms: 'fa-wpforms',
     Patterns: 'fa-table-cells-large',
+    Notifications: 'fa-bell',
   };
 
   container.innerHTML = categories.map((cat) => {
     const isActive = cat === STATE.activeCategory;
     let count = 0;
+    const userCompsCount = (typeof getUserUploads === 'function' ? getUserUploads() : _localComponents.filter((c) => c.isUserUpload)).filter((c) => cat === 'All' || c.category === cat).length;
     if (cat === 'All') {
-      count = window.UIVERSE_MANIFEST ? window.UIVERSE_MANIFEST.total + _localComponents.length : _localComponents.length;
+      count = window.UIVERSE_MANIFEST ? window.UIVERSE_MANIFEST.total + userCompsCount : userCompsCount;
     } else if (window.UIVERSE_MANIFEST && window.UIVERSE_MANIFEST.categories[cat]) {
-      const dummyCount = _localComponents.filter((c) => c.category === cat).length;
-      count = window.UIVERSE_MANIFEST.categories[cat].count + dummyCount;
+      count = window.UIVERSE_MANIFEST.categories[cat].count + userCompsCount;
     } else {
-      count = _localComponents.filter((c) => c.category === cat).length;
+      count = userCompsCount;
     }
 
     return `
@@ -845,22 +1589,224 @@ function renderCategoryFilters() {
 
       // Auto-close sidebar on mobile after selecting
       if (window.innerWidth < 1024) {
-        document.getElementById('sidebar-close-btn').click();
+        if (typeof window._closeSidebar === 'function') window._closeSidebar();
       }
     });
   });
+
+  // Render Horizontal Category Navigation Bar (Uiverse Signature Bar)
+  const horizontalContainer = document.getElementById('horizontal-categories');
+  if (horizontalContainer) {
+    horizontalContainer.innerHTML = categories.map((cat) => {
+      const isActive = cat === STATE.activeCategory;
+      let count = 0;
+      const userCompsCount = (typeof getUserUploads === 'function' ? getUserUploads() : _localComponents.filter((c) => c.isUserUpload)).filter((c) => cat === 'All' || c.category === cat).length;
+      if (cat === 'All') {
+        count = window.UIVERSE_MANIFEST ? window.UIVERSE_MANIFEST.total + userCompsCount : userCompsCount;
+      } else if (window.UIVERSE_MANIFEST && window.UIVERSE_MANIFEST.categories[cat]) {
+        count = window.UIVERSE_MANIFEST.categories[cat].count + userCompsCount;
+      } else {
+        count = userCompsCount;
+      }
+
+      return `
+        <button
+          type="button"
+          class="horizontal-cat-chip ${isActive ? 'active' : ''}"
+          data-category="${cat}"
+          aria-pressed="${isActive}"
+        >
+          <i class="fa-solid ${categoryIcons[cat] || 'fa-tag'} cat-chip-icon text-xs"></i>
+          <span>${cat}</span>
+          ${count > 0 ? `<span class="text-[10px] px-1.5 py-0.2 rounded-full font-medium ${isActive ? 'bg-brand-500/40 text-brand-200' : 'bg-white/5 text-gray-400'}">${count.toLocaleString()}</span>` : ''}
+        </button>
+      `;
+    }).join('');
+
+    horizontalContainer.querySelectorAll('.horizontal-cat-chip').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        STATE.activeCategory = btn.dataset.category;
+        STATE.page = 1;
+
+        const titleEl = document.getElementById('current-category-title');
+        if (titleEl) {
+          titleEl.textContent = STATE.activeCategory === 'All' ? 'All Components' : STATE.activeCategory + ' Components';
+        }
+
+        renderCategoryFilters();
+        loadComponents(true);
+
+        const newActive = document.querySelector(`.horizontal-cat-chip[data-category="${btn.dataset.category}"]`);
+        if (newActive) {
+          newActive.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      });
+    });
+
+    setupHorizontalCategoryScroll();
+  }
+}
+
+
+const COMPONENT_LIKES_STORAGE_KEY = 'uiforge_component_likes';
+
+function getStoredLikesMap() {
+  try {
+    return JSON.parse(localStorage.getItem(COMPONENT_LIKES_STORAGE_KEY) || '{}');
+  } catch (e) {
+    return {};
+  }
+}
+
+function getComponentLikesCount(component) {
+  if (!component) return 0;
+  const map = getStoredLikesMap();
+  const id = typeof component === 'object' ? component.id : component;
+  const isLiked = STATE && STATE.likedIds && typeof STATE.likedIds.has === 'function' ? STATE.likedIds.has(id) : false;
+
+  let count = 0;
+  if (typeof map[id] === 'number') {
+    count = map[id];
+  } else {
+    count = typeof component.likes === 'number' ? component.likes : 0;
+  }
+
+  // If this user has liked this item, the like count must NEVER be 0.
+  if (isLiked && count <= 0) {
+    count = 1;
+    map[id] = 1;
+    try {
+      localStorage.setItem(COMPONENT_LIKES_STORAGE_KEY, JSON.stringify(map));
+    } catch (e) {}
+  }
+
+  return count;
+}
+
+function setComponentLikesCount(id, count, delta = 0) {
+  const map = getStoredLikesMap();
+  map[id] = count;
+  try {
+    localStorage.setItem(COMPONENT_LIKES_STORAGE_KEY, JSON.stringify(map));
+  } catch (e) {}
+
+  // Sync to Cloud atomically
+  syncLikeToCloud(id, count, delta).catch(() => {});
+}
+
+async function syncLikeToCloud(id, count, delta = 0) {
+  const rtdb = getRealtimeDB();
+  if (rtdb) {
+    try {
+      if (delta !== 0) {
+        await rtdb.ref('likes/' + id).transaction((curr) => {
+          return Math.max(0, (curr || 0) + delta);
+        });
+      } else {
+        await rtdb.ref('likes/' + id).set(count);
+      }
+      return;
+    } catch (e) {}
+  }
+  const db = getFirestoreDB();
+  if (db) {
+    try {
+      if (delta !== 0 && typeof firebase !== 'undefined' && firebase.firestore && firebase.firestore.FieldValue) {
+        await db.collection('likes').doc(id).set({
+          count: firebase.firestore.FieldValue.increment(delta)
+        }, { merge: true });
+      } else {
+        await db.collection('likes').doc(id).set({ count: count }, { merge: true });
+      }
+    } catch (e) {}
+  }
+}
+
+async function syncCloudLikes() {
+  let changed = false;
+  const local = getStoredLikesMap();
+
+  // Try RTDB
+  const rtdb = getRealtimeDB();
+  if (rtdb) {
+    try {
+      const snap = await rtdb.ref('likes').once('value');
+      if (snap && snap.exists()) {
+        const val = snap.val() || {};
+        Object.keys(val).forEach((k) => {
+          const cloudVal = Number(val[k]) || 0;
+          if ((local[k] || 0) !== cloudVal) {
+            local[k] = cloudVal;
+            changed = true;
+          }
+        });
+      }
+    } catch (e) {}
+  }
+
+  // Also try Firestore
+  const db = getFirestoreDB();
+  if (db) {
+    try {
+      const snapshot = await db.collection('likes').get();
+      if (snapshot && !snapshot.empty) {
+        snapshot.forEach((doc) => {
+          const cloudVal = Number(doc.data()?.count) || 0;
+          if ((local[doc.id] || 0) !== cloudVal) {
+            local[doc.id] = cloudVal;
+            changed = true;
+          }
+        });
+      }
+    } catch (e) {}
+  }
+
+  if (changed) {
+    try {
+      localStorage.setItem(COMPONENT_LIKES_STORAGE_KEY, JSON.stringify(local));
+    } catch (e) {}
+
+    // Refresh rendered like buttons in DOM immediately
+    document.querySelectorAll('.like-btn').forEach((btn) => {
+      const id = btn.dataset.id;
+      if (id) {
+        const comp = findComponentAnywhere(id);
+        const count = getComponentLikesCount(comp || id);
+        const isLiked = STATE.likedIds.has(id);
+        updateLikeButton(btn, isLiked, count);
+      }
+    });
+
+    if (STATE.currentModal) {
+      const modalLikeCount = document.getElementById('modal-likes-count');
+      if (modalLikeCount) {
+        modalLikeCount.textContent = formatNumber(getComponentLikesCount(STATE.currentModal));
+      }
+    }
+    if (typeof updateHeroStats === 'function') {
+      updateHeroStats();
+    }
+  }
 }
 
 /**
- * renderComponentCard(component)
+ * renderComponentCard(component, eagerLoad)
  * Returns the outer HTML string for a single component card.
  */
-function renderComponentCard(component) {
+function renderComponentCard(component, eagerLoad = false) {
   const isLiked = STATE.likedIds.has(component.id);
   const initials = getInitials(component.author);
-  const likeCount = formatNumber(component.likes);
+  const currentLikes = getComponentLikesCount(component);
+  component.likes = currentLikes;
+  component.liked = isLiked;
+  const likeCount = formatNumber(currentLikes);
   const previewDoc = buildPreviewSrcDoc(component.html, component.css, component.category, false);
   const scaleClass = '';
+  const escapedPreview = escapeAttr(previewDoc);
+
+  const isTailwind = !component.css || !component.css.trim() || /\b(flex|grid|bg-|text-|p-|m-|rounded-|border-)\b/.test(component.html || '');
+  const fwName = isTailwind ? 'Tailwind' : 'CSS';
+  const fwClass = isTailwind ? 'tailwind' : 'css';
 
   return `
     <article
@@ -871,21 +1817,35 @@ function renderComponentCard(component) {
       aria-label="View ${component.title} component"
     >
       <!-- Preview -->
-      <div class="card-preview">
+      <div class="card-preview" data-canvas-theme="dark">
+        <!-- Canvas Theme Switcher (Uiverse style) -->
+        <button
+          type="button"
+          class="card-theme-toggle"
+          data-id="${component.id}"
+          title="Toggle preview theme (Dark / Light / Pitch Black)"
+          aria-label="Toggle card canvas theme"
+        >
+          <i class="fa-solid fa-circle-half-stroke text-[11px]"></i>
+        </button>
+
         <div class="card-overlay">
           <button class="overlay-btn overlay-btn-primary card-open-btn" data-id="${component.id}">
-            <i class="fa-solid fa-eye"></i> Preview
+            <i class="fa-solid fa-code text-xs"></i> Get code
           </button>
-          <button class="overlay-btn overlay-btn-secondary card-copy-btn" data-id="${component.id}" title="Quick copy HTML">
+          <button class="overlay-btn overlay-btn-secondary card-copy-btn" data-id="${component.id}" title="Quick copy HTML & CSS">
             <i class="fa-regular fa-copy"></i>
+          </button>
+          <button class="overlay-btn overlay-btn-secondary card-share-btn" data-id="${component.id}" title="Copy direct link">
+            <i class="fa-solid fa-share-nodes"></i>
           </button>
         </div>
         <iframe
-          srcdoc="${escapeAttr(previewDoc)}"
+          srcdoc="${escapedPreview}"
           title="${escapeAttr(component.title)} preview"
           loading="lazy"
           sandbox="allow-scripts"
-          class="card-iframe ${scaleClass}"
+          class="card-iframe ${scaleClass} bg-transparent"
         ></iframe>
       </div>
 
@@ -905,9 +1865,12 @@ function renderComponentCard(component) {
         </div>
         <div class="flex items-center justify-between">
           <p class="card-author">
-            by <span>@${escapeHtml(component.author)}</span>
+            by <span class="author-link cursor-pointer hover:underline font-medium" data-author="${escapeAttr(component.author)}">@${escapeHtml(component.author)}</span>
           </p>
-          <span class="card-tag">${escapeHtml(component.category)}</span>
+          <div class="flex items-center gap-1.5">
+            <span class="card-framework-badge ${fwClass}">${fwName}</span>
+            <span class="card-tag">${escapeHtml(component.category)}</span>
+          </div>
         </div>
       </div>
     </article>
@@ -922,6 +1885,35 @@ function escapeHtml(str = '') {
 /** Escape for HTML attribute values */
 function escapeAttr(str = '') {
   return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+/**
+ * Setup IntersectionObserver for virtualized lazy-loading of card iframes.
+ */
+function setupIframeObserver() {
+  if (typeof IntersectionObserver === 'undefined') return;
+  if (!window._cardIframeObserver) {
+    window._cardIframeObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const iframe = entry.target;
+          if (iframe.dataset.srcdoc && iframe.srcdoc !== iframe.dataset.srcdoc) {
+            iframe.srcdoc = iframe.dataset.srcdoc;
+          }
+          observer.unobserve(iframe);
+        }
+      });
+    }, { rootMargin: '350px 0px' });
+  }
+
+  const grid = document.getElementById('components-grid');
+  if (!grid) return;
+  grid.querySelectorAll('iframe[data-srcdoc]:not([data-observed="true"])').forEach((iframe) => {
+    iframe.dataset.observed = 'true';
+    if (iframe.srcdoc === 'about:blank') {
+      window._cardIframeObserver.observe(iframe);
+    }
+  });
 }
 
 /**
@@ -958,9 +1950,11 @@ function renderGrid(components, append = false) {
     grid.innerHTML = '';
   }
 
-  components.forEach((comp) => {
+  components.forEach((comp, idx) => {
+    // Eagerly load the first 12 cards on screen, lazy virtualize the rest
+    const eagerLoad = !append && idx < 12;
     const div = document.createElement('div');
-    div.innerHTML = renderComponentCard(comp);
+    div.innerHTML = renderComponentCard(comp, eagerLoad);
     const card = div.firstElementChild;
     grid.appendChild(card);
   });
@@ -979,6 +1973,7 @@ function renderGrid(components, append = false) {
   }
 
   attachCardListeners();
+  setupIframeObserver();
 }
 
 /** Attach event listeners to newly rendered cards */
@@ -993,7 +1988,14 @@ function attachCardListeners() {
     // Card click → open detail modal
     card.addEventListener('click', (e) => {
       // Prevent triggering from like button or overlay buttons
-      if (e.target.closest('.like-btn') || e.target.closest('.card-copy-btn') || e.target.closest('.card-open-btn')) return;
+      if (
+        e.target.closest('.like-btn') ||
+        e.target.closest('.card-copy-btn') ||
+        e.target.closest('.card-share-btn') ||
+        e.target.closest('.card-open-btn') ||
+        e.target.closest('.card-theme-toggle') ||
+        e.target.closest('.author-link')
+      ) return;
       const id = card.dataset.id;
       if (id) window.openModal?.(id);
     });
@@ -1007,7 +2009,7 @@ function attachCardListeners() {
       }
     });
 
-    // Quick copy HTML from card overlay
+    // Quick copy HTML & CSS from card overlay
     const copyBtn = card.querySelector('.card-copy-btn');
     if (copyBtn) {
       copyBtn.addEventListener('click', async (e) => {
@@ -1015,8 +2017,78 @@ function attachCardListeners() {
         const id = copyBtn.dataset.id;
         const comp = STATE.components.find((c) => c.id === id) || findComponentAnywhere(id);
         if (!comp) return;
-        const ok = await copyToClipboard(comp.html);
-        showToast(ok ? 'HTML copied to clipboard!' : 'Failed to copy', ok ? 'success' : 'error');
+        const bundleCode = `<style>\n${comp.css || ''}\n</style>\n${comp.html || ''}`;
+        const ok = await copyToClipboard(bundleCode);
+        showToast(ok ? 'HTML & CSS copied to clipboard!' : 'Failed to copy', ok ? 'success' : 'error');
+      });
+    }
+
+    // Direct Share Link button from card overlay
+    const shareBtn = card.querySelector('.card-share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const id = shareBtn.dataset.id;
+        const shareUrl = window.location.origin + window.location.pathname + '#item-' + id;
+        const ok = await copyToClipboard(shareUrl);
+        showToast(ok ? 'Direct link copied to clipboard!' : 'Failed to copy link', ok ? 'success' : 'error');
+      });
+    }
+
+    // Card Theme Toggle (Dark / Light / Pitch Black)
+    const themeBtn = card.querySelector('.card-theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const previewEl = card.querySelector('.card-preview');
+        if (!previewEl) return;
+        const iframe = previewEl.querySelector('iframe');
+        const currentTheme = previewEl.dataset.canvasTheme || 'dark';
+
+        // สลับ 2 โหมด: กลางคืน (dark) <-> กลางวัน (light)
+        const isCurrentlyDark = currentTheme !== 'light';
+        const nextTheme = isCurrentlyDark ? 'light' : 'dark';
+        const nextBg = isCurrentlyDark ? '#ffffff' : '#212121';
+
+        previewEl.dataset.canvasTheme = nextTheme;
+        previewEl.style.backgroundColor = nextBg;
+
+        // ไอคอนรูปครึ่งวงกลมขาว-ดำ (fa-circle-half-stroke) คงเดิมเสมอ
+        themeBtn.title = nextTheme === 'light' ? 'Switch to Night mode' : 'Switch to Day mode';
+        const iconEl = themeBtn.querySelector('i');
+        if (iconEl) iconEl.className = 'fa-solid fa-circle-half-stroke text-[11px]';
+
+        if (iframe && iframe.contentWindow) {
+          try {
+            iframe.contentWindow.postMessage({ type: 'TOGGLE_THEME', theme: nextTheme }, '*');
+          } catch (err) {}
+        }
+        try {
+          if (iframe && iframe.contentDocument && iframe.contentDocument.body) {
+            iframe.contentDocument.documentElement.classList.toggle('dark', nextTheme !== 'light');
+            iframe.contentDocument.documentElement.classList.toggle('light', nextTheme === 'light');
+            iframe.contentDocument.body.classList.toggle('dark', nextTheme !== 'light');
+            iframe.contentDocument.body.classList.toggle('light', nextTheme === 'light');
+            iframe.contentDocument.documentElement.style.setProperty('background-color', nextBg, 'important');
+            iframe.contentDocument.body.style.setProperty('background-color', nextBg, 'important');
+          }
+        } catch (err) {}
+      });
+    }
+
+    // Click on author to filter by author
+    const authorEl = card.querySelector('.author-link');
+    if (authorEl) {
+      authorEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const author = authorEl.dataset.author;
+        if (author) {
+          const searchInput = document.getElementById('search-input');
+          if (searchInput) {
+            searchInput.value = author;
+            searchInput.dispatchEvent(new Event('input'));
+          }
+        }
       });
     }
 
@@ -1036,8 +2108,29 @@ function attachCardListeners() {
  * Handles liking / unliking a component — optimistic UI + DB call.
  */
 function findComponentAnywhere(id) {
+  if (!id) return null;
+  if (typeof id === 'object' && id.id) id = id.id;
+
+  const deletedIds = getDeletedComponentIds();
+  if (deletedIds.has(id)) return null;
+
   let comp = STATE.components.find((c) => c.id === id) ||
     _localComponents.find((c) => c.id === id);
+
+  if (!comp) {
+    const uploads = getStoredUserUploads();
+    comp = uploads.find((c) => c.id === id);
+  }
+
+  if (!comp) {
+    const community = getStoredCommunityUploads();
+    comp = community.find((c) => c.id === id);
+  }
+
+  if (!comp && window.INITIAL_COMPONENTS) {
+    comp = window.INITIAL_COMPONENTS.find((c) => c.id === id);
+  }
+
   if (!comp && window.UIVERSE_DATA) {
     for (const list of Object.values(window.UIVERSE_DATA)) {
       comp = list.find((c) => c.id === id);
@@ -1051,6 +2144,14 @@ const _likingInFlight = new Set();
 
 async function handleLike(id, btn) {
   if (!id) return;
+  // Gated action: Anonymous visitors cannot like without signing in
+  if (!STATE.currentUser) {
+    showToast('Please sign in to like components', 'info');
+    if (typeof openSigninModal === 'function') {
+      openSigninModal('signin', 'Sign in to like and save your favorite components');
+    }
+    return;
+  }
   if (_likingInFlight.has(id)) return;
   _likingInFlight.add(id);
 
@@ -1073,8 +2174,10 @@ async function handleLike(id, btn) {
     }
     STATE.components.forEach(collect);
 
-    const baseLikes = typeof comp.likes === 'number' ? comp.likes : 0;
-    const nextLikes = Math.max(0, baseLikes + (willBeLiked ? 1 : -1));
+    const baseLikes = getComponentLikesCount(comp);
+    const nextLikes = willBeLiked
+      ? Math.max(1, (wasLiked ? baseLikes : baseLikes + 1))
+      : Math.max(0, baseLikes - 1);
 
     if (willBeLiked) {
       STATE.likedIds.add(id);
@@ -1082,12 +2185,16 @@ async function handleLike(id, btn) {
       STATE.likedIds.delete(id);
     }
 
+    const delta = willBeLiked ? 1 : -1;
+    setComponentLikesCount(id, nextLikes, delta);
+
     uniqueComps.forEach((c) => {
       c.liked = willBeLiked;
       c.likes = nextLikes;
     });
 
     persistLikes();
+    if (typeof updateHeroStats === 'function') updateHeroStats();
 
     // Update all matching card buttons on the page
     document.querySelectorAll(`.like-btn[data-id="${id}"]`).forEach((b) => {
@@ -1128,6 +2235,7 @@ async function handleLike(id, btn) {
         comp.likes = Math.max(0, (comp.likes || 0) - 1);
       }
       persistLikes();
+      if (typeof updateHeroStats === 'function') updateHeroStats();
       document.querySelectorAll(`.like-btn[data-id="${id}"]`).forEach((b) => {
         updateLikeButton(b, wasLiked, comp.likes);
       });
@@ -1162,14 +2270,374 @@ function updateLikeButton(btn, liked, likes) {
    7. MODAL MANAGER
    ============================================================ */
 
-/* --- Upload Modal --- */
+/* --- Upload Modal & Uiverse Studio System --- */
 
-function openUploadModal() {
+const UIVERSE_CATEGORIES = [
+  {
+    id: 'Buttons',
+    name: 'Button',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 40 24" fill="none"><rect x="2" y="3" width="36" height="18" rx="9" fill="#6366f1"/><circle cx="11" cy="12" r="3" fill="#fff"/></svg>`
+  },
+  {
+    id: 'Toggles',
+    name: 'Toggle switch',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 40 24" fill="none"><rect x="2" y="4" width="36" height="16" rx="8" fill="#4b5563"/><circle cx="11" cy="12" r="6" fill="#fff"/></svg>`
+  },
+  {
+    id: 'Checkboxes',
+    name: 'Checkbox',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="#6b7280"/><path d="M7 12l3 3 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  },
+  {
+    id: 'Cards',
+    name: 'Card',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="4" fill="#6b7280"/><rect x="7" y="6" width="6" height="2" rx="1" fill="#fff"/><rect x="7" y="10" width="10" height="1.5" rx="0.75" fill="#d1d5db"/></svg>`
+  },
+  {
+    id: 'Loaders',
+    name: 'Loader',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg>`
+  },
+  {
+    id: 'Inputs',
+    name: 'Input',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 20" fill="none"><rect x="2" y="2" width="28" height="16" rx="6" fill="#374151" stroke="#6b7280" stroke-width="1.5"/><circle cx="10" cy="10" r="1.5" fill="#9ca3af"/><circle cx="16" cy="10" r="1.5" fill="#9ca3af"/><circle cx="22" cy="10" r="1.5" fill="#9ca3af"/></svg>`
+  },
+  {
+    id: 'Forms',
+    name: 'Form',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="3" rx="1.5" fill="#9ca3af"/><rect x="3" y="10" width="14" height="3" rx="1.5" fill="#9ca3af"/><rect x="3" y="16" width="8" height="3" rx="1.5" fill="#9ca3af"/></svg>`
+  },
+  {
+    id: 'Patterns',
+    name: 'Pattern',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><path d="M2 18L18 2M6 22L22 6M2 10L10 2M2 2L2 2M14 22L22 14" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg>`
+  },
+  {
+    id: 'Radio buttons',
+    name: 'Radio buttons',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 16" fill="none"><circle cx="6" cy="8" r="4" fill="#6366f1"/><circle cx="16" cy="8" r="4" fill="#4b5563"/><circle cx="26" cy="8" r="4" fill="#4b5563"/></svg>`
+  },
+  {
+    id: 'Tooltips',
+    name: 'Tooltips',
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 28 22" fill="none"><rect x="2" y="2" width="24" height="12" rx="4" fill="#9ca3af"/><path d="M10 14L14 19L18 14Z" fill="#9ca3af"/></svg>`
+  }
+];
+
+const BOILERPLATES = {
+  Buttons: {
+    title: 'My Custom Button',
+    category: 'Buttons',
+    html: `<button class="button">\n  Button\n</button>`,
+    css: `.button {\n  cursor: pointer;\n  position: relative;\n  padding: 10px 24px;\n  font-size: 16px;\n  color: #ffffff;\n  border: 2px solid #111;\n  border-radius: 34px;\n  background-color: #212121;\n  font-weight: 600;\n  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);\n  overflow: hidden;\n}\n\n.button:hover {\n  box-shadow: 0 0 0 12px transparent;\n  color: #212121;\n  border-radius: 12px;\n  background-color: #f5f5f5;\n}\n\n.button:active {\n  scale: 0.95;\n}`
+  },
+  Toggles: {
+    title: 'My Toggle Switch',
+    category: 'Toggles',
+    html: `<label class="switch">\n  <input type="checkbox">\n  <span class="slider"></span>\n</label>`,
+    css: `/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: "";\n  height: 1.4em;\n  width: 1.4em;\n  border-radius: 20px;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: white;\n  transition: .4s;\n}\n\ninput:checked + .slider {\n  background-color: #2196F3;\n}\n\ninput:focus + .slider {\n  box-shadow: 0 0 1px #2196F3;\n}\n\ninput:checked + .slider:before {\n  transform: translateX(1.5em);\n}`
+  },
+  Checkboxes: {
+    title: 'My Custom Checkbox',
+    category: 'Checkboxes',
+    html: `<label class="container">\n  <input type="checkbox" checked="checked">\n  <div class="checkmark"></div>\n</label>`,
+    css: `/* Hide the default checkbox */\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n.container {\n  display: block;\n  position: relative;\n  cursor: pointer;\n  font-size: 20px;\n  user-select: none;\n}\n\n/* Create a custom checkbox */\n.checkmark {\n  position: relative;\n  top: 0;\n  left: 0;\n  height: 1.3em;\n  width: 1.3em;\n  background-color: #ccc;\n}\n\n/* When the checkbox is checked, add a blue background */\n.container input:checked ~ .checkmark {\n  background-color: #2196F3;\n}\n\n/* Create the checkmark/indicator (hidden when not checked) */\n.checkmark:after {\n  content: "";\n  position: absolute;\n  display: none;\n}\n\n/* Show the checkmark when checked */\n.container input:checked ~ .checkmark:after {\n  display: block;\n}\n\n/* Style the checkmark/indicator */\n.container .checkmark:after {\n  left: 0.45em;\n  top: 0.25em;\n  width: 0.25em;\n  height: 0.5em;\n  border: solid white;\n  border-width: 0 0.15em 0.15em 0;\n  transform: rotate(45deg);\n}`
+  },
+  Cards: {
+    title: 'My Custom Card',
+    category: 'Cards',
+    html: `<div class="card">\n  <div class="card-details">\n    <p class="text-title">Card Title</p>\n    <p class="text-body">Here are the details of the card</p>\n  </div>\n  <button class="card-button">More info</button>\n</div>`,
+    css: `.card {\n  width: 190px;\n  height: 254px;\n  border-radius: 20px;\n  background: #212121;\n  position: relative;\n  padding: 1.8rem;\n  border: 2px solid #c3c6ce;\n  transition: 0.5s ease-out;\n  overflow: visible;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n\n.card-details {\n  color: white;\n  height: 100%;\n  gap: .5em;\n  display: grid;\n  place-content: center;\n}\n\n.card-button {\n  transform: translate(-50%, 125%);\n  width: 60%;\n  border-radius: 1rem;\n  border: none;\n  background-color: #008bf8;\n  color: #fff;\n  font-size: 1rem;\n  padding: .5rem 1rem;\n  position: absolute;\n  left: 50%;\n  bottom: 0;\n  opacity: 0;\n  transition: 0.3s ease-out;\n  cursor: pointer;\n}\n\n.text-body {\n  color: rgb(134, 134, 134);\n  font-size: 0.8em;\n  text-align: center;\n}\n\n.text-title {\n  font-size: 1.5em;\n  font-weight: bold;\n  text-align: center;\n}\n\n.card:hover {\n  border-color: #008bf8;\n  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);\n}\n\n.card:hover .card-button {\n  transform: translate(-50%, 50%);\n  opacity: 1;\n}`
+  },
+  Loaders: {
+    title: 'My Custom Loader',
+    category: 'Loaders',
+    html: `<div class="loader"></div>`,
+    css: `.loader {\n  width: 48px;\n  height: 48px;\n  border: 5px solid #FFF;\n  border-bottom-color: #FF3D00;\n  border-radius: 50%;\n  display: inline-block;\n  box-sizing: border-box;\n  animation: rotation 1s linear infinite;\n}\n\n@keyframes rotation {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}`
+  },
+  Inputs: {
+    title: 'My Custom Input',
+    category: 'Inputs',
+    html: `<div class="input-group">\n  <input required="" type="text" name="text" autocomplete="off" class="input">\n  <label class="user-label">First Name</label>\n</div>`,
+    css: `.input-group {\n  position: relative;\n}\n\n.input {\n  border: solid 1.5px #9e9e9e;\n  border-radius: 1rem;\n  background: none;\n  padding: 1rem;\n  font-size: 1rem;\n  color: #f5f5f5;\n  transition: border 150ms cubic-bezier(0.4,0,0.2,1);\n}\n\n.user-label {\n  position: absolute;\n  left: 15px;\n  color: #e8e8e8;\n  pointer-events: none;\n  transform: translateY(1rem);\n  transition: 150ms cubic-bezier(0.4,0,0.2,1);\n}\n\n.input:focus, input:valid {\n  outline: none;\n  border: 1.5px solid #1a73e8;\n}\n\n.input:focus ~ label, input:valid ~ label {\n  transform: translateY(-50%) scale(0.8);\n  background-color: #212121;\n  padding: 0 .2em;\n  color: #2196f3;\n}`
+  },
+  Forms: {
+    title: 'My Custom Form',
+    category: 'Forms',
+    html: `<form class="form">\n  <p class="title">Register</p>\n  <p class="message">Signup now and get full access to our app.</p>\n  <label>\n    <input required="" placeholder="" type="email" class="input">\n    <span>Email</span>\n  </label>\n  <label>\n    <input required="" placeholder="" type="password" class="input">\n    <span>Password</span>\n  </label>\n  <button class="submit">Submit</button>\n</form>`,
+    css: `.form {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  max-width: 350px;\n  background-color: #1f1f1f;\n  padding: 20px;\n  border-radius: 20px;\n  position: relative;\n}\n\n.title {\n  font-size: 28px;\n  color: royalblue;\n  font-weight: 600;\n  letter-spacing: -1px;\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n\n.message {\n  color: rgba(255, 255, 255, 0.7);\n  font-size: 14px;\n}\n\n.form label {\n  position: relative;\n}\n\n.form label .input {\n  width: 100%;\n  padding: 10px 10px 20px 10px;\n  outline: 0;\n  border: 1px solid rgba(255, 255, 255, 0.3);\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n}\n\n.form label .input + span {\n  position: absolute;\n  left: 10px;\n  top: 15px;\n  color: grey;\n  font-size: 0.9em;\n  cursor: text;\n  transition: 0.3s ease;\n}\n\n.form label .input:focus + span,\n.form label .input:valid + span {\n  top: 30px;\n  font-size: 0.7em;\n  font-weight: 600;\n}\n\n.submit {\n  border: none;\n  outline: none;\n  background-color: royalblue;\n  padding: 10px;\n  border-radius: 10px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n\n.submit:hover {\n  background-color: rgb(56, 90, 194);\n}`
+  },
+  Patterns: {
+    title: 'My Custom Pattern',
+    category: 'Patterns',
+    html: `<div class="pattern-container"></div>`,
+    css: `.pattern-container {\n  width: 100%;\n  height: 100%;\n  min-height: 240px;\n  --color: rgba(255, 255, 255, 0.15);\n  background-color: #212121;\n  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),\n      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);\n  background-size: 55px 55px;\n}`
+  },
+  'Radio buttons': {
+    title: 'My Custom Radio Buttons',
+    category: 'Radio buttons',
+    html: `<div class="radio-input">\n  <label>\n    <input type="radio" id="value-1" name="value-radio" value="value-1" checked="">\n    <span>Option 1</span>\n  </label>\n  <label>\n    <input type="radio" id="value-2" name="value-radio" value="value-2">\n    <span>Option 2</span>\n  </label>\n  <label>\n    <input type="radio" id="value-3" name="value-radio" value="value-3">\n    <span>Option 3</span>\n  </label>\n  <span class="selection"></span>\n</div>`,
+    css: `.radio-input input {\n  display: none;\n}\n\n.radio-input {\n  --container_width: 300px;\n  position: relative;\n  display: flex;\n  align-items: center;\n  border-radius: 10px;\n  background-color: #212121;\n  color: #fff;\n  width: var(--container_width);\n  overflow: hidden;\n  border: 1px solid rgba(255, 255, 255, 0.1);\n}\n\n.radio-input label {\n  width: 100%;\n  padding: 10px;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1;\n  font-weight: 600;\n  letter-spacing: -1px;\n  font-size: 14px;\n}\n\n.selection {\n  display: none;\n  position: absolute;\n  height: 100%;\n  width: calc(var(--container_width) / 3);\n  z-index: 0;\n  left: 0;\n  top: 0;\n  transition: .15s ease;\n}\n\n.radio-input label:has(input:checked) {\n  color: #fff;\n}\n\n.radio-input label:has(input:checked) ~ .selection {\n  background-color: #6366f1;\n  display: inline-block;\n}\n\n.radio-input label:nth-child(1):has(input:checked) ~ .selection {\n  transform: translateX(calc(var(--container_width) * 0/3));\n}\n\n.radio-input label:nth-child(2):has(input:checked) ~ .selection {\n  transform: translateX(calc(var(--container_width) * 1/3));\n}\n\n.radio-input label:nth-child(3):has(input:checked) ~ .selection {\n  transform: translateX(calc(var(--container_width) * 2/3));\n}`
+  },
+  Tooltips: {
+    title: 'My Custom Tooltip',
+    category: 'Tooltips',
+    html: `<div class="tooltip-container">\n  <span class="tooltip">Hello, I'm a tooltip!</span>\n  <span class="text">Hover me</span>\n</div>`,
+    css: `.tooltip-container {\n  position: relative;\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  border-radius: 10px;\n}\n\n.tooltip {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 10px;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  border-radius: 15px;\n  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),\n    inset -5px -5px 15px rgba(255, 255, 255, 0.1),\n    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);\n  background: #212121;\n  color: white;\n  white-space: nowrap;\n  font-size: 13px;\n}\n\n.tooltip-container:hover .tooltip {\n  top: -45px;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}\n\n.text {\n  color: white;\n  background: #333;\n  padding: 10px 20px;\n  border-radius: 8px;\n  display: inline-block;\n}`
+  }
+};
+
+const UPLOAD_STUDIO = {
+  title: 'My Custom Checkbox',
+  category: 'Checkboxes',
+  tech: 'css',
+  activeTab: 'html',
+  html: '',
+  css: '',
+  bg: '#e8e8e8',
+  pendingCategory: 'Checkboxes',
+  isDirty: false
+};
+
+function renderCategoryDialogGrid() {
+  const grid = document.getElementById('category-dialog-grid');
+  if (!grid) return;
+  grid.innerHTML = UIVERSE_CATEGORIES.map(cat => {
+    const isSelected = cat.id === UPLOAD_STUDIO.pendingCategory;
+    return `
+      <div class="category-choice-card flex flex-col items-center justify-center p-3.5 sm:p-4 rounded-2xl bg-[#1e1f24] hover:bg-[#25262e] border transition-all cursor-pointer select-none group ${isSelected ? 'border-2 border-indigo-500 bg-[#252433] shadow-md shadow-indigo-500/20' : 'border-white/10 hover:border-white/25'}" data-category="${cat.id}">
+        <div class="mb-2 group-hover:scale-110 transition-transform">
+          ${cat.iconSvg}
+        </div>
+        <span class="text-xs font-semibold text-gray-200 group-hover:text-white text-center">${cat.name}</span>
+      </div>
+    `;
+  }).join('');
+
+  grid.querySelectorAll('.category-choice-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const catId = card.dataset.category;
+      UPLOAD_STUDIO.pendingCategory = catId;
+      grid.querySelectorAll('.category-choice-card').forEach(c => {
+        const sel = c.dataset.category === catId;
+        c.className = `category-choice-card flex flex-col items-center justify-center p-3.5 sm:p-4 rounded-2xl bg-[#1e1f24] hover:bg-[#25262e] border transition-all cursor-pointer select-none group ${sel ? 'border-2 border-indigo-500 bg-[#252433] shadow-md shadow-indigo-500/20' : 'border-white/10 hover:border-white/25'}`;
+      });
+    });
+    // Double click to immediately apply and close
+    card.addEventListener('dblclick', () => {
+      applySelectedCategory(card.dataset.category);
+    });
+  });
+}
+
+function applySelectedCategory(catId) {
+  catId = catId || UPLOAD_STUDIO.pendingCategory || 'Checkboxes';
+  UPLOAD_STUDIO.category = catId;
+  const template = BOILERPLATES[catId] || BOILERPLATES.Buttons;
+  UPLOAD_STUDIO.title = template.title;
+  UPLOAD_STUDIO.html = template.html;
+  UPLOAD_STUDIO.css = template.css;
+  UPLOAD_STUDIO.isDirty = false;
+
+  // Sync inputs
+  const titleInput = document.getElementById('upload-title');
+  if (titleInput) titleInput.value = UPLOAD_STUDIO.title;
+  const catBadge = document.getElementById('upload-category-badge');
+  const catObj = UIVERSE_CATEGORIES.find(c => c.id === catId);
+  if (catBadge) catBadge.textContent = catObj ? catObj.name : catId;
+  const hiddenCat = document.getElementById('upload-category');
+  if (hiddenCat) hiddenCat.value = catId;
+
+  // Sync editor with active tab
+  syncUploadEditorFromState();
+  updateUploadPreview();
+  updateUploadStatus('Boilerplate loaded', false);
+
+  // Hide category dialog
+  const catDialog = document.getElementById('upload-category-dialog');
+  if (catDialog) catDialog.classList.add('hidden');
+}
+
+function setUploadActiveTab(tab) {
+  // Save current editor text into state
+  const editor = document.getElementById('upload-code-editor');
+  if (editor) {
+    if (UPLOAD_STUDIO.activeTab === 'html') UPLOAD_STUDIO.html = editor.value;
+    else if (UPLOAD_STUDIO.activeTab === 'css') UPLOAD_STUDIO.css = editor.value;
+  }
+  UPLOAD_STUDIO.activeTab = tab;
+
+  // Toggle tab buttons
+  const tabBtns = document.querySelectorAll('#upload-tabs button');
+  tabBtns.forEach(btn => {
+    const isActive = btn.dataset.uploadTab === tab;
+    btn.classList.toggle('active', isActive);
+    btn.classList.toggle('bg-[#27272a]', isActive);
+    btn.classList.toggle('text-white', isActive);
+    btn.classList.toggle('text-gray-400', !isActive);
+  });
+
+  syncUploadEditorFromState();
+}
+
+function highlightUploadCode(code, lang) {
+  if (lang === 'html') {
+    return escapeHtml(code).replace(
+      /(&lt;!--[\s\S]*?--&gt;)|(&lt;\/?)([\w-]+)([\s\S]*?)(&gt;)/g,
+      (match, comment, open, tagName, attributes, close) => {
+        if (comment) return `<span class="syntax-comment">${comment}</span>`;
+        const highlightedAttributes = attributes.replace(
+          /([\w:-]+)(=)(&quot;.*?&quot;|&#39;.*?&#39;)/g,
+          (_, attr, equals, value) => `<span class="syntax-attr">${attr}</span>${equals}<span class="syntax-string">${value}</span>`
+        );
+        return `<span class="syntax-tag">${open}</span><span class="syntax-tag-name">${tagName}</span>${highlightedAttributes}<span class="syntax-tag">${close}</span>`;
+      }
+    );
+  } else if (lang === 'css') {
+    return escapeHtml(code)
+      .replace(/(\/\*[\s\S]*?\*\/)/g, '<span class="syntax-comment">$1</span>')
+      .replace(/([^{]+)({)/g, '<span class="syntax-selector">$1</span>$2')
+      .replace(/([\w-]+)(\s*:)/g, '<span class="syntax-property">$1</span>$2')
+      .replace(/(:)([^;]+)(;)/g, '$1<span class="syntax-value">$2</span>$3');
+  }
+  return escapeHtml(code);
+}
+
+function updateUploadLineNumbers(code, gutterEl) {
+  if (!gutterEl) return;
+  const lineCount = Math.max(1, (code || '').split('\n').length);
+  gutterEl.textContent = Array.from({ length: lineCount }, (_, i) => i + 1).join('\n');
+}
+
+function syncUploadEditorFromState() {
+  const editor = document.getElementById('upload-code-editor');
+  const codeEl = document.getElementById('upload-syntax-code');
+  const lineGutter = document.getElementById('upload-line-numbers');
+  const hiddenHtml = document.getElementById('upload-html');
+  const hiddenCss = document.getElementById('upload-css');
+
+  if (hiddenHtml) hiddenHtml.value = UPLOAD_STUDIO.html;
+  if (hiddenCss) hiddenCss.value = UPLOAD_STUDIO.css;
+
+  const currentCode = UPLOAD_STUDIO.activeTab === 'html' ? UPLOAD_STUDIO.html : UPLOAD_STUDIO.css;
+  const lang = UPLOAD_STUDIO.activeTab === 'html' ? 'html' : 'css';
+
+  if (editor) editor.value = currentCode;
+  if (codeEl) codeEl.innerHTML = highlightUploadCode(currentCode, lang);
+  if (lineGutter) updateUploadLineNumbers(currentCode, lineGutter);
+}
+
+function updateUploadPreview() {
+  const iframe = document.getElementById('upload-preview-iframe');
+  if (!iframe) return;
+  const srcDoc = buildPreviewSrcDoc(
+    UPLOAD_STUDIO.html,
+    UPLOAD_STUDIO.css,
+    UPLOAD_STUDIO.category,
+    false,
+    UPLOAD_STUDIO.bg
+  );
+  iframe.srcdoc = srcDoc;
+}
+
+function updateUploadBg(newBg) {
+  UPLOAD_STUDIO.bg = newBg;
+  const wrapper = document.getElementById('upload-canvas-wrapper');
+  if (wrapper) wrapper.style.backgroundColor = newBg;
+  const hexLabel = document.getElementById('upload-bg-hex-label');
+  if (hexLabel) hexLabel.textContent = newBg;
+  const picker = document.getElementById('upload-bg-picker');
+  if (picker) picker.value = newBg.startsWith('#') ? newBg : '#e8e8e8';
+
+  const thumb = document.getElementById('upload-toggle-thumb');
+  const track = document.getElementById('upload-toggle-track');
+  const isLight = newBg.toLowerCase() === '#e8e8e8' || newBg.toLowerCase() === '#ffffff';
+  if (thumb) {
+    thumb.style.transform = isLight ? 'translateX(14px)' : 'translateX(0px)';
+  }
+  if (track) {
+    track.className = `w-7 h-3.5 rounded-full relative inline-block transition-colors ml-1 mr-0.5 ${isLight ? 'bg-amber-500/40' : 'bg-white/10'}`;
+  }
+
+  updateUploadPreview();
+}
+
+function updateUploadStatus(text, isUnsaved = true) {
+  const statusText = document.getElementById('upload-status-text');
+  const statusDot = document.querySelector('#upload-status-indicator span:first-child');
+  const indicator = document.getElementById('upload-status-indicator');
+  if (statusText) statusText.textContent = text;
+  if (isUnsaved) {
+    if (indicator) indicator.className = 'flex items-center gap-1.5 text-amber-400 font-medium text-xs';
+    if (statusDot) statusDot.className = 'w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse';
+  } else {
+    if (indicator) indicator.className = 'flex items-center gap-1.5 text-emerald-400 font-medium text-xs';
+    if (statusDot) statusDot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-400';
+  }
+}
+
+function openUploadModal(initialData = null) {
   const modal = document.getElementById('upload-modal');
   if (!modal) return;
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
-  document.getElementById('upload-title')?.focus();
+
+  const authorDisplay = document.getElementById('upload-author-display');
+  const currentAuthor = STATE.currentUser?.displayName || (STATE.currentUser?.email ? STATE.currentUser.email.split('@')[0] : 'creator');
+  if (authorDisplay) authorDisplay.textContent = '@' + currentAuthor;
+  const authorInput = document.getElementById('upload-author');
+  if (authorInput) authorInput.value = currentAuthor;
+
+  if (initialData) {
+    // Loaded from Remix or existing component
+    UPLOAD_STUDIO.title = initialData.title || 'My Remix';
+    UPLOAD_STUDIO.category = initialData.category || 'Buttons';
+    UPLOAD_STUDIO.html = initialData.html || '';
+    UPLOAD_STUDIO.css = initialData.css || '';
+    UPLOAD_STUDIO.bg = initialData.bg || '#e8e8e8';
+
+    const titleInput = document.getElementById('upload-title');
+    if (titleInput) titleInput.value = UPLOAD_STUDIO.title;
+    const catBadge = document.getElementById('upload-category-badge');
+    const catObj = UIVERSE_CATEGORIES.find(c => c.id === UPLOAD_STUDIO.category);
+    if (catBadge) catBadge.textContent = catObj ? catObj.name : UPLOAD_STUDIO.category;
+    const hiddenCat = document.getElementById('upload-category');
+    if (hiddenCat) hiddenCat.value = UPLOAD_STUDIO.category;
+
+    // Hide category popup
+    const catDialog = document.getElementById('upload-category-dialog');
+    if (catDialog) catDialog.classList.add('hidden');
+
+    syncUploadEditorFromState();
+    updateUploadBg(UPLOAD_STUDIO.bg);
+  } else {
+    // Fresh upload: Show "What are you making?" dialog!
+    UPLOAD_STUDIO.pendingCategory = 'Checkboxes';
+    renderCategoryDialogGrid();
+
+    // Pre-populate background studio with Checkboxes boilerplate
+    const template = BOILERPLATES.Checkboxes;
+    UPLOAD_STUDIO.category = 'Checkboxes';
+    UPLOAD_STUDIO.title = template.title;
+    UPLOAD_STUDIO.html = template.html;
+    UPLOAD_STUDIO.css = template.css;
+    UPLOAD_STUDIO.isDirty = false;
+
+    const titleInput = document.getElementById('upload-title');
+    if (titleInput) titleInput.value = UPLOAD_STUDIO.title;
+    const catBadge = document.getElementById('upload-category-badge');
+    if (catBadge) catBadge.textContent = 'Checkbox';
+    const hiddenCat = document.getElementById('upload-category');
+    if (hiddenCat) hiddenCat.value = 'Checkboxes';
+
+    syncUploadEditorFromState();
+    updateUploadBg(UPLOAD_STUDIO.bg);
+    updateUploadStatus('Unsaved changes', true);
+
+    const catDialog = document.getElementById('upload-category-dialog');
+    if (catDialog) catDialog.classList.remove('hidden');
+  }
 }
 
 function closeUploadModal() {
@@ -1177,16 +2645,197 @@ function closeUploadModal() {
   if (!modal) return;
   modal.classList.add('hidden');
   document.body.style.overflow = '';
-  // Reset form
-  document.getElementById('upload-form')?.reset();
-  const errorEl = document.getElementById('upload-error');
-  if (errorEl) errorEl.classList.add('hidden');
+  const catDialog = document.getElementById('upload-category-dialog');
+  if (catDialog) catDialog.classList.add('hidden');
+}
+
+function setupUploadStudio() {
+  // Tabs: HTML / CSS
+  const tabBtns = document.querySelectorAll('#upload-tabs button');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.uploadTab;
+      if (tab) setUploadActiveTab(tab);
+    });
+  });
+
+  // Code editor events
+  const editor = document.getElementById('upload-code-editor');
+  const codeEl = document.getElementById('upload-syntax-code');
+  const lineGutter = document.getElementById('upload-line-numbers');
+
+  if (editor) {
+    editor.addEventListener('input', () => {
+      const val = editor.value;
+      if (UPLOAD_STUDIO.activeTab === 'html') UPLOAD_STUDIO.html = val;
+      else if (UPLOAD_STUDIO.activeTab === 'css') UPLOAD_STUDIO.css = val;
+
+      const lang = UPLOAD_STUDIO.activeTab === 'html' ? 'html' : 'css';
+      if (codeEl) codeEl.innerHTML = highlightCode(val, lang);
+      if (lineGutter) updateLineNumbers(val, lineGutter);
+
+      updateUploadPreview();
+      updateUploadStatus('Unsaved changes', true);
+    });
+
+    editor.addEventListener('scroll', () => {
+      if (codeEl && codeEl.parentElement) {
+        codeEl.parentElement.scrollTop = editor.scrollTop;
+        codeEl.parentElement.scrollLeft = editor.scrollLeft;
+      }
+      if (lineGutter) {
+        lineGutter.scrollTop = editor.scrollTop;
+      }
+    });
+
+    editor.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        const start = editor.selectionStart;
+        const end = editor.selectionEnd;
+        editor.value = editor.value.substring(0, start) + '  ' + editor.value.substring(end);
+        editor.selectionStart = editor.selectionEnd = start + 2;
+        editor.dispatchEvent(new Event('input'));
+      }
+    });
+  }
+
+  // Title input change
+  const titleInput = document.getElementById('upload-title');
+  if (titleInput) {
+    titleInput.addEventListener('input', () => {
+      UPLOAD_STUDIO.title = titleInput.value;
+      updateUploadStatus('Unsaved changes', true);
+    });
+  }
+
+  // Change type button
+  const changeTypeBtn = document.getElementById('upload-change-type-btn');
+  if (changeTypeBtn) {
+    changeTypeBtn.addEventListener('click', () => {
+      UPLOAD_STUDIO.pendingCategory = UPLOAD_STUDIO.category;
+      renderCategoryDialogGrid();
+      const catDialog = document.getElementById('upload-category-dialog');
+      if (catDialog) catDialog.classList.remove('hidden');
+    });
+  }
+
+  // Category dialog close
+  const catDialogClose = document.getElementById('category-dialog-close');
+  if (catDialogClose) {
+    catDialogClose.addEventListener('click', () => {
+      const catDialog = document.getElementById('upload-category-dialog');
+      if (catDialog) catDialog.classList.add('hidden');
+    });
+  }
+
+  // Category dialog continue button
+  const catDialogContinue = document.getElementById('category-dialog-continue');
+  if (catDialogContinue) {
+    catDialogContinue.addEventListener('click', () => {
+      applySelectedCategory(UPLOAD_STUDIO.pendingCategory);
+    });
+  }
+
+  // Technology toggle (CSS / Tailwind)
+  const techBtns = document.querySelectorAll('#tech-selector button');
+  techBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      techBtns.forEach(b => {
+        b.classList.remove('active', 'bg-[#27272a]', 'text-white');
+        b.classList.add('text-gray-400');
+      });
+      btn.classList.add('active', 'bg-[#27272a]', 'text-white');
+      btn.classList.remove('text-gray-400');
+      UPLOAD_STUDIO.tech = btn.dataset.tech;
+      showToast(`Selected ${btn.dataset.tech === 'tailwind' ? 'Tailwind CSS' : 'Standard CSS'}`, 'info');
+    });
+  });
+
+  // Canvas background controls
+  const bgPicker = document.getElementById('upload-bg-picker');
+  if (bgPicker) {
+    bgPicker.addEventListener('input', (e) => {
+      updateUploadBg(e.target.value);
+    });
+  }
+
+  const themeToggle = document.getElementById('upload-theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = UPLOAD_STUDIO.bg.toLowerCase();
+      const isLight = current === '#e8e8e8' || current === '#ffffff';
+      updateUploadBg(isLight ? '#212121' : '#e8e8e8');
+    });
+  }
+
+  const fullscreenBtn = document.getElementById('upload-fullscreen-btn');
+  const canvasWrapper = document.getElementById('upload-canvas-wrapper');
+  if (fullscreenBtn && canvasWrapper) {
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        canvasWrapper.requestFullscreen?.().catch(() => {});
+      } else {
+        document.exitFullscreen?.().catch(() => {});
+      }
+    });
+  }
+
+  // Save as a draft button
+  const draftBtn = document.getElementById('upload-draft-btn');
+  if (draftBtn) {
+    draftBtn.addEventListener('click', () => {
+      const draft = {
+        title: UPLOAD_STUDIO.title,
+        category: UPLOAD_STUDIO.category,
+        html: UPLOAD_STUDIO.html,
+        css: UPLOAD_STUDIO.css,
+        bg: UPLOAD_STUDIO.bg,
+        date: new Date().toISOString()
+      };
+      try {
+        localStorage.setItem('uiforge_saved_draft', JSON.stringify(draft));
+        updateUploadStatus('All changes saved', false);
+        showToast('Draft saved successfully to browser storage!', 'success');
+      } catch (_) {
+        showToast('Unable to save draft', 'error');
+      }
+    });
+  }
+
+  // Close Studio button
+  const closeBtn = document.getElementById('upload-close-btn');
+  if (closeBtn) closeBtn.addEventListener('click', closeUploadModal);
+
+  // Submit button
+  const submitBtn = document.getElementById('upload-submit-btn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', handleUpload);
+  }
 }
 
 
 /* ============================================================
    8. DATA LOADING
    ============================================================ */
+
+/**
+ * Detects URL hash route (#item-<id>) on startup and opens modal automatically.
+ */
+function checkInitialHashRoute() {
+  const hash = window.location.hash;
+  if (!hash || !hash.startsWith('#item-')) return;
+  const id = hash.replace('#item-', '');
+  const tryOpen = (attempts = 0) => {
+    const comp = findComponentAnywhere(id);
+    if (comp) {
+      window.openModal?.(comp, false);
+    } else if (attempts < 20) {
+      setTimeout(() => tryOpen(attempts + 1), 150);
+    }
+  };
+  tryOpen();
+}
 
 /**
  * loadComponents(reset)
@@ -1211,6 +2860,7 @@ async function loadComponents(reset = false) {
   try {
     const { data, total } = await fetchComponents({
       category: STATE.activeCategory,
+      framework: STATE.framework,
       search: STATE.searchQuery,
       sort: STATE.sort,
       page: STATE.page,
@@ -1234,6 +2884,12 @@ async function loadComponents(reset = false) {
 
     const grid = document.getElementById('components-grid');
     if (grid) grid.classList.remove('loading');
+
+    // Deep link auto-open on initial load
+    if (reset && !window._initialHashChecked) {
+      window._initialHashChecked = true;
+      checkInitialHashRoute();
+    }
 
   } catch (err) {
     console.error('[UIForge] fetchComponents failed:', err);
@@ -1265,6 +2921,78 @@ function initEventHandlers() {
     }
   });
 
+  // Sync search inputs in real-time
+  const searchInputDesktop = document.getElementById('search-input');
+  const searchInputMobile = document.getElementById('search-input-mobile');
+  if (searchInputDesktop && searchInputMobile) {
+    searchInputDesktop.addEventListener('input', (e) => {
+      searchInputMobile.value = e.target.value;
+    });
+    searchInputMobile.addEventListener('input', (e) => {
+      searchInputDesktop.value = e.target.value;
+    });
+  }
+
+  /* --- Navigation Links --- */
+  document.getElementById('logo-link')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    STATE.searchQuery = '';
+    STATE.activeCategory = 'All';
+    STATE.framework = 'all';
+    STATE.sort = 'newest';
+    updateFrameworkPillsUI('all');
+    updateSortPillsUI('newest');
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) sortSelect.value = 'newest';
+    ['search-input', 'search-input-mobile'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    const titleEl = document.getElementById('current-category-title');
+    if (titleEl) titleEl.textContent = 'All Components';
+    renderCategoryFilters();
+    loadComponents(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('explore-link')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* --- Sidebar Links --- */
+  document.getElementById('sidebar-home-btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    STATE.searchQuery = '';
+    STATE.activeCategory = 'All';
+    STATE.framework = 'all';
+    STATE.sort = 'newest';
+    updateFrameworkPillsUI('all');
+    updateSortPillsUI('newest');
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) sortSelect.value = 'newest';
+    ['search-input', 'search-input-mobile'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    const titleEl = document.getElementById('current-category-title');
+    if (titleEl) titleEl.textContent = 'All Components';
+    renderCategoryFilters();
+    loadComponents(true);
+    if (typeof window._closeSidebar === 'function') window._closeSidebar();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('sidebar-trending-btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    STATE.sort = 'trending';
+    updateSortPillsUI('trending');
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) sortSelect.value = 'trending';
+    loadComponents(true);
+    if (typeof window._closeSidebar === 'function') window._closeSidebar();
+  });
+
   /* --- Sidebar Favorites --- */
   document.getElementById('sidebar-favorites-btn')?.addEventListener('click', (e) => {
     e.preventDefault();
@@ -1284,9 +3012,60 @@ function initEventHandlers() {
     }
   });
 
-  /* --- Sort Select --- */
+  /* --- Sort Select & Framework Filter Pills (Uiverse Parity) --- */
+  function updateFrameworkPillsUI(activeFw) {
+    const pills = document.querySelectorAll('#framework-pills .framework-pill');
+    pills.forEach((p) => {
+      const isActive = p.dataset.framework === activeFw;
+      p.classList.toggle('active', isActive);
+      if (isActive) {
+        p.className = 'framework-pill active px-3 py-1.5 rounded-xl text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30 transition-all cursor-pointer';
+      } else {
+        p.className = 'framework-pill px-3 py-1.5 rounded-xl text-xs font-semibold text-gray-400 hover:text-white bg-surface-700/40 border border-white/5 transition-all cursor-pointer';
+      }
+    });
+  }
+
+  function updateSortPillsUI(activeSort) {
+    const pills = document.querySelectorAll('#sort-pills .sort-pill');
+    pills.forEach((p) => {
+      const isActive = p.dataset.sort === activeSort;
+      p.classList.toggle('active', isActive);
+      if (isActive) {
+        p.className = 'sort-pill active px-3 py-1.5 rounded-xl text-xs font-semibold bg-white/10 text-white border border-white/20 transition-all cursor-pointer';
+      } else {
+        p.className = 'sort-pill px-3 py-1.5 rounded-xl text-xs font-semibold text-gray-400 hover:text-white bg-surface-700/40 border border-white/5 transition-all cursor-pointer';
+      }
+    });
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect && sortSelect.value !== activeSort) {
+      sortSelect.value = activeSort;
+    }
+  }
+
+  document.querySelectorAll('#framework-pills .framework-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const fw = pill.dataset.framework || 'all';
+      if (STATE.framework === fw) return;
+      STATE.framework = fw;
+      updateFrameworkPillsUI(fw);
+      loadComponents(true);
+    });
+  });
+
+  document.querySelectorAll('#sort-pills .sort-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const sort = pill.dataset.sort || 'newest';
+      if (STATE.sort === sort) return;
+      STATE.sort = sort;
+      updateSortPillsUI(sort);
+      loadComponents(true);
+    });
+  });
+
   document.getElementById('sort-select')?.addEventListener('change', (e) => {
     STATE.sort = e.target.value;
+    updateSortPillsUI(e.target.value);
     loadComponents(true);
   });
 
@@ -1310,14 +3089,19 @@ function initEventHandlers() {
   document.getElementById('clear-search-btn')?.addEventListener('click', () => {
     STATE.searchQuery = '';
     STATE.activeCategory = 'All';
+    STATE.framework = 'all';
+    STATE.sort = 'newest';
+    updateFrameworkPillsUI('all');
+    updateSortPillsUI('newest');
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) sortSelect.value = 'newest';
     ['search-input', 'search-input-mobile'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) el.value = '';
     });
-    // Reset category pills
-    document.querySelectorAll('.filter-pill').forEach((b) => {
-      b.classList.toggle('active', b.dataset.category === 'All');
-    });
+    const titleEl = document.getElementById('current-category-title');
+    if (titleEl) titleEl.textContent = 'All Components';
+    renderCategoryFilters();
     loadComponents(true);
   });
 
@@ -1348,106 +3132,36 @@ function initEventHandlers() {
     }
   });
 
-  /* --- Upload Modal --- */
+  /* --- Upload Modal & Studio --- */
   ['open-upload-btn', 'hero-upload-btn'].forEach((id) => {
-    document.getElementById(id)?.addEventListener('click', openUploadModal);
+    document.getElementById(id)?.addEventListener('click', () => openUploadModal());
   });
+  setupUploadStudio();
 
-  /* --- Sign In Modal --- */
-  const signinModal = document.getElementById('signin-modal');
-  const signinBackdrop = document.getElementById('signin-backdrop');
-  const signinCloseBtn = document.getElementById('signin-close-btn');
-  const authTabSignin = document.getElementById('auth-tab-signin');
-  const authTabSignup = document.getElementById('auth-tab-signup');
-  const authNameField = document.getElementById('auth-name-field');
-  const authSubmitText = document.getElementById('auth-submit-text');
-  const signinTitle = document.getElementById('signin-modal-title');
-  const signinDesc = document.getElementById('signin-modal-desc');
-
-  let isSignUpMode = false;
-
-  function setAuthMode(isSignUp) {
-    isSignUpMode = isSignUp;
-    if (isSignUp) {
-      authTabSignup.classList.replace('text-gray-400', 'text-white');
-      authTabSignup.classList.replace('border-transparent', 'border-brand-500');
-      authTabSignup.classList.add('font-bold');
-      authTabSignup.classList.remove('font-medium');
-
-      authTabSignin.classList.replace('text-white', 'text-gray-400');
-      authTabSignin.classList.replace('border-brand-500', 'border-transparent');
-      authTabSignin.classList.remove('font-bold');
-      authTabSignin.classList.add('font-medium');
-
-      authNameField.classList.remove('hidden');
-      document.getElementById('signin-name').required = true;
-      authSubmitText.textContent = 'Create Account';
-      signinTitle.textContent = 'Create an Account';
-      signinDesc.textContent = 'Join UIForge to share and save components';
-    } else {
-      authTabSignin.classList.replace('text-gray-400', 'text-white');
-      authTabSignin.classList.replace('border-transparent', 'border-brand-500');
-      authTabSignin.classList.add('font-bold');
-      authTabSignin.classList.remove('font-medium');
-
-      authTabSignup.classList.replace('text-white', 'text-gray-400');
-      authTabSignup.classList.replace('border-brand-500', 'border-transparent');
-      authTabSignup.classList.remove('font-bold');
-      authTabSignup.classList.add('font-medium');
-
-      authNameField.classList.add('hidden');
-      document.getElementById('signin-name').required = false;
-      authSubmitText.textContent = 'Sign In';
-      signinTitle.textContent = 'Welcome Back';
-      signinDesc.textContent = 'Sign in to like and save components';
-    }
-  }
-
-  if (authTabSignin) authTabSignin.addEventListener('click', () => setAuthMode(false));
-  if (authTabSignup) authTabSignup.addEventListener('click', () => setAuthMode(true));
-
-  function openSigninModal() {
-    if (signinModal) {
-      signinModal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      setAuthMode(false); // Default to sign in
-    }
+  /* --- Sign In / Join Community Modal (Google & GitHub Only) --- */
+  function openSigninModal(mode = 'signup', customDesc = '') {
+    const modal = document.getElementById('signin-modal');
+    if (!modal) return;
+    const titleEl = document.getElementById('signin-modal-title');
+    const descEl = document.getElementById('signin-modal-desc');
+    if (titleEl) titleEl.textContent = 'Join the Community';
+    if (descEl) descEl.textContent = customDesc || 'Create beautiful UI elements and share them with 100,000+ developers';
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
   }
 
   function closeSigninModal() {
-    if (signinModal) {
-      signinModal.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
+    const modal = document.getElementById('signin-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
   }
 
-  function simulateLogin(provider) {
-    closeSigninModal();
-    showToast(`Successfully logged in with ${provider}! (Demo)`, 'success');
-    // Change Sign In button to an Avatar
-    const topSignInBtn = document.getElementById('signin-btn');
-    if (topSignInBtn) {
-      topSignInBtn.innerHTML = `
-        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center shadow-brand-glow text-white font-bold text-sm cursor-pointer">
-          <i class="fa-solid fa-user"></i>
-        </div>
-      `;
-      topSignInBtn.className = "flex items-center transition-transform hover:scale-105";
-      topSignInBtn.removeAttribute('id'); // Remove id to prevent opening modal again
-    }
-  }
+  window.openSigninModal = openSigninModal;
+  window.closeSigninModal = closeSigninModal;
 
-  document.getElementById('signin-btn')?.addEventListener('click', openSigninModal);
-  if (signinCloseBtn) signinCloseBtn.addEventListener('click', closeSigninModal);
-  if (signinBackdrop) signinBackdrop.addEventListener('click', closeSigninModal);
-
-  document.getElementById('signin-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    simulateLogin('Email');
-  });
-
-  document.getElementById('google-auth-btn')?.addEventListener('click', () => simulateLogin('Google'));
-  document.getElementById('github-auth-btn')?.addEventListener('click', () => simulateLogin('GitHub'));
+  document.getElementById('signin-close-btn')?.addEventListener('click', closeSigninModal);
+  document.getElementById('signin-backdrop')?.addEventListener('click', closeSigninModal);
 
   document.getElementById('upload-close-btn')?.addEventListener('click', closeUploadModal);
   document.getElementById('upload-backdrop')?.addEventListener('click', closeUploadModal);
@@ -1470,6 +3184,14 @@ function initEventHandlers() {
         window.closeModal?.();
       } else if (!document.getElementById('upload-modal')?.classList.contains('hidden')) {
         closeUploadModal();
+      } else if (!document.getElementById('signin-modal')?.classList.contains('hidden')) {
+        document.getElementById('signin-close-btn')?.click();
+      } else if (!document.getElementById('profile-modal')?.classList.contains('hidden')) {
+        document.getElementById('profile-close-btn')?.click();
+      } else if (!document.getElementById('edit-modal')?.classList.contains('hidden')) {
+        document.getElementById('edit-close-btn')?.click();
+      } else if (!document.getElementById('delete-modal')?.classList.contains('hidden')) {
+        document.getElementById('delete-cancel-btn')?.click();
       }
     }
   });
@@ -1489,50 +3211,61 @@ function initEventHandlers() {
 
 /* ---- Upload Handler ---- */
 async function handleUpload() {
-  const titleEl = document.getElementById('upload-title');
-  const htmlEl = document.getElementById('upload-html');
-  const cssEl = document.getElementById('upload-css');
-  const authorEl = document.getElementById('upload-author');
-  const categoryEl = document.getElementById('upload-category');
-  const errorEl = document.getElementById('upload-error');
-  const errorText = document.getElementById('upload-error-text');
-  const submitBtn = document.getElementById('upload-submit-btn');
-  const btnIcon = document.getElementById('upload-btn-icon');
-  const btnText = document.getElementById('upload-btn-text');
-
-  // Clear errors
-  errorEl?.classList.add('hidden');
-  [titleEl, htmlEl].forEach((el) => el?.classList.remove('input-error'));
-
-  // Validate
-  if (!titleEl?.value.trim()) {
-    titleEl?.classList.add('input-error');
-    titleEl?.focus();
-    if (errorText) errorText.textContent = 'Component title is required.';
-    errorEl?.classList.remove('hidden');
+  if (!STATE.currentUser && CONFIG.DB_PROVIDER === 'firebase') {
+    showToast('Please sign in to submit your component', 'info');
+    if (typeof openSigninModal === 'function') {
+      openSigninModal('signup', 'Join the Community to submit and share UI elements');
+    }
     return;
   }
 
-  if (!htmlEl?.value.trim()) {
-    htmlEl?.classList.add('input-error');
-    htmlEl?.focus();
+  const titleEl = document.getElementById('upload-title');
+  const errorEl = document.getElementById('upload-error');
+  const errorText = document.getElementById('upload-error-text');
+  const submitBtn = document.getElementById('upload-submit-btn');
+  const btnIcon = document.getElementById('upload-submit-icon');
+  const btnText = document.getElementById('upload-submit-text');
+
+  // Clear errors
+  if (errorEl) errorEl.classList.add('hidden');
+  titleEl?.classList.remove('input-error');
+
+  const settings = typeof getUserSettings === 'function' ? getUserSettings() : {};
+  const title = (titleEl?.value || UPLOAD_STUDIO.title || '').trim();
+  const html = (UPLOAD_STUDIO.html || document.getElementById('upload-html')?.value || '').trim();
+  const css = (UPLOAD_STUDIO.css || document.getElementById('upload-css')?.value || '').trim();
+  const category = UPLOAD_STUDIO.category || 'Checkboxes';
+  const author = STATE.currentUser?.displayName || (STATE.currentUser?.email ? STATE.currentUser.email.split('@')[0] : (settings.name || 'creator'));
+
+  // Validate
+  if (!title) {
+    titleEl?.classList.add('input-error');
+    titleEl?.focus();
+    if (errorText) errorText.textContent = 'Component title is required.';
+    if (errorEl) errorEl.classList.remove('hidden');
+    showToast('Component title is required', 'error');
+    return;
+  }
+
+  if (!html) {
     if (errorText) errorText.textContent = 'HTML code is required.';
-    errorEl?.classList.remove('hidden');
+    if (errorEl) errorEl.classList.remove('hidden');
+    showToast('HTML code is required', 'error');
     return;
   }
 
   // Loading state
   if (submitBtn) submitBtn.disabled = true;
-  if (btnIcon) btnIcon.className = 'fa-solid fa-circle-notch spin';
-  if (btnText) btnText.textContent = 'Publishing...';
+  if (btnIcon) btnIcon.className = 'fa-solid fa-circle-notch spin text-xs';
+  if (btnText) btnText.textContent = 'Submitting...';
 
   try {
     const newComp = await uploadComponent({
-      title: titleEl.value.trim(),
-      html: htmlEl.value.trim(),
-      css: cssEl?.value.trim() || '',
-      author: authorEl?.value.trim() || 'Anonymous',
-      category: categoryEl?.value || 'Other',
+      title,
+      html,
+      css,
+      author,
+      category,
     });
 
     // Add to live state immediately
@@ -1540,7 +3273,7 @@ async function handleUpload() {
     STATE.total++;
 
     closeUploadModal();
-    showToast(`"${newComp.title}" published successfully!`, 'success');
+    showToast(`"${newComp.title}" published successfully! 🚀`, 'success');
 
     // Re-render so new card appears at top
     loadComponents(true);
@@ -1548,11 +3281,12 @@ async function handleUpload() {
   } catch (err) {
     console.error('[UIForge] Upload failed:', err);
     if (errorText) errorText.textContent = 'Upload failed. Please try again.';
-    errorEl?.classList.remove('hidden');
+    if (errorEl) errorEl.classList.remove('hidden');
+    showToast('Failed to publish component. Please try again.', 'error');
   } finally {
     if (submitBtn) submitBtn.disabled = false;
-    if (btnIcon) btnIcon.className = 'fa-solid fa-cloud-arrow-up';
-    if (btnText) btnText.textContent = 'Publish Component';
+    if (btnIcon) btnIcon.className = 'fa-solid fa-rocket text-xs';
+    if (btnText) btnText.textContent = 'Submit for review';
   }
 }
 
@@ -1575,13 +3309,8 @@ document.addEventListener('DOMContentLoaded', () => {
   Ready to go! 🚀
   `);
 
-  // Seed the local "database" (already loaded from data/initial_components.js)
-  _localComponents = DUMMY_DATA.map((comp) => ({
-    ...comp,
-    // Restore liked state from STATE.likedIds
-    liked: STATE.likedIds.has(comp.id),
-  }));
-  applyStoredCodeEdits(_localComponents);
+  // Seed the local "database" with stored user uploads + cached community uploads + DUMMY_DATA
+  rebuildLocalComponents();
 
   // Render category filter pills
   renderCategoryFilters();
@@ -1592,23 +3321,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load initial components (with simulated delay for skeleton effect)
   loadComponents(true);
 
-  // Preload all Uiverse categories in the background so infinite scroll is instant
-  loadAllCategories();
+  // Sync community uploads and likes from Firebase cloud database in background
+  syncCommunityUploads();
+  syncCloudLikes();
 
-  // Update hero stat counter from Uiverse manifest
-  if (window.UIVERSE_MANIFEST) {
-    const compCounter = document.querySelector('.counter[data-target="6800"]');
-    if (compCounter) {
-      compCounter.dataset.target = window.UIVERSE_MANIFEST.total + _localComponents.length;
-    }
-  }
+  // Initialize and synchronize 100% REAL hero statistics
+  updateHeroStats();
 
   // Animate hero stat counters (observe when visible)
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        const target = parseInt(el.dataset.target, 10);
+        const target = parseInt(el.dataset.target, 10) || 0;
         animateCounter(el, target);
         counterObserver.unobserve(el);
       }
@@ -1636,6 +3361,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- MODAL LOGIC (UIVERSE FULL-SCREEN PREVIEW) ---
   const modal = document.getElementById('preview-modal');
   const modalCloseBtn = document.getElementById('modal-close-btn');
+  const modalPrevBtn = document.getElementById('modal-prev-btn');
+  const modalNextBtn = document.getElementById('modal-next-btn');
+  const modalShareBtn = document.getElementById('modal-share-btn');
   const modalAuthor = document.getElementById('modal-author');
   const modalCategoryPrefix = document.getElementById('modal-category-prefix');
   const modalAvatar = document.getElementById('modal-author-avatar');
@@ -1654,6 +3382,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabBtns = document.querySelectorAll('#modal-tabs .tab-btn');
   const copyBtn = document.getElementById('modal-copy-btn');
   const resetBtn = document.getElementById('modal-reset-btn');
+  const modalExportBtn = document.getElementById('modal-export-btn');
   const canvasWrapper = document.getElementById('preview-canvas-wrapper');
   const bgHexLabel = document.getElementById('preview-bg-hex');
   const themeToggleBtn = document.getElementById('preview-theme-toggle');
@@ -1661,6 +3390,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleIcon = document.getElementById('preview-toggle-icon');
   const bgPicker = document.getElementById('preview-bg-picker');
   const colorIndicator = document.getElementById('preview-color-indicator');
+  const modalEditorToolbar = document.getElementById('modal-editor-toolbar');
+  const modalEditorScroll = document.getElementById('modal-editor-scroll');
+  const modalCommentsPanel = document.getElementById('modal-comments-panel');
+  const modalCommentsList = document.getElementById('modal-comments-list');
+  const modalCommentForm = document.getElementById('modal-comment-form');
+  const modalCommentInput = document.getElementById('modal-comment-input');
+  const modalCommentsTotal = document.getElementById('modal-comments-total');
+  const modalCommentsCountBadge = document.getElementById('modal-comments-count-badge');
+  const modalMoreAuthorSection = document.getElementById('modal-more-author-section');
+  const modalMoreAuthorName = document.getElementById('modal-more-author-name');
+  const modalMoreAuthorGrid = document.getElementById('modal-more-author-grid');
+  const modalViewAllAuthorBtn = document.getElementById('modal-view-all-author-btn');
+  const previewZoomIn = document.getElementById('preview-zoom-in');
+  const previewZoomOut = document.getElementById('preview-zoom-out');
+  const previewZoomLabel = document.getElementById('preview-zoom-label');
+  const viewportBtns = document.querySelectorAll('#preview-viewport-controls .viewport-btn');
 
   let currentModalComponentId = null;
   let currentRawHtml = '';
@@ -1683,13 +3428,99 @@ document.addEventListener('DOMContentLoaded', () => {
       modalStatusText.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block mr-1.5"></span>Modified (Live)';
       modalStatusText.className = 'text-amber-400/90 font-medium select-none';
     } else {
-      modalStatusText.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block mr-1.5"></span>Live Preview';
+      const label = status || 'Live Preview';
+      modalStatusText.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block mr-1.5"></span>${escapeHtml(label)}`;
       modalStatusText.className = 'text-emerald-400/90 font-medium select-none';
     }
   }
 
+  function convertToReactJsx(html = '', css = '', title = 'Component') {
+    let funcName = (title || 'Component')
+      .replace(/[^a-zA-Z0-9\s]/g, '')
+      .split(/\s+/)
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join('');
+    if (!funcName || /^\d/.test(funcName)) funcName = 'UI' + (funcName || 'Component');
+
+    let jsxHtml = html
+      .replace(/\bclass=(["'])(.*?)\1/g, 'className=$1$2$1')
+      .replace(/\bfor=(["'])(.*?)\1/g, 'htmlFor=$1$2$1')
+      .replace(/\btabindex=(["'])(.*?)\1/g, 'tabIndex=$1$2$1')
+      .replace(/\bautocomplete=(["'])(.*?)\1/g, 'autoComplete=$1$2$1')
+      .replace(/\bautofocus=(["'])(.*?)\1/g, 'autoFocus=$1$2$1')
+      .replace(/\breadonly=(["'])(.*?)\1/g, 'readOnly=$1$2$1')
+      .replace(/<(input|img|br|hr|source|meta|link)([^>]*?)(?<!\/)>/gi, '<$1$2 />');
+
+    const cleanCss = (css || '').replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\${/g, '\\${');
+    const hasCss = cleanCss.trim().length > 5;
+
+    if (!hasCss) {
+      // Pure Tailwind CSS or HTML component — clean JSX without style tag
+      return `import React from 'react';
+
+export default function ${funcName}() {
+  return (
+${jsxHtml.split('\n').map((line) => '    ' + line).join('\n')}
+  );
+}
+`;
+    }
+
+    return `import React from 'react';
+
+export default function ${funcName}() {
+  return (
+    <>
+      <style>{\`
+${cleanCss}
+      \`}</style>
+      <div className="ui-container">
+${jsxHtml.split('\n').map((line) => '        ' + line).join('\n')}
+      </div>
+    </>
+  );
+}
+`;
+  }
+
+  function getBundleCode(html = '', css = '', title = 'UI Component') {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${escapeHtml(title)}</title>
+  <style>
+    /* Reset & Center Canvas */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #212121;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Component CSS */
+${css}
+  </style>
+</head>
+<body>
+  ${html}
+</body>
+</html>`;
+  }
+
   function getActiveCode() {
-    return activeEditorTab === 'html' ? currentRawHtml : currentRawCss;
+    if (activeEditorTab === 'html') return currentRawHtml;
+    if (activeEditorTab === 'css') return currentRawCss;
+    const comp = findAnyComp(currentModalComponentId);
+    const title = comp ? comp.title : 'UIComponent';
+    if (activeEditorTab === 'react') return convertToReactJsx(currentRawHtml, currentRawCss, title);
+    if (activeEditorTab === 'bundle') return getBundleCode(currentRawHtml, currentRawCss, title);
+    return currentRawCss;
   }
 
   function highlightCss(code) {
@@ -1721,10 +3552,29 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
+  function highlightJsx(code) {
+    return escapeHtml(code).replace(
+      /(\/\*[\s\S]*?\*\/|\/\/[^\n]*)|(&quot;.*?&quot;|&#39;.*?&#39;|`[\s\S]*?`)|(\b(?:import|export|default|function|return|const|let|var|from)\b)|(&lt;\/?[a-zA-Z0-9_.-]+)|(&gt;)|(\b(?:className|style|onClick|onChange)\b)/g,
+      (match, comment, str, kw, tag, gt, prop) => {
+        if (comment) return `<span class="syntax-comment">${comment}</span>`;
+        if (str) return `<span class="syntax-string">${str}</span>`;
+        if (kw) return `<span class="syntax-keyword font-bold text-purple-400">${kw}</span>`;
+        if (tag) return `<span class="syntax-tag text-rose-400 font-semibold">${tag}</span>`;
+        if (gt) return `<span class="syntax-tag text-gray-400">${gt}</span>`;
+        if (prop) return `<span class="syntax-attr text-amber-300">${prop}</span>`;
+        return match;
+      }
+    );
+  }
+
   function renderSyntaxHighlight() {
     if (!modalSyntaxCode) return;
     const code = getActiveCode();
-    modalSyntaxCode.innerHTML = activeEditorTab === 'html' ? highlightHtml(code) : highlightCss(code);
+    if (activeEditorTab === 'html') modalSyntaxCode.innerHTML = highlightHtml(code);
+    else if (activeEditorTab === 'css') modalSyntaxCode.innerHTML = highlightCss(code);
+    else if (activeEditorTab === 'react') modalSyntaxCode.innerHTML = highlightJsx(code);
+    else if (activeEditorTab === 'bundle') modalSyntaxCode.innerHTML = highlightHtml(code);
+    else modalSyntaxCode.innerHTML = escapeHtml(code);
   }
 
   function getColorTokenAtCaret() {
@@ -1825,80 +3675,31 @@ document.addEventListener('DOMContentLoaded', () => {
     updateEditorMetrics();
     syncEditorScroll();
     syncColorControls();
+    if (activeEditorTab === 'react') {
+      setModalStatus('Generated React JSX', 'saved');
+    } else if (activeEditorTab === 'bundle') {
+      setModalStatus('All-in-One Standalone File', 'saved');
+    }
     modalCodeEditor.focus({ preventScroll: true });
-  }
-
-  function formatCssCode(css) {
-    if (!css) return '';
-    return css.split('\n').map((line, idx) => {
-      const formatted = line.replace(
-        /(\/\*[\s\S]*?\*\/)|((?:['"])(?:(?!\2)[^\\]|\\.)*\2)|(#[0-9a-fA-F]{3,8}\b)|(\b\d+(?:\.\d+)?(?:px|em|rem|%|vh|vw|ms|s|deg|fr)?\b)|(\b(?:calc|var|cubic-bezier|rgba?|linear-gradient|flex|relative|absolute|fixed|center|none|inline|block|border-box)\b)|([a-zA-Z0-9_-]+(?=\s*:))|(\.[a-zA-Z0-9_-]+)/g,
-        (match, comment, str, hex, num, kw, prop, sel) => {
-          if (comment) return `<span class="text-gray-500 italic">${escapeHtml(comment)}</span>`;
-          if (str) return `<span class="text-emerald-300">${escapeHtml(str)}</span>`;
-          if (hex) return `<span class="text-pink-400 font-medium">${hex}</span>`;
-          if (num) return `<span class="text-orange-300 font-medium">${num}</span>`;
-          if (kw) return `<span class="text-purple-400">${kw}</span>`;
-          if (prop) return `<span class="text-sky-300">${prop}</span>`;
-          if (sel) return `<span class="text-blue-400 font-semibold">${sel}</span>`;
-          return escapeHtml(match);
-        }
-      );
-
-      return `
-        <div class="code-line">
-          <span class="line-num">${idx + 1}</span>
-          <span class="line-code">${formatted || '&nbsp;'}</span>
-        </div>
-      `;
-    }).join('');
-  }
-
-  function formatHtmlCode(html) {
-    if (!html) return '';
-    return html.split('\n').map((line, idx) => {
-      const formatted = line.replace(
-        /(<!--[\s\S]*?-->)|(<\/?[a-zA-Z0-9_-]+)|([a-zA-Z0-9_-]+(?==))|(=(?:".*?"|'.*?'))|(>)/g,
-        (match, comment, tag, attr, val, gt) => {
-          if (comment) return `<span class="text-gray-500 italic">${escapeHtml(comment)}</span>`;
-          if (tag) return `<span class="text-rose-400 font-medium">${escapeHtml(tag)}</span>`;
-          if (attr) return `<span class="text-amber-300">${attr}</span>`;
-          if (val) {
-            const quote = val[1];
-            const content = val.slice(2, -1);
-            return `=${quote}<span class="text-emerald-300">${escapeHtml(content)}</span>${quote}`;
-          }
-          if (gt) return `<span class="text-gray-400">&gt;</span>`;
-          return escapeHtml(match);
-        }
-      );
-
-      return `
-        <div class="code-line">
-          <span class="line-num">${idx + 1}</span>
-          <span class="line-code">${formatted || '&nbsp;'}</span>
-        </div>
-      `;
-    }).join('');
   }
 
   function updateCanvasBg(color, dark = true, shouldRefresh = true) {
     currentCanvasBg = color;
     isDarkCanvas = dark;
     if (canvasWrapper) canvasWrapper.style.backgroundColor = color;
-    if (bgHexLabel) bgHexLabel.textContent = color.toUpperCase();
+    const hexLabel = document.getElementById('preview-bg-hex-label') || document.getElementById('preview-bg-hex');
+    if (hexLabel) hexLabel.textContent = color.toUpperCase();
     if (colorIndicator) colorIndicator.style.backgroundColor = color;
     if (bgPicker) bgPicker.value = color;
 
-    if (toggleThumb && toggleIcon) {
+    const toggleThumb = document.getElementById('preview-toggle-thumb');
+    if (toggleThumb) {
       if (dark) {
-        toggleThumb.classList.add('translate-x-5');
-        toggleThumb.classList.remove('translate-x-0');
-        toggleIcon.className = 'fa-solid fa-sun text-[8px]';
+        toggleThumb.style.transform = 'translateX(14px)';
+        toggleThumb.style.backgroundColor = '#ffffff';
       } else {
-        toggleThumb.classList.remove('translate-x-5');
-        toggleThumb.classList.add('translate-x-0');
-        toggleIcon.className = 'fa-solid fa-moon text-[8px]';
+        toggleThumb.style.transform = 'translateX(0px)';
+        toggleThumb.style.backgroundColor = '#f59e0b';
       }
     }
 
@@ -1907,11 +3708,147 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function openModal(id) {
-    const comp = findAnyComp(id);
-    if (!comp) return;
+  // --- COMMUNITY COMMENTS SYSTEM (Uiverse Parity) ---
+  const DEFAULT_SAMPLE_COMMENTS = [
+    { author: 'alex_frontend', text: 'Clean and super smooth animation! Works flawlessly in React and Tailwind.', time: '2 hours ago', avatar: 'A' },
+    { author: 'design_ninja', text: 'Loved the hover effect and subtle glow. Adding this to my design system!', time: '1 day ago', avatar: 'D' }
+  ];
+
+  function getComponentComments(compId) {
+    if (!compId) return [];
+    try {
+      const stored = localStorage.getItem('uiforge_comments_' + compId);
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (e) {
+      console.warn('Failed to parse comments from localStorage', e);
+    }
+    return DEFAULT_SAMPLE_COMMENTS;
+  }
+
+  function saveComponentComment(compId, comment) {
+    if (!compId) return [];
+    const comments = getComponentComments(compId);
+    comments.unshift(comment);
+    try {
+      localStorage.setItem('uiforge_comments_' + compId, JSON.stringify(comments));
+    } catch (e) {}
+    return comments;
+  }
+
+  function renderCommentsList() {
+    if (!modalCommentsList || !currentModalComponentId) return;
+    const comments = getComponentComments(currentModalComponentId);
+    if (modalCommentsTotal) modalCommentsTotal.textContent = `${comments.length} comment${comments.length === 1 ? '' : 's'}`;
+    if (modalCommentsCountBadge) modalCommentsCountBadge.textContent = comments.length;
+
+    if (!comments.length) {
+      modalCommentsList.innerHTML = `
+        <div class="text-center py-8 text-gray-500">
+          <i class="fa-regular fa-comment-dots text-2xl mb-2 block opacity-40"></i>
+          <p>No comments yet. Be the first to share your thoughts!</p>
+        </div>
+      `;
+      return;
+    }
+
+    modalCommentsList.innerHTML = comments.map(c => `
+      <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-[#18191d] border border-white/5">
+        <div class="flex flex-col items-center justify-center bg-[#23242a] rounded-xl px-2.5 py-1 text-xs text-gray-400 select-none">
+          <button type="button" class="hover:text-purple-400 text-xs font-bold transition-colors cursor-pointer">+</button>
+          <span class="font-bold text-white text-[11px] my-0.5">${c.upvotes || 1}</span>
+          <button type="button" class="hover:text-purple-400 text-xs font-bold transition-colors cursor-pointer">-</button>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between gap-2 mb-1">
+            <div class="flex items-center gap-2">
+              <div class="w-6 h-6 rounded-lg bg-orange-600 flex items-center justify-center text-[10px] font-bold text-white shrink-0">
+                ${escapeHtml(c.avatar || (c.author ? c.author.charAt(0).toUpperCase() : 'U'))}
+              </div>
+              <span class="font-semibold text-white text-xs">${escapeHtml(c.author || 'anonymous')}</span>
+              <span class="text-[11px] text-gray-500">${escapeHtml(c.time || 'just now')}</span>
+            </div>
+            <button type="button" class="text-xs text-gray-400 hover:text-white flex items-center gap-1.5 cursor-pointer transition-colors">
+              <i class="fa-solid fa-reply text-[10px]"></i>
+              <span>Reply</span>
+            </button>
+          </div>
+          <p class="text-gray-300 text-xs leading-relaxed mt-1 whitespace-pre-wrap">${escapeHtml(c.text)}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // --- MORE BY CREATOR CAROUSEL (Uiverse Parity) ---
+  function renderMoreByAuthor(author, currentId) {
+    if (!modalMoreAuthorGrid || !author) return;
+    if (modalMoreAuthorName) modalMoreAuthorName.textContent = '@' + author;
+
+    let moreComps = (STATE.components || []).filter(c => c.author === author && c.id !== currentId);
+    if (moreComps.length < 3) {
+      const currentComp = findAnyComp(currentId);
+      const cat = currentComp?.category;
+      const catComps = (STATE.components || []).filter(c => c.category === cat && c.id !== currentId && !moreComps.some(m => m.id === c.id));
+      moreComps = moreComps.concat(catComps);
+    }
+    moreComps = moreComps.slice(0, 4);
+
+    if (!moreComps.length) {
+      if (modalMoreAuthorSection) modalMoreAuthorSection.classList.add('hidden');
+      return;
+    }
+    if (modalMoreAuthorSection) modalMoreAuthorSection.classList.remove('hidden');
+
+    modalMoreAuthorGrid.innerHTML = moreComps.map(c => {
+      const full = findAnyComp(c.id) || c;
+      const previewDoc = buildPreviewSrcDoc(full.html || '', full.css || '', full.category || '', false, '#212121');
+      return `
+        <div class="more-author-item flex-shrink-0 w-36 sm:w-44 bg-[#141416] hover:bg-[#1a1a1f] border border-white/8 hover:border-brand-500/40 rounded-xl p-2 cursor-pointer transition-all flex flex-col gap-1.5 group" data-id="${c.id}">
+          <div class="w-full h-16 sm:h-20 bg-[#212121] rounded-lg overflow-hidden relative pointer-events-none flex items-center justify-center">
+            <iframe srcdoc="${escapeAttr(previewDoc)}" class="w-full h-full border-none pointer-events-none scale-75 origin-center bg-[#212121]" loading="lazy" sandbox="allow-scripts"></iframe>
+          </div>
+          <div class="flex items-center justify-between text-[11px] px-0.5">
+            <span class="font-medium text-gray-300 truncate group-hover:text-brand-300">${escapeHtml(full.title || full.category || 'Component')}</span>
+            <span class="text-gray-500 text-[10px] shrink-0"><i class="fa-solid fa-heart text-[8px] text-pink-500 mr-0.5"></i>${full.likes || 0}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    modalMoreAuthorGrid.querySelectorAll('.more-author-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const id = item.dataset.id;
+        if (id) openModal(id, true);
+      });
+    });
+  }
+
+  function openModal(idOrComp, pushHash = true) {
+    let comp = null;
+    let id = null;
+    if (typeof idOrComp === 'object' && idOrComp !== null) {
+      comp = idOrComp;
+      id = idOrComp.id;
+    } else {
+      id = idOrComp;
+      comp = findAnyComp(id);
+    }
+    if (!comp) {
+      console.warn('[UIForge] openModal: component not found for', idOrComp);
+      return;
+    }
     currentModalComponentId = id;
     STATE.currentModal = id;
+
+    // Deep linking: update URL hash without full reload
+    if (pushHash && window.location.hash !== `#item-${id}`) {
+      try {
+        history.pushState({ componentId: id }, '', `#item-${id}`);
+      } catch (e) {
+        window.location.hash = `#item-${id}`;
+      }
+    }
 
     // 1. Process and set component code state FIRST so preview is always current
     let rawHtml = comp.html || '';
@@ -1942,7 +3879,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalAuthor) modalAuthor.textContent = '@' + comp.author;
     if (modalAvatar) modalAvatar.textContent = getInitials(comp.author);
     if (modalViewsCount) modalViewsCount.textContent = formatNumber(comp.views);
-    if (modalLikesCount) modalLikesCount.textContent = formatNumber(comp.likes || 0);
+    const modalCurrentLikes = getComponentLikesCount(comp);
+    comp.likes = modalCurrentLikes;
+    if (modalLikesCount) modalLikesCount.textContent = formatNumber(modalCurrentLikes);
 
     // 4. Set liked state
     const isLiked = STATE.likedIds.has(id);
@@ -1951,11 +3890,205 @@ document.addEventListener('DOMContentLoaded', () => {
       if (icon) icon.className = isLiked ? 'fa-solid fa-heart text-pink-500' : 'fa-regular fa-heart';
     }
 
+    // Uiverse Parity: Synchronize "Save to favorites" button
+    const saveFavBtn = document.getElementById('modal-save-fav-btn');
+    const saveFavText = document.getElementById('modal-save-fav-text');
+    if (saveFavBtn) {
+      const favIcon = saveFavBtn.querySelector('i');
+      if (favIcon) favIcon.className = isLiked ? 'fa-solid fa-bookmark text-brand-400' : 'fa-regular fa-bookmark';
+      if (saveFavText) saveFavText.textContent = isLiked ? 'Saved to favorites' : 'Save to favorites';
+    }
+
+    // Title & Tags (Uiverse Parity)
+    const elementTitleEl = document.getElementById('modal-element-title');
+    if (elementTitleEl) elementTitleEl.textContent = comp.title || comp.category || 'Component';
+
+    const tagsContainer = document.getElementById('modal-tags-container');
+    if (tagsContainer) {
+      let tags = [];
+      if (Array.isArray(comp.tags) && comp.tags.length) {
+        tags = comp.tags;
+      } else {
+        const catTag = (comp.category || 'button').toLowerCase();
+        const baseTags = [catTag, comp.isTailwind ? 'tailwind' : 'css', 'modern', 'dark', 'animated'];
+        if (comp.title) {
+          const words = comp.title.toLowerCase().split(/[\s-_]+/).filter(w => w.length > 2);
+          baseTags.unshift(...words.slice(0, 3));
+        }
+        tags = Array.from(new Set(baseTags));
+      }
+      tagsContainer.innerHTML = tags.map(t => `<span class="px-2.5 py-1 rounded-lg bg-[#18191d] border border-white/5 text-[11px] text-gray-400 hover:text-white cursor-pointer transition-colors">${escapeHtml(t)}</span>`).join('');
+    }
+
+    // Author card in sidebar & sub-creator notice
+    const authorCardName = document.getElementById('modal-author-card-name');
+    const authorCardHandle = document.getElementById('modal-author-card-handle');
+    const authorCardAvatar = document.getElementById('modal-author-card-avatar');
+    if (authorCardName) authorCardName.textContent = comp.author;
+    if (authorCardHandle) authorCardHandle.textContent = '@' + comp.author;
+    if (authorCardAvatar) authorCardAvatar.textContent = getInitials(comp.author);
+
+    // Render "More by author" in sidebar (Uiverse Parity)
+    const moreByTitle = document.getElementById('modal-more-by-title');
+    const moreByGrid = document.getElementById('modal-more-author-grid') || document.getElementById('modal-more-by-grid');
+    if (moreByTitle) moreByTitle.textContent = `More by @${comp.author || 'creator'}`;
+    if (moreByGrid) {
+      let authorComps = (STATE.components || []).filter(c => c.author === comp.author && c.id !== comp.id);
+      if (authorComps.length < 2) {
+        const others = (STATE.components || []).filter(c => c.id !== comp.id && !authorComps.some(a => a.id === c.id));
+        authorComps = authorComps.concat(others);
+      }
+      authorComps = authorComps.slice(0, 2);
+      moreByGrid.innerHTML = authorComps.map(ac => {
+        const full = findAnyComp(ac.id) || ac;
+        const previewDoc = buildPreviewSrcDoc(full.html || '', full.css || '', full.category || '', false, '#212121');
+        return `
+          <div class="more-author-item more-by-card bg-[#18191d] rounded-xl border border-white/10 overflow-hidden hover:border-white/25 transition-all cursor-pointer group flex flex-col shadow-sm" data-id="${full.id}">
+            <div class="w-full h-24 bg-[#212121] relative flex items-center justify-center overflow-hidden">
+              <iframe srcdoc="${escapeAttr(previewDoc)}" class="w-full h-full border-none pointer-events-none scale-50 origin-center bg-[#212121]" loading="lazy" sandbox="allow-scripts"></iframe>
+            </div>
+            <div class="flex items-center justify-between px-2.5 py-1.5 text-[10px] text-gray-400 border-t border-white/5">
+              <span class="truncate group-hover:text-white max-w-[85px]">${escapeHtml(full.title || full.category || 'Component')}</span>
+              <span class="flex items-center gap-1 text-gray-500"><i class="fa-solid fa-heart text-[9px] text-pink-500/70"></i> ${full.likes || 0}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      moreByGrid.querySelectorAll('.more-by-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const mId = card.dataset.id;
+          if (mId) openModal(mId, true);
+        });
+      });
+    }
+
+    const moreByViewAll = document.getElementById('modal-more-by-viewall');
+    if (moreByViewAll) {
+      moreByViewAll.onclick = () => {
+        closeModal(true);
+        if (typeof showUserPublicProfile === 'function') {
+          showUserPublicProfile(comp.author || 'creator');
+        }
+      };
+    }
+
+    const subCreatorName = document.getElementById('modal-sub-creator-name');
+    if (subCreatorName) subCreatorName.textContent = '@' + comp.author;
+    const visitSourceBtn = document.getElementById('modal-visit-source-btn');
+    if (visitSourceBtn) {
+      visitSourceBtn.href = `https://github.com/${encodeURIComponent(comp.author)}`;
+    }
+
+    // Comments auth status
+    const commentsAuthStatus = document.getElementById('modal-comments-auth-status');
+    if (commentsAuthStatus) {
+      if (STATE.currentUser) {
+        commentsAuthStatus.textContent = `Signed in as @${STATE.currentUser.displayName || (STATE.currentUser.email ? STATE.currentUser.email.split('@')[0] : 'user')}`;
+        commentsAuthStatus.className = 'text-xs text-brand-400';
+      } else {
+        commentsAuthStatus.textContent = 'Log in to add comments';
+        commentsAuthStatus.className = 'text-xs text-gray-400 cursor-pointer hover:text-white transition-colors';
+      }
+    }
+
     // 5. Canvas background (update UI without prematurely refreshing preview)
     updateCanvasBg('#212121', true, false);
 
-    // 6. Default to CSS tab
-    switchTab('css');
+    // Reset viewport and zoom state (Uiverse simulator parity)
+    STATE.canvasZoom = 100;
+    STATE.currentViewport = 'desktop';
+    if (canvasWrapper) canvasWrapper.dataset.viewport = 'desktop';
+    if (previewZoomLabel) previewZoomLabel.textContent = '100%';
+    if (modalIframe) modalIframe.style.transform = '';
+    viewportBtns.forEach((b) => {
+      const isDesktop = b.dataset.viewport === 'desktop';
+      b.classList.toggle('active', isDesktop);
+      b.classList.toggle('bg-surface-600', isDesktop);
+      b.classList.toggle('text-white', isDesktop);
+      b.classList.toggle('text-gray-400', !isDesktop);
+    });
+
+    // Render Variations (2x2 grid matching Uiverse Image 2)
+    const variationsGrid = document.getElementById('modal-variations-grid');
+    const variationsCountEl = document.getElementById('modal-variations-count');
+    if (variationsGrid) {
+      let variations = (STATE.components || []).filter(c => c.category === comp.category && c.id !== comp.id);
+      if (variations.length < 4) {
+        const others = (STATE.components || []).filter(c => c.id !== comp.id && !variations.some(v => v.id === c.id));
+        variations = variations.concat(others);
+      }
+      variations = variations.slice(0, 4);
+      if (variationsCountEl) variationsCountEl.textContent = variations.length;
+
+      variationsGrid.innerHTML = variations.map(v => {
+        const full = findAnyComp(v.id) || v;
+        const previewDoc = buildPreviewSrcDoc(full.html || '', full.css || '', full.category || '', false, '#212121');
+        return `
+          <div class="variation-card bg-[#18191d] rounded-2xl border border-white/10 overflow-hidden hover:border-white/25 transition-all cursor-pointer group flex flex-col shadow-sm" data-id="${full.id}">
+            <div class="w-full h-44 bg-[#212121] relative flex items-center justify-center overflow-hidden">
+              <iframe srcdoc="${escapeAttr(previewDoc)}" class="w-full h-full border-none pointer-events-none scale-75 origin-center bg-[#212121]" loading="lazy" sandbox="allow-scripts"></iframe>
+            </div>
+            <div class="flex items-center justify-between px-3.5 py-2.5 text-xs text-gray-400 border-t border-white/5">
+              <span class="font-medium text-gray-300 truncate group-hover:text-white">@${escapeHtml(full.author || 'creator')}</span>
+              <div class="flex items-center gap-3 text-[11px]">
+                <span>${formatNumber(full.views || 0)} views</span>
+                <span class="flex items-center gap-1"><i class="fa-regular fa-bookmark text-[10px]"></i> ${full.likes || 0}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      variationsGrid.querySelectorAll('.variation-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const vId = card.dataset.id;
+          if (vId) openModal(vId, true);
+        });
+      });
+    }
+
+    // License author & comment user avatar
+    const licenseAuthorEl = document.getElementById('modal-license-author');
+    if (licenseAuthorEl) licenseAuthorEl.textContent = `${comp.author} (@${comp.author})`;
+
+    const commentUserAvatar = document.getElementById('modal-comment-user-avatar');
+    if (commentUserAvatar) {
+      if (STATE.currentUser) {
+        commentUserAvatar.textContent = (STATE.currentUser.displayName || STATE.currentUser.email || 'U').charAt(0).toUpperCase();
+      } else {
+        commentUserAvatar.textContent = 'U';
+      }
+    }
+
+    // Render "More by Creator" section and comments count
+    renderMoreByAuthor(comp.author, comp.id);
+    const compComments = getComponentComments(comp.id);
+    if (modalCommentsCountBadge) modalCommentsCountBadge.textContent = compComments.length;
+    if (modalCommentsTotal) modalCommentsTotal.textContent = `${compComments.length}`;
+    renderCommentsList();
+
+    // Check if component has CSS or is Tailwind
+    const isTailwind = !!(comp.isTailwind || (!comp.css || !comp.css.trim().length) || /\b(flex|grid|bg-|text-|p-|m-|rounded-|border-)\b/.test(comp.html || ''));
+    const hasCss = !isTailwind && !!(comp.css && comp.css.trim().length > 5);
+    const cssTabBtn = document.querySelector('#modal-tabs .tab-btn[data-tab="css"]');
+    const tailwindBadge = document.getElementById('modal-tailwind-badge');
+
+    if (cssTabBtn) {
+      cssTabBtn.style.display = hasCss ? '' : 'none';
+    }
+    if (tailwindBadge) {
+      if (isTailwind) {
+        tailwindBadge.classList.remove('hidden');
+        tailwindBadge.classList.add('flex');
+      } else {
+        tailwindBadge.classList.add('hidden');
+        tailwindBadge.classList.remove('flex');
+      }
+    }
+
+    // Default to HTML or CSS tab
+    switchTab(hasCss ? 'css' : 'html');
 
     // 7. Show modal FIRST so iframe is in rendered DOM before loading content
     modal.classList.remove('hidden');
@@ -1965,10 +4098,15 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(renderEditor);
   }
 
-  function closeModal() {
+  function closeModal(clearHash = true) {
     modal.classList.add('hidden');
     document.body.style.overflow = '';
-    if (modalIframe) modalIframe.srcdoc = '';
+    if (modalIframe) {
+      modalIframe.srcdoc = '';
+      modalIframe.style.transform = '';
+    }
+    if (canvasWrapper) canvasWrapper.dataset.viewport = 'desktop';
+    if (previewZoomLabel) previewZoomLabel.textContent = '100%';
     currentModalComponentId = null;
     currentRawHtml = '';
     currentRawCss = '';
@@ -1976,14 +4114,24 @@ document.addEventListener('DOMContentLoaded', () => {
     savedRawCss = '';
     if (previewUpdateTimer) clearTimeout(previewUpdateTimer);
     STATE.currentModal = null;
+
+    // Clear URL hash when closing modal
+    if (clearHash && window.location.hash.startsWith('#item-')) {
+      try {
+        history.pushState(null, '', window.location.pathname + window.location.search);
+      } catch (e) {
+        window.location.hash = '';
+      }
+    }
   }
 
   window.openModal = openModal;
   window.closeModal = closeModal;
 
   function switchTab(tabId) {
-    if (!tabBtns.length) return;
-    tabBtns.forEach(b => {
+    const allTabBtns = document.querySelectorAll('#modal-tabs .tab-btn');
+    if (!allTabBtns.length) return;
+    allTabBtns.forEach(b => {
       const active = b.dataset.tab === tabId;
       b.classList.toggle('active', active);
       if (active) {
@@ -1996,8 +4144,140 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     activeEditorTab = tabId;
+
+    // Update copy button text to reflect active tab (Uiverse Parity)
+    const copyText = document.getElementById('modal-copy-text');
+    if (copyText) {
+      copyText.textContent = 'Copy';
+    }
+
     renderEditor();
   }
+
+  // Gallery Prev / Next Navigation
+  function navigateToAdjacentComponent(direction) {
+    if (!currentModalComponentId || !STATE.components || !STATE.components.length) return;
+    const currentIndex = STATE.components.findIndex((c) => c.id === currentModalComponentId);
+    if (currentIndex === -1) return;
+
+    let nextIndex = currentIndex + direction;
+    if (nextIndex < 0) nextIndex = STATE.components.length - 1;
+    else if (nextIndex >= STATE.components.length) nextIndex = 0;
+
+    const nextComp = STATE.components[nextIndex];
+    if (nextComp) {
+      openModal(nextComp, true);
+    }
+  }
+
+  if (modalPrevBtn) modalPrevBtn.addEventListener('click', () => navigateToAdjacentComponent(-1));
+  if (modalNextBtn) modalNextBtn.addEventListener('click', () => navigateToAdjacentComponent(1));
+
+  // Modal Share button
+  if (modalShareBtn) {
+    modalShareBtn.addEventListener('click', async () => {
+      if (!currentModalComponentId) return;
+      const shareUrl = window.location.origin + window.location.pathname + '#item-' + currentModalComponentId;
+      const ok = await copyToClipboard(shareUrl);
+      showToast(ok ? 'Direct link copied to clipboard!' : 'Failed to copy link', ok ? 'success' : 'error');
+    });
+  }
+
+  // Author filter click inside modal
+  if (modalAuthor) {
+    modalAuthor.addEventListener('click', () => {
+      const authorText = modalAuthor.textContent.replace(/^@/, '').trim();
+      if (authorText) {
+        closeModal(true);
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+          searchInput.value = authorText;
+          searchInput.dispatchEvent(new Event('input'));
+        }
+      }
+    });
+  }
+
+  // Global Keyboard shortcuts (Uiverse Parity: Ctrl+K, /, R, Esc, Arrows)
+  window.addEventListener('keydown', (e) => {
+    // If Esc is pressed, close any open modal
+    if (e.key === 'Escape') {
+      if (modal && !modal.classList.contains('hidden')) {
+        closeModal();
+        return;
+      }
+    }
+
+    const targetTag = e.target.tagName?.toLowerCase();
+    const isTyping = targetTag === 'input' || targetTag === 'textarea' || e.target.isContentEditable;
+
+    // Search shortcut: Ctrl+K, Cmd+K, or /
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.select();
+      }
+      return;
+    }
+    if (!isTyping && e.key === '/') {
+      e.preventDefault();
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.select();
+      }
+      return;
+    }
+
+    // Random component: R key
+    if (!isTyping && (e.key === 'r' || e.key === 'R') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      e.preventDefault();
+      if (typeof openRandomComponent === 'function') openRandomComponent();
+      return;
+    }
+
+    // In-modal navigation: Left / Right arrows
+    if (modal && !modal.classList.contains('hidden') && document.activeElement !== modalCodeEditor && !isTyping) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        navigateToAdjacentComponent(-1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        navigateToAdjacentComponent(1);
+      }
+    }
+  });
+
+  // Browser History & Hash Navigation Support (Deep Linking)
+  window.addEventListener('popstate', (e) => {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#item-')) {
+      const id = hash.replace('#item-', '');
+      if (currentModalComponentId !== id) {
+        const comp = findAnyComp(id);
+        if (comp) openModal(comp, false);
+      }
+    } else {
+      if (modal && !modal.classList.contains('hidden')) {
+        closeModal(false);
+      }
+    }
+  });
+
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#item-')) {
+      const id = hash.replace('#item-', '');
+      if (currentModalComponentId !== id) {
+        const comp = findAnyComp(id);
+        if (comp) openModal(comp, false);
+      }
+    } else if (!hash && modal && !modal.classList.contains('hidden')) {
+      closeModal(false);
+    }
+  });
 
   // Bind close event
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
@@ -2022,12 +4302,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Bind tab events
-  tabBtns.forEach(b => {
+  const allModalTabs = document.querySelectorAll('#modal-tabs .tab-btn');
+  allModalTabs.forEach(b => {
     b.addEventListener('click', () => switchTab(b.dataset.tab));
   });
 
   if (modalCodeEditor) {
     modalCodeEditor.addEventListener('input', () => {
+      if (activeEditorTab === 'react' || activeEditorTab === 'bundle') return;
       if (activeEditorTab === 'html') currentRawHtml = modalCodeEditor.value;
       else currentRawCss = modalCodeEditor.value;
       updateEditorMetrics();
@@ -2079,18 +4361,314 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Bind copy event
+  // Bind copy event (copies active tab code - Uiverse Parity)
   if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const activeTabEl = document.querySelector('#modal-tabs .tab-btn.active');
-      const activeTab = activeTabEl ? activeTabEl.dataset.tab : 'css';
-      const textToCopy = activeTab === 'html' ? currentRawHtml : currentRawCss;
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        const originalHtml = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<i class="fa-solid fa-check text-green-400"></i><span>Copied!</span>';
-        setTimeout(() => copyBtn.innerHTML = originalHtml, 2000);
+    copyBtn.addEventListener('click', async () => {
+      const textToCopy = getActiveCode();
+      const ok = await copyToClipboard(textToCopy);
+      if (ok) {
+        const copyText = document.getElementById('modal-copy-text');
+        const originalText = copyText ? copyText.textContent : 'Copy code';
+        if (copyText) copyText.textContent = 'Copied!';
+        const icon = copyBtn.querySelector('i');
+        if (icon) icon.className = 'fa-solid fa-check text-emerald-400';
+        setTimeout(() => {
+          if (copyText) copyText.textContent = originalText;
+          if (icon) icon.className = 'fa-regular fa-copy';
+        }, 2000);
+        showToast(`${activeEditorTab.toUpperCase()} copied to clipboard!`, 'success');
+      } else {
+        showToast('Failed to copy. Please copy manually.', 'error');
+      }
+    });
+  }
+
+  // --- DOWNLOAD & EXPORT FUNCTIONALITY (Uiverse Parity) ---
+  function downloadTextFile(filename, content, mimeType = 'text/plain') {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // --- EXPORT DROPDOWN (Uiverse Parity: React, HTML, CSS, All-in-One) ---
+  const modalExportWrapper = document.getElementById('modal-export-dropdown-wrapper');
+  const modalExportMenu = document.getElementById('modal-export-menu');
+  const modalExportFormatLabel = document.getElementById('modal-export-format-label');
+  if (modalExportBtn && modalExportMenu) {
+    modalExportBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      modalExportMenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (modalExportWrapper && !modalExportWrapper.contains(e.target)) {
+        modalExportMenu.classList.add('hidden');
+      }
+    });
+
+    modalExportMenu.querySelectorAll('.export-option').forEach((opt) => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        modalExportMenu.classList.add('hidden');
+        const format = opt.dataset.format || 'react';
+        if (modalExportFormatLabel) {
+          modalExportFormatLabel.textContent = format === 'react' ? 'React' : format.toUpperCase();
+        }
+        if (!currentModalComponentId) return;
+        const comp = findAnyComp(currentModalComponentId);
+        const baseName = (comp?.title || 'uiforge-component')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '') || 'component';
+
+        let filename = `${baseName}.html`;
+        let content = '';
+        let mime = 'text/plain';
+
+        if (format === 'react') {
+          filename = `${baseName}.jsx`;
+          content = convertToReactJsx(comp?.html || '', comp?.css || '', comp?.title || 'Component');
+          mime = 'text/javascript';
+        } else if (format === 'html') {
+          filename = `${baseName}.html`;
+          content = comp?.html || '';
+          mime = 'text/html';
+        } else if (format === 'css') {
+          filename = `${baseName}.css`;
+          content = comp?.css || '';
+          mime = 'text/css';
+        } else if (format === 'bundle') {
+          filename = `${baseName}-standalone.html`;
+          content = buildPreviewSrcDoc(comp?.html || '', comp?.css || '', comp?.category || '', false, '#212121');
+          mime = 'text/html';
+        }
+
+        downloadTextFile(filename, content, mime);
+        showToast(`Exported ${filename}`, 'success');
       });
     });
+  }
+
+  // --- SAVE TO FAVORITES BUTTON (Uiverse Parity) ---
+  const modalSaveFavBtn = document.getElementById('modal-save-fav-btn');
+  const modalSaveFavText = document.getElementById('modal-save-fav-text');
+  if (modalSaveFavBtn) {
+    modalSaveFavBtn.addEventListener('click', async () => {
+      if (!currentModalComponentId) return;
+      if (!STATE.currentUser) {
+        showToast('Please sign in to save components to favorites', 'info');
+        if (typeof openSigninModal === 'function') openSigninModal('signin');
+        return;
+      }
+      await handleLike(currentModalComponentId);
+      const isLiked = STATE.likedIds.has(currentModalComponentId);
+      const favIcon = modalSaveFavBtn.querySelector('i');
+      if (favIcon) favIcon.className = isLiked ? 'fa-solid fa-bookmark text-brand-400' : 'fa-regular fa-bookmark';
+      if (modalSaveFavText) modalSaveFavText.textContent = isLiked ? 'Saved to favorites' : 'Save to favorites';
+      if (modalLikeBtn) {
+        const likeIcon = modalLikeBtn.querySelector('i');
+        if (likeIcon) likeIcon.className = isLiked ? 'fa-solid fa-heart text-pink-500' : 'fa-regular fa-heart';
+      }
+      const comp = findAnyComp(currentModalComponentId);
+      if (comp && modalLikesCount) modalLikesCount.textContent = formatNumber(getComponentLikesCount(comp));
+      showToast(isLiked ? 'Saved to favorites!' : 'Removed from favorites', 'info');
+    });
+  }
+
+  // --- COPY TO FIGMA BUTTON (Uiverse Parity) ---
+  const modalFigmaBtn = document.getElementById('modal-figma-btn');
+  if (modalFigmaBtn) {
+    modalFigmaBtn.addEventListener('click', async () => {
+      if (!currentModalComponentId) return;
+      const comp = findAnyComp(currentModalComponentId);
+      const figmaBundle = `<!-- UIForge Component: ${comp?.title || 'Component'} by @${comp?.author || 'creator'} -->\n<!-- Paste directly or import via HTML-to-Figma -->\n<style>\n${comp?.css || ''}\n</style>\n${comp?.html || ''}`;
+      const ok = await copyToClipboard(figmaBundle);
+      if (ok) {
+        showToast('Component copied for Figma!', 'success');
+      } else {
+        showToast('Failed to copy to clipboard', 'error');
+      }
+    });
+  }
+
+  // --- FULLSCREEN CANVAS TOGGLE (Uiverse Parity) ---
+  const previewFullscreenBtn = document.getElementById('preview-fullscreen-btn');
+  if (previewFullscreenBtn && canvasWrapper) {
+    previewFullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        canvasWrapper.requestFullscreen?.().catch(() => {});
+      } else {
+        document.exitFullscreen?.().catch(() => {});
+      }
+    });
+  }
+
+  // --- AUTHOR CARD CLICK & REPORT & VARIATIONS ---
+  const modalAuthorCard = document.getElementById('modal-author-card');
+  if (modalAuthorCard) {
+    modalAuthorCard.addEventListener('click', () => {
+      if (modalAuthor) modalAuthor.click();
+    });
+  }
+
+  const modalNewVariationBtn = document.getElementById('modal-new-variation-btn');
+  if (modalNewVariationBtn) {
+    modalNewVariationBtn.addEventListener('click', () => {
+      if (!currentModalComponentId) return;
+      const comp = findAnyComp(currentModalComponentId);
+      closeModal(true);
+      if (typeof openUploadModal === 'function') {
+        openUploadModal();
+        const titleInput = document.getElementById('upload-title');
+        const catSelect = document.getElementById('upload-category');
+        const htmlInput = document.getElementById('upload-html');
+        const cssInput = document.getElementById('upload-css');
+        if (titleInput) titleInput.value = `${comp?.title || 'Component'} (Remix)`;
+        if (catSelect && comp?.category) catSelect.value = comp.category;
+        if (htmlInput && comp?.html) htmlInput.value = comp.html;
+        if (cssInput && comp?.css) cssInput.value = comp.css;
+        showToast('Created variation draft in upload modal!', 'info');
+      }
+    });
+  }
+
+  const modalVariationsBox = document.getElementById('modal-variations-box');
+  if (modalVariationsBox) {
+    modalVariationsBox.addEventListener('click', () => {
+      if (!currentModalComponentId) return;
+      const comp = findAnyComp(currentModalComponentId);
+      closeModal(true);
+      if (typeof openUploadModal === 'function') {
+        openUploadModal();
+        const titleInput = document.getElementById('upload-title');
+        const catSelect = document.getElementById('upload-category');
+        const htmlInput = document.getElementById('upload-html');
+        const cssInput = document.getElementById('upload-css');
+        if (titleInput) titleInput.value = `${comp?.title || 'Component'} (Remix)`;
+        if (catSelect && comp?.category) catSelect.value = comp.category;
+        if (htmlInput && comp?.html) htmlInput.value = comp.html;
+        if (cssInput && comp?.css) cssInput.value = comp.css;
+        showToast('Created variation draft in upload modal!', 'info');
+      }
+    });
+  }
+
+  const modalReportBtn = document.getElementById('modal-report-btn');
+  if (modalReportBtn) {
+    modalReportBtn.addEventListener('click', () => {
+      showToast('Thank you! Report received for review.', 'info');
+    });
+  }
+
+  const modalCommentsAuthStatus = document.getElementById('modal-comments-auth-status');
+  if (modalCommentsAuthStatus) {
+    modalCommentsAuthStatus.addEventListener('click', () => {
+      if (!STATE.currentUser && typeof openSigninModal === 'function') {
+        openSigninModal('signin', 'Sign in to leave a comment');
+      }
+    });
+  }
+
+  // --- VIEWPORT SIMULATOR & ZOOM CONTROLS (Uiverse Parity) ---
+  function updateZoom(newZoom) {
+    const clamped = Math.max(50, Math.min(200, newZoom));
+    STATE.canvasZoom = clamped;
+    if (previewZoomLabel) previewZoomLabel.textContent = `${clamped}%`;
+    if (modalIframe) {
+      modalIframe.style.transform = clamped === 100 ? '' : `scale(${clamped / 100})`;
+      modalIframe.style.transformOrigin = 'center center';
+    }
+  }
+
+  if (previewZoomIn) {
+    previewZoomIn.addEventListener('click', () => updateZoom((STATE.canvasZoom || 100) + 25));
+  }
+  if (previewZoomOut) {
+    previewZoomOut.addEventListener('click', () => updateZoom((STATE.canvasZoom || 100) - 25));
+  }
+
+  viewportBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const vp = btn.dataset.viewport || 'desktop';
+      STATE.currentViewport = vp;
+      if (canvasWrapper) canvasWrapper.dataset.viewport = vp;
+      viewportBtns.forEach((b) => {
+        const isCurrent = b === btn;
+        b.classList.toggle('active', isCurrent);
+        b.classList.toggle('bg-surface-600', isCurrent);
+        b.classList.toggle('text-white', isCurrent);
+        b.classList.toggle('text-gray-400', !isCurrent);
+      });
+      refreshModalPreview();
+    });
+  });
+
+  // --- MODAL COMMENTS FORM & AUTHOR VIEW ALL ---
+  if (modalCommentForm) {
+    modalCommentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!currentModalComponentId) return;
+
+      if (!STATE.currentUser) {
+        showToast('Please sign in to leave a comment', 'info');
+        if (typeof openSigninModal === 'function') {
+          openSigninModal('signin', 'Sign in to join the conversation and comment');
+        }
+        return;
+      }
+
+      const text = (modalCommentInput?.value || '').trim();
+      if (!text) return;
+
+      const author = STATE.currentUser?.displayName || STATE.currentUser?.email?.split('@')[0] || 'CommunityUser';
+      const newComment = {
+        author: author,
+        avatar: author.charAt(0).toUpperCase(),
+        text: text,
+        time: 'Just now'
+      };
+      saveComponentComment(currentModalComponentId, newComment);
+      if (modalCommentInput) modalCommentInput.value = '';
+      renderCommentsList();
+      showToast('Comment posted successfully!', 'success');
+    });
+  }
+
+  if (modalViewAllAuthorBtn) {
+    modalViewAllAuthorBtn.addEventListener('click', () => {
+      const comp = findAnyComp(currentModalComponentId);
+      if (comp?.author) {
+        closeModal(true);
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+          searchInput.value = comp.author;
+          searchInput.dispatchEvent(new Event('input'));
+        }
+      }
+    });
+  }
+
+  // --- RANDOM COMPONENT GENERATOR (Uiverse Parity) ---
+  const randomBtn = document.getElementById('random-btn');
+  function openRandomComponent() {
+    if (!STATE.components || !STATE.components.length) return;
+    const randomIndex = Math.floor(Math.random() * STATE.components.length);
+    const randomComp = STATE.components[randomIndex];
+    if (randomComp) {
+      openModal(randomComp, true);
+      showToast(`Random Element: ${randomComp.title || randomComp.category}`, 'info');
+    }
+  }
+  window.openRandomComponent = openRandomComponent;
+
+  if (randomBtn) {
+    randomBtn.addEventListener('click', openRandomComponent);
   }
 
   // Delegate clicks on Grid for "Preview" buttons
@@ -2105,9 +4683,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Modal Like button — handleLike() already keeps the modal's heart icon
-  // and like count in sync (via STATE.currentModal), so this just needs to
-  // trigger it and pass along the matching card button (if any) to animate.
+  // Modal Like button
   if (modalLikeBtn) {
     modalLikeBtn.addEventListener('click', async () => {
       if (!currentModalComponentId) return;
@@ -2126,9 +4702,9 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebar.classList.remove('-translate-x-full');
     sidebarBackdrop.classList.remove('hidden', 'pointer-events-none');
     sidebarBackdrop.classList.add('opacity-100');
-    // Sync hamburgers
-    if (sidebarOpenBtn) sidebarOpenBtn.querySelector('input').checked = true;
-    if (sidebarCloseBtn) sidebarCloseBtn.querySelector('input').checked = true;
+    // Sync hamburger checkboxes WITHOUT triggering change events
+    if (sidebarOpenBtn) { const inp = sidebarOpenBtn.querySelector('input'); if (inp) inp.checked = true; }
+    if (sidebarCloseBtn) { const inp = sidebarCloseBtn.querySelector('input'); if (inp) inp.checked = true; }
   }
 
   function closeSidebar() {
@@ -2138,13 +4714,27 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       if (sidebar.classList.contains('-translate-x-full')) sidebarBackdrop.classList.add('hidden');
     }, 300);
-    // Sync hamburgers
-    if (sidebarOpenBtn) sidebarOpenBtn.querySelector('input').checked = false;
-    if (sidebarCloseBtn) sidebarCloseBtn.querySelector('input').checked = false;
+    // Sync hamburger checkboxes WITHOUT triggering change events
+    if (sidebarOpenBtn) { const inp = sidebarOpenBtn.querySelector('input'); if (inp) inp.checked = false; }
+    if (sidebarCloseBtn) { const inp = sidebarCloseBtn.querySelector('input'); if (inp) inp.checked = false; }
   }
 
-  if (sidebarOpenBtn) sidebarOpenBtn.addEventListener('change', (e) => e.target.checked ? openSidebar() : closeSidebar());
-  if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('change', (e) => !e.target.checked ? closeSidebar() : openSidebar());
+  // Expose closeSidebar globally so category buttons can call it directly
+  window._closeSidebar = closeSidebar;
+
+  if (sidebarOpenBtn) {
+    sidebarOpenBtn.addEventListener('change', (e) => {
+      // Prevent loop: only act when checkbox state actually changed by user interaction
+      if (e.target.checked) openSidebar();
+      else closeSidebar();
+    });
+  }
+  if (sidebarCloseBtn) {
+    sidebarCloseBtn.addEventListener('change', (e) => {
+      if (!e.target.checked) closeSidebar();
+      else openSidebar();
+    });
+  }
   if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
 
   // Bind Upload button inside Sidebar
@@ -2171,7 +4761,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const userAvatarPlaceholder = document.getElementById('user-avatar-placeholder');
   const signoutBtn = document.getElementById('signout-btn');
   const googleAuthBtn = document.getElementById('google-auth-btn');
-  const githubAuthBtn = document.getElementById('github-auth-btn');
   const signinModal = document.getElementById('signin-modal');
   const signinCloseBtn = document.getElementById('signin-close-btn');
 
@@ -2210,16 +4799,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Auth State Listener
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        // Logged in
+    function syncUserStateUI() {
+      const user = STATE.currentUser;
+      const isRealUser = !!user;
+      const settings = typeof getUserSettings === 'function' ? getUserSettings() : {};
+
+      if (isRealUser) {
         if (signinBtn) signinBtn.classList.add('hidden');
         if (userMenu) userMenu.classList.remove('hidden');
-        
-        // Update User Info
-        if (userNameEl) userNameEl.textContent = user.displayName || user.email.split('@')[0];
-        if (user.photoURL) {
+
+        const displayName = settings.name || (user ? (user.displayName || (user.email ? user.email.split('@')[0] : 'Phitsamay')) : 'Phitsamay');
+        if (userNameEl) userNameEl.textContent = displayName;
+
+        if (user && user.photoURL) {
           if (userAvatar) {
             userAvatar.src = user.photoURL;
             userAvatar.classList.remove('hidden');
@@ -2227,22 +4819,51 @@ document.addEventListener('DOMContentLoaded', () => {
           if (userAvatarPlaceholder) userAvatarPlaceholder.classList.add('hidden');
         } else {
           if (userAvatarPlaceholder) {
-            userAvatarPlaceholder.textContent = (user.displayName || user.email).charAt(0).toUpperCase();
+            userAvatarPlaceholder.textContent = displayName.charAt(0).toUpperCase();
             userAvatarPlaceholder.classList.remove('hidden');
           }
           if (userAvatar) userAvatar.classList.add('hidden');
         }
       } else {
-        // Logged out
         if (signinBtn) signinBtn.classList.remove('hidden');
         if (userMenu) userMenu.classList.add('hidden');
       }
+
+      if (typeof updateProfileUserInfo === 'function') updateProfileUserInfo();
+      if (typeof updateHeroStats === 'function') updateHeroStats();
+    }
+
+    // Call initially to render correct user menu immediately
+    syncUserStateUI();
+
+    // Auth State Listener
+    auth.onAuthStateChanged((user) => {
+      const isRealUser = user && !user.isAnonymous;
+      if (isRealUser) {
+        STATE.currentUser = user;
+        try {
+          localStorage.setItem('uiforge_user', JSON.stringify({
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL
+          }));
+          localStorage.removeItem('uiforge_logged_out');
+        } catch (e) {}
+      } else if (localStorage.getItem('uiforge_logged_out') === 'true') {
+        STATE.currentUser = null;
+      } else {
+        STATE.currentUser = getStoredUser();
+      }
+      syncUserStateUI();
     });
 
     // Open Signin Modal
     if (signinBtn) {
       signinBtn.addEventListener('click', () => {
-        if (signinModal) {
+        if (typeof openSigninModal === 'function') {
+          openSigninModal('signin');
+        } else if (signinModal) {
           signinModal.classList.remove('hidden');
           document.body.style.overflow = 'hidden';
         }
@@ -2260,57 +4881,42 @@ document.addEventListener('DOMContentLoaded', () => {
     if (signinCloseBtn) {
       signinCloseBtn.addEventListener('click', closeSigninModal);
     }
-    
+
     // Close modal when clicking backdrop
     const signinBackdrop = document.getElementById('signin-backdrop');
     if (signinBackdrop) {
       signinBackdrop.addEventListener('click', closeSigninModal);
     }
 
-    // Generic Toast Function
-    const showToast = (message, type) => {
-      const container = document.getElementById('toast-container');
-      if (!container) return;
-      const toast = document.createElement('div');
-      toast.className = `px-4 py-3 rounded-xl shadow-lg text-sm font-medium animate-slide-up flex items-center gap-3 ${type === 'success' ? 'bg-green-500/10 border border-green-500/20 text-green-400' : 'bg-surface-700 border border-white/10 text-white'}`;
-      toast.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i> <span>${message}</span>`;
-      container.appendChild(toast);
-      setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(10px)';
-        toast.style.transition = 'all 0.3s ease';
-        setTimeout(() => toast.remove(), 300);
-      }, 3000);
-    };
-
     // Google Login
     if (googleAuthBtn) {
       googleAuthBtn.addEventListener('click', () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider)
-          .then((result) => {
+          .then(() => {
             closeSigninModal();
             showToast('Signed in successfully!', 'success');
           })
           .catch((error) => {
-            console.error(error);
-            alert('Login failed: ' + error.message);
+            console.error('[UIForge] Google login failed:', error);
+            showToast('Login failed: ' + (error.message || 'Unknown error'), 'error');
           });
       });
     }
 
     // GitHub Login
+    const githubAuthBtn = document.getElementById('github-auth-btn');
     if (githubAuthBtn) {
       githubAuthBtn.addEventListener('click', () => {
         const provider = new firebase.auth.GithubAuthProvider();
         auth.signInWithPopup(provider)
-          .then((result) => {
+          .then(() => {
             closeSigninModal();
-            showToast('Signed in successfully!', 'success');
+            showToast('Signed in with GitHub successfully!', 'success');
           })
           .catch((error) => {
-            console.error(error);
-            alert('Login failed: ' + error.message);
+            console.error('[UIForge] GitHub login failed:', error);
+            showToast('GitHub login failed: ' + (error.message || 'Unknown error'), 'error');
           });
       });
     }
@@ -2318,16 +4924,661 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sign Out
     if (signoutBtn) {
       signoutBtn.addEventListener('click', () => {
-        auth.signOut().then(() => {
-          showToast('Signed out successfully.', 'info');
-        }).catch((error) => {
-          console.error(error);
-        });
+        if (userDropdown) {
+          userDropdown.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+          userMenuIcon?.classList.remove('rotate-180');
+        }
+        if (typeof closeProfileModal === 'function') closeProfileModal();
+        try {
+          localStorage.setItem('uiforge_logged_out', 'true');
+          localStorage.removeItem('uiforge_user');
+        } catch (e) {}
+        STATE.currentUser = null;
+        syncUserStateUI();
+        if (typeof auth !== 'undefined' && auth.currentUser) {
+          auth.signOut().catch(() => {});
+        }
+        showToast('Signed out successfully.', 'info');
       });
     }
   } else {
+    // Firebase not loaded — provide basic UI-only fallback
     console.warn("[UIForge] Firebase SDK not loaded, authentication disabled.");
+    const signinBtnEl = document.getElementById('signin-btn');
+    const signinModalEl = document.getElementById('signin-modal');
+    const signinCloseBtnEl = document.getElementById('signin-close-btn');
+    const signinBackdropEl = document.getElementById('signin-backdrop');
+    if (signinBtnEl) {
+      signinBtnEl.addEventListener('click', () => {
+        if (signinModalEl) {
+          signinModalEl.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+    const closeAuthModal = () => {
+      if (signinModalEl) {
+        signinModalEl.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    };
+    signinCloseBtnEl?.addEventListener('click', closeAuthModal);
+    signinBackdropEl?.addEventListener('click', closeAuthModal);
+    document.getElementById('signin-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Authentication not available in this mode.', 'warning');
+    });
+    document.getElementById('google-auth-btn')?.addEventListener('click', () => {
+      showToast('Google authentication not available in this mode.', 'warning');
+    });
   }
+
+  
+  /* ============================================================
+     11. PROFILE, EDIT & DELETE CONTROLLER
+     ============================================================ */
+
+  const profileModal = document.getElementById('profile-modal');
+  const profileBackdrop = document.getElementById('profile-backdrop');
+  const profileCloseBtn = document.getElementById('profile-close-btn');
+  const profileTabUploadsBtn = document.getElementById('profile-tab-uploads-btn');
+  const profileTabFavoritesBtn = document.getElementById('profile-tab-favorites-btn');
+  const profileUploadsPanel = document.getElementById('profile-uploads-panel');
+  const profileFavoritesPanel = document.getElementById('profile-favorites-panel');
+
+  const editModal = document.getElementById('edit-modal');
+  const editBackdrop = document.getElementById('edit-backdrop');
+  const editCloseBtn = document.getElementById('edit-close-btn');
+  const editCancelBtn = document.getElementById('edit-cancel-btn');
+  const editForm = document.getElementById('edit-form');
+
+  const deleteModal = document.getElementById('delete-modal');
+  const deleteBackdrop = document.getElementById('delete-backdrop');
+  const deleteCancelBtn = document.getElementById('delete-cancel-btn');
+  const deleteConfirmBtn = document.getElementById('delete-confirm-btn');
+
+  /* ============================================================
+     UIVERSE PROFILE & SETTINGS SYSTEM (100% PARITY)
+     ============================================================ */
+  const SETTINGS_KEY = 'uiforge_user_settings';
+
+  function getUserSettings() {
+    try {
+      const saved = localStorage.getItem(SETTINGS_KEY);
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    const user = STATE.currentUser;
+    const defaultName = user ? (user.displayName || (user.email ? user.email.split('@')[0] : 'Phitsamay')) : 'Phitsamay';
+    const defaultHandle = user ? (user.email ? user.email.split('@')[0] : 'phitsamay_9492') : 'phitsamay_9492';
+    return {
+      name: defaultName,
+      handle: defaultHandle,
+      location: '',
+      company: '',
+      twitter: '',
+      website: '',
+      bio: ''
+    };
+  }
+
+  function saveUserSettings(settings) {
+    try {
+      localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+    } catch (e) {}
+  }
+
+  function updateProfileCompletion(settings) {
+    const fields = [
+      { key: 'name', label: 'Name' },
+      { key: 'location', label: 'Location' },
+      { key: 'company', label: 'Company' },
+      { key: 'twitter', label: 'Twitter' },
+      { key: 'website', label: 'Blog' },
+      { key: 'bio', label: 'Bio' },
+    ];
+    const missing = fields.filter((f) => !settings[f.key] || !String(settings[f.key]).trim()).map((f) => f.label);
+    const filledCount = fields.length - missing.length;
+    const percent = Math.round((filledCount / fields.length) * 100);
+
+    const percentEl = document.getElementById('settings-completion-percent');
+    const barEl = document.getElementById('settings-completion-bar');
+    const missingEl = document.getElementById('settings-missing-fields');
+
+    if (percentEl) percentEl.textContent = `${percent}%`;
+    if (barEl) barEl.style.width = `${percent}%`;
+    if (missingEl) {
+      if (missing.length === 0) {
+        missingEl.textContent = 'All profile fields completed! 🎉';
+      } else {
+        missingEl.textContent = `Missing: ${missing.join(', ')}`;
+      }
+    }
+  }
+
+  function updateProfileUserInfo() {
+    const user = STATE.currentUser;
+    const settings = getUserSettings();
+    const nameEl = document.getElementById('profile-user-name');
+    const handleEl = document.getElementById('profile-user-handle');
+    const avatarImg = document.getElementById('profile-user-avatar');
+    const avatarPlaceholder = document.getElementById('profile-user-avatar-placeholder');
+
+    const displayName = settings.name || (user ? (user.displayName || user.email.split('@')[0]) : 'Phitsamay');
+    const handle = settings.handle || (user ? (user.email ? user.email.split('@')[0] : 'phitsamay_9492') : 'phitsamay_9492');
+
+    if (nameEl) nameEl.textContent = displayName;
+    if (handleEl) handleEl.textContent = handle.startsWith('@') ? handle : `@${handle}`;
+
+    const navUserName = document.getElementById('user-name');
+    if (navUserName) navUserName.textContent = displayName;
+
+    if (user && user.photoURL && avatarImg) {
+      avatarImg.src = user.photoURL;
+      avatarImg.classList.remove('hidden');
+      if (avatarPlaceholder) avatarPlaceholder.classList.add('hidden');
+    } else {
+      if (avatarPlaceholder) {
+        avatarPlaceholder.textContent = displayName.charAt(0).toUpperCase();
+        avatarPlaceholder.classList.remove('hidden');
+      }
+      if (avatarImg) avatarImg.classList.add('hidden');
+    }
+
+    // Populate Settings form fields
+    const nameInput = document.getElementById('settings-name');
+    const locInput = document.getElementById('settings-location');
+    const compInput = document.getElementById('settings-company');
+    const twInput = document.getElementById('settings-twitter');
+    const webInput = document.getElementById('settings-website');
+    const bioInput = document.getElementById('settings-bio');
+
+    if (nameInput) nameInput.value = settings.name || '';
+    if (locInput) locInput.value = settings.location || '';
+    if (compInput) compInput.value = settings.company || '';
+    if (twInput) twInput.value = settings.twitter || '';
+    if (webInput) webInput.value = settings.website || '';
+    if (bioInput) bioInput.value = settings.bio || '';
+
+    // Update favorites badge count in profile tabs
+    const favBadge = document.getElementById('profile-favorites-count-badge');
+    if (favBadge) {
+      const count = STATE.likedIds ? STATE.likedIds.size : 0;
+      favBadge.textContent = count;
+      if (count > 0) {
+        favBadge.classList.remove('hidden');
+      } else {
+        favBadge.classList.add('hidden');
+      }
+    }
+
+    updateProfileCompletion(settings);
+  }
+
+  function getUserUploads() {
+    const deletedIds = getDeletedComponentIds();
+    const myIds = getMyUploadIds();
+    const currentUserId = STATE.currentUser?.uid;
+    const currentAuthor = STATE.currentUser?.displayName || (STATE.currentUser?.email ? STATE.currentUser.email.split('@')[0] : null);
+    const settingsName = typeof getUserSettings === 'function' ? getUserSettings().name : null;
+
+    const pool = [...getStoredUserUploads(), ...getStoredCommunityUploads()];
+    const unique = new Map();
+    pool.forEach((c) => {
+      if (!c || unique.has(c.id)) return;
+      if (deletedIds.has(c.id)) return;
+      if (String(c.id).startsWith('uiv-')) return;
+      const isOwner = (currentUserId && c.userId && c.userId === currentUserId) ||
+        myIds.has(c.id) ||
+        (currentAuthor && c.author && c.author.toLowerCase() === currentAuthor.toLowerCase()) ||
+        (settingsName && c.author && c.author.toLowerCase() === settingsName.toLowerCase()) ||
+        c.isUserUpload;
+      if (isOwner) {
+        unique.set(c.id, c);
+      }
+    });
+    return Array.from(unique.values());
+  }
+
+  function updateProfileStats() {
+    // Kept for backward compatibility
+  }
+
+  // --- PROFILE MODAL & TABS ---
+  function openProfileModal(tab = 'posts') {
+    if (userDropdown) {
+      userDropdown.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+      if (userMenuIcon) userMenuIcon.classList.remove('rotate-180');
+    }
+
+    updateProfileUserInfo();
+    switchProfileTab(tab);
+
+    if (profileModal) {
+      profileModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeProfileModal() {
+    if (profileModal) {
+      profileModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function switchProfileTab(tabName) {
+    STATE.activeProfileTab = tabName;
+    document.querySelectorAll('.profile-tab-btn').forEach((btn) => {
+      const isCurrent = btn.dataset.profileTab === tabName;
+      if (isCurrent) {
+        btn.className = 'profile-tab-btn active px-4 py-1.5 rounded-xl font-semibold bg-[#24252a] text-white border border-white/10 transition-all cursor-pointer shadow-sm flex items-center gap-1.5';
+      } else {
+        btn.className = 'profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer flex items-center gap-1.5';
+      }
+    });
+
+    renderProfileContent(tabName);
+  }
+
+  function renderProfileContent(tab = 'posts') {
+    const emptyState = document.getElementById('profile-empty-state');
+    const emptyTitle = document.getElementById('profile-empty-title');
+    const emptyDesc = document.getElementById('profile-empty-desc');
+    const emptyBtn = document.getElementById('profile-empty-create-btn');
+    const grid = document.getElementById('profile-posts-grid');
+
+    if (!emptyState || !grid) return;
+
+    if (tab === 'posts') {
+      let items = getUserUploads();
+      if (profileSortMode === 'popular') {
+        items.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+      } else {
+        items.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+      }
+
+      if (items.length === 0) {
+        grid.classList.add('hidden');
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        if (emptyTitle) emptyTitle.textContent = 'No Public Posts Yet';
+        if (emptyDesc) emptyDesc.textContent = "Looks like you haven't made any posts yet. Don't worry, just click the 'Create' button and let the universe know you're out there.";
+        if (emptyBtn) {
+          emptyBtn.innerHTML = '<i class="fa-solid fa-plus text-xs"></i> <span>Create</span>';
+          emptyBtn.onclick = () => {
+            closeProfileModal();
+            openUploadModal();
+          };
+        }
+      } else {
+        emptyState.classList.add('hidden');
+        grid.classList.remove('hidden');
+        grid.innerHTML = '';
+
+        items.forEach((c) => {
+          const card = document.createElement('div');
+          card.className = 'group flex flex-col rounded-2xl bg-[#141416] border border-white/10 overflow-hidden hover:border-indigo-500/40 transition-all shadow-sm';
+          const createdDate = c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'Recently';
+
+          card.innerHTML = `
+            <div class="h-44 bg-[#0a0a0c] relative flex items-center justify-center p-3 overflow-hidden cursor-pointer preview-click-area">
+              <iframe sandbox="allow-scripts" loading="lazy" class="w-full h-full pointer-events-none" srcdoc="${escapeAttr(buildPreviewSrcDoc(c.html, c.css, c.category || '', false, '#0a0a0c'))}"></iframe>
+            </div>
+            <div class="p-3.5 flex flex-col gap-2 flex-1">
+              <div class="flex items-center justify-between gap-2">
+                <h4 class="font-bold text-white text-xs truncate hover:text-indigo-400 cursor-pointer card-title" title="${escapeHtml(c.title)}">${escapeHtml(c.title)}</h4>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/5 text-gray-300 border border-white/5 shrink-0">${escapeHtml(c.category || 'Other')}</span>
+              </div>
+              <div class="flex items-center justify-between text-[11px] text-gray-400 mt-auto pt-2 border-t border-white/5">
+                <div class="flex items-center gap-2">
+                  <span><i class="fa-solid fa-heart text-pink-400 mr-1"></i>${getComponentLikesCount(c)}</span>
+                  <span><i class="fa-regular fa-clock mr-1"></i>${createdDate}</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" class="btn-card-edit p-1.5 rounded-lg text-gray-400 hover:text-indigo-400 hover:bg-white/5 transition-colors" title="Edit">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  </button>
+                  <button type="button" class="btn-card-del p-1.5 rounded-lg text-gray-400 hover:text-red-400 hover:bg-white/5 transition-colors" title="Delete">
+                    <i class="fa-regular fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+
+          card.querySelector('.preview-click-area')?.addEventListener('click', () => {
+            closeProfileModal();
+            openModal(c.id);
+          });
+          card.querySelector('.card-title')?.addEventListener('click', () => {
+            closeProfileModal();
+            openModal(c.id);
+          });
+          card.querySelector('.btn-card-edit')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openEditModal(c.id);
+          });
+          card.querySelector('.btn-card-del')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openDeleteModal(c.id);
+          });
+
+          grid.appendChild(card);
+        });
+      }
+    } else if (tab === 'favorites') {
+      const items = [];
+      STATE.likedIds.forEach((id) => {
+        const comp = findComponentAnywhere(id);
+        if (comp) items.push(comp);
+      });
+
+      if (items.length === 0) {
+        grid.classList.add('hidden');
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        if (emptyTitle) emptyTitle.textContent = 'No Favorites Yet';
+        if (emptyDesc) emptyDesc.textContent = "You haven't saved any favorite UI elements yet. Explore components and click the heart icon on any card to save them here!";
+        if (emptyBtn) {
+          emptyBtn.innerHTML = '<i class="fa-regular fa-compass text-xs"></i> <span>Explore Components</span>';
+          emptyBtn.onclick = () => {
+            closeProfileModal();
+            const exploreEl = document.getElementById('explore-section') || document.getElementById('components-grid');
+            if (exploreEl) exploreEl.scrollIntoView({ behavior: 'smooth' });
+          };
+        }
+      } else {
+        emptyState.classList.add('hidden');
+        grid.classList.remove('hidden');
+        grid.innerHTML = '';
+
+        items.forEach((c) => {
+          const card = document.createElement('div');
+          card.className = 'group flex flex-col rounded-2xl bg-[#141416] border border-white/10 overflow-hidden hover:border-pink-500/40 transition-all shadow-sm';
+          const createdDate = c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'Recently';
+
+          card.innerHTML = `
+            <div class="h-44 bg-[#0a0a0c] relative flex items-center justify-center p-3 overflow-hidden cursor-pointer preview-click-area">
+              <iframe sandbox="allow-scripts" loading="lazy" class="w-full h-full pointer-events-none" srcdoc="${escapeAttr(buildPreviewSrcDoc(c.html, c.css, c.category || '', false, '#0a0a0c'))}"></iframe>
+            </div>
+            <div class="p-3.5 flex flex-col gap-2 flex-1">
+              <div class="flex items-center justify-between gap-2">
+                <h4 class="font-bold text-white text-xs truncate hover:text-pink-400 cursor-pointer card-title" title="${escapeHtml(c.title)}">${escapeHtml(c.title)}</h4>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/5 text-gray-300 border border-white/5 shrink-0">${escapeHtml(c.category || 'Other')}</span>
+              </div>
+              <div class="text-[11px] text-gray-400">
+                by <span class="text-gray-300 font-medium">${escapeHtml(c.author || 'Anonymous')}</span>
+              </div>
+              <div class="flex items-center justify-between text-[11px] text-gray-400 mt-auto pt-2 border-t border-white/5">
+                <div class="flex items-center gap-2">
+                  <span><i class="fa-solid fa-heart text-pink-400 mr-1"></i>${getComponentLikesCount(c)}</span>
+                  <span><i class="fa-regular fa-clock mr-1"></i>${createdDate}</span>
+                </div>
+                <button type="button" class="btn-card-unlike px-2.5 py-1 rounded-lg bg-pink-500/10 hover:bg-pink-500/20 text-pink-400 text-[11px] font-semibold flex items-center gap-1.5 transition-colors cursor-pointer border border-pink-500/20" title="Remove from favorites">
+                  <i class="fa-solid fa-heart text-[10px]"></i>
+                  <span>Liked</span>
+                </button>
+              </div>
+            </div>
+          `;
+
+          card.querySelector('.preview-click-area')?.addEventListener('click', () => {
+            closeProfileModal();
+            openModal(c.id);
+          });
+          card.querySelector('.card-title')?.addEventListener('click', () => {
+            closeProfileModal();
+            openModal(c.id);
+          });
+          card.querySelector('.btn-card-unlike')?.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            await handleLike(c.id);
+            updateProfileUserInfo();
+            renderProfileContent('favorites');
+            showToast('Removed from favorites', 'info');
+          });
+
+          grid.appendChild(card);
+        });
+      }
+    } else {
+      // Variations, In Review, Rejected, Drafts
+      grid.classList.add('hidden');
+      grid.innerHTML = '';
+      emptyState.classList.remove('hidden');
+
+      const titles = {
+        'variations': 'No Variations Yet',
+        'in-review': 'No Posts In Review',
+        'rejected': 'No Rejected Posts',
+        'drafts': 'No Drafts Saved'
+      };
+      const descs = {
+        'variations': 'You have not created any variations for community elements yet.',
+        'in-review': 'Components submitted for community review will appear here.',
+        'rejected': 'No elements have been rejected. All your creations meet guidelines!',
+        'drafts': 'Draft components saved from the studio will be available here.'
+      };
+
+      if (emptyTitle) emptyTitle.textContent = titles[tab] || 'No Posts Yet';
+      if (emptyDesc) emptyDesc.textContent = descs[tab] || 'No items found in this section.';
+      if (emptyBtn) {
+        emptyBtn.innerHTML = '<i class="fa-solid fa-plus text-xs"></i> <span>Create</span>';
+        emptyBtn.onclick = () => {
+          closeProfileModal();
+          openUploadModal();
+        };
+      }
+    }
+  }
+
+  function renderProfileUploads() {
+    renderProfileContent('posts');
+  }
+
+  function renderProfileFavorites() {
+    renderProfileContent('favorites');
+  }
+
+  // --- SETTINGS MODAL & TABS ---
+  const settingsModal = document.getElementById('settings-modal');
+
+  function openSettingsModal(activeTab = 'profile') {
+    if (userDropdown) {
+      userDropdown.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+      if (userMenuIcon) userMenuIcon.classList.remove('rotate-180');
+    }
+    updateProfileUserInfo();
+    switchSettingsTab(activeTab);
+    if (settingsModal) {
+      settingsModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeSettingsModal() {
+    if (settingsModal) {
+      settingsModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function switchSettingsTab(tabName) {
+    document.querySelectorAll('.settings-nav-btn').forEach((btn) => {
+      const isCurrent = btn.dataset.settingsTab === tabName;
+      if (isCurrent) {
+        btn.className = 'settings-nav-btn active w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 bg-[#1e1f24] text-white border border-white/10 transition-all cursor-pointer shadow-sm';
+      } else {
+        btn.className = 'settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer';
+      }
+    });
+
+    ['profile', 'achievements', 'email', 'account', 'stats'].forEach((tab) => {
+      const panel = document.getElementById(`settings-panel-${tab}`);
+      if (panel) {
+        if (tab === tabName) {
+          panel.classList.remove('hidden');
+        } else {
+          panel.classList.add('hidden');
+        }
+      }
+    });
+  }
+
+  // Edit / Delete Modal Logic
+  function openEditModal(id) {
+    const comp = findComponentAnywhere(id);
+    if (!comp) return;
+
+    const idEl = document.getElementById('edit-component-id');
+    const titleEl = document.getElementById('edit-component-title');
+    const catEl = document.getElementById('edit-component-category');
+    const htmlEl = document.getElementById('edit-component-html');
+    const cssEl = document.getElementById('edit-component-css');
+
+    if (idEl) idEl.value = comp.id;
+    if (titleEl) titleEl.value = comp.title || '';
+    if (catEl) catEl.value = comp.category || 'Other';
+    if (htmlEl) htmlEl.value = comp.html || '';
+    if (cssEl) cssEl.value = comp.css || '';
+
+    if (editModal) editModal.classList.remove('hidden');
+  }
+
+  function closeEditModal() {
+    if (editModal) editModal.classList.add('hidden');
+  }
+
+  function openDeleteModal(id) {
+    const idEl = document.getElementById('delete-component-id');
+    if (idEl) idEl.value = id;
+    if (deleteModal) deleteModal.classList.remove('hidden');
+  }
+
+  function closeDeleteModal() {
+    if (deleteModal) deleteModal.classList.add('hidden');
+  }
+
+  // --- ATTACH EVENT LISTENERS FOR PROFILE & SETTINGS ---
+  // Navbar dropdown items
+  document.getElementById('user-profile-btn')?.addEventListener('click', () => openProfileModal('posts'));
+  document.getElementById('user-favorites-btn')?.addEventListener('click', () => openProfileModal('favorites'));
+  document.getElementById('user-settings-btn')?.addEventListener('click', () => openSettingsModal('profile'));
+
+  // Profile modal buttons
+  document.getElementById('profile-close-btn')?.addEventListener('click', closeProfileModal);
+  document.getElementById('profile-open-settings-btn')?.addEventListener('click', () => {
+    closeProfileModal();
+    openSettingsModal('profile');
+  });
+  document.getElementById('profile-empty-create-btn')?.addEventListener('click', () => {
+    closeProfileModal();
+    openUploadModal();
+  });
+
+  // Profile tabs
+  document.querySelectorAll('.profile-tab-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.profileTab;
+      if (tab) switchProfileTab(tab);
+    });
+  });
+
+  // Profile Sort toggle
+  let profileSortMode = 'newest';
+  document.getElementById('profile-filter-sort-btn')?.addEventListener('click', () => {
+    profileSortMode = profileSortMode === 'newest' ? 'popular' : 'newest';
+    const sortText = document.getElementById('profile-filter-sort-text');
+    if (sortText) sortText.textContent = profileSortMode === 'newest' ? 'Newest' : 'Popular';
+    renderProfileContent(STATE.activeProfileTab || 'posts');
+  });
+
+  // Settings modal buttons
+  document.getElementById('settings-close-btn')?.addEventListener('click', closeSettingsModal);
+  document.getElementById('settings-cancel-btn')?.addEventListener('click', closeSettingsModal);
+
+  // Settings tabs
+  document.querySelectorAll('.settings-nav-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.settingsTab;
+      if (tab) switchSettingsTab(tab);
+    });
+  });
+
+  // Settings Profile Form Submit
+  const settingsForm = document.getElementById('settings-profile-form');
+  if (settingsForm) {
+    settingsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const current = getUserSettings();
+      const updated = {
+        ...current,
+        name: document.getElementById('settings-name')?.value.trim() || current.name || 'Phitsamay',
+        location: document.getElementById('settings-location')?.value.trim() || '',
+        company: document.getElementById('settings-company')?.value.trim() || '',
+        twitter: document.getElementById('settings-twitter')?.value.trim() || '',
+        website: document.getElementById('settings-website')?.value.trim() || '',
+        bio: document.getElementById('settings-bio')?.value.trim() || '',
+      };
+      saveUserSettings(updated);
+      updateProfileUserInfo();
+      showToast('Settings saved successfully!', 'success');
+    });
+  }
+
+  // Edit / Delete handlers
+  editCloseBtn?.addEventListener('click', closeEditModal);
+  editBackdrop?.addEventListener('click', closeEditModal);
+  editCancelBtn?.addEventListener('click', closeEditModal);
+
+  editForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = document.getElementById('edit-component-id')?.value;
+    const title = document.getElementById('edit-component-title')?.value;
+    const category = document.getElementById('edit-component-category')?.value;
+    const html = document.getElementById('edit-component-html')?.value;
+    const css = document.getElementById('edit-component-css')?.value;
+
+    if (!id || !title.trim() || !html.trim()) {
+      showToast('Title and HTML are required.', 'error');
+      return;
+    }
+
+    try {
+      await updateComponentDetails(id, { title, category, html, css });
+      closeEditModal();
+      showToast('Component updated successfully!', 'success');
+      renderProfileContent(STATE.activeProfileTab || 'posts');
+    } catch (err) {
+      console.error(err);
+      showToast('Failed to update component.', 'error');
+    }
+  });
+
+  deleteCancelBtn?.addEventListener('click', closeDeleteModal);
+  deleteBackdrop?.addEventListener('click', closeDeleteModal);
+  deleteConfirmBtn?.addEventListener('click', async () => {
+    const id = document.getElementById('delete-component-id')?.value;
+    if (!id) return;
+    try {
+      await deleteComponent(id);
+      closeDeleteModal();
+      showToast('Component deleted successfully.', 'info');
+      renderProfileContent(STATE.activeProfileTab || 'posts');
+    } catch (err) {
+      console.error(err);
+      showToast('Failed to delete component.', 'error');
+    }
+  });
+
+  // Expose profile functions on window
+  window._renderProfileUploads = renderProfileUploads;
+  window._renderProfileFavorites = renderProfileFavorites;
+  window._updateProfileStats = updateProfileStats;
+  window.openProfileModal = openProfileModal;
+  window.closeProfileModal = closeProfileModal;
+  window.openSettingsModal = openSettingsModal;
+  window.closeSettingsModal = closeSettingsModal;
 
   console.log('[UIForge] Initialised successfully.');
 });

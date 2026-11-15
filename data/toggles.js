@@ -1,7 +1,7 @@
 /**
- * UIverse.io Scraped Data - Toggles
- * Updated: 2026-09-11T01:24:30.572Z
- * Total: 390
+ * UIverse.io Scraped & Synced Data - Toggles
+ * Updated: 2026-11-14T15:48:32.889Z
+ * Total: 436
  */
 
 window.UIVERSE_DATA = window.UIVERSE_DATA || {};
@@ -4685,5 +4685,776 @@ window.UIVERSE_DATA['Toggles'] = [
     "createdAt": "2026-09-11T00:00:00Z",
     "html": "<input type=\"checkbox\" id=\"checkbox\">\n<label class=\"switch\" for=\"checkbox\">\n  <div class=\"mic-on\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" class=\"bi bi-mic-fill\" viewBox=\"0 0 16 16\"> <path d=\"M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z\"></path> <path d=\"M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z\"></path> </svg>\n  </div>\n  <div class=\"mic-off\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" class=\"bi bi-mic-mute-fill\" viewBox=\"0 0 16 16\"> <path d=\"M13 8c0 .564-.094 1.107-.266 1.613l-.814-.814A4.02 4.02 0 0 0 12 8V7a.5.5 0 0 1 1 0v1zm-5 4c.818 0 1.578-.245 2.212-.667l.718.719a4.973 4.973 0 0 1-2.43.923V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 1 0v1a4 4 0 0 0 4 4zm3-9v4.879L5.158 2.037A3.001 3.001 0 0 1 11 3z\"></path> <path d=\"M9.486 10.607 5 6.12V8a3 3 0 0 0 4.486 2.607zm-7.84-9.253 12 12 .708-.708-12-12-.708.708z\"></path> </svg>\n  </div>\n</label>",
     "css": ".switch {\n  position: relative;\n  width: 48px;\n  height: 48px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: rgb(60,64,67);\n  color: #fff;\n  border-radius: 50%;\n  cursor: pointer;\n  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n\n.mic-on, .mic-off {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transition: all .3s ease-in-out;\n}\n\n.mic-on {\n  z-index: 4;\n}\n\n.mic-off {\n  position: absolute;\n  inset: 0;\n  z-index: 5;\n  opacity: 0;\n}\n\n.switch:hover {\n  background-color: rgba(60,64,67, 0.8);\n}\n\n#checkbox {\n  display: none;\n}\n\n#checkbox:checked + .switch {\n  background-color: red\n}\n\n#checkbox:checked + .switch .mic-off {\n  opacity: 1;\n}\n\n#checkbox:active + .switch {\n  scale: 1.2;\n}"
+  },
+  {
+    "id": "uiv-621946",
+    "title": "Spicy Horse 27",
+    "author": "AIVIIID",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.146Z",
+    "html": "<div class=\"toggle-switch\">\n  <input id=\"toggle-switch\" class=\"toggle-switch-checkbox\" type=\"checkbox\">\n  <label for=\"toggle-switch\" class=\"toggle-switch-label\">\n    <span class=\"toggle-switch-inner\"></span>\n    <span class=\"toggle-switch-switch\"></span>\n  </label>\n  <span class=\"toggle-switch-text\"></span>\n</div>",
+    "css": "/* From Uiverse.io by AIVIIID - Tags: switch */\n.toggle-switch {\n  position: relative;\n  width: 90px;\n  height: 34px;\n  margin: 20px;\n}\n\n.toggle-switch input[type=\"checkbox\"] {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n.toggle-switch-label {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ddd;\n  border-radius: 34px;\n  cursor: pointer;\n  transition: all 0.4s ease;\n}\n\n.toggle-switch-label:before,\n.toggle-switch-label:after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n}\n\n.toggle-switch-label:before {\n  left: 10px;\n  width: 26px;\n  height: 26px;\n  background-color: white;\n  border-radius: 50%;\n  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\n  transition: all 0.4s ease;\n}\n\n.toggle-switch-label:after {\n  left: 0;\n  width: 46px;\n  height: 34px;\n  background-color: #fff;\n  border-radius: 34px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);\n  transition: all 0.4s ease;\n}\n\n.toggle-switch-checkbox:checked + .toggle-switch-label:before {\n  transform: translateX(46px);\n}\n\n.toggle-switch-checkbox:checked + .toggle-switch-label {\n  background-color: #000000;\n}\n\n.toggle-switch-checkbox:checked + .toggle-switch-label:after {\n  transform: scale(0);\n}\n\n.toggle-switch-text {\n  position: absolute;\n  top: 5px;\n  left: 110px;\n  font-size: 16px;\n  font-weight: bold;\n  color: rgb(255, 255, 255);\n  text-shadow: 1px 1px 2px rgba(253, 251, 251, 0.2);\n  transition: all 0.4s ease;\n}\n\n.toggle-switch-checkbox:checked + .toggle-switch-label + .toggle-switch-text {\n  color: rgb(255, 255, 255);\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-592407",
+    "title": "Warm Falcon 58",
+    "author": "Adir-SL",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:30.945Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by Adir-SL - Tags: switch */\n/* The switch - the box around the slider */\n.switch {\n  --sizeVar: 2em;\n  --color-primary: #dedede;\n  --color-secondary: #aaaaaa;\n  --color-primary-on: #1d9bf0;\n  --color-secondary-on: #ffffff;\n  position: absolute;\n  width: calc(var(--sizeVar) * 2);\n  height: var(--sizeVar);\n  background-color: var(--color-primary);\n  border-radius: var(--sizeVar);\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset;\n  cursor: pointer;\n  transform: translate(-50%, -50%);\n  transition: background-color 150ms ease-out;\n}\n\n.switch::after {\n  content: \"\";\n  position: absolute;\n  margin: calc(var(--sizeVar) / 10);\n  height: calc(var(--sizeVar) - calc(var(--sizeVar) / 5));\n  width: calc(var(--sizeVar) - calc(var(--sizeVar) / 5));\n  background-color: var(--color-secondary);\n  border-radius: var(--sizeVar);\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset, 0 2px 4px rgba(0, 0, 0, 0.3);\n  transition: transform 150ms ease-out, background-color 150ms ease-out;\n}\n\n.switch:has(input:checked)::after {\n  transform: translateX(var(--sizeVar));\n  background-color: var(--color-secondary-on);\n}\n\n.switch:has(input:checked) {\n  background-color: var(--color-primary-on);\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-686800",
+    "title": "Average Robin 42",
+    "author": "AmIt-DasIT",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:30.951Z",
+    "html": "<input id=\"checkbox_toggle\" type=\"checkbox\" class=\"check\">\n<div class=\"checkbox\">\n  <label class=\"slide\" for=\"checkbox_toggle\">\n    <label class=\"toggle\" for=\"checkbox_toggle\"></label>\n    <label class=\"text\" for=\"checkbox_toggle\">Day</label>\n    <label class=\"text\" for=\"checkbox_toggle\">Night</label>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by AmIt-DasIT - Tags: switch, animated */\n.checkbox {\n  width: 223px;\n  height: 60px;\n  background-color: #d0d0d0;\n  border-radius: 30px;\n  position: relative;\n  color: black;\n  overflow: hidden;\n}\n\n#checkbox_toggle {\n  display: none;\n}\n\n.checkbox .toggle {\n  width: 100px;\n  height: 50px;\n  position: absolute;\n  border-radius: 30px;\n  left: 5px;\n  cursor: pointer;\n  background: linear-gradient(40deg, #FF0080,#FF8C00 70%);\n  transition: 0.4s;\n  box-shadow: 0px 0px 3px rgb(255, 255, 20), 0px 0px 5px rgb(255, 255, 20);\n}\n\n.checkbox .slide {\n  width: 230px;\n  height: 60px;\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  cursor: pointer;\n}\n\n.checkbox .slide .text {\n  font-size: 16px;\n  font-weight: 700;\n  z-index: 100;\n  cursor: pointer;\n}\n\n.check:checked + .checkbox .slide .toggle {\n  transform: translateX(113px);\n  background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);\n  box-shadow: -0px -0px 10px #8983F7, -0px -0px 3px #8983F7;\n}\n\n.check:checked + .checkbox .slide {\n  background-color: #0a1929;\n  color: #fff;\n}",
+    "tags": [
+      "switch",
+      "animated"
+    ]
+  },
+  {
+    "id": "uiv-868073",
+    "title": "Rotten Rat 40",
+    "author": "AmIt-DasIT",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.203Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by AmIt-DasIT - Tags: switch */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #223243;\n  transition: .4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  border-radius: 20px;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: #223243;\n  box-shadow: inset 2px -2px 0 1.8px #fff;\n  transition: .4s;\n  animation: anima1 0.3s linear;\n}\n\n@keyframes anima1 {\n  0% {\n    transform: translateX(1.5em);\n  }\n\n  80% {\n    transform: translateX(-0.3em);\n  }\n\n  100% {\n    transform: translateX(0em);\n  }\n}\n\n.switch input:checked + .slider:before {\n  background-color: yellow;\n  box-shadow: none;\n  transform: translateX(1.5em);\n  animation: anima 0.3s linear;\n}\n\n@keyframes anima {\n  0% {\n    transform: translateX(0px)\n  }\n\n  80% {\n    transform: translateX(1.6em)\n  }\n\n  100% {\n    transform: translateX(1.4em)\n  }\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-870717",
+    "title": "Loud Badger 7",
+    "author": "Bodyhc",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:30.951Z",
+    "html": "<div class=\"flipswitch\">\n    <input checked=\"\" id=\"fs\" class=\"flipswitch-cb\" name=\"flipswitch\" type=\"checkbox\">\n    <label for=\"fs\" class=\"flipswitch-label\">\n        <div class=\"flipswitch-inner\"></div>\n        <div class=\"flipswitch-switch\"></div>\n    </label>\n</div>",
+    "css": "/* From Uiverse.io by Bodyhc - Tags: switch, light switch, swith */\n.flipswitch {\n  position: relative;\n  width: 80px;\n}\n\n.flipswitch input[type=checkbox] {\n  display: none;\n}\n\n.flipswitch-label {\n  display: block;\n  overflow: hidden;\n  cursor: pointer;\n  border: 1px solid #260999;\n  border-radius: 41px;\n}\n\n.flipswitch-inner {\n  width: 200%;\n  margin-left: -100%;\n  transition: margin 0.3s ease-in 0s;\n}\n\n.flipswitch-inner:before, .flipswitch-inner:after {\n  float: left;\n  width: 50%;\n  height: 38px;\n  padding: 0;\n  line-height: 38px;\n  font-size: 25px;\n  color: white;\n  font-family: Trebuchet, Arial, sans-serif;\n  font-weight: bold;\n  box-sizing: border-box;\n}\n\n.flipswitch-inner:before {\n  content: \"✔\";\n  padding-left: 20px;\n  background-color: #15009C;\n  color: #FFFFFF;\n}\n\n.flipswitch-inner:after {\n  content: \"X\";\n  padding-right: 20px;\n  background-color: #EBEBEB;\n  color: #15009C;\n  text-align: right;\n}\n\n.flipswitch-switch {\n  width: 25px;\n  margin: 6.5px;\n  background: #FFFFFF;\n  border: 1px solid #260999;\n  border-radius: 41px;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 41px;\n  transition: all 0.3s ease-in 0s;\n}\n\n.flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {\n  margin-left: 0;\n}\n\n.flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {\n  right: 0;\n}",
+    "tags": [
+      "switch",
+      "light switch",
+      "swith"
+    ]
+  },
+  {
+    "id": "uiv-282357",
+    "title": "Red Lionfish 43",
+    "author": "Bodyhc",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.027Z",
+    "html": "<div class=\"checkbox-wrapper-35\">\n  <input value=\"private\" name=\"switch\" id=\"switch\" type=\"checkbox\" class=\"switch\">\n  <label for=\"switch\">\n    <span class=\"switch-x-text\">This is </span>\n    <span class=\"switch-x-toggletext\">\n      <span class=\"switch-x-unchecked\"><span class=\"switch-x-hiddenlabel\">Unchecked: </span>Off</span>\n      <span class=\"switch-x-checked\"><span class=\"switch-x-hiddenlabel\">Checked: </span>On</span>\n    </span>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by Bodyhc - Tags: switch, switcher, light switch, vertical-switch, swith */\n.checkbox-wrapper-35 .switch {\n  display: none;\n}\n\n.checkbox-wrapper-35 .switch + label {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center;\n  color: #78768d;\n  cursor: pointer;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  line-height: 15px;\n  position: relative;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n\n.checkbox-wrapper-35 .switch + label::before,\n  .checkbox-wrapper-35 .switch + label::after {\n  content: '';\n  display: block;\n}\n\n.checkbox-wrapper-35 .switch + label::before {\n  background-color: #05012c;\n  border-radius: 500px;\n  height: 15px;\n  margin-right: 8px;\n  -webkit-transition: background-color 0.125s ease-out;\n  transition: background-color 0.125s ease-out;\n  width: 25px;\n}\n\n.checkbox-wrapper-35 .switch + label::after {\n  background-color: #fff;\n  border-radius: 13px;\n  box-shadow: 0 3px 1px 0 rgba(37, 34, 71, 0.05), 0 2px 2px 0 rgba(37, 34, 71, 0.1), 0 3px 3px 0 rgba(37, 34, 71, 0.05);\n  height: 13px;\n  left: 1px;\n  position: absolute;\n  top: 1px;\n  -webkit-transition: -webkit-transform 0.125s ease-out;\n  transition: -webkit-transform 0.125s ease-out;\n  transition: transform 0.125s ease-out;\n  transition: transform 0.125s ease-out, -webkit-transform 0.125s ease-out;\n  width: 13px;\n}\n\n.checkbox-wrapper-35 .switch + label .switch-x-text {\n  display: block;\n  margin-right: .3em;\n}\n\n.checkbox-wrapper-35 .switch + label .switch-x-toggletext {\n  display: block;\n  font-weight: bold;\n  height: 15px;\n  overflow: hidden;\n  position: relative;\n  width: 25px;\n}\n\n.checkbox-wrapper-35 .switch + label .switch-x-unchecked,\n  .checkbox-wrapper-35 .switch + label .switch-x-checked {\n  left: 0;\n  position: absolute;\n  top: 0;\n  -webkit-transition: opacity 0.125s ease-out, -webkit-transform 0.125s ease-out;\n  transition: opacity 0.125s ease-out, -webkit-transform 0.125s ease-out;\n  transition: transform 0.125s ease-out, opacity 0.125s ease-out;\n  transition: transform 0.125s ease-out, opacity 0.125s ease-out, -webkit-transform 0.125s ease-out;\n}\n\n.checkbox-wrapper-35 .switch + label .switch-x-unchecked {\n  opacity: 1;\n  -webkit-transform: none;\n  transform: none;\n}\n\n.checkbox-wrapper-35 .switch + label .switch-x-checked {\n  opacity: 0;\n  -webkit-transform: translate3d(0, 100%, 0);\n  transform: translate3d(0, 100%, 0);\n}\n\n.checkbox-wrapper-35 .switch + label .switch-x-hiddenlabel {\n  position: absolute;\n  visibility: hidden;\n}\n\n.checkbox-wrapper-35 .switch:checked + label::before {\n  background-color: #ffb500;\n}\n\n.checkbox-wrapper-35 .switch:checked + label::after {\n  -webkit-transform: translate3d(10px, 0, 0);\n  transform: translate3d(10px, 0, 0);\n}\n\n.checkbox-wrapper-35 .switch:checked + label .switch-x-unchecked {\n  opacity: 0;\n  -webkit-transform: translate3d(0, -100%, 0);\n  transform: translate3d(0, -100%, 0);\n}\n\n.checkbox-wrapper-35 .switch:checked + label .switch-x-checked {\n  opacity: 1;\n  -webkit-transform: none;\n  transform: none;\n}",
+    "tags": [
+      "switch",
+      "switcher",
+      "light switch",
+      "vertical-switch",
+      "swith"
+    ]
+  },
+  {
+    "id": "uiv-669267",
+    "title": "Massive Quail 70",
+    "author": "Creatlydev",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:30.950Z",
+    "html": "<div class=\"container\">\n        <label class=\"toggle\" for=\"switch\">\n            <input id=\"switch\" class=\"input\" type=\"checkbox\">\n            <div class=\"icon icon--moon\">\n                <svg height=\"32\" width=\"32\" fill=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path clip-rule=\"evenodd\" d=\"M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z\" fill-rule=\"evenodd\"></path>\n                </svg>\n            </div>\n        \n            <div class=\"icon icon--sun\">\n                <svg height=\"32\" width=\"32\" fill=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z\"></path>\n                </svg>\n            </div>\n        </label>\n    </div>",
+    "css": "/* From Uiverse.io by Creatlydev - Tags: switch, light&dark, toggle switch */\n.toggle {\n  background-color: #fff;\n  width: 56px;\n  height: 56px;\n  border-radius: 50%;\n  display: grid;\n  place-items: center;\n  cursor: pointer;\n  box-shadow: 0 0 50px 20px rgba(0, 0, 0, .1);\n  line-height: 1;\n}\n\n.input {\n  display: none;\n}\n\n.icon {\n  grid-column: 1 / 1;\n  grid-row: 1 / 1;\n  transition: transform 500ms;\n}\n\n.icon--moon {\n  transition-delay: 200ms;\n}\n\n.icon--sun {\n  transform: scale(0);\n}\n\n#switch:checked + .icon--moon {\n  transform: rotate(360deg) scale(0);\n}\n\n#switch:checked ~ .icon--sun {\n  transition-delay: 200ms;\n  transform: scale(1) rotate(360deg);\n}",
+    "tags": [
+      "switch",
+      "light&dark",
+      "toggle switch"
+    ]
+  },
+  {
+    "id": "uiv-711844",
+    "title": "Wicked Bear 73",
+    "author": "Creatlydev",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.007Z",
+    "html": "<input type=\"checkbox\" name=\"check-toggle\" id=\"checkbox\" hidden=\"\">\n<label for=\"checkbox\" class=\"toggle\">\n  G\n  <div class=\"toggle__switch\">\n      <div class=\"toggle__circle\"></div>\n  </div>\n  D\n</label>",
+    "css": "/* From Uiverse.io by Creatlydev - Tags: switch, toggle, creative, html, css, toggle switch */\n.toggle {\n  display: flex;\n  align-items: center;\n  gap: .2rem;\n  font-weight: 900;\n  font-size: 4rem;\n  color: hsl(119, 84%, 10%);\n  text-shadow: 0 0 2px #e8e8e8;\n}\n\n.toggle__switch {\n  --bg-toggle: hsl(0, 0%, 100%);\n  --bg-circle: hsl(119, 84%, 10%);\n  --w-toggle-switch: 150px;\n  --w-h-toggle-circle: 35px;\n  --pd-toggle-switch: .5rem;\n  height: 55px;\n  width: var(--w-toggle-switch);\n  background-color: var(--bg-toggle);\n  border-radius: 4rem;\n  display: flex;\n  align-items: center;\n  padding: 0 var(--pd-toggle-switch);\n  cursor: pointer;\n  transition: background-color 500ms;\n}\n\n.toggle__circle {\n  width: var(--w-h-toggle-circle);\n  height: var(--w-h-toggle-circle);\n  background-color: var(--bg-circle);\n  border-radius: 50%;\n  transition: margin 400ms ease-in-out, background-color 1000ms;\n}\n\n#checkbox:checked + .toggle .toggle__circle {\n  margin-left: calc(var(--w-toggle-switch) - (var(--pd-toggle-switch) * 2) - var(--w-h-toggle-circle));\n}\n\n#checkbox:checked + .toggle > .toggle__switch {\n  --bg-toggle: hsl(119, 84%, 10%);\n  --bg-circle: hsl(0, 0%, 96%);\n  box-shadow: 0 .3rem 5rem 0 hsla(96, 85%, 34%, 30%);\n}",
+    "tags": [
+      "switch",
+      "toggle",
+      "creative",
+      "html",
+      "css",
+      "toggle switch"
+    ]
+  },
+  {
+    "id": "uiv-500330",
+    "title": "Strange Zebra 89",
+    "author": "Custyyyy",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:30.954Z",
+    "html": "<div class=\"check\">\n  <input id=\"check\" type=\"checkbox\">\n  <label for=\"check\"></label>\n</div>",
+    "css": "/* From Uiverse.io by Custyyyy - Tags: switch */\n.check {\n position: relative;\n background: linear-gradient(90deg, #f19af3, #f099b5);\n line-height: 0;\n font-size: 25px;\n}\n\n.check input[type=\"checkbox\"],\n.check label,\n.check label::before,\n.check label::after {\n appearance: none;\n display: inline-block;\n font-size: inherit;\n border-radius: 1em;\n border: 0;\n transition: .35s ease-in-out;\n box-sizing: border-box;\n cursor: pointer;\n}\n\n.check {\n appearance: none;\n display: inline-block;\n border-radius: 1em;\n border: 0;\n transition: .35s ease-in-out;\n box-sizing: border-box;\n cursor: pointer;\n}\n\n.check label {\n width: 2.2em;\n height: 1em;\n background: #d7d7d7;\n overflow: hidden;\n}\n\n.check input[type=\"checkbox\"] {\n position: absolute;\n z-index: 1;\n width: .8em;\n height: .8em;\n top: .1em;\n left: .1em;\n background: linear-gradient(45deg, #dedede, #ffffff);\n box-shadow: 0 6px 7px rgba(0,0,0,0.3);\n outline: none;\n}\n\n.check input[type=\"checkbox\"]:checked {\n left: 1.3em;\n}\n\n.check input[type=\"checkbox\"]:checked + label {\n background: transparent;\n}\n\n.check label::before,\n.check label::after {\n content: \"· ·\";\n position: absolute;\n overflow: hidden;\n left: .50em;\n top: .5em;\n height: 1em;\n letter-spacing: -.04em;\n color: #9b9b9b;\n font-family: \"Times New Roman\", serif;\n z-index: 2;\n font-size: .6em;\n border-radius: 0;\n transform-origin: 0 0 -.5em;\n backface-visibility: hidden;\n}\n\n.check label::after {\n content: \"?\";\n top: .65em;\n left: .6em;\n height: .1em;\n width: .35em;\n font-size: .2em;\n transform-origin: 0 0 -.4em;\n}\n\n.check input[type=\"checkbox\"]:checked + label::before,\n.check input[type=\"checkbox\"]:checked + label::after {\n left: 2.55em;\n top: .4em;\n line-height: .1em;\n transform: rotateY(360deg);\n}\n\n.check input[type=\"checkbox\"]:checked + label::after {\n height: .16em;\n top: .55em;\n left: 2.6em;\n font-size: .6em;\n line-height: 0;\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-995279",
+    "title": "Tough Monkey 56",
+    "author": "DawidMazurek4",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:30.972Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by DawidMazurek4 - Tags: switch, theme-switch */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgb(0, 0, 0);\n  transition: .4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  border-radius: 20px;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: rgb(219, 198, 2);\n  transition: .4s;\n}\n\ninput:checked + .slider {\n  background-color: #000000;\n}\n\ninput:focus + .slider {\n  box-shadow: 0 0 1px #000000;\n}\n\ninput:checked + .slider:before {\n  transform: translateX(1.5em);\n}\n\n.slider::after {\n  width: 20px;\n  height: 20px;\n  left: 20%;\n  top: 10%;\n  border-radius: 50%;\n  position: absolute;\n  content: \"\";\n  background-color: rgb(0, 0, 0);\n  transition: ease 0.4s;\n}\n\ninput:checked + .slider::after {\n  left: 80%;\n  width: 0px;\n  height: 0px;\n}",
+    "tags": [
+      "switch",
+      "theme-switch"
+    ]
+  },
+  {
+    "id": "uiv-712410",
+    "title": "Giant Panther 83",
+    "author": "G4b413l",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:30.984Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by G4b413l - Tags: switch */\n.switch input {\n display: none;\n}\n\n.switch {\n width: 60px;\n height: 30px;\n position: relative;\n}\n\n.slider {\n position: absolute;\n top: 0;\n bottom: 0;\n left: 0;\n right: 0;\n border-radius: 30px;\n box-shadow: 0 0 0 2px #777, 0 0 4px #777;\n cursor: pointer;\n border: 4px solid transparent;\n overflow: hidden;\n transition: 0.2s;\n}\n\n.slider:before {\n position: absolute;\n content: \"\";\n width: 100%;\n height: 100%;\n background-color: #777;\n border-radius: 30px;\n transform: translateX(-30px);\n /*translateX(-(w-h))*/\n transition: 0.2s;\n}\n\ninput:checked + .slider:before {\n transform: translateX(30px);\n /*translateX(w-h)*/\n background-color: limeGreen;\n}\n\ninput:checked + .slider {\n box-shadow: 0 0 0 2px limeGreen, 0 0 8px limeGreen;\n}\n\n.switch200 .slider:before {\n width: 200%;\n transform: translateX(-82px);\n /*translateX(-(w-h))*/\n}\n\n.switch200 input:checked + .slider:before {\n background-color: red;\n}\n\n.switch200 input:checked + .slider {\n box-shadow: 0 0 0 2px red, 0 0 8px red;\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-418945",
+    "title": "Soft Tiger 98",
+    "author": "Javierrocadev",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.005Z",
+    "html": "<!-- From Uiverse.io by Javierrocadev - Source: Javierrocadev - Tags: red, green, hover, switch, rotate, hover effect, scale, tailwind -->\n<label class=\"relative inline-flex items-center cursor-pointer\">\n  <input type=\"checkbox\" value=\"\" class=\"sr-only peer\">\n  <div class=\"peer ring-0 bg-rose-400  rounded-full outline-none duration-300 after:duration-500 w-12 h-12  shadow-md peer-checked:bg-emerald-500  peer-focus:outline-none  after:content-['✖️'] after:rounded-full after:absolute after:outline-none after:h-10 after:w-10 after:bg-gray-50 after:top-1 after:left-1 after:flex after:justify-center after:items-center  peer-hover:after:scale-75 peer-checked:after:content-['✔️'] after:-rotate-180 peer-checked:after:rotate-0\">\n  </div>\n</label>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-107266",
+    "title": "Weak Dingo 78",
+    "author": "Jay-9527",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:30.941Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by Jay-9527 - Tags: switch */\n/* The switch - the box around the slider */\n.switch {\n font-size: 17px;\n position: relative;\n display: inline-block;\n width: 3.5em;\n height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n opacity: 0;\n width: 0;\n height: 0;\n}\n\n/* The slider */\n.slider {\n position: absolute;\n cursor: pointer;\n top: 0;\n left: 0;\n right: 0;\n bottom: 0;\n background-color: #ccc;\n transition: .4s;\n border-radius: 30px;\n}\n\n.slider:before {\n position: absolute;\n content: \"\";\n height: 1.4em;\n width: 1.4em;\n border-radius: 20px;\n left: 0.3em;\n bottom: 0.3em;\n background-color: white;\n transition: .4s;\n}\n\ninput:checked + .slider {\n background-color: rgb(0,221,80);\n}\n\ninput:focus + .slider {\n box-shadow: 0 0 1px rgb(0,221,80);\n}\n\ninput:checked + .slider:before {\n transform: translateX(1.5em);\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-359865",
+    "title": "Average Shrimp 57",
+    "author": "JaydipPrajapati1910",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:30.999Z",
+    "html": "<div class=\"fx-block\">\n\t<div class=\"toggle\">\n\t\t<div>\n\t\t\t<input type=\"checkbox\" id=\"toggles\">\n\t\t\t<div data-unchecked=\"On\" data-checked=\"Off\">\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>",
+    "css": "/* From Uiverse.io by JaydipPrajapati1910 - Tags: switch, toggle switch, light switch */\n.toggle > div {\n  position: relative;\n  padding: 10px;\n  width: 150px;\n  height: 75px;\n  border-radius: 50px;\n  box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, .5), 0px 1px 1px 0 rgba(255, 255, 255, 1);\n  background: rgb(189, 191, 193);\n  background: linear-gradient(to bottom, rgba(189, 191, 193, 1) 0%, rgba(249, 251, 254, 1) 100%);\n}\n\n.toggle > div > input[type=checkbox] {\n  position: absolute;\n  opacity: 0;\n  top: -3px;\n  left: 17px;\n  width: 130px;\n  height: 55px;\n  z-index: 5;\n}\n\n.toggle > div > input[type=checkbox] ~ div {\n  width: 130px;\n  height: 55px;\n  border-radius: 50px;\n  border: 1px solid #979797;\n  box-shadow: inset 5px 0 0 0 rgba(0, 0, 0, .1), inset -5px 0 0 0 rgba(0, 0, 0, .1), inset -6px 0 0 0 rgba(255, 255, 255, .5), inset -4px 6px 11px -5px rgba(0, 0, 0, .2), inset 1px 1px 0 0 rgba(255, 255, 255, 1), -6px 4px 11px -7px rgba(0, 0, 0, .5);\n  background: rgb(253, 252, 251);\n  background: linear-gradient(to right, rgba(253, 252, 251, 1) 37%, rgba(229, 229, 229, 1) 61%);\n}\n\n.toggle > div > input[type=checkbox]:checked ~ div {\n  box-shadow: inset -5px 0 0 0 rgba(0, 0, 0, .1), inset 5px 0 0 0 rgba(0, 0, 0, .1), inset 6px 0 0 0 rgba(255, 255, 255, .5), inset -4px 6px 11px -5px rgba(0, 0, 0, .2), inset 1px 1px 0 0 rgba(255, 255, 255, 1), -6px 4px 11px -7px rgba(0, 0, 0, .5);\n  background: rgb(229, 229, 229);\n  background: linear-gradient(to right, rgba(229, 229, 229, 1) 39%, rgba(253, 252, 251, 1) 63%);\n}\n\n.toggle > div > input[type=checkbox] ~ div:before {\n  content: attr(data-unchecked);\n  display: block;\n  position: absolute;\n  border-radius: 10px;\n  top: 27px;\n  left: 30px;\n}\n\n.toggle > div > input[type=checkbox] ~ div:after {\n  content: attr(data-checked);\n  color: #df0000;\n  text-shadow: 0 1px 0 #fff, 0px 0 7px #df0000;\n  filter: dropshadow(color=#df0000, offx=0, offy=0);\n  display: block;\n  position: absolute;\n  border-radius: 10px;\n  top: 27px;\n  left: 100px;\n}\n\n.toggle > div > input[type=checkbox]:checked ~ div:before {\n  color: #119400;\n  text-shadow: 0 1px 0 #fff, 0px 0 7px #007a08;\n  filter: dropshadow(color=#007a08, offx=0, offy=0);\n}\n\n.toggle > div > input[type=checkbox]:checked ~ div:after {\n  color: #000;\n  text-shadow: none;\n  filter: dropshadow(none);\n}",
+    "tags": [
+      "switch",
+      "toggle switch",
+      "light switch"
+    ]
+  },
+  {
+    "id": "uiv-194573",
+    "title": "Warm Panther 53",
+    "author": "JkHuger",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.012Z",
+    "html": "<input type=\"checkbox\" class=\"l\">",
+    "css": "/* From Uiverse.io by JkHuger - Tags: switch */\n.l {\n  display: block;\n  margin-bottom: 1.5em;\n  font-size: 1em;\n}\n\n.l {\n  background-color: rgba(0,0,0,0.7);\n  border-radius: 0.75em;\n  box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.3) inset;\n  color: #fdea7b;\n  display: inline-flex;\n  align-items: center;\n  margin: auto;\n  padding: 0.15em;\n  width: 3em;\n  height: 1.5em;\n  transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n}\n\n.l:before, .l:after {\n  content: \"\";\n  display: block;\n}\n\n.l:before {\n  background-color: #d7d7d7;\n  border-radius: 50%;\n  width: 1.2em;\n  height: 1.2em;\n  transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;\n  z-index: 1;\n}\n\n.l:after {\n  background: linear-gradient(transparent 50%, rgba(0,0,0,0.15) 0) 0 50% / 50% 100%,\n\t\trepeating-linear-gradient(90deg,#bbb 0,#bbb,#bbb 20%,#999 20%,#999 40%) 0 50% / 50% 100%,\n\t\tradial-gradient(circle at 50% 50%,#888 25%, transparent 26%);\n  background-repeat: no-repeat;\n  border: 0.25em solid transparent;\n  border-left: 0.4em solid #d8d8d8;\n  border-right: 0 solid transparent;\n  transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;\n  transform: translateX(-22.5%);\n  transform-origin: 25% 50%;\n  width: 1.2em;\n  height: 1em;\n  box-sizing: border-box;\n}\n/* Checked */\n.l:checked {\n  background-color: rgba(0,0,0,0.45);\n  box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.1) inset;\n}\n\n.l:checked:before {\n  background-color: currentColor;\n  transform: translateX(125%)\n}\n\n.l:checked:after {\n  border-left-color: currentColor;\n  transform: translateX(-2.5%) rotateY(180deg);\n}\n/* Other States */\n.l:focus {\n\t/* Usually an anti-A11Y practice but set to remove an annoyance just for this demo */\n  outline: 0;\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-609485",
+    "title": "Curly Firefox 62",
+    "author": "MetaBlue2000",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.687Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\" />\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by MetaBlue2000  - Tags: red, green, minimalist, switch, click animation */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 01em;\n}\n\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ff6a59;\n  transition: 0.4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"✕\";\n  display: grid;\n  text-align: center;\n  vertical-align: middle;\n  place-items: center;\n  font-size: 1em;\n  font-weight: 900;\n  width: 2em;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  left: 0;\n  top: 50%;\n  transform: translate(0, -50%);\n  color: white;\n  background-color: #ff3c00;\n  border: 1px solid #ba0300;\n  transition: 0.4s;\n}\n\n.switch input:checked + .slider {\n  background-color: teal;\n}\n\n.switch input:checked + .slider:before {\n  content: \"\\002713\";\n  color: teal;\n  background: paleturquoise;\n  border: 1px solid rgba(0, 128, 128, 0.514);\n  transform: translate(1.75em, -50%) rotateZ(360deg);\n}",
+    "tags": [
+      "red",
+      "green",
+      "minimalist",
+      "switch",
+      "click animation"
+    ]
+  },
+  {
+    "id": "uiv-174482",
+    "title": "Evil Dragon 24",
+    "author": "Na3ar-17",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.550Z",
+    "html": "<div class=\"container\">\n  <label class=\"label\">\n    <input class=\"input\" type=\"checkbox\" />\n    <span class=\"circle\"\n      ><svg\n        viewBox=\"0 0 24 24\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n        aria-hidden=\"true\"\n        class=\"icon\"\n      >\n        <path\n          d=\"M12 19V5m0 14-4-4m4 4 4-4\"\n          stroke-width=\"1.5\"\n          stroke-linejoin=\"round\"\n          stroke-linecap=\"round\"\n          stroke=\"currentColor\"\n        ></path>\n      </svg>\n      <div class=\"square\"></div>\n    </span>\n    <p class=\"title\">Download</p>\n    <p class=\"title\">Open</p>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by Na3ar-17  - Tags: action, switch, download */\n.container {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  font-family: Arial, Helvetica, sans-serif;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.label {\n  background-color: transparent;\n  border: 2px solid rgb(91, 91, 240);\n  display: flex;\n  align-items: center;\n  border-radius: 50px;\n  width: 150px;\n  cursor: pointer;\n  transition: all 0.4s ease;\n  padding: 5px;\n  position: relative;\n}\n\n.label::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: #fff;\n  width: 8px;\n  height: 8px;\n  transition: all 0.4s ease;\n  border-radius: 100%;\n  margin: auto;\n  opacity: 0;\n  visibility: hidden;\n}\n\n.label .input {\n  display: none;\n}\n\n.label .title {\n  font-size: 17px;\n  color: #fff;\n  transition: all 0.4s ease;\n  position: absolute;\n  right: 15px;\n  bottom: 14px;\n  text-align: center;\n}\n\n.label .title:last-child {\n  opacity: 0;\n  visibility: hidden;\n}\n\n.label .circle {\n  height: 45px;\n  width: 45px;\n  border-radius: 50%;\n  background-color: rgb(91, 91, 240);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transition: all 0.4s ease;\n  position: relative;\n  box-shadow: 0 0 0 0 rgb(255, 255, 255);\n  overflow: hidden;\n}\n\n.label .circle .icon {\n  color: #fff;\n  width: 30px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  transition: all 0.4s ease;\n}\n\n.label .circle .square {\n  aspect-ratio: 1;\n  width: 15px;\n  border-radius: 2px;\n  background-color: #fff;\n  opacity: 0;\n  visibility: hidden;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  transition: all 0.4s ease;\n}\n\n.label .circle::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  top: 0;\n  background-color: #3333a8;\n  width: 100%;\n  height: 0;\n  transition: all 0.4s ease;\n}\n\n.label:has(.input:checked) {\n  width: 57px;\n  animation: installed 0.4s ease 3.5s forwards;\n}\n\n.label:has(.input:checked)::before {\n  animation: rotate 3s ease-in-out 0.4s forwards;\n}\n\n.label .input:checked + .circle {\n  animation: pulse 1s forwards, circleDelete 0.2s ease 3.5s forwards;\n  rotate: 180deg;\n}\n\n.label .input:checked + .circle::before {\n  animation: installing 3s ease-in-out forwards;\n}\n\n.label .input:checked + .circle .icon {\n  opacity: 0;\n  visibility: hidden;\n}\n\n.label .input:checked ~ .circle .square {\n  opacity: 1;\n  visibility: visible;\n}\n\n.label .input:checked ~ .title {\n  opacity: 0;\n  visibility: hidden;\n}\n\n.label .input:checked ~ .title:last-child {\n  animation: showInstalledMessage 0.4s ease 3.5s forwards;\n}\n\n@keyframes pulse {\n  0% {\n    scale: 0.95;\n    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);\n  }\n  70% {\n    scale: 1;\n    box-shadow: 0 0 0 16px rgba(255, 255, 255, 0);\n  }\n  100% {\n    scale: 0.95;\n    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);\n  }\n}\n\n@keyframes installing {\n  from {\n    height: 0;\n  }\n  to {\n    height: 100%;\n  }\n}\n\n@keyframes rotate {\n  0% {\n    transform: rotate(-90deg) translate(27px) rotate(0);\n    opacity: 1;\n    visibility: visible;\n  }\n  99% {\n    transform: rotate(270deg) translate(27px) rotate(270deg);\n    opacity: 1;\n    visibility: visible;\n  }\n  100% {\n    opacity: 0;\n    visibility: hidden;\n  }\n}\n\n@keyframes installed {\n  100% {\n    width: 150px;\n    border-color: rgb(35, 174, 35);\n  }\n}\n\n@keyframes circleDelete {\n  100% {\n    opacity: 0;\n    visibility: hidden;\n  }\n}\n\n@keyframes showInstalledMessage {\n  100% {\n    opacity: 1;\n    visibility: visible;\n    right: 56px;\n  }\n}",
+    "tags": [
+      "action",
+      "switch",
+      "download"
+    ]
+  },
+  {
+    "id": "uiv-725151",
+    "title": "Warm Turtle 37",
+    "author": "Na3ar-17",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.545Z",
+    "html": "<div class=\"container\">\n  <label class=\"switch\">\n    <input type=\"checkbox\" />\n    <span class=\"slider\">\n      <span class=\"title\">Play</span>\n      <span class=\"ball\">\n        <span class=\"icon\">\n          <svg\n            class=\"w-6 h-6 text-gray-800 dark:text-white\"\n            aria-hidden=\"true\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width=\"25\"\n            height=\"25\"\n            fill=\"none\"\n            viewBox=\"0 0 24 24\"\n          >\n            <path\n              stroke=\"currentColor\"\n              stroke-linecap=\"round\"\n              stroke-linejoin=\"round\"\n              stroke-width=\"2\"\n              d=\"M8 18V6l8 6-8 6Z\"\n            ></path>\n          </svg>\n        </span>\n      </span>\n    </span>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by Na3ar-17  - Tags: simple, material design, switch */\n.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: Arial, Helvetica, sans-serif;\n  color: #fff;\n}\n\n.switch {\n  font-size: 0.875rem;\n  position: relative;\n  display: inline-block;\n  width: 9em;\n  height: 2.6em;\n}\n\n.switch input {\n  display: none;\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n.switch input:checked + .slider .ball {\n  box-shadow: 10px 10px 100px #7f8996;\n}\n\n.switch input:checked + .slider .title {\n  left: 40%;\n}\n\n.switch input:checked + .slider {\n  background-color: #8a5cd4;\n}\n\n.switch input:focus + .slider {\n  box-shadow: 10px 10px 100px #7f8996;\n}\n\n.switch input:checked + .slider .ball {\n  left: 72%;\n  transform: rotate(360deg);\n  box-shadow: none;\n  outline: 6px solid rgba(255, 255, 255, 0.278);\n}\n\n.switch .slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #313033;\n  transition: all 0.4s;\n  border-radius: 30px;\n}\n\n.switch .slider .title {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-weight: 600;\n  transition: all 0.4s;\n  -webkit-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n\n.switch .slider .ball {\n  background-color: #fff;\n  height: 36px;\n  width: 36px;\n  border-radius: 50%;\n  position: absolute;\n  left: -1px;\n  transition: 0.4s;\n}\n\n.switch .slider .ball .icon {\n  position: absolute;\n  top: 58%;\n  left: 53%;\n  transform: translate(-50%, -50%);\n  color: #313033;\n  font-size: 12px;\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-328122",
+    "title": "Green Turkey 32",
+    "author": "Nawsome",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.707Z",
+    "html": "<div id=\"app\">\n  <label class=\"checker\">\n    <input type=\"checkbox\" class=\"checkbox\">\n    <div class=\"check-bg\"></div>\n    <div class=\"checkmark\">\n      <svg viewBox=\"0 0 100 100\">\n        <path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"15\" stroke=\"#FFF\" fill=\"none\" d=\"M20,55 L40,75 L77,27\"></path>\n      </svg>\n    </div>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by Nawsome - Tags: switch */\n.checker {\n  display: block;\n  font-size: 25px;\n  height: 1em;\n  width: 2.5em;\n  box-sizing: content-box;\n  padding: 0.15em;\n  border-radius: 0.25em;\n  cursor: pointer;\n}\n\n.checkmark {\n  width: 1em;\n  height: 1em;\n  transform: translateX(-0.4em);\n  z-index: 5;\n}\n\n.checkmark svg {\n  display: block;\n  background: #e5e5e5;\n  transform: translateX(0.4em);\n  border-radius: 0.15em;\n  transition: background-color var(--duration) ease, transform calc(var(--duration) * 1.5) ease;\n}\n\n.checkmark svg path {\n  stroke-dasharray: 90 90;\n  stroke-dashoffset: 90;\n  transition: stroke-dashoffset calc(var(--duration) / 3) linear calc(var(--duration) / 3);\n}\n\n.checkbox {\n  position: absolute;\n  top: 0;\n  left: 0;\n  opacity: 0.4;\n  visibility: hidden;\n}\n\n.checkbox:checked ~ .checkmark {\n  transform: translate(1.9em);\n}\n\n.checkbox:checked ~ .checkmark svg {\n  background: #77c44c;\n  transform: translate(-0.4em);\n}\n\n.checkbox:checked ~ .checkmark svg path {\n  stroke-dashoffset: 0;\n}\n\n.check-bg {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: inherit;\n  background: white;\n  z-index: 2;\n}\n\n.check-bg:before, .check-bg:after {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  border-radius: inherit;\n}\n\n.check-bg:after {\n  background: white;\n}\n\n.check-bg:before {\n  transform: translateY(30%);\n  transform-origin: bottom center;\n  background: black;\n  filter: blur(0.25em);\n  opacity: 0.2;\n  z-index: -1;\n}\n\n.checker.checker:active {\n  transform: scale(0.85);\n  transition-duration: calc(var(--duration) / 2);\n}\n\n.checker.checker:active .check-bg::before {\n  transform: translateY(0) scale(0.8);\n  opacity: 0.2;\n}\n\n*,\n*::before,\n*::after {\n  box-sizing: border-box;\n  position: relative;\n}\n\nhtml {\n  height: 100%;\n}\n\nbody {\n  background-color: #f2f2f2;\n  height: 100%;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-938821",
+    "title": "Stupid Termite 0",
+    "author": "Praashoo7",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.565Z",
+    "html": "<label class=\"switch\">\n  <input class=\"chk\" type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by Praashoo7 - Tags: switch, on, off */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 4em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch .chk {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgb(255, 255, 255);\n  transition: .4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"OFF\";\n  display: grid;\n  place-content: center;\n  height: 1.6em;\n  width: 3.6em;\n  border-radius: 20px;\n  left: 0.17em;\n  bottom: 0.22em;\n  background-color: rgb(255, 0, 0);\n  box-shadow: 0px 0px 3.7px black;\n  transition: .4s ease-in-out;\n}\n\n.chk:checked + .slider:before {\n  content: \"ON\";\n  background-color: limegreen;\n  box-shadow: inset 0px 0px 5px black;\n}",
+    "tags": [
+      "switch",
+      "on",
+      "off"
+    ]
+  },
+  {
+    "id": "uiv-859643",
+    "title": "Cold Gecko 57",
+    "author": "Pradeepsaranbishnoi",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.538Z",
+    "html": "<div class=\"bauble_box\">\n\t<input class=\"bauble_input\" id=\"bauble_check\" name=\"bauble\" type=\"checkbox\">\n\t<label class=\"bauble_label\" for=\"bauble_check\">Toggle</label>\n</div>",
+    "css": "/* From Uiverse.io by Pradeepsaranbishnoi - Tags: switch */\n.bauble_box .bauble_label {\n  background: #2c2;\n  background-position: 62px 5px;\n  background-repeat: no-repeat;\n  background-size: auto 5px;\n  border: 0;\n  border-radius: 50px;\n  box-shadow: inset 0 10px 20px rgba(0,0,0,.4), 0 -1px 0px rgba(0,0,0,.2), inset 0 -1px 0px #fff;\n  cursor: pointer;\n  display: inline-block;\n  font-size: 0;\n  height: 40px;\n  position: relative;\n  -webkit-transition: all 500ms ease;\n  transition: all 500ms ease;\n  width: 90px;\n}\n\n.bauble_box .bauble_label:before {\n  background-color: rgba(255,255,255,.2);\n  background-position: 0 0;\n  background-repeat: repeat;\n  background-size: 30% auto;\n  border-radius: 50%;\n  box-shadow: inset 0 -5px 25px #050, 0 10px 20px rgba(0,0,0,.4);\n  content: '';\n  display: block;\n  height: 30px;\n  left: 5px;\n  position: absolute;\n  top: 6px;\n  -webkit-transition: all 500ms ease;\n  transition: all 500ms ease;\n  width: 30px;\n  z-index: 2;\n}\n\n.bauble_box input.bauble_input {\n  opacity: 0;\n  z-index: 0;\n}\n\n/* Checked */\n.bauble_box input.bauble_input:checked + .bauble_label {\n  background-color: #c22;\n}\n\n.bauble_box input.bauble_input:checked + .bauble_label:before {\n  background-position: 150% 0;\n  box-shadow: inset 0 -5px 25px #500, 0 10px 20px rgba(0,0,0,.4);\n  left: calc( 100% - 35px );\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-575710",
+    "title": "Ordinary Ape 65",
+    "author": "PriyanshuGupta28",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.555Z",
+    "html": "<div class=\"checkbox-wrapper-51\">\n  <input id=\"cbx-51\" type=\"checkbox\">\n  <label class=\"toggle\" for=\"cbx-51\">\n    <span>\n      <svg viewBox=\"0 0 10 10\" height=\"10px\" width=\"10px\">\n        <path d=\"M5,1 L5,1 C2.790861,1 1,2.790861 1,5 L1,5 C1,7.209139 2.790861,9 5,9 L5,9 C7.209139,9 9,7.209139 9,5 L9,5 C9,2.790861 7.209139,1 5,1 L5,9 L5,1 Z\"></path>\n      </svg>\n    </span>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by PriyanshuGupta28 - Tags: switch, light switch, 3d switch, cool switch */\n.checkbox-wrapper-51 input[type=\"checkbox\"] {\n  visibility: hidden;\n  display: none;\n}\n\n.checkbox-wrapper-51 .toggle {\n  position: relative;\n  display: block;\n  width: 42px;\n  height: 24px;\n  cursor: pointer;\n  -webkit-tap-highlight-color: transparent;\n  transform: translate3d(0, 0, 0);\n}\n\n.checkbox-wrapper-51 .toggle:before {\n  content: \"\";\n  position: relative;\n  top: 1px;\n  left: 1px;\n  width: 40px;\n  height: 22px;\n  display: block;\n  background: #c8ccd4;\n  border-radius: 12px;\n  transition: background 0.2s ease;\n}\n\n.checkbox-wrapper-51 .toggle span {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 24px;\n  height: 24px;\n  display: block;\n  background: #fff;\n  border-radius: 50%;\n  box-shadow: 0 2px 6px rgba(154,153,153,0.75);\n  transition: all 0.2s ease;\n}\n\n.checkbox-wrapper-51 .toggle span svg {\n  margin: 7px;\n  fill: none;\n}\n\n.checkbox-wrapper-51 .toggle span svg path {\n  stroke: #c8ccd4;\n  stroke-width: 2;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke-dasharray: 24;\n  stroke-dashoffset: 0;\n  transition: all 0.5s linear;\n}\n\n.checkbox-wrapper-51 input[type=\"checkbox\"]:checked + .toggle:before {\n  background: #1175c7;\n}\n\n.checkbox-wrapper-51 input[type=\"checkbox\"]:checked + .toggle span {\n  transform: translateX(18px);\n}\n\n.checkbox-wrapper-51 input[type=\"checkbox\"]:checked + .toggle span path {\n  stroke: #000000;\n  stroke-dasharray: 25;\n  stroke-dashoffset: 25;\n}",
+    "tags": [
+      "switch",
+      "light switch",
+      "3d switch",
+      "cool switch"
+    ]
+  },
+  {
+    "id": "uiv-491139",
+    "title": "Brown Bulldog 12",
+    "author": "Shoh2008",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.547Z",
+    "html": "<div class=\"checkbox-wrapper-41\">\n  <input type=\"checkbox\">\n</div>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: switch */\n.checkbox-wrapper-41 {\n  --size: 100px;\n}\n\n.checkbox-wrapper-41 input[type=\"checkbox\"] {\n  -webkit-appearance: none;\n  width: var(--size);\n  height: calc(var(--size) / 2);\n  background-color: #fff;\n  border: 3px solid #222;\n  border-radius: 30px 100px 100px 100px;\n  box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n  outline: none;\n  cursor: pointer;\n  position: relative;\n  transition: all 0.5s;\n}\n\n.checkbox-wrapper-41 input[type=\"checkbox\"]::before {\n  content: \"\";\n  position: absolute;\n  width: calc(var(--size) / 2);\n  height: calc(var(--size) / 2);\n  left: 0;\n  top: 50%;\n  transform: translateY(-50%) scale(0.7);\n  border: 3px solid #222;\n  border-radius: 30px 100px 100px 100px;\n  background-color: #fde881;\n  box-sizing: border-box;\n  transition: all 0.5s;\n}\n\n.checkbox-wrapper-41 input[type=\"checkbox\"]:checked {\n  background-color: #fde881;\n  border-radius: 100px 100px 30px 100px;\n}\n\n.checkbox-wrapper-41 input[type=\"checkbox\"]:checked::before {\n  left: 50%;\n  background-color: #fff;\n  border-radius: 100px 100px 30px 100px;\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-303853",
+    "title": "Splendid Rat 98",
+    "author": "Shoh2008",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.545Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\" class=\"input\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by Shoh2008 - Tags: switch */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch .input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #2e2e2e;\n  transition: .4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  border-radius: 20px;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: #4e4;\n  transition: .4s;\n}\n\n.input:checked + .slider {\n  background-color: #000;\n}\n\n.input:focus + .slider {\n  box-shadow: 0 0 1px #000;\n}\n\n.input:checked + .slider:before {\n  transform: translateX(1.5em);\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-513524",
+    "title": "Afraid Octopus 54",
+    "author": "Shubh0408",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.492Z",
+    "html": "<!-- From Uiverse.io by Shubh0408  - Tags: switch -->\n<label\n  class=\"switch cursor-pointer relative flex w-[6.7rem] scale-75 overflow-hidden p-2\"\n>\n  <input type=\"checkbox\" name=\"\" class=\"peer hidden\" />\n  <div\n    class=\"absolute -right-[6.5rem] z-[1] flex h-12 w-24 skew-x-12 items-center justify-center text-lg duration-500 peer-checked:right-1\"\n  >\n    <span class=\"-skew-x-12\">ON</span>\n  </div>\n  <div\n    class=\"z-0 h-12 w-24 -skew-x-12 border border-black duration-500 peer-checked:skew-x-12 peer-checked:bg-green-500\"\n  ></div>\n  <div\n    class=\"absolute left-[0.3rem] flex h-12 w-24 -skew-x-12 items-center justify-center text-lg duration-500 peer-checked:-left-[6.5rem]\"\n  >\n    <span class=\"skew-x-12\">OFF</span>\n  </div>\n</label>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-626829",
+    "title": "Giant Swan 43",
+    "author": "Shubh0408",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.517Z",
+    "html": "<!-- From Uiverse.io by Shubh0408  - Tags: switch -->\n<label class=\"switch\">\n  <input class=\"peer hidden\" type=\"checkbox\" />\n  <span\n    class=\"slider absolute h-5 w-5 translate-x-0.5 translate-y-0.5 rounded-md border-2 border-black bg-blue-500 shadow-[inset_2px_3px_2px] duration-700 peer-checked:translate-x-[1.6rem] peer-checked:border-gray-200 peer-checked:bg-white peer-checked:shadow-[inset_-2px_-2px_3px]\"\n  ></span>\n  <div\n    class=\"h-6 w-12 rounded-lg border-2 border-black shadow-[2px_3px_2px] duration-700 peer-checked:bg-blue-500\"\n  ></div>\n</label>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-752224",
+    "title": "Unlucky Turkey 88",
+    "author": "Subaashbala",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.596Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\" />\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by Subaashbala  - Tags: skeuomorphism, minimalist, switch, click animation */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 0.25em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: hotpink;\n  transition: 0.4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"O\";\n  display: grid;\n  text-align: center;\n  vertical-align: middle;\n  place-items: center;\n  font-size: 1em;\n  font-weight: 900;\n  width: 2em;\n  aspect-ratio: 1;\n  border-radius: 50%;\n  bottom: 0.3em;\n  left: 0;\n  top: 50%;\n  transform: translate(0, -50%);\n  color: hotpink;\n  background-color: pink;\n  border: 1px solid rgba(255, 105, 180, 0.507);\n  transition: 0.4s;\n}\n\n.switch input:checked + .slider {\n  background-color: teal;\n}\n\n.switch input:checked + .slider:before {\n  content: \"|\";\n  color: teal;\n  background: paleturquoise;\n  border: 1px solid rgba(0, 128, 128, 0.514);\n  transform: translate(1.75em, -50%) rotateZ(360deg);\n}",
+    "tags": [
+      "skeuomorphism",
+      "minimalist",
+      "switch",
+      "click animation"
+    ]
+  },
+  {
+    "id": "uiv-392068",
+    "title": "Curvy Frog 97",
+    "author": "Yaya12085",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.566Z",
+    "html": "<input class=\"switch\" type=\"checkbox\" checked=\"true\">",
+    "css": "/* From Uiverse.io by Yaya12085 - Source: https://www.material-tailwind.com/docs/react/switch - Tags: switch, input, toggle, colorful, variations */\n.switch {\n  position: relative;\n  height: 1.5rem;\n  width: 3rem;\n  cursor: pointer;\n  appearance: none;\n  -webkit-appearance: none;\n  border-radius: 9999px;\n  background-color: rgba(100, 116, 139, 0.377);\n  transition: all .3s ease;\n}\n\n.switch:checked {\n  background-color: rgba(236, 72, 153, 1);\n}\n\n.switch::before {\n  position: absolute;\n  content: \"\";\n  left: calc(1.5rem - 1.6rem);\n  top: calc(1.5rem - 1.6rem);\n  display: block;\n  height: 1.6rem;\n  width: 1.6rem;\n  cursor: pointer;\n  border: 1px solid rgba(100, 116, 139, 0.527);\n  border-radius: 9999px;\n  background-color: rgba(255, 255, 255, 1);\n  box-shadow: 0 3px 10px rgba(100, 116, 139, 0.327);\n  transition: all .3s ease;\n}\n\n.switch:hover::before {\n  box-shadow: 0 0 0px 8px rgba(0, 0, 0, .15)\n}\n\n.switch:checked:hover::before {\n  box-shadow: 0 0 0px 8px rgba(236, 72, 153, .15)\n}\n\n.switch:checked:before {\n  transform: translateX(100%);\n  border-color: rgba(236, 72, 153, 1);\n}",
+    "tags": [
+      "switch",
+      "input",
+      "toggle",
+      "colorful",
+      "variations"
+    ]
+  },
+  {
+    "id": "uiv-478791",
+    "title": "Sour Horse 29",
+    "author": "aasisodiya",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.560Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by aasisodiya - Tags: minimalist, switch */\n/* The switch - the box around the slider */\n.switch {\n font-size: 1rem;\n position: relative;\n display: inline-block;\n width: 4em;\n height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n opacity: 0;\n width: 0;\n height: 0;\n}\n\n/* The slider */\n.slider {\n position: absolute;\n cursor: pointer;\n inset: 0;\n background-color: #eee;\n transition: 0.4s;\n border-radius: 0.5em;\n box-shadow: 0 0.2em #dfd9d9;\n}\n\n.slider:before {\n position: absolute;\n content: \"\";\n height: 1.5em;\n width: 1.4em;\n border-radius: 0.3em;\n left: 0.3em;\n bottom: 0.7em;\n background-color: lightsalmon;\n transition: 0.4s;\n box-shadow: 0 0.4em #bcb4b4;\n}\n\n.slider:hover::before {\n box-shadow: 0 0.2em #bcb4b4;\n bottom: 0.5em;\n}\n\ninput:checked+.slider:before {\n transform: translateX(2em);\n background: lightgreen;\n}",
+    "tags": [
+      "minimalist",
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-827226",
+    "title": "Kind Skunk 95",
+    "author": "ajithrthampi",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.560Z",
+    "html": "<!-- From Uiverse.io by ajithrthampi  - Tags: animation, hover, shadow, toggle, hover effect, close, tailwind, tailwindcss -->\n<div\n  class=\"flex cursor-pointer items-center justify-center text-3xl text-white caret-transparent\"\n>\n  <div\n    class=\"group relative inline-flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-2 font-medium shadow-md md:h-20 md:w-20\"\n  >\n    <span\n      class=\"ease absolute z-10 flex h-full w-full translate-y-full items-center justify-center rounded-full bg-[#d1b98a] text-white duration-300 group-hover:translate-y-0\"\n    ></span>\n    <div\n      class=\"absolute z-50 flex h-full w-full items-center justify-center text-[#f6f2f2] group-hover:text-white\"\n    >\n      <svg\n        height=\"40px\"\n        width=\"40px\"\n        viewBox=\"0 0 72 72\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <path\n          fill=\"white\"\n          d=\"M 19 15 C 17.977 15 16.951875 15.390875 16.171875 16.171875 C 14.609875 17.733875 14.609875 20.266125 16.171875 21.828125 L 30.34375 36 L 16.171875 50.171875 C 14.609875 51.733875 14.609875 54.266125 16.171875 55.828125 C 16.951875 56.608125 17.977 57 19 57 C 20.023 57 21.048125 56.609125 21.828125 55.828125 L 36 41.65625 L 50.171875 55.828125 C 51.731875 57.390125 54.267125 57.390125 55.828125 55.828125 C 57.391125 54.265125 57.391125 51.734875 55.828125 50.171875 L 41.65625 36 L 55.828125 21.828125 C 57.390125 20.266125 57.390125 17.733875 55.828125 16.171875 C 54.268125 14.610875 51.731875 14.609875 50.171875 16.171875 L 36 30.34375 L 21.828125 16.171875 C 21.048125 15.391875 20.023 15 19 15 z\"\n        ></path>\n      </svg>\n    </div>\n  </div>\n</div>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-411648",
+    "title": "Mean Dolphin 24",
+    "author": "cssbuttons-io",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.352Z",
+    "html": "<div class=\"toggle-border\">\n  <input id=\"one\" type=\"checkbox\">\n  <label for=\"one\">\n    <div class=\"handle\"></div>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by cssbuttons-io - Tags: skeuomorphism, switch, realistic */\n.toggle-border {\n border: 2px solid #f0ebeb;\n border-radius: 130px;\n margin-bottom: 45px;\n padding: 1px 2px;\n background: linear-gradient(to bottom right, white, rgba(220,220,220,.5)), white;\n box-shadow: 0 0 0 2px #fbfbfb;\n cursor: pointer;\n display: flex;\n align-items: center;\n}\n\n.toggle-border:last-child {\n margin-bottom: 0;\n}\n\n.toggle-border input[type=\"checkbox\"] {\n display: none;\n}\n\n.toggle-border label {\n position: relative;\n display: inline-block;\n width: 65px;\n height: 20px;\n background: #d13613;\n border-radius: 80px;\n cursor: pointer;\n box-shadow: inset 0 0 16px rgba(0,0,0,.3);\n transition: background .5s;\n}\n\n.toggle-border input[type=\"checkbox\"]:checked + label {\n background: #13d162;\n}\n\n.handle {\n position: absolute;\n top: -8px;\n left: -10px;\n width: 35px;\n height: 35px;\n border: 1px solid #e5e5e5;\n background: repeating-radial-gradient(circle at 50% 50%, rgba(200,200,200,.2) 0%, rgba(200,200,200,.2) 2%, transparent 2%, transparent 3%, rgba(200,200,200,.2) 3%, transparent 3%), conic-gradient(white 0%, silver 10%, white 35%, silver 45%, white 60%, silver 70%, white 80%, silver 95%, white 100%);\n border-radius: 50%;\n box-shadow: 3px 5px 10px 0 rgba(0,0,0,.4);\n transition: left .4s;\n}\n\n.toggle-border input[type=\"checkbox\"]:checked + label > .handle {\n left: calc(100% - 35px + 10px);\n}",
+    "tags": [
+      "skeuomorphism",
+      "switch",
+      "realistic"
+    ]
+  },
+  {
+    "id": "uiv-928250",
+    "title": "Light Jellyfish 4",
+    "author": "elijahgummer",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.000Z",
+    "html": "<div class=\"switch\">\n  <input id=\"toggle\" type=\"checkbox\" />\n  <label class=\"toggle\" for=\"toggle\">\n    <i></i>\n  </label>\n</div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, black, switch, dark, light, realistic, glow, modern */\n.switch {\n  position: relative;\n  width: 210px;\n  height: 50px;\n  box-sizing: border-box;\n  padding: 3px;\n  background: #0d0d0d;\n  border-radius: 6px;\n  box-shadow:\n    inset 0 1px 1px 1px rgba(0, 0, 0, 0.5),\n    0 1px 0 0 rgba(255, 255, 255, 0.1);\n}\n.switch input[type=\"checkbox\"] {\n  position: absolute;\n  z-index: 1;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n  cursor: pointer;\n}\n.switch input[type=\"checkbox\"] + label {\n  position: relative;\n  display: block;\n  left: 0;\n  width: 50%;\n  height: 100%;\n  background: #1b1c1c;\n  border-radius: 3px;\n  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);\n  transition: all 0.5s ease-in-out;\n}\n.switch input[type=\"checkbox\"] + label:before {\n  content: \"\";\n  display: inline-block;\n  width: 5px;\n  height: 5px;\n  margin-left: 10px;\n  background: #fff;\n  border-radius: 50%;\n  vertical-align: middle;\n  box-shadow:\n    0 0 5px 2px rgba(165, 15, 15, 0.9),\n    0 0 3px 1px rgba(165, 15, 15, 0.9);\n  transition: all 0.5s ease-in-out;\n}\n.switch input[type=\"checkbox\"] + label:after {\n  content: \"\";\n  display: inline-block;\n  width: 0;\n  height: 100%;\n  vertical-align: middle;\n}\n.switch input[type=\"checkbox\"] + label i {\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 3px;\n  height: 24px;\n  margin-top: -12px;\n  margin-left: -1.5px;\n  border-radius: 2px;\n  background: #0d0d0d;\n  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3);\n}\n.switch input[type=\"checkbox\"] + label i:before,\n.switch input[type=\"checkbox\"] + label i:after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 2px;\n  background: #0d0d0d;\n  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3);\n}\n.switch input[type=\"checkbox\"] + label i:before {\n  left: -7px;\n}\n.switch input[type=\"checkbox\"] + label i:after {\n  left: 7px;\n}\n.switch input[type=\"checkbox\"]:checked + label {\n  left: 50%;\n}\n.switch input[type=\"checkbox\"]:checked + label:before {\n  box-shadow:\n    0 0 5px 2px rgba(15, 165, 70, 0.9),\n    0 0 3px 1px rgba(15, 165, 70, 0.9);\n}",
+    "tags": [
+      "simple",
+      "black",
+      "switch",
+      "dark",
+      "light",
+      "realistic",
+      "glow",
+      "modern"
+    ]
+  },
+  {
+    "id": "uiv-585423",
+    "title": "Tender Horse 32",
+    "author": "elijahgummer",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.010Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\" class=\"input\" />\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, animation, switch, modern, toggle, stretch, squish */\n/* Switch container styling */\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 3.5em; /* Width of the toggle switch */\n  height: 1.5em; /* Height of the toggle switch */\n}\n\n/* Hide default checkbox appearance */\n.switch .input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* Slider styling */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #f0f0f0;\n  border-radius: 0.5em; /* Rounded corners for the slider */\n  box-shadow: inset 0 0.0625em 0 0 #f4f4f4, 0 0.0625em 0 0 #efefef,\n    0 0.125em 0 0 #ececec, 0 0.25em 0 0 #e0e0e0, 0 0.3125em 0 0 #dedede,\n    0 0.375em 0 0 #dcdcdc, 0 0.425em 0 0 #cacaca, 0 0.425em 0.5em 0 #cecece;\n  transition: 0.23s ease;\n}\n\n/* Slider knob styling */\n.slider:before {\n  content: \"\";\n  position: absolute;\n  height: 1.1em;\n  width: 1.1em;\n  border-radius: 50%;\n  background-color: #d3d3d3;\n  left: 0.2em;\n  bottom: 0.2em;\n  transition: 0.23s ease;\n}\n\n/* Change slider background color when checked */\n.input:checked + .slider {\n  translate: 0 0.225em;\n  box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,\n    0 0.0625em 0 0 #ececec, 0 0.125em 0 0 #e0e0e0, 0 0.125em 0 0 #dedede,\n    0 0.2em 0 0 #dcdcdc, 0 0.225em 0 0 #cacaca, 0 0.225em 0.375em 0 #cecece;\n  transform: scale(1.2);\n}\n\n/* Move the knob when checked */\n.input:checked + .slider:before {\n  transform: translateX(2em); /* Move knob to the right */\n  background-color: #87ceeb;\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "switch",
+      "modern",
+      "toggle",
+      "stretch",
+      "squish"
+    ]
+  },
+  {
+    "id": "uiv-747860",
+    "title": "Brave Pug 20",
+    "author": "gharsh11032000",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.199Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by gharsh11032000 - Tags: switch, checkbox, toggle, toggle switch */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  inset: 0;\n  border: 2px solid #414141;\n  border-radius: 50px;\n  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  left: 0.2em;\n  bottom: 0.2em;\n  background-color: white;\n  border-radius: inherit;\n  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);\n}\n\n.switch input:checked + .slider {\n  box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);\n  border: 2px solid #0974f1;\n}\n\n.switch input:checked + .slider:before {\n  transform: translateX(1.5em);\n}",
+    "tags": [
+      "switch",
+      "checkbox",
+      "toggle",
+      "toggle switch"
+    ]
+  },
+  {
+    "id": "uiv-577027",
+    "title": "Old Horse 22",
+    "author": "gharsh11032000",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.007Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by gharsh11032000 - Tags: switch, checkbox, toggle, toggle switch */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  inset: 0;\n  background: white;\n  border-radius: 50px;\n  overflow: hidden;\n  transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  right: 0.3em;\n  bottom: 0.3em;\n  transform: translateX(150%);\n  background-color: #59d102;\n  border-radius: inherit;\n  transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);\n}\n\n.slider:after {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: #cccccc;\n  border-radius: inherit;\n  transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);\n}\n\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #59d102;\n}\n\n.switch input:checked + .slider:before {\n  transform: translateY(0);\n}\n\n.switch input:checked + .slider::after {\n  transform: translateX(-150%);\n}",
+    "tags": [
+      "switch",
+      "checkbox",
+      "toggle",
+      "toggle switch"
+    ]
+  },
+  {
+    "id": "uiv-701062",
+    "title": "Warm Elephant 21",
+    "author": "gharsh11032000",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.046Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by gharsh11032000 - Tags: switch, checkbox, click effect, toggle switch */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  inset: 0;\n  background: #9fccfa;\n  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: white;\n  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n\n.switch input:checked + .slider {\n  background: #0974f1;\n}\n\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #0974f1;\n}\n\n.switch input:checked + .slider:before {\n  transform: translateX(1.5em) rotate(90deg);\n}",
+    "tags": [
+      "switch",
+      "checkbox",
+      "click effect",
+      "toggle switch"
+    ]
+  },
+  {
+    "id": "uiv-752449",
+    "title": "Unlucky Wasp 16",
+    "author": "iSweat-exe",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.007Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\" />\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by iSweat-exe  - Tags: simple, animation, minimalist, switch, on/off */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 20px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: 0.4s;\n  border-radius: 10px;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  border-radius: 5px;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: white;\n  transition: 0.4s;\n}\n\n.switch input:checked + .slider {\n  background-color: green;\n}\n\n.switch input:checked + .slider:before {\n  transform: translateX(1.5em);\n}",
+    "tags": [
+      "simple",
+      "animation",
+      "minimalist",
+      "switch",
+      "on"
+    ]
+  },
+  {
+    "id": "uiv-351533",
+    "title": "Short Treefrog 23",
+    "author": "mrhyddenn",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.056Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by mrhyddenn - Tags: switch */\n/* The switch - the box around the slider */\n.switch {\n font-size: 17px;\n position: relative;\n display: inline-block;\n width: 3.5em;\n height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n opacity: 0;\n width: 0;\n height: 0;\n}\n\n/* The slider */\n.slider {\n position: absolute;\n cursor: pointer;\n top: 0;\n left: 0;\n right: 0;\n bottom: 0;\n background-color: #fff;\n border: 1px solid #99999;\n transition: .4s;\n}\n\n.slider:before {\n position: absolute;\n content: \"\";\n height: 1.5em;\n width: 1.5em;\n left: 0.20em;\n bottom: 0.25em;\n background-color: white;\n transition: .4s;\n box-shadow: 0 0 2px 0px #999999;\n}\n\ninput:checked + .slider {\n background-color: #2da54f;\n}\n\ninput:focus + .slider {\n box-shadow: 0 0 1px #2196F3;\n}\n\ninput:checked + .slider:before {\n transform: translateX(1.5em);\n}",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-208515",
+    "title": "Silly Starfish 53",
+    "author": "mrhyddenn",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.007Z",
+    "html": "<label class=\"switch\">\n    <div class=\"round\"><input name=\"onoff\" id=\"onoff\" type=\"checkbox\">\n        <div class=\"back\"><label for=\"onoff\" class=\"but\"><span class=\"on\">0</span><span class=\"off\">I</span></label></div>\n    </div>\n</label>",
+    "css": "/* From Uiverse.io by mrhyddenn - Tags: skeuomorphism, switch */\ninput {\n  display: none\n}\n\n.on,.off {\n  position: absolute;\n  text-align: center;\n  text-shadow: inset 1px 1px 1px black;\n  width: 100%;\n}\n\n.on {\n  color: #fff;\n  top: 10px;\n  transition: all 0.1s;\n  font-family: sans-serif\n}\n\n.off {\n  color: #636161;\n  bottom: 5px;\n  transition: all 0.1s;\n  transform: scaleY(0.85);\n}\n\n.but {\n  background-color: #000;\n  border-radius: 400px 400px 400px 400px / 400px 400px 300px 300px;\n  border-bottom-width: 0px;\n  box-shadow: inset 8px 6px 5px -7px rgba(0,0,0,1)\n    ,inset -8px 6px 5px -7px rgba(0,0,0,1)\n    ,inset 0 -3px 2px -2px rgba(200,200,200,.5)\n    ,0 3px 3px -2px rgba(0,0,0,1)\n    ,inset 0 -230px 60px -200px rgba(255,255,255,.2)\n    ,inset 0 220px 40px -200px rgba(0,0,0,.3);\n  display: block;\n  font-size: 17px;\n  height: 60px;\n  position: relative;\n  transition: all 0.2s;\n  width: 40px;\n}\n\n.back {\n  background-color: #000;\n  background-image: -webkit-linear-gradient(0deg, transparent 30%, transparent 65%)\n    ,-webkit-linear-gradient(0deg, rgba(245, 245, 245, 0) 30%, rgba(150,150,150,.1) 50%, rgba(150,150,150,0) 70%);\n  border-radius: 115px;\n  box-sizing: border-box;\n  height: 85px;\n  padding: 4px 4px;\n  transition: all 0.2s;\n  width: 50px;\n}\n\ninput:checked + .back .on,input:checked + .back .off {\n  text-shadow: inset 1px 1px 1px black;\n}\n\ninput:checked + .back .on {\n  color: rgb(141, 141, 141);\n  top: 10px;\n  transform: scaleY(0.85);\n}\n\ninput:checked + .back .off {\n  color: #fff;\n  bottom: 5px;\n  transform: scaleY(1);\n}\n\ninput:checked + .back .but {\n  background: #232323;\n  background-image: -webkit-radial-gradient(55% 18%,circle closest-corner,rgba(0,0,0,.3) ,rgba(0,0,0,0));\n  border-radius: 410px 410px 410px 410px / 310px 310px 410px 410px;\n  box-shadow: inset 8px -4px 5px -7px rgba(0,0,0,1)\n    ,inset -8px -4px 5px -7px rgba(0,0,0,1)\n    , 0 -3px 8px -4px rgba(250,250,250,.4)\n    ,inset 0 3px 4px -2px rgba(10,10,10,1)\n    ,inset 0 280px 40px -200px rgba(0,0,0,.2)\n    ,inset 0 -200px 40px -200px rgba(180,180,180,.2);\n  margin-top: 20px;\n}\n\ninput:checked + .back {\n  background-image: -webkit-linear-gradient(90deg, black 30%, transparent 65%)\n    ,-webkit-linear-gradient(180deg, rgba(250,250,250,0) 0%, rgba(250,250,250,.4) 50%, rgba(150,150,150,0) 100%);\n  box-shadow: 28px 28px 28px -28px rgba(0,0,0,.1)\n    ,-28px 28px 28px -22px rgba(0,0,0,.1)\n    ,0 30px 30px 0px rgba(0,0,0,.2)\n    ,inset 0 1px 2px 0 rgba(0,0,0,.6);\n  padding: 2px 4px;\n}\n\n.l,.r {\n  margin: 0 auto;\n  text-align: center;\n}\n\n.round,#onoff,.back,.but,.on,.off {\n  user-select: none;\n}",
+    "tags": [
+      "skeuomorphism",
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-728462",
+    "title": "Brave Firefox 90",
+    "author": "njesenberger",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:31.982Z",
+    "html": "<div class=\"toggle-container\">\n  <input class=\"toggle-input\" type=\"checkbox\">\n  <div class=\"toggle-handle-wrapper\">\n    <div class=\"toggle-handle\">\n      <div class=\"toggle-handle-knob\"></div>\n      <div class=\"toggle-handle-bar-wrapper\">\n        <div class=\"toggle-handle-bar\"></div>\n      </div>\n    </div>\n  </div>\n  <div class=\"toggle-base\">\n    <div class=\"toggle-base-inside\"></div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by njesenberger - Tags: skeuomorphism, switch, realistic, toggle, toggle switch */\n.toggle-container {\n  --knob-size: 1.75em;\n  display: flex;\n  justify-content: center;\n  position: relative;\n}\n\n.toggle-input {\n  position: absolute;\n  z-index: 2;\n  bottom: 132.5%;\n  border-radius: 50%;\n  transform: rotate(-25deg);\n  transform-origin: 50% 4.75em;\n  width: var(--knob-size);\n  height: var(--knob-size);\n  opacity: 0;\n  /* fix em sizing */\n  font: inherit;\n  transition: transform .24s cubic-bezier(.65, 1.35, .5, 1);\n  cursor: pointer;\n}\n\n.toggle-input:checked {\n  transform: rotate(25deg);\n}\n\n.toggle-handle-wrapper {\n  position: absolute;\n  z-index: 1;\n  bottom: -135%;\n  -webkit-mask-image: linear-gradient(to bottom, #000 62.125%, transparent 50%);\n  mask-image: linear-gradient(to bottom, #000 62.125%, transparent 50%);\n  width: 200%;\n  overflow: hidden;\n}\n\n.toggle-handle {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  transform: rotate(-25deg);\n  transform-origin: bottom center;\n  transition: transform .24s cubic-bezier(.65, 1.35, .5, 1);\n}\n\n.toggle-input:checked + .toggle-handle-wrapper > .toggle-handle {\n  transform: rotate(25deg);\n}\n\n.toggle-handle-knob {\n  position: relative;\n  z-index: 1;\n  border-radius: 50%;\n  width: var(--knob-size);\n  height: var(--knob-size);\n  background-image: radial-gradient(farthest-corner at 70% 30%, #fedee2 4%, #d63534 12% 24%, #a81a1a 50% 65%, #d63534 75%);\n  transition: transform .24s cubic-bezier(.65, 1.35, .5, 1);\n}\n\n.toggle-input:checked + .toggle-handle-wrapper .toggle-handle-knob {\n  transform: rotate(-90deg);\n}\n\n/* toggle handle knob hover inner shadow */\n.toggle-handle-knob::after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: inherit;\n  width: 100%;\n  height: 100%;\n  box-shadow: inset 0 0 8px 2px rgb(255 255 255 / .4);\n  opacity: 0;\n  transition: opacity .2s;\n}\n\n@media (hover: hover) {\n  .toggle-input:hover + .toggle-handle-wrapper .toggle-handle-knob::after,\n  .toggle-input:focus-visible + .toggle-handle-wrapper .toggle-handle-knob::after {\n    opacity: 1;\n  }\n}\n\n.toggle-handle-bar-wrapper {\n  position: relative;\n  width: .5em;\n  height: 3em;\n}\n\n.toggle-handle-bar {\n  position: absolute;\n  top: calc(var(--knob-size) / 2 * -1);\n  left: 0;\n  width: 100%;\n  height: calc(100% + var(--knob-size) / 2);\n  background-image: linear-gradient(to right, #777475, #a4a4a4, #fff 45% 55%, #a4a4a4, #777475);\n  background-position-x: .06125em;\n  transition: background-position-x .24s cubic-bezier(.65, 1.35, .5, 1);\n  box-shadow: inset 0 1em .25em rgb(0 0 0 / .4);\n}\n\n.toggle-input:checked + .toggle-handle-wrapper .toggle-handle-bar {\n  background-position-x: -.06125em;\n}\n\n.toggle-base {\n  position: relative;\n  border-radius: 3.125em;\n  padding: .25em;\n  width: 3.5em;\n  height: 1.125em;\n  background-color: #fff;\n  background-image: linear-gradient(to bottom, #fff, #d7d7d7);\n  box-shadow: 0 -.25em .5em #fff, 0 .25em .5em #d7d7d7;\n}\n\n.toggle-base-inside {\n  position: relative;\n  border-radius: inherit;\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(to bottom, #a6a6a6, #7d7d7d);\n  box-shadow: inset 0 .0625em rgb(255 255 255 / .2), inset 0 -.03125em rgb(255 255 255 / 1), inset 0 -.0625em .25em rgb(0 0 0 / .1);\n}\n\n/* toggle base inside active */\n.toggle-base-inside::after {\n  content: '';\n  position: absolute;\n  border-radius: inherit;\n  width: 100%;\n  height: 100%;\n  background-image: linear-gradient(to bottom, #5ab054, #438c3c);\n  box-shadow: inherit;\n  opacity: 0;\n  transition: opacity .24s cubic-bezier(.65, 1.35, .5, 1);\n}\n\n.toggle-input:checked ~ .toggle-base .toggle-base-inside::after {\n  opacity: 1;\n}",
+    "tags": [
+      "skeuomorphism",
+      "switch",
+      "realistic",
+      "toggle",
+      "toggle switch"
+    ]
+  },
+  {
+    "id": "uiv-441921",
+    "title": "Afraid Donkey 40",
+    "author": "radwakhalil22",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.014Z",
+    "html": "<label class=\"switch\">\n  <input class=\"checkbox\" type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by radwakhalil22 - Tags: gradient, switch, checkbox, glow, animated */\n/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch .checkbox {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n  border-radius: 30px;\n  box-shadow: 2px 2px 2px 2px #222831, -2px -2px 2px 2px #393E46, -2px 2px 2px 2px #00ADB5, 2px -2px 2px 2px #EEEEEE;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  border-radius: 20px;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: white;\n  transition: .4s;\n}\n\n.checkbox:checked + .slider:before {\n  box-shadow: 2px 2px 2px 2px #222831, -2px -2px 2px 2px #393E46, -2px 2px 2px 2px #00ADB5, 2px -2px 2px 2px #EEEEEE;\n}\n\n.checkbox:checked + .slider {\n  background-color: #afa2a2;\n  box-shadow: 2px 2px 2px 2px #222831, -2px -2px 2px 2px #393E46, -2px 2px 2px 2px #00ADB5, 2px -2px 2px 2px #EEEEEE;\n}\n\n.checkbox:checked + .slider:before {\n  transform: translateX(1.5em);\n}",
+    "tags": [
+      "gradient",
+      "switch",
+      "checkbox",
+      "glow",
+      "animated"
+    ]
+  },
+  {
+    "id": "uiv-519547",
+    "title": "Shy Earwig 18",
+    "author": "satyamchaudharydev",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.055Z",
+    "html": "<label class=\"switch\">\n    <input type=\"checkbox\">\n    <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by satyamchaudharydev - Tags: switch, dark, theme, light, theme-switch */\n/* The switch - the box around the slider */\n.switch {\n  display: block;\n  --width-of-switch: 3.5em;\n  --height-of-switch: 2em;\n  /* size of sliding icon -- sun and moon */\n  --size-of-icon: 1.4em;\n  /* it is like a inline-padding of switch */\n  --slider-offset: 0.3em;\n  position: relative;\n  width: var(--width-of-switch);\n  height: var(--height-of-switch);\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #f4f4f5;\n  transition: .4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: var(--size-of-icon,1.4em);\n  width: var(--size-of-icon,1.4em);\n  border-radius: 20px;\n  left: var(--slider-offset,0.3em);\n  top: 50%;\n  transform: translateY(-50%);\n  background: linear-gradient(40deg,#ff0080,#ff8c00 70%);\n  ;\n transition: .4s;\n}\n\ninput:checked + .slider {\n  background-color: #303136;\n}\n\ninput:checked + .slider:before {\n  left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));\n  background: #303136;\n  /* change the value of second inset in box-shadow to change the angle and direction of the moon  */\n  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;\n}",
+    "tags": [
+      "switch",
+      "dark",
+      "theme",
+      "light",
+      "theme-switch"
+    ]
+  },
+  {
+    "id": "uiv-194486",
+    "title": "Funny Rabbit 33",
+    "author": "victoryamaykin",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.007Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by victoryamaykin - Tags: switch */\n.switch {\n position: relative;\n display: inline-block;\n width: 120px;\n height: 34px;\n}\n\n.switch input {\n display: none;\n}\n\n.slider {\n position: absolute;\n cursor: pointer;\n top: 0;\n left: 0;\n right: 0;\n bottom: 0;\n background-color: #3C3C3C;\n -webkit-transition: .4s;\n transition: .4s;\n border-radius: 34px;\n}\n\n.slider:before {\n position: absolute;\n content: \"\";\n height: 26px;\n width: 26px;\n left: 4px;\n bottom: 4px;\n background-color: white;\n -webkit-transition: .4s;\n transition: .4s;\n border-radius: 50%;\n}\n\ninput:checked + .slider {\n background-color: #0E6EB8;\n}\n\ninput:focus + .slider {\n box-shadow: 0 0 1px #2196F3;\n}\n\ninput:checked + .slider:before {\n -webkit-transform: translateX(26px);\n -ms-transform: translateX(26px);\n transform: translateX(85px);\n}\n\n/*------ ADDED CSS ---------*/\n.slider:after {\n content: 'DISABLED';\n color: white;\n display: block;\n position: absolute;\n transform: translate(-50%,-50%);\n top: 50%;\n left: 50%;\n font-size: 10px;\n font-family: Verdana, sans-serif;\n}\n\ninput:checked + .slider:after {\n content: 'ENABLED';\n}\n\n/*--------- END --------*/",
+    "tags": [
+      "switch"
+    ]
+  },
+  {
+    "id": "uiv-437530",
+    "title": "Gentle Parrot 87",
+    "author": "vinodjangid07",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.045Z",
+    "html": "<input type=\"checkbox\" id=\"checkbox\" />\n<label for=\"checkbox\" class=\"switch\">\n  Start\n  <svg\n    class=\"slider\"\n    viewBox=\"0 0 512 512\"\n    height=\"1em\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <path\n      d=\"M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z\"\n    ></path>\n  </svg>\n</label>",
+    "css": "/* From Uiverse.io by vinodjangid07  - Tags: active, switch, toggle, toggle switch */\n#checkbox {\n  display: none;\n}\n\n.switch {\n  position: relative;\n  width: fit-content;\n  padding: 10px 20px;\n  background-color: rgb(46, 46, 46);\n  border-radius: 50px;\n  z-index: 1;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  color: white;\n  font-size: 0.9em;\n  font-weight: 600;\n  transition: all 0.3s;\n}\n.switch svg path {\n  fill: white;\n}\n#checkbox:checked + .switch {\n  background-color: rgb(174, 0, 255);\n  box-shadow: 0px 0px 40px rgba(174, 0, 255, 0.438);\n}",
+    "tags": [
+      "active",
+      "switch",
+      "toggle",
+      "toggle switch"
+    ]
+  },
+  {
+    "id": "uiv-830942",
+    "title": "Itchy Mule 52",
+    "author": "vinodjangid07",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.045Z",
+    "html": "<input id=\"checkboxInput\" type=\"checkbox\">\n    <label class=\"toggleSwitch\" for=\"checkboxInput\">\n    </label>",
+    "css": "/* From Uiverse.io by vinodjangid07 - Tags: switch, neon, toggle switch */\n/* To hide the checkbox */\n#checkboxInput {\n  display: none;\n}\n\n.toggleSwitch {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  width: 50px;\n  height: 17px;\n  background-color: rgb(82, 82, 82);\n  border-radius: 20px;\n  cursor: pointer;\n  transition-duration: .2s;\n}\n\n.toggleSwitch::after {\n  content: \"\";\n  position: absolute;\n  height: 22px;\n  width: 22px;\n  left: 0px;\n  background-color: rgb(41, 41, 41);\n  border-radius: 50%;\n  transition-duration: .2s;\n  border: 2px solid rgb(82, 82, 82);\n}\n\n#checkboxInput:checked+.toggleSwitch::after {\n  transform: translateX(100%);\n  transition-duration: .2s;\n  border: 2px solid rgb(165, 255, 105);\n}\n/* Switch background change */\n#checkboxInput:checked+.toggleSwitch {\n  background-color: rgb(165, 255, 105);\n  transition-duration: .2s;\n}",
+    "tags": [
+      "switch",
+      "neon",
+      "toggle switch"
+    ]
+  },
+  {
+    "id": "uiv-652988",
+    "title": "Black Mayfly 32",
+    "author": "zebra76966",
+    "category": "Toggles",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:32.889Z",
+    "html": "<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>",
+    "css": "/* From Uiverse.io by zebra76966 - Tags: switch, moon, sun, toggle, light&dark, emoji */\n.switch {\n  position: absolute;\n  top: 50%;\n  width: 30px;\n  height: 60px;\n  padding: 2px;\n  left: 50%;\n  transform: translate(-50%,-50%);\n}\n\n.switch input {\n  opacity: 0;\n  height: 0;\n  width: 0;\n}\n\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  border-radius: 20px;\n  border: 1px solid rgba(0,0,0,0.2);\n  border-style: outset;\n  background-color: white;\n  transition: 0.4s;\n}\n\n.slider::before {\n  content: \"🌞\";\n  font-size: 22px;\n  line-height: 15px;\n  border-radius: 100%;\n  position: absolute;\n  left: -0.8px;\n  top: 8px;\n  background-color: transparent;\n  transition: 0.4s;\n}\n\n.switch > input:checked + .slider {\n  background-color: #000429;\n}\n\n.switch > input:checked + .slider:before {\n  content: \"🌑\";\n  font-size: 22px;\n  line-height: 25px;\n  background-color: transparent;\n  transform: translateY(24px);\n}",
+    "tags": [
+      "switch",
+      "moon",
+      "sun",
+      "toggle",
+      "light&dark",
+      "emoji"
+    ]
   }
 ];

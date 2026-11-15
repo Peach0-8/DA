@@ -1,7 +1,7 @@
 /**
- * UIverse.io Scraped Data - Tooltips
- * Updated: 2026-09-11T01:31:50.873Z
- * Total: 57
+ * UIverse.io Scraped & Synced Data - Tooltips
+ * Updated: 2026-11-14T15:48:34.715Z
+ * Total: 98
  */
 
 window.UIVERSE_DATA = window.UIVERSE_DATA || {};
@@ -689,5 +689,747 @@ window.UIVERSE_DATA['Tooltips'] = [
     "createdAt": "2026-09-11T00:00:00Z",
     "html": "<div class=\"wrapper\">\n  <input type=\"checkbox\" />\n  <div class=\"btn\"></div>\n  <div class=\"tooltip\"><svg></svg><span>Hello World</span></div>\n  <svg></svg>\n</div>\n",
     "css": ".wrapper {\n  --background: #62abff;\n  --icon-color: #414856;\n  --shape-color-01: #b8cbee;\n  --shape-color-02: #7691e8;\n  --shape-color-03: #fdd053;\n  --width: 90px;\n  --height: 90px;\n  --border-radius: var(--height);\n  width: var(--width);\n  height: var(--height);\n  position: relative;\n  border-radius: var(--border-radius);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.wrapper .btn {\n  background: var(--background);\n  width: var(--width);\n  height: var(--height);\n  position: relative;\n  z-index: 3;\n  border-radius: var(--border-radius);\n  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -webkit-animation: plus-animation-reverse 0.5s ease-out forwards;\n  animation: plus-animation-reverse 0.5s ease-out forwards;\n}\n.wrapper .btn::before,\n.wrapper .btn::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  border-radius: 4px;\n  background: #fff;\n}\n.wrapper .btn::before {\n  width: 4px;\n  height: 28px;\n}\n.wrapper .btn::after {\n  width: 28px;\n  height: 4px;\n}\n.wrapper .tooltip {\n  width: fit-content;\n  height: 75px;\n  border-radius: 70px;\n  position: absolute;\n  background: #fff;\n  z-index: 2;\n  padding: 20px 35px;\n  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);\n  opacity: 0;\n  top: 0;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  transition: opacity 0.15s ease-in, top 0.15s ease-in, width 0.15s ease-in;\n}\n.wrapper .tooltip > span {\n  position: relative;\n  width: 100%;\n  white-space: nowrap;\n  opacity: 0;\n}\n.wrapper .tooltip > svg {\n  width: 100%;\n  height: 26px;\n  display: block;\n  justify-content: space-around;\n  align-items: center;\n  cursor: pointer;\n}\n.wrapper .tooltip > svg .icon {\n  fill: none;\n  stroke: var(--icon-color);\n  stroke-width: 2px;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  opacity: 0.4;\n  transition: opacity 0.3s ease;\n}\n.wrapper .tooltip > svg:hover .icon {\n  opacity: 1;\n}\n.wrapper .tooltip::after {\n  content: \"\";\n  width: 20px;\n  height: 20px;\n  background: #fff;\n  border-radius: 3px;\n  position: absolute;\n  left: 50%;\n  margin-left: -10px;\n  bottom: -8px;\n  transform: rotate(45deg);\n  z-index: 0;\n}\n.wrapper > svg {\n  width: 300px;\n  height: 300px;\n  position: absolute;\n  z-index: 1;\n  transform: scale(0);\n}\n.wrapper > svg .shape {\n  fill: none;\n  stroke: none;\n  stroke-width: 3px;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  transform-origin: 50% 20%;\n}\n.wrapper input {\n  height: 100%;\n  width: 100%;\n  border-radius: var(--border-radius);\n  cursor: pointer;\n  position: absolute;\n  z-index: 5;\n  opacity: 0;\n}\n.wrapper input:checked ~ svg {\n  -webkit-animation: pang-animation 1.2s ease-out forwards;\n  animation: pang-animation 1.2s ease-out forwards;\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(1) {\n  transform: translate(25px, 30%) rotate(40deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(2) {\n  transform: translate(-4px, 30%) rotate(80deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(3) {\n  transform: translate(12px, 30%) rotate(120deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(4) {\n  transform: translate(8px, 30%) rotate(160deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(5) {\n  transform: translate(21px, 30%) rotate(200deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(6) {\n  transform: translate(0px, 30%) rotate(240deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(7) {\n  transform: translate(17px, 30%) rotate(280deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(8) {\n  transform: translate(-3px, 30%) rotate(320deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(9) {\n  transform: translate(25px, 30%) rotate(360deg);\n}\n.wrapper input:checked ~ .btn {\n  -webkit-animation: plus-animation 0.5s ease-out forwards;\n  animation: plus-animation 0.5s ease-out forwards;\n}\n.wrapper input:checked ~ .tooltip {\n  width: fit-content;\n  padding: 30px;\n  -webkit-animation: stretch-animation 1s ease-out forwards 0.15s;\n  animation: stretch-animation 1s ease-out forwards 0.15s;\n  top: -90px;\n  opacity: 1;\n}\n\n.wrapper input:checked ~ .tooltip > span {\n  opacity: 1;\n}\n\n@-webkit-keyframes pang-animation {\n  0% {\n    transform: scale(0);\n    opacity: 0;\n  }\n  40% {\n    transform: scale(1);\n    opacity: 1;\n  }\n  100% {\n    transform: scale(1.1);\n    opacity: 0;\n  }\n}\n\n@keyframes pang-animation {\n  0% {\n    transform: scale(0);\n    opacity: 0;\n  }\n  40% {\n    transform: scale(1);\n    opacity: 1;\n  }\n  100% {\n    transform: scale(1.1);\n    opacity: 0;\n  }\n}\n@-webkit-keyframes plus-animation {\n  0% {\n    transform: rotate(0) scale(1);\n  }\n  20% {\n    transform: rotate(60deg) scale(0.93);\n  }\n  55% {\n    transform: rotate(35deg) scale(0.97);\n  }\n  80% {\n    transform: rotate(48deg) scale(0.94);\n  }\n  100% {\n    transform: rotate(45deg) scale(0.95);\n  }\n}\n@keyframes plus-animation {\n  0% {\n    transform: rotate(0) scale(1);\n  }\n  20% {\n    transform: rotate(60deg) scale(0.93);\n  }\n  55% {\n    transform: rotate(35deg) scale(0.97);\n  }\n  80% {\n    transform: rotate(48deg) scale(0.94);\n  }\n  100% {\n    transform: rotate(45deg) scale(0.95);\n  }\n}\n@-webkit-keyframes plus-animation-reverse {\n  0% {\n    transform: rotate(45deg) scale(0.95);\n  }\n  20% {\n    transform: rotate(-15deg);\n  }\n  55% {\n    transform: rotate(10deg);\n  }\n  80% {\n    transform: rotate(-3deg);\n  }\n  100% {\n    transform: rotate(0) scale(1);\n  }\n}\n@keyframes plus-animation-reverse {\n  0% {\n    transform: rotate(45deg) scale(0.95);\n  }\n  20% {\n    transform: rotate(-15deg);\n  }\n  55% {\n    transform: rotate(10deg);\n  }\n  80% {\n    transform: rotate(-3deg);\n  }\n  100% {\n    transform: rotate(0) scale(1);\n  }\n}\n@-webkit-keyframes stretch-animation {\n  0% {\n    transform: scale(1, 1);\n  }\n  10% {\n    transform: scale(1.1, 0.9);\n  }\n  30% {\n    transform: scale(0.9, 1.1);\n  }\n  50% {\n    transform: scale(1.05, 0.95);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n@keyframes stretch-animation {\n  0% {\n    transform: scale(1, 1);\n  }\n  10% {\n    transform: scale(1.1, 0.9);\n  }\n  30% {\n    transform: scale(0.9, 1.1);\n  }\n  50% {\n    transform: scale(1.05, 0.95);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n\n.socials {\n  position: fixed;\n  display: block;\n  left: 20px;\n  bottom: 20px;\n}\n.socials > a {\n  display: block;\n  width: 30px;\n  opacity: 0.2;\n  transform: scale(var(--scale, 0.8));\n  transition: transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);\n}\n.socials > a:hover {\n  --scale: 1;\n}\n"
+  },
+  {
+    "id": "uiv-297130",
+    "title": "Afraid Newt 19",
+    "author": "Dyls00",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.390Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Uiverse.io</span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by Dyls00  - Tags: tooltip, smooth, cube, colorful, custom */\n/* This is an example, feel free to delete this code */\n.tooltip-container {\n  --background: #ee6d22;\n  position: relative;\n  background: var(--background);\n  cursor: pointer;\n  transition: all 0.2s;\n  border-radius: 15px;\n  font-size: 25px;\n  padding: 0.7em 1.8em;\n}\n\n.tooltip {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  border-radius: 15px;\n  font-size: 50px;\n  margin-top: 90%;\n  background: black;\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: 1.8em;\n  left: 50%;\n  transform: translate(-50%) rotate(180deg);\n  background: var(--background);\n}\n\n.tooltip-container:hover .tooltip {\n  top: -100%;\n  opacity: 1;\n  color: white;\n  visibility: visible;\n  pointer-events: auto;\n}",
+    "tags": [
+      "tooltip",
+      "smooth",
+      "cube",
+      "colorful",
+      "custom"
+    ]
+  },
+  {
+    "id": "uiv-421567",
+    "title": "Hot Fish 35",
+    "author": "EcheverriaJesus",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.185Z",
+    "html": "<!-- From Uiverse.io by EcheverriaJesus  - Tags: tooltip, icon, animation, hover, github, tailwind -->\n<section class=\"flex justify-center items-center\">\n  <button\n    class=\"group flex justify-center p-2 rounded-md drop-shadow-xl bg-gradient-to-r from-gray-800 to-black text-white font-semibold hover:translate-y-3 hover:rounded-[50%] transition-all duration-500 hover:from-[#331029] hover:to-[#310413]\"\n    href=\"/\"\n  >\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      fill=\"none\"\n      viewBox=\"0 0 15 15\"\n      class=\"w-5\"\n    >\n      <path\n        clip-rule=\"evenodd\"\n        fill-rule=\"evenodd\"\n        fill=\"currentColor\"\n        d=\"M7.49933 0.25C3.49635 0.25 0.25 3.49593 0.25 7.50024C0.25 10.703 2.32715 13.4206 5.2081 14.3797C5.57084 14.446 5.70302 14.2222 5.70302 14.0299C5.70302 13.8576 5.69679 13.4019 5.69323 12.797C3.67661 13.235 3.25112 11.825 3.25112 11.825C2.92132 10.9874 2.44599 10.7644 2.44599 10.7644C1.78773 10.3149 2.49584 10.3238 2.49584 10.3238C3.22353 10.375 3.60629 11.0711 3.60629 11.0711C4.25298 12.1788 5.30335 11.8588 5.71638 11.6732C5.78225 11.205 5.96962 10.8854 6.17658 10.7043C4.56675 10.5209 2.87415 9.89918 2.87415 7.12104C2.87415 6.32925 3.15677 5.68257 3.62053 5.17563C3.54576 4.99226 3.29697 4.25521 3.69174 3.25691C3.69174 3.25691 4.30015 3.06196 5.68522 3.99973C6.26337 3.83906 6.8838 3.75895 7.50022 3.75583C8.1162 3.75895 8.73619 3.83906 9.31523 3.99973C10.6994 3.06196 11.3069 3.25691 11.3069 3.25691C11.7026 4.25521 11.4538 4.99226 11.3795 5.17563C11.8441 5.68257 12.1245 6.32925 12.1245 7.12104C12.1245 9.9063 10.4292 10.5192 8.81452 10.6985C9.07444 10.9224 9.30633 11.3648 9.30633 12.0413C9.30633 13.0102 9.29742 13.7922 9.29742 14.0299C9.29742 14.2239 9.42828 14.4496 9.79591 14.3788C12.6746 13.4179 14.75 10.7025 14.75 7.50024C14.75 3.49593 11.5036 0.25 7.49933 0.25Z\"\n      ></path>\n    </svg>\n    <span\n      class=\"absolute opacity-0 group-hover:opacity-100 group-hover:text-gray-700 group-hover:text-sm group-hover:-translate-y-10 duration-700\"\n    >\n      GitHub\n    </span>\n  </button>\n</section>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-456428",
+    "title": "Odd Seahorse 52",
+    "author": "EcheverriaJesus",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.219Z",
+    "html": "<!-- From Uiverse.io by EcheverriaJesus  - Tags: simple, tooltip, hover, tailwind, cool -->\n<section class=\"relative flex justify-center items-center\">\n  <div\n    class=\"group flex justify-center transition-all rounded-full bg-gray-200 p-1\"\n  >\n    <svg viewBox=\"0 0 320 512\" class=\"w-4 h-4\">\n      <path\n        d=\"M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z\"\n      ></path>\n    </svg>\n    <span\n      class=\"absolute opacity-0 group-hover:opacity-100 group-hover:-translate-y-7 duration-700 text-sm\"\n      >Information</span\n    >\n  </div>\n</section>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-569508",
+    "title": "Smart Kangaroo 41",
+    "author": "Invacui",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.400Z",
+    "html": "<div class=\"Social-Btn\">\n  <span class=\"svgContainer\">\n    <svg viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path\n        d=\"M418.2 177.2c-5.4-1.8-10.8-3.5-16.2-5.1 .9-3.7 1.7-7.4 2.5-11.1 12.3-59.6 4.2-107.5-23.1-123.3-26.3-15.1-69.2 .6-112.6 38.4-4.3 3.7-8.5 7.6-12.5 11.5-2.7-2.6-5.5-5.2-8.3-7.7-45.5-40.4-91.1-57.4-118.4-41.5-26.2 15.2-34 60.3-23 116.7 1.1 5.6 2.3 11.1 3.7 16.7-6.4 1.8-12.7 3.8-18.6 5.9C38.3 196.2 0 225.4 0 255.6c0 31.2 40.8 62.5 96.3 81.5 4.5 1.5 9 3 13.6 4.3-1.5 6-2.8 11.9-4 18-10.5 55.5-2.3 99.5 23.9 114.6 27 15.6 72.4-.4 116.6-39.1 3.5-3.1 7-6.3 10.5-9.7 4.4 4.3 9 8.4 13.6 12.4 42.8 36.8 85.1 51.7 111.2 36.6 27-15.6 35.8-62.9 24.4-120.5-.9-4.4-1.9-8.9-3-13.5 3.2-.9 6.3-1.9 9.4-2.9 57.7-19.1 99.5-50 99.5-81.7 0-30.3-39.4-59.7-93.8-78.4zM282.9 92.3c37.2-32.4 71.9-45.1 87.7-36 16.9 9.7 23.4 48.9 12.8 100.4-.7 3.4-1.4 6.7-2.3 10-22.2-5-44.7-8.6-67.3-10.6-13-18.6-27.2-36.4-42.6-53.1 3.9-3.7 7.7-7.2 11.7-10.7zM167.2 307.5c5.1 8.7 10.3 17.4 15.8 25.9-15.6-1.7-31.1-4.2-46.4-7.5 4.4-14.4 9.9-29.3 16.3-44.5 4.6 8.8 9.3 17.5 14.3 26.1zm-30.3-120.3c14.4-3.2 29.7-5.8 45.6-7.8-5.3 8.3-10.5 16.8-15.4 25.4-4.9 8.5-9.7 17.2-14.2 26-6.3-14.9-11.6-29.5-16-43.6zm27.4 68.9c6.6-13.8 13.8-27.3 21.4-40.6s15.8-26.2 24.4-38.9c15-1.1 30.3-1.7 45.9-1.7s31 .6 45.9 1.7c8.5 12.6 16.6 25.5 24.3 38.7s14.9 26.7 21.7 40.4c-6.7 13.8-13.9 27.4-21.6 40.8-7.6 13.3-15.7 26.2-24.2 39-14.9 1.1-30.4 1.6-46.1 1.6s-30.9-.5-45.6-1.4c-8.7-12.7-16.9-25.7-24.6-39s-14.8-26.8-21.5-40.6zm180.6 51.2c5.1-8.8 9.9-17.7 14.6-26.7 6.4 14.5 12 29.2 16.9 44.3-15.5 3.5-31.2 6.2-47 8 5.4-8.4 10.5-17 15.5-25.6zm14.4-76.5c-4.7-8.8-9.5-17.6-14.5-26.2-4.9-8.5-10-16.9-15.3-25.2 16.1 2 31.5 4.7 45.9 8-4.6 14.8-10 29.2-16.1 43.4zM256.2 118.3c10.5 11.4 20.4 23.4 29.6 35.8-19.8-.9-39.7-.9-59.5 0 9.8-12.9 19.9-24.9 29.9-35.8zM140.2 57c16.8-9.8 54.1 4.2 93.4 39 2.5 2.2 5 4.6 7.6 7-15.5 16.7-29.8 34.5-42.9 53.1-22.6 2-45 5.5-67.2 10.4-1.3-5.1-2.4-10.3-3.5-15.5-9.4-48.4-3.2-84.9 12.6-94zm-24.5 263.6c-4.2-1.2-8.3-2.5-12.4-3.9-21.3-6.7-45.5-17.3-63-31.2-10.1-7-16.9-17.8-18.8-29.9 0-18.3 31.6-41.7 77.2-57.6 5.7-2 11.5-3.8 17.3-5.5 6.8 21.7 15 43 24.5 63.6-9.6 20.9-17.9 42.5-24.8 64.5zm116.6 98c-16.5 15.1-35.6 27.1-56.4 35.3-11.1 5.3-23.9 5.8-35.3 1.3-15.9-9.2-22.5-44.5-13.5-92 1.1-5.6 2.3-11.2 3.7-16.7 22.4 4.8 45 8.1 67.9 9.8 13.2 18.7 27.7 36.6 43.2 53.4-3.2 3.1-6.4 6.1-9.6 8.9zm24.5-24.3c-10.2-11-20.4-23.2-30.3-36.3 9.6 .4 19.5 .6 29.5 .6 10.3 0 20.4-.2 30.4-.7-9.2 12.7-19.1 24.8-29.6 36.4zm130.7 30c-.9 12.2-6.9 23.6-16.5 31.3-15.9 9.2-49.8-2.8-86.4-34.2-4.2-3.6-8.4-7.5-12.7-11.5 15.3-16.9 29.4-34.8 42.2-53.6 22.9-1.9 45.7-5.4 68.2-10.5 1 4.1 1.9 8.2 2.7 12.2 4.9 21.6 5.7 44.1 2.5 66.3zm18.2-107.5c-2.8 .9-5.6 1.8-8.5 2.6-7-21.8-15.6-43.1-25.5-63.8 9.6-20.4 17.7-41.4 24.5-62.9 5.2 1.5 10.2 3.1 15 4.7 46.6 16 79.3 39.8 79.3 58 0 19.6-34.9 44.9-84.8 61.4zm-149.7-15c25.3 0 45.8-20.5 45.8-45.8s-20.5-45.8-45.8-45.8c-25.3 0-45.8 20.5-45.8 45.8s20.5 45.8 45.8 45.8z\"\n      ></path>\n    </svg>\n  </span>\n  <span class=\"BG\">Help?</span>\n</div>",
+    "css": "/* From Uiverse.io by Invacui  - Tags: glassmorphism, tooltip, hover */\n.Social-Btn {\n  width: 4.5em;\n  height: 2.5em;\n  align-items: baseline;\n  justify-content: center;\n  border: none;\n\n  /* overflow: hidden; */\n  border-radius: 7px;\n  cursor: pointer;\n  transition: all 0.3s;\n  fill: white !important;\n  position: relative;\n}\n\n.svgContainer {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: transparent;\n  backdrop-filter: blur(0px);\n  letter-spacing: 0.8px;\n  border-radius: 10px;\n  transition: all 0.3s;\n  border: 1px solid rgba(156, 156, 156, 0.466);\n  color: white;\n  background: rgba(83, 69, 69, 0.562);\n}\n\n.svgContainer > svg {\n  width: 1.5rem;\n}\n\n.BG {\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: \"\";\n  width: 100%;\n  height: 100%;\n  z-index: -1;\n  border-radius: 10px;\n  pointer-events: none;\n  transition: all 2s;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-weight: 600;\n  color: transparent;\n  filter: blur(4px);\n  z-index: 4;\n}\n.BG::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: -0.2em;\n  left: 50%;\n  transform: translate(-50%) rotate(45deg);\n  background: white;\n  opacity: -1;\n  z-index: -10;\n  transition: 5s all;\n}\n.Social-Btn:hover .BG::before {\n  opacity: 1;\n}\n.Social-Btn:hover .BG {\n  transform: translateY(-130%);\n  transform-origin: bottom;\n  background: white;\n  color: black;\n  filter: blur(0px);\n}\n\n.Social-Btn:hover .svgContainer {\n  z-index: 20;\n  background-color: rgba(156, 156, 156, 0.466);\n  filter: blur(0px);\n  fill: black;\n}",
+    "tags": [
+      "glassmorphism",
+      "tooltip",
+      "hover"
+    ]
+  },
+  {
+    "id": "uiv-410473",
+    "title": "Rude Seahorse 6",
+    "author": "Javierrocadev",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.676Z",
+    "html": "<div class=\"tooltip-container\">\n  <div class=\"tooltip\">\n    LET'S CREATE!\n    <span class=\"tooltip-item\">1 - Explore</span>\n    <span class=\"tooltip-item\">2 - Have fun!</span>\n  </div>\n  <button class=\"btn\">uiverse</button>\n</div>",
+    "css": "/* From Uiverse.io by Javierrocadev  - Tags: tooltip, gradient, dark, hover effect, hover button */\n.tooltip-container {\n  --background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);\n  position: relative;\n  color: aliceblue;\n\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n  border-radius: 16px;\n}\n\n.tooltip {\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  width: 100px;\n  height: 120px;\n  z-index: -1;\n  top: 0;\n  left: 50%;\n  background-color: #212121;\n  color: antiquewhite;\n  transform: translateX(-50%);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  font-weight: bold;\n  font-size: 12px;\n  overflow: hidden;\n}\n\n.tooltip-item {\n  z-index: 5;\n  background-color: #171717;\n  border-radius: 4px;\n  padding: 4px;\n  font-weight: bolder;\n  font-size: 6px;\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.5em;\n  width: 0.5em;\n  top: 0.8em;\n  left: 85%;\n  border-radius: 2px;\n  transform: rotate(45deg);\n  background: var(--background);\n  animation: tooltipBeforeAnimation 4s infinite alternate;\n}\n\n.tooltip::after {\n  position: absolute;\n  content: \"\";\n  height: 3.6em;\n  width: 3.6em;\n  bottom: -0.8em;\n  border-radius: 999px;\n  filter: blur(8px);\n  right: -5%;\n  background: var(--background);\n  animation: tooltipAnimation 5s infinite alternate;\n}\n\n.btn {\n  background: var(--background);\n  border: none;\n  color: aliceblue;\n  cursor: pointer;\n  background-size: 100%;\n  transition: all 0.2s;\n  font-size: 12px;\n  padding: 0.7em 1.8em;\n  border-radius: 16px;\n  font-weight: 700;\n}\n.btn:hover {\n  background-size: 150%;\n  background-position-x: right;\n}\n\n@keyframes tooltipAnimation {\n  0% {\n    transform: scale(1);\n  }\n  100% {\n    transform: scale(1.8);\n  }\n}\n@keyframes tooltipBeforeAnimation {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n.tooltip-container:hover .tooltip {\n  transform: scale(2);\n}\n\n.tooltip-container:hover .tooltip {\n  top: -210%;\n  left: 43%;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}",
+    "tags": [
+      "tooltip",
+      "gradient",
+      "dark",
+      "hover effect",
+      "hover button"
+    ]
+  },
+  {
+    "id": "uiv-612863",
+    "title": "Strange Wasp 98",
+    "author": "JhaveLang",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.234Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Uiverse.io</span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by JhaveLang  - Tags: simple, tooltip, animation */\n/* This is an example, feel free to delete this code */\n.tooltip-container {\n  --background: linear-gradient(45deg, #22d3ee, #1f9df5);\n  position: relative;\n  background: var(--background);\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n  border-radius: 8px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  color: #fff;\n}\n\n.tooltip {\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%) scale(0.8);\n  transform-origin: bottom;\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  background: var(--background);\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: -0.2em;\n  left: 50%;\n  transform: translate(-50%) rotate(45deg);\n  background: var(--background);\n}\n\n.tooltip-container:hover .tooltip {\n  top: -45px;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n  transform: translateX(-50%) scale(1);\n}\n.tooltip-container:hover {\n  transform: scale(0.9);\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "animation"
+    ]
+  },
+  {
+    "id": "uiv-937171",
+    "title": "Nice Stingray 21",
+    "author": "MRez321",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.663Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Hey There!</span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by MRez321  - Tags: tooltip, hover, transition */\n.tooltip-container {\n  --background: #7579e7;\n  background: var(--background);\n  position: relative;\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  border-radius: 10px;\n  width: 8em;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.tooltip {\n  position: absolute;\n  top: 0;\n  left: 30%;\n  transform: translateX(-50%);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  background: var(--background);\n  border-radius: 5px;\n  width: 7em;\n  text-align: center;\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: -0.2em;\n  left: 50%;\n  transform: translate(-50%) rotate(45deg);\n  background: var(--background);\n}\n\n.tooltip-container:hover .tooltip {\n  top: -100%;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n  animation: shake 500ms ease-in-out forwards;\n}\n\n@keyframes shake {\n  0% {\n    transform: rotate(2deg);\n  }\n  50% {\n    transform: rotate(-3deg);\n  }\n  70% {\n    transform: rotate(3deg);\n  }\n\n  100% {\n    transform: rotate(0deg);\n  }\n}\n\n.text {\n  position: relative;\n  padding: 0.7em 1.8em;\n  overflow: hidden;\n}\n\n.text::before {\n  content: \"(^_^)/\";\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: inherit;\n  background-color: var(--background);\n  transition: 0.3s;\n}\n\n.tooltip-container:hover .text::before {\n  top: 0;\n}",
+    "tags": [
+      "tooltip",
+      "hover",
+      "transition"
+    ]
+  },
+  {
+    "id": "uiv-198736",
+    "title": "Bitter Skunk 14",
+    "author": "MohamedAboSeada",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.717Z",
+    "html": "<div class=\"tooltip-container\">\n  <div class=\"tooltip\">\n    <p>This is a test</p>\n    <button>Got It</button>\n    <div class=\"line\"></div>\n  </div>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by MohamedAboSeada  - Tags: simple, tooltip, animation, minimalist, hover, rounded, cube, modern */\n.tooltip-container {\n  position: relative;\n  height: 50px;\n  display: flex;\n  background-color: darkgray;\n  border-radius: 5px;\n  box-shadow: 0 3px 0 rgb(0 0 0 / 80%);\n  width: 200px;\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n}\n.tooltip {\n  position: absolute;\n  top: -110px;\n  left: 50%;\n  opacity: 0;\n  transition: 300ms ease;\n  background-color: #000;\n  color: #fff;\n  border-radius: 5px;\n  display: flex;\n  gap: 10px 0;\n  cursor: auto;\n  box-shadow: 0 0 10px rgb(0 0 0 / 50%);\n  font-style: oblique;\n  flex-direction: column;\n  padding: 10px;\n  width: 200px;\n  animation: opacity;\n  transform: translateX(-50%);\n}\n.tooltip button {\n  outline: none;\n  border: 1px solid #fff;\n  background-color: transparent;\n  color: #fff;\n  width: 70px;\n  height: 30px;\n  border-radius: 5px;\n  font-family: inherit;\n  font-size: 1rem;\n  align-self: flex-end;\n  cursor: pointer;\n}\n.line {\n  position: absolute;\n  width: 3px;\n  height: 25px;\n  background-color: #000;\n  top: 100%;\n  left: 50%;\n  display: flex;\n  align-items: flex-end;\n  justify-content: center;\n  transform: translateX(-50%);\n}\n.line::before {\n  content: \"\";\n  position: absolute;\n  bottom: -5px;\n  width: 10px;\n  height: 10px;\n  background-color: #000;\n  border-radius: 50%;\n}\n.tooltip-container:hover > .tooltip {\n  opacity: 1;\n}\n.tooltip-container:hover > .tooltip > .line {\n  animation: HeightUP 400ms ease;\n}\n@keyframes HeightUP {\n  0% {\n    height: 0;\n  }\n  100% {\n    height: 25px;\n  }\n}\n@keyframes opcaityUp {\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "animation",
+      "minimalist",
+      "hover",
+      "rounded",
+      "cube",
+      "modern"
+    ]
+  },
+  {
+    "id": "uiv-331632",
+    "title": "Ugly Swan 20",
+    "author": "Pipo-13",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.663Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n      width=\"80\"\n      zoomAndPan=\"magnify\"\n      viewBox=\"0 0 60 44.999999\"\n      height=\"60\"\n      preserveAspectRatio=\"xMidYMid meet\"\n      version=\"1.0\"\n    >\n      <defs>\n        <clipPath id=\"e2947948d6\">\n          <path\n            d=\"M 2.25 6.75 L 57.75 6.75 C 58.992188 6.75 60 7.757812 60 9 L 60 42.75 C 60 43.992188 58.992188 45 57.75 45 L 2.25 45 C 1.007812 45 0 43.992188 0 42.75 L 0 9 C 0 7.757812 1.007812 6.75 2.25 6.75 Z M 2.25 6.75\"\n            clip-rule=\"nonzero\"\n          ></path>\n        </clipPath>\n      </defs>\n      <g clip-path=\"url(#e2947948d6)\">\n        <path\n          fill=\"#ff914d\"\n          d=\"M 0 6.75 L 60.0625 6.75 L 60.0625 45 L 0 45 Z M 0 6.75\"\n          fill-opacity=\"1\"\n          fill-rule=\"nonzero\"\n        ></path>\n        <text x=\"15\" y=\"30\" fill=\"white\" style=\"font-size:12px\">hello</text>\n      </g>\n      <path\n        fill=\"#ff914d\"\n        d=\"M 38.988281 12.292969 C 38.988281 11.898438 38.820312 11.449219 38.496094 10.988281 L 31.664062 0.996094 C 31.226562 0.351562 30.625 0 29.992188 0 C 29.363281 0 28.757812 0.351562 28.324219 0.996094 L 21.488281 10.972656 C 21.167969 11.4375 21.011719 11.898438 21.011719 12.292969 C 21.011719 13.035156 21.613281 13.5 22.613281 13.5 L 37.386719 13.5 C 38.386719 13.5 38.988281 13.035156 38.988281 12.292969 Z M 38.988281 12.292969\"\n        fill-opacity=\"1\"\n        fill-rule=\"nonzero\"\n      ></path>\n    </svg>\n  </span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by Pipo-13  - Tags: simple, tooltip, svg */\n.tooltip-container {\n  --background: #d87639;\n  position: relative;\n  background: var(--background);\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n  border-radius: 0.2rem;\n}\n\n.tooltip {\n  position: absolute;\n  top: 90%;\n  left: 50%;\n  transform: translateX(-50%) rotateX(90deg);\n  padding: 0.6em;\n  opacity: 0.6;\n  transition: all 0.5s ease;\n  background: transparent;\n  height: 0px;\n  cursor: default;\n}\n\n.tooltip-container:hover .tooltip {\n  opacity: 1;\n  pointer-events: auto;\n  background: none;\n  transform: translateX(-50%) rotateX(0deg);\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "svg"
+    ]
+  },
+  {
+    "id": "uiv-413026",
+    "title": "Chilly Eagle 55",
+    "author": "PriyanshuGupta28",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.676Z",
+    "html": "<ul class=\"example-2\">\n  <li class=\"icon-content\">\n    <a\n      data-social=\"spotify\"\n      aria-label=\"Spotify\"\n      href=\"https://www.spotify.com/\"\n    >\n      <div class=\"filled\"></div>\n      <svg viewBox=\"0 0 100 100\" version=\"1.1\">\n        <path\n          fill=\"currentColor\"\n          d=\"M50,4C24.7,4,4,24.7,4,50s20.6,46,46,46s46-20.6,46-46S75.4,4,50,4z M71.6,71.5c0,0,0,0.1-0.1,0.1c-0.8,1.2-2,1.8-3.2,1.8  c-0.7,0-1.4-0.2-2-0.6c-10.2-6.3-23.3-7.7-38.8-4.1c-2.1,0.6-4-0.9-4.5-2.7c-0.6-2.3,0.9-4.1,2.7-4.6c17.7-4,32.6-2.3,44.4,5  c0.9,0.4,1.5,1,1.8,1.9C72.2,69.3,72.1,70.5,71.6,71.5z M76.9,59.3L76.9,59.3c-0.8,1.1-1.9,1.9-3.2,2.1c-0.2,0-0.5,0.1-0.7,0.1  c-0.8,0-1.6-0.3-2.3-0.7c-12-7.3-30.1-9.4-43.9-5c-2.5,0.6-5-0.7-5.6-3c-0.6-2.5,0.7-4.9,3-5.5c16.5-5,37.2-2.5,51.4,6.2  c0.8,0.4,1.5,1.3,1.8,2.5C77.9,57,77.6,58.3,76.9,59.3z M83.2,45.6c-1,1.4-2.7,2.1-4.4,2.1c-0.9,0-1.9-0.2-2.7-0.7c0,0,0,0,0,0  c-13.9-8.3-37.8-9.3-51.4-5.1c-2.7,0.8-5.5-0.7-6.4-3.3c-0.8-2.7,0.7-5.6,3.3-6.4c16.2-4.8,43-3.8,59.8,6.2  C83.8,39.6,84.7,42.9,83.2,45.6C83.3,45.5,83.3,45.5,83.2,45.6z\"\n        ></path>\n      </svg>\n    </a>\n    <div class=\"tooltip\">Spotify</div>\n  </li>\n  <li class=\"icon-content\">\n    <a\n      data-social=\"pinterest\"\n      aria-label=\"Pinterest\"\n      href=\"https://www.pinterest.com/\"\n    >\n      <div class=\"filled\"></div>\n      <svg xml:space=\"preserve\" viewBox=\"0 0 100 100\" version=\"1.1\">\n        <path\n          fill=\"currentColor\"\n          d=\"M83,17.8C74.5,8.9,63.4,4.3,50,4.1C37.7,4.2,26.8,8.6,17.9,17.3C8.9,26,4.3,37,4.1,50c0,0,0,0,0,0c0,9.1,2.5,17.4,7.4,24.9  c4.9,7.4,11.6,13.2,20.1,17.1c0.3,0.1,0.7,0.1,1-0.1c0.3-0.2,0.5-0.5,0.5-0.8l0-4.9c0.1-2.1,0.7-5.3,1.7-9.5c1-4,1.7-6.7,1.9-7.6  c0.7-3,1.7-7.2,3-12.6c0.1-0.2,0-0.5-0.1-0.7c-0.4-0.8-1-2.6-1.5-6.6c0.1-2.7,0.8-5.2,2.1-7.3c1.2-2,3.1-3.1,5.7-3.5  c2,0.1,4.7,0.8,5.1,5.9c-0.1,1.8-0.8,4.5-1.9,8.1c-1.2,3.8-1.9,6.3-2.1,7.6c-0.7,2.5-0.2,4.8,1.5,6.8c1.6,1.9,3.8,2.9,6.5,3.1  c4.3-0.1,8.1-2.6,11.2-7.5c1.7-3,2.9-6.3,3.5-9.7c0.7-3.4,0.7-7.1,0-10.8c-0.7-3.8-2.2-7.1-4.5-9.8c0,0-0.1-0.1-0.1-0.1  c-4.3-3.7-9.5-5.3-15.6-5c-6,0.4-11.3,2.6-15.9,6.6c-2.9,3.2-4.8,7.1-5.7,11.6c-0.9,4.6,0,9.1,2.6,13.3c0.3,0.5,0.5,0.8,0.6,1  c0,0.3,0,1-0.5,2.8c-0.5,1.8-0.9,2.2-0.9,2.2c0,0-0.1,0-0.1,0.1c0,0-0.2,0-0.4-0.1c-2.2-1-3.9-2.4-5.2-4.2c-1.3-1.9-2.1-4-2.5-6.3  c-0.3-2.5-0.4-5-0.3-7.5c0.2-2.5,0.7-5.1,1.4-7.7c3-6.9,8.5-11.9,16.3-14.8c7.8-2.9,16-3.2,24.3-0.8c6.5,2.8,11,7.4,13.6,13.7  c2.5,6.4,2.8,13.4,0.8,20.8c-2.2,7.1-6.4,12.4-12.1,15.7c-5.6,2.8-10.8,3-15.7,0.7c-1.8-1.1-3.1-2.3-3.9-3.5c-0.2-0.3-0.6-0.5-1-0.5  c-0.4,0.1-0.7,0.3-0.8,0.7c-0.7,2.7-1.3,4.7-1.6,6.2c-1.4,5.4-2.6,9.2-3.4,11c-0.8,1.6-1.6,3.1-2.4,4.3c-0.2,0.3-0.2,0.6-0.1,0.9  s0.3,0.5,0.6,0.6c4.3,1.3,8.7,2,13,2c12.4-0.1,23.2-4.6,32.1-13.4C91.1,73.9,95.8,62.9,96,50C95.9,37.5,91.5,26.7,83,17.8z\"\n        ></path>\n      </svg>\n    </a>\n    <div class=\"tooltip\">Pinterest</div>\n  </li>\n  <li class=\"icon-content\">\n    <a\n      data-social=\"dribbble\"\n      aria-label=\"Dribbble\"\n      href=\"https://dribbble.com/\"\n    >\n      <div class=\"filled\"></div>\n      <svg viewBox=\"0 0 100 100\" version=\"1.1\">\n        <path\n          fill=\"currentColor\"\n          d=\"M83.5,18.5C74.9,9.3,62.8,4,50.2,4c-6.1,0-12,1.1-17.6,3.4C15.2,14.5,4,31.3,4,50c0,13.9,6.2,26.9,17,35.7  C29.2,92.3,39.4,96,50,96c6.6,0,13.2-1.5,19.2-4.2c12.5-5.7,21.7-16.6,25.2-29.8C95.5,57.9,96,53.8,96,50  C96,38.3,91.6,27.1,83.5,18.5z M75,22.3c-0.7,0.9-1.4,1.8-2.1,2.6c-1.4,1.6-2.8,3-4.4,4.3c-0.3,0.3-0.6,0.6-1,0.8  c-1,0.9-2.1,1.7-3.2,2.5l-0.3,0.2c-1.1,0.7-2.2,1.5-3.5,2.2c-0.4,0.3-0.9,0.5-1.4,0.8c-0.8,0.5-1.7,0.9-2.7,1.4  c-0.6,0.3-1.2,0.5-1.8,0.8L54.3,38c-0.1,0-0.2,0.1-0.3,0.1c0,0,0,0,0,0c-1.3-2.6-2.4-4.9-3.5-7l-0.3-0.5c-1.1-2-2.2-4-3.3-6  l-0.7-1.3c-1.1-1.9-2.2-3.7-3.2-5.4l-0.7-1.1c-0.7-1.2-1.4-2.3-2.2-3.5c3.2-0.8,6.5-1.3,9.8-1.3c9.4,0,18.4,3.5,25.4,9.8  C75.3,21.9,75.2,22.1,75,22.3z M46.4,40.6c-1.4,0.4-2.9,0.8-4.4,1.1c-0.3,0-0.7,0.1-0.9,0.2c-6,1-12.5,1.4-19.4,1.1  c-0.3,0-0.6,0-0.9,0c-0.3,0-0.5,0-0.7,0c-2.5-0.2-4.9-0.4-7.2-0.7c2.3-11.2,9.6-20.9,19.8-26.1c2.1,3.3,4.2,6.7,6.3,10.3l0.4,0.7  c0.9,1.6,1.9,3.4,3.2,5.8l0.6,1.2C44.4,36.6,45.4,38.6,46.4,40.6z M24.4,51.1c2.2,0.1,4.2,0,6.2-0.1l0.7,0c0.4,0,0.9,0,1.3,0  c2.8-0.2,5.5-0.5,8.5-1c0.5-0.1,1-0.2,1.6-0.3l0.5-0.1c2.2-0.4,4.2-0.9,6.1-1.4c0.1,0,0.3-0.1,0.4-0.1l0.5,1.1  c1.2,2.8,2.3,5.5,3.3,8.1c0,0,0,0,0,0c-0.2,0.1-0.5,0.2-0.7,0.2c-2,0.6-4,1.4-5.9,2.2c-0.6,0.3-1.3,0.5-1.9,0.8  c-1.4,0.6-2.7,1.3-4.1,2.1l-0.3,0.2c-0.2,0.1-0.5,0.2-0.6,0.4c-1.5,0.9-3.1,1.9-4.7,3c-0.2,0.1-0.4,0.3-0.6,0.4  c-0.2,0.1-0.4,0.3-0.6,0.5c-1,0.7-2,1.5-3,2.3c-0.4,0.3-0.7,0.6-1.1,0.9l-0.3,0.3c-0.7,0.6-1.5,1.3-2.2,1.9l-0.2,0.2  c-0.4,0.4-0.7,0.7-1.1,1.1l-0.2,0.2c-0.6,0.6-1.3,1.3-2,2l-0.4,0.4c-0.2,0.2-0.4,0.4-0.5,0.6C16.1,69.9,12,60.2,12,50.3  c0,0,0.1,0,0.1,0c0.4,0,0.7,0,1.1,0.1c3.5,0.4,6.9,0.6,10.3,0.7C23.8,51,24.1,51.1,24.4,51.1z M29.5,81.9c0.2-0.2,0.3-0.4,0.5-0.5  c1-1.1,2-2.1,3-3c1.9-1.8,3.8-3.3,5.7-4.8c0.2-0.1,0.4-0.3,0.6-0.4c0.2-0.2,0.5-0.4,0.8-0.6c1.1-0.8,2.2-1.5,3.4-2.2  c0.1-0.1,0.2-0.1,0.3-0.2c0.1-0.1,0.2-0.1,0.3-0.2c1.4-0.8,2.9-1.6,4.5-2.3c0.3-0.1,0.6-0.2,0.8-0.4l0.6-0.3  c1.1-0.5,2.2-0.9,3.5-1.4c0.5-0.2,1.1-0.4,1.7-0.6l0.2-0.1c0.4-0.1,0.7-0.2,1.1-0.3c0,0,0,0,0,0c1.1,3.2,2.3,6.4,3.3,9.8l0.1,0.4  c1.1,3.6,2,7.3,2.9,10.8C51.7,89.8,39.3,88.3,29.5,81.9C29.4,81.9,29.4,81.9,29.5,81.9z M65.6,62.9c0.7-0.1,1.3-0.2,2-0.2  c2-0.2,4-0.2,5.9-0.2c0.2,0,0.4,0,0.6,0l0.2,0c2.2,0.1,4.6,0.3,6.9,0.6c0.4,0.1,0.9,0.1,1.3,0.2l0.6,0.1c0.7,0.1,1.5,0.3,2.2,0.4  c-3,7.6-8.3,14-15.2,18.3c-0.8-3.1-1.7-6.2-2.6-9.2l-0.1-0.4c-0.9-3-1.9-6.1-3.1-9.5C64.8,63.1,65.2,63,65.6,62.9z M81.6,55.2  C80,55,78.4,54.9,77,54.8l-0.9-0.1c-0.9-0.1-1.9-0.1-2.8-0.2c-0.2,0-0.3,0-0.5,0c-0.2,0-0.4,0-0.6,0c-2,0-3.9,0.1-5.9,0.3  c-0.2,0-0.3,0-0.5,0.1c-0.1,0-0.2,0-0.3,0c-1.3,0.1-2.6,0.3-3.9,0.5c-0.1-0.1-0.1-0.3-0.2-0.4c-0.1-0.2-0.2-0.5-0.3-0.7  c-1.1-2.9-2.3-5.7-3.2-7.8l-0.3-0.6c-0.1-0.1-0.1-0.3-0.2-0.4c0,0,0,0,0.1,0c0.2-0.1,0.5-0.2,0.7-0.3c0.6-0.2,1.2-0.5,1.8-0.8  c1.2-0.5,2.4-1.2,3.6-1.8c0.1-0.1,0.3-0.2,0.5-0.2c0.2-0.1,0.5-0.2,0.7-0.4c1.5-0.9,2.9-1.8,4.2-2.7l0.3-0.2  c0.2-0.1,0.4-0.3,0.6-0.4c0.9-0.6,1.9-1.4,2.8-2.2c1.5-1.2,2.9-2.5,4.3-4c0.8-0.8,1.5-1.6,2.2-2.4l0.4-0.5c0.5-0.5,0.9-1.1,1.3-1.6  C85.5,34.3,88,42.1,88,50c0,2-0.2,4.1-0.5,6.1c-0.3,0-0.6-0.1-0.8-0.1c-0.4-0.1-0.7-0.1-1.1-0.2l-1.1-0.2  C83.5,55.5,82.5,55.3,81.6,55.2z\"\n        ></path>\n      </svg>\n    </a>\n    <div class=\"tooltip\">Dribbble</div>\n  </li>\n  <li class=\"icon-content\">\n    <a\n      data-social=\"telegram\"\n      aria-label=\"Telegram\"\n      href=\"https://telegram.org/\"\n    >\n      <div class=\"filled\"></div>\n      <svg viewBox=\"0 0 100 100\" version=\"1.1\">\n        <path\n          fill=\"currentColor\"\n          d=\"M95,9.9c-1.3-1.1-3.4-1.2-7-0.1c0,0,0,0,0,0c-2.5,0.8-24.7,9.2-44.3,17.3c-17.6,7.3-31.9,13.7-33.6,14.5  c-1.9,0.6-6,2.4-6.2,5.2c-0.1,1.8,1.4,3.4,4.3,4.7c3.1,1.6,16.8,6.2,19.7,7.1c1,3.4,6.9,23.3,7.2,24.5c0.4,1.8,1.6,2.8,2.2,3.2  c0.1,0.1,0.3,0.3,0.5,0.4c0.3,0.2,0.7,0.3,1.2,0.3c0.7,0,1.5-0.3,2.2-0.8c3.7-3,10.1-9.7,11.9-11.6c7.9,6.2,16.5,13.1,17.3,13.9  c0,0,0.1,0.1,0.1,0.1c1.9,1.6,3.9,2.5,5.7,2.5c0.6,0,1.2-0.1,1.8-0.3c2.1-0.7,3.6-2.7,4.1-5.4c0-0.1,0.1-0.5,0.3-1.2  c3.4-14.8,6.1-27.8,8.3-38.7c2.1-10.7,3.8-21.2,4.8-26.8c0.2-1.4,0.4-2.5,0.5-3.2C96.3,13.5,96.5,11.2,95,9.9z M30,58.3l47.7-31.6  c0.1-0.1,0.3-0.2,0.4-0.3c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0.1,0,0.1,0,0.2-0.1c-0.1,0.1-0.2,0.4-0.4,0.6L66,38.1  c-8.4,7.7-19.4,17.8-26.7,24.4c0,0,0,0,0,0.1c0,0-0.1,0.1-0.1,0.1c0,0,0,0.1-0.1,0.1c0,0.1,0,0.1-0.1,0.2c0,0,0,0.1,0,0.1  c0,0,0,0,0,0.1c-0.5,5.6-1.4,15.2-1.8,19.5c0,0,0,0,0-0.1C36.8,81.4,31.2,62.3,30,58.3z\"\n        ></path>\n      </svg>\n    </a>\n    <div class=\"tooltip\">Telegram</div>\n  </li>\n</ul>",
+    "css": "/* From Uiverse.io by PriyanshuGupta28  - Tags: tooltip, animation, minimalist, spotify, hover effect, telegram, pintrest */\nul {\n  list-style: none;\n}\n\n.example-2 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.example-2 .icon-content {\n  margin: 0 10px;\n  position: relative;\n}\n.example-2 .icon-content .tooltip {\n  position: absolute;\n  top: -30px;\n  left: 50%;\n  transform: translateX(-50%);\n  color: #fff;\n  padding: 6px 10px;\n  border-radius: 5px;\n  opacity: 0;\n  visibility: hidden;\n  font-size: 14px;\n  transition: all 0.3s ease;\n}\n.example-2 .icon-content:hover .tooltip {\n  opacity: 1;\n  visibility: visible;\n  top: -50px;\n}\n.example-2 .icon-content a {\n  position: relative;\n  overflow: hidden;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  color: #4d4d4d;\n  background-color: #fff;\n  transition: all 0.3s ease-in-out;\n}\n.example-2 .icon-content a:hover {\n  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);\n}\n.example-2 .icon-content a svg {\n  position: relative;\n  z-index: 1;\n  width: 30px;\n  height: 30px;\n}\n.example-2 .icon-content a:hover {\n  color: white;\n}\n.example-2 .icon-content a .filled {\n  position: absolute;\n  top: auto;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 0;\n  background-color: #000;\n  transition: all 0.3s ease-in-out;\n}\n.example-2 .icon-content a:hover .filled {\n  height: 100%;\n}\n.example-2 .icon-content a[data-social=\"spotify\"] .filled,\n.example-2 .icon-content a[data-social=\"spotify\"] ~ .tooltip {\n  background-color: #1db954;\n}\n.example-2 .icon-content a[data-social=\"pinterest\"] .filled,\n.example-2 .icon-content a[data-social=\"pinterest\"] ~ .tooltip {\n  background-color: #bd081c;\n}\n.example-2 .icon-content a[data-social=\"dribbble\"] .filled,\n.example-2 .icon-content a[data-social=\"dribbble\"] ~ .tooltip {\n  background-color: #ea4c89;\n}\n.example-2 .icon-content a[data-social=\"telegram\"] .filled,\n.example-2 .icon-content a[data-social=\"telegram\"] ~ .tooltip {\n  background-color: #0088cc;\n}",
+    "tags": [
+      "tooltip",
+      "animation",
+      "minimalist",
+      "spotify",
+      "hover effect",
+      "telegram",
+      "pintrest"
+    ]
+  },
+  {
+    "id": "uiv-174281",
+    "title": "Bitter Wolverine 27",
+    "author": "Quezaquo",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.219Z",
+    "html": "<div class=\"container\">\n  <span class=\"hover-me\">Hover me !</span>\n  <div class=\"tooltip\">\n    <p>Heyy👋</p>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by Quezaquo  - Tags: simple, tooltip, transition */\n.container {\n  font-size: 18px;\n  color: #333;\n  position: relative;\n  cursor: pointer;\n  display: inline-block;\n}\n\n.hover-me {\n  position: relative;\n  z-index: 1;\n  text-decoration: underline;\n  text-underline-offset: 4px;\n  text-decoration-color: #333;\n}\n\n.tooltip {\n  width: 100%;\n  height: 10px;\n  background: #ffffff;\n  padding: 0.25em;\n  text-align: center;\n  position: absolute;\n  top: 40px;\n  left: 0;\n  opacity: 0;\n  visibility: hidden;\n  transform-origin: center top;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);\n  transition: opacity 0.3s ease-in-out;\n}\n\n.tooltip::before {\n  content: \"\";\n  position: absolute;\n  bottom: -8px;\n  left: 80%;\n  transform: translateX(-50%);\n  border-width: 8px 7px 0;\n  border-style: solid;\n  border-color: #ffffff transparent transparent transparent;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);\n}\n\n.tooltip p {\n  margin: 0;\n  color: #333;\n  font-weight: 600;\n}\n\n.container:hover .tooltip {\n  top: -10px;\n  opacity: 1;\n  visibility: visible;\n  animation: goPopup 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;\n}\n\n.container:hover .tooltip p {\n  animation: bounce 2s ease-in-out infinite;\n}\n\n@keyframes goPopup {\n  0% {\n    transform: translateY(0) scaleY(0);\n    opacity: 0;\n  }\n  50% {\n    transform: translateY(-50%) scaleY(1.2);\n    opacity: 1;\n  }\n  100% {\n    transform: translateY(-100%) scaleY(1);\n    border-radius: 8px;\n    opacity: 1;\n    height: 40px;\n  }\n}\n\n@keyframes bounce {\n  0%,\n  20%,\n  50%,\n  80%,\n  100% {\n    transform: translateY(0);\n  }\n  40% {\n    transform: translateY(-3px);\n  }\n  60% {\n    transform: translateY(-2px);\n  }\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "transition"
+    ]
+  },
+  {
+    "id": "uiv-956662",
+    "title": "Angry Cat 58",
+    "author": "Sacha-PDV",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.241Z",
+    "html": "<div class=\"tooltip\">\n  <span>Hover me</span>\n  <div class=\"tooltip-text\">\n    Ceci est un tooltip moderne et animé avec des bulles autour.\n  </div>\n  <div class=\"tooltip-bubble\"></div>\n  <div class=\"tooltip-bubble\"></div>\n  <div class=\"tooltip-bubble\"></div>\n</div>",
+    "css": "/* From Uiverse.io by Sacha-PDV  - Tags: simple, tooltip, circle */\n.tooltip {\n  position: relative;\n  display: inline-block;\n  cursor: pointer;\n}\n.tooltip-text {\n  visibility: hidden;\n  width: 200px;\n  background-color: #3498db;\n  color: #fff;\n  text-align: center;\n  border-radius: 4px;\n  padding: 10px;\n  position: absolute;\n  z-index: 1;\n  top: -65px;\n  left: 50%;\n  transform: translateX(-50%);\n  opacity: 0;\n  transition: opacity 0.3s, transform 0.3s;\n}\n.tooltip:hover .tooltip-text {\n  visibility: visible;\n  opacity: 1;\n  transform: translate(-50%, -60px);\n}\n.tooltip-text::after {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 5px;\n  border-style: solid;\n  border-color: #3498db transparent transparent transparent;\n}\n.tooltip:hover .tooltip-bubble {\n  display: block;\n}\n.tooltip-bubble {\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  background: #3498db;\n  border-radius: 50%;\n  display: none;\n}\n.tooltip-bubble:nth-child(3) {\n  bottom: 170px;\n  left: 43%;\n}\n.tooltip-bubble:nth-child(4) {\n  bottom: 170px;\n  left: 90%;\n}\n.tooltip-bubble:nth-child(5) {\n  bottom: 170px;\n  left: -10%;\n}\n.tooltip span {\n  display: inline-block;\n  padding: 5px 10px;\n  background: #3498db;\n  color: #fff;\n  border-radius: 4px;\n  transition: background 0.3s;\n}\n.tooltip:hover span {\n  background: #ff6b6b;\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "circle"
+    ]
+  },
+  {
+    "id": "uiv-677867",
+    "title": "Giant Catfish 51",
+    "author": "Siyu1017",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.374Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Uiverse.io</span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by Siyu1017  - Tags: tooltip */\n.tooltip-container {\n  position: relative;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 1rem 0;\n  width: fit-content;\n  box-sizing: border-box;\n  --bg: linear-gradient(135deg, #a940fd, #5b46e8);\n  --color: #fff;\n  --tooltip-bg: #303030;\n  --tooltip-color: #fff;\n  --margin: 0.5rem;\n}\n\n.text {\n  z-index: 9;\n  background: var(--bg);\n  color: var(--color);\n  padding: 0.7em 1.8em;\n  border-radius: 0.75rem;\n  height: fit-content;\n  cursor: pointer;\n  font-weight: 600;\n  box-shadow: 0 4px 16px 4px rgba(0, 0, 0, 0.15);\n}\n\n.tooltip {\n  position: absolute;\n  top: calc(-1 * var(--margin));\n  left: 50%;\n  transform: translateX(-50%) translateY(0%) scale(0);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.2s;\n  background: var(--tooltip-bg);\n  color: var(--tooltip-color);\n  border-radius: 0.5rem;\n  z-index: 99999;\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: -0.2em;\n  left: 50%;\n  transform: translate(-50%) rotate(45deg);\n  background: var(--tooltip-bg);\n  border-bottom-right-radius: 0.175rem;\n}\n\n.tooltip-container:hover .tooltip {\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n  transform: translateX(-50%) translateY(-100%) scale(1);\n}",
+    "tags": [
+      "tooltip"
+    ]
+  },
+  {
+    "id": "uiv-940399",
+    "title": "Itchy Newt 24",
+    "author": "SmookyDev",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.717Z",
+    "html": "<!-- From Uiverse.io by SmookyDev  - Tags: tooltip, animation, transition, advanced, tailwind -->\n<div class=\"flex flex-col items-center group cursor-pointer font-mono\">\n  <div\n    class=\"relative px-6 py-2 after:absolute after:inset-0 z-50 w-full h-full after:bg-gradient-to-b after:from-rose-500 after:to-rose-500 after:hover:transition-all after:hover:translate-y-0 after:-z-10 after:-translate-y-[95%] after:hover:duration-[3s] text-center text-rose-300 overflow-hidden transition-all text-2xl\"\n  >\n    Blink 😀\n  </div>\n\n  <div\n    class=\"absolute group-hover:mb-10 -translate-y-[150%] group-hover:-translate-y-full flex-col items-center duration-1000 group-hover:duration-700 group-hover:flex group-hover:opacity-100 transition-all group-hover:transition-all\"\n  >\n    <div\n      class=\"transition-all h-10 duration-1000 grid grid-cols-12 grid-rows-4 group [&amp;_div]:w-full [&amp;_div]:text-transparent w-full [&amp;_div]:h-full [&amp;_div]:bg-rose-500 [&amp;_div]:text-center [&amp;_div]:flex [&amp;_div]:items-center [&amp;_div]:justify-center [&amp;_div]:text-[5px] [&amp;_div]:transition-all [&amp;_div]:duration-500 group-hover:[&amp;_div:nth-child(even)]:-skew-x-6 group-hover:[&amp;_div:nth-child(odd)]:bg-rose-700 group-hover:[&amp;_div:nth-child(even)]:bg-rose-700 group-hover:[&amp;_div:nth-child(odd)]:duration-500 group-hover:[&amp;_div:nth-child(even)]:duration-700 group-hover:[&amp;_div:nth-child(odd)]:animate-[pulse_1s_cubic-bezier(0.4,_0,_0.6,_1)_infinite] group-hover:[&amp;_div:nth-child(even)]:animate-[pulse_2s_cubic-bezier(0.4,_0,_0.6,_1)_infinite] group-hover:-translate-y-0 translate-y-[265%]\"\n    >\n      <div class=\"group-hover:-mx-4 group-hover:scale-150 group-hover:rotate-6\">\n        1\n      </div>\n      <div class=\"group-hover:-my-3 group-hover:scale-110 group-hover:rotate-6\">\n        2\n      </div>\n      <div class=\"group-hover:-group-hover:rotate-6 group-hover:scale-75\">\n        3\n      </div>\n      <div class=\"group-hover:-my-3 group-hover:scale-125 group-hover:rotate-6\">\n        4\n      </div>\n      <div class=\"group-hover:-group-hover:rotate-45 group-hover:scale-90\">\n        5\n      </div>\n      <div\n        class=\"group-hover:-my-3 group-hover:scale-110 group-hover:rotate-45\"\n      >\n        6\n      </div>\n      <div class=\"group-hover:scale-125\">7</div>\n      <div class=\"group-hover:-my-3 group-hover:scale-150 group-hover:rotate-3\">\n        8\n      </div>\n      <div class=\"group-hover:-group-hover:rotate-45\">9</div>\n      <div class=\"group-hover:-my-3 group-hover:scale-95 group-hover:rotate-12\">\n        10\n      </div>\n      <div class=\"group-hover:scale-50\">11</div>\n      <div class=\"group-hover:-my-2 group-hover:scale-150 group-hover:rotate-6\">\n        12\n      </div>\n      <div\n        class=\"group-hover:-my-3 group-hover:scale-95 group-hover:rotate-180\"\n      >\n        13\n      </div>\n      <div class=\"group-hover:-mx-2 group-hover:-my-px group-hover:rotate-6\">\n        14\n      </div>\n      <div class=\"group-hover:opacity-0\">15</div>\n      <div\n        class=\"group-hover:-my-1 group-hover:scale-95 group-hover:-group-hover:rotate-12\"\n      >\n        16\n      </div>\n      <div class=\"group-hover:scale-50 group-hover:-group-hover:rotate-12\">\n        17\n      </div>\n      <div class=\"group-hover:scale-75 group-hover:rotate-3\">18</div>\n      <div class=\"group-hover:scale-75 group-hover:-group-hover:rotate-12\">\n        19\n      </div>\n      <div class=\"\">20</div>\n      <div class=\"group-hover:opacity-0\">21</div>\n      <div class=\"group-hover:rotate-45 group-hover:-my-1\">22</div>\n      <div\n        class=\"group-hover:-my-1 group-hover:scale-95 group-hover:-group-hover:rotate-12\"\n      >\n        23\n      </div>\n      <div class=\"\">24</div>\n      <div class=\"group-hover:-mx-5 group-hover:scale-150 group-hover:rotate-6\">\n        25\n      </div>\n      <div\n        class=\"group-hover:-mx-2 group-hover:-group-hover:rotate-12 group-hover:scale-[0.5]\"\n      >\n        26\n      </div>\n      <div class=\"group-hover:rotate-45 group-hover:-my-1\">27</div>\n      <div class=\"group-hover:scale-50 group-hover:rotate-12\">28</div>\n      <div class=\"group-hover:scale-x-110 group-hover:rotate-12\">29</div>\n      <div class=\"group-hover:scale-75\">30</div>\n      <div class=\"\">31</div>\n      <div class=\"group-hover:opacity-0\">32</div>\n      <div class=\"group-hover:-group-hover:rotate-45\">33</div>\n      <div class=\"\">34</div>\n      <div class=\"group-hover:scale-50 group-hover:rotate-12\">35</div>\n      <div class=\"\">36</div>\n      <div class=\"group-hover:-mx-1 group-hover:scale-125 group-hover:rotate-6\">\n        37\n      </div>\n      <div\n        class=\"group-hover:-mx-y group-hover:scale-110 group-hover:rotate-45\"\n      >\n        38\n      </div>\n      <div class=\"group-hover:scale-50 group-hover:rotate-12\">39</div>\n      <div class=\"group-hover:-group-hover:rotate-45\">40</div>\n      <div class=\"group-hover:opacity-0\">41</div>\n      <div class=\"\">42</div>\n      <div class=\"group-hover:scale-75 group-hover:rotate-12\">43</div>\n      <div\n        class=\"group-hover:-mx-y group-hover:scale-110 group-hover:-group-hover:rotate-45\"\n      >\n        44\n      </div>\n      <div class=\"group-hover:scale-50\">45</div>\n      <div\n        class=\"group-hover:-mx-y group-hover:scale-110 group-hover:rotate-45\"\n      >\n        46\n      </div>\n      <div class=\"group-hover:mx-1 group-hover:scale-150 group-hover:rotate-6\">\n        47\n      </div>\n      <div class=\"group-hover:mx-1 group-hover:scale-125 group-hover:rotate-6\">\n        48\n      </div>\n    </div>\n\n    <span\n      class=\"relative z-10 p-2 opacity-0 group-hover:opacity-100 leading-none whitespace-no-wrap bg-gradient-to-t from-rose-500 to-rose-700 text-sm shadow-lg transition-all text-rose-300 group-hover:text-lg\"\n      >Hope You Like It 😉</span\n    >\n    <div\n      class=\"w-3 h-3 -z-20 -mt-2 opacity-0 group-hover:opacity-100 rotate-45 bg-rose-500 transition-all\"\n    ></div>\n  </div>\n</div>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-594931",
+    "title": "Plastic Dragonfly 83",
+    "author": "SmookyDev",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:33.691Z",
+    "html": "<div class=\"tooltip\">\n  <div class=\"icon\">i</div>\n  <div class=\"tooltiptext\">This is a cool tooltip!</div>\n</div>",
+    "css": "/* From Uiverse.io by SmookyDev  - Tags: simple, neumorphism, skeuomorphism, flashy, tooltip, icon, hover effect, css */\n.tooltip {\n  position: relative;\n  display: inline-block;\n  cursor: pointer;\n  font-family: \"Arial\", sans-serif;\n}\n\n.tooltip:hover .tooltiptext {\n  visibility: visible;\n  opacity: 1;\n}\n\n.tooltiptext {\n  visibility: hidden;\n  width: 200px;\n  background-color: #333;\n  color: #fff;\n  text-align: center;\n  border-radius: 5px;\n  padding: 10px;\n  position: absolute;\n  z-index: 1;\n  top: 125%;\n  left: 50%;\n  margin-left: -100px;\n  opacity: 0;\n  transition: opacity 0.3s;\n}\n\n.tooltiptext::after {\n  content: \"\";\n  position: absolute;\n  top: -10px;\n  left: 50%;\n  margin-left: -10px;\n  border-width: 10px;\n  border-style: solid;\n  border-color: transparent transparent #333 transparent;\n}\n\n.tooltip .icon {\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  background-color: #4caf50;\n  color: #fff;\n  border-radius: 50%;\n  text-align: center;\n  line-height: 20px;\n}",
+    "tags": [
+      "simple",
+      "neumorphism",
+      "skeuomorphism",
+      "flashy",
+      "tooltip",
+      "icon",
+      "hover effect",
+      "css"
+    ]
+  },
+  {
+    "id": "uiv-542094",
+    "title": "Rare Sloth 65",
+    "author": "SouravBandyopadhyay",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.197Z",
+    "html": "<div class=\"payment-button\">\n  <span class=\"label\">Pay Now</span>\n  <span class=\"price\">$49.99</span>\n</div>",
+    "css": "/* From Uiverse.io by SouravBandyopadhyay  - Tags: simple, tooltip, animation, text animation, animated, transition, hover effect, hover button */\n.payment-button {\n  --background: #007bff;\n  --text-color: #fff;\n  --hover-background: #0056b3;\n  --hover-text-color: #fff;\n  --border-radius: 4px;\n  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n\n  display: inline-block;\n  cursor: pointer;\n  font-size: 18px;\n  padding: 0.5em 1.5em;\n  background: var(--background);\n  color: var(--text-color);\n  border: none;\n  border-radius: var(--border-radius);\n  box-shadow: var(--box-shadow);\n  transition: transform 0.2s ease-in-out, background 0.3s ease-in-out,\n    color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;\n  text-transform: uppercase;\n  font-weight: 600;\n  position: relative;\n  overflow: hidden;\n}\n\n.label {\n  z-index: 1;\n}\n\n.price {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  display: grid;\n  place-items: center;\n  transform-origin: 100%;\n  transform: scale(1);\n  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out,\n    background 0.3s ease-in-out;\n  color: var(--background);\n  background: var(--text-color);\n  border-radius: var(--border-radius);\n  font-weight: bold;\n  font-size: 14px;\n  overflow: hidden;\n}\n\n.payment-button:hover {\n  transform: scale(1.05);\n  background: var(--hover-background);\n  color: var(--hover-text-color);\n  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);\n}\n\n.payment-button:hover .price {\n  transform: scale(0);\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "animation",
+      "text animation",
+      "animated",
+      "transition",
+      "hover effect",
+      "hover button"
+    ]
+  },
+  {
+    "id": "uiv-517236",
+    "title": "Ugly Pug 52",
+    "author": "SouravBandyopadhyay",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.012Z",
+    "html": "<div class=\"button\" data-tooltip=\"PRICE $20\">\n  <div class=\"button-wrapper\">\n    <div class=\"text\">Add To Cart</div>\n    <span class=\"icon\">\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        width=\"16\"\n        height=\"16\"\n        fill=\"currentColor\"\n        class=\"bi bi-cart2\"\n        viewBox=\"0 0 16 16\"\n      >\n        <path\n          d=\"M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z\"\n        ></path>\n      </svg>\n    </span>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by SouravBandyopadhyay  - Tags: simple, tooltip, black, clean, submit, transition, hover effect, tailwind */\n.button {\n  --width: 100px;\n  --height: 35px;\n  --tooltip-height: 35px;\n  --tooltip-width: 90px;\n  --gap-between-tooltip-to-button: 18px;\n  --button-color: #222;\n  --tooltip-color: #fff;\n  width: var(--width);\n  height: var(--height);\n  background: var(--button-color);\n  position: relative;\n  text-align: center;\n  border-radius: 0.5em;\n  font-family: \"Arial\";\n  transition: background 0.7s;\n}\n\n.button::before {\n  position: absolute;\n  content: attr(data-tooltip);\n  width: var(--tooltip-width);\n  height: var(--tooltip-height);\n  background-color: #555;\n  font-size: 0.9rem;\n  color: #fff;\n  border-radius: 0.25em;\n  line-height: var(--tooltip-height);\n  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);\n  left: calc(50% - var(--tooltip-width) / 2);\n}\n\n.button::after {\n  position: absolute;\n  content: \"\";\n  width: 0;\n  height: 0;\n  border: 10px solid transparent;\n  border-top-color: #555;\n  left: calc(50% - 10px);\n  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);\n}\n\n.button::after,\n.button::before {\n  opacity: 0;\n  visibility: hidden;\n  transition: all 0.5s;\n}\n\n.text {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.button-wrapper,\n.text,\n.icon {\n  overflow: hidden;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  color: #fff;\n}\n\n.text {\n  top: 0;\n}\n\n.text,\n.icon {\n  transition: top 0.5s;\n}\n\n.icon {\n  color: #fff;\n  top: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.icon svg {\n  width: 24px;\n  height: 24px;\n}\n\n.button:hover {\n  background: #222;\n}\n\n.button:hover .text {\n  top: -100%;\n}\n\n.button:hover .icon {\n  top: 0;\n}\n\n.button:hover:before,\n.button:hover:after {\n  opacity: 1;\n  visibility: visible;\n}\n\n.button:hover:after {\n  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);\n}\n\n.button:hover:before {\n  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "black",
+      "clean",
+      "submit",
+      "transition",
+      "hover effect",
+      "tailwind"
+    ]
+  },
+  {
+    "id": "uiv-600792",
+    "title": "Orange Fox 41",
+    "author": "SteveBloX",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.015Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">\n    <p class=\"title\">Title</p>\n    <p class=\"content\">\n      Lorem ipsum dolor sit amet consectetur adipisicing elit.\n    </p>\n  </span>\n  <span class=\"text\">Material Design Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by SteveBloX  - Tags: material design, tooltip, shadow, md, md3 */\n/* Material Design 3 tooltip */\n.tooltip-container {\n  position: relative;\n  background: #e8def8;\n  color: #1d192b;\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n  font-family: Montserrat, sans-serif;\n  border-radius: 50px;\n}\n.tooltip-container .text {\n  font-weight: bold;\n}\n\n.tooltip {\n  transform-origin: center left;\n  scale: 0;\n  position: absolute;\n  top: 130%;\n  left: 50%;\n  transform: translate(-50%, -10px);\n  transition: all 0.25s;\n  background: #f3edf7;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);\n  padding: 17px;\n  border-radius: 12px;\n  color: #49454f;\n  min-width: 312px;\n}\n\n.tooltip-container:hover .tooltip {\n  scale: 1;\n}\n\n.tooltip .title {\n  font-weight: bold;\n  font-size: 1em;\n}\n\n.tooltip .content {\n  font-size: 0.85em;\n  font-weight: semibold;\n}",
+    "tags": [
+      "material design",
+      "tooltip",
+      "shadow",
+      "md",
+      "md3"
+    ]
+  },
+  {
+    "id": "uiv-348041",
+    "title": "Thin Cougar 23",
+    "author": "Tsiangana",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.217Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Discover</span>\n  <span class=\"text\">\n    <div class=\"borde-back\">\n      <div class=\"icon\">\n        <svg\n          viewBox=\"0 0 16 16\"\n          class=\"bi bi-discord\"\n          height=\"23\"\n          width=\"23\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            d=\"M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z\"\n          ></path>\n        </svg>\n      </div>\n    </div>\n  </span>\n</div>",
+    "css": "/* From Uiverse.io by Tsiangana  - Tags: tooltip, gradient, hover, space, modern */\n/* This is an example, feel free to delete this code */\n.tooltip-container {\n  position: relative;\n  background-color: #ff3cac;\n  background-image: linear-gradient(\n    225deg,\n    #ff3cac 0%,\n    #784ba0 50%,\n    #2b86c5 100%\n  );\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  /*padding: 0.7em 1.8em;*/\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  fill: #fff;\n  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);\n  border: 1px solid rgba(255, 255, 255, 0.18);\n}\n.tooltip-container .borde-back {\n  width: 60px;\n  height: 60px;\n  background-color: #e8e8e8;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 50%;\n  box-shadow: none;\n}\n\n.tooltip-container .icon {\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  z-index: 10;\n  background-color: #ff3cac;\n  background-image: linear-gradient(\n    225deg,\n    #ff3cac 0%,\n    #784ba0 50%,\n    #2b86c5 100%\n  );\n  cursor: pointer;\n}\n\n.tooltip {\n  position: absolute;\n  top: -2;\n  left: -45px; /* Altere a posição inicial para a esquerda, fora da tela */\n  transform: translateX(\n    -32%\n  ); /* Usando translateX para controlar a transição da esquerda para a direita */\n  width: 160px;\n  height: 52px;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.6s;\n  border-radius: 50px;\n  background-color: #ff3cac;\n  background-image: linear-gradient(\n    225deg,\n    #ff3cac 0%,\n    #784ba0 50%,\n    #2b86c5 100%\n  );\n  display: flex;\n  align-items: center;\n  justify-content: right;\n  padding-right: 16px;\n  color: #fff;\n  font-size: 18px;\n  font-family: sans-serif;\n  font-weight: 800px;\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  right: -0.2em; /* Mude para a direita */\n  top: 50%; /* Altere o topo para o meio da tooltip */\n  transform: translateY(-50%) rotate(45deg); /* Use translateY para centralizar verticalmente */\n  background: var(--background);\n}\n\n.tooltip-container:hover .tooltip {\n  left: 100%; /* Altere para a posição desejada (a direita) */\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n  z-index: -10;\n}\n.tooltip-container:hover {\n  transform: translateX(-50px);\n  transition: 0.5s linear;\n}",
+    "tags": [
+      "tooltip",
+      "gradient",
+      "hover",
+      "space",
+      "modern"
+    ]
+  },
+  {
+    "id": "uiv-128033",
+    "title": "Rare Goose 44",
+    "author": "Yassin6up",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.013Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Uiverse.io</span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by Yassin6up  - Tags: simple, material design, tooltip, subscription, 3d, action, black */\n/* This is an example, feel free to delete this code */\n.tooltip-container {\n  --background: #22d3ee;\n  position: relative;\n  background: var(--background);\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n  border-radius: 10px;\n  color: white;\n  box-shadow: 0 0 10px var(--background);\n}\n\n.tooltip {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  background: var(--background);\n  border-radius: 10px;\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: -0.2em;\n  left: 50%;\n  transform: translate(-50%) rotate(45deg);\n  background: var(--background);\n}\n\n.tooltip-container:hover .tooltip {\n  top: -100%;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n  animation: 1s animated infinite alternate;\n}\n\n@keyframes animated {\n  from {\n    transform: translate(0) translateY(10px);\n  }\n  to {\n    transform: translate(-100%) translateY(0);\n  }\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "tooltip",
+      "subscription",
+      "3d",
+      "action",
+      "black"
+    ]
+  },
+  {
+    "id": "uiv-834141",
+    "title": "Wise Newt 71",
+    "author": "ahmedyasserdev",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.048Z",
+    "html": "<!-- From Uiverse.io by ahmedyasserdev  - Tags: tooltip, tailwind, tailwindbutton, tailwindcss -->\n<button\n  class=\"group relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-green-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800\"\n>\n  <span\n    class=\"relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0\"\n    >Hover For Tooltip</span\n  >\n  <div class=\"hidden group-hover:block\">\n    <div\n      class=\"group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-white bg-purple-800\"\n    >\n      <div class=\"rounded-sm bg-black py-1 px-2\">\n        <p class=\"whitespace-nowrap\">This is a fancy tooltip.</p>\n      </div>\n      <div\n        class=\"h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-black\"\n      ></div>\n    </div>\n  </div>\n</button>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-698104",
+    "title": "Bad Sloth 57",
+    "author": "andrew-demchenk0",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.015Z",
+    "html": "<div class=\"container\">\n  <input type=\"checkbox\" id=\"showCheckbox\" class=\"toggle-checkbox\" />\n  <label for=\"showCheckbox\" class=\"toggle-label\">Show Tooltip</label>\n\n  <div id=\"popup\" class=\"popup\">\n    <label for=\"showCheckbox\" class=\"close-label\"></label>\n    <p>I am looking for a job. Trainee/junior React dev. <br />📍Ukraine.</p>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by andrew-demchenk0  - Tags: tooltip, animation, action, green, button, hover, click, border */\n.container {\n  position: relative;\n  --main-color: #19e68c;\n  --dark-color: #222;\n  --bg-light: #fff;\n  --dark-alternative: #666;\n}\n\n.popup {\n  display: none;\n  padding: 10px 20px;\n  position: absolute;\n  width: 200px;\n  top: -100%;\n  left: -25%;\n  background-color: var(--bg-light);\n  border: 1.5px solid var(--dark-alternative);\n  border-radius: 2px;\n  animation: slideIn 1s;\n}\n\n.toggle-checkbox {\n  display: none;\n}\n\n.toggle-label {\n  position: relative;\n  padding: 10px;\n  background-color: var(--main-color);\n  color: var(--dark-color);\n  font-weight: 600;\n  cursor: help;\n  display: inline-block;\n  border: 2px solid var(--dark-color);\n  border-radius: 3px;\n  box-shadow: 2px 2px var(--dark-color);\n  transition: 0.5s;\n}\n\n.toggle-label::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  animation: pulsate 0.7s infinite;\n}\n\n.toggle-label:hover::before {\n  animation: none;\n}\n\n.toggle-label:active {\n  transform: translate(2px, 2px);\n  box-shadow: 0px 0px var(--dark-color);\n}\n\n.close-label {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  width: 20px;\n  height: 20px;\n}\n.close-label::before {\n  content: \"⊗\";\n  font-size: 22px;\n  position: absolute;\n  top: -7px;\n  left: 0;\n  color: var(--dark-alternative);\n  cursor: pointer;\n}\n.toggle-checkbox:checked ~ .popup {\n  display: block;\n}\n.toggle-checkbox:checked ~ .toggle-label {\n  opacity: 0;\n}\n\n@keyframes slideIn {\n  0% {\n    transform: translateX(200%);\n    opacity: 0;\n  }\n  50% {\n    transform: translateX(200%);\n    opacity: 0;\n  }\n  70% {\n    transform: translateX(-10%);\n    opacity: 0.5;\n  }\n  80% {\n    transform: translateX(5%);\n  }\n  90% {\n    transform: translateX(-5%);\n  }\n  100% {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n\n@keyframes pulsate {\n  0% {\n    box-shadow: 0 0 -5px rgba(255, 255, 255, 1);\n  }\n  50% {\n    box-shadow: 0 0 10px var(--dark-color);\n  }\n  100% {\n    box-shadow: 0 0 -5px rgb(255, 255, 255);\n  }\n}",
+    "tags": [
+      "tooltip",
+      "animation",
+      "action",
+      "green",
+      "button",
+      "hover",
+      "click",
+      "border"
+    ]
+  },
+  {
+    "id": "uiv-681547",
+    "title": "Terrible Emu 64",
+    "author": "bociKond",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.046Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      viewBox=\"0 0 64 64\"\n      height=\"64\"\n      width=\"64\"\n      class=\"svg\"\n    >\n      <path\n        d=\"M50.27 6.44997C47.2255 5.1936 43.8836 4.84045 40.6437 5.43274C37.4039 6.02503 34.4031 7.5377 32 9.78997C23.57 2.35997 13.8 4.63997 8.05998 10.14C2.05998 15.88 -0.590017 26.14 7.68998 35.14C8.22998 35.83 31 58.46 31 58.46C31.2829 58.7415 31.6658 58.8995 32.065 58.8995C32.4641 58.8995 32.847 58.7415 33.13 58.46L56.34 35.21C58.4116 33.1493 59.9346 30.603 60.7702 27.8031C61.6058 25.0032 61.7275 22.0387 61.1241 19.1797C60.5207 16.3207 59.2114 13.6582 57.3156 11.4348C55.4197 9.21134 52.9976 7.49768 50.27 6.44997V6.44997Z\"\n      ></path>\n    </svg>\n    <svg\n      viewBox=\"0 0 48 48\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      data-name=\"Layer 1\"\n      id=\"Layer_1\"\n      class=\"svg\"\n    >\n      <path\n        d=\"M42.455,31.235l-2.267-2.266a5.274,5.274,0,0,0-7.459,0l-1.3,1.3a3.287,3.287,0,0,1-4.132.409A35.791,35.791,0,0,1,17.322,20.7a3.283,3.283,0,0,1,.409-4.132l1.3-1.3a5.274,5.274,0,0,0,0-7.459L16.765,5.545a5.279,5.279,0,0,0-7.459,0L6.8,8.054a9.535,9.535,0,0,0-2.769,7.484A21.294,21.294,0,0,0,8.232,26.7,65.334,65.334,0,0,0,21.3,39.769a21.3,21.3,0,0,0,11.162,4.2c.246.018.491.028.736.028a9.536,9.536,0,0,0,6.748-2.8l2.509-2.509a5.274,5.274,0,0,0,0-7.459Z\"\n      ></path>\n    </svg>\n    <svg\n      xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      xml:space=\"preserve\"\n      viewBox=\"0 0 24 24\"\n      version=\"1.1\"\n      style=\"enable-background:new 0 0 24 24;\"\n      class=\"svg\"\n    >\n      <g id=\"info\"></g>\n      <g id=\"icons\">\n        <path\n          id=\"share\"\n          d=\"M21.7,10.2l-6.6-6C14.6,3.7,14,4.2,14,5v3c-4.7,0-8.7,2.9-10.6,6.8c-0.7,1.3-1.1,2.7-1.4,4.1   c-0.2,1,1.3,1.5,1.9,0.6C6.1,16,9.8,13.7,14,13.7V17c0,0.8,0.6,1.3,1.1,0.8l6.6-6C22.1,11.4,22.1,10.6,21.7,10.2z\"\n        ></path>\n      </g>\n    </svg>\n  </span>\n  <span class=\"text\">+</span>\n</div>",
+    "css": "/* From Uiverse.io by bociKond  - Website: https://codepen.io/milanraring/pen/JjoamZx - Name: Milan Raring - Tags: simple, tooltip, social, notification */\n.tooltip-container {\n  --white: #f2f2f2;\n  --background: #1f8392;\n  position: relative;\n  background: var(--background);\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 2rem;\n  font-weight: 900;\n  color: var(--white);\n  width: 5rem;\n  aspect-ratio: 1/1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 50%;\n}\n\n.tooltip {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  background: var(--background);\n  transition: all 300ms;\n  fill: white;\n\n  display: flex;\n  align-items: center;\n  gap: 0.3rem;\n  border-radius: 30rem;\n}\n.tooltip .svg {\n  height: 3rem;\n  aspect-ratio: 1/1;\n  cursor: pointer;\n}\n.tooltip .svg:nth-child(2) {\n  width: 4rem;\n}\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: -0.2em;\n  left: 50%;\n  transform: translate(-50%) rotate(45deg);\n  background: var(--background);\n}\n.tooltip-container .text {\n  transition: all 600ms;\n}\n.tooltip-container:hover .text {\n  transform: rotate(225deg);\n}\n.tooltip-container:hover .tooltip {\n  top: -100%;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "social",
+      "notification"
+    ]
+  },
+  {
+    "id": "uiv-677466",
+    "title": "Ordinary Owl 54",
+    "author": "csemszepp",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.013Z",
+    "html": "<div class=\"container\">\n  <div id=\"wrapper\">\n    <header>\n      <div class=\"iconDiv\" tabindex=\"0\">\n        <div class=\"iconSVG\">\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            class=\"h-6 w-6\"\n            fill=\"none\"\n            viewBox=\"0 0 24 24\"\n            stroke=\"currentColor\"\n            stroke-width=\"1\"\n          >\n            <path\n              stroke-linecap=\"round\"\n              stroke-linejoin=\"round\"\n              d=\"M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z\"\n            ></path>\n          </svg>\n        </div>\n        <span class=\"text\">Load File</span>\n      </div>\n      <div class=\"iconDiv\" tabindex=\"0\">\n        <div class=\"iconSVG\">\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            class=\"h-6 w-6\"\n            fill=\"none\"\n            viewBox=\"0 0 24 24\"\n            stroke=\"currentColor\"\n            stroke-width=\"1\"\n          >\n            <path\n              stroke-linecap=\"round\"\n              stroke-linejoin=\"round\"\n              d=\"M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4\"\n            ></path>\n          </svg>\n        </div>\n        <span class=\"text\">Download</span>\n      </div>\n      <div class=\"spacer\"></div>\n      <div class=\"divider\"></div>\n      <div class=\"iconDiv\" tabindex=\"0\">\n        <div class=\"iconSVG\">\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            class=\"h-6 w-6\"\n            fill=\"none\"\n            viewBox=\"0 0 24 24\"\n            stroke=\"currentColor\"\n            stroke-width=\"1\"\n          >\n            <path\n              stroke-linecap=\"round\"\n              stroke-linejoin=\"round\"\n              d=\"M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9\"\n            ></path>\n          </svg>\n        </div>\n        <span class=\"text\">Notifications</span>\n      </div>\n      <div class=\"iconDiv\" tabindex=\"0\">\n        <div class=\"iconSVG\">\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            class=\"h-6 w-6\"\n            fill=\"none\"\n            viewBox=\"0 0 24 24\"\n            stroke=\"currentColor\"\n            stroke-width=\"1\"\n          >\n            <path\n              stroke-linecap=\"round\"\n              stroke-linejoin=\"round\"\n              d=\"M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z\"\n            ></path>\n          </svg>\n        </div>\n        <span class=\"text\">Log out </span>\n      </div>\n    </header>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by csemszepp  - Website: https://codepen.io/Adir-SL - Name: Adir - Tags: tooltip, animation, minimalist */\n.container {\n  background-color: black;\n  color: rgb(132, 170, 218);\n  font-family: \"Inter\", sans-serif;\n  font-size: 14px;\n}\n.container::before {\n  content: \"Hover or tap the icons.\";\n  font-size: 14px;\n  position: absolute;\n  left: 50%;\n  top: calc(50% - 100px);\n  transform: translate(-50%, -50%);\n}\n.container::after {\n  position: absolute;\n  bottom: 36px;\n  right: 36px;\n}\n#wrapper {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: absolute;\n  inset: 0;\n}\nheader {\n  width: 340px;\n  padding: 0 16px;\n  display: flex;\n  border: 1px solid rgb(83, 100, 124);\n  border-radius: 16px;\n}\n.iconDiv {\n  height: 36px;\n  width: 36px;\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 4px;\n  padding: 4px;\n  border-radius: 8px;\n  display: inline-flex;\n  align-items: center;\n  white-space: nowrap;\n  overflow: hidden;\n  cursor: pointer;\n  transition: width 300ms ease-in-out 0s, background-color 300ms linear 200ms;\n}\n.iconSVG {\n  height: 36px;\n  aspect-ratio: 1 / 1;\n}\n.iconDiv:hover,\n.iconDiv:focus-visible {\n  width: 142px;\n  background-color: rgb(34, 52, 77);\n  transition: width 300ms ease-in-out 0s, background-color 100ms linear 0s;\n}\n.iconDiv:focus-visible {\n  outline: 1px solid rgb(34, 52, 77);\n  outline-offset: 4px;\n}\n.iconDiv:active {\n  opacity: 0.9;\n}\n.iconDiv::after {\n  content: attr(tooltip);\n  margin-left: 12px;\n  animation: fadeIn 600ms linear forwards;\n}\n.spacer {\n  flex-grow: 1;\n}\n.divider {\n  height: 36px;\n  width: 1px;\n  margin: 24px 18px;\n  background-color: rgb(83, 100, 124);\n}\n\n@keyframes fadeIn {\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.text {\n  padding-left: 10px;\n}",
+    "tags": [
+      "tooltip",
+      "animation",
+      "minimalist"
+    ]
+  },
+  {
+    "id": "uiv-976118",
+    "title": "Serious Seahorse 3",
+    "author": "eduardojsc18",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.005Z",
+    "html": "<!-- From Uiverse.io by eduardojsc18  - Tags: tooltip, tailwind, tailwindcss, attr, data-tooltip, information -->\n<div class=\"flex flex-col gap-3 text-center items-center\">\n  <button\n    class=\"px-3 py-2 rounded-md border border-neutral-300 bg-neutral-200 hover:bg-neutral-300 text-sm font-medium text-neutral-600 relative z-[9999999999] relative z-[9999999999] data-[tooltip]:after:content-[attr(data-tooltip)] data-[tooltip]:after:invisible data-[tooltip]:after:scale-50 data-[tooltip]:after:origin-bottom data-[tooltip]:after:opacity-0 hover:data-[tooltip]:after:visible hover:data-[tooltip]:after:opacity-100 hover:data-[tooltip]:after:scale-100 data-[tooltip]:after:transition-all data-[tooltip]:after:absolute data-[tooltip]:after:bg-black data-[tooltip]:after:bottom-[calc(100%+4px)] data-[tooltip]:after:left-1/2 data-[tooltip]:after:-translate-x-1/2 data-[tooltip]:after:-z-[1] data-[tooltip]:after:px-1.5 data-[tooltip]:after:py-1 data-[tooltip]:after:min-h-fit data-[tooltip]:after:min-w-fit data-[tooltip]:after:rounded-md data-[tooltip]:after:drop-shadow data-[tooltip]:before:drop-shadow data-[tooltip]:after:text-center data-[tooltip]:after:text-white data-[tooltip]:after:whitespace-nowrap data-[tooltip]:after:text-[10px] data-[tooltip]:before:invisible data-[tooltip]:before:opacity-0 hover:data-[tooltip]:before:visible hover:data-[tooltip]:before:opacity-100 data-[tooltip]:before:transition-all data-[tooltip]:before:bg-black data-[tooltip]:before:[clip-path:polygon(100%_0,0_0,50%_100%)] data-[tooltip]:before:absolute data-[tooltip]:before:bottom-full data-[tooltip]:before:left-1/2 data-[tooltip]:before:-translate-x-1/2 data-[tooltip]:before:z-0 data-[tooltip]:before:w-3 data-[tooltip]:before:h-[4px]\"\n    data-tooltip=\"👋🏻👽 Hi!\"\n  >\n    Tooltip me 👀\n  </button>\n  tooltip using after:content-[attr()]\n  <p>I recommend using it within tailwind's global css.</p>\n</div>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-608614",
+    "title": "Slimy Bobcat 84",
+    "author": "elijahgummer",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.028Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Uiverse.io</span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by elijahgummer  - Tags: simple, tooltip, animation, blue, modern, transition */\n.tooltip-container {\n  --background: #22d3ee;\n  position: relative;\n  background: var(--background);\n  cursor: pointer;\n  transition: background 0.3s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n}\n\n.tooltip {\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%) translateY(-10%); /* Adjusted the initial position */\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);\n  background: var(--background);\n  color: #fff;\n  border-radius: 0.3em;\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\n  text-align: center;\n  font-size: 14px;\n  width: 120%; /* Adjusted the width */\n  padding: 0.5em 1em; /* Adjusted padding */\n  white-space: nowrap; /* Prevent text wrapping */\n}\n\n.tooltip-container:hover .tooltip {\n  top: -100%; /* Adjusted the tooltip position */\n  opacity: 1;\n  pointer-events: auto;\n  transform: translateX(-50%) translateY(0);\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "animation",
+      "blue",
+      "modern",
+      "transition"
+    ]
+  },
+  {
+    "id": "uiv-545004",
+    "title": "Angry Dragonfly 22",
+    "author": "iammar99",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.078Z",
+    "html": "<div class=\"wrapper\">\n  <input type=\"checkbox\" />\n  <div class=\"btn\"></div>\n  <div class=\"tooltip\">\n    <svg></svg>\n    <svg></svg>\n    <svg></svg>\n  </div>\n  <svg></svg>\n</div>\n\n<svg style=\"display: none;\" xmlns=\"http://www.w3.org/2000/svg\">\n  <symbol id=\"icon-01\" viewBox=\"0 0 26 22\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path\n      transform=\"translate(0 -2)\"\n      d=\"M18.29,5.76l-.7-1.37A2.59,2.59,0,0,0,15.29,3H10.71a2.59,2.59,0,0,0-2.3,1.39l-.7,1.37a2.6,2.6,0,0,1-2.3,1.39H3.58A2.57,2.57,0,0,0,1,9.71V20.44A2.57,2.57,0,0,0,3.58,23H22.42A2.57,2.57,0,0,0,25,20.44V9.71a2.57,2.57,0,0,0-2.58-2.56H20.59A2.6,2.6,0,0,1,18.29,5.76Z\"\n    ></path>\n    <ellipse ry=\"4.49\" rx=\"4.52\" cy=\"12.99\" cx=\"13\"></ellipse>\n  </symbol>\n  <symbol id=\"icon-02\" viewBox=\"0 0 26 22\" xmlns=\"http://www.w3.org/2000/svg\">\n    <line y2=\"9.42\" x2=\"25\" y1=\"12.58\" x1=\"25\"></line>\n    <line y2=\"7.84\" x2=\"21\" y1=\"14.16\" x1=\"21\"></line>\n    <line y2=\"6.26\" x2=\"17\" y1=\"15.74\" x1=\"17\"></line>\n    <line y2=\"1\" x2=\"13\" y1=\"21\" x1=\"13\"></line>\n    <line y2=\"4.68\" x2=\"9\" y1=\"17.32\" x1=\"9\"></line>\n    <line y2=\"8.37\" x2=\"5\" y1=\"13.63\" x1=\"5\"></line>\n    <line y2=\"10.47\" x2=\"1\" y1=\"11.53\" x1=\"1\"></line>\n  </symbol>\n  <symbol id=\"icon-03\" viewBox=\"0 0 26 22\" xmlns=\"http://www.w3.org/2000/svg\">\n    <polygon\n      points=\"8.08 10 1 21 25 21 18.09 12.66 13.78 17.45 8.08 10\"\n    ></polygon>\n    <circle r=\"3\" cy=\"4\" cx=\"8\"></circle>\n  </symbol>\n\n  <symbol\n    id=\"shape-01\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <polygon\n      points=\"155.77 140.06 141.08 152.42 159.12 158.96 155.77 140.06\"\n      stroke=\"var(--shape-color-03)\"\n    ></polygon>\n  </symbol>\n  <symbol\n    id=\"shape-02\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <g stroke=\"var(--shape-color-02)\">\n      <line y2=\"152.29\" x2=\"141.54\" y1=\"146.73\" x1=\"158.66\"></line>\n      <line y2=\"158.07\" x2=\"152.88\" y1=\"140.95\" x1=\"147.32\"></line>\n    </g>\n  </symbol>\n  <symbol\n    id=\"shape-03\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <circle\n      r=\"13\"\n      cy=\"149.51\"\n      cx=\"150.1\"\n      stroke=\"var(--shape-color-01)\"\n    ></circle>\n  </symbol>\n  <symbol\n    id=\"shape-04\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <circle r=\"4\" cy=\"149.51\" cx=\"150.1\" fill=\"var(--shape-color-01)\"></circle>\n  </symbol>\n  <symbol\n    id=\"shape-05\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <rect\n      transform=\"translate(40.44 -31.76) rotate(13.94)\"\n      height=\"18\"\n      width=\"18\"\n      y=\"140.51\"\n      x=\"141.1\"\n      stroke=\"var(--shape-color-03)\"\n    ></rect>\n  </symbol>\n  <symbol\n    id=\"shape-06\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <g stroke=\"var(--shape-color-02)\">\n      <line y2=\"146.24\" x2=\"141.72\" y1=\"152.78\" x1=\"158.48\"></line>\n      <line y2=\"157.89\" x2=\"146.83\" y1=\"141.13\" x1=\"153.37\"></line>\n    </g>\n  </symbol>\n  <symbol\n    id=\"shape-07\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <rect\n      transform=\"translate(-42.94 62.23) rotate(-20.56)\"\n      height=\"24\"\n      width=\"24\"\n      y=\"137.51\"\n      x=\"138.1\"\n      stroke=\"var(--shape-color-03)\"\n    ></rect>\n  </symbol>\n\n  <symbol\n    id=\"shape-08\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <circle r=\"4\" cy=\"149.51\" cx=\"150.1\" fill=\"var(--shape-color-01)\"></circle>\n  </symbol>\n  <symbol\n    id=\"shape-09\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <circle\n      r=\"8\"\n      cy=\"149.51\"\n      cx=\"150.1\"\n      stroke=\"var(--shape-color-01)\"\n    ></circle>\n  </symbol>\n</svg>",
+    "css": "/* From Uiverse.io by iammar99  - Website: https://codepen.io/milanraring/pen/JjoamZx - Name: Milan Raring - Tags: tooltip, button, click, menu, tooltip on click, animated tooltip */\n.wrapper {\n  --background: #62abff;\n  --icon-color: #414856;\n  --shape-color-01: #b8cbee;\n  --shape-color-02: #7691e8;\n  --shape-color-03: #fdd053;\n  --width: 90px;\n  --height: 90px;\n  --border-radius: var(--height);\n  width: var(--width);\n  height: var(--height);\n  position: relative;\n  border-radius: var(--border-radius);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.wrapper .btn {\n  background: var(--background);\n  width: var(--width);\n  height: var(--height);\n  position: relative;\n  z-index: 3;\n  border-radius: var(--border-radius);\n  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -webkit-animation: plus-animation-reverse 0.5s ease-out forwards;\n  animation: plus-animation-reverse 0.5s ease-out forwards;\n}\n.wrapper .btn::before,\n.wrapper .btn::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  border-radius: 4px;\n  background: #fff;\n}\n.wrapper .btn::before {\n  width: 4px;\n  height: 28px;\n}\n.wrapper .btn::after {\n  width: 28px;\n  height: 4px;\n}\n.wrapper .tooltip {\n  width: 90px;\n  height: 75px;\n  border-radius: 70px;\n  position: absolute;\n  background: #fff;\n  z-index: 2;\n  padding: 0 15px;\n  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);\n  opacity: 0;\n  top: 0;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  transition: opacity 0.15s ease-in, top 0.15s ease-in, width 0.15s ease-in;\n}\n.wrapper .tooltip > svg {\n  width: 100%;\n  height: 26px;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  cursor: pointer;\n}\n.wrapper .tooltip > svg .icon {\n  fill: none;\n  stroke: var(--icon-color);\n  stroke-width: 2px;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  opacity: 0.4;\n  transition: opacity 0.3s ease;\n}\n.wrapper .tooltip > svg:hover .icon {\n  opacity: 1;\n}\n.wrapper .tooltip::after {\n  content: \"\";\n  width: 20px;\n  height: 20px;\n  background: #fff;\n  border-radius: 3px;\n  position: absolute;\n  left: 50%;\n  margin-left: -10px;\n  bottom: -8px;\n  transform: rotate(45deg);\n  z-index: 0;\n}\n.wrapper > svg {\n  width: 300px;\n  height: 300px;\n  position: absolute;\n  z-index: 1;\n  transform: scale(0);\n}\n.wrapper > svg .shape {\n  fill: none;\n  stroke: none;\n  stroke-width: 3px;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  transform-origin: 50% 20%;\n}\n.wrapper input {\n  height: 100%;\n  width: 100%;\n  border-radius: var(--border-radius);\n  cursor: pointer;\n  position: absolute;\n  z-index: 5;\n  opacity: 0;\n}\n.wrapper input:checked ~ svg {\n  -webkit-animation: pang-animation 1.2s ease-out forwards;\n  animation: pang-animation 1.2s ease-out forwards;\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(1) {\n  transform: translate(3px, 30%) rotate(40deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(2) {\n  transform: translate(-9px, 30%) rotate(80deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(3) {\n  transform: translate(-2px, 30%) rotate(120deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(4) {\n  transform: translate(25px, 30%) rotate(160deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(5) {\n  transform: translate(12px, 30%) rotate(200deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(6) {\n  transform: translate(-15px, 30%) rotate(240deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(7) {\n  transform: translate(22px, 30%) rotate(280deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(8) {\n  transform: translate(3px, 30%) rotate(320deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(9) {\n  transform: translate(11px, 30%) rotate(360deg);\n}\n.wrapper input:checked ~ .btn {\n  -webkit-animation: plus-animation 0.5s ease-out forwards;\n  animation: plus-animation 0.5s ease-out forwards;\n}\n.wrapper input:checked ~ .tooltip {\n  width: 190px;\n  height: 70px;\n  -webkit-animation: stretch-animation 1s ease-out forwards 0.15s;\n  animation: stretch-animation 1s ease-out forwards 0.15s;\n  top: -90px;\n  opacity: 1;\n}\n\n@-webkit-keyframes pang-animation {\n  0% {\n    transform: scale(0);\n    opacity: 0;\n  }\n  40% {\n    transform: scale(1);\n    opacity: 1;\n  }\n  100% {\n    transform: scale(1.1);\n    opacity: 0;\n  }\n}\n\n@keyframes pang-animation {\n  0% {\n    transform: scale(0);\n    opacity: 0;\n  }\n  40% {\n    transform: scale(1);\n    opacity: 1;\n  }\n  100% {\n    transform: scale(1.1);\n    opacity: 0;\n  }\n}\n@-webkit-keyframes plus-animation {\n  0% {\n    transform: rotate(0) scale(1);\n  }\n  20% {\n    transform: rotate(60deg) scale(0.93);\n  }\n  55% {\n    transform: rotate(35deg) scale(0.97);\n  }\n  80% {\n    transform: rotate(48deg) scale(0.94);\n  }\n  100% {\n    transform: rotate(45deg) scale(0.95);\n  }\n}\n@keyframes plus-animation {\n  0% {\n    transform: rotate(0) scale(1);\n  }\n  20% {\n    transform: rotate(60deg) scale(0.93);\n  }\n  55% {\n    transform: rotate(35deg) scale(0.97);\n  }\n  80% {\n    transform: rotate(48deg) scale(0.94);\n  }\n  100% {\n    transform: rotate(45deg) scale(0.95);\n  }\n}\n@-webkit-keyframes plus-animation-reverse {\n  0% {\n    transform: rotate(45deg) scale(0.95);\n  }\n  20% {\n    transform: rotate(-15deg);\n  }\n  55% {\n    transform: rotate(10deg);\n  }\n  80% {\n    transform: rotate(-3deg);\n  }\n  100% {\n    transform: rotate(0) scale(1);\n  }\n}\n@keyframes plus-animation-reverse {\n  0% {\n    transform: rotate(45deg) scale(0.95);\n  }\n  20% {\n    transform: rotate(-15deg);\n  }\n  55% {\n    transform: rotate(10deg);\n  }\n  80% {\n    transform: rotate(-3deg);\n  }\n  100% {\n    transform: rotate(0) scale(1);\n  }\n}\n@-webkit-keyframes stretch-animation {\n  0% {\n    transform: scale(1, 1);\n  }\n  10% {\n    transform: scale(1.1, 0.9);\n  }\n  30% {\n    transform: scale(0.9, 1.1);\n  }\n  50% {\n    transform: scale(1.05, 0.95);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n@keyframes stretch-animation {\n  0% {\n    transform: scale(1, 1);\n  }\n  10% {\n    transform: scale(1.1, 0.9);\n  }\n  30% {\n    transform: scale(0.9, 1.1);\n  }\n  50% {\n    transform: scale(1.05, 0.95);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}",
+    "tags": [
+      "tooltip",
+      "button",
+      "click",
+      "menu",
+      "tooltip on click",
+      "animated tooltip"
+    ]
+  },
+  {
+    "id": "uiv-316440",
+    "title": "Clever Lizard 46",
+    "author": "johnliter",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.012Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Uiverse.io</span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by johnliter  - Tags: simple, flashy, tooltip, button, theme-switch, code, gradients, light&dark */\n/* Style for the tooltip container */\n.tooltip-container {\n  --background-light: #ff5555; /* Red */\n  --background-dark: #000000; /* Black */\n  --text-color-light: #ffffff;\n  --text-color-dark: #ffffff;\n  --bubble-size: 12px;\n  --glow-color: rgba(255, 255, 255, 0.5); /* Brighter glow color */\n\n  position: relative;\n  background: var(--background-light);\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n  color: var(--text-color-light);\n  border-radius: 8px; /* Rounded edges */\n}\n\n/* Style for the bubble tooltip */\n.tooltip {\n  position: absolute;\n  top: -100%; /* Initially hidden above the container */\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 0.6em 1em;\n  opacity: 0;\n  visibility: hidden;\n  pointer-events: none;\n  transition: all 0.3s;\n  border-radius: var(--bubble-size);\n  background: var(--background-light);\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n}\n\n/* Triangle arrow for the bubble tooltip */\n.tooltip::before {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translate(-50%);\n  border-style: solid;\n  border-width: 8px 8px 0;\n  border-color: var(--background-light) transparent transparent;\n}\n\n/* Tooltip appearance on hover */\n.tooltip-container:hover {\n  background: var(--background-dark);\n  color: var(--text-color-dark);\n  box-shadow: 0 0 20px var(--glow-color); /* Brighter glow effect */\n}\n\n.tooltip-container:hover .tooltip {\n  top: -120%; /* Adjusted position for the bubble tooltip */\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}",
+    "tags": [
+      "simple",
+      "flashy",
+      "tooltip",
+      "button",
+      "theme-switch",
+      "code",
+      "gradients",
+      "light&dark"
+    ]
+  },
+  {
+    "id": "uiv-949071",
+    "title": "Quiet Cougar 91",
+    "author": "kyle1dev",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.072Z",
+    "html": "<div class=\"tooltip-wrapper\">\n  <button class=\"tooltip-button\">\n    <span class=\"tooltip-text\">Hover me</span>\n  </button>\n  <div class=\"tooltip-content\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\">\n      <path\n        d=\"M13 13h-2v-2h2v2zm0 4h-2v-2h2v2zm1-18h-8v2h8v-2zm0 20h-8v-2h8v2zm5.5-7h-2v-2h2v2zm-7 0h-2v-2h2v2zm1-10h-2v6h2v-6zm6.5 5.5h-1.5v1.5h1.5v-1.5zM4.5 16.5h1.5v1.5h-1.5v-1.5zm12-5h-2v-2h2v2zm-4 4h-2v-2h2v2zm5-3h-2v-2h2v2zm-7 0h-2v-2h2v2zm-3-5h-2v2h2v-2zm-4 8.5h1.5v1.5h-1.5v-1.5zm4.5-12h-2v2h2v-2zm10 1h-2v2h2v-2zm-7 3h-2v2h2v-2zm6 5h-2v-2h2v2zm-7-6h-2v-2h2v2zM6 13H4v-2h2v2zm12 6h-2v-2h2v2zM9 4H7v2h2V4zm11 0h-2v2h2V4z\"\n      ></path>\n    </svg>\n    Uiverse.io\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by kyle1dev  - Tags: tooltip */\n.tooltip-wrapper {\n  position: relative;\n  display: inline-block;\n}\n.tooltip-wrapper .tooltip-content {\n  visibility: hidden;\n  background: linear-gradient(to right, #000, #333);\n  color: #fff;\n  text-align: center;\n  border-radius: 6px;\n  padding: 8px 12px;\n  position: absolute;\n  z-index: 1;\n  bottom: 125%;\n  left: 50%;\n  transform: translateX(-50%) translateY(10px);\n  opacity: 0;\n  transition:\n    visibility 0s linear 0.4s,\n    opacity 0.4s ease,\n    transform 0.4s ease;\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);\n  white-space: nowrap;\n  pointer-events: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n}\n.tooltip-wrapper:hover .tooltip-content {\n  visibility: visible;\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n  transition-delay: 0s;\n}\n.tooltip-wrapper:not(:hover) .tooltip-content {\n  visibility: visible;\n  transition-delay: 0s, 0.4s;\n}\n.tooltip-button {\n  background: linear-gradient(to right, #333, #000);\n  border: none;\n  color: white;\n  padding: 15px 30px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 4px 2px;\n  cursor: pointer;\n  border-radius: 6px;\n  position: relative;\n  overflow: hidden;\n  transition:\n    background 0.3s ease,\n    box-shadow 0.3s ease;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);\n}\n.tooltip-button:hover {\n  background: linear-gradient(to right, #000, #333);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);\n}\n.tooltip-button:active {\n  background: #222;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);\n  transform: scale(0.95);\n}\n.tooltip-button .tooltip-text {\n  position: relative;\n  display: inline-block;\n  transition: transform 0.4s ease;\n}\n.tooltip-button:hover .tooltip-text {\n  transform: translateY(-10px);\n}\n.tooltip-content svg {\n  fill: #fff;\n  width: 16px;\n  height: 16px;\n}",
+    "tags": [
+      "tooltip"
+    ]
+  },
+  {
+    "id": "uiv-388730",
+    "title": "Modern Ladybug 94",
+    "author": "lvloper",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.070Z",
+    "html": "<!-- From Uiverse.io by lvloper  - Tags: tooltip -->\n<div\n  class=\"overflow-x-visible relative w-14 h-14 overflow-y-clip group text-center\"\n>\n  <div\n    class=\"flex justify-center items-center w-14 h-14 rounded-full bg-yellow-300 transition-all duration-300 absolute top-0 group-hover:scale-[.60] group-hover:origin-top text-white\"\n  >\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"26.463\"\n      height=\"26.647\"\n      viewBox=\"0 0 26.463 26.647\"\n    >\n      <g id=\"Grupo_3793\" data-name=\"Grupo 3793\" transform=\"translate(1.5 1.5)\">\n        <path\n          id=\"Trazado_28219\"\n          data-name=\"Trazado 28219\"\n          d=\"M7,10V24.188\"\n          transform=\"translate(-1.088 -0.541)\"\n          fill=\"none\"\n          stroke=\"#000\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n          stroke-width=\"3\"\n        ></path>\n        <path\n          id=\"Trazado_28220\"\n          data-name=\"Trazado 28220\"\n          d=\"M17.37,6.587l-1.182,4.871h6.893a2.365,2.365,0,0,1,2.27,3.027L22.6,23.944a2.365,2.365,0,0,1-2.27,1.7H4.365A2.365,2.365,0,0,1,2,23.282V13.823a2.365,2.365,0,0,1,2.365-2.365H7.628a2.365,2.365,0,0,0,2.116-1.312L13.823,2A3.7,3.7,0,0,1,17.37,6.587Z\"\n          transform=\"translate(-2 -2)\"\n          fill=\"none\"\n          stroke=\"#000\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n          stroke-width=\"3\"\n        ></path>\n      </g>\n    </svg>\n  </div>\n  <div\n    class=\"absolute text-white font-bold -bottom-10 left-1/2 text-sm text-center text-black whitespace-nowrap transition-all duration-300 transform -translate-x-1/2 group-hover:bottom-0\"\n  >\n    Like\n  </div>\n</div>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-519815",
+    "title": "New Robin 92",
+    "author": "nabilbdt",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.702Z",
+    "html": "<div class=\"Tooltip\">\n  Tooltip\n  <div class=\"Tip\">Uiverse.io</div>\n</div>",
+    "css": "/* From Uiverse.io by nabilbdt  - Tags: simple, tooltip, action, alert, green, creative */\n.Tooltip {\n  color: #ebebeb;\n  border-radius: 0.8em;\n  padding: 1em 4em;\n  position: relative;\n  display: inline-block;\n  cursor: pointer;\n  background-color: #00641e;\n  -webkit-transition: background-color 2s ease-out;\n  -moz-transition: background-color 2s ease-out;\n  -o-transition: background-color 2s ease-out;\n  transition: background-color 2s ease-out;\n}\n.Tooltip .Tip {\n  color: #003b12;\n  text-align: center;\n  border-radius: 5px;\n  visibility: hidden;\n  width: 100px;\n  left: 100%;\n  transform: translateX(-50%);\n  opacity: 0;\n  background-color: #28282817;\n  padding: 10px;\n  position: absolute;\n  z-index: 1;\n  bottom: 125%;\n  transition: opacity 0.3s;\n}\n.Tooltip:hover .Tip {\n  opacity: 1;\n  visibility: visible;\n}\n.Tooltip:hover {\n  background-color: rgb(100, 100, 100);\n}\n.Tooltip .Tip::after {\n  left: 10%;\n  border-width: 8px;\n  border-style: solid;\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  border-color: #28282817 transparent transparent transparent;\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "action",
+      "alert",
+      "green",
+      "creative"
+    ]
+  },
+  {
+    "id": "uiv-778676",
+    "title": "Gentle Turkey 54",
+    "author": "neerajbaniwal",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.500Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Uiverse.io</span>\n  <span class=\"text\">@</span>\n</div>",
+    "css": "/* From Uiverse.io by neerajbaniwal  - Tags: simple, neumorphism, glassmorphism, tooltip, hover, hover effect */\n.tooltip-container {\n  height: 70px;\n  width: 110px;\n  border-radius: 5px;\n  background-color: #fff;\n  background-image: linear-gradient(\n    to left bottom,\n    #f2f5f8,\n    #ecf1f2,\n    #e7eceb,\n    #e3e7e4,\n    #e1e2de\n  );\n  border: 1px solid white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.151);\n  position: relative;\n  transition: transform 0.3s ease;\n  z-index: 1;\n}\n\n.tooltip-container::before {\n  position: absolute;\n  content: \"\";\n  top: -50%;\n  clip-path: polygon(50% 0, 0 100%, 100% 100%);\n  border-radius: 5px;\n  background-color: fff;\n  background-image: linear-gradient(\n    to left bottom,\n    #1288ff,\n    #e4eaec,\n    #d8dfde,\n    #cdd3cf,\n    #c5c7c1\n  );\n  width: 100%;\n  height: 50%;\n  transform-style: preserve-3d;\n  transform: perspective(1000px) rotateX(-150deg) translateY(-110%);\n  transition: transform 0.3s ease;\n  z-index: -1;\n}\n\n.tooltip-container .text {\n  color: rgb(32, 30, 30);\n  font-weight: bold;\n  font-size: 40px;\n}\n\n.tooltip {\n  position: absolute;\n  top: -20px;\n  opacity: 0;\n  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.05) 1px, white 1px),\n    linear-gradient(rgba(0, 0, 0, 0.05) 1px, white 1px),\n    linear-gradient(-90deg, rgba(0, 0, 0, 0.04) 1px, white 1px),\n    linear-gradient(rgba(0, 0, 0, 0.04) 1px, white 1px),\n    linear-gradient(white 3px, #f2f2f2 3px, #f2f2f2 78px, white 78px),\n    linear-gradient(-90deg, #aaa 1px, white 1px),\n    linear-gradient(-90deg, white 3px, #f2f2f2 3px, #f2f2f2 78px, white 78px),\n    linear-gradient(#aaa 1px, white 1px), #f2f2f2;\n  background-size: 4px 4px, 4px 4px, 80px 80px, 80px 80px, 80px 80px, 80px 80px,\n    80px 80px, 80px 80px;\n  padding: 5px 10px;\n  border: 1px solid rgb(206, 204, 204);\n\n  height: 70px;\n  width: 110px;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition-duration: 0.2s;\n  pointer-events: none;\n  letter-spacing: 0.5px;\n  font-size: 18px;\n  font-weight: 600;\n  text-shadow: 10px salmon;\n  z-index: ;\n}\n.tooltip-container:hover {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n\n.tooltip-container:hover::before {\n  transform: rotateY(0);\n  background-image: none;\n  background-color: white;\n}\n\n.tooltip-container:hover .tooltip {\n  top: -90px;\n  opacity: 1;\n  transition-duration: 0.3s;\n}",
+    "tags": [
+      "simple",
+      "neumorphism",
+      "glassmorphism",
+      "tooltip",
+      "hover",
+      "hover effect"
+    ]
+  },
+  {
+    "id": "uiv-330267",
+    "title": "Sweet Sloth 99",
+    "author": "neerajbaniwal",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.503Z",
+    "html": "<div class=\"wrapper\">\n  <input type=\"checkbox\" />\n  <div class=\"btn\"></div>\n  <div class=\"tooltip\">\n    <svg></svg>\n    <svg></svg>\n    <svg></svg>\n  </div>\n  <svg></svg>\n</div>\n\n<svg style=\"display: none;\" xmlns=\"http://www.w3.org/2000/svg\">\n  <symbol id=\"icon-01\" viewBox=\"0 0 26 22\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path\n      transform=\"translate(0 -2)\"\n      d=\"M18.29,5.76l-.7-1.37A2.59,2.59,0,0,0,15.29,3H10.71a2.59,2.59,0,0,0-2.3,1.39l-.7,1.37a2.6,2.6,0,0,1-2.3,1.39H3.58A2.57,2.57,0,0,0,1,9.71V20.44A2.57,2.57,0,0,0,3.58,23H22.42A2.57,2.57,0,0,0,25,20.44V9.71a2.57,2.57,0,0,0-2.58-2.56H20.59A2.6,2.6,0,0,1,18.29,5.76Z\"\n    ></path>\n    <ellipse ry=\"4.49\" rx=\"4.52\" cy=\"12.99\" cx=\"13\"></ellipse>\n  </symbol>\n  <symbol id=\"icon-02\" viewBox=\"0 0 26 22\" xmlns=\"http://www.w3.org/2000/svg\">\n    <line y2=\"9.42\" x2=\"25\" y1=\"12.58\" x1=\"25\"></line>\n    <line y2=\"7.84\" x2=\"21\" y1=\"14.16\" x1=\"21\"></line>\n    <line y2=\"6.26\" x2=\"17\" y1=\"15.74\" x1=\"17\"></line>\n    <line y2=\"1\" x2=\"13\" y1=\"21\" x1=\"13\"></line>\n    <line y2=\"4.68\" x2=\"9\" y1=\"17.32\" x1=\"9\"></line>\n    <line y2=\"8.37\" x2=\"5\" y1=\"13.63\" x1=\"5\"></line>\n    <line y2=\"10.47\" x2=\"1\" y1=\"11.53\" x1=\"1\"></line>\n  </symbol>\n  <symbol id=\"icon-03\" viewBox=\"0 0 26 22\" xmlns=\"http://www.w3.org/2000/svg\">\n    <polygon\n      points=\"8.08 10 1 21 25 21 18.09 12.66 13.78 17.45 8.08 10\"\n    ></polygon>\n    <circle r=\"3\" cy=\"4\" cx=\"8\"></circle>\n  </symbol>\n\n  <symbol\n    id=\"shape-01\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <polygon\n      points=\"155.77 140.06 141.08 152.42 159.12 158.96 155.77 140.06\"\n      stroke=\"var(--shape-color-03)\"\n    ></polygon>\n  </symbol>\n  <symbol\n    id=\"shape-02\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <g stroke=\"var(--shape-color-02)\">\n      <line y2=\"152.29\" x2=\"141.54\" y1=\"146.73\" x1=\"158.66\"></line>\n      <line y2=\"158.07\" x2=\"152.88\" y1=\"140.95\" x1=\"147.32\"></line>\n    </g>\n  </symbol>\n  <symbol\n    id=\"shape-03\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <circle\n      r=\"13\"\n      cy=\"149.51\"\n      cx=\"150.1\"\n      stroke=\"var(--shape-color-01)\"\n    ></circle>\n  </symbol>\n  <symbol\n    id=\"shape-04\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <circle r=\"4\" cy=\"149.51\" cx=\"150.1\" fill=\"var(--shape-color-01)\"></circle>\n  </symbol>\n  <symbol\n    id=\"shape-05\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <rect\n      transform=\"translate(40.44 -31.76) rotate(13.94)\"\n      height=\"18\"\n      width=\"18\"\n      y=\"140.51\"\n      x=\"141.1\"\n      stroke=\"var(--shape-color-03)\"\n    ></rect>\n  </symbol>\n  <symbol\n    id=\"shape-06\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <g stroke=\"var(--shape-color-02)\">\n      <line y2=\"146.24\" x2=\"141.72\" y1=\"152.78\" x1=\"158.48\"></line>\n      <line y2=\"157.89\" x2=\"146.83\" y1=\"141.13\" x1=\"153.37\"></line>\n    </g>\n  </symbol>\n  <symbol\n    id=\"shape-07\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <rect\n      transform=\"translate(-42.94 62.23) rotate(-20.56)\"\n      height=\"24\"\n      width=\"24\"\n      y=\"137.51\"\n      x=\"138.1\"\n      stroke=\"var(--shape-color-03)\"\n    ></rect>\n  </symbol>\n\n  <symbol\n    id=\"shape-08\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <circle r=\"4\" cy=\"149.51\" cx=\"150.1\" fill=\"var(--shape-color-01)\"></circle>\n  </symbol>\n  <symbol\n    id=\"shape-09\"\n    viewBox=\"0 0 300 300\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <circle\n      r=\"8\"\n      cy=\"149.51\"\n      cx=\"150.1\"\n      stroke=\"var(--shape-color-01)\"\n    ></circle>\n  </symbol>\n</svg>",
+    "css": "/* From Uiverse.io by neerajbaniwal  - Tags: tooltip, animation, social media, animated, svg, buttons, bounce animation */\n.wrapper {\n  --background: #62abff;\n  --icon-color: #414856;\n  --shape-color-01: #b8cbee;\n  --shape-color-02: #7691e8;\n  --shape-color-03: #fdd053;\n  --width: 90px;\n  --height: 90px;\n  --border-radius: var(--height);\n  width: var(--width);\n  height: var(--height);\n  position: relative;\n  border-radius: var(--border-radius);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.wrapper .btn {\n  background: var(--background);\n  width: var(--width);\n  height: var(--height);\n  position: relative;\n  z-index: 3;\n  border-radius: var(--border-radius);\n  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -webkit-animation: plus-animation-reverse 0.5s ease-out forwards;\n  animation: plus-animation-reverse 0.5s ease-out forwards;\n}\n.wrapper .btn::before,\n.wrapper .btn::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  border-radius: 4px;\n  background: #fff;\n}\n.wrapper .btn::before {\n  width: 4px;\n  height: 28px;\n}\n.wrapper .btn::after {\n  width: 28px;\n  height: 4px;\n}\n.wrapper .tooltip {\n  width: 90px;\n  height: 75px;\n  border-radius: 70px;\n  position: absolute;\n  background: #fff;\n  z-index: 2;\n  padding: 0 15px;\n  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);\n  opacity: 0;\n  top: 0;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  transition: opacity 0.15s ease-in, top 0.15s ease-in, width 0.15s ease-in;\n}\n.wrapper .tooltip > svg {\n  width: 100%;\n  height: 26px;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  cursor: pointer;\n}\n.wrapper .tooltip > svg .icon {\n  fill: none;\n  stroke: var(--icon-color);\n  stroke-width: 2px;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  opacity: 0.4;\n  transition: opacity 0.3s ease;\n}\n.wrapper .tooltip > svg:hover .icon {\n  opacity: 1;\n}\n.wrapper .tooltip::after {\n  content: \"\";\n  width: 20px;\n  height: 20px;\n  background: #fff;\n  border-radius: 3px;\n  position: absolute;\n  left: 50%;\n  margin-left: -10px;\n  bottom: -8px;\n  transform: rotate(45deg);\n  z-index: 0;\n}\n.wrapper > svg {\n  width: 300px;\n  height: 300px;\n  position: absolute;\n  z-index: 1;\n  transform: scale(0);\n}\n.wrapper > svg .shape {\n  fill: none;\n  stroke: none;\n  stroke-width: 3px;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  transform-origin: 50% 20%;\n}\n.wrapper input {\n  height: 100%;\n  width: 100%;\n  border-radius: var(--border-radius);\n  cursor: pointer;\n  position: absolute;\n  z-index: 5;\n  opacity: 0;\n}\n.wrapper input:checked ~ svg {\n  -webkit-animation: pang-animation 1.2s ease-out forwards;\n  animation: pang-animation 1.2s ease-out forwards;\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(1) {\n  transform: translate(25px, 30%) rotate(40deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(2) {\n  transform: translate(-4px, 30%) rotate(80deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(3) {\n  transform: translate(12px, 30%) rotate(120deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(4) {\n  transform: translate(8px, 30%) rotate(160deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(5) {\n  transform: translate(21px, 30%) rotate(200deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(6) {\n  transform: translate(0px, 30%) rotate(240deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(7) {\n  transform: translate(17px, 30%) rotate(280deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(8) {\n  transform: translate(-3px, 30%) rotate(320deg);\n}\n.wrapper input:checked ~ svg .shape:nth-of-type(9) {\n  transform: translate(25px, 30%) rotate(360deg);\n}\n.wrapper input:checked ~ .btn {\n  -webkit-animation: plus-animation 0.5s ease-out forwards;\n  animation: plus-animation 0.5s ease-out forwards;\n}\n.wrapper input:checked ~ .tooltip {\n  width: 190px;\n  height: 70px;\n  -webkit-animation: stretch-animation 1s ease-out forwards 0.15s;\n  animation: stretch-animation 1s ease-out forwards 0.15s;\n  top: -90px;\n  opacity: 1;\n}\n\n@-webkit-keyframes pang-animation {\n  0% {\n    transform: scale(0);\n    opacity: 0;\n  }\n  40% {\n    transform: scale(1);\n    opacity: 1;\n  }\n  100% {\n    transform: scale(1.1);\n    opacity: 0;\n  }\n}\n\n@keyframes pang-animation {\n  0% {\n    transform: scale(0);\n    opacity: 0;\n  }\n  40% {\n    transform: scale(1);\n    opacity: 1;\n  }\n  100% {\n    transform: scale(1.1);\n    opacity: 0;\n  }\n}\n@-webkit-keyframes plus-animation {\n  0% {\n    transform: rotate(0) scale(1);\n  }\n  20% {\n    transform: rotate(60deg) scale(0.93);\n  }\n  55% {\n    transform: rotate(35deg) scale(0.97);\n  }\n  80% {\n    transform: rotate(48deg) scale(0.94);\n  }\n  100% {\n    transform: rotate(45deg) scale(0.95);\n  }\n}\n@keyframes plus-animation {\n  0% {\n    transform: rotate(0) scale(1);\n  }\n  20% {\n    transform: rotate(60deg) scale(0.93);\n  }\n  55% {\n    transform: rotate(35deg) scale(0.97);\n  }\n  80% {\n    transform: rotate(48deg) scale(0.94);\n  }\n  100% {\n    transform: rotate(45deg) scale(0.95);\n  }\n}\n@-webkit-keyframes plus-animation-reverse {\n  0% {\n    transform: rotate(45deg) scale(0.95);\n  }\n  20% {\n    transform: rotate(-15deg);\n  }\n  55% {\n    transform: rotate(10deg);\n  }\n  80% {\n    transform: rotate(-3deg);\n  }\n  100% {\n    transform: rotate(0) scale(1);\n  }\n}\n@keyframes plus-animation-reverse {\n  0% {\n    transform: rotate(45deg) scale(0.95);\n  }\n  20% {\n    transform: rotate(-15deg);\n  }\n  55% {\n    transform: rotate(10deg);\n  }\n  80% {\n    transform: rotate(-3deg);\n  }\n  100% {\n    transform: rotate(0) scale(1);\n  }\n}\n@-webkit-keyframes stretch-animation {\n  0% {\n    transform: scale(1, 1);\n  }\n  10% {\n    transform: scale(1.1, 0.9);\n  }\n  30% {\n    transform: scale(0.9, 1.1);\n  }\n  50% {\n    transform: scale(1.05, 0.95);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n@keyframes stretch-animation {\n  0% {\n    transform: scale(1, 1);\n  }\n  10% {\n    transform: scale(1.1, 0.9);\n  }\n  30% {\n    transform: scale(0.9, 1.1);\n  }\n  50% {\n    transform: scale(1.05, 0.95);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n\n.socials {\n  position: fixed;\n  display: block;\n  left: 20px;\n  bottom: 20px;\n}\n.socials > a {\n  display: block;\n  width: 30px;\n  opacity: 0.2;\n  transform: scale(var(--scale, 0.8));\n  transition: transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);\n}\n.socials > a:hover {\n  --scale: 1;\n}",
+    "tags": [
+      "tooltip",
+      "animation",
+      "social media",
+      "animated",
+      "svg",
+      "buttons",
+      "bounce animation"
+    ]
+  },
+  {
+    "id": "uiv-737750",
+    "title": "Heavy Emu 75",
+    "author": "omriluz",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.715Z",
+    "html": "<!-- From Uiverse.io by omriluz  - Tags: simple, tooltip, icon, animation, hover effect, css -->\n<div class=\"flex h-screen items-center justify-center\">\n  <div\n    class=\"group relative flex h-40 w-40 items-center justify-center rounded-full border-[3px] border-purple-900 bg-gradient-to-bl from-amber-300 to-purple-500\"\n  >\n    <div\n      class=\"absolute inset-0 z-10 flex flex-col items-center justify-center text-center\"\n    >\n      <span class=\"rounded-lg bg-white/50 p-2 text-xl font-bold text-gray-600\"\n        >Uiverse.io</span\n      >\n    </div>\n    <svg\n      class=\"absolute left-8 top-6 aspect-square w-10 text-amber-600 transition-all duration-1000 group-hover:-rotate-180\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n      fill=\"currentColor\"\n      version=\"1.1\"\n      id=\"Capa_1\"\n      viewBox=\"0 0 45.973 45.973\"\n      xml:space=\"preserve\"\n    >\n      <g>\n        <g>\n          <path\n            d=\"M43.454,18.443h-2.437c-0.453-1.766-1.16-3.42-2.082-4.933l1.752-1.756c0.473-0.473,0.733-1.104,0.733-1.774    c0-0.669-0.262-1.301-0.733-1.773l-2.92-2.917c-0.947-0.948-2.602-0.947-3.545-0.001l-1.826,1.815    C30.9,6.232,29.296,5.56,27.529,5.128V2.52c0-1.383-1.105-2.52-2.488-2.52h-4.128c-1.383,0-2.471,1.137-2.471,2.52v2.607    c-1.766,0.431-3.38,1.104-4.878,1.977l-1.825-1.815c-0.946-0.948-2.602-0.947-3.551-0.001L5.27,8.205    C4.802,8.672,4.535,9.318,4.535,9.978c0,0.669,0.259,1.299,0.733,1.772l1.752,1.76c-0.921,1.513-1.629,3.167-2.081,4.933H2.501    C1.117,18.443,0,19.555,0,20.935v4.125c0,1.384,1.117,2.471,2.501,2.471h2.438c0.452,1.766,1.159,3.43,2.079,4.943l-1.752,1.763    c-0.474,0.473-0.734,1.106-0.734,1.776s0.261,1.303,0.734,1.776l2.92,2.919c0.474,0.473,1.103,0.733,1.772,0.733    s1.299-0.261,1.773-0.733l1.833-1.816c1.498,0.873,3.112,1.545,4.878,1.978v2.604c0,1.383,1.088,2.498,2.471,2.498h4.128    c1.383,0,2.488-1.115,2.488-2.498v-2.605c1.767-0.432,3.371-1.104,4.869-1.977l1.817,1.812c0.474,0.475,1.104,0.735,1.775,0.735    c0.67,0,1.301-0.261,1.774-0.733l2.92-2.917c0.473-0.472,0.732-1.103,0.734-1.772c0-0.67-0.262-1.299-0.734-1.773l-1.75-1.77    c0.92-1.514,1.627-3.179,2.08-4.943h2.438c1.383,0,2.52-1.087,2.52-2.471v-4.125C45.973,19.555,44.837,18.443,43.454,18.443z     M22.976,30.85c-4.378,0-7.928-3.517-7.928-7.852c0-4.338,3.55-7.85,7.928-7.85c4.379,0,7.931,3.512,7.931,7.85    C30.906,27.334,27.355,30.85,22.976,30.85z\"\n          ></path>\n        </g>\n      </g>\n    </svg>\n    <svg\n      class=\"absolute left-[7px] top-[50px] aspect-square w-10 rotate-45 text-amber-400 transition-all duration-1000 group-hover:rotate-[225deg]\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n      fill=\"currentColor\"\n      version=\"1.1\"\n      id=\"Capa_1\"\n      viewBox=\"0 0 576.048 576.047\"\n      xml:space=\"preserve\"\n    >\n      <g>\n        <g>\n          <path\n            d=\"M491.103,215.312c-8.841-24.651-22.222-47.73-39.651-67.984l41.965-73.324L368.537,2.532l-41.965,73.324    c-26.307-4.777-52.972-4.618-78.703,0.245L205.384,3.135L81.035,75.571l42.485,72.966c-8.394,9.89-16.105,20.572-22.807,32.28    c-6.683,11.677-11.989,23.736-16.282,36.013L0,217.154l0.529,143.909l84.45-0.318c8.822,24.68,22.194,47.711,39.636,67.979    l-41.965,73.32l124.878,71.473l41.965-73.324c26.292,4.768,52.954,4.648,78.672-0.264l42.501,72.979l124.349-72.434l-42.487-72.93    c8.394-9.932,16.138-20.633,22.821-32.311c6.701-11.707,11.989-23.779,16.298-36.043l84.4-0.303l-0.529-143.909L491.103,215.312z     M413.733,359.967c-39.734,69.426-128.229,93.496-197.655,53.762s-93.495-128.23-53.761-197.655    c39.734-69.425,128.229-93.495,197.654-53.761C429.397,202.047,453.468,290.542,413.733,359.967z\"\n          ></path>\n        </g>\n      </g>\n    </svg>\n    <div\n      class=\"absolute h-full w-full bg-gradient-to-br from-amber-300 to-purple-500 opacity-0 group-hover:opacity-90 rounded-none group-hover:rounded-[100px] right-0 group-hover:-right-[50%] blur-md group-hover:blur-none z-40 transition-all duration-1000 flex justify-center items-center\"\n    >\n      <span class=\"rounded-lg bg-white/50 p-2 text-xl font-bold text-gray-600\"\n        >Let's Create!</span\n      >\n    </div>\n  </div>\n</div>",
+    "css": "",
+    "tags": []
+  },
+  {
+    "id": "uiv-887285",
+    "title": "Jolly Turkey 16",
+    "author": "original-lotfy",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.512Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">this is a test</span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by original-lotfy  - Tags: simple, material design, glassmorphism, flashy, tooltip, action, purple, pink */\n/* thsi is a test */\n.tooltip-container {\n  --background: #053c85;\n  position: relative;\n  background: linear-gradient(100deg, #9b40fc, #0acbec);\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n  border-radius: 10px;\n}\n\n.tooltip-container > * {\n  border-radius: 10px;\n}\n\n.tooltip {\n  position: absolute;\n  width: 8rem;\n  top: 1rem;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.4s;\n  background: linear-gradient(-100deg, #9b40fc, #0acbec);\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: -0.9em;\n  left: 50%;\n  transform: translate(-50%) rotate(45deg);\n  background: #4b5ef1;\n  box-shadow: 0px 0px 7px #0acbec;\n}\n\n.tooltip-container:hover .tooltip {\n  top: -120%;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}",
+    "tags": [
+      "simple",
+      "material design",
+      "glassmorphism",
+      "flashy",
+      "tooltip",
+      "action",
+      "purple",
+      "pink"
+    ]
+  },
+  {
+    "id": "uiv-928070",
+    "title": "Lazy Husky 91",
+    "author": "piolho123",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.555Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">Uiverse.io</span>\n  <span class=\"text\">Tooltip</span>\n</div>",
+    "css": "/* From Uiverse.io by piolho123  - Tags: simple, tooltip, pink */\n/* This is an example, feel free to delete this code */\n.tooltip-container {\n  border-radius: 20px;\n  --background: #f1f;\n  position: relative;\n  background: var(--background);\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,\n    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,\n    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,\n    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,\n    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;\n}\n\n.tooltip {\n  border: 1px solid #f1f;\n  border-radius: 20px;\n  position: absolute;\n  top: 0;\n  left: 10%;\n  transform: translateX(-50%);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  background: transparente;\n  color: #f1f;\n  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,\n    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,\n    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,\n    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,\n    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: -0.2em;\n  left: 50%;\n  transform: translate(-50%) rotate(45deg);\n  background: var(--background);\n}\n\n.tooltip-container:hover .tooltip {\n  top: -100%;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "pink"
+    ]
+  },
+  {
+    "id": "uiv-478515",
+    "title": "Red Panda 0",
+    "author": "seyed-mohsen-mousavi",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.529Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">\n    <div class=\"table center\">\n      <div class=\"monitor-wrapper center\">\n        <div class=\"monitor center\">\n          <p>\n            Uiverse.io :) Lorem ipsum dolor sit amet, consectetur adipiscing\n            elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n            aliqua.\n          </p>\n        </div>\n      </div>\n    </div>\n  </span>\n  <span class=\"text\">Hover Me</span>\n</div>",
+    "css": "/* From Uiverse.io by seyed-mohsen-mousavi  - Tags: tooltip, hover, text animation */\n/* This is an example, feel free to delete this code */\n.tooltip-container {\n  --background: #050321;\n  position: relative;\n  background: var(--background);\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  padding: 0.7em 1.8em;\n  color: white;\n  border: 5px solid #344151;\n  -webkit-transition: border 0.3s ease;\n  -moz-transition: border 0.1s ease;\n  -o-transition: border 0.3s ease;\n  -ms-transition: border 0.3s ease;\n  font-family: monospace;\n  border-radius: 1px;\n}\n\n.tooltip {\n  position: absolute;\n  top: 0;\n  right: 135%;\n  transform: translateX(-50%);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n}\n\n.tooltip-container:hover {\n  border: 5px solid #cacdd0;\n}\n.text {\n  font-weight: 600;\n}\n.tooltip-container:hover .tooltip {\n  top: -100%;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}\n\n/* tooltip content */\n.center {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  margin: auto;\n}\n\n.table {\n  width: 290px;\n  height: 20px;\n}\n\n.table .monitor-wrapper {\n  background: #050321;\n  width: 270px;\n  height: 30px;\n  box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.3);\n}\n\n.table .monitor-wrapper .monitor {\n  width: 200px;\n  height: 22px;\n  background-color: #344151;\n  overflow: hidden;\n  white-space: nowrap;\n  box-shadow: inset 0px 5px 10px 2px rgba(0, 0, 0, 0.3);\n}\n\n.table .monitor-wrapper .monitor p {\n  font-family: \"VT323\", monospace;\n  font-size: 18px;\n  position: relative;\n  display: inline-block;\n  color: #ebb55f;\n}\n\n.tooltip-container:hover .table .monitor-wrapper .monitor p {\n  animation: move 30s infinite linear;\n}\n\n@keyframes move {\n  from {\n    left: 250px;\n  }\n\n  to {\n    left: -4800px;\n  }\n}",
+    "tags": [
+      "tooltip",
+      "hover",
+      "text animation"
+    ]
+  },
+  {
+    "id": "uiv-616611",
+    "title": "Rotten Liger 72",
+    "author": "theleaderofenemy",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.555Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"text\">Tooltip</span>\n  <span class=\"tooltip\">Uiverse.io</span>\n</div>",
+    "css": "/* From Uiverse.io by theleaderofenemy  - Tags: simple, tooltip, action, light */\n.tooltip-container {\n  position: relative;\n  display: inline-block;\n  margin: 20px;\n}\n\n.text {\n  color: #333;\n  font-size: 18px;\n  cursor: pointer;\n}\n\n.tooltip {\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  opacity: 0;\n  visibility: hidden;\n  background: #0b798a;\n  color: #fff;\n  padding: 10px;\n  border-radius: 4px;\n  transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;\n  z-index: 1;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n}\n\n.tooltip::before {\n  content: \"\";\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  border-width: 8px;\n  border-style: solid;\n  border-color: transparent transparent #0b798a transparent;\n  transform: translateX(-50%);\n}\n\n.tooltip-container:hover .tooltip {\n  top: 120%;\n  opacity: 1;\n  visibility: visible;\n  background: #0e94a0;\n  transform: translate(-50%, -5px);\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "action",
+      "light"
+    ]
+  },
+  {
+    "id": "uiv-906133",
+    "title": "Evil Mule 52",
+    "author": "vikas7754",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.511Z",
+    "html": "<div class=\"tooltip-container\">\n  <div class=\"tooltip\">\n    <div class=\"profile\">\n      <div class=\"user\">\n        <div class=\"img\">Ui</div>\n        <div class=\"details\">\n          <div class=\"name\">User</div>\n          <div class=\"username\">@username</div>\n        </div>\n      </div>\n      <div class=\"about\">500+ Connections</div>\n    </div>\n  </div>\n  <div class=\"text\">\n    <a class=\"icon\" href=\"https://freecodez.com/\">\n      <div class=\"layer\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span class=\"fab fa-linkedin\">\n          <svg viewBox=\"0 0 448 512\" height=\"1em\">\n            <path\n              d=\"M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z\"\n            ></path>\n          </svg>\n        </span>\n      </div>\n      <div class=\"text\">LinkedIn</div>\n    </a>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by vikas7754  - Tags: neumorphism, tooltip, 3d, dark, modern */\n.tooltip-container {\n  position: relative;\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  border-radius: 10px;\n}\n\n.tooltip {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 10px;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  border-radius: 15px;\n  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),\n    inset -5px -5px 15px rgba(255, 255, 255, 0.1),\n    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);\n}\n\n.profile {\n  background: #2a2b2f;\n  border-radius: 10px 15px;\n  padding: 10px;\n  border: 1px solid rgba(11, 63, 95, 1);\n}\n\n.tooltip-container:hover .tooltip {\n  top: -150px;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}\n\n.icon {\n  text-decoration: none;\n  color: #fff;\n  display: block;\n  position: relative;\n}\n.layer {\n  width: 55px;\n  height: 55px;\n  transition: transform 0.3s;\n}\n.icon:hover .layer {\n  transform: rotate(-35deg) skew(20deg);\n}\n.layer span {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  border: 1px solid #fff;\n  border-radius: 5px;\n  transition: all 0.3s;\n}\n\n.layer span,\n.text {\n  color: #1da1f2;\n  border-color: #1da1f2;\n}\n\n.icon:hover.layer span {\n  box-shadow: -1px 1px 3px #1da1f2;\n}\n.icon .text {\n  position: absolute;\n  left: 50%;\n  bottom: -5px;\n  opacity: 0;\n  font-weight: 500;\n  transform: translateX(-50%);\n  transition: bottom 0.3s ease, opacity 0.3s ease;\n}\n.icon:hover .text {\n  bottom: -35px;\n  opacity: 1;\n}\n\n.icon:hover .layer span:nth-child(1) {\n  opacity: 0.2;\n}\n.icon:hover .layer span:nth-child(2) {\n  opacity: 0.4;\n  transform: translate(5px, -5px);\n}\n.icon:hover .layer span:nth-child(3) {\n  opacity: 0.6;\n  transform: translate(10px, -10px);\n}\n.icon:hover .layer span:nth-child(4) {\n  opacity: 0.8;\n  transform: translate(15px, -15px);\n}\n.icon:hover .layer span:nth-child(5) {\n  opacity: 1;\n  transform: translate(20px, -20px);\n}\n\n.layer span.fab {\n  font-size: 30px;\n  line-height: 64px;\n  text-align: center;\n  fill: #1da1f2;\n  background: #000;\n}\n.user {\n  display: flex;\n  gap: 10px;\n}\n.img {\n  width: 50px;\n  height: 50px;\n  font-size: 25px;\n  font-weight: 700;\n  border: 1px solid #1da1f2;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #fff;\n}\n.name {\n  font-size: 17px;\n  font-weight: 700;\n  color: #1da1f2;\n}\n.details {\n  display: flex;\n  flex-direction: column;\n  gap: 0;\n  color: #fff;\n}\n.about {\n  color: #ccc;\n  padding-top: 5px;\n}",
+    "tags": [
+      "neumorphism",
+      "tooltip",
+      "3d",
+      "dark",
+      "modern"
+    ]
+  },
+  {
+    "id": "uiv-312573",
+    "title": "Mighty Elephant 52",
+    "author": "vinodjangid07",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.511Z",
+    "html": "<div class=\"tooltip-container\">\n  <span class=\"tooltip\">45k</span>\n  <span class=\"text\">\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      fill=\"none\"\n      viewBox=\"0 0 95 114\"\n      class=\"svgIcon\"\n    >\n      <rect fill=\"black\" rx=\"28.5\" height=\"57\" width=\"57\" x=\"19\"></rect>\n      <path\n        fill=\"black\"\n        d=\"M0 109.5C0 83.2665 21.2665 62 47.5 62V62C73.7335 62 95 83.2665 95 109.5V114H0V109.5Z\"\n      ></path>\n    </svg>\n    Follow</span\n  >\n</div>",
+    "css": "/* From Uiverse.io by vinodjangid07  - Tags: tooltip, animation, social, hover, social media, follow, hover effect */\n.tooltip-container {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  transition: all 0.3s;\n  background-color: rgb(255, 255, 255);\n  padding: 11px 18px;\n  border-radius: 12px;\n  cursor: pointer;\n  border: 1px solid rgb(211, 211, 211);\n}\n\n.text {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  font-size: 14px;\n  font-weight: 600;\n  color: rgb(0, 0, 0);\n}\n.svgIcon {\n  width: 16px;\n  height: auto;\n}\n.tooltip {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 0.3em 0.6em;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  background-color: rgb(255, 255, 255);\n  border-radius: 12px;\n  color: rgb(34, 34, 34);\n}\n\n.tooltip::before {\n  position: absolute;\n  content: \"\";\n  height: 0.6em;\n  width: 0.6em;\n  bottom: -0.2em;\n  left: 50%;\n  transform: translate(-50%) rotate(45deg);\n  background-color: rgb(255, 255, 255);\n}\n\n.tooltip-container:hover .tooltip {\n  top: -100%;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}",
+    "tags": [
+      "tooltip",
+      "animation",
+      "social",
+      "hover",
+      "social media",
+      "follow",
+      "hover effect"
+    ]
+  },
+  {
+    "id": "uiv-277230",
+    "title": "Stale Mouse 74",
+    "author": "vnuny",
+    "category": "Tooltips",
+    "likes": 0,
+    "views": 0,
+    "liked": false,
+    "createdAt": "2026-11-14T15:48:34.517Z",
+    "html": "<div class=\"item-hints\">\n  <div class=\"hint\" data-position=\"4\">\n    <span class=\"hint-radius\"></span>\n    <span class=\"hint-dot\">Tip</span>\n    <div class=\"hint-content do--split-children\">\n      <p>Use Navbar to navigate the website quickly and easily.</p>\n    </div>\n  </div>\n</div>",
+    "css": "/* From Uiverse.io by vnuny  - Tags: simple, tooltip, animation, black, animated */\n.item-hints {\n  --purple: #720c8f;\n  cursor: pointer;\n  display: flex;\n  justify-content: flex-start;\n  padding-right: 170px;\n}\n.item-hints .hint {\n  margin: 150px auto;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.item-hints .hint-dot {\n  z-index: 3;\n  border: 1px solid #ffe4e4;\n  border-radius: 50%;\n  width: 60px;\n  height: 60px;\n  -webkit-transform: translate(-0%, -0%) scale(0.95);\n  transform: translate(-0%, -0%) scale(0.95);\n  margin: auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: white;\n}\n.item-hints .hint-radius {\n  background-color: rgba(255, 255, 255, 0.1);\n  border-radius: 50%;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin: -125px 0 0 -125px;\n  opacity: 0;\n  visibility: hidden;\n  -webkit-transform: scale(0);\n  transform: scale(0);\n}\n.item-hints .hint[data-position=\"1\"] .hint-content {\n  top: 85px;\n  left: 50%;\n  margin-left: 56px;\n}\n.item-hints .hint-content {\n  width: 300px;\n  position: absolute;\n  z-index: 5;\n  padding: 35px 0;\n  opacity: 0;\n  transition: opacity 0.7s ease, visibility 0.7s ease;\n  color: #fff;\n  visibility: hidden;\n  pointer-events: none;\n}\n.item-hints .hint:hover .hint-content {\n  position: absolute;\n  z-index: 5;\n  padding: 35px 0;\n  opacity: 1;\n  -webkit-transition: opacity 0.7s ease, visibility 0.7s ease;\n  transition: opacity 0.7s ease, visibility 0.7s ease;\n  color: #fff;\n  visibility: visible;\n  pointer-events: none;\n}\n.item-hints .hint-content::before {\n  width: 0px;\n  bottom: 29px;\n  left: 0;\n  content: \"\";\n  background-color: #fff;\n  height: 1px;\n  position: absolute;\n  transition: width 0.4s;\n}\n.item-hints .hint:hover .hint-content::before {\n  width: 180px;\n  transition: width 0.4s;\n}\n.item-hints .hint-content::after {\n  -webkit-transform-origin: 0 50%;\n  transform-origin: 0 50%;\n  -webkit-transform: rotate(-225deg);\n  transform: rotate(-225deg);\n  bottom: 29px;\n  left: 0;\n  width: 80px;\n  content: \"\";\n  background-color: #fff;\n  height: 1px;\n  position: absolute;\n  opacity: 1;\n  -webkit-transition: opacity 0.5s ease;\n  transition: opacity 0.5s ease;\n  -webkit-transition-delay: 0s;\n  transition-delay: 0s;\n}\n.item-hints .hint:hover .hint-content::after {\n  opacity: 1;\n  visibility: visible;\n}\n.item-hints .hint[data-position=\"4\"] .hint-content {\n  bottom: 85px;\n  left: 50%;\n  margin-left: 56px;\n}",
+    "tags": [
+      "simple",
+      "tooltip",
+      "animation",
+      "black",
+      "animated"
+    ]
   }
 ];
