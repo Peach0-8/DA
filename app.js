@@ -178,8 +178,11 @@ async function deleteComponentFromCloud(id) {
 
 /** Sync all community uploads from Firebase on load */
 async function syncCommunityUploads() {
-  const cloudComps = [];
   const db = getFirestoreDB();
+  const rtdb = getRealtimeDB();
+  if (!db && !rtdb) return;
+
+  const cloudComps = [];
 
   if (db) {
     try {
@@ -190,7 +193,9 @@ async function syncCommunityUploads() {
         });
       }
     } catch (e) {
-      console.warn('[UIForge] Could not fetch from Firestore:', e);
+      if (e?.code !== 'permission-denied') {
+        console.warn('[UIForge] Could not fetch from Firestore:', e);
+      }
     }
   }
 
@@ -1069,7 +1074,13 @@ const STATE = {
   activeProfileTab: 'uploads',
   canvasZoom: 1,             // Zoom scale in modal preview
   currentViewport: 'desktop',// 'desktop' | 'tablet' | 'mobile'
-  likedIds: new Set(JSON.parse(localStorage.getItem('uiforge_liked') || '[]')),
+  likedIds: (() => {
+    try {
+      return new Set(JSON.parse(localStorage.getItem('uiforge_liked') || '[]'));
+    } catch (_) {
+      return new Set();
+    }
+  })(),
   isLoading: false,
 };
 
@@ -1179,6 +1190,17 @@ function debounce(fn, ms = 300) {
   };
 }
 
+/** Check if hex color is dark */
+function isHexColorDark(hex) {
+  if (!hex || typeof hex !== 'string') return true;
+  const clean = hex.replace('#', '').trim();
+  if (clean.length !== 6 && clean.length !== 3) return true;
+  const r = parseInt(clean.length === 3 ? clean[0] + clean[0] : clean.substring(0, 2), 16);
+  const g = parseInt(clean.length === 3 ? clean[1] + clean[1] : clean.substring(2, 4), 16);
+  const b = parseInt(clean.length === 3 ? clean[2] + clean[2] : clean.substring(4, 6), 16);
+  return ((r * 299) + (g * 587) + (b * 114)) / 1000 < 128;
+}
+
 /**
  * buildPreviewSrcDoc(html, css)
  * Builds a full HTML document for use in an <iframe> srcdoc attribute.
@@ -1186,14 +1208,7 @@ function debounce(fn, ms = 300) {
 function buildPreviewSrcDoc(html, css, category = '', isModal = false, bgColor = '#212121') {
   let isLight = false;
   if (bgColor && bgColor !== 'transparent') {
-    const hex = bgColor.replace('#', '');
-    if (hex.length === 6) {
-      const r = parseInt(hex.substring(0, 2), 16);
-      const g = parseInt(hex.substring(2, 4), 16);
-      const b = parseInt(hex.substring(4, 6), 16);
-      const lum = (0.299 * r + 0.587 * g + 0.114 * b);
-      if (lum > 140) isLight = true;
-    }
+    isLight = !isHexColorDark(bgColor);
   }
   const rootClass = isLight ? 'light' : 'dark';
   const initialBg = isModal ? bgColor : (isLight ? '#ffffff' : '#212121');
@@ -1216,6 +1231,8 @@ function buildPreviewSrcDoc(html, css, category = '', isModal = false, bgColor =
     darkMode: 'class',
   };
 </script>` : '';
+
+  const isPattern = category === 'Patterns';
 
   return `<!DOCTYPE html>
 <html class="${rootClass}">
@@ -1246,11 +1263,9 @@ ${tailwindHead}
     transition: background-color 0.2s ease, color 0.15s ease;
   }
   html.light, html.light body {
-    background-color: #ffffff !important;
     color: #0f172a !important;
   }
   html.dark, html.dark body {
-    background-color: #212121 !important;
     color: #f4f4f5 !important;
   }
   body::-webkit-scrollbar { display: none; }
@@ -1267,12 +1282,24 @@ ${tailwindHead}
     transform-origin: center center;
   }
 
+  #stage-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform-origin: center center;
+    transition: transform 0.15s ease-out;
+    ${isPattern ? 'width: 100%; height: 100%;' : ''}
+  }
+
   ${css}
 </style>
 </head>
 <body class="${rootClass}">
 <div id="uiverse-stage">
+  <div id="stage-inner">
 ${html}
+  </div>
 </div>
 <script>
   document.addEventListener('click', e => {
@@ -1281,51 +1308,57 @@ ${html}
   document.addEventListener('submit', e => e.preventDefault());
 
   window.addEventListener('message', e => {
-    if (!e.data || e.data.type !== 'TOGGLE_THEME') return;
-    const isLight = e.data.theme === 'light';
-    document.documentElement.classList.toggle('light', isLight);
-    document.documentElement.classList.toggle('dark', !isLight);
-    document.body.classList.toggle('light', isLight);
-    document.body.classList.toggle('dark', !isLight);
-    const bg = isLight ? '#ffffff' : '#212121';
-    document.documentElement.style.setProperty('background-color', bg, 'important');
-    document.body.style.setProperty('background-color', bg, 'important');
+    if (!e.data) return;
+    if (e.data.type === 'TOGGLE_THEME' || e.data.type === 'UPDATE_BG') {
+      const isLight = e.data.isLight !== undefined ? e.data.isLight : e.data.theme === 'light';
+      document.documentElement.classList.toggle('light', isLight);
+      document.documentElement.classList.toggle('dark', !isLight);
+      document.body.classList.toggle('light', isLight);
+      document.body.classList.toggle('dark', !isLight);
+      const bg = e.data.bg || (isLight ? '#ffffff' : '#212121');
+      document.documentElement.style.setProperty('background-color', bg, 'important');
+      document.body.style.setProperty('background-color', bg, 'important');
+    }
   });
 
   function autoFit() {
     const stage = document.getElementById('uiverse-stage');
-    if (!stage) return;
+    const inner = document.getElementById('stage-inner');
+    if (!stage || !inner) return;
+    if (${isPattern}) return;
+
+    inner.style.transform = 'none';
+    const r = inner.getBoundingClientRect();
+    const natW = r.width;
+    const natH = r.height;
+    if (natW <= 0 || natH <= 0) return;
+
     const isModal = ${isModal};
-
-    // Calculate natural content dimensions (measure the real rendered size,
-    // never guess from the category — category is not a reliable proxy for
-    // how big any individual component actually is).
-    let w = stage.scrollWidth;
-    let h = stage.scrollHeight;
-    Array.from(stage.children).forEach(child => {
-      const cr = child.getBoundingClientRect();
-      if (cr.width > 0) w = Math.max(w, cr.width);
-      if (cr.height > 0) h = Math.max(h, cr.height);
-    });
-
-    if (w <= 0 || h <= 0) return;
-
-    const padding = 20;
+    const padding = isModal ? 32 : 16;
     const availW = window.innerWidth - padding;
     const availH = window.innerHeight - padding;
 
-    // Scale purely based on measured size vs. available space:
-    // shrink anything that would overflow, and gently enlarge anything
-    // that would otherwise look lost in the box. Bounds keep either
-    // extreme (huge decorative SVGs, tiny checkboxes) from ever
-    // overflowing or from being blown up past legibility.
-    const fitScale = Math.min(availW / w, availH / h);
-    const maxBoost = isModal ? 1.25 : 1.4;
-    let s = Math.min(fitScale, maxBoost);
+    let s = 1.0;
+    if (natW < 120 && natH < 80) {
+      // Small components (checkbox, switch, radio, loader)
+      const targetMin = Math.min(availW, availH) * 0.28;
+      const boost = targetMin / Math.max(natW, natH);
+      s = Math.max(1.8, Math.min(boost, 2.5));
+    } else if (natW > availW || natH > availH) {
+      // Overflowing components
+      s = Math.min(availW / natW, availH / natH) * 0.95;
+    } else if (isModal && natW < 260 && natH < 200) {
+      s = 1.25;
+    }
+
+    // Never exceed available space
+    const maxAllowed = Math.min(availW / natW, availH / natH) * 0.95;
+    s = Math.min(s, maxAllowed);
     s = Math.max(s, 0.25);
+    s = Math.min(s, 3.0);
 
     if (Math.abs(s - 1) > 0.01) {
-      stage.style.transform = 'scale(' + s + ')';
+      inner.style.transform = 'scale(' + s + ')';
     }
   }
 
@@ -1723,15 +1756,19 @@ async function syncLikeToCloud(id, count, delta = 0) {
 }
 
 async function syncCloudLikes() {
+  const rtdb = getRealtimeDB();
+  const db = getFirestoreDB();
+  if (!rtdb && !db) return;
   let changed = false;
+  let rtdbSuccess = false;
   const local = getStoredLikesMap();
 
-  // Try RTDB
-  const rtdb = getRealtimeDB();
+  // 1. Try Realtime Database first (fastest & lowest bandwidth)
   if (rtdb) {
     try {
       const snap = await rtdb.ref('likes').once('value');
       if (snap && snap.exists()) {
+        rtdbSuccess = true;
         const val = snap.val() || {};
         Object.keys(val).forEach((k) => {
           const cloudVal = Number(val[k]) || 0;
@@ -1744,9 +1781,8 @@ async function syncCloudLikes() {
     } catch (e) {}
   }
 
-  // Also try Firestore
-  const db = getFirestoreDB();
-  if (db) {
+  // 2. Fallback to Firestore only if RTDB is unavailable or empty
+  if (db && !rtdbSuccess) {
     try {
       const snapshot = await db.collection('likes').get();
       if (snapshot && !snapshot.empty) {
@@ -2276,129 +2312,251 @@ const UIVERSE_CATEGORIES = [
   {
     id: 'Buttons',
     name: 'Button',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 40 24" fill="none"><rect x="2" y="3" width="36" height="18" rx="9" fill="#6366f1"/><circle cx="11" cy="12" r="3" fill="#fff"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><rect x="3" y="10" width="26" height="12" rx="6" stroke="#9ca3af" stroke-width="2"/><rect x="7" y="13" width="10" height="6" rx="3" fill="#6366f1"/></svg>`
   },
   {
     id: 'Toggles',
     name: 'Toggle switch',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 40 24" fill="none"><rect x="2" y="4" width="36" height="16" rx="8" fill="#4b5563"/><circle cx="11" cy="12" r="6" fill="#fff"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><rect x="4" y="10" width="24" height="12" rx="6" fill="#374151" stroke="#6b7280" stroke-width="1.5"/><circle cx="10" cy="16" r="4.5" fill="#fff"/></svg>`
   },
   {
     id: 'Checkboxes',
     name: 'Checkbox',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="#6b7280"/><path d="M7 12l3 3 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><rect x="6" y="6" width="20" height="20" rx="5" fill="#374151" stroke="#6b7280" stroke-width="1.5"/><path d="M11 16l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
   },
   {
     id: 'Cards',
     name: 'Card',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="4" fill="#6b7280"/><rect x="7" y="6" width="6" height="2" rx="1" fill="#fff"/><rect x="7" y="10" width="10" height="1.5" rx="0.75" fill="#d1d5db"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><rect x="7" y="5" width="18" height="22" rx="4" fill="#374151" stroke="#6b7280" stroke-width="1.5"/><rect x="11" y="9" width="6" height="2" rx="1" fill="#fff"/><rect x="11" y="14" width="10" height="2" rx="1" fill="#9ca3af"/></svg>`
   },
   {
     id: 'Loaders',
     name: 'Loader',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><path d="M16 4v4M16 24v4M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M4 16h4M24 16h4M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg>`
   },
   {
     id: 'Inputs',
     name: 'Input',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 20" fill="none"><rect x="2" y="2" width="28" height="16" rx="6" fill="#374151" stroke="#6b7280" stroke-width="1.5"/><circle cx="10" cy="10" r="1.5" fill="#9ca3af"/><circle cx="16" cy="10" r="1.5" fill="#9ca3af"/><circle cx="22" cy="10" r="1.5" fill="#9ca3af"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><rect x="4" y="10" width="24" height="12" rx="4" fill="#374151" stroke="#6b7280" stroke-width="1.5"/><circle cx="10" cy="16" r="1.5" fill="#9ca3af"/><circle cx="16" cy="16" r="1.5" fill="#9ca3af"/><circle cx="22" cy="16" r="1.5" fill="#9ca3af"/></svg>`
   },
   {
     id: 'Forms',
     name: 'Form',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="3" rx="1.5" fill="#9ca3af"/><rect x="3" y="10" width="14" height="3" rx="1.5" fill="#9ca3af"/><rect x="3" y="16" width="8" height="3" rx="1.5" fill="#9ca3af"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><rect x="6" y="8" width="20" height="3" rx="1.5" fill="#9ca3af"/><rect x="6" y="14" width="15" height="3" rx="1.5" fill="#9ca3af"/><rect x="6" y="20" width="10" height="3" rx="1.5" fill="#9ca3af"/></svg>`
   },
   {
     id: 'Patterns',
     name: 'Pattern',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><path d="M2 18L18 2M6 22L22 6M2 10L10 2M2 2L2 2M14 22L22 14" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><path d="M6 26L26 6M6 18L18 6M6 10L10 6M14 26L26 14M22 26L26 22" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round"/></svg>`
   },
   {
     id: 'Radio buttons',
     name: 'Radio buttons',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 16" fill="none"><circle cx="6" cy="8" r="4" fill="#6366f1"/><circle cx="16" cy="8" r="4" fill="#4b5563"/><circle cx="26" cy="8" r="4" fill="#4b5563"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><circle cx="8" cy="16" r="4.5" fill="#6366f1"/><circle cx="8" cy="16" r="2" fill="#fff"/><circle cx="16" cy="16" r="4" fill="#374151" stroke="#6b7280" stroke-width="1.5"/><circle cx="24" cy="16" r="4" fill="#374151" stroke="#6b7280" stroke-width="1.5"/></svg>`
   },
   {
     id: 'Tooltips',
     name: 'Tooltips',
-    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 28 22" fill="none"><rect x="2" y="2" width="24" height="12" rx="4" fill="#9ca3af"/><path d="M10 14L14 19L18 14Z" fill="#9ca3af"/></svg>`
+    iconSvg: `<svg class="w-8 h-8" viewBox="0 0 32 32" fill="none"><rect x="5" y="8" width="22" height="12" rx="4" fill="#374151" stroke="#6b7280" stroke-width="1.5"/><path d="M13 20L16 24L19 20Z" fill="#374151"/></svg>`
   }
 ];
 
 const BOILERPLATES = {
-  Buttons: {
-    title: 'My Custom Button',
-    category: 'Buttons',
-    html: `<button class="button">\n  Button\n</button>`,
-    css: `.button {\n  cursor: pointer;\n  position: relative;\n  padding: 10px 24px;\n  font-size: 16px;\n  color: #ffffff;\n  border: 2px solid #111;\n  border-radius: 34px;\n  background-color: #212121;\n  font-weight: 600;\n  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);\n  overflow: hidden;\n}\n\n.button:hover {\n  box-shadow: 0 0 0 12px transparent;\n  color: #212121;\n  border-radius: 12px;\n  background-color: #f5f5f5;\n}\n\n.button:active {\n  scale: 0.95;\n}`
+  css: {
+    Buttons: {
+      title: 'My Custom Button',
+      category: 'Buttons',
+      html: `<button class="button">\n  Button\n</button>`,
+      css: `.button {\n  cursor: pointer;\n  position: relative;\n  padding: 10px 24px;\n  font-size: 16px;\n  color: #ffffff;\n  border: 2px solid #3b82f6;\n  border-radius: 34px;\n  background-color: #1e1f24;\n  font-weight: 600;\n  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);\n  overflow: hidden;\n}\n\n.button:hover {\n  box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);\n  background-color: #3b82f6;\n  color: #ffffff;\n  transform: translateY(-2px);\n}\n\n.button:active {\n  transform: scale(0.95);\n}`,
+      bg: '#212121',
+      activeTab: 'css',
+    },
+    Toggles: {
+      title: 'My Custom Toggle Switch',
+      category: 'Toggles',
+      html: `<label class="switch">\n  <input type="checkbox">\n  <span class="slider"></span>\n</label>`,
+      css: `/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: "";\n  height: 1.4em;\n  width: 1.4em;\n  border-radius: 20px;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: white;\n  transition: .4s;\n}\n\ninput:checked + .slider {\n  background-color: #2196F3;\n}\n\ninput:focus + .slider {\n  box-shadow: 0 0 1px #2196F3;\n}\n\ninput:checked + .slider:before {\n  transform: translateX(1.5em);\n}`,
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Checkboxes: {
+      title: 'My Custom Checkbox',
+      category: 'Checkboxes',
+      html: `<label class="container">\n  <input type="checkbox" checked="checked">\n  <div class="checkmark"></div>\n</label>`,
+      css: `/* Hide default checkbox */\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n.container {\n  display: block;\n  position: relative;\n  cursor: pointer;\n  font-size: 20px;\n  user-select: none;\n}\n\n.checkmark {\n  position: relative;\n  top: 0;\n  left: 0;\n  height: 1.3em;\n  width: 1.3em;\n  background-color: #ccc;\n  border-radius: 4px;\n  transition: 0.2s;\n}\n\n.container input:checked ~ .checkmark {\n  background-color: #2196F3;\n}\n\n.checkmark:after {\n  content: "";\n  position: absolute;\n  display: none;\n}\n\n.container input:checked ~ .checkmark:after {\n  display: block;\n}\n\n.container .checkmark:after {\n  left: 0.45em;\n  top: 0.25em;\n  width: 0.25em;\n  height: 0.5em;\n  border: solid white;\n  border-width: 0 0.15em 0.15em 0;\n  transform: rotate(45deg);\n}`,
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Cards: {
+      title: 'My Custom Card',
+      category: 'Cards',
+      html: `<div class="card">\n  <div class="card-details">\n    <p class="text-title">Card Title</p>\n    <p class="text-body">Here are the details of the card</p>\n  </div>\n  <button class="card-button">More info</button>\n</div>`,
+      css: `.card {\n  width: 190px;\n  height: 254px;\n  border-radius: 20px;\n  background: #212121;\n  position: relative;\n  padding: 1.8rem;\n  border: 2px solid #c3c6ce;\n  transition: 0.5s ease-out;\n  overflow: visible;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n\n.card-details {\n  color: white;\n  height: 100%;\n  gap: .5em;\n  display: grid;\n  place-content: center;\n}\n\n.card-button {\n  transform: translate(-50%, 125%);\n  width: 60%;\n  border-radius: 1rem;\n  border: none;\n  background-color: #008bf8;\n  color: #fff;\n  font-size: 1rem;\n  padding: .5rem 1rem;\n  position: absolute;\n  left: 50%;\n  bottom: 0;\n  opacity: 0;\n  transition: 0.3s ease-out;\n  cursor: pointer;\n}\n\n.text-body {\n  color: rgb(134, 134, 134);\n  font-size: 0.8em;\n  text-align: center;\n}\n\n.text-title {\n  font-size: 1.5em;\n  font-weight: bold;\n  text-align: center;\n}\n\n.card:hover {\n  border-color: #008bf8;\n  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);\n}\n\n.card:hover .card-button {\n  transform: translate(-50%, 50%);\n  opacity: 1;\n}`,
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Loaders: {
+      title: 'My Custom Loader',
+      category: 'Loaders',
+      html: `<div class="loader"></div>`,
+      css: `.loader {\n  width: 48px;\n  height: 48px;\n  border: 5px solid #FFF;\n  border-bottom-color: #FF3D00;\n  border-radius: 50%;\n  display: inline-block;\n  box-sizing: border-box;\n  animation: rotation 1s linear infinite;\n}\n\n@keyframes rotation {\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n}`,
+      bg: '#212121',
+      activeTab: 'css',
+    },
+    Inputs: {
+      title: 'My Custom Input',
+      category: 'Inputs',
+      html: `<div class="input-group">\n  <input required="" type="text" name="text" autocomplete="off" class="input">\n  <label class="user-label">First Name</label>\n</div>`,
+      css: `.input-group {\n  position: relative;\n}\n\n.input {\n  border: solid 1.5px #9e9e9e;\n  border-radius: 1rem;\n  background: none;\n  padding: 1rem;\n  font-size: 1rem;\n  color: #f5f5f5;\n  transition: border 150ms cubic-bezier(0.4,0,0.2,1);\n}\n\n.user-label {\n  position: absolute;\n  left: 15px;\n  color: #e8e8e8;\n  pointer-events: none;\n  transform: translateY(1rem);\n  transition: 150ms cubic-bezier(0.4,0,0.2,1);\n}\n\n.input:focus, input:valid {\n  outline: none;\n  border: 1.5px solid #1a73e8;\n}\n\n.input:focus ~ label, input:valid ~ label {\n  transform: translateY(-50%) scale(0.8);\n  background-color: #212121;\n  padding: 0 .2em;\n  color: #2196f3;\n}`,
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Forms: {
+      title: 'My Custom Form',
+      category: 'Forms',
+      html: `<form class="form">\n  <p class="title">Register</p>\n  <p class="message">Signup now and get full access to our app.</p>\n  <label>\n    <input required="" placeholder="" type="email" class="input">\n    <span>Email</span>\n  </label>\n  <label>\n    <input required="" placeholder="" type="password" class="input">\n    <span>Password</span>\n  </label>\n  <button class="submit">Submit</button>\n</form>`,
+      css: `.form {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  max-width: 350px;\n  background-color: #1f1f1f;\n  padding: 20px;\n  border-radius: 20px;\n  position: relative;\n}\n\n.title {\n  font-size: 28px;\n  color: royalblue;\n  font-weight: 600;\n  letter-spacing: -1px;\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n\n.message {\n  color: rgba(255, 255, 255, 0.7);\n  font-size: 14px;\n}\n\n.form label {\n  position: relative;\n}\n\n.form label .input {\n  width: 100%;\n  padding: 10px 10px 20px 10px;\n  outline: 0;\n  border: 1px solid rgba(255, 255, 255, 0.3);\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n}\n\n.form label .input + span {\n  position: absolute;\n  left: 10px;\n  top: 15px;\n  color: grey;\n  font-size: 0.9em;\n  cursor: text;\n  transition: 0.3s ease;\n}\n\n.form label .input:focus + span,\n.form label .input:valid + span {\n  top: 30px;\n  font-size: 0.7em;\n  font-weight: 600;\n}\n\n.submit {\n  border: none;\n  outline: none;\n  background-color: royalblue;\n  padding: 10px;\n  border-radius: 10px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n\n.submit:hover {\n  background-color: rgb(56, 90, 194);\n}`,
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Patterns: {
+      title: 'My Custom Pattern',
+      category: 'Patterns',
+      html: `<div class="pattern-container"></div>`,
+      css: `.pattern-container {\n  width: 100%;\n  height: 100%;\n  min-height: 240px;\n  --color: rgba(255, 255, 255, 0.15);\n  background-color: #212121;\n  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),\n      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);\n  background-size: 55px 55px;\n}`,
+      bg: '#212121',
+      activeTab: 'css',
+    },
+    'Radio buttons': {
+      title: 'My Custom Radio Buttons',
+      category: 'Radio buttons',
+      html: `<div class="radio-input">\n  <label>\n    <input type="radio" id="value-1" name="value-radio" value="value-1" checked="">\n    <span>Option 1</span>\n  </label>\n  <label>\n    <input type="radio" id="value-2" name="value-radio" value="value-2">\n    <span>Option 2</span>\n  </label>\n  <label>\n    <input type="radio" id="value-3" name="value-radio" value="value-3">\n    <span>Option 3</span>\n  </label>\n  <span class="selection"></span>\n</div>`,
+      css: `.radio-input input {\n  display: none;\n}\n\n.radio-input {\n  --container_width: 300px;\n  position: relative;\n  display: flex;\n  align-items: center;\n  border-radius: 10px;\n  background-color: #212121;\n  color: #fff;\n  width: var(--container_width);\n  overflow: hidden;\n  border: 1px solid rgba(255, 255, 255, 0.1);\n}\n\n.radio-input label {\n  width: 100%;\n  padding: 10px;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1;\n  font-weight: 600;\n  letter-spacing: -1px;\n  font-size: 14px;\n}\n\n.selection {\n  display: none;\n  position: absolute;\n  height: 100%;\n  width: calc(var(--container_width) / 3);\n  z-index: 0;\n  left: 0;\n  top: 0;\n  transition: .15s ease;\n}\n\n.radio-input label:has(input:checked) {\n  color: #fff;\n}\n\n.radio-input label:has(input:checked) ~ .selection {\n  background-color: #6366f1;\n  display: inline-block;\n}\n\n.radio-input label:nth-child(1):has(input:checked) ~ .selection {\n  transform: translateX(calc(var(--container_width) * 0/3));\n}\n\n.radio-input label:nth-child(2):has(input:checked) ~ .selection {\n  transform: translateX(calc(var(--container_width) * 1/3));\n}\n\n.radio-input label:nth-child(3):has(input:checked) ~ .selection {\n  transform: translateX(calc(var(--container_width) * 2/3));\n}`,
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Tooltips: {
+      title: 'My Custom Tooltip',
+      category: 'Tooltips',
+      html: `<div class="tooltip-container">\n  <span class="tooltip">Hello, I'm a tooltip!</span>\n  <span class="text">Hover me</span>\n</div>`,
+      css: `.tooltip-container {\n  position: relative;\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  border-radius: 10px;\n}\n\n.tooltip {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 10px;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  border-radius: 15px;\n  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),\n    inset -5px -5px 15px rgba(255, 255, 255, 0.1),\n    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);\n  background: #212121;\n  color: white;\n  white-space: nowrap;\n  font-size: 13px;\n}\n\n.tooltip-container:hover .tooltip {\n  top: -45px;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}\n\n.text {\n  color: white;\n  background: #333;\n  padding: 10px 20px;\n  border-radius: 8px;\n  display: inline-block;\n}`,
+      bg: '#212121',
+      activeTab: 'html',
+    }
   },
-  Toggles: {
-    title: 'My Toggle Switch',
-    category: 'Toggles',
-    html: `<label class="switch">\n  <input type="checkbox">\n  <span class="slider"></span>\n</label>`,
-    css: `/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n  border-radius: 30px;\n}\n\n.slider:before {\n  position: absolute;\n  content: "";\n  height: 1.4em;\n  width: 1.4em;\n  border-radius: 20px;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: white;\n  transition: .4s;\n}\n\ninput:checked + .slider {\n  background-color: #2196F3;\n}\n\ninput:focus + .slider {\n  box-shadow: 0 0 1px #2196F3;\n}\n\ninput:checked + .slider:before {\n  transform: translateX(1.5em);\n}`
-  },
-  Checkboxes: {
-    title: 'My Custom Checkbox',
-    category: 'Checkboxes',
-    html: `<label class="container">\n  <input type="checkbox" checked="checked">\n  <div class="checkmark"></div>\n</label>`,
-    css: `/* Hide the default checkbox */\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n\n.container {\n  display: block;\n  position: relative;\n  cursor: pointer;\n  font-size: 20px;\n  user-select: none;\n}\n\n/* Create a custom checkbox */\n.checkmark {\n  position: relative;\n  top: 0;\n  left: 0;\n  height: 1.3em;\n  width: 1.3em;\n  background-color: #ccc;\n}\n\n/* When the checkbox is checked, add a blue background */\n.container input:checked ~ .checkmark {\n  background-color: #2196F3;\n}\n\n/* Create the checkmark/indicator (hidden when not checked) */\n.checkmark:after {\n  content: "";\n  position: absolute;\n  display: none;\n}\n\n/* Show the checkmark when checked */\n.container input:checked ~ .checkmark:after {\n  display: block;\n}\n\n/* Style the checkmark/indicator */\n.container .checkmark:after {\n  left: 0.45em;\n  top: 0.25em;\n  width: 0.25em;\n  height: 0.5em;\n  border: solid white;\n  border-width: 0 0.15em 0.15em 0;\n  transform: rotate(45deg);\n}`
-  },
-  Cards: {
-    title: 'My Custom Card',
-    category: 'Cards',
-    html: `<div class="card">\n  <div class="card-details">\n    <p class="text-title">Card Title</p>\n    <p class="text-body">Here are the details of the card</p>\n  </div>\n  <button class="card-button">More info</button>\n</div>`,
-    css: `.card {\n  width: 190px;\n  height: 254px;\n  border-radius: 20px;\n  background: #212121;\n  position: relative;\n  padding: 1.8rem;\n  border: 2px solid #c3c6ce;\n  transition: 0.5s ease-out;\n  overflow: visible;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n\n.card-details {\n  color: white;\n  height: 100%;\n  gap: .5em;\n  display: grid;\n  place-content: center;\n}\n\n.card-button {\n  transform: translate(-50%, 125%);\n  width: 60%;\n  border-radius: 1rem;\n  border: none;\n  background-color: #008bf8;\n  color: #fff;\n  font-size: 1rem;\n  padding: .5rem 1rem;\n  position: absolute;\n  left: 50%;\n  bottom: 0;\n  opacity: 0;\n  transition: 0.3s ease-out;\n  cursor: pointer;\n}\n\n.text-body {\n  color: rgb(134, 134, 134);\n  font-size: 0.8em;\n  text-align: center;\n}\n\n.text-title {\n  font-size: 1.5em;\n  font-weight: bold;\n  text-align: center;\n}\n\n.card:hover {\n  border-color: #008bf8;\n  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);\n}\n\n.card:hover .card-button {\n  transform: translate(-50%, 50%);\n  opacity: 1;\n}`
-  },
-  Loaders: {
-    title: 'My Custom Loader',
-    category: 'Loaders',
-    html: `<div class="loader"></div>`,
-    css: `.loader {\n  width: 48px;\n  height: 48px;\n  border: 5px solid #FFF;\n  border-bottom-color: #FF3D00;\n  border-radius: 50%;\n  display: inline-block;\n  box-sizing: border-box;\n  animation: rotation 1s linear infinite;\n}\n\n@keyframes rotation {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}`
-  },
-  Inputs: {
-    title: 'My Custom Input',
-    category: 'Inputs',
-    html: `<div class="input-group">\n  <input required="" type="text" name="text" autocomplete="off" class="input">\n  <label class="user-label">First Name</label>\n</div>`,
-    css: `.input-group {\n  position: relative;\n}\n\n.input {\n  border: solid 1.5px #9e9e9e;\n  border-radius: 1rem;\n  background: none;\n  padding: 1rem;\n  font-size: 1rem;\n  color: #f5f5f5;\n  transition: border 150ms cubic-bezier(0.4,0,0.2,1);\n}\n\n.user-label {\n  position: absolute;\n  left: 15px;\n  color: #e8e8e8;\n  pointer-events: none;\n  transform: translateY(1rem);\n  transition: 150ms cubic-bezier(0.4,0,0.2,1);\n}\n\n.input:focus, input:valid {\n  outline: none;\n  border: 1.5px solid #1a73e8;\n}\n\n.input:focus ~ label, input:valid ~ label {\n  transform: translateY(-50%) scale(0.8);\n  background-color: #212121;\n  padding: 0 .2em;\n  color: #2196f3;\n}`
-  },
-  Forms: {
-    title: 'My Custom Form',
-    category: 'Forms',
-    html: `<form class="form">\n  <p class="title">Register</p>\n  <p class="message">Signup now and get full access to our app.</p>\n  <label>\n    <input required="" placeholder="" type="email" class="input">\n    <span>Email</span>\n  </label>\n  <label>\n    <input required="" placeholder="" type="password" class="input">\n    <span>Password</span>\n  </label>\n  <button class="submit">Submit</button>\n</form>`,
-    css: `.form {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  max-width: 350px;\n  background-color: #1f1f1f;\n  padding: 20px;\n  border-radius: 20px;\n  position: relative;\n}\n\n.title {\n  font-size: 28px;\n  color: royalblue;\n  font-weight: 600;\n  letter-spacing: -1px;\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n\n.message {\n  color: rgba(255, 255, 255, 0.7);\n  font-size: 14px;\n}\n\n.form label {\n  position: relative;\n}\n\n.form label .input {\n  width: 100%;\n  padding: 10px 10px 20px 10px;\n  outline: 0;\n  border: 1px solid rgba(255, 255, 255, 0.3);\n  border-radius: 10px;\n  background: transparent;\n  color: #fff;\n}\n\n.form label .input + span {\n  position: absolute;\n  left: 10px;\n  top: 15px;\n  color: grey;\n  font-size: 0.9em;\n  cursor: text;\n  transition: 0.3s ease;\n}\n\n.form label .input:focus + span,\n.form label .input:valid + span {\n  top: 30px;\n  font-size: 0.7em;\n  font-weight: 600;\n}\n\n.submit {\n  border: none;\n  outline: none;\n  background-color: royalblue;\n  padding: 10px;\n  border-radius: 10px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n}\n\n.submit:hover {\n  background-color: rgb(56, 90, 194);\n}`
-  },
-  Patterns: {
-    title: 'My Custom Pattern',
-    category: 'Patterns',
-    html: `<div class="pattern-container"></div>`,
-    css: `.pattern-container {\n  width: 100%;\n  height: 100%;\n  min-height: 240px;\n  --color: rgba(255, 255, 255, 0.15);\n  background-color: #212121;\n  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),\n      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);\n  background-size: 55px 55px;\n}`
-  },
-  'Radio buttons': {
-    title: 'My Custom Radio Buttons',
-    category: 'Radio buttons',
-    html: `<div class="radio-input">\n  <label>\n    <input type="radio" id="value-1" name="value-radio" value="value-1" checked="">\n    <span>Option 1</span>\n  </label>\n  <label>\n    <input type="radio" id="value-2" name="value-radio" value="value-2">\n    <span>Option 2</span>\n  </label>\n  <label>\n    <input type="radio" id="value-3" name="value-radio" value="value-3">\n    <span>Option 3</span>\n  </label>\n  <span class="selection"></span>\n</div>`,
-    css: `.radio-input input {\n  display: none;\n}\n\n.radio-input {\n  --container_width: 300px;\n  position: relative;\n  display: flex;\n  align-items: center;\n  border-radius: 10px;\n  background-color: #212121;\n  color: #fff;\n  width: var(--container_width);\n  overflow: hidden;\n  border: 1px solid rgba(255, 255, 255, 0.1);\n}\n\n.radio-input label {\n  width: 100%;\n  padding: 10px;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1;\n  font-weight: 600;\n  letter-spacing: -1px;\n  font-size: 14px;\n}\n\n.selection {\n  display: none;\n  position: absolute;\n  height: 100%;\n  width: calc(var(--container_width) / 3);\n  z-index: 0;\n  left: 0;\n  top: 0;\n  transition: .15s ease;\n}\n\n.radio-input label:has(input:checked) {\n  color: #fff;\n}\n\n.radio-input label:has(input:checked) ~ .selection {\n  background-color: #6366f1;\n  display: inline-block;\n}\n\n.radio-input label:nth-child(1):has(input:checked) ~ .selection {\n  transform: translateX(calc(var(--container_width) * 0/3));\n}\n\n.radio-input label:nth-child(2):has(input:checked) ~ .selection {\n  transform: translateX(calc(var(--container_width) * 1/3));\n}\n\n.radio-input label:nth-child(3):has(input:checked) ~ .selection {\n  transform: translateX(calc(var(--container_width) * 2/3));\n}`
-  },
-  Tooltips: {
-    title: 'My Custom Tooltip',
-    category: 'Tooltips',
-    html: `<div class="tooltip-container">\n  <span class="tooltip">Hello, I'm a tooltip!</span>\n  <span class="text">Hover me</span>\n</div>`,
-    css: `.tooltip-container {\n  position: relative;\n  cursor: pointer;\n  transition: all 0.2s;\n  font-size: 17px;\n  border-radius: 10px;\n}\n\n.tooltip {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  padding: 10px;\n  opacity: 0;\n  pointer-events: none;\n  transition: all 0.3s;\n  border-radius: 15px;\n  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),\n    inset -5px -5px 15px rgba(255, 255, 255, 0.1),\n    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);\n  background: #212121;\n  color: white;\n  white-space: nowrap;\n  font-size: 13px;\n}\n\n.tooltip-container:hover .tooltip {\n  top: -45px;\n  opacity: 1;\n  visibility: visible;\n  pointer-events: auto;\n}\n\n.text {\n  color: white;\n  background: #333;\n  padding: 10px 20px;\n  border-radius: 8px;\n  display: inline-block;\n}`
+  tailwind: {
+    Buttons: {
+      title: 'My Custom Button',
+      category: 'Buttons',
+      html: `<button class="px-5 py-2.5 font-medium text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all cursor-pointer">\n  Button\n</button>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Toggles: {
+      title: 'My Custom Toggle Switch',
+      category: 'Toggles',
+      html: `<label class="relative inline-flex items-center cursor-pointer">\n  <input type="checkbox" class="sr-only peer">\n  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>\n</label>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Checkboxes: {
+      title: 'My Custom Checkbox',
+      category: 'Checkboxes',
+      html: `<label class="flex items-center space-x-2.5 cursor-pointer select-none">\n  <input type="checkbox" checked class="w-5 h-5 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">\n  <span class="text-sm font-medium text-gray-200">Checkbox</span>\n</label>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Cards: {
+      title: 'My Custom Card',
+      category: 'Cards',
+      html: `<div class="max-w-xs p-6 bg-gray-900 border border-gray-800 rounded-2xl shadow-xl text-center">\n  <h5 class="mb-2 text-xl font-bold tracking-tight text-white">Card Title</h5>\n  <p class="mb-4 text-xs text-gray-400">Here are the details of the card in Tailwind CSS.</p>\n  <button class="inline-flex items-center px-4 py-2 text-xs font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-colors">\n    More info\n  </button>\n</div>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Loaders: {
+      title: 'My Custom Loader',
+      category: 'Loaders',
+      html: `<div class="w-12 h-12 border-4 border-gray-600 border-t-blue-500 rounded-full animate-spin"></div>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Inputs: {
+      title: 'My Custom Input',
+      category: 'Inputs',
+      html: `<div class="w-64">\n  <input type="text" placeholder="Enter text..." class="w-full px-4 py-2.5 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm">\n</div>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Forms: {
+      title: 'My Custom Form',
+      category: 'Forms',
+      html: `<form class="w-72 p-6 bg-gray-900 border border-gray-800 rounded-2xl space-y-3.5">\n  <h2 class="text-lg font-bold text-white">Login</h2>\n  <div>\n    <input type="email" placeholder="Email" class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">\n  </div>\n  <div>\n    <input type="password" placeholder="Password" class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">\n  </div>\n  <button type="button" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-lg transition-colors">\n    Submit\n  </button>\n</form>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Patterns: {
+      title: 'My Custom Pattern',
+      category: 'Patterns',
+      html: `<div class="w-64 h-64 bg-gray-950 rounded-2xl border border-gray-800 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    'Radio buttons': {
+      title: 'My Custom Radio Buttons',
+      category: 'Radio buttons',
+      html: `<div class="flex items-center space-x-4 bg-gray-900 p-3 rounded-xl border border-gray-800">\n  <label class="flex items-center space-x-2 cursor-pointer">\n    <input type="radio" name="radio-demo" checked class="w-4 h-4 text-blue-600 bg-gray-800 border-gray-700 focus:ring-blue-500">\n    <span class="text-xs text-gray-300">Option 1</span>\n  </label>\n  <label class="flex items-center space-x-2 cursor-pointer">\n    <input type="radio" name="radio-demo" class="w-4 h-4 text-blue-600 bg-gray-800 border-gray-700 focus:ring-blue-500">\n    <span class="text-xs text-gray-300">Option 2</span>\n  </label>\n</div>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    },
+    Tooltips: {
+      title: 'My Custom Tooltip',
+      category: 'Tooltips',
+      html: `<div class="group relative inline-block">\n  <button class="px-4 py-2 bg-gray-800 text-white text-xs rounded-lg border border-gray-700 hover:bg-gray-700 transition-colors">\n    Hover me\n  </button>\n  <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block px-2.5 py-1 bg-black text-white text-[11px] rounded shadow-lg whitespace-nowrap">\n    Tooltip text\n  </div>\n</div>`,
+      css: '',
+      bg: '#212121',
+      activeTab: 'html',
+    }
   }
 };
 
+// Fallback direct category access for compatibility
+Object.keys(BOILERPLATES.css).forEach(k => {
+  BOILERPLATES[k] = BOILERPLATES.css[k];
+});
+
 const UPLOAD_STUDIO = {
-  title: 'My Custom Checkbox',
-  category: 'Checkboxes',
+  title: 'My Custom Button',
+  category: 'Buttons',
   tech: 'css',
-  activeTab: 'html',
+  pendingTech: 'css',
+  activeTab: 'css',
   html: '',
   css: '',
-  bg: '#e8e8e8',
-  pendingCategory: 'Checkboxes',
+  bg: '#212121',
+  pendingCategory: 'Buttons',
   isDirty: false
 };
+
+function updateTechSelectorUI(tech) {
+  tech = tech || UPLOAD_STUDIO.pendingTech || 'css';
+  const techBtns = document.querySelectorAll('#tech-selector button');
+  techBtns.forEach(btn => {
+    const isCur = btn.dataset.tech === tech;
+    btn.classList.toggle('active', isCur);
+    btn.classList.toggle('bg-[#27272a]', isCur);
+    btn.classList.toggle('text-white', isCur);
+    btn.classList.toggle('text-gray-400', !isCur);
+  });
+}
 
 function renderCategoryDialogGrid() {
   const grid = document.getElementById('category-dialog-grid');
@@ -2407,7 +2565,7 @@ function renderCategoryDialogGrid() {
     const isSelected = cat.id === UPLOAD_STUDIO.pendingCategory;
     return `
       <div class="category-choice-card flex flex-col items-center justify-center p-3.5 sm:p-4 rounded-2xl bg-[#1e1f24] hover:bg-[#25262e] border transition-all cursor-pointer select-none group ${isSelected ? 'border-2 border-indigo-500 bg-[#252433] shadow-md shadow-indigo-500/20' : 'border-white/10 hover:border-white/25'}" data-category="${cat.id}">
-        <div class="mb-2 group-hover:scale-110 transition-transform">
+        <div class="mb-2 group-hover:scale-110 transition-transform flex items-center justify-center">
           ${cat.iconSvg}
         </div>
         <span class="text-xs font-semibold text-gray-200 group-hover:text-white text-center">${cat.name}</span>
@@ -2426,19 +2584,82 @@ function renderCategoryDialogGrid() {
     });
     // Double click to immediately apply and close
     card.addEventListener('dblclick', () => {
-      applySelectedCategory(card.dataset.category);
+      applySelectedCategory(card.dataset.category, UPLOAD_STUDIO.pendingTech);
     });
   });
 }
 
-function applySelectedCategory(catId) {
-  catId = catId || UPLOAD_STUDIO.pendingCategory || 'Checkboxes';
+function renderUploadTabs() {
+  const container = document.getElementById('upload-tabs');
+  if (!container) return;
+
+  if (UPLOAD_STUDIO.tech === 'tailwind') {
+    container.innerHTML = `
+      <button type="button"
+        class="tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-[#27272a] text-white shadow-sm cursor-pointer"
+        data-upload-tab="html">
+        <i class="fa-brands fa-html5 text-[#e34f26] text-sm"></i>
+        <span>HTML</span>
+        <span class="text-gray-400 font-normal">+</span>
+        <i class="fa-solid fa-wind text-sky-400 text-sm"></i>
+        <span>TailwindCSS</span>
+      </button>
+    `;
+    UPLOAD_STUDIO.activeTab = 'html';
+  } else {
+    const isHtml = UPLOAD_STUDIO.activeTab === 'html';
+    const isCss = UPLOAD_STUDIO.activeTab === 'css';
+    container.innerHTML = `
+      <button type="button"
+        class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${isHtml ? 'active bg-[#27272a] text-white shadow-sm' : 'text-gray-400 hover:text-white'}"
+        data-upload-tab="html">
+        <i class="fa-brands fa-html5 text-[#e34f26] text-sm"></i>
+        <span>HTML</span>
+      </button>
+      <button type="button"
+        class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${isCss ? 'active bg-[#27272a] text-white shadow-sm' : 'text-gray-400 hover:text-white'}"
+        data-upload-tab="css">
+        <i class="fa-brands fa-css3-alt text-[#1572b6] text-sm"></i>
+        <span>CSS</span>
+      </button>
+    `;
+  }
+
+  container.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.uploadTab;
+      if (tab) setUploadActiveTab(tab);
+    });
+  });
+}
+
+function applySelectedCategory(catId, tech) {
+  if (UPLOAD_STUDIO.isDirty) {
+    if (!confirm('การเปลี่ยนหมวดหมู่หรือเทคโนโลยีจะเขียนทับโค้ดที่คุณแก้ไขอยู่ในปัจจุบันด้วยเทมเพลตเริ่มต้น คุณต้องการดำเนินการต่อหรือไม่?')) {
+      return false;
+    }
+  }
+  catId = catId || UPLOAD_STUDIO.pendingCategory || 'Buttons';
+  tech = tech || UPLOAD_STUDIO.pendingTech || 'css';
   UPLOAD_STUDIO.category = catId;
-  const template = BOILERPLATES[catId] || BOILERPLATES.Buttons;
+  UPLOAD_STUDIO.tech = tech;
+  UPLOAD_STUDIO.pendingCategory = catId;
+  UPLOAD_STUDIO.pendingTech = tech;
+
+  const templates = BOILERPLATES[tech] || BOILERPLATES.css;
+  const template = templates[catId] || templates.Buttons;
+
   UPLOAD_STUDIO.title = template.title;
   UPLOAD_STUDIO.html = template.html;
   UPLOAD_STUDIO.css = template.css;
+  UPLOAD_STUDIO.bg = template.bg || '#212121';
   UPLOAD_STUDIO.isDirty = false;
+
+  if (tech === 'css') {
+    UPLOAD_STUDIO.activeTab = template.activeTab || 'html';
+  } else {
+    UPLOAD_STUDIO.activeTab = 'html';
+  }
 
   // Sync inputs
   const titleInput = document.getElementById('upload-title');
@@ -2449,10 +2670,14 @@ function applySelectedCategory(catId) {
   const hiddenCat = document.getElementById('upload-category');
   if (hiddenCat) hiddenCat.value = catId;
 
-  // Sync editor with active tab
+  // Render tabs for selected tech
+  renderUploadTabs();
+
+  // Sync editor with active tab & background
+  updateUploadBg(UPLOAD_STUDIO.bg);
   syncUploadEditorFromState();
   updateUploadPreview();
-  updateUploadStatus('Boilerplate loaded', false);
+  updateUploadStatus('Unsaved changes', true);
 
   // Hide category dialog
   const catDialog = document.getElementById('upload-category-dialog');
@@ -2479,6 +2704,7 @@ function setUploadActiveTab(tab) {
   });
 
   syncUploadEditorFromState();
+  updateUploadPreview();
 }
 
 function highlightUploadCode(code, lang) {
@@ -2535,32 +2761,68 @@ function updateUploadPreview() {
     UPLOAD_STUDIO.html,
     UPLOAD_STUDIO.css,
     UPLOAD_STUDIO.category,
-    false,
+    true,
     UPLOAD_STUDIO.bg
   );
   iframe.srcdoc = srcDoc;
 }
 
 function updateUploadBg(newBg) {
+  if (!newBg) return;
   UPLOAD_STUDIO.bg = newBg;
+  const isLight = newBg.toLowerCase() === '#e8e8e8' || newBg.toLowerCase() === '#ffffff' || (typeof isHexColorDark === 'function' ? !isHexColorDark(newBg) : false);
   const wrapper = document.getElementById('upload-canvas-wrapper');
   if (wrapper) wrapper.style.backgroundColor = newBg;
   const hexLabel = document.getElementById('upload-bg-hex-label');
-  if (hexLabel) hexLabel.textContent = newBg;
+  if (hexLabel) hexLabel.textContent = newBg.toUpperCase();
   const picker = document.getElementById('upload-bg-picker');
-  if (picker) picker.value = newBg.startsWith('#') ? newBg : '#e8e8e8';
+  if (picker && newBg.startsWith('#')) picker.value = newBg;
+
+  const colorBtn = document.getElementById('upload-color-picker-btn');
+  if (colorBtn) {
+    colorBtn.style.backgroundColor = newBg;
+    colorBtn.style.borderColor = isLight ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.4)';
+  }
 
   const thumb = document.getElementById('upload-toggle-thumb');
   const track = document.getElementById('upload-toggle-track');
-  const isLight = newBg.toLowerCase() === '#e8e8e8' || newBg.toLowerCase() === '#ffffff';
+  const toggleIcon = document.querySelector('#upload-theme-toggle i');
   if (thumb) {
     thumb.style.transform = isLight ? 'translateX(14px)' : 'translateX(0px)';
+    thumb.style.backgroundColor = isLight ? '#f59e0b' : '#ffffff';
   }
   if (track) {
     track.className = `w-7 h-3.5 rounded-full relative inline-block transition-colors ml-1 mr-0.5 ${isLight ? 'bg-amber-500/40' : 'bg-white/10'}`;
   }
+  if (toggleIcon) {
+    toggleIcon.className = isLight ? 'fa-regular fa-sun text-[11px] text-amber-400 ml-1' : 'fa-regular fa-moon text-[11px] text-indigo-400 ml-1';
+  }
 
-  updateUploadPreview();
+  const iframe = document.getElementById('upload-preview-iframe');
+  if (iframe) {
+    let directUpdated = false;
+    if (iframe.contentDocument) {
+      try {
+        const doc = iframe.contentDocument;
+        if (doc.documentElement) {
+          doc.documentElement.style.backgroundColor = newBg;
+          doc.documentElement.className = isLight ? 'light' : 'dark';
+        }
+        if (doc.body) {
+          doc.body.style.backgroundColor = newBg;
+          directUpdated = true;
+        }
+      } catch (e) {}
+    }
+    try {
+      iframe.contentWindow?.postMessage({ type: 'UPDATE_BG', bg: newBg, isLight }, '*');
+    } catch (e) {}
+
+    // If iframe has no srcdoc loaded yet, load it now
+    if (!iframe.srcdoc) {
+      updateUploadPreview();
+    }
+  }
 }
 
 function updateUploadStatus(text, isUnsaved = true) {
@@ -2595,7 +2857,8 @@ function openUploadModal(initialData = null) {
     UPLOAD_STUDIO.category = initialData.category || 'Buttons';
     UPLOAD_STUDIO.html = initialData.html || '';
     UPLOAD_STUDIO.css = initialData.css || '';
-    UPLOAD_STUDIO.bg = initialData.bg || '#e8e8e8';
+    UPLOAD_STUDIO.bg = initialData.bg || '#212121';
+    UPLOAD_STUDIO.tech = (initialData.css && initialData.css.trim()) ? 'css' : 'tailwind';
 
     const titleInput = document.getElementById('upload-title');
     if (titleInput) titleInput.value = UPLOAD_STUDIO.title;
@@ -2609,34 +2872,40 @@ function openUploadModal(initialData = null) {
     const catDialog = document.getElementById('upload-category-dialog');
     if (catDialog) catDialog.classList.add('hidden');
 
+    renderUploadTabs();
     syncUploadEditorFromState();
     updateUploadBg(UPLOAD_STUDIO.bg);
   } else {
-    // Fresh upload: Show "What are you making?" dialog!
-    UPLOAD_STUDIO.pendingCategory = 'Checkboxes';
-    renderCategoryDialogGrid();
+    // Check for saved draft
+    let restored = false;
+    try {
+      const saved = localStorage.getItem('uiforge_saved_draft');
+      if (saved) {
+        const draft = JSON.parse(saved);
+        if (draft && (draft.html || draft.css)) {
+          if (confirm(`พบแบบร่างที่คุณเคยบันทึกไว้ ("${draft.title || 'Untitled Draft'}") ต้องการกู้คืนแบบร่างนี้หรือไม่?`)) {
+            openUploadModal(draft);
+            restored = true;
+          }
+        }
+      }
+    } catch (_) {}
 
-    // Pre-populate background studio with Checkboxes boilerplate
-    const template = BOILERPLATES.Checkboxes;
-    UPLOAD_STUDIO.category = 'Checkboxes';
-    UPLOAD_STUDIO.title = template.title;
-    UPLOAD_STUDIO.html = template.html;
-    UPLOAD_STUDIO.css = template.css;
-    UPLOAD_STUDIO.isDirty = false;
+    if (!restored) {
+      // Fresh upload: Show "What are you making?" dialog!
+      UPLOAD_STUDIO.pendingCategory = 'Buttons';
+      UPLOAD_STUDIO.pendingTech = 'css';
 
-    const titleInput = document.getElementById('upload-title');
-    if (titleInput) titleInput.value = UPLOAD_STUDIO.title;
-    const catBadge = document.getElementById('upload-category-badge');
-    if (catBadge) catBadge.textContent = 'Checkbox';
-    const hiddenCat = document.getElementById('upload-category');
-    if (hiddenCat) hiddenCat.value = 'Checkboxes';
+      updateTechSelectorUI('css');
+      renderCategoryDialogGrid();
 
-    syncUploadEditorFromState();
-    updateUploadBg(UPLOAD_STUDIO.bg);
-    updateUploadStatus('Unsaved changes', true);
+      // Pre-populate background studio with Buttons + CSS boilerplate
+      applySelectedCategory('Buttons', 'css');
 
-    const catDialog = document.getElementById('upload-category-dialog');
-    if (catDialog) catDialog.classList.remove('hidden');
+      // Show category dialog on top!
+      const catDialog = document.getElementById('upload-category-dialog');
+      if (catDialog) catDialog.classList.remove('hidden');
+    }
   }
 }
 
@@ -2651,41 +2920,38 @@ function closeUploadModal() {
 
 function setupUploadStudio() {
   // Tabs: HTML / CSS
-  const tabBtns = document.querySelectorAll('#upload-tabs button');
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tab = btn.dataset.uploadTab;
-      if (tab) setUploadActiveTab(tab);
-    });
-  });
+  renderUploadTabs();
 
   // Code editor events
   const editor = document.getElementById('upload-code-editor');
   const codeEl = document.getElementById('upload-syntax-code');
   const lineGutter = document.getElementById('upload-line-numbers');
+  let uploadPreviewDebounceTimer = null;
 
   if (editor) {
     editor.addEventListener('input', () => {
       const val = editor.value;
       if (UPLOAD_STUDIO.activeTab === 'html') UPLOAD_STUDIO.html = val;
       else if (UPLOAD_STUDIO.activeTab === 'css') UPLOAD_STUDIO.css = val;
+      UPLOAD_STUDIO.isDirty = true;
 
       const lang = UPLOAD_STUDIO.activeTab === 'html' ? 'html' : 'css';
-      if (codeEl) codeEl.innerHTML = highlightCode(val, lang);
-      if (lineGutter) updateLineNumbers(val, lineGutter);
+      if (codeEl) codeEl.innerHTML = highlightUploadCode(val, lang);
+      if (lineGutter) updateUploadLineNumbers(val, lineGutter);
 
-      updateUploadPreview();
+      if (uploadPreviewDebounceTimer) clearTimeout(uploadPreviewDebounceTimer);
+      uploadPreviewDebounceTimer = setTimeout(() => {
+        updateUploadPreview();
+      }, 180);
+
       updateUploadStatus('Unsaved changes', true);
     });
 
     editor.addEventListener('scroll', () => {
-      if (codeEl && codeEl.parentElement) {
-        codeEl.parentElement.scrollTop = editor.scrollTop;
-        codeEl.parentElement.scrollLeft = editor.scrollLeft;
-      }
-      if (lineGutter) {
-        lineGutter.scrollTop = editor.scrollTop;
-      }
+      const { scrollTop, scrollLeft } = editor;
+      const highlight = document.getElementById('upload-syntax-highlight');
+      if (highlight) highlight.style.transform = `translate(${-scrollLeft}px, ${-scrollTop}px)`;
+      if (lineGutter) lineGutter.style.transform = `translateY(${-scrollTop}px)`;
     });
 
     editor.addEventListener('keydown', (e) => {
@@ -2705,6 +2971,7 @@ function setupUploadStudio() {
   if (titleInput) {
     titleInput.addEventListener('input', () => {
       UPLOAD_STUDIO.title = titleInput.value;
+      UPLOAD_STUDIO.isDirty = true;
       updateUploadStatus('Unsaved changes', true);
     });
   }
@@ -2713,7 +2980,9 @@ function setupUploadStudio() {
   const changeTypeBtn = document.getElementById('upload-change-type-btn');
   if (changeTypeBtn) {
     changeTypeBtn.addEventListener('click', () => {
-      UPLOAD_STUDIO.pendingCategory = UPLOAD_STUDIO.category;
+      UPLOAD_STUDIO.pendingCategory = UPLOAD_STUDIO.category || 'Buttons';
+      UPLOAD_STUDIO.pendingTech = UPLOAD_STUDIO.tech || 'css';
+      updateTechSelectorUI(UPLOAD_STUDIO.pendingTech);
       renderCategoryDialogGrid();
       const catDialog = document.getElementById('upload-category-dialog');
       if (catDialog) catDialog.classList.remove('hidden');
@@ -2729,11 +2998,21 @@ function setupUploadStudio() {
     });
   }
 
+  // Category dialog backdrop close
+  const catDialogEl = document.getElementById('upload-category-dialog');
+  if (catDialogEl) {
+    catDialogEl.addEventListener('click', (e) => {
+      if (e.target === catDialogEl) {
+        catDialogEl.classList.add('hidden');
+      }
+    });
+  }
+
   // Category dialog continue button
   const catDialogContinue = document.getElementById('category-dialog-continue');
   if (catDialogContinue) {
     catDialogContinue.addEventListener('click', () => {
-      applySelectedCategory(UPLOAD_STUDIO.pendingCategory);
+      applySelectedCategory(UPLOAD_STUDIO.pendingCategory, UPLOAD_STUDIO.pendingTech);
     });
   }
 
@@ -2741,14 +3020,9 @@ function setupUploadStudio() {
   const techBtns = document.querySelectorAll('#tech-selector button');
   techBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      techBtns.forEach(b => {
-        b.classList.remove('active', 'bg-[#27272a]', 'text-white');
-        b.classList.add('text-gray-400');
-      });
-      btn.classList.add('active', 'bg-[#27272a]', 'text-white');
-      btn.classList.remove('text-gray-400');
-      UPLOAD_STUDIO.tech = btn.dataset.tech;
-      showToast(`Selected ${btn.dataset.tech === 'tailwind' ? 'Tailwind CSS' : 'Standard CSS'}`, 'info');
+      const tech = btn.dataset.tech || 'css';
+      UPLOAD_STUDIO.pendingTech = tech;
+      updateTechSelectorUI(tech);
     });
   });
 
@@ -2769,15 +3043,12 @@ function setupUploadStudio() {
     });
   }
 
-  const fullscreenBtn = document.getElementById('upload-fullscreen-btn');
-  const canvasWrapper = document.getElementById('upload-canvas-wrapper');
-  if (fullscreenBtn && canvasWrapper) {
-    fullscreenBtn.addEventListener('click', () => {
-      if (!document.fullscreenElement) {
-        canvasWrapper.requestFullscreen?.().catch(() => {});
-      } else {
-        document.exitFullscreen?.().catch(() => {});
-      }
+  const uploadColorPickerBtn = document.getElementById('upload-color-picker-btn');
+  const uploadBgPicker = document.getElementById('upload-bg-picker');
+  if (uploadColorPickerBtn && uploadBgPicker) {
+    uploadColorPickerBtn.addEventListener('click', (e) => {
+      // <label for="upload-bg-picker"> natively activates the input
+      if (e.target === uploadBgPicker) return;
     });
   }
 
@@ -3234,7 +3505,7 @@ async function handleUpload() {
   const title = (titleEl?.value || UPLOAD_STUDIO.title || '').trim();
   const html = (UPLOAD_STUDIO.html || document.getElementById('upload-html')?.value || '').trim();
   const css = (UPLOAD_STUDIO.css || document.getElementById('upload-css')?.value || '').trim();
-  const category = UPLOAD_STUDIO.category || 'Checkboxes';
+  const category = UPLOAD_STUDIO.category || 'Buttons';
   const author = STATE.currentUser?.displayName || (STATE.currentUser?.email ? STATE.currentUser.email.split('@')[0] : (settings.name || 'creator'));
 
   // Validate
@@ -3683,24 +3954,72 @@ ${css}
     modalCodeEditor.focus({ preventScroll: true });
   }
 
-  function updateCanvasBg(color, dark = true, shouldRefresh = true) {
+  function updateCanvasBg(color, dark = null, shouldRefresh = true) {
+    if (!color) return;
     currentCanvasBg = color;
-    isDarkCanvas = dark;
-    if (canvasWrapper) canvasWrapper.style.backgroundColor = color;
+    if (dark === null) {
+      isDarkCanvas = isHexColorDark(color);
+    } else {
+      isDarkCanvas = dark;
+    }
+
+    if (canvasWrapper) {
+      canvasWrapper.style.backgroundColor = color;
+    }
+
     const hexLabel = document.getElementById('preview-bg-hex-label') || document.getElementById('preview-bg-hex');
-    if (hexLabel) hexLabel.textContent = color.toUpperCase();
-    if (colorIndicator) colorIndicator.style.backgroundColor = color;
-    if (bgPicker) bgPicker.value = color;
+    if (hexLabel) {
+      hexLabel.textContent = color.toUpperCase();
+    }
+
+    if (bgPicker && color.startsWith('#') && (color.length === 7 || color.length === 4)) {
+      bgPicker.value = color.length === 4 ? `#${color[1]}${color[1]}${color[2]}${color[2]}${color[3]}${color[3]}` : color;
+    }
+
+    const colorPickerBtn = document.getElementById('preview-color-picker-btn');
+    if (colorPickerBtn) {
+      colorPickerBtn.style.backgroundColor = color;
+      colorPickerBtn.style.borderColor = isDarkCanvas ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.3)';
+    }
 
     const toggleThumb = document.getElementById('preview-toggle-thumb');
+    const toggleIcon = document.querySelector('#preview-theme-toggle i');
     if (toggleThumb) {
-      if (dark) {
+      if (isDarkCanvas) {
         toggleThumb.style.transform = 'translateX(14px)';
         toggleThumb.style.backgroundColor = '#ffffff';
       } else {
         toggleThumb.style.transform = 'translateX(0px)';
         toggleThumb.style.backgroundColor = '#f59e0b';
       }
+    }
+    if (toggleIcon) {
+      toggleIcon.className = isDarkCanvas ? 'fa-regular fa-moon text-[11px] text-indigo-400 ml-1' : 'fa-regular fa-sun text-[11px] text-amber-400 ml-1';
+    }
+
+    // PostMessage for instant 0ms latency across sandbox boundaries
+    try {
+      if (modalIframe && modalIframe.contentWindow) {
+        modalIframe.contentWindow.postMessage({
+          type: 'UPDATE_BG',
+          bg: color,
+          isLight: !isDarkCanvas
+        }, '*');
+      }
+    } catch (_) {}
+
+    // Fallback direct DOM update inside iframe if same-origin
+    if (modalIframe && modalIframe.contentDocument) {
+      try {
+        const doc = modalIframe.contentDocument;
+        if (doc.documentElement) {
+          doc.documentElement.style.backgroundColor = color;
+          doc.documentElement.className = isDarkCanvas ? 'dark' : 'light';
+        }
+        if (doc.body) {
+          doc.body.style.backgroundColor = color;
+        }
+      } catch (err) {}
     }
 
     if (shouldRefresh) {
@@ -4286,18 +4605,24 @@ ${css}
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
       if (isDarkCanvas) {
-        updateCanvasBg('#f3f4f6', false);
+        updateCanvasBg('#e8e8e8', false);
       } else {
         updateCanvasBg('#212121', true);
       }
     });
   }
 
-  // Bind color picker
+  // Bind color picker (live input & change)
   if (bgPicker) {
     bgPicker.addEventListener('input', (e) => {
       const val = e.target.value;
-      updateCanvasBg(val, true);
+      const isDark = isHexColorDark(val);
+      updateCanvasBg(val, isDark, false);
+    });
+    bgPicker.addEventListener('change', (e) => {
+      const val = e.target.value;
+      const isDark = isHexColorDark(val);
+      updateCanvasBg(val, isDark, true);
     });
   }
 
@@ -4497,14 +4822,28 @@ ${css}
     });
   }
 
-  // --- FULLSCREEN CANVAS TOGGLE (Uiverse Parity) ---
-  const previewFullscreenBtn = document.getElementById('preview-fullscreen-btn');
-  if (previewFullscreenBtn && canvasWrapper) {
-    previewFullscreenBtn.addEventListener('click', () => {
-      if (!document.fullscreenElement) {
-        canvasWrapper.requestFullscreen?.().catch(() => {});
+  // --- BACKGROUND COLOR PICKER BUTTON (Uiverse Parity) ---
+  const previewColorPickerBtn = document.getElementById('preview-color-picker-btn');
+  if (previewColorPickerBtn && bgPicker) {
+    previewColorPickerBtn.addEventListener('click', (e) => {
+      if (typeof bgPicker.showPicker === 'function') {
+        try {
+          bgPicker.showPicker();
+        } catch (err) {}
+      }
+    });
+  }
+  const previewBgHexBadge = document.getElementById('preview-bg-hex-badge');
+  if (previewBgHexBadge && bgPicker) {
+    previewBgHexBadge.addEventListener('click', () => {
+      if (typeof bgPicker.showPicker === 'function') {
+        try {
+          bgPicker.showPicker();
+        } catch (err) {
+          bgPicker.click();
+        }
       } else {
-        document.exitFullscreen?.().catch(() => {});
+        bgPicker.click();
       }
     });
   }
