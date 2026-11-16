@@ -2790,6 +2790,7 @@ const UPLOAD_STUDIO = {
   pendingCategory: 'Buttons',
   isDirty: false
 };
+window.UPLOAD_STUDIO = UPLOAD_STUDIO;
 
 function updateTechSelectorUI(tech) {
   tech = tech || UPLOAD_STUDIO.pendingTech || 'css';
@@ -3097,13 +3098,15 @@ function openUploadModal(initialData = null) {
   if (authorInput) authorInput.value = currentAuthor;
 
   if (initialData) {
-    // Loaded from Remix or existing component
-    UPLOAD_STUDIO.title = initialData.title || 'My Remix';
+    // Loaded from Remix, Edit or existing component
+    UPLOAD_STUDIO.isDirty = false;
+    UPLOAD_STUDIO.title = initialData.title || 'My Custom Button';
     UPLOAD_STUDIO.category = initialData.category || 'Buttons';
     UPLOAD_STUDIO.html = initialData.html || '';
     UPLOAD_STUDIO.css = initialData.css || '';
     UPLOAD_STUDIO.bg = initialData.bg || '#212121';
-    UPLOAD_STUDIO.tech = (initialData.css && initialData.css.trim()) ? 'css' : 'tailwind';
+    UPLOAD_STUDIO.tech = initialData.tech || ((initialData.css && initialData.css.trim()) ? 'css' : 'tailwind');
+    UPLOAD_STUDIO.activeTab = initialData.activeTab || 'html';
 
     const titleInput = document.getElementById('upload-title');
     if (titleInput) titleInput.value = UPLOAD_STUDIO.title;
@@ -3113,12 +3116,13 @@ function openUploadModal(initialData = null) {
     const hiddenCat = document.getElementById('upload-category');
     if (hiddenCat) hiddenCat.value = UPLOAD_STUDIO.category;
 
-    // Hide category popup
+    // Explicitly hide category popup
     const catDialog = document.getElementById('upload-category-dialog');
     if (catDialog) catDialog.classList.add('hidden');
 
     renderUploadTabs();
     syncUploadEditorFromState();
+    updateUploadPreview();
     updateUploadBg(UPLOAD_STUDIO.bg);
   } else {
     // Check for saved draft
@@ -3806,6 +3810,7 @@ async function handleUpload() {
   if (btnText) btnText.textContent = 'Submitting...';
 
   try {
+    const editingId = UPLOAD_STUDIO.editingId;
     const newComp = await uploadComponent({
       title,
       html,
@@ -3816,12 +3821,20 @@ async function handleUpload() {
 
     closeUploadModal();
 
+    // If we were fixing an existing rejected component, clean up the old one
+    if (editingId && editingId !== newComp.id) {
+      removeUserUploadLocally(editingId);
+      deleteComponentFromCloud(editingId).catch(() => {});
+    }
+
     if (newComp.status === 'approved') {
+      UPLOAD_STUDIO.editingId = null;
       STATE.components.unshift(newComp);
       STATE.total++;
       showToast(typeof t === 'function' ? t('upload_approved_toast') : `"${newComp.title}" published successfully! 🚀`, 'success');
       loadComponents(true);
     } else {
+      UPLOAD_STUDIO.editingId = newComp.id;
       showToast(typeof t === 'function' ? t('upload_rejected_toast') : `"${newComp.title}" failed automated security review.`, 'warning');
       openProfileModal('rejected');
     }
@@ -5145,15 +5158,12 @@ ${css}
       const comp = findAnyComp(currentModalComponentId);
       closeModal(true);
       if (typeof openUploadModal === 'function') {
-        openUploadModal();
-        const titleInput = document.getElementById('upload-title');
-        const catSelect = document.getElementById('upload-category');
-        const htmlInput = document.getElementById('upload-html');
-        const cssInput = document.getElementById('upload-css');
-        if (titleInput) titleInput.value = `${comp?.title || 'Component'} (Remix)`;
-        if (catSelect && comp?.category) catSelect.value = comp.category;
-        if (htmlInput && comp?.html) htmlInput.value = comp.html;
-        if (cssInput && comp?.css) cssInput.value = comp.css;
+        openUploadModal({
+          title: `${comp?.title || 'Component'} (Remix)`,
+          category: comp?.category || 'Buttons',
+          html: comp?.html || '',
+          css: comp?.css || '',
+        });
         showToast('Created variation draft in upload modal!', 'info');
       }
     });
@@ -5166,15 +5176,12 @@ ${css}
       const comp = findAnyComp(currentModalComponentId);
       closeModal(true);
       if (typeof openUploadModal === 'function') {
-        openUploadModal();
-        const titleInput = document.getElementById('upload-title');
-        const catSelect = document.getElementById('upload-category');
-        const htmlInput = document.getElementById('upload-html');
-        const cssInput = document.getElementById('upload-css');
-        if (titleInput) titleInput.value = `${comp?.title || 'Component'} (Remix)`;
-        if (catSelect && comp?.category) catSelect.value = comp.category;
-        if (htmlInput && comp?.html) htmlInput.value = comp.html;
-        if (cssInput && comp?.css) cssInput.value = comp.css;
+        openUploadModal({
+          title: `${comp?.title || 'Component'} (Remix)`,
+          category: comp?.category || 'Buttons',
+          html: comp?.html || '',
+          css: comp?.css || '',
+        });
         showToast('Created variation draft in upload modal!', 'info');
       }
     });
@@ -5860,25 +5867,11 @@ ${css}
   function openEditRejectedInStudio(comp) {
     if (!comp) return;
     closeProfileModal();
-    openUploadModal();
-    const titleEl = document.getElementById('upload-title');
-    if (titleEl) {
-      titleEl.value = comp.title || '';
-    }
-    if (UPLOAD_STUDIO) {
-      UPLOAD_STUDIO.title = comp.title || '';
-      UPLOAD_STUDIO.html = comp.html || '';
-      UPLOAD_STUDIO.css = comp.css || '';
-      UPLOAD_STUDIO.category = comp.category || 'Buttons';
-    }
-    const htmlInput = document.getElementById('upload-html');
-    const cssInput = document.getElementById('upload-css');
-    if (htmlInput) htmlInput.value = comp.html || '';
-    if (cssInput) cssInput.value = comp.css || '';
-
-    if (typeof updateUploadPreview === 'function') {
-      updateUploadPreview();
-    }
+    UPLOAD_STUDIO.isDirty = false;
+    UPLOAD_STUDIO.editingId = comp.id;
+    openUploadModal(comp);
+    const catDialog = document.getElementById('upload-category-dialog');
+    if (catDialog) catDialog.classList.add('hidden');
     showToast(typeof t === 'function' ? t('edit_and_fix_hint') : 'Component loaded in Studio. Fix highlighted issues and re-submit.', 'info');
   }
 
@@ -5919,6 +5912,8 @@ ${css}
 
         items.forEach((c) => {
           const card = document.createElement('div');
+          card.dataset.id = c.id;
+          card.setAttribute('data-id', c.id);
           card.className = 'group flex flex-col rounded-2xl bg-[#141416] border border-white/10 overflow-hidden hover:border-emerald-500/40 transition-all shadow-sm';
           const createdDate = c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'Recently';
 
@@ -5994,6 +5989,8 @@ ${css}
 
         items.forEach((c) => {
           const card = document.createElement('div');
+          card.dataset.id = c.id;
+          card.setAttribute('data-id', c.id);
           card.className = 'group flex flex-col rounded-2xl bg-[#141416] border border-amber-500/30 overflow-hidden shadow-sm';
           const createdDate = c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'Recently';
 
@@ -6040,6 +6037,8 @@ ${css}
 
         items.forEach((c) => {
           const card = document.createElement('div');
+          card.dataset.id = c.id;
+          card.setAttribute('data-id', c.id);
           card.className = 'group flex flex-col rounded-2xl bg-[#141416] border border-red-500/30 overflow-hidden shadow-sm hover:border-red-500/50 transition-all';
           const createdDate = c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'Recently';
           const reasonsText = (c.rejectionReasons && c.rejectionReasons.length)
