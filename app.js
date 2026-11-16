@@ -762,8 +762,93 @@ async function fetchComponentById(id) {
 }
 
 /**
+ * Automated Security & Quality Validation Engine (Uiverse.io Parity)
+ * Evaluates component HTML & CSS through 5 strict automated rules without human intervention.
+ * 
+ * @param {string} html 
+ * @param {string} css 
+ * @returns {{ passed: boolean, status: 'approved' | 'rejected', checks: Array, reasons: Array, scannedAt: string }}
+ */
+function evaluateComponentSecurity(html = '', css = '') {
+  const h = String(html || '');
+  const c = String(css || '');
+  const reasons = [];
+  const checks = [
+    { name: 'zero_js', passed: true, label: 'Zero-JS Policy' },
+    { name: 'no_event_handlers', passed: true, label: 'No Event Handlers' },
+    { name: 'safe_links', passed: true, label: 'Safe Links & No Downloads' },
+    { name: 'no_embeds', passed: true, label: 'No Dangerous Embeds' },
+    { name: 'css_html_validity', passed: true, label: 'Valid UI Element & Scoped Styles' },
+  ];
+
+  // 1. Zero-JS Check
+  if (/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi.test(h) || /<script\b/i.test(h)) {
+    checks[0].passed = false;
+    reasons.push(typeof t === 'function' ? t('sec_err_script_tag') : 'Forbidden <script> tag detected. UI components must be pure HTML & CSS.');
+  }
+  if (/javascript\s*:/i.test(h) || /javascript\s*:/i.test(c)) {
+    checks[0].passed = false;
+    reasons.push(typeof t === 'function' ? t('sec_err_javascript_uri') : 'Forbidden "javascript:" URI detected.');
+  }
+  if (/\b(eval\s*\(|Function\s*\(|document\.cookie|window\.localStorage|sessionStorage)\b/i.test(h)) {
+    checks[0].passed = false;
+    reasons.push(typeof t === 'function' ? t('sec_err_js_execution') : 'Forbidden JavaScript execution keyword detected.');
+  }
+
+  // 2. No Event Handlers
+  const eventHandlerRegex = /\bon[a-z]{3,20}\s*=/i;
+  if (eventHandlerRegex.test(h)) {
+    checks[1].passed = false;
+    const match = h.match(eventHandlerRegex);
+    const attr = match ? match[0].replace('=', '').trim() : 'event';
+    const baseMsg = typeof t === 'function' ? t('sec_err_event_handler') : 'Forbidden inline event handler "{attr}" detected.';
+    reasons.push(baseMsg.replace('{attr}', attr));
+  }
+
+  // 3. No Malicious Downloads & Executable Extensions
+  if (/\bdownload\s*=/i.test(h) || /<a\b[^>]*\bdownload\b/i.test(h)) {
+    checks[2].passed = false;
+    reasons.push(typeof t === 'function' ? t('sec_err_download_attr') : 'File download triggers are not allowed in components.');
+  }
+  if (/\.(exe|zip|rar|tar|gz|bat|cmd|apk|vbs|msi|ps1|scr)\b/i.test(h) || /\.(exe|zip|rar|tar|gz|bat|cmd|apk|vbs|msi|ps1|scr)\b/i.test(c)) {
+    checks[2].passed = false;
+    reasons.push(typeof t === 'function' ? t('sec_err_executable_file') : 'Suspicious executable or archive file link detected.');
+  }
+
+  // 4. No Dangerous Embeds
+  if (/<(iframe|object|embed|applet)\b/i.test(h)) {
+    checks[3].passed = false;
+    reasons.push(typeof t === 'function' ? t('sec_err_embed_tags') : 'External embedded frames (<iframe, <object, <embed) are prohibited.');
+  }
+  if (/<meta\b[^>]*http-equiv\s*=\s*["']?refresh["']?/i.test(h)) {
+    checks[3].passed = false;
+    reasons.push(typeof t === 'function' ? t('sec_err_meta_refresh') : 'Meta page redirects are prohibited.');
+  }
+
+  // 5. CSS & HTML Validity
+  if (!h.trim() || !/<[a-z][\s\S]*>/i.test(h)) {
+    checks[4].passed = false;
+    reasons.push(typeof t === 'function' ? t('sec_err_empty_html') : 'Component must contain at least one valid HTML element.');
+  }
+  if (/(?:^|\s)(?:html|body)\s*\{/i.test(c)) {
+    checks[4].passed = false;
+    reasons.push(typeof t === 'function' ? t('sec_err_global_css') : 'Global body/html styling overrides are prohibited. Use scoped classes.');
+  }
+
+  const passed = checks.every((ch) => ch.passed);
+  return {
+    passed,
+    status: passed ? 'approved' : 'rejected',
+    checks,
+    reasons,
+    scannedAt: new Date().toISOString(),
+  };
+}
+
+/**
  * uploadComponent(payload)
  * Creates a new component in the database.
+ * Evaluates automated security checks before publishing.
  *
  * @param {{ title: string, html: string, css: string, author: string, category: string }} payload
  * @returns {Promise<Component>} The created component record
@@ -774,6 +859,9 @@ async function uploadComponent({ title, html, css, author = 'Anonymous', categor
   const authorName = (currentUser && currentUser.displayName) ? currentUser.displayName : defaultName;
   const authorEmail = (currentUser && currentUser.email) ? currentUser.email : '';
   const userId = currentUser ? currentUser.uid : ('guest-' + Date.now());
+
+  // Run Automated Security & Quality Validation Engine
+  const security = evaluateComponentSecurity(html, css);
 
   const newComponent = {
     id: `upload-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
@@ -788,38 +876,45 @@ async function uploadComponent({ title, html, css, author = 'Anonymous', categor
     likes: 0,
     views: 0,
     liked: false,
+    status: security.status, // 'approved' or 'rejected'
+    securityReport: security,
+    rejectionReasons: security.passed ? [] : security.reasons,
     createdAt: new Date().toISOString(),
   };
 
-  if (CONFIG.DB_PROVIDER === 'supabase') {
-    const sb = getSupabaseClient();
-    if (sb) {
-      const { data, error } = await sb.from('components').insert([newComponent]).select().single();
-      if (error) throw error;
-      saveUserUploadLocally(data);
-      return data;
+  // Only approved components are published to public collections
+  if (security.passed) {
+    if (CONFIG.DB_PROVIDER === 'supabase') {
+      const sb = getSupabaseClient();
+      if (sb) {
+        const { data, error } = await sb.from('components').insert([newComponent]).select().single();
+        if (error) throw error;
+        saveUserUploadLocally(data);
+        return data;
+      }
     }
+
+    if (CONFIG.DB_PROVIDER === 'firebase') {
+      const db = getFirestoreDB();
+      if (db) {
+        const ref = await db.collection('components').add({
+          ...newComponent,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+        const created = { ...newComponent, id: ref.id };
+        saveUserUploadLocally(created);
+        return created;
+      }
+    }
+
+    _localComponents.unshift(newComponent);
+    saveComponentToCloud(newComponent).catch((err) => {
+      console.warn('[UIForge] Cloud upload failed, saved locally:', err);
+    });
   }
 
-  if (CONFIG.DB_PROVIDER === 'firebase') {
-    const db = getFirestoreDB();
-    if (db) {
-      const ref = await db.collection('components').add({
-        ...newComponent,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      });
-      const created = { ...newComponent, id: ref.id };
-      saveUserUploadLocally(created);
-      return created;
-    }
-  }
-
-  // Save to Firebase Cloud Database (so EVERYONE in community sees it) & LocalStorage
+  // Always save in user's personal uploads so rejected components can be viewed, fixed, and resubmitted
   saveUserUploadLocally(newComponent);
-  _localComponents.unshift(newComponent);
-  saveComponentToCloud(newComponent).catch((err) => {
-    console.warn('[UIForge] Cloud upload failed, saved locally:', err);
-  });
   return newComponent;
 }
 
@@ -1297,6 +1392,7 @@ function buildPreviewSrcDoc(html, css, category = '', isModal = false, bgColor =
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https:; font-src https: data:; img-src https: data: blob:; script-src https://cdn.tailwindcss.com 'unsafe-inline';">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -3706,15 +3802,18 @@ async function handleUpload() {
       category,
     });
 
-    // Add to live state immediately
-    STATE.components.unshift(newComp);
-    STATE.total++;
-
     closeUploadModal();
-    showToast(`"${newComp.title}" published successfully! 🚀`, 'success');
 
-    // Re-render so new card appears at top
-    loadComponents(true);
+    if (newComp.status === 'approved') {
+      STATE.components.unshift(newComp);
+      STATE.total++;
+      showToast(typeof t === 'function' ? t('upload_approved_toast') : `"${newComp.title}" published successfully! 🚀`, 'success');
+      loadComponents(true);
+    } else {
+      showToast(typeof t === 'function' ? t('upload_rejected_toast') : `"${newComp.title}" failed automated security review.`, 'warning');
+      openProfileModal('rejected');
+    }
+    updateProfileUserInfo();
 
   } catch (err) {
     console.error('[UIForge] Upload failed:', err);
@@ -5613,16 +5712,32 @@ ${css}
     if (bioInput) bioInput.value = settings.bio || '';
     if (notifChk) notifChk.checked = settings.emailNotifications !== false;
 
-    // Update favorites badge count in profile tabs
+    // Update status badge counts in profile tabs
+    const allUploads = getUserUploads();
+    const approvedCount = allUploads.filter(c => c.status !== 'rejected' && c.status !== 'in-review').length;
+    const inReviewCount = allUploads.filter(c => c.status === 'in-review').length;
+    const rejectedCount = allUploads.filter(c => c.status === 'rejected').length;
+    const favCount = STATE.likedIds ? STATE.likedIds.size : 0;
+
+    const postsBadge = document.getElementById('profile-posts-count-badge');
+    if (postsBadge) {
+      postsBadge.textContent = approvedCount;
+      postsBadge.classList.toggle('hidden', approvedCount === 0);
+    }
+    const inReviewBadge = document.getElementById('profile-in-review-count-badge');
+    if (inReviewBadge) {
+      inReviewBadge.textContent = inReviewCount;
+      inReviewBadge.classList.toggle('hidden', inReviewCount === 0);
+    }
+    const rejectedBadge = document.getElementById('profile-rejected-count-badge');
+    if (rejectedBadge) {
+      rejectedBadge.textContent = rejectedCount;
+      rejectedBadge.classList.toggle('hidden', rejectedCount === 0);
+    }
     const favBadge = document.getElementById('profile-favorites-count-badge');
     if (favBadge) {
-      const count = STATE.likedIds ? STATE.likedIds.size : 0;
-      favBadge.textContent = count;
-      if (count > 0) {
-        favBadge.classList.remove('hidden');
-      } else {
-        favBadge.classList.add('hidden');
-      }
+      favBadge.textContent = favCount;
+      favBadge.classList.toggle('hidden', favCount === 0);
     }
 
     updateProfileCompletion(settings);
@@ -5721,6 +5836,31 @@ ${css}
     renderProfileContent(tabName);
   }
 
+  function openEditRejectedInStudio(comp) {
+    if (!comp) return;
+    closeProfileModal();
+    openUploadModal();
+    const titleEl = document.getElementById('upload-title');
+    if (titleEl) {
+      titleEl.value = comp.title || '';
+    }
+    if (UPLOAD_STUDIO) {
+      UPLOAD_STUDIO.title = comp.title || '';
+      UPLOAD_STUDIO.html = comp.html || '';
+      UPLOAD_STUDIO.css = comp.css || '';
+      UPLOAD_STUDIO.category = comp.category || 'Buttons';
+    }
+    const htmlInput = document.getElementById('upload-html');
+    const cssInput = document.getElementById('upload-css');
+    if (htmlInput) htmlInput.value = comp.html || '';
+    if (cssInput) cssInput.value = comp.css || '';
+
+    if (typeof updateUploadPreview === 'function') {
+      updateUploadPreview();
+    }
+    showToast(typeof t === 'function' ? t('edit_and_fix_hint') : 'Component loaded in Studio. Fix highlighted issues and re-submit.', 'info');
+  }
+
   async function renderProfileContent(tab = 'posts') {
     const emptyState = document.getElementById('profile-empty-state');
     const emptyTitle = document.getElementById('profile-empty-title');
@@ -5731,7 +5871,7 @@ ${css}
     if (!emptyState || !grid) return;
 
     if (tab === 'posts') {
-      let items = getUserUploads();
+      let items = getUserUploads().filter((c) => c.status !== 'rejected' && c.status !== 'in-review');
       if (profileSortMode === 'popular') {
         items.sort((a, b) => (b.likes || 0) - (a.likes || 0));
       } else {
@@ -5742,10 +5882,10 @@ ${css}
         grid.classList.add('hidden');
         grid.innerHTML = '';
         emptyState.classList.remove('hidden');
-        if (emptyTitle) emptyTitle.textContent = 'No Public Posts Yet';
-        if (emptyDesc) emptyDesc.textContent = "Looks like you haven't made any posts yet. Don't worry, just click the 'Create' button and let the universe know you're out there.";
+        if (emptyTitle) emptyTitle.textContent = typeof t === 'function' ? t('no_posts_title') : 'No Public Posts Yet';
+        if (emptyDesc) emptyDesc.textContent = typeof t === 'function' ? t('no_posts_desc') : "Looks like you haven't made any posts yet.";
         if (emptyBtn) {
-          emptyBtn.innerHTML = '<i class="fa-solid fa-plus text-xs"></i> <span>Create</span>';
+          emptyBtn.innerHTML = '<i class="fa-solid fa-plus text-xs"></i> <span>' + (typeof t === 'function' ? t('btn_create') : 'Create') + '</span>';
           emptyBtn.onclick = () => {
             closeProfileModal();
             openUploadModal();
@@ -5758,7 +5898,7 @@ ${css}
 
         items.forEach((c) => {
           const card = document.createElement('div');
-          card.className = 'group flex flex-col rounded-2xl bg-[#141416] border border-white/10 overflow-hidden hover:border-indigo-500/40 transition-all shadow-sm';
+          card.className = 'group flex flex-col rounded-2xl bg-[#141416] border border-white/10 overflow-hidden hover:border-emerald-500/40 transition-all shadow-sm';
           const createdDate = c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'Recently';
 
           card.innerHTML = `
@@ -5767,8 +5907,11 @@ ${css}
             </div>
             <div class="p-3.5 flex flex-col gap-2 flex-1">
               <div class="flex items-center justify-between gap-2">
-                <h4 class="font-bold text-white text-xs truncate hover:text-indigo-400 cursor-pointer card-title" title="${escapeHtml(c.title)}">${escapeHtml(c.title)}</h4>
-                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/5 text-gray-300 border border-white/5 shrink-0">${escapeHtml(c.category || 'Other')}</span>
+                <h4 class="font-bold text-white text-xs truncate hover:text-emerald-400 cursor-pointer card-title" title="${escapeHtml(c.title)}">${escapeHtml(c.title)}</h4>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0 flex items-center gap-1">
+                  <i class="fa-solid fa-circle-check text-[9px]"></i>
+                  <span>${escapeHtml(typeof t === 'function' ? t('status_approved') : 'Approved')}</span>
+                </span>
               </div>
               <div class="flex items-center justify-between text-[11px] text-gray-400 mt-auto pt-2 border-t border-white/5">
                 <div class="flex items-center gap-2">
@@ -5798,6 +5941,130 @@ ${css}
           card.querySelector('.btn-card-edit')?.addEventListener('click', (e) => {
             e.stopPropagation();
             openEditModal(c.id);
+          });
+          card.querySelector('.btn-card-del')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openDeleteModal(c.id);
+          });
+
+          grid.appendChild(card);
+        });
+      }
+    } else if (tab === 'in-review') {
+      let items = getUserUploads().filter((c) => c.status === 'in-review');
+
+      if (items.length === 0) {
+        grid.classList.add('hidden');
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        if (emptyTitle) emptyTitle.textContent = typeof t === 'function' ? t('no_in_review_title') : 'No Posts In Review';
+        if (emptyDesc) emptyDesc.textContent = typeof t === 'function' ? t('no_in_review_desc') : 'All submitted components have been processed by the automated security engine.';
+        if (emptyBtn) {
+          emptyBtn.innerHTML = '<i class="fa-solid fa-plus text-xs"></i> <span>' + (typeof t === 'function' ? t('btn_create') : 'Create') + '</span>';
+          emptyBtn.onclick = () => {
+            closeProfileModal();
+            openUploadModal();
+          };
+        }
+      } else {
+        emptyState.classList.add('hidden');
+        grid.classList.remove('hidden');
+        grid.innerHTML = '';
+
+        items.forEach((c) => {
+          const card = document.createElement('div');
+          card.className = 'group flex flex-col rounded-2xl bg-[#141416] border border-amber-500/30 overflow-hidden shadow-sm';
+          const createdDate = c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'Recently';
+
+          card.innerHTML = `
+            <div class="h-44 bg-[#0a0a0c] relative flex items-center justify-center p-3 overflow-hidden cursor-pointer preview-click-area">
+              <iframe sandbox="allow-scripts" loading="lazy" class="w-full h-full pointer-events-none" srcdoc="${escapeAttr(buildPreviewSrcDoc(c.html, c.css, c.category || '', false, '#0a0a0c'))}"></iframe>
+            </div>
+            <div class="p-3.5 flex flex-col gap-2 flex-1">
+              <div class="flex items-center justify-between gap-2">
+                <h4 class="font-bold text-white text-xs truncate">${escapeHtml(c.title)}</h4>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0 flex items-center gap-1">
+                  <i class="fa-solid fa-hourglass-half text-[9px]"></i>
+                  <span>${escapeHtml(typeof t === 'function' ? t('status_in_review') : 'In Review')}</span>
+                </span>
+              </div>
+              <div class="flex items-center justify-between text-[11px] text-gray-400 mt-auto pt-2 border-t border-white/5">
+                <span><i class="fa-regular fa-clock mr-1"></i>${createdDate}</span>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+    } else if (tab === 'rejected') {
+      let items = getUserUploads().filter((c) => c.status === 'rejected');
+
+      if (items.length === 0) {
+        grid.classList.add('hidden');
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        if (emptyTitle) emptyTitle.textContent = typeof t === 'function' ? t('no_rejected_title') : 'No Rejected Posts';
+        if (emptyDesc) emptyDesc.textContent = typeof t === 'function' ? t('no_rejected_desc') : 'Great job! None of your components have violated security guidelines.';
+        if (emptyBtn) {
+          emptyBtn.innerHTML = '<i class="fa-solid fa-plus text-xs"></i> <span>' + (typeof t === 'function' ? t('btn_create') : 'Create') + '</span>';
+          emptyBtn.onclick = () => {
+            closeProfileModal();
+            openUploadModal();
+          };
+        }
+      } else {
+        emptyState.classList.add('hidden');
+        grid.classList.remove('hidden');
+        grid.innerHTML = '';
+
+        items.forEach((c) => {
+          const card = document.createElement('div');
+          card.className = 'group flex flex-col rounded-2xl bg-[#141416] border border-red-500/30 overflow-hidden shadow-sm hover:border-red-500/50 transition-all';
+          const createdDate = c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'Recently';
+          const reasonsText = (c.rejectionReasons && c.rejectionReasons.length)
+            ? c.rejectionReasons.join(' • ')
+            : (typeof t === 'function' ? t('status_rejected') : 'Failed automated security check.');
+
+          card.innerHTML = `
+            <div class="h-44 bg-[#0a0a0c] relative flex items-center justify-center p-3 overflow-hidden cursor-pointer preview-click-area">
+              <iframe sandbox="allow-scripts" loading="lazy" class="w-full h-full pointer-events-none opacity-80" srcdoc="${escapeAttr(buildPreviewSrcDoc(c.html, c.css, c.category || '', false, '#0a0a0c'))}"></iframe>
+            </div>
+            <div class="p-3.5 flex flex-col gap-2.5 flex-1">
+              <div class="flex items-center justify-between gap-2">
+                <h4 class="font-bold text-white text-xs truncate text-red-200" title="${escapeHtml(c.title)}">${escapeHtml(c.title)}</h4>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-red-500/10 text-red-400 border border-red-500/20 shrink-0 flex items-center gap-1">
+                  <i class="fa-solid fa-triangle-exclamation text-[9px]"></i>
+                  <span>${escapeHtml(typeof t === 'function' ? t('status_rejected') : 'Rejected')}</span>
+                </span>
+              </div>
+
+              <!-- Rejection Reason Diagnosis Box -->
+              <div class="p-2.5 rounded-xl bg-red-950/40 border border-red-500/25 text-[11px] text-red-300 space-y-1">
+                <div class="font-bold flex items-center gap-1.5 text-red-400 text-[10px]">
+                  <i class="fa-solid fa-shield-halved text-xs"></i>
+                  <span>${escapeHtml(typeof t === 'function' ? t('rejection_reason_label') : 'Rejection Reason:')}</span>
+                </div>
+                <div class="text-[10px] leading-relaxed text-gray-300">${escapeHtml(reasonsText)}</div>
+              </div>
+
+              <div class="flex items-center justify-between text-[11px] text-gray-400 mt-auto pt-2 border-t border-white/5">
+                <span><i class="fa-regular fa-clock mr-1"></i>${createdDate}</span>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" class="btn-card-fix px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold flex items-center gap-1.5 shadow-sm transition-all cursor-pointer">
+                    <i class="fa-solid fa-wrench text-[10px]"></i>
+                    <span>${escapeHtml(typeof t === 'function' ? t('btn_edit_fix') : 'Edit & Fix')}</span>
+                  </button>
+                  <button type="button" class="btn-card-del p-1.5 rounded-lg text-gray-400 hover:text-red-400 hover:bg-white/5 transition-colors" title="Delete">
+                    <i class="fa-regular fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+
+          card.querySelector('.btn-card-fix')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openEditRejectedInStudio(c);
           });
           card.querySelector('.btn-card-del')?.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -5841,10 +6108,10 @@ ${css}
         grid.classList.add('hidden');
         grid.innerHTML = '';
         emptyState.classList.remove('hidden');
-        if (emptyTitle) emptyTitle.textContent = 'No Favorites Yet';
-        if (emptyDesc) emptyDesc.textContent = "You haven't saved any favorite UI elements yet. Explore components and click the heart icon on any card to save them here!";
+        if (emptyTitle) emptyTitle.textContent = typeof t === 'function' ? t('profile_no_favorites') : 'No Favorites Yet';
+        if (emptyDesc) emptyDesc.textContent = typeof t === 'function' ? t('profile_no_favorites_hint') : "You haven't saved any favorite UI elements yet.";
         if (emptyBtn) {
-          emptyBtn.innerHTML = '<i class="fa-regular fa-compass text-xs"></i> <span>Explore Components</span>';
+          emptyBtn.innerHTML = '<i class="fa-regular fa-compass text-xs"></i> <span>' + (typeof t === 'function' ? t('btn_explore') : 'Explore Components') + '</span>';
           emptyBtn.onclick = () => {
             closeProfileModal();
             const exploreEl = document.getElementById('explore-section') || document.getElementById('components-grid');
@@ -5904,34 +6171,6 @@ ${css}
 
           grid.appendChild(card);
         });
-      }
-    } else {
-      // Variations, In Review, Rejected, Drafts
-      grid.classList.add('hidden');
-      grid.innerHTML = '';
-      emptyState.classList.remove('hidden');
-
-      const titles = {
-        'variations': 'No Variations Yet',
-        'in-review': 'No Posts In Review',
-        'rejected': 'No Rejected Posts',
-        'drafts': 'No Drafts Saved'
-      };
-      const descs = {
-        'variations': 'You have not created any variations for community elements yet.',
-        'in-review': 'Components submitted for community review will appear here.',
-        'rejected': 'No elements have been rejected. All your creations meet guidelines!',
-        'drafts': 'Draft components saved from the studio will be available here.'
-      };
-
-      if (emptyTitle) emptyTitle.textContent = titles[tab] || 'No Posts Yet';
-      if (emptyDesc) emptyDesc.textContent = descs[tab] || 'No items found in this section.';
-      if (emptyBtn) {
-        emptyBtn.innerHTML = '<i class="fa-solid fa-plus text-xs"></i> <span>Create</span>';
-        emptyBtn.onclick = () => {
-          closeProfileModal();
-          openUploadModal();
-        };
       }
     }
   }
@@ -6172,6 +6411,19 @@ ${css}
       console.error(err);
       showToast('Failed to delete component.', 'error');
     }
+  });
+
+  // Handle language change events dynamically
+  document.addEventListener('langchange', () => {
+    updateProfileUserInfo();
+    if (STATE.activeProfileTab) {
+      renderProfileContent(STATE.activeProfileTab);
+    }
+    const currentSort = STATE.sort || 'newest';
+    const sortLabel = document.getElementById('main-sort-label');
+    if (sortLabel) sortLabel.textContent = typeof t === 'function' ? t('main_sort_' + currentSort) : currentSort;
+    const sortProfileText = document.getElementById('profile-filter-sort-text');
+    if (sortProfileText) sortProfileText.textContent = typeof t === 'function' ? t('profile_filter_' + profileSortMode) : profileSortMode;
   });
 
   // Expose profile functions on window

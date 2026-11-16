@@ -1384,16 +1384,33 @@
 
       <!-- Navigation Tabs & Filter Bar (Matching Uiverse Image 2) -->
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 border-b border-white/5 text-xs">
-        <!-- Left: Tabs (Posts, Favorites) -->
+        <!-- Left: Status Tabs (Posts, In Review, Rejected, Favorites) -->
         <div class="flex items-center gap-1 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0" id="profile-nav-tabs">
           <button type="button" id="profile-tab-posts" data-profile-tab="posts"
-            class="profile-tab-btn active px-4 py-1.5 rounded-xl font-semibold bg-[#24252a] text-white border border-white/10 transition-all cursor-pointer shadow-sm">
-            Posts
+            class="profile-tab-btn active px-4 py-1.5 rounded-xl font-semibold bg-[#24252a] text-white border border-white/10 transition-all cursor-pointer shadow-sm flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check text-emerald-400 text-xs"></i>
+            <span data-i18n="profile_tab_posts">Posts</span>
+            <span id="profile-posts-count-badge"
+              class="px-1.5 py-0.5 rounded-full text-[10px] bg-emerald-500/20 text-emerald-300 font-mono hidden">0</span>
+          </button>
+          <button type="button" id="profile-tab-in-review" data-profile-tab="in-review"
+            class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-hourglass-half text-amber-400 text-xs"></i>
+            <span data-i18n="profile_tab_in_review">In Review</span>
+            <span id="profile-in-review-count-badge"
+              class="px-1.5 py-0.5 rounded-full text-[10px] bg-amber-500/20 text-amber-300 font-mono hidden">0</span>
+          </button>
+          <button type="button" id="profile-tab-rejected" data-profile-tab="rejected"
+            class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-triangle-exclamation text-red-400 text-xs"></i>
+            <span data-i18n="profile_tab_rejected">Rejected</span>
+            <span id="profile-rejected-count-badge"
+              class="px-1.5 py-0.5 rounded-full text-[10px] bg-red-500/20 text-red-300 font-mono hidden">0</span>
           </button>
           <button type="button" id="profile-tab-favorites" data-profile-tab="favorites"
             class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer flex items-center gap-1.5">
-            <i class="fa-solid fa-heart text-pink-500 text-[10px]"></i>
-            <span>Favorites</span>
+            <i class="fa-solid fa-heart text-pink-500 text-xs"></i>
+            <span data-i18n="profile_tab_favorites">Favorites</span>
             <span id="profile-favorites-count-badge"
               class="px-1.5 py-0.5 rounded-full text-[10px] bg-pink-500/20 text-pink-300 font-mono hidden">0</span>
           </button>
@@ -1405,7 +1422,7 @@
             <button id="profile-filter-sort-btn" type="button"
               class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-300 hover:text-white transition-all cursor-pointer">
               <i class="fa-solid fa-arrow-down-short-wide text-[10px] text-gray-400"></i>
-              <span id="profile-filter-sort-text">Newest</span>
+              <span id="profile-filter-sort-text" data-i18n="profile_filter_newest">Newest</span>
               <i class="fa-solid fa-chevron-down text-[10px] text-gray-400"></i>
             </button>
           </div>
@@ -1413,7 +1430,7 @@
           <div class="relative">
             <button id="profile-filter-theme-btn" type="button"
               class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-300 hover:text-white transition-all cursor-pointer">
-              <span>Any Theme</span>
+              <span data-i18n="profile_filter_any_theme">Any Theme</span>
               <i class="fa-solid fa-chevron-down text-[10px] text-gray-400"></i>
             </button>
           </div>
@@ -1473,31 +1490,31 @@
     <div class="max-w-6xl w-full mx-auto flex flex-col md:flex-row gap-8 pb-16 flex-1">
       <!-- Left Sidebar (Settings Navigation Menu) -->
       <aside class="w-full md:w-56 shrink-0 flex flex-col gap-1 text-xs">
-        <h3 id="settings-heading" class="text-xs uppercase tracking-wider font-bold text-gray-400 px-3.5 mb-2.5">
-          Settings</h3>
+        <h3 id="settings-heading" class="text-xs uppercase tracking-wider font-bold text-gray-400 px-3.5 mb-2.5"
+          data-i18n="settings_title">Settings</h3>
 
         <button type="button" id="settings-nav-profile" data-settings-tab="profile"
           class="settings-nav-btn active w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 bg-[#1e1f24] text-white border border-white/10 transition-all cursor-pointer shadow-sm">
           <i class="fa-regular fa-user text-xs text-indigo-400"></i>
-          <span>Profile</span>
+          <span data-i18n="settings_profile">Profile</span>
         </button>
 
         <button type="button" id="settings-nav-email" data-settings-tab="email"
           class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
           <i class="fa-regular fa-envelope text-xs text-sky-400"></i>
-          <span>Email</span>
+          <span data-i18n="settings_email">Email</span>
         </button>
 
         <button type="button" id="settings-nav-account" data-settings-tab="account"
           class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
           <i class="fa-solid fa-gear text-xs text-emerald-400"></i>
-          <span>Account</span>
+          <span data-i18n="settings_account">Account</span>
         </button>
 
         <button type="button" id="settings-nav-stats" data-settings-tab="stats"
           class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
           <i class="fa-solid fa-chart-column text-xs text-purple-400"></i>
-          <span>Stats</span>
+          <span data-i18n="settings_stats">Stats</span>
         </button>
       </aside>
 
@@ -1592,11 +1609,11 @@
 
             <!-- Action Buttons: Cancel on left, Save changes on right -->
             <div class="flex items-center justify-end gap-3 pt-3">
-              <button id="settings-cancel-btn" type="button"
+              <button id="settings-cancel-btn" type="button" data-i18n="settings_cancel_btn"
                 class="px-5 py-2.5 rounded-xl border border-white/10 bg-[#18191d] hover:bg-[#202126] text-xs font-semibold text-gray-300 hover:text-white transition-all cursor-pointer">
                 Cancel
               </button>
-              <button id="settings-save-btn" type="submit"
+              <button id="settings-save-btn" type="submit" data-i18n="settings_save_btn"
                 class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white shadow-md shadow-indigo-600/30 transition-all cursor-pointer">
                 Save changes
               </button>
@@ -1641,7 +1658,7 @@
               <input id="settings-notifications-chk" type="checkbox" checked class="w-4 h-4 accent-indigo-600 rounded cursor-pointer">
             </div>
             <div class="flex items-center justify-end pt-2">
-              <button id="settings-email-save-btn" type="submit"
+              <button id="settings-email-save-btn" type="submit" data-i18n="settings_email_save_btn"
                 class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white shadow-md shadow-indigo-600/30 transition-all cursor-pointer">
                 Save Email
               </button>
@@ -1652,7 +1669,7 @@
         <!-- 3. Account Panel -->
         <section id="settings-panel-account" class="space-y-6 hidden">
           <div>
-            <h2 class="text-2xl font-bold text-white tracking-tight">Account Settings</h2>
+            <h2 class="text-2xl font-bold text-white tracking-tight" data-i18n="settings_account">Account Settings</h2>
             <p class="text-xs text-gray-400 mt-1">Manage security and account preferences.</p>
           </div>
           <div class="p-5 rounded-2xl bg-[#141416] border border-white/10 space-y-4 text-xs">
@@ -1674,7 +1691,7 @@
               <button id="settings-signout-btn" type="button"
                 class="px-4 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-xs font-semibold transition-all cursor-pointer flex items-center gap-2">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                <span>Sign out of all sessions</span>
+                <span data-i18n="nav_signout">Sign out of all sessions</span>
               </button>
             </div>
           </div>
@@ -1683,25 +1700,25 @@
         <!-- 4. Stats Panel -->
         <section id="settings-panel-stats" class="space-y-6 hidden">
           <div>
-            <h2 class="text-2xl font-bold text-white tracking-tight">Account Statistics</h2>
+            <h2 class="text-2xl font-bold text-white tracking-tight" data-i18n="settings_stats">Account Statistics</h2>
             <p class="text-xs text-gray-400 mt-1">Real-time summary of your activity and contributions.</p>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
               <div id="settings-stat-views" class="text-xl font-bold text-white">0</div>
-              <div class="text-[11px] text-gray-400 mt-1">Total Views</div>
+              <div class="text-[11px] text-gray-400 mt-1" data-i18n="stats_total_views">Total Views</div>
             </div>
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
               <div id="settings-stat-likes" class="text-xl font-bold text-pink-400">0</div>
-              <div class="text-[11px] text-gray-400 mt-1">Favorites Saved</div>
+              <div class="text-[11px] text-gray-400 mt-1" data-i18n="stats_favorites_saved">Favorites Saved</div>
             </div>
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
               <div id="settings-stat-uploads" class="text-xl font-bold text-indigo-400">0</div>
-              <div class="text-[11px] text-gray-400 mt-1">Your Elements</div>
+              <div class="text-[11px] text-gray-400 mt-1" data-i18n="stats_your_elements">Your Elements</div>
             </div>
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
               <div id="settings-stat-reputation" class="text-xl font-bold text-emerald-400">0</div>
-              <div class="text-[11px] text-gray-400 mt-1">Likes Received</div>
+              <div class="text-[11px] text-gray-400 mt-1" data-i18n="stats_likes_received">Likes Received</div>
             </div>
           </div>
         </section>
@@ -1846,12 +1863,12 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
   <!-- i18n Multilingual Support -->
-  <script src="i18n.js?v=1.2.5"></script>
+  <script src="i18n.js?v=1.2.6"></script>
 
   <!-- Uiverse Manifest (Lightweight Metadata) -->
   <script src="data/manifest.js"></script>
   <script src="data/initial_components.js"></script>
-  <script src="app.js?v=1.2.5"></script>
+  <script src="app.js?v=1.2.6"></script>
 </body>
 
 </html>
