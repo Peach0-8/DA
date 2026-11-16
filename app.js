@@ -961,11 +961,16 @@ async function updateComponentDetails(id, { title, category, html, css }) {
     throw new Error('Unauthorized');
   }
 
+  // 1. Run Automated Security Engine on the edited code
+  const security = evaluateComponentSecurity(html.trim(), css.trim());
+
   component.title = title.trim();
   component.category = category;
   component.html = html.trim();
   component.css = css.trim();
   component.updatedAt = new Date().toISOString();
+  component.status = security.passed ? 'approved' : 'rejected';
+  component.rejectionReasons = security.passed ? [] : security.reasons;
 
   // Save to stored code edits
   const edits = getStoredCodeEdits();
@@ -974,42 +979,58 @@ async function updateComponentDetails(id, { title, category, html, css }) {
     localStorage.setItem(CODE_EDIT_STORAGE_KEY, JSON.stringify(edits));
   } catch (e) { }
 
-  // Update in user uploads storage & Firebase Cloud
+  // Update in user uploads storage
   saveUserUploadLocally(component);
-  saveComponentToCloud(component).catch(() => { });
 
-  // Update in Firestore if firebase provider is active
-  if (CONFIG.DB_PROVIDER === 'firebase') {
-    const db = getFirestoreDB();
-    if (db) {
-      try {
-        await db.collection('components').doc(id).update({
-          title: component.title,
-          category: component.category,
-          html: component.html,
-          css: component.css,
-        });
-      } catch (err) {
-        console.warn('[UIForge] Could not update Firestore:', err);
+  if (security.passed) {
+    // If approved, sync to cloud and keep in public feed
+    saveComponentToCloud(component).catch(() => { });
+    if (CONFIG.DB_PROVIDER === 'firebase') {
+      const db = getFirestoreDB();
+      if (db) {
+        try {
+          await db.collection('components').doc(id).update({
+            title: component.title,
+            category: component.category,
+            html: component.html,
+            css: component.css,
+            status: 'approved',
+            rejectionReasons: []
+          });
+        } catch (err) {
+          console.warn('[UIForge] Could not update Firestore:', err);
+        }
       }
     }
+  } else {
+    // If rejected, immediately quarantine: remove from public feed and cloud
+    STATE.components = STATE.components.filter(c => c.id !== id);
+    STATE.total = Math.max(0, STATE.total - 1);
+    deleteComponentFromCloud(id).catch(() => { });
   }
 
   // Update detail modal if open
   if (STATE.currentModal === id) {
-    const modalTitle = document.getElementById('modal-title');
-    const modalCategory = document.getElementById('modal-category');
-    if (modalTitle) modalTitle.textContent = component.title;
-    if (modalCategory) modalCategory.textContent = component.category;
+    if (!security.passed) {
+      if (typeof closeModal === 'function') closeModal();
+    } else {
+      const modalTitle = document.getElementById('modal-title');
+      const modalCategory = document.getElementById('modal-category');
+      if (modalTitle) modalTitle.textContent = component.title;
+      if (modalCategory) modalCategory.textContent = component.category;
+    }
   }
 
-  // Refresh main page cards
+  // Refresh main page cards, hero stats, and category filters
   renderGrid(STATE.components);
+  if (typeof updateHeroStats === 'function') updateHeroStats();
+  if (typeof renderCategoryFilters === 'function') renderCategoryFilters();
 
   // Refresh profile modal if open
   if (typeof window._renderProfileUploads === 'function') window._renderProfileUploads();
   if (typeof window._renderProfileFavorites === 'function') window._renderProfileFavorites();
   if (typeof window._updateProfileStats === 'function') window._updateProfileStats();
+  if (typeof window.updateProfileUserInfo === 'function') window.updateProfileUserInfo();
 
   return component;
 }
@@ -1562,6 +1583,38 @@ function animateCounter(el, target) {
 }
 
 /**
+ * Unified Public Components Counting Engine
+ * Ensures 100% synchronization across Homepage Hero, Sidebar Drawer (3 ขีด),
+ * and the Horizontal Category Bar. Only approved components are counted in public totals.
+ */
+function getApprovedPublicUploads() {
+  const deletedIds = typeof getDeletedComponentIds === 'function' ? getDeletedComponentIds() : new Set();
+  const pool = typeof getStoredUserUploads === 'function' ? getStoredUserUploads() : [];
+
+  return pool.filter(c => {
+    if (!c || deletedIds.has(c.id)) return false;
+    if (String(c.id).startsWith('uiv-')) return false; // Already in manifest base count
+    return c.status !== 'rejected' && c.status !== 'in-review';
+  });
+}
+
+function getPublicCategoryCount(cat = 'All') {
+  const approvedList = getApprovedPublicUploads();
+  const extraCount = approvedList.filter(c => cat === 'All' || c.category === cat).length;
+
+  if (cat === 'All') {
+    const baseTotal = window.UIVERSE_MANIFEST ? window.UIVERSE_MANIFEST.total : 6002;
+    return baseTotal + extraCount;
+  }
+
+  if (window.UIVERSE_MANIFEST && window.UIVERSE_MANIFEST.categories && window.UIVERSE_MANIFEST.categories[cat]) {
+    return window.UIVERSE_MANIFEST.categories[cat].count + extraCount;
+  }
+
+  return extraCount;
+}
+
+/**
  * updateHeroStats()
  * Synchronizes hero section with 100% REAL platform metrics
  */
@@ -1571,9 +1624,8 @@ function updateHeroStats() {
   const likeCounter = document.getElementById('hero-stat-likes');
   const devCounter = document.getElementById('hero-stat-developers');
 
-  // Real component count
-  const myUploadCount = typeof getUserUploads === 'function' ? getUserUploads().length : 0;
-  const totalComps = (window.UIVERSE_MANIFEST ? window.UIVERSE_MANIFEST.total : 6002) + myUploadCount;
+  // Real component count - exactly matches category filter totals
+  const totalComps = getPublicCategoryCount('All');
   if (compCounter) {
     compCounter.dataset.target = totalComps;
     compCounter.textContent = totalComps.toLocaleString();
@@ -1744,15 +1796,7 @@ function renderCategoryFilters() {
 
   container.innerHTML = categories.map((cat) => {
     const isActive = cat === STATE.activeCategory;
-    let count = 0;
-    const userCompsCount = (typeof getUserUploads === 'function' ? getUserUploads() : _localComponents.filter((c) => c.isUserUpload)).filter((c) => cat === 'All' || c.category === cat).length;
-    if (cat === 'All') {
-      count = window.UIVERSE_MANIFEST ? window.UIVERSE_MANIFEST.total + userCompsCount : userCompsCount;
-    } else if (window.UIVERSE_MANIFEST && window.UIVERSE_MANIFEST.categories[cat]) {
-      count = window.UIVERSE_MANIFEST.categories[cat].count + userCompsCount;
-    } else {
-      count = userCompsCount;
-    }
+    const count = getPublicCategoryCount(cat);
 
     return `
       <button
@@ -1800,15 +1844,7 @@ function renderCategoryFilters() {
   if (horizontalContainer) {
     horizontalContainer.innerHTML = categories.map((cat) => {
       const isActive = cat === STATE.activeCategory;
-      let count = 0;
-      const userCompsCount = (typeof getUserUploads === 'function' ? getUserUploads() : _localComponents.filter((c) => c.isUserUpload)).filter((c) => cat === 'All' || c.category === cat).length;
-      if (cat === 'All') {
-        count = window.UIVERSE_MANIFEST ? window.UIVERSE_MANIFEST.total + userCompsCount : userCompsCount;
-      } else if (window.UIVERSE_MANIFEST && window.UIVERSE_MANIFEST.categories[cat]) {
-        count = window.UIVERSE_MANIFEST.categories[cat].count + userCompsCount;
-      } else {
-        count = userCompsCount;
-      }
+      const count = getPublicCategoryCount(cat);
 
       return `
         <button
@@ -5792,6 +5828,7 @@ ${css}
     });
     return Array.from(unique.values());
   }
+  window.getUserUploads = getUserUploads;
 
   function updateProfileStats() {
     const myUploads = getUserUploads();
@@ -6423,10 +6460,22 @@ ${css}
     }
 
     try {
-      await updateComponentDetails(id, { title, category, html, css });
+      const updated = await updateComponentDetails(id, { title, category, html, css });
       closeEditModal();
-      showToast('Component updated successfully!', 'success');
-      renderProfileContent(STATE.activeProfileTab || 'posts');
+
+      if (typeof updateProfileUserInfo === 'function') {
+        updateProfileUserInfo();
+      } else if (typeof window.updateProfileUserInfo === 'function') {
+        window.updateProfileUserInfo();
+      }
+
+      if (updated.status === 'approved') {
+        showToast(typeof t === 'function' ? t('edit_success_toast') || 'Component updated successfully!' : 'Component updated successfully!', 'success');
+        renderProfileContent(STATE.activeProfileTab || 'posts');
+      } else {
+        showToast(typeof t === 'function' ? t('upload_rejected_toast') || 'Component rejected by security rules. Moved to Rejected tab.' : 'Component rejected by security rules. Moved to Rejected tab.', 'warning');
+        openProfileModal('rejected');
+      }
     } catch (err) {
       console.error(err);
       showToast('Failed to update component.', 'error');
