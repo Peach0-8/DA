@@ -149,7 +149,10 @@ async function saveComponentToCloud(component) {
       await rtdb.ref('components/' + component.id).set(payload);
       console.log('[UIForge] Uploaded to Realtime Database:', component.id);
     } catch (e) {
-      console.warn('[UIForge] Realtime DB write failed:', e);
+      const msg = e ? (e.message || String(e)) : '';
+      if (!msg.includes('permission_denied') && !msg.includes('PERMISSION_DENIED')) {
+        console.warn('[UIForge] Realtime DB write failed:', e);
+      }
     }
   }
 }
@@ -171,7 +174,10 @@ async function deleteComponentFromCloud(id) {
       await rtdb.ref('components/' + id).remove();
       console.log('[UIForge] Deleted from Realtime DB:', id);
     } catch (e) {
-      console.warn('[UIForge] Realtime DB delete failed:', e);
+      const msg = e ? (e.message || String(e)) : '';
+      if (!msg.includes('permission_denied') && !msg.includes('PERMISSION_DENIED')) {
+        console.warn('[UIForge] Realtime DB delete failed:', e);
+      }
     }
   }
 }
@@ -1387,6 +1393,12 @@ function buildPreviewSrcDoc(html, css, category = '', isModal = false, bgColor =
 
   const isPattern = category === 'Patterns';
 
+  // Sanitize html for preview to prevent unclosed script tags from breaking the iframe runtime
+  const safeHtml = (html || '')
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<script\b[^>]*>/gi, '')
+    .replace(/<\/script>/gi, '');
+
   return `<!DOCTYPE html>
 <html class="${rootClass}">
 <head>
@@ -1452,7 +1464,7 @@ ${tailwindHead}
 <body class="${rootClass}">
 <div id="uiverse-stage">
   <div id="stage-inner">
-${html}
+${safeHtml}
   </div>
 </div>
 <script>
@@ -3813,7 +3825,11 @@ async function handleUpload() {
       showToast(typeof t === 'function' ? t('upload_rejected_toast') : `"${newComp.title}" failed automated security review.`, 'warning');
       openProfileModal('rejected');
     }
-    updateProfileUserInfo();
+    if (typeof updateProfileUserInfo === 'function') {
+      updateProfileUserInfo();
+    } else if (typeof window.updateProfileUserInfo === 'function') {
+      window.updateProfileUserInfo();
+    }
 
   } catch (err) {
     console.error('[UIForge] Upload failed:', err);
@@ -5743,6 +5759,7 @@ ${css}
     updateProfileCompletion(settings);
     updateProfileStats();
   }
+  window.updateProfileUserInfo = updateProfileUserInfo;
 
   function getUserUploads() {
     const deletedIds = getDeletedComponentIds();
@@ -5806,7 +5823,11 @@ ${css}
       if (userMenuIcon) userMenuIcon.classList.remove('rotate-180');
     }
 
-    updateProfileUserInfo();
+    if (typeof updateProfileUserInfo === 'function') {
+      updateProfileUserInfo();
+    } else if (typeof window.updateProfileUserInfo === 'function') {
+      window.updateProfileUserInfo();
+    }
     switchProfileTab(tab);
 
     if (profileModal) {
@@ -6164,7 +6185,11 @@ ${css}
           card.querySelector('.btn-card-unlike')?.addEventListener('click', async (e) => {
             e.stopPropagation();
             await handleLike(c.id);
-            updateProfileUserInfo();
+            if (typeof updateProfileUserInfo === 'function') {
+      updateProfileUserInfo();
+    } else if (typeof window.updateProfileUserInfo === 'function') {
+      window.updateProfileUserInfo();
+    }
             renderProfileContent('favorites');
             showToast('Removed from favorites', 'info');
           });
@@ -6191,7 +6216,11 @@ ${css}
       userDropdown.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
       if (userMenuIcon) userMenuIcon.classList.remove('rotate-180');
     }
-    updateProfileUserInfo();
+    if (typeof updateProfileUserInfo === 'function') {
+      updateProfileUserInfo();
+    } else if (typeof window.updateProfileUserInfo === 'function') {
+      window.updateProfileUserInfo();
+    }
     switchSettingsTab(activeTab);
     if (settingsModal) {
       settingsModal.classList.remove('hidden');
@@ -6334,7 +6363,11 @@ ${css}
         STATE.currentUser.email = emailVal;
         try { localStorage.setItem('uiforge_user', JSON.stringify(STATE.currentUser)); } catch (err) {}
       }
+      if (typeof updateProfileUserInfo === 'function') {
       updateProfileUserInfo();
+    } else if (typeof window.updateProfileUserInfo === 'function') {
+      window.updateProfileUserInfo();
+    }
       showToast('Settings saved successfully!', 'success');
     });
   }
@@ -6357,7 +6390,11 @@ ${css}
         STATE.currentUser.email = emailVal;
         try { localStorage.setItem('uiforge_user', JSON.stringify(STATE.currentUser)); } catch (err) {}
       }
+      if (typeof updateProfileUserInfo === 'function') {
       updateProfileUserInfo();
+    } else if (typeof window.updateProfileUserInfo === 'function') {
+      window.updateProfileUserInfo();
+    }
       showToast('Email preferences saved successfully!', 'success');
     });
   }
@@ -6415,7 +6452,11 @@ ${css}
 
   // Handle language change events dynamically
   document.addEventListener('langchange', () => {
-    updateProfileUserInfo();
+    if (typeof updateProfileUserInfo === 'function') {
+      updateProfileUserInfo();
+    } else if (typeof window.updateProfileUserInfo === 'function') {
+      window.updateProfileUserInfo();
+    }
     if (STATE.activeProfileTab) {
       renderProfileContent(STATE.activeProfileTab);
     }
