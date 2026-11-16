@@ -1384,7 +1384,7 @@
 
       <!-- Navigation Tabs & Filter Bar (Matching Uiverse Image 2) -->
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 border-b border-white/5 text-xs">
-        <!-- Left: Tabs (Posts, Favorites, Variations, In Review, Rejected, Drafts) -->
+        <!-- Left: Tabs (Posts, Favorites) -->
         <div class="flex items-center gap-1 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0" id="profile-nav-tabs">
           <button type="button" id="profile-tab-posts" data-profile-tab="posts"
             class="profile-tab-btn active px-4 py-1.5 rounded-xl font-semibold bg-[#24252a] text-white border border-white/10 transition-all cursor-pointer shadow-sm">
@@ -1396,22 +1396,6 @@
             <span>Favorites</span>
             <span id="profile-favorites-count-badge"
               class="px-1.5 py-0.5 rounded-full text-[10px] bg-pink-500/20 text-pink-300 font-mono hidden">0</span>
-          </button>
-          <button type="button" id="profile-tab-variations" data-profile-tab="variations"
-            class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
-            Variations
-          </button>
-          <button type="button" id="profile-tab-in-review" data-profile-tab="in-review"
-            class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
-            In Review
-          </button>
-          <button type="button" id="profile-tab-rejected" data-profile-tab="rejected"
-            class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
-            Rejected
-          </button>
-          <button type="button" id="profile-tab-drafts" data-profile-tab="drafts"
-            class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
-            Drafts
           </button>
         </div>
 
@@ -1498,12 +1482,6 @@
           <span>Profile</span>
         </button>
 
-        <button type="button" id="settings-nav-achievements" data-settings-tab="achievements"
-          class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
-          <i class="fa-solid fa-trophy text-xs text-amber-400"></i>
-          <span>Achievements</span>
-        </button>
-
         <button type="button" id="settings-nav-email" data-settings-tab="email"
           class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
           <i class="fa-regular fa-envelope text-xs text-sky-400"></i>
@@ -1543,6 +1521,17 @@
                   <span>Name</span>
                 </label>
                 <input id="settings-name" type="text" placeholder="Your name" value="Phitsamay"
+                  class="w-full bg-[#141416] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="settings-email"
+                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
+                  <i class="fa-regular fa-envelope text-xs text-gray-400"></i>
+                  <span>Email Address</span>
+                </label>
+                <input id="settings-email" type="email" placeholder="Your email address"
                   class="w-full bg-[#141416] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
               </div>
 
@@ -1632,60 +1621,35 @@
           </div>
         </section>
 
-        <!-- 2. Achievements Panel -->
-        <section id="settings-panel-achievements" class="space-y-6 hidden">
-          <div>
-            <h2 class="text-2xl font-bold text-white tracking-tight">Achievements</h2>
-            <p class="text-xs text-gray-400 mt-1">Unlock badges by sharing components and interacting with the
-              community.</p>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="p-4 rounded-2xl bg-[#141416] border border-white/10 flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-lg">
-                <i class="fa-solid fa-medal"></i>
-              </div>
-              <div>
-                <h4 class="text-xs font-bold text-white">Pioneer Creator</h4>
-                <p class="text-[11px] text-gray-400">Joined during UIForge 1.0 release</p>
-              </div>
-            </div>
-            <div class="p-4 rounded-2xl bg-[#141416] border border-white/10 flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-lg">
-                <i class="fa-solid fa-code"></i>
-              </div>
-              <div>
-                <h4 class="text-xs font-bold text-white">CSS Artisan</h4>
-                <p class="text-[11px] text-gray-400">Published first customized element</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 3. Email Panel -->
+        <!-- 2. Email Panel -->
         <section id="settings-panel-email" class="space-y-6 hidden">
           <div>
             <h2 class="text-2xl font-bold text-white tracking-tight">Email & Notifications</h2>
             <p class="text-xs text-gray-400 mt-1">Manage your email address and notification subscriptions.</p>
           </div>
-          <div class="p-5 rounded-2xl bg-[#141416] border border-white/10 space-y-4 text-xs">
+          <form id="settings-email-form" class="p-5 rounded-2xl bg-[#141416] border border-white/10 space-y-4 text-xs">
             <div>
-              <label class="block text-gray-400 mb-1">Primary Email</label>
-              <input id="settings-email-display" type="email" readonly value="phitsamay@example.com"
-                class="w-full bg-[#18191d] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-gray-300 font-mono">
+              <label for="settings-email-input" class="block text-gray-300 font-semibold mb-1.5">Primary Email</label>
+              <input id="settings-email-input" type="email" placeholder="you@example.com"
+                class="w-full bg-[#18191d] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white font-mono placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
             </div>
-            <div class="pt-2 flex items-center justify-between">
+            <div class="pt-2 flex items-center justify-between border-t border-white/5">
               <div>
                 <div class="font-bold text-white">Comment Notifications</div>
                 <div class="text-[11px] text-gray-400">Receive alerts when someone comments on your elements</div>
               </div>
-              <input type="checkbox" checked class="w-4 h-4 accent-indigo-600 rounded">
+              <input id="settings-notifications-chk" type="checkbox" checked class="w-4 h-4 accent-indigo-600 rounded cursor-pointer">
             </div>
-          </div>
+            <div class="flex items-center justify-end pt-2">
+              <button id="settings-email-save-btn" type="submit"
+                class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white shadow-md shadow-indigo-600/30 transition-all cursor-pointer">
+                Save Email
+              </button>
+            </div>
+          </form>
         </section>
 
-        <!-- 4. Account Panel -->
+        <!-- 3. Account Panel -->
         <section id="settings-panel-account" class="space-y-6 hidden">
           <div>
             <h2 class="text-2xl font-bold text-white tracking-tight">Account Settings</h2>
@@ -1695,25 +1659,32 @@
             <div class="flex items-center justify-between pb-3 border-b border-white/5">
               <div>
                 <div class="font-bold text-white">Account ID</div>
-                <div class="text-[11px] text-gray-400 font-mono">UID-2026-PSM</div>
+                <div id="settings-account-uid" class="text-[11px] text-gray-400 font-mono">LOCAL-GUEST</div>
               </div>
-              <span
+              <span id="settings-account-status"
                 class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">Active</span>
+            </div>
+            <div class="flex items-center justify-between pb-3 border-b border-white/5">
+              <div>
+                <div class="font-bold text-white">Connected Email</div>
+                <div id="settings-account-email" class="text-[11px] text-gray-400 font-mono">Not set</div>
+              </div>
             </div>
             <div class="pt-2">
               <button id="settings-signout-btn" type="button"
-                class="px-4 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-xs font-semibold transition-all cursor-pointer">
-                Sign out of all sessions
+                class="px-4 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-xs font-semibold transition-all cursor-pointer flex items-center gap-2">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Sign out of all sessions</span>
               </button>
             </div>
           </div>
         </section>
 
-        <!-- 5. Stats Panel -->
+        <!-- 4. Stats Panel -->
         <section id="settings-panel-stats" class="space-y-6 hidden">
           <div>
             <h2 class="text-2xl font-bold text-white tracking-tight">Account Statistics</h2>
-            <p class="text-xs text-gray-400 mt-1">Summary of your activity and contributions.</p>
+            <p class="text-xs text-gray-400 mt-1">Real-time summary of your activity and contributions.</p>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
@@ -1722,15 +1693,15 @@
             </div>
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
               <div id="settings-stat-likes" class="text-xl font-bold text-pink-400">0</div>
-              <div class="text-[11px] text-gray-400 mt-1">Favorites</div>
+              <div class="text-[11px] text-gray-400 mt-1">Favorites Saved</div>
             </div>
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
               <div id="settings-stat-uploads" class="text-xl font-bold text-indigo-400">0</div>
-              <div class="text-[11px] text-gray-400 mt-1">Elements</div>
+              <div class="text-[11px] text-gray-400 mt-1">Your Elements</div>
             </div>
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
-              <div class="text-xl font-bold text-emerald-400">100%</div>
-              <div class="text-[11px] text-gray-400 mt-1">Reputation</div>
+              <div id="settings-stat-reputation" class="text-xl font-bold text-emerald-400">0</div>
+              <div class="text-[11px] text-gray-400 mt-1">Likes Received</div>
             </div>
           </div>
         </section>
@@ -1875,12 +1846,12 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
   <!-- i18n Multilingual Support -->
-  <script src="i18n.js?v=1.2.3"></script>
+  <script src="i18n.js?v=1.2.4"></script>
 
   <!-- Uiverse Manifest (Lightweight Metadata) -->
   <script src="data/manifest.js"></script>
   <script src="data/initial_components.js"></script>
-  <script src="app.js?v=1.2.3"></script>
+  <script src="app.js?v=1.2.4"></script>
 </body>
 
 </html>

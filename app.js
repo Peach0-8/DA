@@ -5474,10 +5474,11 @@ ${css}
   function updateProfileCompletion(settings) {
     const fields = [
       { key: 'name', label: 'Name' },
+      { key: 'email', label: 'Email' },
       { key: 'location', label: 'Location' },
       { key: 'company', label: 'Company' },
       { key: 'twitter', label: 'Twitter' },
-      { key: 'website', label: 'Blog' },
+      { key: 'website', label: 'Website' },
       { key: 'bio', label: 'Bio' },
     ];
     const missing = fields.filter((f) => !settings[f.key] || !String(settings[f.key]).trim()).map((f) => f.label);
@@ -5530,18 +5531,25 @@ ${css}
 
     // Populate Settings form fields
     const nameInput = document.getElementById('settings-name');
+    const emailInput = document.getElementById('settings-email');
+    const emailDisplayInput = document.getElementById('settings-email-input');
     const locInput = document.getElementById('settings-location');
     const compInput = document.getElementById('settings-company');
     const twInput = document.getElementById('settings-twitter');
     const webInput = document.getElementById('settings-website');
     const bioInput = document.getElementById('settings-bio');
+    const notifChk = document.getElementById('settings-notifications-chk');
 
+    const currentEmail = settings.email || (user ? user.email : '') || '';
     if (nameInput) nameInput.value = settings.name || '';
+    if (emailInput) emailInput.value = currentEmail;
+    if (emailDisplayInput) emailDisplayInput.value = currentEmail;
     if (locInput) locInput.value = settings.location || '';
     if (compInput) compInput.value = settings.company || '';
     if (twInput) twInput.value = settings.twitter || '';
     if (webInput) webInput.value = settings.website || '';
     if (bioInput) bioInput.value = settings.bio || '';
+    if (notifChk) notifChk.checked = settings.emailNotifications !== false;
 
     // Update favorites badge count in profile tabs
     const favBadge = document.getElementById('profile-favorites-count-badge');
@@ -5556,6 +5564,7 @@ ${css}
     }
 
     updateProfileCompletion(settings);
+    updateProfileStats();
   }
 
   function getUserUploads() {
@@ -5584,7 +5593,33 @@ ${css}
   }
 
   function updateProfileStats() {
-    // Kept for backward compatibility
+    const myUploads = getUserUploads();
+    const totalViews = myUploads.reduce((sum, c) => sum + (Number(c.views) || 0), 0);
+    const totalFavs = STATE.likedIds ? STATE.likedIds.size : 0;
+    const totalUploads = myUploads.length;
+    const totalLikesReceived = myUploads.reduce((sum, c) => sum + (getComponentLikesCount(c) || 0), 0);
+
+    const viewsEl = document.getElementById('settings-stat-views');
+    const likesEl = document.getElementById('settings-stat-likes');
+    const uploadsEl = document.getElementById('settings-stat-uploads');
+    const reputationEl = document.getElementById('settings-stat-reputation');
+
+    if (viewsEl) viewsEl.textContent = formatNumber(totalViews);
+    if (likesEl) likesEl.textContent = formatNumber(totalFavs);
+    if (uploadsEl) uploadsEl.textContent = formatNumber(totalUploads);
+    if (reputationEl) reputationEl.textContent = formatNumber(totalLikesReceived);
+
+    // Account ID and Connected Email
+    const accountUidEl = document.getElementById('settings-account-uid');
+    if (accountUidEl) {
+      const handle = getUserSettings().handle;
+      accountUidEl.textContent = STATE.currentUser?.uid || (handle ? '@' + handle : 'LOCAL-GUEST');
+    }
+    const accountEmailEl = document.getElementById('settings-account-email');
+    if (accountEmailEl) {
+      const email = STATE.currentUser?.email || getUserSettings().email || 'Not connected';
+      accountEmailEl.textContent = email;
+    }
   }
 
   // --- PROFILE MODAL & TABS ---
@@ -5880,7 +5915,7 @@ ${css}
       }
     });
 
-    ['profile', 'achievements', 'email', 'account', 'stats'].forEach((tab) => {
+    ['profile', 'email', 'account', 'stats'].forEach((tab) => {
       const panel = document.getElementById(`settings-panel-${tab}`);
       if (panel) {
         if (tab === tabName) {
@@ -5890,6 +5925,10 @@ ${css}
         }
       }
     });
+
+    if (tabName === 'stats' || tabName === 'account') {
+      updateProfileStats();
+    }
   }
 
   // Edit / Delete Modal Logic
@@ -5978,9 +6017,11 @@ ${css}
     settingsForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const current = getUserSettings();
+      const emailVal = document.getElementById('settings-email')?.value.trim() || current.email || '';
       const updated = {
         ...current,
         name: document.getElementById('settings-name')?.value.trim() || current.name || 'Phitsamay',
+        email: emailVal,
         location: document.getElementById('settings-location')?.value.trim() || '',
         company: document.getElementById('settings-company')?.value.trim() || '',
         twitter: document.getElementById('settings-twitter')?.value.trim() || '',
@@ -5988,10 +6029,43 @@ ${css}
         bio: document.getElementById('settings-bio')?.value.trim() || '',
       };
       saveUserSettings(updated);
+      if (STATE.currentUser && emailVal) {
+        STATE.currentUser.email = emailVal;
+        try { localStorage.setItem('uiforge_user', JSON.stringify(STATE.currentUser)); } catch (err) {}
+      }
       updateProfileUserInfo();
       showToast('Settings saved successfully!', 'success');
     });
   }
+
+  // Settings Email Form Submit
+  const settingsEmailForm = document.getElementById('settings-email-form');
+  if (settingsEmailForm) {
+    settingsEmailForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailVal = document.getElementById('settings-email-input')?.value.trim() || '';
+      const notifVal = document.getElementById('settings-notifications-chk')?.checked !== false;
+      const current = getUserSettings();
+      const updated = {
+        ...current,
+        email: emailVal,
+        emailNotifications: notifVal
+      };
+      saveUserSettings(updated);
+      if (STATE.currentUser && emailVal) {
+        STATE.currentUser.email = emailVal;
+        try { localStorage.setItem('uiforge_user', JSON.stringify(STATE.currentUser)); } catch (err) {}
+      }
+      updateProfileUserInfo();
+      showToast('Email preferences saved successfully!', 'success');
+    });
+  }
+
+  // Settings Sign Out Button
+  document.getElementById('settings-signout-btn')?.addEventListener('click', () => {
+    closeSettingsModal();
+    document.getElementById('signout-btn')?.click();
+  });
 
   // Edit / Delete handlers
   editCloseBtn?.addEventListener('click', closeEditModal);
