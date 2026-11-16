@@ -1021,8 +1021,8 @@ async function likeComponent(id, willBeLiked) {
 
 /**
  * incrementViews(id)
- * Increments the view counter on a component.
- * Called when the detail modal is opened.
+ * Increments the view counter on a component and persists it.
+ * Called when the detail modal is opened or card is previewed.
  *
  * @param {string} id
  */
@@ -1030,24 +1030,53 @@ async function incrementViews(id) {
   if (CONFIG.DB_PROVIDER === 'supabase') {
     const sb = getSupabaseClient();
     if (sb) {
-      await sb.rpc('increment_views', { row_id: id });
-      return;
+      try {
+        await sb.rpc('increment_views', { row_id: id });
+      } catch (e) {
+        console.warn('[UIForge] Supabase increment_views failed:', e);
+      }
     }
   }
 
   if (CONFIG.DB_PROVIDER === 'firebase') {
     const db = getFirestoreDB();
     if (db) {
-      await db.collection('components').doc(id).update({
-        views: firebase.firestore.FieldValue.increment(1),
-      });
-      return;
+      try {
+        await db.collection('components').doc(id).update({
+          views: firebase.firestore.FieldValue.increment(1),
+        });
+      } catch (e) {}
     }
   }
 
-  // LOCAL
-  const c = _localComponents.find((c) => c.id === id);
-  if (c) c.views = (c.views || 0) + 1;
+  const rtdb = getRealtimeDB();
+  if (rtdb) {
+    try {
+      rtdb.ref('components/' + id + '/views').transaction((val) => (val || 0) + 1);
+    } catch (e) {}
+  }
+
+  // Persistent storage in localStorage
+  const map = getStoredViewsMap();
+  const comp = typeof findComponentAnywhere === 'function' ? findComponentAnywhere(id) : null;
+  const current = typeof map[id] === 'number' ? map[id] : (comp?.views || 0);
+  const next = current + 1;
+  map[id] = next;
+  try {
+    localStorage.setItem(COMPONENT_VIEWS_STORAGE_KEY, JSON.stringify(map));
+  } catch (e) {}
+
+  if (comp) comp.views = next;
+  const inLocal = _localComponents.find((c) => c.id === id);
+  if (inLocal) inLocal.views = next;
+
+  // If user-created upload, also update in stored user uploads
+  const uploads = getStoredUserUploads();
+  const uIdx = uploads.findIndex((u) => u.id === id);
+  if (uIdx !== -1) {
+    uploads[uIdx].views = next;
+    saveStoredUserUploads(uploads);
+  }
 }
 
 
@@ -1784,6 +1813,39 @@ async function syncLikeToCloud(id, count, delta = 0) {
       }
     } catch (e) { }
   }
+}
+
+const COMPONENT_VIEWS_STORAGE_KEY = 'uiforge_component_views';
+
+function getStoredViewsMap() {
+  try {
+    return JSON.parse(localStorage.getItem(COMPONENT_VIEWS_STORAGE_KEY) || '{}');
+  } catch (e) {
+    return {};
+  }
+}
+
+function getComponentViewsCount(component) {
+  if (!component) return 0;
+  const map = getStoredViewsMap();
+  const id = typeof component === 'object' ? component.id : component;
+  let count = 0;
+  if (typeof map[id] === 'number') {
+    count = map[id];
+  } else if (typeof component === 'object' && typeof component.views === 'number') {
+    count = component.views;
+  }
+
+  // Realistic baseline: An element with likes must have been viewed at least as many times as it was liked
+  const likes = getComponentLikesCount(component);
+  if (count < likes) {
+    count = likes;
+    map[id] = count;
+    try {
+      localStorage.setItem(COMPONENT_VIEWS_STORAGE_KEY, JSON.stringify(map));
+    } catch (e) {}
+  }
+  return count;
 }
 
 async function syncCloudLikes() {
@@ -5594,7 +5656,7 @@ ${css}
 
   function updateProfileStats() {
     const myUploads = getUserUploads();
-    const totalViews = myUploads.reduce((sum, c) => sum + (Number(c.views) || 0), 0);
+    const totalViews = myUploads.reduce((sum, c) => sum + (getComponentViewsCount(c) || 0), 0);
     const totalFavs = STATE.likedIds ? STATE.likedIds.size : 0;
     const totalUploads = myUploads.length;
     const totalLikesReceived = myUploads.reduce((sum, c) => sum + (getComponentLikesCount(c) || 0), 0);
