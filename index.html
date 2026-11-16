@@ -671,7 +671,8 @@
           </button>
 
           <!-- Background Color Picker Button (Square Swatch, Uiverse parity) -->
-          <label for="upload-bg-picker" id="upload-color-picker-btn" aria-label="Choose background color" title="Choose background color"
+          <label for="upload-bg-picker" id="upload-color-picker-btn" aria-label="Choose background color"
+            title="Choose background color"
             class="w-7 h-7 rounded-lg bg-[#e8e8e8] hover:brightness-110 border border-white/30 hover:border-white/60 flex items-center justify-center transition-all backdrop-blur-sm cursor-pointer shadow-sm relative overflow-hidden">
             <input type="color" id="upload-bg-picker" value="#e8e8e8" class="sr-only">
           </label>
@@ -1013,7 +1014,8 @@
           </button>
 
           <!-- Background Color Picker Button (Square Swatch, Uiverse parity) -->
-          <label for="preview-bg-picker" id="preview-color-picker-btn" aria-label="Choose background color" title="Choose background color"
+          <label for="preview-bg-picker" id="preview-color-picker-btn" aria-label="Choose background color"
+            title="Choose background color"
             class="w-7 h-7 rounded-lg bg-[#212121] hover:brightness-110 border border-white/30 hover:border-white/60 flex items-center justify-center transition-all backdrop-blur-sm cursor-pointer shadow-sm relative overflow-hidden">
             <input type="color" id="preview-bg-picker" value="#212121" class="sr-only">
           </label>
@@ -1029,25 +1031,35 @@
           <!-- Canvas Floating Bottom Controls: Responsive Viewports & Zoom (Uiverse Parity) -->
           <div class="absolute bottom-3 left-3 z-20 flex items-center gap-2 select-none">
             <!-- Viewport Simulator Controls -->
-            <div id="preview-viewport-controls" class="flex items-center gap-0.5 p-1 rounded-xl bg-[#202024]/80 border border-white/10 backdrop-blur-sm text-xs shadow-sm">
-              <button type="button" class="viewport-btn active px-2.5 py-1 rounded-lg text-white bg-surface-600 hover:bg-surface-500 transition-colors cursor-pointer" data-viewport="desktop" title="Desktop view">
+            <div id="preview-viewport-controls"
+              class="flex items-center gap-0.5 p-1 rounded-xl bg-[#202024]/80 border border-white/10 backdrop-blur-sm text-xs shadow-sm">
+              <button type="button"
+                class="viewport-btn active px-2.5 py-1 rounded-lg text-white bg-surface-600 hover:bg-surface-500 transition-colors cursor-pointer"
+                data-viewport="desktop" title="Desktop view">
                 <i class="fa-solid fa-desktop text-[11px]"></i>
               </button>
-              <button type="button" class="viewport-btn px-2.5 py-1 rounded-lg text-gray-400 hover:text-white transition-colors cursor-pointer" data-viewport="tablet" title="Tablet view">
+              <button type="button"
+                class="viewport-btn px-2.5 py-1 rounded-lg text-gray-400 hover:text-white transition-colors cursor-pointer"
+                data-viewport="tablet" title="Tablet view">
                 <i class="fa-solid fa-tablet-screen-button text-[11px]"></i>
               </button>
-              <button type="button" class="viewport-btn px-2.5 py-1 rounded-lg text-gray-400 hover:text-white transition-colors cursor-pointer" data-viewport="mobile" title="Mobile view">
+              <button type="button"
+                class="viewport-btn px-2.5 py-1 rounded-lg text-gray-400 hover:text-white transition-colors cursor-pointer"
+                data-viewport="mobile" title="Mobile view">
                 <i class="fa-solid fa-mobile-screen-button text-[11px]"></i>
               </button>
             </div>
 
             <!-- Zoom Controls -->
-            <div class="flex items-center gap-1 px-2 py-1 rounded-xl bg-[#202024]/80 border border-white/10 backdrop-blur-sm text-xs text-gray-300 shadow-sm">
-              <button id="preview-zoom-out" type="button" class="p-1 hover:text-white transition-colors cursor-pointer" title="Zoom Out">
+            <div
+              class="flex items-center gap-1 px-2 py-1 rounded-xl bg-[#202024]/80 border border-white/10 backdrop-blur-sm text-xs text-gray-300 shadow-sm">
+              <button id="preview-zoom-out" type="button" class="p-1 hover:text-white transition-colors cursor-pointer"
+                title="Zoom Out">
                 <i class="fa-solid fa-minus text-[10px]"></i>
               </button>
               <span id="preview-zoom-label" class="font-mono text-[11px] px-1 select-none font-semibold">100%</span>
-              <button id="preview-zoom-in" type="button" class="p-1 hover:text-white transition-colors cursor-pointer" title="Zoom In">
+              <button id="preview-zoom-in" type="button" class="p-1 hover:text-white transition-colors cursor-pointer"
+                title="Zoom In">
                 <i class="fa-solid fa-plus text-[10px]"></i>
               </button>
             </div>
@@ -1074,8 +1086,12 @@
             </button>
           </div>
           <!-- Tailwind Badge (Shown when component is Tailwind) -->
-          <span id="modal-tailwind-badge" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 flex items-center gap-1.5 hidden">
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.02,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.982,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.532,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.982,12,6.001,12z"/></svg>
+          <span id="modal-tailwind-badge"
+            class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 flex items-center gap-1.5 hidden">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.02,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.982,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.532,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.982,12,6.001,12z" />
+            </svg>
             <span>Tailwind CSS</span>
           </span>
         </div>
@@ -1218,7 +1234,8 @@
               <span id="modal-comments-total" class="text-xs font-normal text-gray-500">1</span>
             </h3>
             <span id="modal-comments-auth-status"
-              class="text-xs text-gray-400 cursor-pointer hover:text-white transition-colors">Log in to add comments</span>
+              class="text-xs text-gray-400 cursor-pointer hover:text-white transition-colors">Log in to add
+              comments</span>
           </div>
 
           <!-- Comment Input Row -->
@@ -1251,10 +1268,16 @@
           <div class="text-xs text-gray-300 font-medium mb-3">
             Copyright - 2026 <span id="modal-license-author" class="text-white font-semibold">creator</span>
           </div>
-          <div class="max-h-36 overflow-y-auto font-mono text-[11px] leading-relaxed text-gray-400 bg-black/30 p-3.5 rounded-xl border border-white/5 select-all">
-            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+          <div
+            class="max-h-36 overflow-y-auto font-mono text-[11px] leading-relaxed text-gray-400 bg-black/30 p-3.5 rounded-xl border border-white/5 select-all">
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+            documentation files (the "Software"), to deal in the Software without restriction, including without
+            limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+            the Software, and to permit persons to whom the Software is furnished to do so, subject to the following
+            conditions:
             <br><br>
-            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+            The above copyright notice and this permission notice shall be included in all copies or substantial
+            portions of the Software.
           </div>
         </div>
       </div>
@@ -1293,7 +1316,8 @@
           </div>
           <div class="flex-1 min-w-0">
             <div id="modal-author-card-name"
-              class="font-bold text-sm text-white group-hover:text-brand-300 transition-colors truncate">satyamchaudharydev</div>
+              class="font-bold text-sm text-white group-hover:text-brand-300 transition-colors truncate">
+              satyamchaudharydev</div>
             <div id="modal-author-card-handle" class="text-xs text-gray-500 truncate">@satyam</div>
           </div>
         </div>
@@ -1301,8 +1325,10 @@
         <!-- More by Author section (Uiverse Parity) -->
         <div id="modal-more-author-section" class="flex flex-col gap-3 pt-3 border-t border-white/5">
           <div class="flex items-center justify-between text-xs">
-            <span class="font-semibold text-gray-300" id="modal-more-by-title">More by <span id="modal-more-author-name">@creator</span></span>
-            <button id="modal-more-by-viewall" type="button" class="text-gray-400 hover:text-white transition-colors cursor-pointer text-[11px]">View all →</button>
+            <span class="font-semibold text-gray-300" id="modal-more-by-title">More by <span
+                id="modal-more-author-name">@creator</span></span>
+            <button id="modal-more-by-viewall" type="button"
+              class="text-gray-400 hover:text-white transition-colors cursor-pointer text-[11px]">View all →</button>
           </div>
           <div id="modal-more-author-grid" class="grid grid-cols-2 gap-2.5">
             <!-- Dynamically populated by app.js -->
@@ -1314,9 +1340,9 @@
 
   <!-- ===================== USER PROFILE MODAL / PAGE (Uiverse Parity) ===================== -->
   <div id="profile-modal"
-    class="fixed inset-0 z-[150] bg-[#0c0d0e] flex flex-col p-4 sm:p-8 overflow-y-auto hidden select-none"
-    role="dialog" aria-modal="true" aria-labelledby="profile-user-name">
-    
+    class="fixed inset-0 z-[150] bg-[#0c0d0e] flex flex-col p-4 sm:p-8 overflow-y-auto hidden select-none" role="dialog"
+    aria-modal="true" aria-labelledby="profile-user-name">
+
     <!-- Top Bar: Go back button -->
     <div class="max-w-6xl w-full mx-auto mb-6 shrink-0">
       <button id="profile-close-btn" type="button" aria-label="Go back"
@@ -1368,7 +1394,8 @@
             class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer flex items-center gap-1.5">
             <i class="fa-solid fa-heart text-pink-500 text-[10px]"></i>
             <span>Favorites</span>
-            <span id="profile-favorites-count-badge" class="px-1.5 py-0.5 rounded-full text-[10px] bg-pink-500/20 text-pink-300 font-mono hidden">0</span>
+            <span id="profile-favorites-count-badge"
+              class="px-1.5 py-0.5 rounded-full text-[10px] bg-pink-500/20 text-pink-300 font-mono hidden">0</span>
           </button>
           <button type="button" id="profile-tab-variations" data-profile-tab="variations"
             class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
@@ -1416,14 +1443,16 @@
           class="border border-white/10 rounded-2xl bg-[#121316]/50 py-20 px-6 flex flex-col items-center justify-center text-center my-auto">
           <!-- Broken square / scan icon -->
           <div class="w-16 h-16 flex items-center justify-center text-gray-600 mb-4">
-            <svg class="w-12 h-12 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="w-12 h-12 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M4 8V5a1 1 0 0 1 1-1h3m8 0h3a1 1 0 0 1 1 1v3m0 8v3a1 1 0 0 1-1 1h-3m-8 0H5a1 1 0 0 1-1-1v-3" />
             </svg>
           </div>
 
           <h3 id="profile-empty-title" class="text-base sm:text-lg font-bold text-white mb-2">No Public Posts Yet</h3>
           <p id="profile-empty-desc" class="text-xs text-gray-400 max-w-md leading-relaxed mb-6">
-            Looks like you haven't made any posts yet. Don't worry, just click the 'Create' button and let the universe know you're out there.
+            Looks like you haven't made any posts yet. Don't worry, just click the 'Create' button and let the universe
+            know you're out there.
           </p>
 
           <!-- Purple Create Button -->
@@ -1444,8 +1473,8 @@
 
   <!-- ===================== USER SETTINGS MODAL / PAGE (Uiverse Parity) ===================== -->
   <div id="settings-modal"
-    class="fixed inset-0 z-[155] bg-[#0c0d0e] flex flex-col p-4 sm:p-8 overflow-y-auto hidden select-none"
-    role="dialog" aria-modal="true" aria-labelledby="settings-heading">
+    class="fixed inset-0 z-[155] bg-[#0c0d0e] flex flex-col p-4 sm:p-8 overflow-y-auto hidden select-none" role="dialog"
+    aria-modal="true" aria-labelledby="settings-heading">
 
     <!-- Top Bar: Go back button -->
     <div class="max-w-6xl w-full mx-auto mb-6 shrink-0">
@@ -1460,7 +1489,8 @@
     <div class="max-w-6xl w-full mx-auto flex flex-col md:flex-row gap-8 pb-16 flex-1">
       <!-- Left Sidebar (Settings Navigation Menu) -->
       <aside class="w-full md:w-56 shrink-0 flex flex-col gap-1 text-xs">
-        <h3 id="settings-heading" class="text-xs uppercase tracking-wider font-bold text-gray-400 px-3.5 mb-2.5">Settings</h3>
+        <h3 id="settings-heading" class="text-xs uppercase tracking-wider font-bold text-gray-400 px-3.5 mb-2.5">
+          Settings</h3>
 
         <button type="button" id="settings-nav-profile" data-settings-tab="profile"
           class="settings-nav-btn active w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 bg-[#1e1f24] text-white border border-white/10 transition-all cursor-pointer shadow-sm">
@@ -1518,7 +1548,8 @@
 
               <!-- Location -->
               <div>
-                <label for="settings-location" class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
+                <label for="settings-location"
+                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
                   <i class="fa-solid fa-location-dot text-xs text-gray-400"></i>
                   <span>Location</span>
                 </label>
@@ -1528,7 +1559,8 @@
 
               <!-- Company -->
               <div>
-                <label for="settings-company" class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
+                <label for="settings-company"
+                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
                   <i class="fa-regular fa-building text-xs text-gray-400"></i>
                   <span>Company</span>
                 </label>
@@ -1538,7 +1570,8 @@
 
               <!-- Twitter Handle -->
               <div>
-                <label for="settings-twitter" class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
+                <label for="settings-twitter"
+                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
                   <i class="fa-brands fa-twitter text-xs text-gray-400"></i>
                   <span>Twitter Handle</span>
                 </label>
@@ -1548,7 +1581,8 @@
 
               <!-- Website (Full Width) -->
               <div class="sm:col-span-2">
-                <label for="settings-website" class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
+                <label for="settings-website"
+                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
                   <i class="fa-solid fa-link text-xs text-gray-400"></i>
                   <span>Website</span>
                 </label>
@@ -1588,7 +1622,8 @@
             </div>
             <!-- Progress Bar -->
             <div class="w-full h-1.5 bg-[#25262d] rounded-full overflow-hidden">
-              <div id="settings-completion-bar" class="h-full bg-indigo-600 transition-all duration-500" style="width: 17%"></div>
+              <div id="settings-completion-bar" class="h-full bg-indigo-600 transition-all duration-500"
+                style="width: 17%"></div>
             </div>
             <!-- Missing fields caption -->
             <p id="settings-missing-fields" class="text-[11px] text-gray-400">
@@ -1601,11 +1636,13 @@
         <section id="settings-panel-achievements" class="space-y-6 hidden">
           <div>
             <h2 class="text-2xl font-bold text-white tracking-tight">Achievements</h2>
-            <p class="text-xs text-gray-400 mt-1">Unlock badges by sharing components and interacting with the community.</p>
+            <p class="text-xs text-gray-400 mt-1">Unlock badges by sharing components and interacting with the
+              community.</p>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-lg">
+              <div
+                class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-lg">
                 <i class="fa-solid fa-medal"></i>
               </div>
               <div>
@@ -1614,7 +1651,8 @@
               </div>
             </div>
             <div class="p-4 rounded-2xl bg-[#141416] border border-white/10 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-lg">
+              <div
+                class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-lg">
                 <i class="fa-solid fa-code"></i>
               </div>
               <div>
@@ -1659,10 +1697,12 @@
                 <div class="font-bold text-white">Account ID</div>
                 <div class="text-[11px] text-gray-400 font-mono">UID-2026-PSM</div>
               </div>
-              <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">Active</span>
+              <span
+                class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">Active</span>
             </div>
             <div class="pt-2">
-              <button id="settings-signout-btn" type="button" class="px-4 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-xs font-semibold transition-all cursor-pointer">
+              <button id="settings-signout-btn" type="button"
+                class="px-4 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-xs font-semibold transition-all cursor-pointer">
                 Sign out of all sessions
               </button>
             </div>
@@ -1840,7 +1880,7 @@
   <!-- Uiverse Manifest (Lightweight Metadata) -->
   <script src="data/manifest.js"></script>
   <script src="data/initial_components.js"></script>
-  <script src="app.js?v=1.2.0"></script>
+  <script src="app.js?v=1.2.1"></script>
 </body>
 
 </html>

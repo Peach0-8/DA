@@ -576,22 +576,38 @@ async function fetchComponents({
   let items = [];
 
   if (category === 'Favorites') {
-    if (typeof loadAllCategories === 'function') {
-      await loadAllCategories();
+    if (!STATE.likedIds || STATE.likedIds.size === 0) {
+      return { data: [], total: 0 };
     }
-    let pool = [..._localComponents];
-    if (window.UIVERSE_DATA) {
-      const existingIds = new Set(pool.map((c) => c.id));
-      Object.values(window.UIVERSE_DATA).forEach((catItems) => {
-        catItems.forEach((c) => {
-          if (!existingIds.has(c.id)) {
-            existingIds.add(c.id);
-            pool.push(c);
+    const likedArray = [...STATE.likedIds];
+    const foundItems = [];
+    const missingCategorySet = new Set();
+
+    likedArray.forEach((id) => {
+      const c = findComponentAnywhere(id);
+      if (c) {
+        foundItems.push(c);
+      } else if (window.UIVERSE_MANIFEST) {
+        for (const [catName, catMeta] of Object.entries(window.UIVERSE_MANIFEST.categories)) {
+          if (catMeta.ids && catMeta.ids.includes(id)) {
+            missingCategorySet.add(catName);
+            break;
           }
-        });
+        }
+      }
+    });
+
+    if (missingCategorySet.size > 0) {
+      await Promise.all([...missingCategorySet].map((cat) => loadCategoryData(cat)));
+      likedArray.forEach((id) => {
+        if (!foundItems.some((c) => c.id === id)) {
+          const c = findComponentAnywhere(id);
+          if (c) foundItems.push(c);
+        }
       });
     }
-    items = pool.filter((c) => STATE.likedIds.has(c.id));
+
+    items = foundItems;
   } else if (category !== 'All') {
     if (window.UIVERSE_MANIFEST && window.UIVERSE_MANIFEST.categories[category]) {
       const catData = await loadCategoryData(category);
@@ -680,8 +696,21 @@ async function fetchComponents({
     c.liked = STATE.likedIds.has(c.id);
   });
 
+  function getTrendingScore(comp) {
+    const likes = (typeof getComponentLikesCount === 'function' ? getComponentLikesCount(comp) : comp.likes) || 0;
+    const views = comp.views || 0;
+    const idStr = String(comp.id || '');
+    let hash = 0;
+    for (let i = 0; i < idStr.length; i++) {
+      hash = ((hash << 5) - hash) + idStr.charCodeAt(i);
+      hash |= 0;
+    }
+    const activityBonus = Math.abs(hash % 200);
+    return (likes * 25) + (views * 3) + activityBonus;
+  }
+
   if (sort === 'popular') items.sort((a, b) => b.likes - a.likes);
-  else if (sort === 'trending') items.sort((a, b) => (b.views || 0) - (a.views || 0));
+  else if (sort === 'trending') items.sort((a, b) => getTrendingScore(b) - getTrendingScore(a));
   else if (sort === 'random') items.sort(() => 0.5 - Math.random());
   else items.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
 
@@ -1617,6 +1646,7 @@ function renderCategoryFilters() {
         titleEl.textContent = STATE.activeCategory === 'All' ? 'All Components' : STATE.activeCategory + ' Components';
       }
 
+      if (typeof window._updateSidebarMenuUI === 'function') window._updateSidebarMenuUI('');
       renderCategoryFilters(); // Re-render to update active styling
       loadComponents(true);
 
@@ -1624,6 +1654,7 @@ function renderCategoryFilters() {
       if (window.innerWidth < 1024) {
         if (typeof window._closeSidebar === 'function') window._closeSidebar();
       }
+      document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth' });
     });
   });
 
@@ -1976,6 +2007,50 @@ function renderGrid(components, append = false) {
     if (spinner) spinner.classList.add('hidden');
     if (endMsg) endMsg.classList.add('hidden');
     if (countEl) countEl.textContent = '0';
+
+    if (STATE.activeCategory === 'Favorites') {
+      emptyState.innerHTML = `
+        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shadow-lg shadow-amber-500/10">
+          <i class="fa-solid fa-star text-3xl text-amber-400"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">No Favorites Yet</h3>
+        <p class="text-gray-400 mb-6 max-w-sm mx-auto text-sm">You haven't saved any components to your favorites yet. Tap the heart or bookmark icon on any card to add it here!</p>
+        <button id="empty-explore-favorites-btn" type="button"
+          class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-purple-600 text-white font-medium hover:brightness-110 shadow-lg shadow-brand-500/25 transition-all text-xs cursor-pointer">
+          <i class="fa-solid fa-compass mr-1.5"></i> Explore Components
+        </button>
+      `;
+      document.getElementById('empty-explore-favorites-btn')?.addEventListener('click', () => {
+        document.getElementById('sidebar-home-btn')?.click();
+      });
+    } else {
+      emptyState.innerHTML = `
+        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-surface-700/50 flex items-center justify-center">
+          <i class="fa-solid fa-wind text-3xl text-gray-600"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-400 mb-2" data-i18n="empty_title">No components found</h3>
+        <p class="text-gray-600 mb-6" data-i18n="empty_hint">Try a different search term or category.</p>
+        <button id="clear-search-btn" type="button"
+          class="px-5 py-2.5 rounded-xl bg-brand-600/20 border border-brand-500/30 text-brand-400 hover:bg-brand-600/30 transition-all text-sm font-medium cursor-pointer"
+          data-i18n="main_clear_search">
+          Clear search
+        </button>
+      `;
+      document.getElementById('clear-search-btn')?.addEventListener('click', () => {
+        STATE.searchQuery = '';
+        STATE.activeCategory = 'All';
+        STATE.framework = 'all';
+        STATE.sort = 'newest';
+        ['search-input', 'search-input-mobile'].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.value = '';
+        });
+        updateFrameworkPillsUI('all');
+        updateSortPillsUI('newest');
+        renderCategoryFilters();
+        loadComponents(true);
+      });
+    }
     return;
   }
 
@@ -3231,6 +3306,22 @@ function initEventHandlers() {
     document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth' });
   });
 
+  /* --- Sidebar Menu UI State --- */
+  function updateSidebarMenuUI(activeKey) {
+    const homeBtn = document.getElementById('sidebar-home-btn');
+    const trendingBtn = document.getElementById('sidebar-trending-btn');
+    const favoritesBtn = document.getElementById('sidebar-favorites-btn');
+
+    const baseClass = 'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors border ';
+    const activeClass = baseClass + 'bg-brand-500/15 text-brand-300 font-semibold border-brand-500/20';
+    const inactiveClass = baseClass + 'text-gray-300 hover:text-white hover:bg-white/5 border-transparent';
+
+    if (homeBtn) homeBtn.className = activeKey === 'home' ? activeClass : inactiveClass;
+    if (trendingBtn) trendingBtn.className = activeKey === 'trending' ? activeClass : inactiveClass;
+    if (favoritesBtn) favoritesBtn.className = activeKey === 'favorites' ? activeClass : inactiveClass;
+  }
+  window._updateSidebarMenuUI = updateSidebarMenuUI;
+
   /* --- Sidebar Links --- */
   document.getElementById('sidebar-home-btn')?.addEventListener('click', (e) => {
     e.preventDefault();
@@ -3240,6 +3331,7 @@ function initEventHandlers() {
     STATE.sort = 'newest';
     updateFrameworkPillsUI('all');
     updateSortPillsUI('newest');
+    updateSidebarMenuUI('home');
     const sortSelect = document.getElementById('sort-select');
     if (sortSelect) sortSelect.value = 'newest';
     ['search-input', 'search-input-mobile'].forEach((id) => {
@@ -3257,11 +3349,22 @@ function initEventHandlers() {
   document.getElementById('sidebar-trending-btn')?.addEventListener('click', (e) => {
     e.preventDefault();
     STATE.sort = 'trending';
+    STATE.activeCategory = 'All';
+    STATE.searchQuery = '';
+    ['search-input', 'search-input-mobile'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
     updateSortPillsUI('trending');
+    updateSidebarMenuUI('trending');
     const sortSelect = document.getElementById('sort-select');
     if (sortSelect) sortSelect.value = 'trending';
+    const titleEl = document.getElementById('current-category-title');
+    if (titleEl) titleEl.textContent = 'Trending Components';
+    renderCategoryFilters();
     loadComponents(true);
     if (typeof window._closeSidebar === 'function') window._closeSidebar();
+    document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth' });
   });
 
   /* --- Sidebar Favorites --- */
@@ -3269,18 +3372,20 @@ function initEventHandlers() {
     e.preventDefault();
     STATE.activeCategory = 'Favorites';
     STATE.page = 1;
-
-    // Update Main Content Title
+    STATE.searchQuery = '';
+    ['search-input', 'search-input-mobile'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    updateSidebarMenuUI('favorites');
     const titleEl = document.getElementById('current-category-title');
     if (titleEl) titleEl.textContent = 'Your Favorite Components';
 
     renderCategoryFilters(); // Re-render to clear active category pill
     loadComponents(true);
 
-    // Auto-close sidebar on mobile
-    if (window.innerWidth < 1024) {
-      document.getElementById('sidebar-close-btn')?.click();
-    }
+    if (typeof window._closeSidebar === 'function') window._closeSidebar();
+    document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth' });
   });
 
   /* --- Sort Select & Framework Filter Pills (Uiverse Parity) --- */
