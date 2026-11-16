@@ -3367,25 +3367,25 @@ function initEventHandlers() {
     document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth' });
   });
 
-  /* --- Sidebar Favorites --- */
+  /* --- Sidebar Favorites (Unified directly with Profile Favorites) --- */
   document.getElementById('sidebar-favorites-btn')?.addEventListener('click', (e) => {
     e.preventDefault();
-    STATE.activeCategory = 'Favorites';
-    STATE.page = 1;
-    STATE.searchQuery = '';
-    ['search-input', 'search-input-mobile'].forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) el.value = '';
-    });
-    updateSidebarMenuUI('favorites');
-    const titleEl = document.getElementById('current-category-title');
-    if (titleEl) titleEl.textContent = 'Your Favorite Components';
-
-    renderCategoryFilters(); // Re-render to clear active category pill
-    loadComponents(true);
-
     if (typeof window._closeSidebar === 'function') window._closeSidebar();
-    document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth' });
+
+    // If guest with no favorites, prompt sign in; otherwise open Profile Favorites tab
+    if (!STATE.currentUser && (!STATE.likedIds || STATE.likedIds.size === 0)) {
+      showToast('Please sign in to view your favorites', 'info');
+      if (typeof window.openSigninModal === 'function') {
+        window.openSigninModal('signin', 'Sign in to view your favorite components');
+      } else if (typeof openSigninModal === 'function') {
+        openSigninModal('signin', 'Sign in to view your favorite components');
+      }
+      return;
+    }
+
+    if (typeof window.openProfileModal === 'function') {
+      window.openProfileModal('favorites');
+    }
   });
 
   /* --- Sort Select & Framework Filter Pills (Uiverse Parity) --- */
@@ -5624,7 +5624,7 @@ ${css}
     renderProfileContent(tabName);
   }
 
-  function renderProfileContent(tab = 'posts') {
+  async function renderProfileContent(tab = 'posts') {
     const emptyState = document.getElementById('profile-empty-state');
     const emptyTitle = document.getElementById('profile-empty-title');
     const emptyDesc = document.getElementById('profile-empty-desc');
@@ -5712,10 +5712,33 @@ ${css}
       }
     } else if (tab === 'favorites') {
       const items = [];
-      STATE.likedIds.forEach((id) => {
-        const comp = findComponentAnywhere(id);
-        if (comp) items.push(comp);
-      });
+      const missingCategorySet = new Set();
+
+      if (STATE.likedIds && STATE.likedIds.size > 0) {
+        STATE.likedIds.forEach((id) => {
+          const comp = findComponentAnywhere(id);
+          if (comp) {
+            items.push(comp);
+          } else if (window.UIVERSE_MANIFEST && window.UIVERSE_MANIFEST.categories) {
+            for (const [catName, catMeta] of Object.entries(window.UIVERSE_MANIFEST.categories)) {
+              if (catMeta.ids && catMeta.ids.includes(id)) {
+                missingCategorySet.add(catName);
+                break;
+              }
+            }
+          }
+        });
+
+        if (missingCategorySet.size > 0 && typeof loadCategoryData === 'function') {
+          await Promise.all([...missingCategorySet].map((cat) => loadCategoryData(cat)));
+          STATE.likedIds.forEach((id) => {
+            if (!items.some((c) => c.id === id)) {
+              const comp = findComponentAnywhere(id);
+              if (comp) items.push(comp);
+            }
+          });
+        }
+      }
 
       if (items.length === 0) {
         grid.classList.add('hidden');
