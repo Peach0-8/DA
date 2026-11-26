@@ -5,16 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="UIForge — Discover, share, and remix beautiful open-source UI components. Inspired by UIverse &amp; NameThatUI.">
+    content="UIForge — Discover, share, and remix beautiful open-source UI components. Precision dark studio inspired by UIverse &amp; NameThatUI.">
   <meta name="keywords"
     content="UI components, CSS components, HTML components, UIverse, buttons, cards, loaders, inputs, checkboxes, toggle switches, open source UI">
   <meta property="og:title" content="UIForge — Open Source UI Components">
   <meta property="og:description"
     content="Discover, share, and remix beautiful UI components. Buttons, Cards, Loaders, Inputs and more.">
   <meta property="og:type" content="website">
-  <title>UIForge — Discover &amp; Share Beautiful UI Components</title>
+  <title>UIForge — Precision Open-Source UI Component Studio</title>
   <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236172f3'/><path d='M8 12h16M8 16h16M8 20h10' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><path d='M9 11h14M9 16h14M9 21h9' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>">
+
+  <!-- Early theme boot to prevent flash of wrong theme -->
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('uiforge_site_theme');
+        if (saved === 'light') {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        } else {
+          document.documentElement.classList.remove('light');
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Suppress Tailwind CDN production warning in console -->
   <script>
@@ -35,11 +51,11 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Google Fonts: Inter + Be Vietnam Pro + Noto Sans Lao + Noto Sans Thai + JetBrains Mono -->
+  <!-- Google Fonts: Space Grotesk + Inter + Be Vietnam Pro + Noto Sans Lao + Noto Sans Thai + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Lao:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Lao:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet">
 
   <!-- js-beautify for formatting code -->
@@ -48,7 +64,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-css.min.js"></script>
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.0.0">
 
   <!-- Tailwind Config -->
   <script>
@@ -57,50 +73,31 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'Be Vietnam Pro', 'Noto Sans Lao', 'Noto Sans Thai', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'Be Vietnam Pro', 'Noto Sans Thai', 'Noto Sans Lao', 'sans-serif'],
+            sans: ['Inter', 'Be Vietnam Pro', 'Noto Sans Thai', 'Noto Sans Lao', 'ui-sans-serif', 'system-ui', 'sans-serif'],
             mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
           },
           colors: {
             brand: {
-              50: '#f0f4ff',
-              100: '#e0eaff',
-              200: '#c7d7fd',
-              300: '#a5bcfb',
-              400: '#8098f8',
-              500: '#6172f3',
-              600: '#4e55e8',
-              700: '#3e44ce',
-              800: '#3339a7',
-              900: '#2e3484',
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
             },
             surface: {
-              900: '#0a0b0f',
-              800: '#0f1117',
-              700: '#161822',
-              600: '#1e2130',
-              500: '#252840',
-              400: '#2e3250',
+              900: '#09090b',
+              800: '#111114',
+              700: '#18181d',
+              600: '#212128',
+              500: '#2b2b34',
+              400: '#3a3a46',
             },
-          },
-          animation: {
-            'fade-in': 'fadeIn 0.4s ease-out',
-            'slide-up': 'slideUp 0.4s ease-out',
-            'scale-in': 'scaleIn 0.25s ease-out',
-            'glow-pulse': 'glowPulse 2s ease-in-out infinite',
-            'shimmer': 'shimmer 1.5s infinite',
-          },
-          keyframes: {
-            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-            slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
-            scaleIn: { '0%': { transform: 'scale(0.95)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } },
-            glowPulse: { '0%,100%': { boxShadow: '0 0 15px rgba(97,114,243,0.3)' }, '50%': { boxShadow: '0 0 35px rgba(97,114,243,0.6)' } },
-            shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
-          },
-          backdropBlur: { xs: '2px' },
-          boxShadow: {
-            glass: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
-            card: '0 4px 24px rgba(0,0,0,0.3)',
-            'brand-glow': '0 0 24px rgba(97,114,243,0.4)',
           },
         },
       },
@@ -108,30 +105,37 @@
   </script>
 </head>
 
-<body class="bg-surface-900 text-gray-100 font-sans antialiased min-h-screen overflow-x-hidden">
+<body class="studio-canvas font-sans antialiased min-h-screen overflow-x-hidden">
 
-  <!-- ===================== BACKGROUND AURORA ===================== -->
-  <div class="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
-    <div class="aurora-orb aurora-orb-1"></div>
-    <div class="aurora-orb aurora-orb-2"></div>
-    <div class="aurora-orb aurora-orb-3"></div>
+  <!-- ===================== ARCHITECTURAL STUDIO BACKDROP ===================== -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute inset-0 studio-backdrop-grid"></div>
+    <div class="studio-spotlight"></div>
   </div>
 
-  <!-- ===================== SIDEBAR MENU ===================== -->
+  <!-- ===================== SIDEBAR DRAWER ===================== -->
   <aside id="main-sidebar"
-    class="fixed inset-y-0 left-0 z-[200] w-64 sm:w-72 bg-surface-800 border-r border-white/10 shadow-2xl transform -translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col">
-    <div class="flex items-center justify-between p-4 border-b border-white/5">
+    class="fixed inset-y-0 left-0 z-[200] w-72 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-col">
+    <div class="flex items-center justify-between px-4 h-16 studio-border-b shrink-0">
       <div class="flex items-center gap-2.5">
         <div
-          class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center shadow-brand-glow">
-          <i class="fa-solid fa-layer-group text-white text-sm"></i>
+          class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center shadow-[0_0_0_1px_rgba(255,255,255,0.16)]">
+          <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
         </div>
-        <span class="text-xl font-bold tracking-tight text-white">UI<span class="text-brand-400">Forge</span></span>
+        <span class="font-display text-lg font-bold tracking-tight studio-text-primary">
+          UI<span class="text-brand-500">Forge</span>
+        </span>
       </div>
+
       <!-- Hamburger Close -->
       <label class="hamburger" id="sidebar-close-btn" aria-label="Close menu">
         <input type="checkbox" checked>
-        <svg viewBox="0 0 32 32">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
           <path class="line line-top-bottom"
             d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
           </path>
@@ -140,51 +144,55 @@
       </label>
     </div>
 
-    <div class="flex-1 overflow-y-auto p-4 space-y-8 scrollbar-hide">
+    <div class="flex-1 overflow-y-auto p-3.5 space-y-6 scrollbar-hide">
       <!-- Quick Links -->
       <div>
-        <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-3" data-i18n="sidebar_menu">Menu</h3>
+        <h3 class="px-3 text-[11px] font-semibold studio-text-muted uppercase tracking-wider mb-2"
+          data-i18n="sidebar_menu">Menu</h3>
         <div class="space-y-1">
-          <a href="#" id="sidebar-home-btn"
-            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"><i
-              class="fa-solid fa-house w-5 text-gray-400"></i> <span data-i18n="sidebar_home">Home</span></a>
-          <a href="#" id="sidebar-trending-btn"
-            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"><i
-              class="fa-solid fa-fire w-5 text-orange-400"></i> <span data-i18n="sidebar_trending">Trending</span></a>
-          <a href="#" id="sidebar-favorites-btn"
-            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"><i
-              class="fa-solid fa-star w-5 text-yellow-400"></i> <span data-i18n="sidebar_favorites">Favorites</span></a>
-          <button id="sidebar-upload-btn" type="button"
-            class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"><i
-              class="fa-solid fa-cloud-arrow-up w-5 text-brand-400"></i> <span data-i18n="sidebar_upload">Upload
-              UI</span></button>
+          <a href="#" id="sidebar-home-btn" class="sidebar-nav-item">
+            <i class="fa-solid fa-house w-4 text-center studio-text-muted"></i>
+            <span data-i18n="sidebar_home">Home</span>
+          </a>
+          <a href="#" id="sidebar-trending-btn" class="sidebar-nav-item">
+            <i class="fa-solid fa-fire w-4 text-center text-amber-400"></i>
+            <span data-i18n="sidebar_trending">Trending</span>
+          </a>
+          <a href="#" id="sidebar-favorites-btn" class="sidebar-nav-item">
+            <i class="fa-solid fa-star w-4 text-center text-amber-400"></i>
+            <span data-i18n="sidebar_favorites">Favorites</span>
+          </a>
+          <button id="sidebar-upload-btn" type="button" class="sidebar-nav-item text-left">
+            <i class="fa-solid fa-plus w-4 text-center text-brand-400"></i>
+            <span data-i18n="sidebar_upload">Upload UI</span>
+          </button>
         </div>
       </div>
 
       <!-- Categories -->
       <div>
-        <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-3" data-i18n="sidebar_categories">
-          Categories</h3>
+        <h3 class="px-3 text-[11px] font-semibold studio-text-muted uppercase tracking-wider mb-2"
+          data-i18n="sidebar_categories">Categories</h3>
         <div id="sidebar-categories" class="space-y-1 flex flex-col">
-          <!-- Populated by JS -->
+          <!-- Populated by app.js -->
         </div>
       </div>
     </div>
   </aside>
   <div id="sidebar-backdrop"
-    class="fixed inset-0 z-[190] bg-black/60 backdrop-blur-sm pointer-events-none opacity-0 transition-opacity duration-300">
+    class="fixed inset-0 z-[190] bg-black/60 backdrop-blur-sm pointer-events-none opacity-0 transition-opacity duration-300 hidden">
   </div>
 
-  <!-- ===================== STICKY NAVBAR ===================== -->
-  <header id="navbar" aria-label="Site header" class="sticky top-0 z-50 w-full transition-all duration-300">
-    <nav class="glass-nav border-b border-white/5 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto flex items-center justify-between h-16 gap-4">
+  <!-- ===================== STICKY PRECISION NAVBAR ===================== -->
+  <header id="navbar" aria-label="Site header" class="sticky top-0 z-50 w-full transition-colors duration-200">
+    <nav class="glass-nav px-4 sm:px-6 lg:px-8">
+      <div class="max-w-[1400px] mx-auto flex items-center justify-between h-16 gap-3 sm:gap-4">
 
-        <div class="flex items-center gap-4 sm:gap-6">
-          <!-- Hamburger Open -->
+        <!-- Left: Drawer Toggle + Brand -->
+        <div class="flex items-center gap-3 flex-shrink-0">
           <label class="hamburger" id="sidebar-open-btn" aria-label="Open menu">
             <input type="checkbox">
-            <svg viewBox="0 0 32 32">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
               <path class="line line-top-bottom"
                 d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
               </path>
@@ -192,493 +200,439 @@
             </svg>
           </label>
 
-          <!-- Logo -->
-          <a href="#" id="logo-link" class="flex items-center gap-2.5 flex-shrink-0 group">
+          <a href="#" id="logo-link" class="flex items-center gap-2.5 group rounded-lg focus-visible:outline-none">
             <div
-              class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center shadow-brand-glow transition-transform duration-300 group-hover:scale-110">
-              <i class="fa-solid fa-layer-group text-white text-sm"></i>
+              class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center shadow-[0_0_0_1px_rgba(255,255,255,0.16)] transition-transform duration-200 group-hover:scale-105">
+              <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
             </div>
-            <span class="text-xl font-bold tracking-tight text-white hidden sm:block">
-              UI<span class="text-brand-400">Forge</span>
+            <span class="font-display text-lg font-bold tracking-tight studio-text-primary hidden sm:inline">
+              UI<span class="text-brand-500">Forge</span>
             </span>
           </a>
         </div>
 
-        <!-- Search Bar -->
+        <!-- Center: Spotlight Search Bar -->
         <div class="flex-1 max-w-xl hidden sm:block">
           <div class="relative search-wrapper">
-            <i
-              class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 studio-text-muted text-xs pointer-events-none"
+              aria-hidden="true"></i>
             <input id="search-input" type="search" placeholder="Search components, categories, authors…"
               data-i18n-placeholder="nav_search_placeholder" autocomplete="off"
-              class="w-full bg-surface-700/60 border border-white/8 rounded-xl pl-10 pr-16 py-2.5 text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-brand-500/60 focus:bg-surface-700 transition-all duration-200">
-            <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 pointer-events-none">
-              <kbd
-                class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono text-gray-400 bg-white/5 border border-white/10 rounded">Ctrl</kbd>
-              <kbd
-                class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono text-gray-400 bg-white/5 border border-white/10 rounded">K</kbd>
+              class="studio-input w-full rounded-xl pl-9 pr-16 h-10 text-sm">
+            <div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1 pointer-events-none">
+              <kbd class="studio-kbd">Ctrl</kbd>
+              <kbd class="studio-kbd">K</kbd>
             </div>
           </div>
         </div>
 
-        <!-- Nav Links & Buttons -->
-        <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <!-- Right: Actions & Utilities -->
+        <div class="flex items-center gap-2 flex-shrink-0">
           <a href="#" id="explore-link"
-            class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-sm text-gray-300 hover:text-white transition-colors rounded-lg hover:bg-white/5">
-            <i class="fa-solid fa-compass text-brand-400"></i>
+            class="studio-btn-ghost hidden xl:inline-flex h-9 px-3 rounded-lg text-sm">
+            <i class="fa-solid fa-compass text-xs text-brand-400" aria-hidden="true"></i>
             <span data-i18n="nav_explore">Explore</span>
           </a>
 
-          <!-- Random Button (Surprise Me / Uiverse Shuffle) -->
+          <!-- Random Shuffle -->
           <button id="random-btn" type="button"
-            class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl bg-surface-700/80 border border-white/8 text-gray-300 hover:text-brand-300 hover:border-brand-500/40 transition-all duration-200 hover:bg-surface-600 cursor-pointer"
-            title="Surprise me with a random element ('R' key)">
-            <i class="fa-solid fa-shuffle text-xs text-brand-400"></i>
-            <span class="hidden md:inline">Random</span>
+            class="studio-btn-secondary h-9 px-2.5 sm:px-3 rounded-lg text-xs sm:text-sm"
+            title="Surprise me with a random element ('R' key)" aria-label="Random component">
+            <i class="fa-solid fa-shuffle text-xs text-brand-400" aria-hidden="true"></i>
+            <span class="hidden lg:inline">Random</span>
           </button>
 
-          <!-- Upload Button -->
-          <button id="open-upload-btn" type="button"
-            class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-xl bg-gradient-to-r from-brand-600 to-purple-600 text-white hover:from-brand-500 hover:to-purple-500 transition-all duration-200 shadow-brand-glow hover:-translate-y-px active:translate-y-0">
-            <i class="fa-solid fa-plus text-xs"></i>
-            <span data-i18n="nav_upload">Create</span>
+          <!-- Site Theme Toggle (Dark / Light) -->
+          <button id="site-theme-toggle" type="button" class="studio-icon-btn"
+            aria-label="Toggle dark and light theme" title="Switch site theme (Dark / Light)">
+            <i id="site-theme-icon" class="fa-solid fa-sun text-xs" aria-hidden="true"></i>
           </button>
 
           <!-- Language Switcher -->
           <div class="relative" id="lang-switcher-wrapper">
             <button id="lang-switcher-btn" type="button"
-              class="flex items-center gap-1.5 px-2.5 py-2 rounded-xl bg-surface-700/60 border border-white/8 text-gray-300 hover:text-white hover:border-brand-500/40 transition-all duration-200 hover:bg-surface-600 text-sm"
-              aria-label="Switch language">
-              <!-- Populated by i18n.js -->
+              class="studio-btn-secondary h-9 px-2.5 rounded-lg text-xs" aria-label="Switch language">
               <span class="lang-flag">&#x1F1EC;&#x1F1E7;</span>
               <span class="lang-code">EN</span>
-              <i class="fa-solid fa-chevron-down lang-chevron" id="lang-chevron"></i>
+              <i class="fa-solid fa-chevron-down lang-chevron" id="lang-chevron" aria-hidden="true"></i>
             </button>
-            <!-- Language Dropdown -->
-            <div id="lang-dropdown" class="lang-dropdown-menu">
-              <!-- Populated by i18n.js -->
-            </div>
+            <div id="lang-dropdown" class="lang-dropdown-menu"></div>
           </div>
 
-          <!-- Sign In Button -->
+          <!-- Primary CTA: Create -->
+          <button id="open-upload-btn" type="button"
+            class="studio-btn-primary hidden sm:inline-flex h-9 px-3.5 rounded-lg text-xs sm:text-sm">
+            <i class="fa-solid fa-plus text-xs" aria-hidden="true"></i>
+            <span data-i18n="nav_upload">Create</span>
+          </button>
+
+          <!-- Secondary Auth Action: Sign In (Ghost/Outline so Primary CTA stays clear) -->
           <button id="signin-btn" type="button"
-            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-xl bg-gradient-to-r from-brand-600 to-purple-600 text-white hover:from-brand-500 hover:to-purple-500 transition-all duration-200 shadow-brand-glow hover:shadow-lg hover:-translate-y-px active:translate-y-0">
-            <i class="fa-regular fa-user"></i>
+            class="studio-btn-secondary h-9 px-3.5 rounded-lg text-xs sm:text-sm font-semibold">
+            <i class="fa-regular fa-user text-xs" aria-hidden="true"></i>
             <span data-i18n="nav_signin">Sign In</span>
           </button>
 
-          <!-- User Menu (Hidden by default, shown when logged in) -->
+          <!-- User Menu (Shown when logged in) -->
           <div id="user-menu" class="relative hidden">
             <button id="user-menu-btn" type="button"
-              class="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-white/5 transition-colors cursor-pointer select-none">
-              <i class="fa-solid fa-chevron-down text-xs text-gray-400 transform transition-transform duration-200"
-                id="user-menu-icon"></i>
-              <span id="user-name" class="text-sm font-medium text-gray-200"></span>
+              class="studio-btn-secondary h-9 pl-2.5 pr-2 rounded-lg text-xs select-none">
+              <span id="user-name" class="font-medium max-w-[96px] truncate hidden md:inline"></span>
               <img id="user-avatar"
                 src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Avatar"
-                class="w-7 h-7 rounded-full border border-white/10 hidden object-cover">
+                class="w-6 h-6 rounded-full border border-white/10 hidden object-cover">
               <span id="user-avatar-placeholder"
-                class="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-white text-xs">
+                class="w-6 h-6 rounded-full bg-brand-600 flex items-center justify-center font-bold text-white text-[11px]">
               </span>
+              <i class="fa-solid fa-chevron-down text-[10px] studio-text-muted transform transition-transform duration-200"
+                id="user-menu-icon" aria-hidden="true"></i>
             </button>
 
-            <!-- Dropdown Menu (Matching Uiverse Image 1: Your Profile, Your Favorites, Settings, Log out) -->
             <div id="user-dropdown"
-              class="absolute right-0 mt-2 w-52 bg-[#18191d] border border-white/10 rounded-2xl shadow-2xl opacity-0 pointer-events-none transform scale-95 transition-all duration-200 origin-top-right z-[100] p-1.5 text-xs font-medium">
-              <button id="user-profile-btn" type="button"
-                class="w-full text-left px-3.5 py-2.5 rounded-xl text-gray-300 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-3 cursor-pointer">
-                <i class="fa-regular fa-user text-sm text-gray-400"></i>
+              class="studio-dropdown absolute right-0 mt-2 w-52 rounded-2xl opacity-0 pointer-events-none transform scale-95 transition-all duration-150 origin-top-right z-[100] p-1.5 text-xs font-medium">
+              <button id="user-profile-btn" type="button" class="studio-dropdown-item">
+                <i class="fa-regular fa-user text-xs studio-text-muted w-4"></i>
                 <span>Your Profile</span>
               </button>
-              <button id="user-favorites-btn" type="button"
-                class="w-full text-left px-3.5 py-2.5 rounded-xl text-gray-300 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-3 cursor-pointer">
-                <i class="fa-regular fa-bookmark text-sm text-gray-400"></i>
+              <button id="user-favorites-btn" type="button" class="studio-dropdown-item">
+                <i class="fa-regular fa-bookmark text-xs studio-text-muted w-4"></i>
                 <span>Your Favorites</span>
               </button>
-              <button id="user-settings-btn" type="button"
-                class="w-full text-left px-3.5 py-2.5 rounded-xl text-gray-300 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-3 cursor-pointer">
-                <i class="fa-solid fa-gear text-sm text-gray-400"></i>
+              <button id="user-settings-btn" type="button" class="studio-dropdown-item">
+                <i class="fa-solid fa-gear text-xs studio-text-muted w-4"></i>
                 <span>Settings</span>
               </button>
-              <div class="my-1 border-t border-white/5"></div>
-              <button id="signout-btn" type="button"
-                class="w-full text-left px-3.5 py-2.5 rounded-xl text-gray-300 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-3 cursor-pointer">
-                <i class="fa-solid fa-arrow-right-from-bracket text-sm text-gray-400"></i>
+              <div class="my-1 studio-border-t"></div>
+              <button id="signout-btn" type="button" class="studio-dropdown-item hover:!text-red-400">
+                <i class="fa-solid fa-arrow-right-from-bracket text-xs studio-text-muted w-4"></i>
                 <span>Log out</span>
               </button>
             </div>
           </div>
-
-          <!-- Mobile Menu Toggle -->
-          <button id="mobile-menu-btn" type="button" aria-label="Open mobile menu"
-            class="sm:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
-            <i class="fa-solid fa-bars"></i>
-          </button>
         </div>
       </div>
 
       <!-- Mobile Search -->
-      <div class="sm:hidden pb-3 px-0">
+      <div class="sm:hidden pb-3">
         <div class="relative search-wrapper">
-          <i
-            class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 studio-text-muted text-xs pointer-events-none"
+            aria-hidden="true"></i>
           <input id="search-input-mobile" type="search" placeholder="Search components…"
             data-i18n-placeholder="nav_search_mobile_placeholder" autocomplete="off"
-            class="w-full bg-surface-700/60 border border-white/8 rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-brand-500/60 transition-all duration-200">
+            class="studio-input w-full rounded-xl pl-9 pr-4 h-10 text-sm">
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- ===================== HERO SECTION ===================== -->
-  <section id="hero" class="relative z-10 pt-20 pb-16 px-4 sm:px-6 lg:px-8 text-center overflow-hidden">
-    <!-- Badge -->
-    <div
-      class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs font-medium mb-8 animate-fade-in">
-      <span class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse"></span>
-      <span data-i18n="hero_badge">Open Source &middot; Free to Use &middot; Inspired by UIverse &amp; NameThatUI</span>
-    </div>
+  <!-- ===================== COMPACT STUDIO HERO ===================== -->
+  <section id="hero" class="relative z-10 pt-8 sm:pt-11 pb-6 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-7 studio-border-b">
 
-    <h1
-      class="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight text-white mb-6 animate-slide-up leading-tight">
-      <span data-i18n="hero_title_1">Beautiful UI</span>
-      <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-purple-400 to-pink-400"
-        data-i18n="hero_title_2">
-        Components
-      </span>
-      <span data-i18n="hero_title_3">for Everyone</span>
-    </h1>
+        <!-- Left: Headline + Concise Value Prop -->
+        <div class="max-w-2xl">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full studio-elevated text-xs font-medium studio-text-secondary mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span data-i18n="hero_badge">Open Source &middot; Free to Use &middot; Inspired by UIverse &amp; NameThatUI</span>
+          </div>
 
-    <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-10 animate-fade-in leading-relaxed"
-      data-i18n="hero_description">
-      Discover, share, and remix thousands of open-source UI components —
-      Buttons, Cards, Loaders, Inputs, Checkboxes &amp; more.
-      Copy, customize, and ship faster than ever.
-    </p>
+          <h1
+            class="font-display text-3xl sm:text-4xl lg:text-[2.85rem] font-bold tracking-[-0.03em] studio-text-primary leading-[1.12] mb-3">
+            <span data-i18n="hero_title_1">Beautiful UI</span>
+            <span class="gradient-text" data-i18n="hero_title_2">Components</span>
+            <span data-i18n="hero_title_3">for Everyone</span>
+          </h1>
 
-    <div class="flex flex-wrap justify-center gap-3 animate-fade-in">
-      <button id="hero-explore-btn" type="button"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-brand-600 to-purple-600 text-white hover:from-brand-500 hover:to-purple-500 transition-all duration-200 shadow-brand-glow hover:-translate-y-0.5">
-        <i class="fa-solid fa-rocket"></i>
-        <span data-i18n="hero_explore_btn">Explore Components</span>
-      </button>
-      <button id="hero-upload-btn" type="button"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-surface-700/80 border border-white/10 text-gray-200 hover:text-white hover:border-brand-500/40 transition-all duration-200 hover:-translate-y-0.5">
-        <i class="fa-solid fa-plus"></i>
-        <span data-i18n="hero_share_btn">Share a Component</span>
-      </button>
-    </div>
+          <p class="text-sm sm:text-base studio-text-secondary leading-relaxed max-w-xl" data-i18n="hero_description">
+            Discover, share, and remix thousands of open-source UI components — Buttons, Cards, Loaders, Inputs, Checkboxes &amp; more.
+          </p>
+        </div>
 
-    <!-- Hero Stats — Real Platform Metrics -->
-    <div class="mt-16 flex flex-wrap justify-center gap-8 sm:gap-16 animate-fade-in" id="hero-stats-container">
-      <div class="text-center">
-        <div class="text-3xl font-black text-white counter" id="hero-stat-components" data-target="6002">6,002</div>
-        <div class="text-sm text-gray-500 mt-1" data-i18n="hero_stat_components">Components</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl font-black text-white counter" id="hero-stat-categories" data-target="11">11</div>
-        <div class="text-sm text-gray-500 mt-1" data-i18n="hero_stat_categories">Categories</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl font-black text-white counter" id="hero-stat-likes" data-target="0">0</div>
-        <div class="text-sm text-gray-500 mt-1" data-i18n="hero_stat_likes">Total Likes</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl font-black text-white counter" id="hero-stat-developers" data-target="0">0</div>
-        <div class="text-sm text-gray-500 mt-1" data-i18n="hero_stat_developers">Developers</div>
+        <!-- Right: Compact Action Pair + Live Telemetry Bar -->
+        <div class="flex flex-col sm:items-start lg:items-end gap-4 shrink-0">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button id="hero-explore-btn" type="button"
+              class="studio-btn-primary h-10 px-5 rounded-xl text-sm">
+              <i class="fa-solid fa-compass text-xs" aria-hidden="true"></i>
+              <span data-i18n="hero_explore_btn">Explore Components</span>
+            </button>
+            <button id="hero-upload-btn" type="button"
+              class="studio-btn-secondary h-10 px-5 rounded-xl text-sm font-semibold">
+              <i class="fa-solid fa-plus text-xs" aria-hidden="true"></i>
+              <span data-i18n="hero_share_btn">Share a Component</span>
+            </button>
+          </div>
+
+          <!-- Precision Telemetry Strip -->
+          <div id="hero-stats-container"
+            class="grid grid-cols-2 sm:grid-cols-4 gap-px rounded-xl overflow-hidden studio-surface w-full sm:w-auto">
+            <div class="px-4 py-2.5 studio-surface border-0">
+              <div class="font-mono text-base sm:text-lg font-bold studio-text-primary counter tabular-nums"
+                id="hero-stat-components" data-target="6002">6,002</div>
+              <div class="text-[11px] studio-text-muted font-medium" data-i18n="hero_stat_components">Components</div>
+            </div>
+            <div class="px-4 py-2.5 studio-surface border-0 border-l studio-border-l" style="border-left: 1px solid var(--border-subtle);">
+              <div class="font-mono text-base sm:text-lg font-bold studio-text-primary counter tabular-nums"
+                id="hero-stat-categories" data-target="11">11</div>
+              <div class="text-[11px] studio-text-muted font-medium" data-i18n="hero_stat_categories">Categories</div>
+            </div>
+            <div class="px-4 py-2.5 studio-surface border-0" style="border-left: 1px solid var(--border-subtle);">
+              <div class="font-mono text-base sm:text-lg font-bold studio-text-primary counter tabular-nums"
+                id="hero-stat-likes" data-target="0">0</div>
+              <div class="text-[11px] studio-text-muted font-medium" data-i18n="hero_stat_likes">Total Likes</div>
+            </div>
+            <div class="px-4 py-2.5 studio-surface border-0" style="border-left: 1px solid var(--border-subtle);">
+              <div class="font-mono text-base sm:text-lg font-bold studio-text-primary counter tabular-nums"
+                id="hero-stat-developers" data-target="0">0</div>
+              <div class="text-[11px] studio-text-muted font-medium" data-i18n="hero_stat_developers">Developers</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ===================== MAIN CONTENT ===================== -->
-  <main id="main-content" aria-label="Main content" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <!-- ===================== MAIN GALLERY WORKSPACE ===================== -->
+  <main id="main-content" aria-label="Main content"
+    class="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
 
-    <!-- ===================== HORIZONTAL CATEGORY BAR (SEAMLESS GLASS CAROUSEL) ===================== -->
-    <div class="relative z-30 mb-8 py-1">
+    <!-- Horizontal Category Rail -->
+    <div class="relative z-30 mb-5 category-rail-wrap">
       <div class="relative flex items-center">
-        <!-- Left Carousel Nav Arrow -->
         <button id="cat-scroll-left-btn" type="button" aria-label="Scroll categories left" title="Scroll left"
-          class="flex absolute left-0 z-20 w-8 h-8 rounded-full bg-surface-800/90 hover:bg-brand-600 text-gray-300 hover:text-white items-center justify-center border border-white/15 shadow-xl backdrop-blur-md transition-all -translate-x-2 opacity-0 pointer-events-none cursor-pointer">
+          class="cat-scroll-arrow flex absolute left-0 z-20 w-8 h-8 rounded-full items-center justify-center backdrop-blur-md transition-all -translate-x-1 opacity-0 pointer-events-none cursor-pointer">
           <i class="fa-solid fa-chevron-left text-xs"></i>
         </button>
 
-        <!-- Categories Scrollable Track (Transparent background) -->
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth py-1 w-full cursor-grab"
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth py-1.5 w-full cursor-grab"
           id="horizontal-categories">
-          <!-- Rendered dynamically by app.js: All, Buttons, Checkboxes, Toggles, Cards, Loaders, Inputs, etc. -->
+          <!-- Rendered dynamically by app.js -->
         </div>
 
-        <!-- Right Carousel Nav Arrow -->
         <button id="cat-scroll-right-btn" type="button" aria-label="Scroll categories right" title="Scroll right"
-          class="flex absolute right-0 z-20 w-8 h-8 rounded-full bg-surface-800/90 hover:bg-brand-600 text-gray-300 hover:text-white items-center justify-center border border-white/15 shadow-xl backdrop-blur-md transition-all translate-x-2 opacity-90 hover:opacity-100 cursor-pointer">
+          class="cat-scroll-arrow flex absolute right-0 z-20 w-8 h-8 rounded-full items-center justify-center backdrop-blur-md transition-all translate-x-1 opacity-90 hover:opacity-100 cursor-pointer">
           <i class="fa-solid fa-chevron-right text-xs"></i>
         </button>
       </div>
     </div>
 
-    <!-- ===================== FILTER & CONTROLS SUB-BAR (FRAMEWORK & SORT) ===================== -->
-    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/5">
-      <!-- Left: Framework Filter Pills (All / Tailwind / Pure CSS) -->
-      <div class="flex items-center gap-1.5 p-1 rounded-xl bg-surface-800 border border-white/5 w-fit"
-        id="framework-pills">
+    <!-- Precision Filter & Controls Bar -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-6 pb-4 studio-border-b">
+      <!-- Left: Framework Segmented Control -->
+      <div class="studio-segmented w-fit" id="framework-pills">
         <button type="button"
-          class="framework-pill active px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all bg-brand-600 text-white shadow-sm cursor-pointer"
+          class="framework-pill active px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5"
           data-framework="all">
-          <i class="fa-solid fa-layer-group text-xs"></i>
+          <i class="fa-solid fa-layer-group text-[11px]" aria-hidden="true"></i>
           <span>All Elements</span>
         </button>
         <button type="button"
-          class="framework-pill px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all text-gray-400 hover:text-white cursor-pointer"
+          class="framework-pill px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5"
           data-framework="tailwind">
-          <i class="fa-brands fa-css3-alt text-sky-400 text-xs"></i>
+          <i class="fa-solid fa-wind text-cyan-400 text-[11px]" aria-hidden="true"></i>
           <span>Tailwind</span>
         </button>
         <button type="button"
-          class="framework-pill px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all text-gray-400 hover:text-white cursor-pointer"
+          class="framework-pill px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5"
           data-framework="css">
-          <i class="fa-solid fa-code text-indigo-400 text-xs"></i>
+          <i class="fa-solid fa-code text-brand-400 text-[11px]" aria-hidden="true"></i>
           <span>Pure CSS</span>
         </button>
       </div>
 
-      <!-- Right: Sort options, Results Count & View Toggle -->
-      <div class="flex items-center flex-wrap gap-3">
-        <!-- Quick Sort Pills (Uiverse style) -->
-        <div class="flex items-center gap-1 p-1 rounded-xl bg-surface-800 border border-white/5" id="sort-pills">
+      <!-- Right: Sort Segmented Control, Count & View Mode -->
+      <div class="flex items-center flex-wrap gap-2.5 sm:gap-3">
+        <div class="studio-segmented" id="sort-pills">
           <button type="button"
-            class="sort-pill active px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-[#27272a] transition-all cursor-pointer"
+            class="sort-pill active px-3 py-1.5 rounded-[9px] text-xs font-medium flex items-center gap-1.5"
             data-sort="newest">
-            <i class="fa-solid fa-bolt text-amber-400 mr-1 text-[11px]"></i> Newest
+            <i class="fa-solid fa-bolt text-amber-400 text-[11px]" aria-hidden="true"></i>
+            <span>Newest</span>
           </button>
           <button type="button"
-            class="sort-pill px-3 py-1.5 rounded-lg text-xs font-medium text-gray-400 hover:text-white transition-all cursor-pointer"
+            class="sort-pill px-3 py-1.5 rounded-[9px] text-xs font-medium flex items-center gap-1.5"
             data-sort="popular">
-            <i class="fa-solid fa-heart text-pink-500 mr-1 text-[11px]"></i> Popular
+            <i class="fa-solid fa-heart text-pink-400 text-[11px]" aria-hidden="true"></i>
+            <span>Popular</span>
           </button>
           <button type="button"
-            class="sort-pill px-3 py-1.5 rounded-lg text-xs font-medium text-gray-400 hover:text-white transition-all cursor-pointer"
+            class="sort-pill px-3 py-1.5 rounded-[9px] text-xs font-medium flex items-center gap-1.5"
             data-sort="trending">
-            <i class="fa-solid fa-fire text-orange-400 mr-1 text-[11px]"></i> Trending
+            <i class="fa-solid fa-fire text-orange-400 text-[11px]" aria-hidden="true"></i>
+            <span>Trending</span>
           </button>
         </div>
 
-        <div class="h-4 w-px bg-white/10 hidden sm:block"></div>
-
-        <!-- Hidden sort select for programmatic compatibility -->
-        <select id="sort-select" class="hidden">
+        <select id="sort-select" class="hidden" aria-label="Sort components">
           <option value="newest">Newest</option>
           <option value="popular">Most Liked</option>
           <option value="trending">Trending</option>
         </select>
 
-        <p id="results-count" class="text-xs text-gray-400">
-          <span id="count-number" class="text-white font-semibold">0</span> items
+        <p id="results-count" class="text-xs studio-text-secondary font-mono tabular-nums px-2 py-1 rounded-lg studio-surface">
+          <span id="count-number" class="studio-text-primary font-semibold">0</span> items
         </p>
 
         <!-- View Toggle -->
-        <div class="flex items-center gap-1 p-1 bg-surface-800 rounded-xl border border-white/5">
-          <button id="grid-view-btn" type="button" aria-label="Grid view"
-            class="p-1.5 rounded-lg bg-brand-600 text-white transition-all cursor-pointer" title="Grid view">
-            <i class="fa-solid fa-grip text-xs"></i>
+        <div class="studio-segmented">
+          <button id="grid-view-btn" type="button" aria-label="Grid view" title="Grid view"
+            class="view-toggle-btn is-active">
+            <i class="fa-solid fa-grip text-xs" aria-hidden="true"></i>
           </button>
-          <button id="list-view-btn" type="button" aria-label="List view"
-            class="p-1.5 rounded-lg text-gray-400 hover:text-white transition-all cursor-pointer" title="List view">
-            <i class="fa-solid fa-list text-xs"></i>
+          <button id="list-view-btn" type="button" aria-label="List view" title="List view"
+            class="view-toggle-btn">
+            <i class="fa-solid fa-list text-xs" aria-hidden="true"></i>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Component Grid -->
+    <!-- Component Gallery Grid -->
     <div id="components-grid"
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 transition-all duration-300">
-      <!-- Skeleton Loaders -->
-      <div class="skeleton-card">
-        <div class="skeleton-preview"></div>
-        <div class="skeleton-body">
-          <div class="skeleton-line w-2/3"></div>
-          <div class="skeleton-line w-1/2 mt-2"></div>
-        </div>
-      </div>
-      <div class="skeleton-card">
-        <div class="skeleton-preview"></div>
-        <div class="skeleton-body">
-          <div class="skeleton-line w-3/4"></div>
-          <div class="skeleton-line w-1/3 mt-2"></div>
-        </div>
-      </div>
-      <div class="skeleton-card">
-        <div class="skeleton-preview"></div>
-        <div class="skeleton-body">
-          <div class="skeleton-line w-1/2"></div>
-          <div class="skeleton-line w-2/5 mt-2"></div>
-        </div>
-      </div>
-      <div class="skeleton-card">
-        <div class="skeleton-preview"></div>
-        <div class="skeleton-body">
-          <div class="skeleton-line w-3/5"></div>
-          <div class="skeleton-line w-2/5 mt-2"></div>
-        </div>
-      </div>
-      <div class="skeleton-card">
-        <div class="skeleton-preview"></div>
-        <div class="skeleton-body">
-          <div class="skeleton-line w-2/4"></div>
-          <div class="skeleton-line w-1/3 mt-2"></div>
-        </div>
-      </div>
-      <div class="skeleton-card">
-        <div class="skeleton-preview"></div>
-        <div class="skeleton-body">
-          <div class="skeleton-line w-3/4"></div>
-          <div class="skeleton-line w-2/5 mt-2"></div>
-        </div>
-      </div>
-      <div class="skeleton-card">
-        <div class="skeleton-preview"></div>
-        <div class="skeleton-body">
-          <div class="skeleton-line w-1/2"></div>
-          <div class="skeleton-line w-1/3 mt-2"></div>
-        </div>
-      </div>
-      <div class="skeleton-card">
-        <div class="skeleton-preview"></div>
-        <div class="skeleton-body">
-          <div class="skeleton-line w-2/3"></div>
-          <div class="skeleton-line w-2/5 mt-2"></div>
-        </div>
-      </div>
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 transition-all duration-200">
+      <div class="skeleton-card"><div class="skeleton-preview"></div><div class="skeleton-body"><div class="skeleton-line w-2/3"></div><div class="skeleton-line w-1/2 mt-2.5"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-preview"></div><div class="skeleton-body"><div class="skeleton-line w-3/4"></div><div class="skeleton-line w-1/3 mt-2.5"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-preview"></div><div class="skeleton-body"><div class="skeleton-line w-1/2"></div><div class="skeleton-line w-2/5 mt-2.5"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-preview"></div><div class="skeleton-body"><div class="skeleton-line w-3/5"></div><div class="skeleton-line w-2/5 mt-2.5"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-preview"></div><div class="skeleton-body"><div class="skeleton-line w-2/4"></div><div class="skeleton-line w-1/3 mt-2.5"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-preview"></div><div class="skeleton-body"><div class="skeleton-line w-3/4"></div><div class="skeleton-line w-2/5 mt-2.5"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-preview"></div><div class="skeleton-body"><div class="skeleton-line w-1/2"></div><div class="skeleton-line w-1/3 mt-2.5"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-preview"></div><div class="skeleton-body"><div class="skeleton-line w-2/3"></div><div class="skeleton-line w-2/5 mt-2.5"></div></div></div>
     </div>
 
     <!-- Empty State -->
-    <div id="empty-state" class="hidden text-center py-24">
-      <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-surface-700/50 flex items-center justify-center">
-        <i class="fa-solid fa-wind text-3xl text-gray-600"></i>
+    <div id="empty-state" class="hidden text-center py-20 px-6 rounded-2xl studio-surface mt-4">
+      <div class="w-16 h-16 mx-auto mb-5 rounded-2xl studio-elevated flex items-center justify-center">
+        <i class="fa-solid fa-magnifying-glass text-xl studio-text-muted" aria-hidden="true"></i>
       </div>
-      <h3 class="text-xl font-semibold text-gray-400 mb-2" data-i18n="empty_title">No components found</h3>
-      <p class="text-gray-600 mb-6" data-i18n="empty_hint">Try a different search term or category.</p>
+      <h3 class="font-display text-lg font-bold studio-text-primary mb-1.5" data-i18n="empty_title">No components found</h3>
+      <p class="text-sm studio-text-secondary mb-6" data-i18n="empty_hint">Try a different search term or category.</p>
       <button id="clear-search-btn" type="button"
-        class="px-5 py-2.5 rounded-xl bg-brand-600/20 border border-brand-500/30 text-brand-400 hover:bg-brand-600/30 transition-all text-sm font-medium"
-        data-i18n="main_clear_search">
+        class="studio-btn-primary h-10 px-5 rounded-xl text-sm" data-i18n="main_clear_search">
         Clear search
       </button>
     </div>
 
     <!-- Infinite Scroll Sentinel & Loader -->
-    <div id="infinite-scroll-sentinel" class="py-12 flex flex-col items-center justify-center gap-3">
+    <div id="infinite-scroll-sentinel" class="py-10 flex flex-col items-center justify-center gap-3">
       <div id="infinite-scroll-spinner"
-        class="hidden flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-surface-700/60 border border-white/8 text-sm text-brand-400 backdrop-blur-sm shadow-sm">
-        <i class="fa-solid fa-circle-notch animate-spin text-base"></i>
-        <span class="font-medium text-gray-300" data-i18n="main_loading">Loading more components…</span>
+        class="hidden flex items-center gap-2.5 px-4 py-2 rounded-full studio-surface text-xs studio-text-secondary shadow-sm">
+        <i class="fa-solid fa-circle-notch animate-spin text-brand-400 text-sm" aria-hidden="true"></i>
+        <span class="font-medium" data-i18n="main_loading">Loading more components…</span>
       </div>
-      <div id="infinite-scroll-end" class="hidden text-xs text-gray-500 font-medium py-4" data-i18n="main_viewed_all">
-        ✦ You've viewed all components ✦
+      <div id="infinite-scroll-end" class="hidden text-xs studio-text-muted font-mono py-3" data-i18n="main_viewed_all">
+        You have viewed all components
       </div>
     </div>
-
   </main>
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="relative z-10 border-t border-white/5 mt-16 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-2.5">
-          <div
-            class="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center">
-            <i class="fa-solid fa-layer-group text-white text-xs"></i>
-          </div>
-          <span class="font-bold text-white">UI<span class="text-brand-400">Forge</span></span>
+  <footer class="relative z-10 studio-border-t mt-8 py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <div class="w-7 h-7 rounded-lg bg-brand-600 flex items-center justify-center">
+          <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
         </div>
-        <p class="text-sm text-gray-600 text-center" data-i18n="footer_built">
-          Built with love for the open-source community &middot; &copy; 2026 UIForge
-        </p>
-        <div class="flex items-center gap-4 text-gray-600">
-          <a href="#" aria-label="GitHub" class="hover:text-gray-300 transition-colors"><i
-              class="fa-brands fa-github text-lg"></i></a>
-          <a href="#" aria-label="X (Twitter)" class="hover:text-gray-300 transition-colors"><i
-              class="fa-brands fa-x-twitter text-lg"></i></a>
-          <a href="#" aria-label="Discord" class="hover:text-gray-300 transition-colors"><i
-              class="fa-brands fa-discord text-lg"></i></a>
-        </div>
+        <span class="font-display font-bold studio-text-primary">UI<span class="text-brand-500">Forge</span></span>
+      </div>
+
+      <p class="text-xs sm:text-sm studio-text-muted text-center" data-i18n="footer_built">
+        Built with love for the open-source community &middot; &copy; 2026 UIForge
+      </p>
+
+      <div class="flex items-center gap-2">
+        <a href="#" aria-label="GitHub" class="studio-icon-btn w-8 h-8">
+          <i class="fa-brands fa-github text-sm"></i>
+        </a>
+        <a href="#" aria-label="X (Twitter)" class="studio-icon-btn w-8 h-8">
+          <i class="fa-brands fa-x-twitter text-sm"></i>
+        </a>
+        <a href="#" aria-label="Discord" class="studio-icon-btn w-8 h-8">
+          <i class="fa-brands fa-discord text-sm"></i>
+        </a>
       </div>
     </div>
   </footer>
 
 
   <!-- ===================================================== -->
-  <!--           UIVERSE CREATION STUDIO & UPLOAD WORKSPACE   -->
+  <!--           CREATION STUDIO & UPLOAD WORKSPACE          -->
   <!-- ===================================================== -->
-  <div id="upload-modal" class="fixed inset-0 z-[160] bg-[#0c0d0e] flex flex-col p-4 sm:p-6 overflow-hidden hidden"
+  <div id="upload-modal"
+    class="studio-modal-fullscreen fixed inset-0 z-[160] flex flex-col p-4 sm:p-5 overflow-hidden hidden"
     role="dialog" aria-modal="true" aria-labelledby="upload-title">
 
-    <!-- Top Navigation Bar (Studio Header) -->
-    <header class="flex items-center justify-between gap-4 pb-3 border-b border-white/10 shrink-0 select-none text-xs">
-      <div class="flex items-center gap-3">
+    <!-- Top Studio Header -->
+    <header class="flex items-center justify-between gap-4 pb-3 studio-border-b shrink-0 select-none text-xs">
+      <div class="flex items-center gap-3 min-w-0">
         <button id="upload-close-btn" type="button" aria-label="Go back / close studio"
-          class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer border border-white/5">
+          class="studio-btn-secondary h-9 px-3 rounded-xl text-xs shrink-0">
           <i class="fa-solid fa-arrow-left text-xs"></i>
           <span class="font-medium">Go back</span>
         </button>
 
-        <!-- Component Title Input (Editable inline) -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 min-w-0">
           <input id="upload-title" type="text" value="My Checkbox" placeholder="Component Title..."
-            class="bg-transparent text-sm sm:text-base font-bold text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 rounded-lg px-2 py-1 transition-all border border-transparent hover:border-white/10 focus:border-indigo-500 max-w-[200px] sm:max-w-xs truncate" />
+            class="studio-input bg-transparent border-transparent hover:border-white/15 text-sm sm:text-base font-display font-bold rounded-lg px-2.5 py-1 max-w-[180px] sm:max-w-xs truncate" />
           <span id="upload-category-badge"
-            class="px-2.5 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-[11px] font-semibold">
+            class="px-2.5 py-1 rounded-full text-[11px] font-semibold shrink-0"
+            style="background: var(--accent-soft); border: 1px solid var(--accent-border); color: var(--accent-hover);">
             Checkbox
           </span>
-          <!-- Hidden category input for backward compatibility -->
           <input type="hidden" id="upload-category" value="Checkboxes">
           <input type="hidden" id="upload-author" value="">
         </div>
       </div>
 
-      <div class="flex items-center gap-3">
-        <!-- Author info indicator -->
-        <div class="flex items-center gap-2 text-gray-400 text-xs">
-          <span>Author:</span>
-          <span id="upload-author-display" class="font-medium text-white">@username</span>
-        </div>
+      <div class="hidden sm:flex items-center gap-2 studio-text-secondary text-xs shrink-0">
+        <span>Author:</span>
+        <span id="upload-author-display" class="font-mono font-medium studio-text-primary">@username</span>
       </div>
     </header>
 
-    <!-- Main Workspace (Live Canvas on Left, Code Editor on Right) -->
+    <!-- Main Studio Split Workspace -->
     <main class="flex flex-col lg:flex-row gap-4 mt-3 flex-1 min-h-0 overflow-y-auto lg:overflow-visible">
-      <!-- Left Column: Canvas Simulator -->
-      <div
-        class="flex-1 flex flex-col bg-[#141416] rounded-2xl border border-white/10 overflow-hidden relative shadow-2xl h-full min-h-0">
-        <!-- Canvas Floating Controls Toolbar -->
+      <!-- Left: Live Canvas -->
+      <div class="flex-1 flex flex-col studio-surface rounded-2xl overflow-hidden relative h-full min-h-[300px]">
+        <!-- Canvas Controls -->
         <div class="absolute top-3 right-3 z-20 flex items-center gap-2 select-none">
-          <!-- Color Hex Text Badge (Clickable to pick color) -->
           <label for="upload-bg-picker" id="upload-bg-hex-badge"
-            class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#202024]/80 hover:bg-[#2a2a30] border border-white/10 text-[11px] font-mono text-gray-300 cursor-pointer backdrop-blur-sm transition-colors shadow-sm select-none"
+            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#18181d]/90 hover:bg-[#23232b] border border-white/15 text-[11px] font-mono text-zinc-200 cursor-pointer backdrop-blur-md transition-colors"
             title="Click to pick canvas color">
             <span id="upload-bg-hex-label">#e8e8e8</span>
           </label>
 
-          <!-- Dark/Light Canvas Toggle Switch -->
           <button id="upload-theme-toggle" type="button" aria-label="Toggle dark or light canvas"
             title="Switch Dark/Light mode"
-            class="flex items-center gap-1 px-1.5 py-1 rounded-full bg-[#202024]/80 hover:bg-[#2a2a30] border border-white/10 cursor-pointer backdrop-blur-sm transition-colors">
-            <i class="fa-regular fa-sun text-[11px] text-amber-400 ml-1"></i>
+            class="flex items-center gap-1 px-2 py-1.5 rounded-full bg-[#18181d]/90 hover:bg-[#23232b] border border-white/15 cursor-pointer backdrop-blur-md transition-colors">
+            <i class="fa-regular fa-sun text-[11px] text-amber-400 ml-0.5"></i>
             <span id="upload-toggle-track"
-              class="w-7 h-3.5 bg-white/10 rounded-full relative inline-block transition-colors ml-1 mr-0.5">
+              class="w-7 h-3.5 bg-white/15 rounded-full relative inline-block transition-colors ml-1 mr-0.5">
               <span id="upload-toggle-thumb"
                 class="w-3 h-3 bg-white rounded-full absolute top-[1px] left-[1px] transition-transform duration-200"></span>
             </span>
           </button>
 
-          <!-- Background Color Picker Button (Square Swatch, Uiverse parity) -->
           <label for="upload-bg-picker" id="upload-color-picker-btn" aria-label="Choose background color"
             title="Choose background color"
-            class="w-7 h-7 rounded-lg bg-[#e8e8e8] hover:brightness-110 border border-white/30 hover:border-white/60 flex items-center justify-center transition-all backdrop-blur-sm cursor-pointer shadow-sm relative overflow-hidden">
+            class="w-8 h-8 rounded-lg bg-[#e8e8e8] hover:brightness-110 border border-white/30 flex items-center justify-center transition-all cursor-pointer relative overflow-hidden shadow-sm">
             <input type="color" id="upload-bg-picker" value="#e8e8e8" class="sr-only">
           </label>
         </div>
 
-        <!-- Centered Canvas Container (Default light #e8e8e8) -->
         <div id="upload-canvas-wrapper"
           class="flex-1 w-full h-full flex items-center justify-center relative overflow-hidden transition-colors duration-200 bg-[#e8e8e8]">
           <iframe id="upload-preview-iframe" title="Component Preview" sandbox="allow-scripts"
@@ -686,35 +640,30 @@
         </div>
       </div>
 
-      <!-- Right Column: Code Tabs & Editor -->
-      <div class="w-full lg:w-[480px] xl:w-[540px] 2xl:w-[600px] flex flex-col h-full min-h-0">
-        <!-- Tab Selector: HTML & CSS -->
+      <!-- Right: Code Editor -->
+      <div class="w-full lg:w-[480px] xl:w-[540px] 2xl:w-[600px] flex flex-col h-full min-h-[320px]">
         <div class="flex items-center justify-between mb-2 select-none shrink-0">
-          <div class="flex items-center gap-1.5 p-1 rounded-xl bg-[#161619] border border-white/5" id="upload-tabs">
+          <div class="studio-segmented" id="upload-tabs">
             <button type="button"
-              class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-gray-400 hover:text-white cursor-pointer"
+              class="tab-btn px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
               data-upload-tab="html">
               <i class="fa-brands fa-html5 text-[#e34f26] text-sm"></i>
               <span>HTML</span>
             </button>
             <button type="button"
-              class="tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-[#27272a] text-white shadow-sm cursor-pointer"
+              class="tab-btn active px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
               data-upload-tab="css">
-              <i class="fa-brands fa-css3-alt text-[#1572b6] text-sm"></i>
+              <i class="fa-brands fa-css3-alt text-[#38bdf8] text-sm"></i>
               <span>CSS</span>
             </button>
           </div>
         </div>
 
-        <!-- Code Editor Container -->
-        <div
-          class="flex-1 bg-[#141416] rounded-2xl border border-white/10 flex flex-col overflow-hidden relative shadow-2xl min-h-0">
-          <!-- Hidden textareas for backward compatibility -->
+        <div class="flex-1 studio-ide-frame rounded-2xl flex flex-col overflow-hidden relative min-h-0">
           <textarea id="upload-html" class="sr-only"></textarea>
           <textarea id="upload-css" class="sr-only"></textarea>
 
-          <!-- Interactive Code Editor Area -->
-          <div id="upload-editor-scroll" class="modal-editor-scroll flex-1 overflow-auto pt-3 font-mono text-xs">
+          <div id="upload-editor-scroll" class="modal-editor-scroll flex-1 overflow-auto pt-2 font-mono text-xs">
             <div class="modal-editor-shell">
               <div class="modal-line-gutter">
                 <div id="upload-line-numbers" class="modal-line-numbers" aria-hidden="true"></div>
@@ -731,83 +680,72 @@
       </div>
     </main>
 
-    <!-- Bottom Action Bar (Matching Uiverse Images 1, 2, 3) -->
-    <footer class="flex items-center justify-between gap-3 pt-3 border-t border-white/10 shrink-0 select-none text-xs">
-      <!-- Left: Change type button -->
+    <!-- Bottom Studio Footer Bar -->
+    <footer class="flex flex-wrap items-center justify-between gap-3 pt-3 studio-border-t shrink-0 select-none text-xs">
       <button id="upload-change-type-btn" type="button"
-        class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-200 hover:text-white transition-all font-medium cursor-pointer shadow-sm">
-        <i class="fa-solid fa-table-cells-large text-xs text-gray-400"></i>
+        class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs">
+        <i class="fa-solid fa-table-cells-large text-xs studio-text-muted"></i>
         <span>Change type</span>
       </button>
 
-      <!-- Center: Unsaved changes indicator -->
       <div id="upload-status-indicator" class="flex items-center gap-1.5 text-amber-400 font-medium text-xs">
         <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
         <span id="upload-status-text">Unsaved changes</span>
       </div>
 
-      <!-- Right: Save draft & Submit for review -->
       <div class="flex items-center gap-2.5">
-        <button id="upload-draft-btn" type="button"
-          class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-200 hover:text-white transition-all font-medium cursor-pointer shadow-sm">
-          <i class="fa-regular fa-bookmark text-xs text-gray-400"></i>
+        <button id="upload-draft-btn" type="button" class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs">
+          <i class="fa-regular fa-bookmark text-xs studio-text-muted"></i>
           <span>Save as a draft</span>
         </button>
 
-        <button id="upload-submit-btn" type="button"
-          class="flex items-center gap-2 px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-all shadow-md shadow-indigo-600/30 cursor-pointer">
+        <button id="upload-submit-btn" type="button" class="studio-btn-primary h-9 px-5 rounded-xl text-xs">
           <i class="fa-solid fa-rocket text-xs" id="upload-submit-icon"></i>
           <span id="upload-submit-text">Submit for review</span>
         </button>
       </div>
     </footer>
 
-    <!-- Error Toast / Message in Studio -->
     <p id="upload-error" class="hidden text-xs text-red-400 mt-2 text-center">
       <span id="upload-error-text"></span>
     </p>
 
-    <!-- POPUP DIALOG: "What are you making?" (Centered overlay inside upload-modal) -->
+    <!-- Category Selection Dialog -->
     <div id="upload-category-dialog"
       class="fixed inset-0 z-[170] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden">
-      <div
-        class="relative w-full max-w-xl bg-[#18191d] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl animate-scale-in text-white">
-        <!-- Close Button -->
+      <div class="studio-dialog-card relative w-full max-w-xl rounded-3xl p-6 sm:p-8 animate-scale-in">
         <button id="category-dialog-close" type="button" aria-label="Close category dialog"
-          class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer">
+          class="studio-icon-btn absolute top-5 right-5 rounded-full w-8 h-8">
           <i class="fa-solid fa-xmark text-sm"></i>
         </button>
 
-        <!-- Centered Heading -->
-        <h2 class="text-2xl font-bold text-center text-white mb-6">What are you making?</h2>
+        <h2 class="font-display text-2xl font-bold text-center studio-text-primary mb-6">What are you making?</h2>
 
-        <!-- Category Grid (10 categories matching Uiverse Image 1) -->
         <div id="category-dialog-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-          <!-- Dynamically populated or rendered with Uiverse SVG icons -->
+          <!-- Dynamically populated -->
         </div>
 
-        <!-- Bottom Controls: Technology selector + Continue button -->
-        <div class="flex items-center justify-between pt-4 border-t border-white/5">
-          <div class="flex items-center gap-2">
-            <span class="text-xs text-gray-400 font-medium">Technology</span>
-            <div class="flex items-center gap-1 p-1 rounded-xl bg-[#121316] border border-white/5" id="tech-selector">
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-4 studio-border-t">
+          <div class="flex items-center gap-2.5">
+            <span class="text-xs studio-text-secondary font-medium">Technology</span>
+            <div class="studio-segmented" id="tech-selector">
               <button type="button"
-                class="tech-btn active px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 bg-[#27272a] text-white shadow-sm transition-all cursor-pointer"
+                class="tech-btn active px-3 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5"
                 data-tech="css">
-                <i class="fa-brands fa-css3-alt text-[#1572b6]"></i>
+                <i class="fa-brands fa-css3-alt text-[#38bdf8]"></i>
                 <span>CSS</span>
               </button>
               <button type="button"
-                class="tech-btn px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 text-gray-400 hover:text-white transition-all cursor-pointer"
+                class="tech-btn px-3 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5"
                 data-tech="tailwind">
-                <i class="fa-solid fa-wind text-sky-400"></i>
+                <i class="fa-solid fa-wind text-cyan-400"></i>
                 <span>Tailwind CSS</span>
               </button>
             </div>
           </div>
 
           <button id="category-dialog-continue" type="button"
-            class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-all shadow-md shadow-indigo-600/30 cursor-pointer">
+            class="studio-btn-primary h-10 px-6 rounded-xl text-xs">
             Continue
           </button>
         </div>
@@ -815,111 +753,64 @@
     </div>
   </div>
 
-  <!-- ===================== UIVERSE-STYLE COMMUNITY SIGN IN / SIGN UP MODAL ===================== -->
+  <!-- ===================== SIGN IN MODAL ===================== -->
   <div id="signin-modal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 hidden" role="dialog"
     aria-modal="true" aria-labelledby="signin-modal-title">
-    <div id="signin-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity"></div>
+    <div id="signin-backdrop" class="absolute inset-0 bg-black/75 backdrop-blur-md transition-opacity"></div>
 
     <div
-      class="relative w-full max-w-[460px] bg-gradient-to-b from-[#1f1d2e] via-[#16161b] to-[#121215] border border-white/10 rounded-[28px] shadow-[0_25px_70px_rgba(0,0,0,0.85)] p-6 sm:p-8 animate-scale-in z-10 overflow-visible text-white">
-
-      <!-- Cute 3D Astronaut Illustration peering over top-left corner -->
-      <div
-        class="absolute -top-10 -left-6 sm:-top-12 sm:-left-8 w-24 h-24 sm:w-28 sm:h-28 pointer-events-none select-none z-20 drop-shadow-[0_15px_25px_rgba(147,51,234,0.35)] animate-float">
-        <svg viewBox="0 0 120 120" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Background Glow Aura -->
-          <circle cx="60" cy="60" r="45" fill="url(#astro_glow)" opacity="0.6" />
-          <!-- Helmet Body -->
-          <rect x="25" y="20" width="70" height="66" rx="33" fill="url(#helmet_grad)" stroke="#a855f7"
-            stroke-width="2.5" />
-          <!-- Visor Outer -->
-          <rect x="33" y="28" width="54" height="48" rx="24" fill="#090a12" stroke="#6366f1" stroke-width="2" />
-          <!-- Visor Glass Gradient -->
-          <rect x="35" y="30" width="50" height="44" rx="22" fill="url(#visor_grad)" />
-          <!-- Cute Visor Face Eyes & Smile -->
-          <circle cx="48" cy="50" r="3.5" fill="#c084fc" />
-          <circle cx="49" cy="49" r="1.2" fill="#ffffff" />
-          <circle cx="72" cy="50" r="3.5" fill="#c084fc" />
-          <circle cx="73" cy="49" r="1.2" fill="#ffffff" />
-          <!-- Cute Smile Curve -->
-          <path d="M56 57C58 60 62 60 64 57" stroke="#e9d5ff" stroke-width="2.2" stroke-linecap="round" />
-          <!-- Visor Reflection Highlight -->
-          <path d="M40 38C44 34 52 32 60 32" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"
-            opacity="0.65" />
-          <!-- Helmet Ears / Antenna Knobs -->
-          <rect x="18" y="44" width="8" height="16" rx="4" fill="#6366f1" />
-          <rect x="94" y="44" width="8" height="16" rx="4" fill="#6366f1" />
-          <!-- Spacesuit Torso & Collar -->
-          <path d="M36 84C36 80 44 78 60 78C76 78 84 80 84 84L88 108C88 112 80 114 60 114C40 114 32 112 32 108L36 84Z"
-            fill="url(#suit_grad)" stroke="#7c3aed" stroke-width="2" />
-          <!-- Chest Badge / Life Support -->
-          <rect x="52" y="86" width="16" height="10" rx="3" fill="#3b0764" stroke="#a855f7" stroke-width="1.2" />
-          <circle cx="56" cy="91" r="2" fill="#38bdf8" />
-          <circle cx="64" cy="91" r="2" fill="#f43f5e" />
-          <!-- Little Cute Waving Hand -->
-          <circle cx="24" cy="88" r="7" fill="#8b5cf6" stroke="#c084fc" stroke-width="1.5" />
-          <defs>
-            <radialGradient id="astro_glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-              gradientTransform="translate(60 60) rotate(90) scale(45)">
-              <stop stop-color="#8b5cf6" stop-opacity="0.8" />
-              <stop offset="1" stop-color="#8b5cf6" stop-opacity="0" />
-            </radialGradient>
-            <linearGradient id="helmet_grad" x1="25" y1="20" x2="95" y2="86" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#3b0764" />
-              <stop offset="0.5" stop-color="#2e1065" />
-              <stop offset="1" stop-color="#1e1b4b" />
-            </linearGradient>
-            <linearGradient id="visor_grad" x1="35" y1="30" x2="85" y2="74" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#1e1035" />
-              <stop offset="0.6" stop-color="#28114b" />
-              <stop offset="1" stop-color="#3b0764" />
-            </linearGradient>
-            <linearGradient id="suit_grad" x1="32" y1="78" x2="88" y2="114" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#2e1065" />
-              <stop offset="1" stop-color="#18181b" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      <!-- Close Button (X) -->
+      class="studio-dialog-card relative w-full max-w-[440px] rounded-[24px] p-6 sm:p-8 animate-scale-in z-10 overflow-visible">
+      <!-- Close Button -->
       <button id="signin-close-btn" type="button" aria-label="Close dialog"
-        class="absolute top-5 right-5 text-gray-400 hover:text-white transition-colors cursor-pointer text-lg p-1.5 rounded-lg hover:bg-white/5">
-        <i class="fa-solid fa-xmark"></i>
+        class="studio-icon-btn absolute top-5 right-5 w-8 h-8 rounded-lg">
+        <i class="fa-solid fa-xmark text-sm"></i>
       </button>
 
-      <!-- Header Content -->
-      <div class="text-center mt-3 mb-5 select-none">
-        <h2 id="signin-modal-title" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+      <!-- Brand Mark -->
+      <div class="flex justify-center mb-4">
+        <div
+          class="w-12 h-12 rounded-2xl bg-brand-600 flex items-center justify-center shadow-[0_0_0_1px_rgba(255,255,255,0.16),0_12px_28px_-8px_rgba(99,102,241,0.55)]">
+          <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="text-center mb-5 select-none">
+        <h2 id="signin-modal-title" class="font-display text-2xl font-bold studio-text-primary tracking-tight">
           Join the Community
         </h2>
-        <p id="signin-modal-desc" class="text-sm font-medium text-gray-300 mt-2 max-w-[340px] mx-auto leading-relaxed">
+        <p id="signin-modal-desc" class="text-sm studio-text-secondary mt-1.5 max-w-[330px] mx-auto leading-relaxed">
           Create beautiful UI elements and share them with 100,000+ developers
         </p>
       </div>
 
-      <!-- Checklist Benefits (Uiverse signature styling) -->
-      <div id="auth-community-benefits" class="my-5 space-y-2.5 max-w-[340px] mx-auto text-xs sm:text-sm text-gray-300">
+      <!-- Checklist Benefits -->
+      <div id="auth-community-benefits"
+        class="my-5 p-4 rounded-2xl studio-elevated space-y-2.5 text-xs sm:text-sm studio-text-secondary">
         <div class="flex items-center gap-2.5">
-          <i class="fa-solid fa-check text-purple-400 text-xs font-bold shrink-0"></i>
+          <i class="fa-solid fa-check text-brand-400 text-xs shrink-0"></i>
           <span>Create and share unlimited UI elements</span>
         </div>
         <div class="flex items-center gap-2.5">
-          <i class="fa-solid fa-check text-purple-400 text-xs font-bold shrink-0"></i>
+          <i class="fa-solid fa-check text-brand-400 text-xs shrink-0"></i>
           <span>Get inspiration from thousands of designs</span>
         </div>
         <div class="flex items-center gap-2.5">
-          <i class="fa-solid fa-check text-purple-400 text-xs font-bold shrink-0"></i>
+          <i class="fa-solid fa-check text-brand-400 text-xs shrink-0"></i>
           <span>Join a thriving community of creators</span>
         </div>
       </div>
 
-      <!-- Auth Action Buttons (Google & GitHub only) -->
-      <div class="space-y-3 max-w-[340px] mx-auto pb-2">
-        <!-- Google Login -->
+      <!-- Auth Buttons -->
+      <div class="space-y-2.5">
         <button type="button" id="google-auth-btn"
-          class="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl bg-[#232328] hover:bg-[#2c2c33] border border-white/10 text-white font-semibold text-sm transition-all shadow-sm hover:border-white/20 cursor-pointer group">
-          <svg class="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+          class="studio-btn-secondary w-full h-11 px-4 rounded-xl text-sm font-semibold group">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
             <path fill="#4285F4"
               d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
             <path fill="#34A853"
@@ -932,50 +823,45 @@
           <span id="google-auth-text">Continue with Google</span>
         </button>
 
-        <!-- GitHub Login -->
         <button type="button" id="github-auth-btn"
-          class="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl bg-[#232328] hover:bg-[#2c2c33] border border-white/10 text-white font-semibold text-sm transition-all shadow-sm hover:border-white/20 cursor-pointer group">
-          <i class="fa-brands fa-github text-base transition-transform group-hover:scale-110"></i>
+          class="studio-btn-secondary w-full h-11 px-4 rounded-xl text-sm font-semibold group">
+          <i class="fa-brands fa-github text-base" aria-hidden="true"></i>
           <span>Continue with GitHub</span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ===================== COMPONENT PREVIEW MODAL (UIVERSE 100% PARITY) ===================== -->
-  <div id="preview-modal" class="hidden fixed inset-0 z-[150] bg-[#0c0d0e] flex flex-col p-4 sm:p-6 overflow-y-auto">
-    <!-- Top Bar Navigation (Uiverse Parity: Back on Left, Author/Views/Likes on Right) -->
-    <header aria-label="Component preview header"
-      class="flex items-center justify-between gap-4 py-1 px-1 shrink-0 select-none">
-      <!-- Left: Go Back -->
-      <div class="flex items-center gap-2">
-        <button id="modal-close-btn" type="button" aria-label="Go back to components"
-          class="flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors group cursor-pointer px-2 py-1.5 rounded-lg hover:bg-white/5">
-          <i class="fa-solid fa-arrow-left text-xs transition-transform group-hover:-translate-x-1"></i>
-          <span data-i18n="preview_go_back">Go back</span>
-        </button>
-      </div>
+  <!-- ===================== COMPONENT PREVIEW STUDIO MODAL ===================== -->
+  <div id="preview-modal"
+    class="studio-modal-fullscreen hidden fixed inset-0 z-[150] flex flex-col p-4 sm:p-6 overflow-y-auto">
 
-      <!-- Right: Category by Author + Views + Likes -->
-      <div class="flex items-center gap-4 text-xs sm:text-sm text-gray-300">
+    <!-- Top Studio Header -->
+    <header aria-label="Component preview header"
+      class="flex flex-wrap items-center justify-between gap-3 pb-3 studio-border-b shrink-0 select-none">
+      <button id="modal-close-btn" type="button" aria-label="Go back to components"
+        class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs font-semibold group">
+        <i class="fa-solid fa-arrow-left text-xs transition-transform group-hover:-translate-x-0.5"></i>
+        <span data-i18n="preview_go_back">Go back</span>
+      </button>
+
+      <div class="flex items-center flex-wrap gap-3 text-xs sm:text-sm studio-text-secondary">
         <div class="flex items-center gap-2">
-          <span class="text-gray-400 font-normal"><span id="modal-category-prefix">Button</span> by</span>
+          <span><span id="modal-category-prefix">Button</span> by</span>
           <div id="modal-author-avatar"
-            class="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-[10px] font-bold text-white shadow overflow-hidden">
+            class="w-6 h-6 rounded-full bg-brand-600 flex items-center justify-center text-[10px] font-bold text-white overflow-hidden">
           </div>
-          <span id="modal-author" class="font-bold text-gray-100 cursor-pointer hover:underline hover:text-brand-300"
+          <span id="modal-author" class="font-semibold studio-text-primary cursor-pointer hover:underline hover:text-brand-400"
             title="Filter by this creator"></span>
         </div>
 
-        <!-- Views Count -->
-        <div class="flex items-center gap-1.5 text-gray-400 font-medium" title="Views">
+        <div class="flex items-center gap-1.5 font-mono text-xs studio-text-muted tabular-nums" title="Views">
           <i class="fa-regular fa-eye text-xs"></i>
           <span id="modal-views-count">0</span>
         </div>
 
-        <!-- Likes / Favorites Count -->
         <button id="modal-like-btn" type="button" aria-label="Like component"
-          class="flex items-center gap-1.5 text-gray-300 hover:text-pink-400 transition-colors font-medium px-2 py-1 rounded-lg hover:bg-white/5 cursor-pointer"
+          class="studio-btn-secondary h-8 px-3 rounded-lg text-xs font-mono tabular-nums hover:!text-pink-400"
           title="Save to favorites">
           <i class="fa-regular fa-bookmark text-xs"></i>
           <span id="modal-likes-count">0</span>
@@ -983,83 +869,75 @@
       </div>
     </header>
 
-    <!-- Hidden Title & Category to keep DOM accessible -->
     <h2 id="modal-title" class="sr-only">Component Preview</h2>
     <span id="modal-category" class="sr-only"></span>
 
-    <!-- SCREEN 1: Full-Height Workspace (Live Canvas + Code Editor) Matching Uiverse Parity -->
-    <main class="flex flex-col lg:flex-row gap-4 mt-3 h-[calc(100vh-155px)] min-h-[500px] shrink-0">
-      <!-- Left Column: Live Preview Canvas (Full Height) -->
-      <div
-        class="flex-1 flex flex-col bg-[#141416] rounded-2xl border border-white/10 overflow-hidden relative shadow-2xl h-full min-h-0">
-        <!-- Canvas Floating Controls Toolbar (Top Right of Canvas) -->
+    <!-- Split Workspace: Live Canvas + Code IDE -->
+    <main class="flex flex-col lg:flex-row gap-4 mt-3.5 h-[calc(100vh-165px)] min-h-[500px] shrink-0">
+      <!-- Left: Preview Canvas -->
+      <div class="flex-1 flex flex-col studio-surface rounded-2xl overflow-hidden relative h-full min-h-0">
+        <!-- Top-Right Canvas Controls -->
         <div class="absolute top-3 right-3 z-20 flex items-center gap-2 select-none">
-          <!-- Color Hex Text Badge (Clickable to pick color) -->
           <label for="preview-bg-picker" id="preview-bg-hex-badge"
-            class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#202024]/80 hover:bg-[#2a2a30] border border-white/10 text-[11px] font-mono text-gray-300 cursor-pointer backdrop-blur-sm transition-colors shadow-sm select-none"
+            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#18181d]/90 hover:bg-[#23232b] border border-white/15 text-[11px] font-mono text-zinc-200 cursor-pointer backdrop-blur-md transition-colors"
             title="Click to pick canvas color">
             <span id="preview-bg-hex-label">#212121</span>
           </label>
 
-          <!-- Uiverse Dark/Light Toggle Switch Pill -->
           <button id="preview-theme-toggle" type="button" aria-label="Toggle dark or light canvas"
             title="Switch Dark/Light mode"
-            class="flex items-center gap-1 px-1.5 py-1 rounded-full bg-[#202024]/80 hover:bg-[#2a2a30] border border-white/10 cursor-pointer backdrop-blur-sm transition-colors">
-            <i class="fa-regular fa-sun text-[11px] text-amber-400 ml-1"></i>
+            class="flex items-center gap-1 px-2 py-1.5 rounded-full bg-[#18181d]/90 hover:bg-[#23232b] border border-white/15 cursor-pointer backdrop-blur-md transition-colors">
+            <i class="fa-regular fa-sun text-[11px] text-amber-400 ml-0.5"></i>
             <span id="preview-toggle-track"
-              class="w-7 h-3.5 bg-white/10 rounded-full relative inline-block transition-colors ml-1 mr-0.5">
+              class="w-7 h-3.5 bg-white/15 rounded-full relative inline-block transition-colors ml-1 mr-0.5">
               <span id="preview-toggle-thumb"
                 class="w-3 h-3 bg-white rounded-full absolute top-[1px] left-[1px] transition-transform duration-200"></span>
             </span>
           </button>
 
-          <!-- Background Color Picker Button (Square Swatch, Uiverse parity) -->
           <label for="preview-bg-picker" id="preview-color-picker-btn" aria-label="Choose background color"
             title="Choose background color"
-            class="w-7 h-7 rounded-lg bg-[#212121] hover:brightness-110 border border-white/30 hover:border-white/60 flex items-center justify-center transition-all backdrop-blur-sm cursor-pointer shadow-sm relative overflow-hidden">
+            class="w-8 h-8 rounded-lg bg-[#212121] hover:brightness-110 border border-white/30 flex items-center justify-center transition-all cursor-pointer shadow-sm relative overflow-hidden">
             <input type="color" id="preview-bg-picker" value="#212121" class="sr-only">
           </label>
         </div>
 
-        <!-- Centered Canvas Container (Takes 100% Height) -->
         <div id="preview-canvas-wrapper"
           class="flex-1 w-full h-full flex items-center justify-center relative overflow-hidden transition-colors duration-200 bg-[#212121]"
           data-viewport="desktop">
           <iframe id="modal-preview-iframe" title="Component Preview" sandbox="allow-scripts"
             class="w-full h-full border-none transition-all duration-300"></iframe>
 
-          <!-- Canvas Floating Bottom Controls: Responsive Viewports & Zoom (Uiverse Parity) -->
+          <!-- Bottom-Left Viewport & Zoom Controls -->
           <div class="absolute bottom-3 left-3 z-20 flex items-center gap-2 select-none">
-            <!-- Viewport Simulator Controls -->
             <div id="preview-viewport-controls"
-              class="flex items-center gap-0.5 p-1 rounded-xl bg-[#202024]/80 border border-white/10 backdrop-blur-sm text-xs shadow-sm">
+              class="flex items-center gap-0.5 p-1 rounded-xl bg-[#18181d]/90 border border-white/15 backdrop-blur-md text-xs">
               <button type="button"
-                class="viewport-btn active px-2.5 py-1 rounded-lg text-white bg-surface-600 hover:bg-surface-500 transition-colors cursor-pointer"
-                data-viewport="desktop" title="Desktop view">
+                class="viewport-btn active px-2.5 py-1.5 rounded-lg text-white cursor-pointer"
+                data-viewport="desktop" title="Desktop view" aria-label="Desktop view">
                 <i class="fa-solid fa-desktop text-[11px]"></i>
               </button>
               <button type="button"
-                class="viewport-btn px-2.5 py-1 rounded-lg text-gray-400 hover:text-white transition-colors cursor-pointer"
-                data-viewport="tablet" title="Tablet view">
+                class="viewport-btn px-2.5 py-1.5 rounded-lg text-zinc-400 hover:text-white cursor-pointer"
+                data-viewport="tablet" title="Tablet view" aria-label="Tablet view">
                 <i class="fa-solid fa-tablet-screen-button text-[11px]"></i>
               </button>
               <button type="button"
-                class="viewport-btn px-2.5 py-1 rounded-lg text-gray-400 hover:text-white transition-colors cursor-pointer"
-                data-viewport="mobile" title="Mobile view">
+                class="viewport-btn px-2.5 py-1.5 rounded-lg text-zinc-400 hover:text-white cursor-pointer"
+                data-viewport="mobile" title="Mobile view" aria-label="Mobile view">
                 <i class="fa-solid fa-mobile-screen-button text-[11px]"></i>
               </button>
             </div>
 
-            <!-- Zoom Controls -->
             <div
-              class="flex items-center gap-1 px-2 py-1 rounded-xl bg-[#202024]/80 border border-white/10 backdrop-blur-sm text-xs text-gray-300 shadow-sm">
-              <button id="preview-zoom-out" type="button" class="p-1 hover:text-white transition-colors cursor-pointer"
-                title="Zoom Out">
+              class="flex items-center gap-1 px-2 py-1 rounded-xl bg-[#18181d]/90 border border-white/15 backdrop-blur-md text-xs text-zinc-200">
+              <button id="preview-zoom-out" type="button" class="p-1.5 hover:text-white transition-colors cursor-pointer"
+                title="Zoom Out" aria-label="Zoom out">
                 <i class="fa-solid fa-minus text-[10px]"></i>
               </button>
-              <span id="preview-zoom-label" class="font-mono text-[11px] px-1 select-none font-semibold">100%</span>
-              <button id="preview-zoom-in" type="button" class="p-1 hover:text-white transition-colors cursor-pointer"
-                title="Zoom In">
+              <span id="preview-zoom-label" class="font-mono text-[11px] px-1 select-none font-semibold tabular-nums">100%</span>
+              <button id="preview-zoom-in" type="button" class="p-1.5 hover:text-white transition-colors cursor-pointer"
+                title="Zoom In" aria-label="Zoom in">
                 <i class="fa-solid fa-plus text-[10px]"></i>
               </button>
             </div>
@@ -1067,28 +945,27 @@
         </div>
       </div>
 
-      <!-- Right Column: Code Tabs & Editor (Full Height) -->
+      <!-- Right: Code Editor Panel -->
       <div class="w-full lg:w-[480px] xl:w-[540px] 2xl:w-[600px] flex flex-col h-full min-h-0">
-        <!-- Tab Selector: HTML & CSS (Uiverse Parity) -->
         <div class="flex items-center justify-between mb-2 select-none shrink-0">
-          <div class="flex items-center gap-1.5 p-1 rounded-xl bg-[#161619] border border-white/5" id="modal-tabs">
+          <div class="studio-segmented" id="modal-tabs">
             <button type="button"
-              class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-gray-400 hover:text-white cursor-pointer"
+              class="tab-btn px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
               data-tab="html">
               <i class="fa-brands fa-html5 text-[#e34f26] text-sm"></i>
               <span>HTML</span>
             </button>
             <button type="button"
-              class="tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-[#27272a] text-white shadow-sm cursor-pointer"
+              class="tab-btn active px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
               data-tab="css">
-              <i class="fa-brands fa-css3-alt text-[#1572b6] text-sm"></i>
+              <i class="fa-brands fa-css3-alt text-[#38bdf8] text-sm"></i>
               <span id="modal-css-tab-text">CSS</span>
             </button>
           </div>
-          <!-- Tailwind Badge (Shown when component is Tailwind) -->
+
           <span id="modal-tailwind-badge"
-            class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 flex items-center gap-1.5 hidden">
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/25 flex items-center gap-1.5 hidden">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.02,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.982,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.532,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.982,12,6.001,12z" />
             </svg>
@@ -1096,19 +973,15 @@
           </span>
         </div>
 
-        <!-- Code Editor Container (Full Height) -->
-        <div
-          class="flex-1 bg-[#141416] rounded-2xl border border-white/10 flex flex-col overflow-hidden relative shadow-2xl min-h-0">
-          <!-- IDE toolbar: Clean "Copy" Button at Top Right -->
+        <div class="flex-1 studio-ide-frame rounded-2xl flex flex-col overflow-hidden relative min-h-0">
           <div id="modal-editor-toolbar" class="absolute top-3 right-3 z-20 flex items-center gap-2">
             <button id="modal-copy-btn" type="button" title="Copy active code"
-              class="px-3 py-1.5 rounded-lg bg-[#27272a]/90 hover:bg-[#3f3f46] text-xs font-semibold text-gray-200 flex items-center gap-1.5 transition-colors border border-white/10 shadow backdrop-blur-sm cursor-pointer">
+              class="px-3 py-1.5 rounded-lg bg-[#27272e]/95 hover:bg-[#34343e] text-xs font-semibold text-zinc-100 flex items-center gap-1.5 transition-colors border border-white/15 backdrop-blur-sm cursor-pointer">
               <i class="fa-regular fa-copy text-xs"></i>
               <span id="modal-copy-text">Copy</span>
             </button>
           </div>
 
-          <!-- Editable code area with fixed line-number gutter -->
           <div id="modal-editor-scroll" class="modal-editor-scroll flex-1 overflow-auto pt-10 font-mono text-xs">
             <div class="modal-editor-shell">
               <div class="modal-line-gutter">
@@ -1126,26 +999,18 @@
       </div>
     </main>
 
-    <!-- Bottom Action Bar (Directly below Workspace: Favorites, Figma, Export on Left, New variation on Right) -->
-    <div class="flex items-center justify-between gap-3 py-3 border-b border-white/10 shrink-0 select-none text-xs">
-      <div class="flex items-center gap-2.5">
-        <!-- Save to favorites button -->
-        <button id="modal-save-fav-btn" type="button"
-          class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-200 hover:text-white transition-all font-medium cursor-pointer shadow-sm">
+    <!-- Action Bar Below Studio -->
+    <div class="flex flex-wrap items-center justify-between gap-3 py-3.5 studio-border-b shrink-0 select-none text-xs">
+      <div class="flex flex-wrap items-center gap-2">
+        <button id="modal-save-fav-btn" type="button" class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs">
           <i class="fa-regular fa-bookmark text-xs"></i>
           <span id="modal-save-fav-text">Save to favorites</span>
         </button>
 
-        <!-- Copy to Figma button -->
-        <button id="modal-figma-btn" type="button"
-          class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-200 hover:text-white transition-all font-medium cursor-pointer shadow-sm">
-          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"
-              fill="#1ABCFE" />
-            <path
-              d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z"
-              fill="#0ACF83" />
+        <button id="modal-figma-btn" type="button" class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs">
+          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 38 57" fill="none" aria-hidden="true">
+            <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE" />
+            <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83" />
             <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262" />
             <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E" />
             <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF" />
@@ -1153,54 +1018,37 @@
           <span>Copy to Figma</span>
         </button>
 
-        <!-- Export Dropdown -->
         <div class="relative inline-block text-left" id="modal-export-dropdown-wrapper">
-          <button id="modal-export-btn" type="button"
-            class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-200 hover:text-white transition-all font-medium cursor-pointer shadow-sm">
+          <button id="modal-export-btn" type="button" class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs">
             <i class="fa-solid fa-atom text-cyan-400"></i>
             <span>Export</span>
-            <span id="modal-export-format-label" class="font-semibold text-white">React</span>
-            <i class="fa-solid fa-chevron-down text-[10px] text-gray-400"></i>
+            <span id="modal-export-format-label" class="font-semibold">React</span>
+            <i class="fa-solid fa-chevron-down text-[10px] studio-text-muted"></i>
           </button>
           <div id="modal-export-menu"
-            class="hidden absolute left-0 bottom-full mb-1.5 w-40 rounded-xl bg-[#18191d] border border-white/10 shadow-2xl py-1 z-30">
-            <button type="button"
-              class="w-full text-left px-3 py-2 text-xs text-gray-200 hover:bg-white/5 flex items-center justify-between cursor-pointer export-option"
-              data-format="react">
-              <span>React JSX</span>
-              <span class="text-[10px] text-gray-500 font-mono">.jsx</span>
+            class="studio-dropdown hidden absolute left-0 bottom-full mb-1.5 w-44 rounded-xl py-1 z-30">
+            <button type="button" class="studio-dropdown-item justify-between text-xs export-option" data-format="react">
+              <span>React JSX</span><span class="text-[10px] studio-text-muted font-mono">.jsx</span>
             </button>
-            <button type="button"
-              class="w-full text-left px-3 py-2 text-xs text-gray-200 hover:bg-white/5 flex items-center justify-between cursor-pointer export-option"
-              data-format="html">
-              <span>HTML</span>
-              <span class="text-[10px] text-gray-500 font-mono">.html</span>
+            <button type="button" class="studio-dropdown-item justify-between text-xs export-option" data-format="html">
+              <span>HTML</span><span class="text-[10px] studio-text-muted font-mono">.html</span>
             </button>
-            <button type="button"
-              class="w-full text-left px-3 py-2 text-xs text-gray-200 hover:bg-white/5 flex items-center justify-between cursor-pointer export-option"
-              data-format="css">
-              <span>CSS</span>
-              <span class="text-[10px] text-gray-500 font-mono">.css</span>
+            <button type="button" class="studio-dropdown-item justify-between text-xs export-option" data-format="css">
+              <span>CSS</span><span class="text-[10px] studio-text-muted font-mono">.css</span>
             </button>
-            <button type="button"
-              class="w-full text-left px-3 py-2 text-xs text-gray-200 hover:bg-white/5 flex items-center justify-between cursor-pointer export-option"
-              data-format="bundle">
-              <span>All-in-One</span>
-              <span class="text-[10px] text-gray-500 font-mono">.html</span>
+            <button type="button" class="studio-dropdown-item justify-between text-xs export-option" data-format="bundle">
+              <span>All-in-One</span><span class="text-[10px] studio-text-muted font-mono">.html</span>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Right: New variation button -->
       <div class="flex items-center gap-2">
-        <button id="modal-new-variation-btn" type="button"
-          class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-200 hover:text-white transition-all font-medium cursor-pointer shadow-sm">
-          <i class="fa-solid fa-code-fork text-xs text-gray-400"></i>
+        <button id="modal-new-variation-btn" type="button" class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs">
+          <i class="fa-solid fa-code-fork text-xs studio-text-muted"></i>
           <span>New variation</span>
         </button>
-        <button id="modal-share-btn" type="button"
-          class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-300 hover:text-white transition-all font-medium cursor-pointer shadow-sm"
+        <button id="modal-share-btn" type="button" class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs"
           title="Copy direct share link">
           <i class="fa-solid fa-share-nodes text-xs"></i>
           <span>Share</span>
@@ -1208,68 +1056,56 @@
       </div>
     </div>
 
-    <!-- SCREEN 2 & 3: Variations, Comments, License & Author Sidebar (Smoothly scrolled down) -->
+    <!-- Details, Variations, Comments & Author Sidebar -->
     <div class="mt-8 flex flex-col lg:flex-row gap-8 pb-16">
-      <!-- LEFT COLUMN (~68% width): Variations Grid, Comments, MIT License -->
+      <!-- Left Column -->
       <div class="flex-1 flex flex-col gap-8 min-w-0">
-        <!-- 1. Variations Section -->
+        <!-- Variations -->
         <div class="flex flex-col gap-3.5">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold text-white flex items-center gap-2">
-              <span>Variations</span>
-              <span id="modal-variations-count" class="text-xs font-normal text-gray-500">4</span>
-            </h3>
-          </div>
-          <!-- 2x2 Variations Grid -->
-          <div id="modal-variations-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Rendered dynamically by app.js -->
-          </div>
+          <h3 class="font-display text-sm font-bold studio-text-primary flex items-center gap-2">
+            <span>Variations</span>
+            <span id="modal-variations-count" class="text-xs font-mono font-normal studio-text-muted">4</span>
+          </h3>
+          <div id="modal-variations-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
         </div>
 
-        <!-- 2. Comments Section -->
-        <div id="modal-comments-panel" class="flex flex-col gap-3.5 pt-4 border-t border-white/5">
+        <!-- Comments -->
+        <div id="modal-comments-panel" class="flex flex-col gap-3.5 pt-5 studio-border-t">
           <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <h3 class="font-display text-sm font-bold studio-text-primary flex items-center gap-2">
               <span>Comments</span>
-              <span id="modal-comments-total" class="text-xs font-normal text-gray-500">1</span>
+              <span id="modal-comments-total" class="text-xs font-mono font-normal studio-text-muted">1</span>
             </h3>
             <span id="modal-comments-auth-status"
-              class="text-xs text-gray-400 cursor-pointer hover:text-white transition-colors">Log in to add
-              comments</span>
+              class="text-xs studio-text-secondary cursor-pointer hover:underline">Log in to add comments</span>
           </div>
 
-          <!-- Comment Input Row -->
-          <form id="modal-comment-form" class="flex items-center gap-3">
-            <div
-              class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-xs font-bold text-white overflow-hidden shrink-0"
-              id="modal-comment-user-avatar">
+          <form id="modal-comment-form" class="flex items-center gap-2.5">
+            <div id="modal-comment-user-avatar"
+              class="w-8 h-8 rounded-full bg-brand-600 flex items-center justify-center text-xs font-bold text-white overflow-hidden shrink-0">
               U
             </div>
             <input type="text" id="modal-comment-input" placeholder="Add a comment..."
-              class="flex-1 bg-[#18191d] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-all">
-            <button type="submit"
-              class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs transition-all shadow cursor-pointer shrink-0">
+              class="studio-input flex-1 rounded-xl px-4 h-10 text-xs">
+            <button type="submit" class="studio-btn-primary h-10 px-5 rounded-xl text-xs shrink-0">
               Send
             </button>
           </form>
 
-          <!-- Comments List -->
-          <div id="modal-comments-list" class="space-y-3 mt-1">
-            <!-- Rendered dynamically by app.js -->
-          </div>
+          <div id="modal-comments-list" class="space-y-3 mt-1"></div>
         </div>
 
-        <!-- 3. MIT License Card -->
-        <div class="bg-[#141416] rounded-2xl border border-white/10 p-5 text-xs text-gray-400 shadow-sm">
-          <div class="flex items-center gap-2 font-bold text-gray-200 mb-1">
-            <i class="fa-solid fa-scale-balanced text-sm text-gray-400"></i>
+        <!-- MIT License -->
+        <div class="studio-surface rounded-2xl p-5 text-xs studio-text-secondary">
+          <div class="flex items-center gap-2 font-semibold studio-text-primary mb-1">
+            <i class="fa-solid fa-scale-balanced text-sm studio-text-muted"></i>
             <span>MIT License</span>
           </div>
-          <div class="text-xs text-gray-300 font-medium mb-3">
-            Copyright - 2026 <span id="modal-license-author" class="text-white font-semibold">creator</span>
+          <div class="text-xs studio-text-secondary font-medium mb-3">
+            Copyright - 2026 <span id="modal-license-author" class="studio-text-primary font-semibold">creator</span>
           </div>
           <div
-            class="max-h-36 overflow-y-auto font-mono text-[11px] leading-relaxed text-gray-400 bg-black/30 p-3.5 rounded-xl border border-white/5 select-all">
+            class="max-h-36 overflow-y-auto font-mono text-[11px] leading-relaxed studio-text-muted studio-elevated p-3.5 rounded-xl select-all">
             Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
             documentation files (the "Software"), to deal in the Software without restriction, including without
             limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
@@ -1282,19 +1118,14 @@
         </div>
       </div>
 
-      <!-- RIGHT COLUMN (~32% width, max-w-sm): Title, Tags, Date/Report, Author Card -->
+      <!-- Right Sidebar Column -->
       <div class="w-full lg:w-80 xl:w-96 flex flex-col gap-6 shrink-0">
-        <!-- Element Title & Tags -->
         <div>
-          <h2 id="modal-element-title" class="text-2xl font-black text-white tracking-tight">Button</h2>
-          <!-- Tags Container (Rendered dynamically by app.js) -->
-          <div id="modal-tags-container" class="flex flex-wrap gap-1.5 mt-3">
-            <!-- Tags rendered by app.js -->
-          </div>
+          <h2 id="modal-element-title" class="font-display text-2xl font-bold studio-text-primary tracking-tight">Button</h2>
+          <div id="modal-tags-container" class="flex flex-wrap gap-1.5 mt-3"></div>
         </div>
 
-        <!-- Date & Report row -->
-        <div class="flex items-center justify-between text-xs text-gray-400 pt-2 border-t border-white/5">
+        <div class="flex items-center justify-between text-xs studio-text-secondary pt-3 studio-border-t">
           <div class="flex items-center gap-2">
             <i class="fa-regular fa-calendar text-xs"></i>
             <span id="modal-date-display">Sept 6, 2023</span>
@@ -1306,390 +1137,331 @@
           </button>
         </div>
 
-        <!-- Author Card (Matching Uiverse) -->
-        <div
-          class="bg-[#18191d] rounded-2xl border border-white/10 p-4 flex items-center gap-3.5 hover:border-white/20 transition-all cursor-pointer group shadow-sm"
-          id="modal-author-card">
+        <!-- Author Card -->
+        <div id="modal-author-card"
+          class="studio-surface rounded-2xl p-4 flex items-center gap-3.5 hover:border-brand-500/40 transition-all cursor-pointer group">
           <div id="modal-author-card-avatar"
-            class="w-11 h-11 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center font-bold text-white text-sm shadow overflow-hidden">
+            class="w-11 h-11 rounded-full studio-elevated flex items-center justify-center font-bold studio-text-primary text-sm overflow-hidden">
             SC
           </div>
           <div class="flex-1 min-w-0">
             <div id="modal-author-card-name"
-              class="font-bold text-sm text-white group-hover:text-brand-300 transition-colors truncate">
+              class="font-semibold text-sm studio-text-primary group-hover:text-brand-400 transition-colors truncate">
               satyamchaudharydev</div>
-            <div id="modal-author-card-handle" class="text-xs text-gray-500 truncate">@satyam</div>
+            <div id="modal-author-card-handle" class="text-xs font-mono studio-text-muted truncate">@satyam</div>
           </div>
         </div>
 
-        <!-- More by Author section (Uiverse Parity) -->
-        <div id="modal-more-author-section" class="flex flex-col gap-3 pt-3 border-t border-white/5">
+        <!-- More by Author -->
+        <div id="modal-more-author-section" class="flex flex-col gap-3 pt-4 studio-border-t">
           <div class="flex items-center justify-between text-xs">
-            <span class="font-semibold text-gray-300" id="modal-more-by-title">More by <span
+            <span class="font-semibold studio-text-primary" id="modal-more-by-title">More by <span
                 id="modal-more-author-name">@creator</span></span>
             <button id="modal-more-by-viewall" type="button"
-              class="text-gray-400 hover:text-white transition-colors cursor-pointer text-[11px]">View all →</button>
+              class="studio-text-secondary hover:text-brand-400 transition-colors cursor-pointer text-[11px] font-medium">View all →</button>
           </div>
-          <div id="modal-more-author-grid" class="grid grid-cols-2 gap-2.5">
-            <!-- Dynamically populated by app.js -->
-          </div>
+          <div id="modal-more-author-grid" class="grid grid-cols-2 gap-2.5"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===================== USER PROFILE MODAL / PAGE (Uiverse Parity) ===================== -->
+  <!-- ===================== USER PROFILE MODAL ===================== -->
   <div id="profile-modal"
-    class="fixed inset-0 z-[150] bg-[#0c0d0e] flex flex-col p-4 sm:p-8 overflow-y-auto hidden select-none" role="dialog"
-    aria-modal="true" aria-labelledby="profile-user-name">
+    class="studio-modal-fullscreen fixed inset-0 z-[150] flex flex-col p-4 sm:p-8 overflow-y-auto hidden select-none"
+    role="dialog" aria-modal="true" aria-labelledby="profile-user-name">
 
-    <!-- Top Bar: Go back button -->
     <div class="max-w-6xl w-full mx-auto mb-6 shrink-0">
       <button id="profile-close-btn" type="button" aria-label="Go back"
-        class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer border border-white/5 text-xs w-fit">
+        class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs w-fit">
         <i class="fa-solid fa-arrow-left text-xs"></i>
         <span>Go back</span>
       </button>
     </div>
 
-    <!-- Main Container -->
     <div class="max-w-6xl w-full mx-auto flex flex-col flex-1 pb-16">
-      <!-- Profile Header / Banner Card (Matching Uiverse Image 2) -->
-      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-8 border-b border-white/5">
-        <!-- Large Avatar -->
+      <!-- Profile Header -->
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-7 studio-border-b">
         <div class="relative shrink-0">
           <img id="profile-user-avatar"
             src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
             alt="Profile Avatar"
-            class="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl object-cover border-2 border-white/10 shadow-2xl hidden">
+            class="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl object-cover border border-white/15 shadow-lg hidden">
           <div id="profile-user-avatar-placeholder"
-            class="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 flex items-center justify-center font-extrabold text-white text-3xl shadow-2xl border-2 border-white/10">
+            class="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-brand-600 flex items-center justify-center font-display font-bold text-white text-3xl shadow-lg">
             U
           </div>
         </div>
 
-        <!-- Name, Handle & Settings button -->
         <div class="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left">
-          <h2 id="profile-user-name" class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Phitsamay</h2>
-          <p id="profile-user-handle" class="text-sm text-gray-400 font-mono mt-0.5">phitsamay_9492</p>
+          <h2 id="profile-user-name" class="font-display text-2xl sm:text-3xl font-bold studio-text-primary tracking-tight">Phitsamay</h2>
+          <p id="profile-user-handle" class="text-sm studio-text-muted font-mono mt-0.5">phitsamay_9492</p>
 
-          <!-- Settings Button -->
           <button id="profile-open-settings-btn" type="button"
-            class="mt-3 flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-xs font-semibold text-gray-300 hover:text-white transition-all cursor-pointer shadow-sm">
-            <i class="fa-solid fa-gear text-xs text-gray-400"></i>
+            class="studio-btn-secondary mt-3.5 h-9 px-3.5 rounded-xl text-xs font-semibold">
+            <i class="fa-solid fa-gear text-xs studio-text-muted"></i>
             <span>Settings</span>
           </button>
         </div>
       </div>
 
-      <!-- Navigation Tabs & Filter Bar (Matching Uiverse Image 2) -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 border-b border-white/5 text-xs">
-        <!-- Left: Status Tabs (Posts, In Review, Rejected, Favorites) -->
-        <div class="flex items-center gap-1 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0" id="profile-nav-tabs">
+      <!-- Profile Tabs & Filters -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 studio-border-b text-xs">
+        <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0" id="profile-nav-tabs">
           <button type="button" id="profile-tab-posts" data-profile-tab="posts"
-            class="profile-tab-btn active px-4 py-1.5 rounded-xl font-semibold bg-[#24252a] text-white border border-white/10 transition-all cursor-pointer shadow-sm flex items-center gap-1.5">
+            class="profile-tab-btn active px-3.5 py-2 rounded-xl font-semibold flex items-center gap-1.5">
             <i class="fa-solid fa-circle-check text-emerald-400 text-xs"></i>
             <span data-i18n="profile_tab_posts">Posts</span>
             <span id="profile-posts-count-badge"
-              class="px-1.5 py-0.5 rounded-full text-[10px] bg-emerald-500/20 text-emerald-300 font-mono hidden">0</span>
+              class="px-1.5 py-0.5 rounded-full text-[10px] bg-emerald-500/20 text-emerald-400 font-mono hidden">0</span>
           </button>
           <button type="button" id="profile-tab-in-review" data-profile-tab="in-review"
-            class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer flex items-center gap-1.5">
+            class="profile-tab-btn px-3.5 py-2 rounded-xl font-semibold flex items-center gap-1.5">
             <i class="fa-solid fa-hourglass-half text-amber-400 text-xs"></i>
             <span data-i18n="profile_tab_in_review">In Review</span>
             <span id="profile-in-review-count-badge"
-              class="px-1.5 py-0.5 rounded-full text-[10px] bg-amber-500/20 text-amber-300 font-mono hidden">0</span>
+              class="px-1.5 py-0.5 rounded-full text-[10px] bg-amber-500/20 text-amber-400 font-mono hidden">0</span>
           </button>
           <button type="button" id="profile-tab-rejected" data-profile-tab="rejected"
-            class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer flex items-center gap-1.5">
+            class="profile-tab-btn px-3.5 py-2 rounded-xl font-semibold flex items-center gap-1.5">
             <i class="fa-solid fa-triangle-exclamation text-red-400 text-xs"></i>
             <span data-i18n="profile_tab_rejected">Rejected</span>
             <span id="profile-rejected-count-badge"
-              class="px-1.5 py-0.5 rounded-full text-[10px] bg-red-500/20 text-red-300 font-mono hidden">0</span>
+              class="px-1.5 py-0.5 rounded-full text-[10px] bg-red-500/20 text-red-400 font-mono hidden">0</span>
           </button>
           <button type="button" id="profile-tab-favorites" data-profile-tab="favorites"
-            class="profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer flex items-center gap-1.5">
-            <i class="fa-solid fa-heart text-pink-500 text-xs"></i>
+            class="profile-tab-btn px-3.5 py-2 rounded-xl font-semibold flex items-center gap-1.5">
+            <i class="fa-solid fa-heart text-pink-400 text-xs"></i>
             <span data-i18n="profile_tab_favorites">Favorites</span>
             <span id="profile-favorites-count-badge"
-              class="px-1.5 py-0.5 rounded-full text-[10px] bg-pink-500/20 text-pink-300 font-mono hidden">0</span>
+              class="px-1.5 py-0.5 rounded-full text-[10px] bg-pink-500/20 text-pink-400 font-mono hidden">0</span>
           </button>
         </div>
 
-        <!-- Right: Filter Dropdowns (Sort, Any Theme) -->
         <div class="flex items-center gap-2 self-end sm:self-auto">
-          <div class="relative">
-            <button id="profile-filter-sort-btn" type="button"
-              class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-300 hover:text-white transition-all cursor-pointer">
-              <i class="fa-solid fa-arrow-down-short-wide text-[10px] text-gray-400"></i>
-              <span id="profile-filter-sort-text" data-i18n="profile_filter_newest">Newest</span>
-              <i class="fa-solid fa-chevron-down text-[10px] text-gray-400"></i>
-            </button>
-          </div>
-
-          <div class="relative">
-            <button id="profile-filter-theme-btn" type="button"
-              class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1c1d22] hover:bg-[#25262d] border border-white/10 text-gray-300 hover:text-white transition-all cursor-pointer">
-              <span data-i18n="profile_filter_any_theme">Any Theme</span>
-              <i class="fa-solid fa-chevron-down text-[10px] text-gray-400"></i>
-            </button>
-          </div>
+          <button id="profile-filter-sort-btn" type="button" class="studio-btn-secondary h-9 px-3 rounded-xl text-xs">
+            <i class="fa-solid fa-arrow-down-short-wide text-[10px] studio-text-muted"></i>
+            <span id="profile-filter-sort-text" data-i18n="profile_filter_newest">Newest</span>
+            <i class="fa-solid fa-chevron-down text-[10px] studio-text-muted"></i>
+          </button>
+          <button id="profile-filter-theme-btn" type="button" class="studio-btn-secondary h-9 px-3 rounded-xl text-xs">
+            <span data-i18n="profile_filter_any_theme">Any Theme</span>
+            <i class="fa-solid fa-chevron-down text-[10px] studio-text-muted"></i>
+          </button>
         </div>
       </div>
 
-      <!-- Tab Content Area -->
+      <!-- Profile Content -->
       <div class="mt-6 flex-1 flex flex-col">
-        <!-- Empty State Box (Matching Uiverse Image 2 precisely!) -->
         <div id="profile-empty-state"
-          class="border border-white/10 rounded-2xl bg-[#121316]/50 py-20 px-6 flex flex-col items-center justify-center text-center my-auto">
-          <!-- Broken square / scan icon -->
-          <div class="w-16 h-16 flex items-center justify-center text-gray-600 mb-4">
-            <svg class="w-12 h-12 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
+          class="studio-surface rounded-2xl py-20 px-6 flex flex-col items-center justify-center text-center my-auto">
+          <div class="w-14 h-14 rounded-2xl studio-elevated flex items-center justify-center studio-text-muted mb-4">
+            <svg class="w-8 h-8 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 8V5a1 1 0 0 1 1-1h3m8 0h3a1 1 0 0 1 1 1v3m0 8v3a1 1 0 0 1-1 1h-3m-8 0H5a1 1 0 0 1-1-1v-3" />
             </svg>
           </div>
-
-          <h3 id="profile-empty-title" class="text-base sm:text-lg font-bold text-white mb-2">No Public Posts Yet</h3>
-          <p id="profile-empty-desc" class="text-xs text-gray-400 max-w-md leading-relaxed mb-6">
-            Looks like you haven't made any posts yet. Don't worry, just click the 'Create' button and let the universe
-            know you're out there.
+          <h3 id="profile-empty-title" class="font-display text-lg font-bold studio-text-primary mb-2">No Public Posts Yet</h3>
+          <p id="profile-empty-desc" class="text-xs sm:text-sm studio-text-secondary max-w-md leading-relaxed mb-6">
+            Looks like you haven't made any posts yet. Don't worry, just click the 'Create' button and share your UI with the community.
           </p>
-
-          <!-- Purple Create Button -->
           <button id="profile-empty-create-btn" type="button"
-            class="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-xs shadow-md shadow-indigo-600/30 transition-all cursor-pointer">
+            class="studio-btn-primary h-10 px-6 rounded-xl text-xs">
             <i class="fa-solid fa-plus text-xs"></i>
             <span>Create</span>
           </button>
         </div>
 
-        <!-- Posts Grid (Shown when user has uploaded/saved components) -->
         <div id="profile-posts-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 hidden">
-          <!-- Populated dynamically -->
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===================== USER SETTINGS MODAL / PAGE (Uiverse Parity) ===================== -->
+  <!-- ===================== SETTINGS MODAL ===================== -->
   <div id="settings-modal"
-    class="fixed inset-0 z-[155] bg-[#0c0d0e] flex flex-col p-4 sm:p-8 overflow-y-auto hidden select-none" role="dialog"
-    aria-modal="true" aria-labelledby="settings-heading">
+    class="studio-modal-fullscreen fixed inset-0 z-[155] flex flex-col p-4 sm:p-8 overflow-y-auto hidden select-none"
+    role="dialog" aria-modal="true" aria-labelledby="settings-heading">
 
-    <!-- Top Bar: Go back button -->
     <div class="max-w-6xl w-full mx-auto mb-6 shrink-0">
       <button id="settings-close-btn" type="button" aria-label="Go back"
-        class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer border border-white/5 text-xs w-fit">
+        class="studio-btn-secondary h-9 px-3.5 rounded-xl text-xs w-fit">
         <i class="fa-solid fa-arrow-left text-xs"></i>
         <span>Go back</span>
       </button>
     </div>
 
-    <!-- 2-Column Settings Layout (Matching Uiverse Image 3) -->
     <div class="max-w-6xl w-full mx-auto flex flex-col md:flex-row gap-8 pb-16 flex-1">
-      <!-- Left Sidebar (Settings Navigation Menu) -->
       <aside class="w-full md:w-56 shrink-0 flex flex-col gap-1 text-xs">
-        <h3 id="settings-heading" class="text-xs uppercase tracking-wider font-bold text-gray-400 px-3.5 mb-2.5"
+        <h3 id="settings-heading" class="text-[11px] uppercase tracking-wider font-semibold studio-text-muted px-3 mb-2"
           data-i18n="settings_title">Settings</h3>
 
         <button type="button" id="settings-nav-profile" data-settings-tab="profile"
-          class="settings-nav-btn active w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 bg-[#1e1f24] text-white border border-white/10 transition-all cursor-pointer shadow-sm">
-          <i class="fa-regular fa-user text-xs text-indigo-400"></i>
+          class="settings-nav-btn active w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3">
+          <i class="fa-regular fa-user text-xs text-brand-400"></i>
           <span data-i18n="settings_profile">Profile</span>
         </button>
 
         <button type="button" id="settings-nav-email" data-settings-tab="email"
-          class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
-          <i class="fa-regular fa-envelope text-xs text-sky-400"></i>
+          class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3">
+          <i class="fa-regular fa-envelope text-xs text-cyan-400"></i>
           <span data-i18n="settings_email">Email</span>
         </button>
 
         <button type="button" id="settings-nav-account" data-settings-tab="account"
-          class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
+          class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3">
           <i class="fa-solid fa-gear text-xs text-emerald-400"></i>
           <span data-i18n="settings_account">Account</span>
         </button>
 
         <button type="button" id="settings-nav-stats" data-settings-tab="stats"
-          class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer">
+          class="settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3">
           <i class="fa-solid fa-chart-column text-xs text-purple-400"></i>
           <span data-i18n="settings_stats">Stats</span>
         </button>
       </aside>
 
-      <!-- Right Main Content Panel -->
       <main class="flex-1 max-w-3xl">
-        <!-- 1. Profile / Personal Information Panel (Matching Image 3) -->
+        <!-- 1. Profile -->
         <section id="settings-panel-profile" class="space-y-6">
           <div>
-            <h2 class="text-2xl font-bold text-white tracking-tight">Personal Information</h2>
-            <p class="text-xs text-gray-400 mt-1">This information will be displayed publicly on your profile.</p>
+            <h2 class="font-display text-2xl font-bold studio-text-primary tracking-tight">Personal Information</h2>
+            <p class="text-xs sm:text-sm studio-text-secondary mt-1">This information will be displayed publicly on your profile.</p>
           </div>
 
-          <!-- Profile Form -->
           <form id="settings-profile-form" class="space-y-4">
-            <!-- 2-Column Fields Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <!-- Name -->
               <div>
-                <label for="settings-name" class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
-                  <i class="fa-regular fa-user text-xs text-gray-400"></i>
-                  <span>Name</span>
+                <label for="settings-name" class="flex items-center gap-1.5 text-xs font-semibold studio-text-secondary mb-1.5">
+                  <i class="fa-regular fa-user text-xs studio-text-muted"></i><span>Name</span>
                 </label>
                 <input id="settings-name" type="text" placeholder="Your name" value="Phitsamay"
-                  class="w-full bg-[#141416] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
+                  class="studio-input w-full rounded-xl px-3.5 h-10 text-xs">
               </div>
 
-              <!-- Email -->
               <div>
-                <label for="settings-email"
-                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
-                  <i class="fa-regular fa-envelope text-xs text-gray-400"></i>
-                  <span>Email Address</span>
+                <label for="settings-email" class="flex items-center gap-1.5 text-xs font-semibold studio-text-secondary mb-1.5">
+                  <i class="fa-regular fa-envelope text-xs studio-text-muted"></i><span>Email Address</span>
                 </label>
                 <input id="settings-email" type="email" placeholder="Your email address"
-                  class="w-full bg-[#141416] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
+                  class="studio-input w-full rounded-xl px-3.5 h-10 text-xs">
               </div>
 
-              <!-- Location -->
               <div>
-                <label for="settings-location"
-                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
-                  <i class="fa-solid fa-location-dot text-xs text-gray-400"></i>
-                  <span>Location</span>
+                <label for="settings-location" class="flex items-center gap-1.5 text-xs font-semibold studio-text-secondary mb-1.5">
+                  <i class="fa-solid fa-location-dot text-xs studio-text-muted"></i><span>Location</span>
                 </label>
                 <input id="settings-location" type="text" placeholder="Your location"
-                  class="w-full bg-[#141416] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
+                  class="studio-input w-full rounded-xl px-3.5 h-10 text-xs">
               </div>
 
-              <!-- Company -->
               <div>
-                <label for="settings-company"
-                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
-                  <i class="fa-regular fa-building text-xs text-gray-400"></i>
-                  <span>Company</span>
+                <label for="settings-company" class="flex items-center gap-1.5 text-xs font-semibold studio-text-secondary mb-1.5">
+                  <i class="fa-regular fa-building text-xs studio-text-muted"></i><span>Company</span>
                 </label>
                 <input id="settings-company" type="text" placeholder="Your company"
-                  class="w-full bg-[#141416] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
+                  class="studio-input w-full rounded-xl px-3.5 h-10 text-xs">
               </div>
 
-              <!-- Twitter Handle -->
               <div>
-                <label for="settings-twitter"
-                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
-                  <i class="fa-brands fa-twitter text-xs text-gray-400"></i>
-                  <span>Twitter Handle</span>
+                <label for="settings-twitter" class="flex items-center gap-1.5 text-xs font-semibold studio-text-secondary mb-1.5">
+                  <i class="fa-brands fa-x-twitter text-xs studio-text-muted"></i><span>Twitter Handle</span>
                 </label>
-                <input id="settings-twitter" type="text" placeholder="Your Twitter handle (without @)"
-                  class="w-full bg-[#141416] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
+                <input id="settings-twitter" type="text" placeholder="Your handle (without @)"
+                  class="studio-input w-full rounded-xl px-3.5 h-10 text-xs">
               </div>
 
-              <!-- Website (Full Width) -->
               <div class="sm:col-span-2">
-                <label for="settings-website"
-                  class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
-                  <i class="fa-solid fa-link text-xs text-gray-400"></i>
-                  <span>Website</span>
+                <label for="settings-website" class="flex items-center gap-1.5 text-xs font-semibold studio-text-secondary mb-1.5">
+                  <i class="fa-solid fa-link text-xs studio-text-muted"></i><span>Website</span>
                 </label>
                 <input id="settings-website" type="url" placeholder="Your website URL"
-                  class="w-full bg-[#141416] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
+                  class="studio-input w-full rounded-xl px-3.5 h-10 text-xs">
               </div>
 
-              <!-- Bio (Full Width) -->
               <div class="sm:col-span-2">
-                <label for="settings-bio" class="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-1.5">
-                  <i class="fa-solid fa-pencil text-xs text-gray-400"></i>
-                  <span>Bio</span>
+                <label for="settings-bio" class="flex items-center gap-1.5 text-xs font-semibold studio-text-secondary mb-1.5">
+                  <i class="fa-solid fa-pencil text-xs studio-text-muted"></i><span>Bio</span>
                 </label>
                 <textarea id="settings-bio" rows="4" placeholder="Write a few sentences about yourself"
-                  class="w-full bg-[#141416] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner resize-y"></textarea>
+                  class="studio-input w-full rounded-xl px-3.5 py-2.5 text-xs resize-y"></textarea>
               </div>
             </div>
 
-            <!-- Action Buttons: Cancel on left, Save changes on right -->
-            <div class="flex items-center justify-end gap-3 pt-3">
+            <div class="flex items-center justify-end gap-3 pt-2">
               <button id="settings-cancel-btn" type="button" data-i18n="settings_cancel_btn"
-                class="px-5 py-2.5 rounded-xl border border-white/10 bg-[#18191d] hover:bg-[#202126] text-xs font-semibold text-gray-300 hover:text-white transition-all cursor-pointer">
-                Cancel
-              </button>
+                class="studio-btn-secondary h-10 px-5 rounded-xl text-xs font-semibold">Cancel</button>
               <button id="settings-save-btn" type="submit" data-i18n="settings_save_btn"
-                class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white shadow-md shadow-indigo-600/30 transition-all cursor-pointer">
-                Save changes
-              </button>
+                class="studio-btn-primary h-10 px-6 rounded-xl text-xs">Save changes</button>
             </div>
           </form>
 
-          <!-- Profile Completion Card (Matching Image 3) -->
-          <div class="p-5 rounded-2xl bg-[#141416] border border-white/10 space-y-2 mt-6">
-            <div class="flex items-center justify-between text-xs font-bold text-white">
+          <!-- Profile Completion -->
+          <div class="studio-surface p-5 rounded-2xl space-y-2.5 mt-6">
+            <div class="flex items-center justify-between text-xs font-semibold studio-text-primary">
               <span>Profile completion</span>
-              <span id="settings-completion-percent" class="text-indigo-400 font-mono">17%</span>
+              <span id="settings-completion-percent" class="text-brand-400 font-mono tabular-nums">17%</span>
             </div>
-            <!-- Progress Bar -->
-            <div class="w-full h-1.5 bg-[#25262d] rounded-full overflow-hidden">
-              <div id="settings-completion-bar" class="h-full bg-indigo-600 transition-all duration-500"
+            <div class="w-full h-1.5 studio-elevated rounded-full overflow-hidden border-0">
+              <div id="settings-completion-bar" class="h-full bg-brand-500 transition-all duration-500"
                 style="width: 17%"></div>
             </div>
-            <!-- Missing fields caption -->
-            <p id="settings-missing-fields" class="text-[11px] text-gray-400">
+            <p id="settings-missing-fields" class="text-[11px] studio-text-muted">
               Missing: Location, Company, Twitter, Blog, Bio
             </p>
           </div>
         </section>
 
-        <!-- 2. Email Panel -->
+        <!-- 2. Email -->
         <section id="settings-panel-email" class="space-y-6 hidden">
           <div>
-            <h2 class="text-2xl font-bold text-white tracking-tight">Email & Notifications</h2>
-            <p class="text-xs text-gray-400 mt-1">Manage your email address and notification subscriptions.</p>
+            <h2 class="font-display text-2xl font-bold studio-text-primary tracking-tight">Email &amp; Notifications</h2>
+            <p class="text-xs sm:text-sm studio-text-secondary mt-1">Manage your email address and notification subscriptions.</p>
           </div>
-          <form id="settings-email-form" class="p-5 rounded-2xl bg-[#141416] border border-white/10 space-y-4 text-xs">
+          <form id="settings-email-form" class="studio-surface p-5 rounded-2xl space-y-4 text-xs">
             <div>
-              <label for="settings-email-input" class="block text-gray-300 font-semibold mb-1.5">Primary Email</label>
+              <label for="settings-email-input" class="block studio-text-secondary font-semibold mb-1.5">Primary Email</label>
               <input id="settings-email-input" type="email" placeholder="you@example.com"
-                class="w-full bg-[#18191d] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white font-mono placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all shadow-inner">
+                class="studio-input w-full rounded-xl px-3.5 h-10 text-xs font-mono">
             </div>
-            <div class="pt-2 flex items-center justify-between border-t border-white/5">
+            <div class="pt-3 flex items-center justify-between studio-border-t">
               <div>
-                <div class="font-bold text-white">Comment Notifications</div>
-                <div class="text-[11px] text-gray-400">Receive alerts when someone comments on your elements</div>
+                <div class="font-semibold studio-text-primary">Comment Notifications</div>
+                <div class="text-[11px] studio-text-muted">Receive alerts when someone comments on your elements</div>
               </div>
-              <input id="settings-notifications-chk" type="checkbox" checked class="w-4 h-4 accent-indigo-600 rounded cursor-pointer">
+              <input id="settings-notifications-chk" type="checkbox" checked class="w-4 h-4 accent-brand-500 rounded cursor-pointer">
             </div>
             <div class="flex items-center justify-end pt-2">
               <button id="settings-email-save-btn" type="submit" data-i18n="settings_email_save_btn"
-                class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white shadow-md shadow-indigo-600/30 transition-all cursor-pointer">
-                Save Email
-              </button>
+                class="studio-btn-primary h-10 px-5 rounded-xl text-xs">Save Email</button>
             </div>
           </form>
         </section>
 
-        <!-- 3. Account Panel -->
+        <!-- 3. Account -->
         <section id="settings-panel-account" class="space-y-6 hidden">
           <div>
-            <h2 class="text-2xl font-bold text-white tracking-tight" data-i18n="settings_account">Account Settings</h2>
-            <p class="text-xs text-gray-400 mt-1">Manage security and account preferences.</p>
+            <h2 class="font-display text-2xl font-bold studio-text-primary tracking-tight" data-i18n="settings_account">Account Settings</h2>
+            <p class="text-xs sm:text-sm studio-text-secondary mt-1">Manage security and account preferences.</p>
           </div>
-          <div class="p-5 rounded-2xl bg-[#141416] border border-white/10 space-y-4 text-xs">
-            <div class="flex items-center justify-between pb-3 border-b border-white/5">
+          <div class="studio-surface p-5 rounded-2xl space-y-4 text-xs">
+            <div class="flex items-center justify-between pb-3 studio-border-b">
               <div>
-                <div class="font-bold text-white">Account ID</div>
-                <div id="settings-account-uid" class="text-[11px] text-gray-400 font-mono">LOCAL-GUEST</div>
+                <div class="font-semibold studio-text-primary">Account ID</div>
+                <div id="settings-account-uid" class="text-[11px] studio-text-muted font-mono">LOCAL-GUEST</div>
               </div>
               <span id="settings-account-status"
-                class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">Active</span>
+                class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 text-[10px] font-bold">Active</span>
             </div>
-            <div class="flex items-center justify-between pb-3 border-b border-white/5">
+            <div class="flex items-center justify-between pb-3 studio-border-b">
               <div>
-                <div class="font-bold text-white">Connected Email</div>
-                <div id="settings-account-email" class="text-[11px] text-gray-400 font-mono">Not set</div>
+                <div class="font-semibold studio-text-primary">Connected Email</div>
+                <div id="settings-account-email" class="text-[11px] studio-text-muted font-mono">Not set</div>
               </div>
             </div>
-            <div class="pt-2">
+            <div class="pt-1">
               <button id="settings-signout-btn" type="button"
-                class="px-4 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-xs font-semibold transition-all cursor-pointer flex items-center gap-2">
+                class="px-4 py-2.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/25 text-xs font-semibold transition-all cursor-pointer flex items-center gap-2">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span data-i18n="nav_signout">Sign out of all sessions</span>
               </button>
@@ -1697,28 +1469,28 @@
           </div>
         </section>
 
-        <!-- 4. Stats Panel -->
+        <!-- 4. Stats -->
         <section id="settings-panel-stats" class="space-y-6 hidden">
           <div>
-            <h2 class="text-2xl font-bold text-white tracking-tight" data-i18n="settings_stats">Account Statistics</h2>
-            <p class="text-xs text-gray-400 mt-1">Real-time summary of your activity and contributions.</p>
+            <h2 class="font-display text-2xl font-bold studio-text-primary tracking-tight" data-i18n="settings_stats">Account Statistics</h2>
+            <p class="text-xs sm:text-sm studio-text-secondary mt-1">Real-time summary of your activity and contributions.</p>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-            <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
-              <div id="settings-stat-views" class="text-xl font-bold text-white">0</div>
-              <div class="text-[11px] text-gray-400 mt-1" data-i18n="stats_total_views">Total Views</div>
+            <div class="studio-surface p-4 rounded-2xl">
+              <div id="settings-stat-views" class="font-mono text-xl font-bold studio-text-primary tabular-nums">0</div>
+              <div class="text-[11px] studio-text-muted mt-1" data-i18n="stats_total_views">Total Views</div>
             </div>
-            <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
-              <div id="settings-stat-likes" class="text-xl font-bold text-pink-400">0</div>
-              <div class="text-[11px] text-gray-400 mt-1" data-i18n="stats_favorites_saved">Favorites Saved</div>
+            <div class="studio-surface p-4 rounded-2xl">
+              <div id="settings-stat-likes" class="font-mono text-xl font-bold text-pink-400 tabular-nums">0</div>
+              <div class="text-[11px] studio-text-muted mt-1" data-i18n="stats_favorites_saved">Favorites Saved</div>
             </div>
-            <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
-              <div id="settings-stat-uploads" class="text-xl font-bold text-indigo-400">0</div>
-              <div class="text-[11px] text-gray-400 mt-1" data-i18n="stats_your_elements">Your Elements</div>
+            <div class="studio-surface p-4 rounded-2xl">
+              <div id="settings-stat-uploads" class="font-mono text-xl font-bold text-brand-400 tabular-nums">0</div>
+              <div class="text-[11px] studio-text-muted mt-1" data-i18n="stats_your_elements">Your Elements</div>
             </div>
-            <div class="p-4 rounded-2xl bg-[#141416] border border-white/10">
-              <div id="settings-stat-reputation" class="text-xl font-bold text-emerald-400">0</div>
-              <div class="text-[11px] text-gray-400 mt-1" data-i18n="stats_likes_received">Likes Received</div>
+            <div class="studio-surface p-4 rounded-2xl">
+              <div id="settings-stat-reputation" class="font-mono text-xl font-bold text-emerald-400 tabular-nums">0</div>
+              <div class="text-[11px] studio-text-muted mt-1" data-i18n="stats_likes_received">Likes Received</div>
             </div>
           </div>
         </section>
@@ -1728,47 +1500,39 @@
 
   <!-- ===================== EDIT COMPONENT MODAL ===================== -->
   <div id="edit-modal"
-    class="fixed inset-0 z-[210] flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md hidden"
+    class="fixed inset-0 z-[210] flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md hidden"
     role="dialog" aria-modal="true" aria-labelledby="edit-modal-title">
     <div id="edit-backdrop" class="absolute inset-0"></div>
     <div
-      class="relative w-full max-w-3xl max-h-[92vh] bg-surface-800 border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden z-10 animate-scale-in">
-      <!-- Edit Modal Header -->
-      <div class="flex items-center justify-between p-5 border-b border-white/10 bg-surface-700/40">
+      class="studio-dialog-card relative w-full max-w-3xl max-h-[92vh] rounded-2xl flex flex-col overflow-hidden z-10 animate-scale-in">
+      <div class="flex items-center justify-between p-5 studio-border-b">
         <div>
-          <h2 id="edit-modal-title" class="text-xl font-bold text-white flex items-center gap-2">
+          <h2 id="edit-modal-title" class="font-display text-lg font-bold studio-text-primary flex items-center gap-2">
             <i class="fa-solid fa-pen-to-square text-brand-400"></i>
             <span data-i18n="edit_title">Edit Component</span>
           </h2>
-          <p class="text-xs text-gray-400 mt-0.5" data-i18n="edit_subtitle">Modify your component details and code</p>
+          <p class="text-xs studio-text-secondary mt-0.5" data-i18n="edit_subtitle">Modify your component details and code</p>
         </div>
-        <button id="edit-close-btn" type="button" aria-label="Close edit modal"
-          class="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
-          <i class="fa-solid fa-xmark text-lg"></i>
+        <button id="edit-close-btn" type="button" aria-label="Close edit modal" class="studio-icon-btn">
+          <i class="fa-solid fa-xmark text-base"></i>
         </button>
       </div>
 
-      <!-- Edit Modal Body -->
       <form id="edit-form" class="flex-1 overflow-y-auto p-6 space-y-4">
         <input type="hidden" id="edit-component-id">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label for="edit-component-title"
-              class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5"
-              data-i18n="upload_component_title">
-              Component Title
-            </label>
+              class="block text-xs font-semibold studio-text-secondary uppercase tracking-wider mb-1.5"
+              data-i18n="upload_component_title">Component Title</label>
             <input id="edit-component-title" type="text" required
-              class="w-full bg-surface-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-brand-500">
+              class="studio-input w-full rounded-xl px-3.5 h-10 text-sm">
           </div>
           <div>
             <label for="edit-component-category"
-              class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5"
-              data-i18n="upload_category">
-              Category
-            </label>
-            <select id="edit-component-category"
-              class="w-full bg-surface-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-gray-200 focus:outline-none focus:border-brand-500">
+              class="block text-xs font-semibold studio-text-secondary uppercase tracking-wider mb-1.5"
+              data-i18n="upload_category">Category</label>
+            <select id="edit-component-category" class="studio-input w-full rounded-xl px-3.5 h-10 text-sm">
               <option value="Buttons">Buttons</option>
               <option value="Checkboxes">Checkboxes</option>
               <option value="Inputs">Inputs</option>
@@ -1787,32 +1551,25 @@
 
         <div>
           <label for="edit-component-html"
-            class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5" data-i18n="upload_html">
-            HTML Code
-          </label>
+            class="block text-xs font-semibold studio-text-secondary uppercase tracking-wider mb-1.5"
+            data-i18n="upload_html">HTML Code</label>
           <textarea id="edit-component-html" rows="5" required
-            class="w-full bg-surface-900 border border-white/10 rounded-xl p-3 text-xs font-mono text-emerald-300 focus:outline-none focus:border-brand-500 resize-y"></textarea>
+            class="studio-input w-full rounded-xl p-3 text-xs font-mono resize-y"></textarea>
         </div>
 
         <div>
           <label for="edit-component-css"
-            class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5" data-i18n="upload_css">
-            CSS Code
-          </label>
+            class="block text-xs font-semibold studio-text-secondary uppercase tracking-wider mb-1.5"
+            data-i18n="upload_css">CSS Code</label>
           <textarea id="edit-component-css" rows="5"
-            class="w-full bg-surface-900 border border-white/10 rounded-xl p-3 text-xs font-mono text-cyan-300 focus:outline-none focus:border-brand-500 resize-y"></textarea>
+            class="studio-input w-full rounded-xl p-3 text-xs font-mono resize-y"></textarea>
         </div>
 
-        <!-- Action Buttons -->
-        <div class="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
-          <button id="edit-cancel-btn" type="button"
-            class="px-4 py-2.5 rounded-xl bg-surface-700 hover:bg-surface-600 text-gray-300 hover:text-white text-sm font-medium transition-colors"
-            data-i18n="btn_cancel">
-            Cancel
-          </button>
-          <button id="edit-save-btn" type="submit"
-            class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 text-white text-sm font-semibold shadow-brand-glow transition-all flex items-center gap-2">
-            <i class="fa-solid fa-floppy-disk"></i>
+        <div class="flex items-center justify-end gap-3 pt-4 studio-border-t">
+          <button id="edit-cancel-btn" type="button" class="studio-btn-secondary h-10 px-4 rounded-xl text-sm"
+            data-i18n="btn_cancel">Cancel</button>
+          <button id="edit-save-btn" type="submit" class="studio-btn-primary h-10 px-5 rounded-xl text-sm">
+            <i class="fa-solid fa-floppy-disk text-xs"></i>
             <span data-i18n="btn_save">Save Changes</span>
           </button>
         </div>
@@ -1822,32 +1579,27 @@
 
   <!-- ===================== DELETE CONFIRMATION MODAL ===================== -->
   <div id="delete-modal"
-    class="fixed inset-0 z-[220] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden" role="dialog"
-    aria-modal="true" aria-labelledby="delete-modal-title">
+    class="fixed inset-0 z-[220] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden"
+    role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
     <div id="delete-backdrop" class="absolute inset-0"></div>
-    <div
-      class="relative w-full max-w-md bg-surface-800 border border-white/10 rounded-2xl shadow-2xl p-6 text-center z-10 animate-scale-in">
+    <div class="studio-dialog-card relative w-full max-w-md rounded-2xl p-6 text-center z-10 animate-scale-in">
       <div
-        class="w-14 h-14 rounded-2xl bg-red-500/15 border border-red-500/30 text-red-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+        class="w-12 h-12 rounded-2xl bg-red-500/15 border border-red-500/30 text-red-400 flex items-center justify-center mx-auto mb-4 text-xl">
         <i class="fa-solid fa-triangle-exclamation"></i>
       </div>
-      <h3 id="delete-modal-title" class="text-lg font-bold text-white mb-2" data-i18n="delete_confirm_title">Delete
-        Component</h3>
-      <p class="text-sm text-gray-400 mb-6" data-i18n="delete_confirm_msg">
+      <h3 id="delete-modal-title" class="font-display text-lg font-bold studio-text-primary mb-2"
+        data-i18n="delete_confirm_title">Delete Component</h3>
+      <p class="text-sm studio-text-secondary mb-6" data-i18n="delete_confirm_msg">
         Are you sure you want to delete this component? This action cannot be undone.
       </p>
       <input type="hidden" id="delete-component-id">
       <div class="flex items-center justify-center gap-3">
         <button id="delete-cancel-btn" type="button"
-          class="flex-1 px-4 py-2.5 rounded-xl bg-surface-700 hover:bg-surface-600 text-gray-300 font-medium text-sm transition-colors cursor-pointer"
-          data-i18n="btn_cancel">
-          Cancel
-        </button>
+          class="studio-btn-secondary flex-1 h-10 px-4 rounded-xl text-sm font-medium"
+          data-i18n="btn_cancel">Cancel</button>
         <button id="delete-confirm-btn" type="button"
-          class="flex-1 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-colors shadow-lg shadow-red-600/20 cursor-pointer"
-          data-i18n="delete_confirm_yes">
-          Yes, Delete
-        </button>
+          class="flex-1 h-10 px-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-colors cursor-pointer"
+          data-i18n="delete_confirm_yes">Yes, Delete</button>
       </div>
     </div>
   </div>
@@ -1856,19 +1608,15 @@
   <div id="toast-container" class="fixed bottom-6 right-6 z-[300] flex flex-col gap-2 pointer-events-none"></div>
 
   <!-- ===================== SCRIPTS ===================== -->
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-  <!-- i18n Multilingual Support -->
   <script src="i18n.js?v=1.2.9"></script>
-
-  <!-- Uiverse Manifest (Lightweight Metadata) -->
   <script src="data/manifest.js"></script>
   <script src="data/initial_components.js"></script>
-  <script src="app.js?v=1.2.9"></script>
+  <script src="app.js?v=2.0.0"></script>
 </body>
 
 </html>

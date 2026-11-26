@@ -1800,17 +1800,17 @@ function renderCategoryFilters() {
 
     return `
       <button
-        class="sidebar-cat-btn flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm transition-colors ${isActive ? 'bg-brand-500/15 text-brand-300 font-semibold border border-brand-500/20' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'}"
+        class="sidebar-cat-btn ${isActive ? 'is-active font-semibold' : ''} flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm transition-colors border border-transparent cursor-pointer"
         data-category="${cat}"
         aria-pressed="${isActive}"
       >
         <span class="flex items-center gap-3">
-          <i class="fa-solid ${categoryIcons[cat] || 'fa-tag'} w-5 text-center ${isActive ? 'text-brand-400' : ''}"></i>
+          <i class="fa-solid ${categoryIcons[cat] || 'fa-tag'} w-4 text-center ${isActive ? 'text-brand-400' : ''}"></i>
           ${cat}
         </span>
         <div class="flex items-center gap-2">
-          ${count > 0 ? `<span class="text-[11px] px-2 py-0.5 rounded-full font-medium ${isActive ? 'bg-brand-500/30 text-brand-200' : 'bg-white/5 text-gray-400'}">${count.toLocaleString()}</span>` : ''}
-          ${isActive ? '<div class="w-1.5 h-1.5 rounded-full bg-brand-400 shadow-[0_0_8px_rgba(167,139,250,0.8)]"></div>' : ''}
+          ${count > 0 ? `<span class="cat-chip-count">${count.toLocaleString()}</span>` : ''}
+          ${isActive ? '<div class="w-1.5 h-1.5 rounded-full bg-brand-400"></div>' : ''}
         </div>
       </button>
     `;
@@ -1855,7 +1855,7 @@ function renderCategoryFilters() {
         >
           <i class="fa-solid ${categoryIcons[cat] || 'fa-tag'} cat-chip-icon text-xs"></i>
           <span>${cat}</span>
-          ${count > 0 ? `<span class="text-[10px] px-1.5 py-0.2 rounded-full font-medium ${isActive ? 'bg-brand-500/40 text-brand-200' : 'bg-white/5 text-gray-400'}">${count.toLocaleString()}</span>` : ''}
+          ${count > 0 ? `<span class="cat-chip-count">${count.toLocaleString()}</span>` : ''}
         </button>
       `;
     }).join('');
@@ -2103,14 +2103,14 @@ function renderComponentCard(component, eagerLoad = false) {
         </button>
 
         <div class="card-overlay">
-          <button class="overlay-btn overlay-btn-primary card-open-btn" data-id="${component.id}">
-            <i class="fa-solid fa-code text-xs"></i> Get code
+          <button type="button" class="overlay-btn overlay-btn-primary card-open-btn" data-id="${component.id}" aria-label="Inspect and copy code for ${escapeAttr(component.title)}">
+            <i class="fa-solid fa-code text-xs" aria-hidden="true"></i> Get code
           </button>
-          <button class="overlay-btn overlay-btn-secondary card-copy-btn" data-id="${component.id}" title="Quick copy HTML & CSS">
-            <i class="fa-regular fa-copy"></i>
+          <button type="button" class="overlay-btn overlay-btn-secondary card-copy-btn" data-id="${component.id}" title="Quick copy HTML & CSS" aria-label="Quick copy HTML and CSS for ${escapeAttr(component.title)}">
+            <i class="fa-regular fa-copy" aria-hidden="true"></i>
           </button>
-          <button class="overlay-btn overlay-btn-secondary card-share-btn" data-id="${component.id}" title="Copy direct link">
-            <i class="fa-solid fa-share-nodes"></i>
+          <button type="button" class="overlay-btn overlay-btn-secondary card-share-btn" data-id="${component.id}" title="Copy direct link" aria-label="Copy share link for ${escapeAttr(component.title)}">
+            <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
           </button>
         </div>
         <iframe
@@ -2317,14 +2317,25 @@ function attachCardListeners() {
       if (id) window.openModal?.(id);
     });
 
-    // Keyboard accessibility
+    // Keyboard accessibility (ignore nested interactive buttons)
     card.addEventListener('keydown', (e) => {
+      if (e.target !== card) return;
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         const id = card.dataset.id;
         if (id) window.openModal?.(id);
       }
     });
+
+    // Get code button from card overlay
+    const openBtn = card.querySelector('.card-open-btn');
+    if (openBtn) {
+      openBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = openBtn.dataset.id || card.dataset.id;
+        if (id) window.openModal?.(id);
+      });
+    }
 
     // Quick copy HTML & CSS from card overlay
     const copyBtn = card.querySelector('.card-copy-btn');
@@ -3598,17 +3609,13 @@ function initEventHandlers() {
     }
   });
 
-  /* --- Sort Select & Framework Filter Pills (Uiverse Parity) --- */
+  /* --- Sort Select & Framework Filter Pills (Precision Studio Tokens) --- */
   function updateFrameworkPillsUI(activeFw) {
     const pills = document.querySelectorAll('#framework-pills .framework-pill');
     pills.forEach((p) => {
       const isActive = p.dataset.framework === activeFw;
       p.classList.toggle('active', isActive);
-      if (isActive) {
-        p.className = 'framework-pill active px-3 py-1.5 rounded-xl text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30 transition-all cursor-pointer';
-      } else {
-        p.className = 'framework-pill px-3 py-1.5 rounded-xl text-xs font-semibold text-gray-400 hover:text-white bg-surface-700/40 border border-white/5 transition-all cursor-pointer';
-      }
+      p.setAttribute('aria-pressed', String(isActive));
     });
   }
 
@@ -3617,11 +3624,7 @@ function initEventHandlers() {
     pills.forEach((p) => {
       const isActive = p.dataset.sort === activeSort;
       p.classList.toggle('active', isActive);
-      if (isActive) {
-        p.className = 'sort-pill active px-3 py-1.5 rounded-xl text-xs font-semibold bg-white/10 text-white border border-white/20 transition-all cursor-pointer';
-      } else {
-        p.className = 'sort-pill px-3 py-1.5 rounded-xl text-xs font-semibold text-gray-400 hover:text-white bg-surface-700/40 border border-white/5 transition-all cursor-pointer';
-      }
+      p.setAttribute('aria-pressed', String(isActive));
     });
     const sortSelect = document.getElementById('sort-select');
     if (sortSelect && sortSelect.value !== activeSort) {
@@ -3695,28 +3698,52 @@ function initEventHandlers() {
   document.getElementById('grid-view-btn')?.addEventListener('click', () => {
     STATE.isGridView = true;
     document.getElementById('main-content')?.classList.remove('list-view');
-    document.getElementById('grid-view-btn')?.classList.add('bg-brand-600', 'text-white');
-    document.getElementById('grid-view-btn')?.classList.remove('text-gray-400');
-    document.getElementById('list-view-btn')?.classList.remove('bg-brand-600', 'text-white');
-    document.getElementById('list-view-btn')?.classList.add('text-gray-400');
+    document.getElementById('grid-view-btn')?.classList.add('is-active');
+    document.getElementById('list-view-btn')?.classList.remove('is-active');
     const grid = document.getElementById('components-grid');
     if (grid) {
-      grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 transition-all duration-300';
+      grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 transition-all duration-200';
     }
   });
 
   document.getElementById('list-view-btn')?.addEventListener('click', () => {
     STATE.isGridView = false;
     document.getElementById('main-content')?.classList.add('list-view');
-    document.getElementById('list-view-btn')?.classList.add('bg-brand-600', 'text-white');
-    document.getElementById('list-view-btn')?.classList.remove('text-gray-400');
-    document.getElementById('grid-view-btn')?.classList.remove('bg-brand-600', 'text-white');
-    document.getElementById('grid-view-btn')?.classList.add('text-gray-400');
+    document.getElementById('list-view-btn')?.classList.add('is-active');
+    document.getElementById('grid-view-btn')?.classList.remove('is-active');
     const grid = document.getElementById('components-grid');
     if (grid) {
-      grid.className = 'grid grid-cols-1 gap-5 transition-all duration-300';
+      grid.className = 'grid grid-cols-1 gap-5 transition-all duration-200';
     }
   });
+
+  /* --- Site-Wide Precision Dark / Light Theme Toggle --- */
+  (function initSiteThemeToggle() {
+    const btn = document.getElementById('site-theme-toggle');
+    const icon = document.getElementById('site-theme-icon');
+    if (!btn) return;
+
+    function syncThemeIcon() {
+      const isLight = document.documentElement.classList.contains('light');
+      if (icon) {
+        icon.className = isLight ? 'fa-solid fa-moon text-xs' : 'fa-solid fa-sun text-xs';
+      }
+      btn.setAttribute('aria-pressed', String(isLight));
+      btn.title = isLight ? 'Switch to Dark Studio mode' : 'Switch to Light Studio mode';
+    }
+
+    syncThemeIcon();
+
+    btn.addEventListener('click', () => {
+      const nextIsLight = !document.documentElement.classList.contains('light');
+      document.documentElement.classList.toggle('light', nextIsLight);
+      document.documentElement.classList.toggle('dark', !nextIsLight);
+      try {
+        localStorage.setItem('uiforge_site_theme', nextIsLight ? 'light' : 'dark');
+      } catch (e) {}
+      syncThemeIcon();
+    });
+  })();
 
   /* --- Upload Modal & Studio --- */
   ['open-upload-btn', 'hero-upload-btn'].forEach((id) => {
@@ -5891,11 +5918,8 @@ ${css}
     STATE.activeProfileTab = tabName;
     document.querySelectorAll('.profile-tab-btn').forEach((btn) => {
       const isCurrent = btn.dataset.profileTab === tabName;
-      if (isCurrent) {
-        btn.className = 'profile-tab-btn active px-4 py-1.5 rounded-xl font-semibold bg-[#24252a] text-white border border-white/10 transition-all cursor-pointer shadow-sm flex items-center gap-1.5';
-      } else {
-        btn.className = 'profile-tab-btn px-4 py-1.5 rounded-xl font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer flex items-center gap-1.5';
-      }
+      btn.classList.toggle('active', isCurrent);
+      btn.setAttribute('aria-selected', String(isCurrent));
     });
 
     renderProfileContent(tabName);
@@ -6274,11 +6298,8 @@ ${css}
   function switchSettingsTab(tabName) {
     document.querySelectorAll('.settings-nav-btn').forEach((btn) => {
       const isCurrent = btn.dataset.settingsTab === tabName;
-      if (isCurrent) {
-        btn.className = 'settings-nav-btn active w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 bg-[#1e1f24] text-white border border-white/10 transition-all cursor-pointer shadow-sm';
-      } else {
-        btn.className = 'settings-nav-btn w-full text-left px-3.5 py-2.5 rounded-xl font-semibold flex items-center gap-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer';
-      }
+      btn.classList.toggle('active', isCurrent);
+      btn.setAttribute('aria-selected', String(isCurrent));
     });
 
     ['profile', 'email', 'account', 'stats'].forEach((tab) => {
