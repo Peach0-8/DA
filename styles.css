@@ -691,12 +691,12 @@ html.light .framework-pill.active {
 }
 
 .card-preview[data-canvas-theme="light"] {
-  background-color: #ffffff !important;
-  background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px) !important;
+  background-color: #f4f6f9 !important;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1px) !important;
 }
 
 .card-preview[data-canvas-theme="light"] iframe {
-  background-color: #ffffff !important;
+  background-color: #f4f6f9 !important;
 }
 
 .card-preview[data-canvas-theme="pitch"] {

@@ -499,6 +499,63 @@ async function loadCategoryData(categoryName) {
   return _categoryLoadPromises[categoryName];
 }
 
+function buildLoadedPool() {
+  const pool = [..._localComponents];
+  if (window.UIVERSE_DATA) {
+    const existingIds = new Set(pool.map((c) => c.id));
+    Object.values(window.UIVERSE_DATA).forEach((catItems) => {
+      if (!Array.isArray(catItems)) return;
+      catItems.forEach((c) => {
+        if (c && !existingIds.has(c.id)) {
+          existingIds.add(c.id);
+          pool.push(c);
+        }
+      });
+    });
+  }
+  return pool;
+}
+
+/**
+ * Progressively loads category data files until at least `neededCount` items
+ * are available in the pool (instead of blocking Page 2 behind all 24 MB).
+ */
+async function ensurePoolHasAtLeast(neededCount) {
+  let pool = buildLoadedPool();
+  if (pool.length >= neededCount || _allCategoriesLoaded || !window.UIVERSE_MANIFEST) {
+    return pool;
+  }
+
+  // Prioritize medium-sized popular categories first so Page 2+ loads in <500ms
+  const preferredOrder = [
+    'Toggles', 'Checkboxes', 'Inputs', 'Forms', 'Radio Buttons',
+    'Patterns', 'Tooltips', 'Notifications', 'Loaders', 'Buttons', 'Cards'
+  ];
+  const allCats = Object.keys(window.UIVERSE_MANIFEST.categories);
+  const orderedCats = [
+    ...preferredOrder.filter((c) => allCats.includes(c)),
+    ...allCats.filter((c) => !preferredOrder.includes(c)),
+  ];
+
+  // Kick off background loading of all remaining categories without blocking on all of them
+  const pendingPromises = [];
+  for (const cat of orderedCats) {
+    if (window.UIVERSE_DATA && window.UIVERSE_DATA[cat]) continue;
+    pendingPromises.push(loadCategoryData(cat));
+    // Await one batch at a time until we satisfy `neededCount`
+    await loadCategoryData(cat);
+    pool = buildLoadedPool();
+    if (pool.length >= neededCount) {
+      // Continue loading remaining categories asynchronously in background
+      loadAllCategories();
+      return pool;
+    }
+  }
+
+  _allCategoriesLoaded = true;
+  return buildLoadedPool();
+}
+
 async function loadAllCategories() {
   if (_allCategoriesLoaded) return;
   if (_allCategoriesPromise) return _allCategoriesPromise;
@@ -507,7 +564,7 @@ async function loadAllCategories() {
   const categories = Object.keys(window.UIVERSE_MANIFEST.categories);
   _allCategoriesPromise = Promise.all(categories.map((cat) => loadCategoryData(cat))).then(() => {
     _allCategoriesLoaded = true;
-    if (STATE.activeCategory === 'All') {
+    if (STATE.activeCategory === 'All' && !STATE.searchQuery && (STATE.framework || 'all') === 'all') {
       const fullCount = window.UIVERSE_MANIFEST.total + _localComponents.length;
       STATE.total = fullCount;
       const countEl = document.getElementById('count-number');
@@ -624,37 +681,15 @@ async function fetchComponents({
       items = _localComponents.filter((c) => c.category === category);
     }
   } else {
-    // 'All' category: start background loading of all categories
-    loadAllCategories();
-
-    let pool = [..._localComponents];
-    if (window.UIVERSE_DATA) {
-      const existingIds = new Set(pool.map((c) => c.id));
-      Object.values(window.UIVERSE_DATA).forEach((catItems) => {
-        catItems.forEach((c) => {
-          if (!existingIds.has(c.id)) {
-            existingIds.add(c.id);
-            pool.push(c);
-          }
-        });
-      });
-    }
+    // 'All' category: load progressively so Page 2+ never stalls waiting for all 24 MB
+    let pool = buildLoadedPool();
 
     const needed = page * pageSize;
     if (pool.length < needed && !_allCategoriesLoaded) {
-      await loadAllCategories();
-      pool = [..._localComponents];
-      if (window.UIVERSE_DATA) {
-        const existingIds = new Set(pool.map((c) => c.id));
-        Object.values(window.UIVERSE_DATA).forEach((catItems) => {
-          catItems.forEach((c) => {
-            if (!existingIds.has(c.id)) {
-              existingIds.add(c.id);
-              pool.push(c);
-            }
-          });
-        });
-      }
+      pool = await ensurePoolHasAtLeast(needed);
+    } else if (!_allCategoriesLoaded) {
+      // Warm up next categories gently in background after Page 1
+      setTimeout(() => loadAllCategories(), 300);
     }
 
     items = pool;
@@ -721,8 +756,8 @@ async function fetchComponents({
   else items.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
 
   let total = items.length;
-  if (category === 'All' && !search && window.UIVERSE_MANIFEST) {
-    total = window.UIVERSE_MANIFEST.total + (typeof getUserUploads === 'function' ? getUserUploads().length : 0);
+  if (category === 'All' && !search && currentFw === 'all' && !_allCategoriesLoaded && window.UIVERSE_MANIFEST) {
+    total = Math.max(items.length, window.UIVERSE_MANIFEST.total + (typeof getUserUploads === 'function' ? getUserUploads().length : 0));
   }
 
   applyStoredCodeEdits(items);
@@ -792,9 +827,9 @@ function evaluateComponentSecurity(html = '', css = '') {
     checks[0].passed = false;
     reasons.push(typeof t === 'function' ? t('sec_err_script_tag') : 'Forbidden <script> tag detected. UI components must be pure HTML & CSS.');
   }
-  if (/javascript\s*:/i.test(h) || /javascript\s*:/i.test(c)) {
+  if (/(?:javascript|vbscript)\s*:|data\s*:\s*text\/html/i.test(h) || /(?:javascript|vbscript)\s*:|expression\s*\(|<\/style/i.test(c)) {
     checks[0].passed = false;
-    reasons.push(typeof t === 'function' ? t('sec_err_javascript_uri') : 'Forbidden "javascript:" URI detected.');
+    reasons.push(typeof t === 'function' ? t('sec_err_javascript_uri') : 'Forbidden "javascript:" URI or unsafe breakout detected.');
   }
   if (/\b(eval\s*\(|Function\s*\(|document\.cookie|window\.localStorage|sessionStorage)\b/i.test(h)) {
     checks[0].passed = false;
@@ -802,7 +837,7 @@ function evaluateComponentSecurity(html = '', css = '') {
   }
 
   // 2. No Event Handlers
-  const eventHandlerRegex = /\bon[a-z]{3,20}\s*=/i;
+  const eventHandlerRegex = /\bon[a-z]{2,24}\s*=/i;
   if (eventHandlerRegex.test(h)) {
     checks[1].passed = false;
     const match = h.match(eventHandlerRegex);
@@ -822,9 +857,9 @@ function evaluateComponentSecurity(html = '', css = '') {
   }
 
   // 4. No Dangerous Embeds
-  if (/<(iframe|object|embed|applet)\b/i.test(h)) {
+  if (/<(iframe|object|embed|applet|base)\b/i.test(h)) {
     checks[3].passed = false;
-    reasons.push(typeof t === 'function' ? t('sec_err_embed_tags') : 'External embedded frames (<iframe, <object, <embed) are prohibited.');
+    reasons.push(typeof t === 'function' ? t('sec_err_embed_tags') : 'External embedded frames (<iframe, <object, <embed, <base) are prohibited.');
   }
   if (/<meta\b[^>]*http-equiv\s*=\s*["']?refresh["']?/i.test(h)) {
     checks[3].passed = false;
@@ -1171,14 +1206,7 @@ async function incrementViews(id) {
     }
   }
 
-  const rtdb = getRealtimeDB();
-  if (rtdb) {
-    try {
-      rtdb.ref('components/' + id + '/views').transaction((val) => (val || 0) + 1);
-    } catch (e) {}
-  }
-
-  // Persistent storage in localStorage
+  // Persistent storage in localStorage (update synchronously before async network sync)
   const map = getStoredViewsMap();
   const comp = typeof findComponentAnywhere === 'function' ? findComponentAnywhere(id) : null;
   const current = typeof map[id] === 'number' ? map[id] : (comp?.views || 0);
@@ -1198,6 +1226,22 @@ async function incrementViews(id) {
   if (uIdx !== -1) {
     uploads[uIdx].views = next;
     saveStoredUserUploads(uploads);
+  }
+
+  const rtdb = getRealtimeDB();
+  const isFirebaseAuthed =
+    typeof firebase !== 'undefined' &&
+    typeof firebase.auth === 'function' &&
+    !!firebase.auth().currentUser;
+
+  if (rtdb && isFirebaseAuthed && window._rtdbViewsWriteDenied !== true) {
+    try {
+      await rtdb.ref('components/' + id + '/views').transaction((val) => (val || 0) + 1);
+    } catch (e) {
+      if (e && String(e.message || e).toLowerCase().includes('permission')) {
+        window._rtdbViewsWriteDenied = true;
+      }
+    }
   }
 }
 
@@ -1289,9 +1333,17 @@ function showToast(message, type = 'info', duration = 3500) {
     warning: 'fa-triangle-exclamation',
   };
   const container = document.getElementById('toast-container');
+  if (!container) return;
+  const safeType = icons[type] ? type : 'info';
   const toast = document.createElement('div');
-  toast.className = `toast toast-${type}`;
-  toast.innerHTML = `<i class="fa-solid ${icons[type] || icons.info}"></i><span>${message}</span>`;
+  toast.className = `toast toast-${safeType}`;
+  const iconEl = document.createElement('i');
+  iconEl.className = `fa-solid ${icons[safeType]}`;
+  iconEl.setAttribute('aria-hidden', 'true');
+  const textEl = document.createElement('span');
+  textEl.textContent = String(message ?? '');
+  toast.appendChild(iconEl);
+  toast.appendChild(textEl);
   container.appendChild(toast);
 
   const dismiss = () => {
@@ -1385,13 +1437,16 @@ function isHexColorDark(hex) {
  * buildPreviewSrcDoc(html, css)
  * Builds a full HTML document for use in an <iframe> srcdoc attribute.
  */
-function buildPreviewSrcDoc(html, css, category = '', isModal = false, bgColor = '#212121') {
+function buildPreviewSrcDoc(html, css, category = '', isModal = false, bgColor = '#18181d') {
+  const safeHexBg = (typeof bgColor === 'string' && /^#[0-9a-fA-F]{3,8}$/.test(bgColor.trim()))
+    ? bgColor.trim()
+    : '#18181d';
   let isLight = false;
-  if (bgColor && bgColor !== 'transparent') {
-    isLight = !isHexColorDark(bgColor);
+  if (safeHexBg && safeHexBg !== 'transparent') {
+    isLight = !isHexColorDark(safeHexBg);
   }
   const rootClass = isLight ? 'light' : 'dark';
-  const initialBg = isModal ? bgColor : (isLight ? '#ffffff' : '#212121');
+  const initialBg = safeHexBg || (isLight ? '#f4f6f9' : '#18181d');
   const initialColor = isLight ? '#0f172a' : '#f4f4f5';
 
   const isTailwind = !css || !css.trim() || /\b(flex|grid|bg-|text-|p-|m-|rounded-|border-)\b/.test(html);
@@ -1414,11 +1469,19 @@ function buildPreviewSrcDoc(html, css, category = '', isModal = false, bgColor =
 
   const isPattern = category === 'Patterns';
 
-  // Sanitize html for preview to prevent unclosed script tags from breaking the iframe runtime
-  const safeHtml = (html || '')
+  // Sanitize HTML & CSS strictly for preview sandbox defense-in-depth
+  const safeHtml = String(html || '')
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-    .replace(/<script\b[^>]*>/gi, '')
-    .replace(/<\/script>/gi, '');
+    .replace(/<\/?script\b[^>]*>/gi, '')
+    .replace(/<\/?(?:iframe|object|embed|applet|base|meta)\b[^>]*>/gi, '')
+    .replace(/\s+on[a-z]{2,24}\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '')
+    .replace(/(href|src|action|formaction|xlink:href)\s*=\s*(["']?)\s*(?:javascript|vbscript|data\s*:\s*text\/html)[^"'\s>]*/gi, '$1=$2#');
+
+  const safeCss = String(css || '')
+    .replace(/<\/style/gi, '/* blocked */')
+    .replace(/@import\b[^;]*;?/gi, '')
+    .replace(/(?:javascript|vbscript)\s*:/gi, '')
+    .replace(/expression\s*\(/gi, 'blocked(');
 
   return `<!DOCTYPE html>
 <html class="${rootClass}">
@@ -1479,7 +1542,7 @@ ${tailwindHead}
     ${isPattern ? 'width: 100%; height: 100%;' : ''}
   }
 
-  ${css}
+  ${safeCss}
 </style>
 </head>
 <body class="${rootClass}">
@@ -1798,15 +1861,17 @@ function renderCategoryFilters() {
     const isActive = cat === STATE.activeCategory;
     const count = getPublicCategoryCount(cat);
 
+    const safeCatAttr = escapeAttr(cat);
+    const safeCatHtml = escapeHtml(cat);
     return `
       <button
         class="sidebar-cat-btn ${isActive ? 'is-active font-semibold' : ''} flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm transition-colors border border-transparent cursor-pointer"
-        data-category="${cat}"
+        data-category="${safeCatAttr}"
         aria-pressed="${isActive}"
       >
         <span class="flex items-center gap-3">
           <i class="fa-solid ${categoryIcons[cat] || 'fa-tag'} w-4 text-center ${isActive ? 'text-brand-400' : ''}"></i>
-          ${cat}
+          ${safeCatHtml}
         </span>
         <div class="flex items-center gap-2">
           ${count > 0 ? `<span class="cat-chip-count">${count.toLocaleString()}</span>` : ''}
@@ -1846,15 +1911,17 @@ function renderCategoryFilters() {
       const isActive = cat === STATE.activeCategory;
       const count = getPublicCategoryCount(cat);
 
+      const safeCatAttr = escapeAttr(cat);
+      const safeCatHtml = escapeHtml(cat);
       return `
         <button
           type="button"
           class="horizontal-cat-chip ${isActive ? 'active' : ''}"
-          data-category="${cat}"
+          data-category="${safeCatAttr}"
           aria-pressed="${isActive}"
         >
           <i class="fa-solid ${categoryIcons[cat] || 'fa-tag'} cat-chip-icon text-xs"></i>
-          <span>${cat}</span>
+          <span>${safeCatHtml}</span>
           ${count > 0 ? `<span class="cat-chip-count">${count.toLocaleString()}</span>` : ''}
         </button>
       `;
@@ -2073,7 +2140,10 @@ function renderComponentCard(component, eagerLoad = false) {
   component.likes = currentLikes;
   component.liked = isLiked;
   const likeCount = formatNumber(currentLikes);
-  const previewDoc = buildPreviewSrcDoc(component.html, component.css, component.category, false);
+  const isSiteLight = document.documentElement.classList.contains('light');
+  const initialCanvasTheme = isSiteLight ? 'light' : 'dark';
+  const initialStageBg = isSiteLight ? '#f4f6f9' : '#18181d';
+  const previewDoc = buildPreviewSrcDoc(component.html, component.css, component.category, false, initialStageBg);
   const scaleClass = '';
   const escapedPreview = escapeAttr(previewDoc);
 
@@ -2081,41 +2151,44 @@ function renderComponentCard(component, eagerLoad = false) {
   const fwName = isTailwind ? 'Tailwind' : 'CSS';
   const fwClass = isTailwind ? 'tailwind' : 'css';
 
+  const safeIdAttr = escapeAttr(String(component.id || ''));
+  const safeTitleAttr = escapeAttr(String(component.title || 'Component'));
+
   return `
     <article
       class="component-card"
-      data-id="${component.id}"
+      data-id="${safeIdAttr}"
       tabindex="0"
       role="button"
-      aria-label="View ${component.title} component"
+      aria-label="View ${safeTitleAttr} component"
     >
       <!-- Preview -->
-      <div class="card-preview" data-canvas-theme="dark">
+      <div class="card-preview" data-canvas-theme="${initialCanvasTheme}">
         <!-- Canvas Theme Switcher (Uiverse style) -->
         <button
           type="button"
           class="card-theme-toggle"
-          data-id="${component.id}"
-          title="Toggle preview theme (Dark / Light / Pitch Black)"
+          data-id="${safeIdAttr}"
+          title="Toggle preview theme (Dark / Light)"
           aria-label="Toggle card canvas theme"
         >
           <i class="fa-solid fa-circle-half-stroke text-[11px]"></i>
         </button>
 
         <div class="card-overlay">
-          <button type="button" class="overlay-btn overlay-btn-primary card-open-btn" data-id="${component.id}" aria-label="Inspect and copy code for ${escapeAttr(component.title)}">
+          <button type="button" class="overlay-btn overlay-btn-primary card-open-btn" data-id="${safeIdAttr}" aria-label="Inspect and copy code for ${safeTitleAttr}">
             <i class="fa-solid fa-code text-xs" aria-hidden="true"></i> Get code
           </button>
-          <button type="button" class="overlay-btn overlay-btn-secondary card-copy-btn" data-id="${component.id}" title="Quick copy HTML & CSS" aria-label="Quick copy HTML and CSS for ${escapeAttr(component.title)}">
+          <button type="button" class="overlay-btn overlay-btn-secondary card-copy-btn" data-id="${safeIdAttr}" title="Quick copy HTML & CSS" aria-label="Quick copy HTML and CSS for ${safeTitleAttr}">
             <i class="fa-regular fa-copy" aria-hidden="true"></i>
           </button>
-          <button type="button" class="overlay-btn overlay-btn-secondary card-share-btn" data-id="${component.id}" title="Copy direct link" aria-label="Copy share link for ${escapeAttr(component.title)}">
+          <button type="button" class="overlay-btn overlay-btn-secondary card-share-btn" data-id="${safeIdAttr}" title="Copy direct link" aria-label="Copy share link for ${safeTitleAttr}">
             <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
           </button>
         </div>
         <iframe
           srcdoc="${escapedPreview}"
-          title="${escapeAttr(component.title)} preview"
+          title="${safeTitleAttr} preview"
           loading="lazy"
           sandbox="allow-scripts"
           class="card-iframe ${scaleClass} bg-transparent"
@@ -2125,11 +2198,12 @@ function renderComponentCard(component, eagerLoad = false) {
       <!-- Body -->
       <div class="card-body">
         <div class="card-meta">
-          <span class="card-title" title="${escapeAttr(component.title)}">${escapeHtml(component.title)}</span>
+          <span class="card-title" title="${safeTitleAttr}">${escapeHtml(component.title)}</span>
           <button
+            type="button"
             class="like-btn ${isLiked ? 'liked' : ''}"
-            data-id="${component.id}"
-            aria-label="Like ${escapeAttr(component.title)}"
+            data-id="${safeIdAttr}"
+            aria-label="Like ${safeTitleAttr}"
             aria-pressed="${isLiked}"
           >
             <i class="${isLiked ? 'fa-solid' : 'fa-regular'} fa-heart like-icon"></i>
@@ -2231,13 +2305,13 @@ function renderGrid(components, append = false) {
       });
     } else {
       emptyState.innerHTML = `
-        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-surface-700/50 flex items-center justify-center">
-          <i class="fa-solid fa-wind text-3xl text-gray-600"></i>
+        <div class="w-16 h-16 mx-auto mb-5 rounded-2xl studio-elevated flex items-center justify-center">
+          <i class="fa-solid fa-magnifying-glass text-xl studio-text-muted" aria-hidden="true"></i>
         </div>
-        <h3 class="text-xl font-semibold text-gray-400 mb-2" data-i18n="empty_title">No components found</h3>
-        <p class="text-gray-600 mb-6" data-i18n="empty_hint">Try a different search term or category.</p>
+        <h3 class="font-display text-lg font-bold studio-text-primary mb-1.5" data-i18n="empty_title">No components found</h3>
+        <p class="text-sm studio-text-secondary mb-6" data-i18n="empty_hint">Try a different search term or category.</p>
         <button id="clear-search-btn" type="button"
-          class="px-5 py-2.5 rounded-xl bg-brand-600/20 border border-brand-500/30 text-brand-400 hover:bg-brand-600/30 transition-all text-sm font-medium cursor-pointer"
+          class="studio-btn-primary h-10 px-5 rounded-xl text-sm"
           data-i18n="main_clear_search">
           Clear search
         </button>
@@ -2251,8 +2325,8 @@ function renderGrid(components, append = false) {
           const el = document.getElementById(id);
           if (el) el.value = '';
         });
-        updateFrameworkPillsUI('all');
-        updateSortPillsUI('newest');
+        if (typeof window.updateFrameworkPillsUI === 'function') window.updateFrameworkPillsUI('all');
+        if (typeof window.updateSortPillsUI === 'function') window.updateSortPillsUI('newest');
         renderCategoryFilters();
         loadComponents(true);
       });
@@ -2327,16 +2401,6 @@ function attachCardListeners() {
       }
     });
 
-    // Get code button from card overlay
-    const openBtn = card.querySelector('.card-open-btn');
-    if (openBtn) {
-      openBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const id = openBtn.dataset.id || card.dataset.id;
-        if (id) window.openModal?.(id);
-      });
-    }
-
     // Quick copy HTML & CSS from card overlay
     const copyBtn = card.querySelector('.card-copy-btn');
     if (copyBtn) {
@@ -2376,7 +2440,7 @@ function attachCardListeners() {
         // สลับ 2 โหมด: กลางคืน (dark) <-> กลางวัน (light)
         const isCurrentlyDark = currentTheme !== 'light';
         const nextTheme = isCurrentlyDark ? 'light' : 'dark';
-        const nextBg = isCurrentlyDark ? '#ffffff' : '#212121';
+        const nextBg = isCurrentlyDark ? '#f4f6f9' : '#18181d';
 
         previewEl.dataset.canvasTheme = nextTheme;
         previewEl.style.backgroundColor = nextBg;
@@ -2388,7 +2452,7 @@ function attachCardListeners() {
 
         if (iframe && iframe.contentWindow) {
           try {
-            iframe.contentWindow.postMessage({ type: 'TOGGLE_THEME', theme: nextTheme }, '*');
+            iframe.contentWindow.postMessage({ type: 'TOGGLE_THEME', theme: nextTheme, isLight: nextTheme === 'light', bg: nextBg }, '*');
           } catch (err) { }
         }
         try {
@@ -2854,14 +2918,15 @@ function updateTechSelectorUI(tech) {
 function renderCategoryDialogGrid() {
   const grid = document.getElementById('category-dialog-grid');
   if (!grid) return;
+  const baseCls = 'category-choice-card flex flex-col items-center justify-center p-3.5 sm:p-4 rounded-2xl studio-elevated transition-all cursor-pointer select-none group';
   grid.innerHTML = UIVERSE_CATEGORIES.map(cat => {
     const isSelected = cat.id === UPLOAD_STUDIO.pendingCategory;
     return `
-      <div class="category-choice-card flex flex-col items-center justify-center p-3.5 sm:p-4 rounded-2xl bg-[#1e1f24] hover:bg-[#25262e] border transition-all cursor-pointer select-none group ${isSelected ? 'border-2 border-indigo-500 bg-[#252433] shadow-md shadow-indigo-500/20' : 'border-white/10 hover:border-white/25'}" data-category="${cat.id}">
+      <div class="${baseCls} ${isSelected ? 'ring-2 ring-brand-500 border-brand-500' : 'hover:border-brand-500/40'}" data-category="${escapeAttr(cat.id)}">
         <div class="mb-2 group-hover:scale-110 transition-transform flex items-center justify-center">
           ${cat.iconSvg}
         </div>
-        <span class="text-xs font-semibold text-gray-200 group-hover:text-white text-center">${cat.name}</span>
+        <span class="text-xs font-semibold studio-text-primary text-center">${escapeHtml(cat.name)}</span>
       </div>
     `;
   }).join('');
@@ -2872,10 +2937,9 @@ function renderCategoryDialogGrid() {
       UPLOAD_STUDIO.pendingCategory = catId;
       grid.querySelectorAll('.category-choice-card').forEach(c => {
         const sel = c.dataset.category === catId;
-        c.className = `category-choice-card flex flex-col items-center justify-center p-3.5 sm:p-4 rounded-2xl bg-[#1e1f24] hover:bg-[#25262e] border transition-all cursor-pointer select-none group ${sel ? 'border-2 border-indigo-500 bg-[#252433] shadow-md shadow-indigo-500/20' : 'border-white/10 hover:border-white/25'}`;
+        c.className = `${baseCls} ${sel ? 'ring-2 ring-brand-500 border-brand-500' : 'hover:border-brand-500/40'}`;
       });
     });
-    // Double click to immediately apply and close
     card.addEventListener('dblclick', () => {
       applySelectedCategory(card.dataset.category, UPLOAD_STUDIO.pendingTech);
     });
@@ -2889,12 +2953,12 @@ function renderUploadTabs() {
   if (UPLOAD_STUDIO.tech === 'tailwind') {
     container.innerHTML = `
       <button type="button"
-        class="tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-[#27272a] text-white shadow-sm cursor-pointer"
+        class="tab-btn active px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
         data-upload-tab="html">
         <i class="fa-brands fa-html5 text-[#e34f26] text-sm"></i>
         <span>HTML</span>
-        <span class="text-gray-400 font-normal">+</span>
-        <i class="fa-solid fa-wind text-sky-400 text-sm"></i>
+        <span class="studio-text-muted font-normal">+</span>
+        <i class="fa-solid fa-wind text-cyan-400 text-sm"></i>
         <span>TailwindCSS</span>
       </button>
     `;
@@ -2904,15 +2968,15 @@ function renderUploadTabs() {
     const isCss = UPLOAD_STUDIO.activeTab === 'css';
     container.innerHTML = `
       <button type="button"
-        class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${isHtml ? 'active bg-[#27272a] text-white shadow-sm' : 'text-gray-400 hover:text-white'}"
+        class="tab-btn px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5 cursor-pointer ${isHtml ? 'active' : ''}"
         data-upload-tab="html">
         <i class="fa-brands fa-html5 text-[#e34f26] text-sm"></i>
         <span>HTML</span>
       </button>
       <button type="button"
-        class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${isCss ? 'active bg-[#27272a] text-white shadow-sm' : 'text-gray-400 hover:text-white'}"
+        class="tab-btn px-3.5 py-1.5 rounded-[9px] text-xs font-semibold flex items-center gap-1.5 cursor-pointer ${isCss ? 'active' : ''}"
         data-upload-tab="css">
-        <i class="fa-brands fa-css3-alt text-[#1572b6] text-sm"></i>
+        <i class="fa-brands fa-css3-alt text-[#38bdf8] text-sm"></i>
         <span>CSS</span>
       </button>
     `;
@@ -3424,6 +3488,7 @@ async function loadComponents(reset = false) {
     if (endMsg) endMsg.classList.add('hidden');
   }
 
+  let loadedCount = 0;
   try {
     const { data, total } = await fetchComponents({
       category: STATE.activeCategory,
@@ -3434,12 +3499,18 @@ async function loadComponents(reset = false) {
       pageSize: STATE.pageSize,
     });
 
-    STATE.total = total;
+    loadedCount = data.length;
+    STATE.total = (!reset && data.length === 0) ? STATE.components.length : total;
 
     if (reset) {
       STATE.components = data;
-    } else {
-      STATE.components = [...STATE.components, ...data];
+    } else if (data.length > 0) {
+      // Avoid duplicate cards if background category load shifted sort order
+      const existingIds = new Set(STATE.components.map((c) => c.id));
+      const freshItems = data.filter((c) => !existingIds.has(c.id));
+      STATE.components = [...STATE.components, ...freshItems];
+      data.length = 0;
+      data.push(...freshItems);
     }
 
     // Apply persisted likes
@@ -3463,6 +3534,10 @@ async function loadComponents(reset = false) {
     showToast('Failed to load components. Please try again.', 'error');
   } finally {
     STATE.isLoading = false;
+    // If sentinel is ALREADY visible in viewport after load finishes, continue loading smoothly
+    if (loadedCount > 0 && STATE.components.length < STATE.total && typeof window._checkInfiniteScroll === 'function') {
+      setTimeout(() => window._checkInfiniteScroll(), 120);
+    }
   }
 }
 
@@ -3632,6 +3707,9 @@ function initEventHandlers() {
     }
   }
 
+  window.updateFrameworkPillsUI = updateFrameworkPillsUI;
+  window.updateSortPillsUI = updateSortPillsUI;
+
   document.querySelectorAll('#framework-pills .framework-pill').forEach((pill) => {
     pill.addEventListener('click', () => {
       const fw = pill.dataset.framework || 'all';
@@ -3658,20 +3736,54 @@ function initEventHandlers() {
     loadComponents(true);
   });
 
-  /* --- Infinite Scroll Observer --- */
+  /* --- Infinite Scroll Observer + Scroll Fallback --- */
   const sentinel = document.getElementById('infinite-scroll-sentinel');
+  const spinnerEl = document.getElementById('infinite-scroll-spinner');
+
+  function checkInfiniteScroll() {
+    if (!sentinel || STATE.isLoading) return;
+    if (STATE.components.length >= STATE.total) return;
+    const rect = sentinel.getBoundingClientRect();
+    if (rect.top <= window.innerHeight + 450) {
+      STATE.page++;
+      loadComponents(false);
+    }
+  }
+
+  window._checkInfiniteScroll = checkInfiniteScroll;
+
   if (sentinel) {
-    const scrollObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !STATE.isLoading) {
-          if (STATE.components.length < STATE.total) {
-            STATE.page++;
-            loadComponents(false);
+    if (typeof IntersectionObserver !== 'undefined') {
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            checkInfiniteScroll();
           }
-        }
+        });
+      }, { rootMargin: '450px 0px' });
+      scrollObserver.observe(sentinel);
+    }
+
+    // Passive scroll listener fallback so sentinel staying in viewport can never stall
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        scrollTicking = false;
+        checkInfiniteScroll();
       });
-    }, { rootMargin: '400px' });
-    scrollObserver.observe(sentinel);
+    }, { passive: true });
+  }
+
+  if (spinnerEl) {
+    spinnerEl.style.cursor = 'pointer';
+    spinnerEl.addEventListener('click', () => {
+      if (!STATE.isLoading && STATE.components.length < STATE.total) {
+        STATE.page++;
+        loadComponents(false);
+      }
+    });
   }
 
   /* --- Clear Search (empty state) --- */
@@ -3723,6 +3835,31 @@ function initEventHandlers() {
     const icon = document.getElementById('site-theme-icon');
     if (!btn) return;
 
+    function syncAllCardStagesToSiteTheme(isLight) {
+      const targetTheme = isLight ? 'light' : 'dark';
+      const targetBg = isLight ? '#f4f6f9' : '#18181d';
+      document.querySelectorAll('.card-preview').forEach((previewEl) => {
+        previewEl.dataset.canvasTheme = targetTheme;
+        previewEl.style.backgroundColor = targetBg;
+        const iframe = previewEl.querySelector('iframe');
+        if (iframe && iframe.contentWindow) {
+          try {
+            iframe.contentWindow.postMessage({ type: 'TOGGLE_THEME', theme: targetTheme, isLight, bg: targetBg }, '*');
+          } catch (err) {}
+        }
+        try {
+          if (iframe && iframe.contentDocument && iframe.contentDocument.body) {
+            iframe.contentDocument.documentElement.classList.toggle('dark', !isLight);
+            iframe.contentDocument.documentElement.classList.toggle('light', isLight);
+            iframe.contentDocument.body.classList.toggle('dark', !isLight);
+            iframe.contentDocument.body.classList.toggle('light', isLight);
+            iframe.contentDocument.documentElement.style.setProperty('background-color', targetBg, 'important');
+            iframe.contentDocument.body.style.setProperty('background-color', targetBg, 'important');
+          }
+        } catch (err) {}
+      });
+    }
+
     function syncThemeIcon() {
       const isLight = document.documentElement.classList.contains('light');
       if (icon) {
@@ -3742,6 +3879,7 @@ function initEventHandlers() {
         localStorage.setItem('uiforge_site_theme', nextIsLight ? 'light' : 'dark');
       } catch (e) {}
       syncThemeIcon();
+      syncAllCardStagesToSiteTheme(nextIsLight);
     });
   })();
 
@@ -4430,31 +4568,56 @@ ${css}
       return;
     }
 
-    modalCommentsList.innerHTML = comments.map(c => `
-      <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-[#18191d] border border-white/5">
-        <div class="flex flex-col items-center justify-center bg-[#23242a] rounded-xl px-2.5 py-1 text-xs text-gray-400 select-none">
-          <button type="button" class="hover:text-purple-400 text-xs font-bold transition-colors cursor-pointer">+</button>
-          <span class="font-bold text-white text-[11px] my-0.5">${c.upvotes || 1}</span>
-          <button type="button" class="hover:text-purple-400 text-xs font-bold transition-colors cursor-pointer">-</button>
+    modalCommentsList.innerHTML = comments.map((c, idx) => {
+      const upvotes = Number.isFinite(Number(c.upvotes)) ? Number(c.upvotes) : 1;
+      return `
+      <div class="flex items-start gap-3.5 p-3.5 rounded-2xl studio-surface">
+        <div class="flex flex-col items-center justify-center studio-elevated rounded-xl px-2.5 py-1 text-xs studio-text-secondary select-none">
+          <button type="button" class="comment-upvote-btn hover:text-brand-400 text-xs font-bold transition-colors cursor-pointer" data-idx="${idx}" data-delta="1" aria-label="Upvote comment">+</button>
+          <span class="comment-score font-mono font-bold studio-text-primary text-[11px] my-0.5 tabular-nums">${upvotes}</span>
+          <button type="button" class="comment-upvote-btn hover:text-brand-400 text-xs font-bold transition-colors cursor-pointer" data-idx="${idx}" data-delta="-1" aria-label="Downvote comment">-</button>
         </div>
         <div class="flex-1 min-w-0">
           <div class="flex items-center justify-between gap-2 mb-1">
             <div class="flex items-center gap-2">
-              <div class="w-6 h-6 rounded-lg bg-orange-600 flex items-center justify-center text-[10px] font-bold text-white shrink-0">
+              <div class="w-6 h-6 rounded-lg bg-brand-600 flex items-center justify-center text-[10px] font-bold text-white shrink-0">
                 ${escapeHtml(c.avatar || (c.author ? c.author.charAt(0).toUpperCase() : 'U'))}
               </div>
-              <span class="font-semibold text-white text-xs">${escapeHtml(c.author || 'anonymous')}</span>
-              <span class="text-[11px] text-gray-500">${escapeHtml(c.time || 'just now')}</span>
+              <span class="font-semibold studio-text-primary text-xs">${escapeHtml(c.author || 'anonymous')}</span>
+              <span class="text-[11px] studio-text-muted">${escapeHtml(c.time || 'just now')}</span>
             </div>
-            <button type="button" class="text-xs text-gray-400 hover:text-white flex items-center gap-1.5 cursor-pointer transition-colors">
-              <i class="fa-solid fa-reply text-[10px]"></i>
+            <button type="button" class="comment-reply-btn text-xs studio-text-secondary hover:text-brand-400 flex items-center gap-1.5 cursor-pointer transition-colors" data-author="${escapeAttr(c.author || 'anonymous')}">
+              <i class="fa-solid fa-reply text-[10px]" aria-hidden="true"></i>
               <span>Reply</span>
             </button>
           </div>
-          <p class="text-gray-300 text-xs leading-relaxed mt-1 whitespace-pre-wrap">${escapeHtml(c.text)}</p>
+          <p class="studio-text-secondary text-xs leading-relaxed mt-1 whitespace-pre-wrap">${escapeHtml(c.text)}</p>
         </div>
       </div>
-    `).join('');
+    `;
+    }).join('');
+
+    modalCommentsList.querySelectorAll('.comment-upvote-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idx = Number(btn.dataset.idx);
+        const delta = Number(btn.dataset.delta);
+        const scoreEl = btn.parentElement?.querySelector('.comment-score');
+        if (!scoreEl || Number.isNaN(idx) || Number.isNaN(delta)) return;
+        const nextVal = Math.max(0, (Number(scoreEl.textContent) || 0) + delta);
+        scoreEl.textContent = String(nextVal);
+        if (comments[idx]) comments[idx].upvotes = nextVal;
+      });
+    });
+
+    modalCommentsList.querySelectorAll('.comment-reply-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const author = btn.dataset.author || '';
+        if (modalCommentInput) {
+          modalCommentInput.value = author ? `@${author} ` : '';
+          modalCommentInput.focus();
+        }
+      });
+    });
   }
 
   // --- MORE BY CREATOR CAROUSEL (Uiverse Parity) ---
@@ -4477,17 +4640,18 @@ ${css}
     }
     if (modalMoreAuthorSection) modalMoreAuthorSection.classList.remove('hidden');
 
+    const thumbBg = document.documentElement.classList.contains('light') ? '#f4f6f9' : '#18181d';
     modalMoreAuthorGrid.innerHTML = moreComps.map(c => {
       const full = findAnyComp(c.id) || c;
-      const previewDoc = buildPreviewSrcDoc(full.html || '', full.css || '', full.category || '', false, '#212121');
+      const previewDoc = buildPreviewSrcDoc(full.html || '', full.css || '', full.category || '', false, thumbBg);
       return `
-        <div class="more-author-item flex-shrink-0 w-36 sm:w-44 bg-[#141416] hover:bg-[#1a1a1f] border border-white/8 hover:border-brand-500/40 rounded-xl p-2 cursor-pointer transition-all flex flex-col gap-1.5 group" data-id="${c.id}">
-          <div class="w-full h-16 sm:h-20 bg-[#212121] rounded-lg overflow-hidden relative pointer-events-none flex items-center justify-center">
-            <iframe srcdoc="${escapeAttr(previewDoc)}" class="w-full h-full border-none pointer-events-none scale-75 origin-center bg-[#212121]" loading="lazy" sandbox="allow-scripts"></iframe>
+        <div class="more-author-item flex-shrink-0 w-36 sm:w-44 studio-surface hover:border-brand-500/40 rounded-xl p-2 cursor-pointer transition-all flex flex-col gap-1.5 group" data-id="${escapeAttr(String(c.id || ''))}">
+          <div class="w-full h-16 sm:h-20 rounded-lg overflow-hidden relative pointer-events-none flex items-center justify-center" style="background-color:${thumbBg}">
+            <iframe srcdoc="${escapeAttr(previewDoc)}" class="w-full h-full border-none pointer-events-none scale-75 origin-center" style="background-color:${thumbBg}" loading="lazy" sandbox="allow-scripts"></iframe>
           </div>
           <div class="flex items-center justify-between text-[11px] px-0.5">
-            <span class="font-medium text-gray-300 truncate group-hover:text-brand-300">${escapeHtml(full.title || full.category || 'Component')}</span>
-            <span class="text-gray-500 text-[10px] shrink-0"><i class="fa-solid fa-heart text-[8px] text-pink-500 mr-0.5"></i>${full.likes || 0}</span>
+            <span class="font-medium studio-text-primary truncate group-hover:text-brand-400">${escapeHtml(full.title || full.category || 'Component')}</span>
+            <span class="studio-text-muted text-[10px] shrink-0 font-mono"><i class="fa-solid fa-heart text-[8px] text-pink-500 mr-0.5"></i>${Number(full.likes) || 0}</span>
           </div>
         </div>
       `;
@@ -4547,9 +4711,12 @@ ${css}
     savedRawHtml = currentRawHtml;
     savedRawCss = currentRawCss;
 
-    // 2. Increment views
-    if (typeof incrementViews === 'function') incrementViews(id);
-    comp.views = (comp.views || 0) + 1;
+    // 2. Increment views (+1 once)
+    if (typeof incrementViews === 'function') {
+      incrementViews(id);
+    } else {
+      comp.views = (comp.views || 0) + 1;
+    }
 
     // 3. Header info
     if (modalCategoryPrefix) modalCategoryPrefix.textContent = comp.category || 'Component';
@@ -4594,7 +4761,7 @@ ${css}
         }
         tags = Array.from(new Set(baseTags));
       }
-      tagsContainer.innerHTML = tags.map(t => `<span class="px-2.5 py-1 rounded-lg bg-[#18191d] border border-white/5 text-[11px] text-gray-400 hover:text-white cursor-pointer transition-colors">${escapeHtml(t)}</span>`).join('');
+      tagsContainer.innerHTML = tags.map(t => `<span class="px-2.5 py-1 rounded-lg studio-elevated text-[11px] studio-text-secondary hover:text-brand-400 cursor-pointer transition-colors">${escapeHtml(t)}</span>`).join('');
     }
 
     // Author card in sidebar & sub-creator notice
@@ -4606,6 +4773,7 @@ ${css}
     if (authorCardAvatar) authorCardAvatar.textContent = getInitials(comp.author);
 
     // Render "More by author" in sidebar (Uiverse Parity)
+    const modalThumbBg = document.documentElement.classList.contains('light') ? '#f4f6f9' : '#18181d';
     const moreByTitle = document.getElementById('modal-more-by-title');
     const moreByGrid = document.getElementById('modal-more-author-grid') || document.getElementById('modal-more-by-grid');
     if (moreByTitle) moreByTitle.textContent = `More by @${comp.author || 'creator'}`;
@@ -4618,15 +4786,15 @@ ${css}
       authorComps = authorComps.slice(0, 2);
       moreByGrid.innerHTML = authorComps.map(ac => {
         const full = findAnyComp(ac.id) || ac;
-        const previewDoc = buildPreviewSrcDoc(full.html || '', full.css || '', full.category || '', false, '#212121');
+        const previewDoc = buildPreviewSrcDoc(full.html || '', full.css || '', full.category || '', false, modalThumbBg);
         return `
-          <div class="more-author-item more-by-card bg-[#18191d] rounded-xl border border-white/10 overflow-hidden hover:border-white/25 transition-all cursor-pointer group flex flex-col shadow-sm" data-id="${full.id}">
-            <div class="w-full h-24 bg-[#212121] relative flex items-center justify-center overflow-hidden">
-              <iframe srcdoc="${escapeAttr(previewDoc)}" class="w-full h-full border-none pointer-events-none scale-50 origin-center bg-[#212121]" loading="lazy" sandbox="allow-scripts"></iframe>
+          <div class="more-author-item more-by-card studio-surface rounded-xl overflow-hidden hover:border-brand-500/40 transition-all cursor-pointer group flex flex-col" data-id="${escapeAttr(String(full.id || ''))}">
+            <div class="w-full h-24 relative flex items-center justify-center overflow-hidden" style="background-color:${modalThumbBg}">
+              <iframe srcdoc="${escapeAttr(previewDoc)}" class="w-full h-full border-none pointer-events-none scale-50 origin-center" style="background-color:${modalThumbBg}" loading="lazy" sandbox="allow-scripts"></iframe>
             </div>
-            <div class="flex items-center justify-between px-2.5 py-1.5 text-[10px] text-gray-400 border-t border-white/5">
-              <span class="truncate group-hover:text-white max-w-[85px]">${escapeHtml(full.title || full.category || 'Component')}</span>
-              <span class="flex items-center gap-1 text-gray-500"><i class="fa-solid fa-heart text-[9px] text-pink-500/70"></i> ${full.likes || 0}</span>
+            <div class="flex items-center justify-between px-2.5 py-1.5 text-[10px] studio-text-secondary studio-border-t">
+              <span class="truncate studio-text-primary group-hover:text-brand-400 max-w-[85px]">${escapeHtml(full.title || full.category || 'Component')}</span>
+              <span class="flex items-center gap-1 studio-text-muted font-mono"><i class="fa-solid fa-heart text-[9px] text-pink-500/80"></i> ${Number(full.likes) || 0}</span>
             </div>
           </div>
         `;
@@ -4669,8 +4837,9 @@ ${css}
       }
     }
 
-    // 5. Canvas background (update UI without prematurely refreshing preview)
-    updateCanvasBg('#212121', true, false);
+    // 5. Canvas background matches current site theme (update UI without prematurely refreshing preview)
+    const isSiteLightModal = document.documentElement.classList.contains('light');
+    updateCanvasBg(isSiteLightModal ? '#f4f6f9' : '#18181d', !isSiteLightModal, false);
 
     // Reset viewport and zoom state (Uiverse simulator parity)
     STATE.canvasZoom = 100;
@@ -4700,17 +4869,17 @@ ${css}
 
       variationsGrid.innerHTML = variations.map(v => {
         const full = findAnyComp(v.id) || v;
-        const previewDoc = buildPreviewSrcDoc(full.html || '', full.css || '', full.category || '', false, '#212121');
+        const previewDoc = buildPreviewSrcDoc(full.html || '', full.css || '', full.category || '', false, modalThumbBg);
         return `
-          <div class="variation-card bg-[#18191d] rounded-2xl border border-white/10 overflow-hidden hover:border-white/25 transition-all cursor-pointer group flex flex-col shadow-sm" data-id="${full.id}">
-            <div class="w-full h-44 bg-[#212121] relative flex items-center justify-center overflow-hidden">
-              <iframe srcdoc="${escapeAttr(previewDoc)}" class="w-full h-full border-none pointer-events-none scale-75 origin-center bg-[#212121]" loading="lazy" sandbox="allow-scripts"></iframe>
+          <div class="variation-card studio-surface rounded-2xl overflow-hidden hover:border-brand-500/40 transition-all cursor-pointer group flex flex-col" data-id="${escapeAttr(String(full.id || ''))}">
+            <div class="w-full h-44 relative flex items-center justify-center overflow-hidden" style="background-color:${modalThumbBg}">
+              <iframe srcdoc="${escapeAttr(previewDoc)}" class="w-full h-full border-none pointer-events-none scale-75 origin-center" style="background-color:${modalThumbBg}" loading="lazy" sandbox="allow-scripts"></iframe>
             </div>
-            <div class="flex items-center justify-between px-3.5 py-2.5 text-xs text-gray-400 border-t border-white/5">
-              <span class="font-medium text-gray-300 truncate group-hover:text-white">@${escapeHtml(full.author || 'creator')}</span>
-              <div class="flex items-center gap-3 text-[11px]">
+            <div class="flex items-center justify-between px-3.5 py-2.5 text-xs studio-text-secondary studio-border-t">
+              <span class="font-medium studio-text-primary truncate group-hover:text-brand-400">@${escapeHtml(full.author || 'creator')}</span>
+              <div class="flex items-center gap-3 text-[11px] font-mono tabular-nums">
                 <span>${formatNumber(full.views || 0)} views</span>
-                <span class="flex items-center gap-1"><i class="fa-regular fa-bookmark text-[10px]"></i> ${full.likes || 0}</span>
+                <span class="flex items-center gap-1"><i class="fa-regular fa-bookmark text-[10px]"></i> ${Number(full.likes) || 0}</span>
               </div>
             </div>
           </div>
@@ -5308,8 +5477,9 @@ ${css}
 
       if (!STATE.currentUser) {
         showToast('Please sign in to leave a comment', 'info');
-        if (typeof openSigninModal === 'function') {
-          openSigninModal('signin', 'Sign in to join the conversation and comment');
+        const openAuth = typeof openSigninModal === 'function' ? openSigninModal : window.openSigninModal;
+        if (typeof openAuth === 'function') {
+          openAuth('signin', 'Sign in to join the conversation and comment');
         }
         return;
       }
